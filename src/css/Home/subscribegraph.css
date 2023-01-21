@@ -1,0 +1,57 @@
+.card-bold-txt{
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+.regular-txt{
+    font-size: 18px !important;
+    color: gray !important;
+}
+.card-bold-number-text{
+    font-size: 50px !important;
+    font-weight: 600 !important;
+    padding-top: 15px !important;
+}
+.regular-bold-text{
+    font-size: 16px !important;
+}
+.learn-more-btn{
+    width: 136px !important;
+    border: 1px solid gray !important;
+    background: white !important;
+    color: black !important;
+    border-radius: 30px !important;
+    font-size: 14px !important;
+    margin-top: 38px !important;
+}
+.learn-more-btn:hover{
+    width: 136px !important;
+    border: 1px solid #F0C127 !important;
+    background: #F0C127 !important;
+    color: black !important;
+    border-radius: 30px !important;
+    font-size: 14px !important;
+}
+.card-container{
+    position: relative;
+    background: #FAFAFA !important; 
+    width: 90% !important; 
+    height: max-content !important;
+}
+.bar-graph-image{
+    bottom: 10px;
+    right: 1em;
+    position: absolute;
+    width: 219px;
+    height: 282px;
+}
+@media screen and (max-width: 920px) {
+    .card-container{
+        width: 100% !important; 
+    }
+}
+@media screen and (max-width: 500px) {
+    .bar-graph-image{
+        width: 139px;
+        height: 202px;
+    }
+}

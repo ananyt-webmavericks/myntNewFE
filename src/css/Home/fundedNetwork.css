@@ -1,0 +1,18 @@
+.funded-networks-container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.networks-head-script{
+    font-size: 20px !important;
+}
+.bg-text-script{
+    color: #F0C127 !important;
+}
+.vertical-line{
+  border:0.5px solid gray;
+  border-style: dashed;
+    height: 100px;
+    margin-left: 10px;
+  
+}
