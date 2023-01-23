@@ -1,0 +1,93 @@
+.investor-home-heading{
+    font-size: 36px;
+    font-weight: 600;
+}
+.colored-investor-home-heading{
+    color: #F0C127;
+}
+.investors-subheading{
+    font-size: 16px;
+    color: #777777;
+}
+.investors-image-container{
+    margin-top: 65px;
+    max-width: 481px;
+    height: 500px;
+    position: relative;
+}
+.abstract-investment-bg{
+    width: 110px;
+    height: 151px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.investors-investment-main{
+    width: 100%;
+    height: 462px;
+    position: absolute;
+    bottom: 0;
+}
+.profile-container-investors{
+    margin-top: 40px;
+}
+.investor-detailed-section{
+    max-width: 110px;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+.investors-image-first{
+    width: 100%;
+}
+.investor-company-logo{
+        width: 40px;
+        height: 15px;
+        margin: auto;
+        object-fit: contain;
+        margin-top: 5px;
+}
+.name-of-investor-txt{
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+.investment-of-investor-txt{
+    font-size: 14px;
+    color: #777777;
+    padding-top: 5px;
+}
+.investor-home-container-main{
+    margin-top: 2em;
+}
+.get-started-btn-investor{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+@media screen and (max-width: 481px) {
+    .investors-image-container{
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .investor-home-container-main{
+        margin-top: 10em;
+    }
+}
+@media screen and (max-width: 570px) {
+    .investor-home-container-main{
+        margin-top: 15em;
+    }
+}
+@media screen and (max-width: 500px) {
+    .investor-home-heading{
+        font-size: 26px;
+        font-weight: 600;
+    }
+}
+@media screen and (max-width: 420px) {
+    .investor-home-container-main{
+        margin-top: 25em;
+    }
+}

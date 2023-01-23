@@ -1,30 +1,37 @@
-.landing-head-container{
-    display: flex;
-    justify-content: space-between;
+.landing-head-container {
+    display: grid;
+    justify-content: center;
     padding-top: 10em;
 }
 
-.test-script-regular{
-    font-size: 36px !important;
+.test-script-regular {
+    font-size: 26px !important;
     font-weight: 500 !important;
 }
-.test-script-bold{
+
+.test-script-bold {
     font-size: 36px !important;
     font-weight: 600 !important;
 }
-.test-script-bg{
+
+.test-script-bg {
     color: #efc127;
 }
-.landing-head-section{
+
+.landing-head-section {
+    width: 100%;
     margin-top: 1em;
     display: grid;
-    width: fit-content;
+   
 }
-.head-description{
-    font-size: 15px;
+
+.head-description {
+    font-size: 16px;
+    margin-bottom: 1em !important;
 }
-.getStarted-landing-btn{
-    margin-top: 2em !important;
+
+.getStarted-landing-btn {
+ 
     width: 200px !important;
     border-radius: 30px !important;
     text-transform: capitalize !important;
@@ -32,20 +39,61 @@
     box-shadow: none !important;
     background-color: black !important;
     font-size: 16px !important;
+    margin: auto !important;
 }
-.getStarted-landing-btn:hover{
+
+.getStarted-landing-btn:hover {
     box-shadow: none !important;
     background-color: black !important;
 }
-.subhead-description{
-    font-size: 12px !important;
+
+.subhead-description {
+    font-size: 13px !important;
     margin-top: 1em !important;
 }
-.image-section-landing{
-display: block;
+
+.image-section-landing {
+    order: 1;
+    display: flex;
+    justify-content: center;
 }
-@media screen and (max-width: 870px) {
-    .image-section-landing{
-        display: none;
-        }
+
+.landing-head-txt-section {
+    order: 2;
+    text-align: center;
+}
+
+.banner-home-main{
+    width: 253px;
+    height: 203px;
+}
+
+@media screen and (min-width: 870px) {
+    .image-section-landing {
+        order: 2;
+    }
+    .landing-head-txt-section {
+        order: 1;
+        text-align: start;
+    }
+    .landing-head-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .landing-head-section {
+        text-align: start;
+    }
+    .getStarted-landing-btn {
+        margin: 0 !important;
+    }
+    .test-script-regular {
+        font-size: 36px !important;
+    }
+    .test-script-bold {
+        font-size: 36px !important;
+    }
+    .banner-home-main{
+        width:434px; 
+        height:348px;
+    }
 }

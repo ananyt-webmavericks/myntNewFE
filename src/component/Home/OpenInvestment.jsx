@@ -111,8 +111,11 @@ export default function OpenInvestment() {
     return (
         <>
             <Box sx={{ minHeight: '80vh', marginTop: '60px', marginBottom: '2em' }}>
+            <div className="subscribe-graph-heading">
                 <Typography className="test-script-regular">Open<span className="test-script-bg"> Investment</span></Typography>
+                
                 <Typography style={{ fontSize: '18px', color: 'gray' }}>Text will be given by Arpit Subscribe to gain access to exclusive high return opportunities in growing business</Typography>
+                </div>
                 <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                     {data.slice(0, showItem).map((item, index) => {
                         return (

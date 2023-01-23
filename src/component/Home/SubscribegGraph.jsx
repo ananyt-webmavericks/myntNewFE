@@ -28,22 +28,22 @@ export default function SubscribegGraph() {
     }, [])
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
+            <div className="subscribe-graph-heading">
             <Typography className="test-script-regular">Subscribe to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+            </div>
             <Grid sx={{ marginTop: '40px'}} container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>
                     <Card className="card-container" >
                         <CardContent>
-                            <div style={{ display: 'flex' }}>
-                                <div style={{ display: 'grid', width: '70%' }}>
+                            <div className="card-content-graph" >
+                                <div className="card-sub-content" >
                                     <Typography className="card-bold-txt" >Equity linked instruments</Typography>
                                     <Typography className="regular-txt">Subscribe to gain access to exclusive high return opportunities in growing business</Typography>
                                     <Typography className="card-bold-number-text">25%+</Typography>
                                     <Typography className="regular-bold-text">Expected IRR</Typography>
                                     <Button className="learn-more-btn" varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
-                                </div>
-                                {/* <div className="bar-graph-image"> */}
-                                    <img src={Graph1} className="bar-graph-image" alt="graph"></img>
-                                {/* </div>   */}
+                                </div>     
+                                <img src={Graph1} className="bar-graph-image" alt="graph"></img>
                             </div>
                         </CardContent>
 
@@ -52,8 +52,8 @@ export default function SubscribegGraph() {
                 <Grid item xs={gridxsSecond}>
                 <Card className="card-container">
                         <CardContent>
-                            <div style={{ display: 'flex' }}>
-                                <div style={{ display: 'grid', width: '70%' }}>
+                            <div className="card-content-graph" >
+                                <div  className="card-sub-content" >
                                     <Typography className="card-bold-txt" >Fixed Income instruments</Typography>
                                     <Typography className="regular-txt">Enjoy regular payouts with high yield investment<br /> opportunities</Typography>
                                     <Typography className="card-bold-number-text">12 - 25%</Typography>

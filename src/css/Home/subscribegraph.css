@@ -5,6 +5,10 @@
 .regular-txt{
     font-size: 18px !important;
     color: gray !important;
+    height: 150px !important;
+}
+.subscribe-graph-heading{
+    text-align: center;
 }
 .card-bold-number-text{
     font-size: 50px !important;
@@ -15,6 +19,7 @@
     font-size: 16px !important;
 }
 .learn-more-btn{
+    
     width: 136px !important;
     border: 1px solid gray !important;
     background: white !important;
@@ -44,14 +49,50 @@
     width: 219px;
     height: 282px;
 }
+.card-content-graph{
+    display: flex;
+}
+.card-sub-content{
+    display: grid;
+    width: 70%;
+}
 @media screen and (max-width: 920px) {
     .card-container{
         width: 100% !important; 
+        margin-top: 1em;
+    }
+}
+@media screen and (min-width: 870px) {
+    .subscribe-graph-heading{
+        text-align: start;
     }
 }
 @media screen and (max-width: 500px) {
     .bar-graph-image{
-        width: 139px;
-        height: 202px;
+        position:inherit;
+        margin: auto;
+    }
+    .card-content-graph{
+        display: grid;
+    }
+    .card-container{
+        display: grid !important;
+        justify-content: center !important;
+    }
+    .card-sub-content{
+        display: grid;
+        text-align: center;
+        width: 100%;
+    }
+    .learn-more-btn{
+        margin: auto !important;
+        margin-bottom: 1em !important;
+    }
+    .regular-txt{
+        height: 80px !important;
+    }
+    .regular-bold-text{
+        margin-top: 1em !important;
+        margin-bottom: 1em !important;
     }
 }

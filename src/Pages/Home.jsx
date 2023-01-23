@@ -8,6 +8,8 @@ import FundedNetworks from "../component/Home/FundedNetworks";
 import SubscribegGraph from "../component/Home/SubscribegGraph";
 import OpenInvestment from "../component/Home/OpenInvestment";
 import AboutTeamCarousel from "../component/Home/AboutTeamCarousel";
+import InvestorsHome from "../component/Home/InvestorsHome";
+import HowToRaise from "../component/Home/HowToRaise";
 
 const Home = () => {
     return (
@@ -21,6 +23,8 @@ const Home = () => {
             <SubscribegGraph />
             <OpenInvestment />
             <AboutTeamCarousel />
+            <InvestorsHome />
+            <HowToRaise />
             </Container>
         </React.Fragment>
     )

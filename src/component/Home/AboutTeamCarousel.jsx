@@ -17,7 +17,7 @@ const data = [
 export default function AboutTeamCarousel() {
 
     return (
-        <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
+        <Box sx={{ minHeight: 'fit-content', marginTop: '90px',marginBottom:'10px' }}>
             <div className="team-container">
                 <img className="team-bg-img" src={Map} alt="Map"/>
                 <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
