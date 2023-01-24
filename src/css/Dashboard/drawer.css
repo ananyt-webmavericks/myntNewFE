@@ -1,0 +1,9 @@
+.dashboard-drawer-container{
+    width: 340px;
+    height: 1000px;
+    background-color: black;
+    z-index: 101;
+    opacity: 1;
+    position: fixed;
+    box-shadow: 0 10px 10 0 blue; 
+}

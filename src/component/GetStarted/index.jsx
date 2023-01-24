@@ -5,7 +5,10 @@ import Google from '../../images/assets/google.png';
 import Facebook from '../../images/assets/facebook.png';
 import Username from '../../images/assets/username.png';
 import Email from '../../images/assets/email.png';
+import { useNavigate } from "react-router-dom";
 export default function GetStartedSection() {
+
+    const navigate = useNavigate();
     return (
         <div className="get-started-container">
             <div className="get-started-section">
@@ -42,7 +45,7 @@ export default function GetStartedSection() {
                                 <input className="in-input-email" placeholder="Email Address" />
                             </div>
                         </div>
-                        <button className="sign-up-btn">Sign Up</button>
+                        <button onClick={()=> navigate('/otp-verification')} className="sign-up-btn">Sign Up</button>
                     </CardContent>
                 </Card>
                 <div className="bottom-most-txt-get-started">

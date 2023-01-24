@@ -1,0 +1,17 @@
+.about-you-container{
+    height: 100%;
+    margin-bottom: 5em;
+}
+.map-location-about-you{
+    width: 245px;
+    height: 107px;
+}
+.about-you-dropdown-container{
+    background: #F4F4F4; 
+    padding-left: 10px; 
+    height: 42px; 
+    display: flex; 
+    align-items: center; 
+    width: 100%; 
+    margin-top: 1em;
+}
