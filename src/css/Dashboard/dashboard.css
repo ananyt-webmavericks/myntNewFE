@@ -1,4 +1,248 @@
-.dashboard-container{
+.dashboard-container {
+    padding-left: 30px;
+    padding-top: 9em;
+    width: -webkit-fill-available;
+}
+
+.completion-status {
+    font-size: 16px;
+    margin-top: 34px;
+}
+
+.bottom-completion-container {
+    max-width: 919px;
+    width: 100%;
+    height: 10px;
+    /* UI Properties */
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    position: relative;
+}
+
+.top-completion-container {
+    top: -2px;
+    max-width: 35%;
+    width: 100%;
+    position: absolute;
+    height: 14px;
+    /* UI Properties */
+    background: #ECB92B 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+}
+
+.calculated-percentage {
+    font-size: 16px;
+
+    color: #ECB92B;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.completion-status-round-dashed {
+    margin-top: 55px;
+    align-items: center;
     display: flex;
-    
+    position: relative;
+    /* justify-content: space-evenly; */
+}
+
+.outer-circle-dash {
+    align-items: center;
+    display: flex;
+
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #D1D1D1;
+}
+
+.inner-circle-dashed {
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    /* UI Properties */
+    background: #F8DA36 0% 0% no-repeat padding-box;
+}
+
+.font-inner-circle {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.dashed-line-new {
+    border: 1px dashed #D1D1D1;
+    width: 40%;
+    height: 1px;
+}
+
+.dashed-line-last {
+    border: 1px dashed #D1D1D1;
+    width: 40%;
+    height: 1px;
+}
+
+.outer-circle-dash.not-completed {
+    border: 1px dashed #D1D1D1;
+}
+
+.inner-circle-dashed.not-completed {
+    background: #EBEBEB 0% 0% no-repeat padding-box;
+}
+
+.circular-progress-section-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.specific-info-section {
+    text-align: center;
+    display: grid;
+    margin-top: 18px;
+    justify-content: center;
+    justify-content: center;
+}
+
+.specific-info-section.first {
+    max-width: 300px;
+    width: 100%;
+
+}
+
+.specific-info-section.second {
+    max-width: 300px;
+    width: 100%;
+
+}
+
+.specific-info-section.third {
+    max-width: 300px;
+    width: 100%;
+
+}
+
+.header-info-section-dash {
+    font-size: 14px;
+    height: 3em;
+    font-weight: 600;
+}
+
+.sub-header-info-section-dash {
+    font-size: 13px;
+    color: #777777;
+    height: 7em;
+}
+
+.dashboard-card-container {
+    display: flex;
+    margin-top: 90px;
+    justify-content: space-evenly;
+}
+
+.card-main-dash {
+    max-width: 300px !important;
+    width: 100% !important;
+    height: 110px !important;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 40px #0000001A !important;
+    border-radius: 7px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.dash-card-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 1em; */
+}
+
+.card-image-container-dash {
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* UI Properties */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-card-dashboard {
+    object-fit: contain;
+}
+.outer-circle-dash.first{
+    margin-left: 40%;
+}
+.text-card-container {
+    display: grid;
+    margin-left: 10px;
+}
+.main-container-dashboard-part{
+    display: grid;
+    justify-content: center;
+}
+.sub-main-container-dashboard{
+    display: flex; 
+    align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .dashboard-card-container {
+        display: grid;
+        margin-top: 90px;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .dashboard-container {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 775px) {
+
+    .card-main-dash {
+        display: grid;
+        margin-top: 90px;
+        margin: auto !important;
+    }
+
+    .completion-status-round-dashed {
+        display: grid;
+        position: relative;
+    }
+    .main-container-dashboard-part{
+        display: flex;
+    }
+    .outer-circle-dash.first{
+        margin-left: 0;
+    }
+    .sub-main-container-dashboard{
+        display: grid;
+        align-items: flex-start;
+    }
+    .dashed-line-new{
+        width: 1px;
+        height: 130px;
+        margin: auto;
+        border: 1px dashed #D1D1D1;
+    }
+    .dashed-line-last{
+        border: 1px dashed #D1D1D1;
+        width: 1px;
+        margin: auto;
+        height: 130px;
+    }
+
+
 }

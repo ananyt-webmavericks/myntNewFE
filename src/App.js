@@ -10,15 +10,20 @@ import AboutYou from './Pages/AboutYou';
 import BecomeInvestor from './Pages/BecomeInvestor';
 import StartupSectors from './Pages/StartupSectors';
 import Dashboard from './Pages/Dashboard';
-import DrawerMain from './component/Dashboard/Drawer';
+import LiveDeals from './Pages/LiveDeals';
+import Analytics from './Pages/Analytics';
+import Portfolio from './Pages/PortFolio';
+import ChatWithExpert from './Pages/ChatWithExpert';
+
 function App() {
 
-  // const location = window.location.pathname;
+  const location = window.location.pathname;
+  const ratio = parseInt(window.innerWidth);
 
   return (
     <BrowserRouter>
     <Navbar />
-    {/* {location === '/dashboard' && <DrawerMain />} */}
+    
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/get-started" element={<GetStarted />} />
@@ -26,9 +31,14 @@ function App() {
           <Route exact path="/about-you" element={<AboutYou />} />
           <Route exact path="/become-investor" element={<BecomeInvestor />} />
           <Route exact path="/startup-sectors" element={<StartupSectors />} />
-          {/* <Route exact path="/dashboard" element={<Dashboard />} /> */}
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/dashboard/live-deals" element={<LiveDeals />} />
+          <Route exact path="/dashboard/analytics" element={<Analytics />} />
+          <Route exact path="/dashboard/portfolio" element={<Portfolio />} />
+          <Route exact path="/dashboard/chat-with-expert" element={<ChatWithExpert />} />
         </Routes>
-        <Footer />
+        {!location.includes('/dashboard') &&  <Footer />}
+        
     </BrowserRouter>
   );
 }

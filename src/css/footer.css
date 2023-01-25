@@ -4,6 +4,7 @@
     background: #f7f7f7;
     bottom:0;
     
+    z-index: 200;
 }
 .footer-head-section{
     margin: 2em;
