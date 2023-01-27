@@ -14,6 +14,12 @@ import LiveDeals from './Pages/LiveDeals';
 import Analytics from './Pages/Analytics';
 import Portfolio from './Pages/PortFolio';
 import ChatWithExpert from './Pages/ChatWithExpert';
+import CompleteYourProfile from './Pages/CompleteYourProfile';
+import PaymentDetails from './component/CompleteYourProfile/PaymentDetails';
+import VerifyNumberOtp from './component/CompleteYourProfile/VerifyNumberOtp';
+import VerifyAddress from './component/CompleteYourProfile/VerifyAddress';
+import KycPanDetails from './component/CompleteYourProfile/KycPanDetails';
+import Login from './Pages/Login';
 
 function App() {
 
@@ -26,6 +32,7 @@ function App() {
     
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/get-started" element={<GetStarted />} />
           <Route exact path="/otp-verification" element={<OtpVerification />} />
           <Route exact path="/about-you" element={<AboutYou />} />
@@ -36,6 +43,11 @@ function App() {
           <Route exact path="/dashboard/analytics" element={<Analytics />} />
           <Route exact path="/dashboard/portfolio" element={<Portfolio />} />
           <Route exact path="/dashboard/chat-with-expert" element={<ChatWithExpert />} />
+          <Route exact path="/complete-your-profile" element={<CompleteYourProfile />} />
+          <Route exact path="/complete-your-profile/verify-otp" element={<VerifyNumberOtp />} />
+          <Route exact path="/complete-your-profile/verify-address" element={<VerifyAddress />} />
+          <Route exact path="/complete-your-profile/verify-kyc" element={<KycPanDetails />} />
+          <Route exact path="/payment-details" element={<PaymentDetails />} />
         </Routes>
         {!location.includes('/dashboard') &&  <Footer />}
         

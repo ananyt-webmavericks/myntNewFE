@@ -21,7 +21,7 @@ const Navbar = () => {
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Raise</a></li>
                     <li><a href="#">MintUniversity</a></li>
-                    <li><button className="login-btn">Login</button></li>
+                    <li><button className="login-btn" onClick={()=> navigate('/login')}>Login</button></li>
                     <li><button className="get-started-btn" onClick={()=> navigate('/get-started')} >Get Started</button></li>
                 </ul>
                 <img class="logo-web" src={logo}></img>

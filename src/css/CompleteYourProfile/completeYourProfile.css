@@ -1,0 +1,284 @@
+.complete-your-profile-container {
+    height: 100%;
+    padding-top: 8em;
+    margin-bottom: 5em;
+}
+
+.card-complete-profile {
+    padding: 0 !important;
+    margin: auto !important;
+    max-width: 850px !important;
+    width: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 20px #00000017 !important;
+    border-radius: 9px !important;
+    margin-top: 20px !important;
+}
+
+.card-complete-heading-section {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.heading-top-complete {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.heading-below-complete {
+    font-size: 14px;
+    color: #000000;
+}
+
+.dashed-line-profile {
+    border: 1px dashed #D1D1D1;
+    width: 76%;
+    height: 1px;
+}
+
+.completion-profile-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 478px;
+    width: 478px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.completion-profile-container.second {
+    width: 531px;
+    max-width: 531px;
+    margin-top: 18px;
+}
+
+.dashed-line-profile.main {
+    width: 100%;
+    margin-top: 22px;
+}
+
+.dahed-completion-status {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.dahed-completion-status.first {
+    color: #000000;
+    padding-left: 10px;
+}
+
+.dahed-completion-status.second {
+    color: #777777;
+    width: max-content;
+}
+
+/* verifyNummber */
+
+.verify-number-container {
+    display: grid;
+    margin: auto;
+    margin-top: 40px;
+    max-width: 601px;
+    width: 100%;
+}
+
+.verify-number-head {
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 15px;
+}
+
+.input-number-box-section {
+    display: flex;
+}
+
+.country-code-container {
+    width: 74px;
+    height: 42px;
+    /* UI Properties */
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    position: relative;
+}
+
+.phoneNumberInput {
+    padding: 0 1.4em;
+    background: none;
+    width: inherit;
+    position: absolute;
+    border: 0;
+    height: inherit;
+    font-size: 16px;
+}
+
+.phoneNumberInput:focus {
+    outline: none;
+}
+
+.number-verify-container {
+    width: 517px;
+
+    height: 42px;
+    /* UI Properties */
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.phoneNumberInput::-webkit-outer-spin-button,
+.phoneNumberInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.checkbox-whatsapp-group-verify {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+}
+
+.verify-button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 75px;
+    padding-bottom: 27px;
+    width: 601px;
+    margin: auto;
+}
+
+.verify-button {
+    max-width: 230px !important;
+    width: 100% !important;
+    height: 54px !important;
+    /* UI Properties */
+    background: #000000 0% 0% no-repeat padding-box !important;
+    border-radius: 27px !important;
+    color: white !important;
+    font-size: 16px !important;
+}
+
+/* Otp verification */
+
+.verify-number-otp-section {
+    display: grid;
+    width: 601px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+/* Kyc Pan verification */
+.number-verify-container.kyc {
+    margin-left: 0;
+    width: 601px;
+}
+
+.number-verify-container.kyc.small {
+    width: 187px;
+    margin-right: 20px;
+}
+
+.input-number-box-section.kyc {
+    display: flex;
+    
+    margin-left: 0;
+    margin-top: 20px;
+}
+
+@media screen and (max-width : 750px) {
+    .verify-number-container {
+        max-width: 501px;
+    }
+
+    .verify-button-container {
+        max-width: 501px;
+    }
+
+    .verify-number-otp-section {
+        max-width: 501px;
+    }
+
+    .number-verify-container {
+        width: 434px;
+    }
+
+    .number-verify-container.kyc {
+        width: 434px;
+    }
+
+    .number-verify-container.kyc.small {
+        width: 131px;
+    }
+    .dashed-line-profile {
+        width: 59%;
+    }
+    
+}
+
+@media screen and (max-width : 650px) {
+    .verify-number-container {
+        max-width: 401px;
+    }
+
+    .verify-button-container {
+        max-width: 401px;
+    }
+
+    .verify-number-otp-section {
+        max-width: 401px;
+    }
+
+    .number-verify-container {
+        width: 334px;
+    }
+    .number-verify-container.kyc {
+        width: 334px;
+    }
+
+    .number-verify-container.kyc.small {
+        width: 98px;
+    }
+    .completion-profile-container {
+        margin: auto;
+        width: 282px;
+    }
+
+    .completion-profile-container.second {
+        margin: auto;
+        width: 282px;
+        align-items: baseline;
+    }
+
+    .dahed-completion-status.second {
+        margin-left: 9em;
+    }
+}
+
+@media screen and (max-width : 524px) {
+    .verify-number-container {
+        max-width: 301px;
+    }
+
+    .verify-number-otp-section {
+        max-width: 301px;
+    }
+
+    .verify-button-container {
+        max-width: 300px;
+    }
+
+    .number-verify-container {
+        width: 234px;
+    }
+    .number-verify-container.kyc {
+        width: 234px;
+    }
+
+    .number-verify-container.kyc.small {
+        width: 64px;
+    }
+    .verify-button {
+        width: 300px !important;
+        border-radius: 5px !important;
+        margin: auto !important;
+    }
+}

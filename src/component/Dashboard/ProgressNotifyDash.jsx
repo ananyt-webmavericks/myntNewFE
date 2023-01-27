@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
 import '../../css/Dashboard/dashboard.css';
 import { useEffect } from "react";
@@ -6,11 +6,11 @@ export default function ProgressNotifyDash() {
     const ratio = parseInt(window.innerWidth);
     const [showHr, setShowHr] = useState(true);
 
-     useEffect(() => {
+    useEffect(() => {
         if (ratio < 775) {
             setShowHr(false)
         }
-        
+
     }, [])
 
     return (
@@ -38,7 +38,7 @@ export default function ProgressNotifyDash() {
             {/* <hr className="dashed-line" /> */}
             <div className="main-container-dashboard-part">
                 <div className="sub-main-container-dashboard">
-                   {showHr && <hr className="dashed-line-new" />}
+                    {showHr && <hr className="dashed-line-new" />}
                     <div className="outer-circle-dash not-completed">
                         <div className="inner-circle-dashed not-completed">
                             <span className="font-inner-circle">2</span>
@@ -59,7 +59,7 @@ export default function ProgressNotifyDash() {
             {/* <hr className="dashed-line-two" /> */}
             <div className="main-container-dashboard-part">
                 <div className="sub-main-container-dashboard">
-                {showHr && <hr className="dashed-line-new" />}
+                    {showHr && <hr className="dashed-line-new" />}
                     <div className="outer-circle-dash not-completed">
                         <div className="inner-circle-dashed not-completed">
                             <span className="font-inner-circle">3</span>
