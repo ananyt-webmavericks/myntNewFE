@@ -3,21 +3,21 @@ import { Card, CardContent, Grid } from "@mui/material";
 import '../../css/StartupSectors/startupSectors.css';
 import DoneIcon from '@mui/icons-material/Done';
 const data = [
-    { id: 1, name: 'HealthTech', isChecked: false },
-    { id: 2, name: 'Artificial Intelligence', isChecked: false },
-    { id: 3, name: 'Blockchain', isChecked: false },
-    { id: 4, name: 'Electric Vehicles', isChecked: false },
-    { id: 5, name: 'AgriTech', isChecked: false },
-    { id: 6, name: 'EdTech', isChecked: false },
-    { id: 7, name: 'Augmented Reality', isChecked: false },
-    { id: 8, name: 'E-commerce', isChecked: false },
-    { id: 9, name: 'Foods & Beverages', isChecked: false },
-    { id: 10, name: 'SaaS', isChecked: false },
-    { id: 11, name: 'FinTech', isChecked: false },
-    { id: 12, name: 'Virtual Reality', isChecked: false },
-    { id: 13, name: 'InsurTech', isChecked: false },
-    { id: 14, name: 'Cryptocurrency', isChecked: false },
-    { id: 15, name: 'Entertainment', isChecked: false },
+    { id: 1, name: 'HealthTech', isChecked: true },
+    { id: 2, name: 'Artificial Intelligence', isChecked: true },
+    { id: 3, name: 'Blockchain', isChecked: true },
+    { id: 4, name: 'Electric Vehicles', isChecked: true },
+    { id: 5, name: 'AgriTech', isChecked: true },
+    { id: 6, name: 'EdTech', isChecked: true },
+    { id: 7, name: 'Augmented Reality', isChecked: true },
+    { id: 8, name: 'E-commerce', isChecked: true },
+    { id: 9, name: 'Foods & Beverages', isChecked: true },
+    { id: 10, name: 'SaaS', isChecked: true },
+    { id: 11, name: 'FinTech', isChecked: true },
+    { id: 12, name: 'Virtual Reality', isChecked: true },
+    { id: 13, name: 'InsurTech', isChecked: true },
+    { id: 14, name: 'Cryptocurrency', isChecked: true },
+    { id: 15, name: 'Entertainment', isChecked: true },
 ]
 export default function StartupSectorsMain() {
 
@@ -65,7 +65,7 @@ export default function StartupSectorsMain() {
                                 )
                             })}
                         </Grid>
-                        <button className="submit-btn-startup">submit</button>
+                        <button className="submit-btn-startup">Submit</button>
                     </CardContent>
                 </Card>
                 </div>

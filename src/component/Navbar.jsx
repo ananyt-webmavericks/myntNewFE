@@ -20,7 +20,7 @@ const Navbar = () => {
                     <li><a href="/">Home</a></li>
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Raise</a></li>
-                    <li><a href="#">MintUniversity</a></li>
+                    <li><a href="#">MyntUniversity</a></li>
                     <li><button className="login-btn" onClick={()=> navigate('/login')}>Login</button></li>
                     <li><button className="get-started-btn" onClick={()=> navigate('/get-started')} >Get Started</button></li>
                 </ul>

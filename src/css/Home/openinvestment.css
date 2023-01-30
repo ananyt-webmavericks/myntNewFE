@@ -125,5 +125,64 @@
     color: black !important;
     opacity: 1 !important;
     font-size: 16px !important;
+    font-weight: 600 !important;
   
 }
+.invest-load-btn:hover{
+    color: white !important; 
+    background-color: #F0C127 !important;
+}
+
+.overlay {
+    position: absolute;
+    padding:11px 18px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .6s ease;
+    background-color: white;
+  }
+
+  .text {
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .investment-card-container{
+    position: relative;
+  }
+  .card-header-logo.hover{
+    justify-content: flex-start;
+    align-items: center;
+    
+  }
+  .company-name.hover{
+    margin-top: 0;
+  }
+  .investment-txt.hover{
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .investment-sub-txt.hover{
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .investment-card-container:hover .overlay {
+    opacity: 1;
+  }
+  .chip-status.hover{
+    border-radius: 7px;
+    width: fit-content;
+    margin-top: 24px;
+    padding: 7px 12px;
+  }

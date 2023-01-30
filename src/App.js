@@ -20,6 +20,8 @@ import VerifyNumberOtp from './component/CompleteYourProfile/VerifyNumberOtp';
 import VerifyAddress from './component/CompleteYourProfile/VerifyAddress';
 import KycPanDetails from './component/CompleteYourProfile/KycPanDetails';
 import Login from './Pages/Login';
+import PayToSubscribe from './Pages/PayToSubscribe';
+import MyProfile from './Pages/MyProfile';
 
 function App() {
 
@@ -48,6 +50,8 @@ function App() {
           <Route exact path="/complete-your-profile/verify-address" element={<VerifyAddress />} />
           <Route exact path="/complete-your-profile/verify-kyc" element={<KycPanDetails />} />
           <Route exact path="/payment-details" element={<PaymentDetails />} />
+          <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
+          <Route exact path="/my-profile" element={<MyProfile />} />
         </Routes>
         {!location.includes('/dashboard') &&  <Footer />}
         

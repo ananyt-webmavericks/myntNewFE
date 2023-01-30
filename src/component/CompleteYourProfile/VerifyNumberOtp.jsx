@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         marginTop: '11px',
-        display: 'flex-root',
+        display: 'flex',
+        justifyContent:'space-between'
     },
 }));
 export default function VerifyNumberOtp() {
@@ -18,7 +19,7 @@ export default function VerifyNumberOtp() {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px' }} {...buttonProps}>Resend</button>;
     };
     const renderTime = remainingTime => {
-        return <span style={{ display: 'none' }}>{remainingTime} seconds remaining</span>;
+        return <span style={{color:'#777777'}}>{remainingTime}</span>;
     };
     return (
         <div className="complete-your-profile-container">

@@ -63,6 +63,12 @@
   border: none !important;
   box-shadow: none;
 }
+.rec.rec-arrow-left:hover {
+    color: white !important;
+    background-color: black !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
 .rec.rec-dot{
     background-color: white;
     border: 1px solid black;
@@ -79,6 +85,12 @@
     background-color: #F0C127;
     border: none !important;
     box-shadow: none;
+  }
+  .rec.rec-arrow-right:hover {
+    color: black !important;
+    background-color: #F0C127 !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
 @media screen and (max-width: 700px) {

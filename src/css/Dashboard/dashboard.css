@@ -32,7 +32,6 @@
 
 .calculated-percentage {
     font-size: 16px;
-
     color: #ECB92B;
     font-weight: 600;
     margin-left: 5px;
@@ -128,7 +127,7 @@
 }
 
 .header-info-section-dash {
-    font-size: 14px;
+    font-size: 16px;
     height: 3em;
     font-weight: 600;
 }

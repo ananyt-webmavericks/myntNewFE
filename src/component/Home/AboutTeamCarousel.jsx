@@ -4,6 +4,7 @@ import Map from '../../images/assets/map.png';
 import Avatar from '../../images/assets/avatar.png';
 import Item from "../Item";
 import Avatar2 from '../../images/assets/avatar2.png';
+import { useRef } from "react";
 import Carousel from 'react-elastic-carousel'
 import styles from '../../css/Home/aboutTeamCarousel.css'
 const data = [
@@ -15,19 +16,33 @@ const data = [
 ]
 
 export default function AboutTeamCarousel() {
-
+    const carouselRef = useRef(null);
+    let resetTimeout;
+    
     return (
         <Box sx={{ minHeight: 'fit-content', marginTop: '90px',marginBottom:'10px' }}>
             <div className="team-container">
                 <img className="team-bg-img" src={Map} alt="Map"/>
                 <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
                     <Carousel
-                        enableAutoPlay={false}
+                        enableAutoPlay={true}
                         showArrows={true}
                         enableMouseSwipe={true}
                         pagination={true}
                         itemsToShow={1}
-
+                        ref={carouselRef}
+                        onNextEnd={({ index }) => {
+                            clearTimeout(resetTimeout)
+                            if (index + 1 === data.length) {
+                                if (carouselRef?.current?.goTo) {
+                                    resetTimeout = setTimeout(() => {
+                                        if (carouselRef?.current?.goTo) {
+                                            carouselRef.current.goTo(0)
+                                        }
+                                    }, 3000)
+                                }
+                            }
+                        }}
                     >
                         {data.map((item, index) => {
                             return (

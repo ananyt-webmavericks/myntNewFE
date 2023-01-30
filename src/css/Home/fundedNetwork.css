@@ -2,10 +2,13 @@
     display: flex;
     /* justify-content: center; */
     align-items: center;
+    position: relative;
 }
 .networks-head-script{
     font-size: 20px !important;
+    width: 300px;
 }
+
 .bg-text-script{
     color: #F0C127 !important;
 }
@@ -14,5 +17,33 @@
   border-style: dashed;
     height: 100px;
     margin-left: 10px;
+    width: 1px;
   
+}
+.react-carousel-networks{
+    margin-top:-1em !important;
+}
+
+
+@media screen and (max-width:870px) {
+    .funded-networks-container{
+        display: grid;
+    }
+    .react-carousel-networks{
+        position:absolute !important;
+        top:1em !important;
+    }
+    .networks-head-script{
+        font-size: 18px !important;
+        width: fit-content;
+    }
+    .funded-head-txt{
+        margin-bottom: 1em;
+    }
+}
+@media screen and (max-width:483px) {
+    .react-carousel-networks{
+        position:absolute !important;
+        top:2.7em !important;
+    }
 }

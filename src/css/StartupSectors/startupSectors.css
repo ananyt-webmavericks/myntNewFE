@@ -35,6 +35,12 @@
     border-radius: 5px;
     color: white;
     border: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+.submit-btn-startup:hover {
+    transition: all 0.2s ease;
+    background: #F0C127;
 }
 @media screen and (max-width: 900px) {
     .sectors-box-container{

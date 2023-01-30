@@ -73,6 +73,11 @@ padding: 0 1em;
     font-weight: 600;
     font-size: 14px;
 }
+.finished-btn:hover {
+    transition: all 0.2s ease;
+    /* UI Properties */
+    background: #F0C127;
+}
 @media screen and (max-width: 1000px) {
     .toggle-btn-text{
         font-size: 12px;
@@ -95,5 +100,8 @@ padding: 0 1em;
 @media screen and (max-width: 568px) {
     .toggle-btn-text-container{
         margin-top: 2em;
+        margin-bottom: 2em;
+        height: 81px;
     }
+    
 }

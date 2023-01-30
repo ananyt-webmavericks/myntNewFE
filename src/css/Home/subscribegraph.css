@@ -3,6 +3,7 @@
     font-weight: 600 !important;
 }
 .regular-txt{
+    width: 100%;
     font-size: 18px !important;
     color: gray !important;
     height: 150px !important;
@@ -14,6 +15,11 @@
     font-size: 50px !important;
     font-weight: 600 !important;
     padding-top: 15px !important;
+    box-shadow: inset 0 0 0 0 #F0C127;
+    /* color: #54b3d6; */
+    /* margin: 0 -.25rem; */
+    /* padding: 0 .25rem; */
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 .regular-bold-text{
     font-size: 16px !important;
@@ -39,7 +45,7 @@
 .card-container{
     position: relative;
     background: #FAFAFA !important; 
-    width: 90% !important; 
+    width: 100% !important; 
     height: max-content !important;
 }
 .bar-graph-image{
@@ -50,12 +56,90 @@
     height: 282px;
 }
 .card-content-graph{
-    display: flex;
+    /* display: flex; */
 }
 .card-sub-content{
     display: grid;
-    width: 70%;
+    /* width: 70%; */
 }
+
+
+.risk-factor{
+    /* left: calc(50% - 0.5rem); */
+    line-height: 1;
+    /* padding-top: 0.5rem; */
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    white-space: nowrap;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    height: 22px;
+    position: absolute;
+    right: 11em;
+    bottom: 0;
+    transition: all 0.5s ease-in;
+   font-weight: 550;
+}
+.card-content-graph:hover .risk-factor{
+    transform: rotate(180deg)translateY(120px) ;
+    transition: all 0.8s ease-out;
+    /* -webkit-transform: rotate(180deg); */
+  }
+.card-content-graph:hover .risk-factor.two{
+    transform: rotate(180deg)translateY(130px) ;
+    transition: all 0.8s ease-out;
+}
+
+.card-content-graph:hover .risk-factor.three{
+    transform: rotate(180deg)translateY(140px) ;
+    transition: all 0.8s ease-out;
+}
+
+.card-content-graph:hover .risk-factor.fixed{
+    transform: rotate(180deg)translateY(60px) ;
+    transition: all 0.8s ease-out;
+    /* -webkit-transform: rotate(180deg); */
+  }
+.card-content-graph:hover .risk-factor.fixed-two{
+    transform: rotate(180deg)translateY(210px) ;
+    transition: all 0.8s ease-out;
+}
+
+.card-content-graph:hover .risk-factor.fixed-three{
+    transform: rotate(180deg)translateY(20px) ;
+    transition: all 0.8s ease-out;
+}
+
+.card-content-graph:hover .card-bold-number-text{
+    box-shadow: inset 200px 0 0 0 #F0C127;
+    color: white;
+}
+.risk-factor.two{
+    right: 7em;
+}
+.risk-factor.three{
+    right: 3.2em;
+}
+.risk-factor.fixed-two{
+    right: 7em;
+}
+.risk-factor.fixed-three{
+    right: 3.2em;
+}
+
+.container-for-text-and-graph{
+    display: flex;
+    justify-content: space-between;
+}
+.bar-graph-container{
+    background: #efc127;
+    width: 25px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
+}
+
+
 @media screen and (max-width: 920px) {
     .card-container{
         width: 100% !important; 
@@ -66,6 +150,57 @@
     .subscribe-graph-heading{
         text-align: start;
     }
+}
+@media screen and (max-width: 550px) {
+
+    .container-for-text-and-graph{
+        display: block;
+        margin: auto;
+    }
+    .text-section-subscribe{
+        padding-bottom: 21em;
+        text-align: center;
+    }
+    .regular-txt{
+        height: fit-content !important;
+    }
+    .bar-graph-container.one{
+        margin-left:-80px;
+        left:50%;
+    }
+    .bar-graph-container.two{
+        margin-left:-10px;
+        left:50%;
+    }
+    .bar-graph-container.three{
+        margin-left:60px;
+        left:50%;
+    }
+    .risk-factor{
+        margin-left:-105px;
+        left:50%;
+    }
+    .risk-factor.fixed-two{
+        margin-left:-35px;
+        left:50%;
+    }
+    .risk-factor.fixed-three{
+        margin-left:35px;
+        left:50%;
+    }
+    .risk-factor.two{
+        margin-left:-35px;
+        left:50%;
+    }
+    .risk-factor.three{
+        margin-left:35px;
+        left:50%;
+    }
+    .card-content-graph:hover .card-bold-number-text{
+        box-shadow:none;
+        color: black;
+    }
+    
 }
 @media screen and (max-width: 500px) {
     .bar-graph-image{
@@ -96,3 +231,4 @@
         margin-bottom: 1em !important;
     }
 }
+

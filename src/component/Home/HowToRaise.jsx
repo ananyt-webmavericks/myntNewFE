@@ -13,27 +13,26 @@ export default function HowToRaise() {
     const [gridxsSecond, setgridxsSecond] = useState(3)
     const ratio = parseInt(window.innerWidth);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (ratio < 1042) {
-            setGridxsFirst(3)
-            setgridxsSecond(4)
-        }
-        if (ratio < 800) {
-            setGridxsFirst(2)
-            setgridxsSecond(6)
-        }
-        if (ratio < 454) {
-            setGridxsFirst(1)
-            setgridxsSecond(12)
-        }
-    }, [])
+    //     if (ratio < 1042) {
+    //         setGridxsFirst(3)
+    //         setgridxsSecond(4)
+    //     }
+    //     if (ratio < 800) {
+    //         setGridxsFirst(2)
+    //         setgridxsSecond(6)
+    //     }
+    //     if (ratio < 454) {
+    //         setGridxsFirst(1)
+    //         setgridxsSecond(12)
+    //     }
+    // }, [])
     return (
         <div className="how-to-raise-container">
             <div className="investor-home-heading">How to <span className="colored-investor-home-heading"> Raise? </span></div>
             <span className="investors-subheading">Enjoy the benefits of a completely online and seamless process</span>
-            <Grid container spacing={gridxsFirst}>
-                <Grid item xs={gridxsSecond}>
+                <div style={{overflow:'hidden',overflowX:'scroll',display:'flex' , alignItems:'center'}}>
                     <div className="first-raise-card">
                         <div className="head-container-raise">
                             <div className="head-section-first">1</div>
@@ -46,8 +45,7 @@ export default function HowToRaise() {
                             <img src={Screen1} className="raise-card-image" ></img>
                         </div>
                     </div>
-                </Grid>
-                <Grid item xs={gridxsSecond}>
+                
                     <div className="first-raise-card">
                         <div className="head-container-raise">
                             <div className="head-section-non-active">2</div>
@@ -60,8 +58,7 @@ export default function HowToRaise() {
                             <img src={Screen2} className="raise-card-image" ></img>
                         </div>
                     </div>
-                </Grid>
-                <Grid item xs={gridxsSecond}>
+              
                     <div className="first-raise-card">
                         <div className="head-container-raise">
                             <div className="head-section-non-active">3</div>
@@ -74,8 +71,7 @@ export default function HowToRaise() {
                             <img src={Screen3} className="raise-card-image" ></img>
                         </div>
                     </div>
-                </Grid>
-                <Grid item xs={gridxsSecond}>
+             
                     <div className="first-raise-card">
                         <div className="head-container-raise">
                             <div className="head-section-non-active">4</div>
@@ -88,8 +84,7 @@ export default function HowToRaise() {
                             <img src={Screen4} className="raise-card-image" ></img>
                         </div>
                     </div>
-                </Grid>
-            </Grid>
+                </div>
             <Faqs />
         </div>
     )

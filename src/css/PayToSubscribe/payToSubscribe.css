@@ -1,0 +1,68 @@
+.pay-to-subscribe-container {
+    height: 100%;
+    margin-bottom: 5em;
+    padding-top: 10em;
+}
+
+.card-pay-main-section {
+    margin-top: 30px !important;
+    box-shadow: 0px 0px 20px #0000001A !important;
+}
+
+.pay-amount-label {
+    font-size: 14px;
+}
+
+.chips-pay-to-subscribe-cointainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.particular-mentioned-chip-pay {
+    width: 160px;
+    height: 44px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #FADF35;
+    border-radius: 27px;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.pay-amount-heading{
+    font-size: 20px;
+    font-weight: 600;
+}
+.secondary-card-pay-section{
+    margin-top: 20px !important;
+    border: 1px solid #D1D1D1 !important;
+border-radius: 5px !important;
+box-shadow: none !important;
+width: 90% !important;
+}
+.pay-amount-sub-label-head{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.secondary-card-pay-section.second{
+    width: 100% !important;
+    margin-top: 28px !important;
+}
+
+.aggrement-pay-subscribe-container{
+    display: flex;
+    margin-top: 22px;
+    align-items: center;
+}
+
+@media screen and (max-width:700px) {
+    .secondary-card-pay-section{
+        width: 100% !important;
+    }
+}

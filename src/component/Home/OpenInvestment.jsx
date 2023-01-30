@@ -6,6 +6,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { useEffect, useState } from "react";
+import Eveez from '../../images/investments/Eveez.png';
 import BG1 from '../../images/investments/image1.png';
 import Logo1 from '../../images/investments/logo1.png';
 import BG2 from '../../images/investments/image2.png';
@@ -89,7 +90,7 @@ export default function OpenInvestment() {
             setShowSkeleton(false)
             setShowItem(data.length)
         }, 2000);
-       
+
         return () => clearTimeout(timer);
     }
 
@@ -111,16 +112,16 @@ export default function OpenInvestment() {
     return (
         <>
             <Box sx={{ minHeight: '80vh', marginTop: '60px', marginBottom: '2em' }}>
-            <div className="subscribe-graph-heading">
-                <Typography className="test-script-regular">Open<span className="test-script-bg"> Investment</span></Typography>
-                
-                <Typography style={{ fontSize: '18px', color: 'gray' }}>Text will be given by Arpit Subscribe to gain access to exclusive high return opportunities in growing business</Typography>
+                <div className="subscribe-graph-heading">
+                    <Typography className="test-script-regular">Open<span className="test-script-bg"> Investment</span></Typography>
+
+                    <Typography style={{ fontSize: '18px', color: 'gray' }}>Text will be given by Arpit Subscribe to gain access to exclusive high return opportunities in growing business</Typography>
                 </div>
                 <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                     {data.slice(0, showItem).map((item, index) => {
                         return (
                             <Grid key={index} item xs={gridxsFirst}>
-                                <Card sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
+                                <Card className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
                                     <CardContent sx={{ padding: '0' }}>
                                         <div style={{ position: 'relative' }}>
                                             <img src={item.backgroundImage} width='100%' height={192} />
@@ -166,6 +167,28 @@ export default function OpenInvestment() {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div className="overlay">
+                                            <div className="card-header-logo hover">
+                                                <div className="company-logo-section">
+                                                    <img src={Eveez} width={54} height={54} />
+                                                </div>
+                                                <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                            </div>
+                                            <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                                <span className="investment-txt hover">Investors</span>
+                                                <span className="investment-sub-txt hover">18</span>
+                                                <hr style={{ marginTop: '11.5px' }} />
+                                                <span className="investment-txt hover">Raised</span>
+                                                <span className="investment-sub-txt hover">16.5%</span>
+                                                <hr style={{ marginTop: '11.5px' }} />
+                                                <span className="investment-txt hover">Minimum Subscription</span>
+                                                <span className="investment-sub-txt hover">5000</span>
+                                                <hr style={{ marginTop: '11.5px' }} />
+                                                <span className="investment-txt hover">Closes in</span>
+                                                <span className="investment-sub-txt hover">14 days</span>
+                                                <div className="chip-status hover"><span>Personal Health</span></div>
+                                            </div>
+                                        </div>
                                     </CardContent>
                                 </Card>
                             </Grid>
@@ -175,21 +198,21 @@ export default function OpenInvestment() {
 
                 </Grid>
                 {showSkeleton &&
-                <Grid sx={{ marginTop: '20px' }} container spacing={spaceing}>
-                    {data.slice(0 , 4).map((item , index)=>{
-                        return(
-                            <Grid key={index} item xs={gridxsFirst}>
-                            <Stack spacing={1}>
-                                <Skeleton variant="rectangular" width={265} height={192} />
-                                <Skeleton variant="text" width={210} sx={{ fontSize: '1rem' }} />
-                                <Skeleton variant="rounded" width={80} height={40} />
-                                <Skeleton variant="rectangular" width={265} height={60} />
-                            </Stack>
-                        </Grid>
-                        )
-                    })}
-                   
-                </Grid>
+                    <Grid sx={{ marginTop: '20px' }} container spacing={spaceing}>
+                        {data.slice(0, 4).map((item, index) => {
+                            return (
+                                <Grid key={index} item xs={gridxsFirst}>
+                                    <Stack spacing={1}>
+                                        <Skeleton variant="rectangular" width={265} height={192} />
+                                        <Skeleton variant="text" width={210} sx={{ fontSize: '1rem' }} />
+                                        <Skeleton variant="rounded" width={80} height={40} />
+                                        <Skeleton variant="rectangular" width={265} height={60} />
+                                    </Stack>
+                                </Grid>
+                            )
+                        })}
+
+                    </Grid>
                 }
 
                 {showBtn && <div className="view-all-btn-invest">

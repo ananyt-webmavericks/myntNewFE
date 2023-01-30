@@ -135,6 +135,9 @@
         display: flex;
         /* height: fit-content; */
     }
+    .investor-university-section-second{
+        margin-top: 1em;
+    }
     .investor-university-section{
         width: 50%;
         margin-top: 1em;

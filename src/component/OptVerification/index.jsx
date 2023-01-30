@@ -8,7 +8,10 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
              marginTop:'11px',
-             display:'flex-root',
+            //  display:'flex-root',
+        
+             display:'flex',
+             justifyContent:'space-between'
         },
     }));
 
@@ -19,7 +22,7 @@ export default function OtpVerificationMain() {
         return <button style={{background:'none' , border:'none',float:'right' , marginRight:'20px'}} {...buttonProps}>Resend</button>;
       };
     const renderTime = remainingTime => {
-        return <span style={{display:'none'}}>{remainingTime} seconds remaining</span>;
+        return <span style={{color:'#777777'}}>{remainingTime}</span>;
       };
     return (
         <div className="verification-container ">
@@ -40,9 +43,9 @@ export default function OtpVerificationMain() {
                             otpType="number"
                             disabled={false}
                             // secure
-                            inputStyles={{width:'35px' , height:'35px',background: '#F4F4F4 0% 0% no-repeat padding-box',border:'none' , fontWeight:'600',fontSize:'20px'}}
+                            inputStyles={{width:'35px' ,outline:'none', height:'35px',background: '#F4F4F4 0% 0% no-repeat padding-box',border:'none' , fontWeight:'600',fontSize:'20px'}}
                         />
-                        <ResendOTP className={classes.menuItem} style={{display:'flex-root'}} renderTime={renderTime} renderButton={renderButton} disable={false} handelResendClick={() => console.log("Resend clicked")} />
+                        <ResendOTP className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false} handelResendClick={() => console.log("Resend clicked")} />
                         </div>
                         <button  className="sign-up-btn">Sign Up</button>
                     </CardContent>
