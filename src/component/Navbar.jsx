@@ -18,7 +18,7 @@ const Navbar = () => {
                 
                 <ul class="menu-items">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">Deals</a></li>
+                    <li><a href="/dashboard/live-deals">Deals</a></li>
                     <li><a href="#">Raise</a></li>
                     <li><a href="#">MyntUniversity</a></li>
                     <li><button className="login-btn" onClick={()=> navigate('/login')}>Login</button></li>

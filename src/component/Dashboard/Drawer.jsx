@@ -6,13 +6,13 @@ import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlin
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import AddchartOutlinedIcon from '@mui/icons-material/AddchartOutlined';
 import { useNavigate } from "react-router-dom";
-export default function DrawerMain() {
+export default function DrawerMain({height,display}) {
     const navigate = useNavigate()
     const location = window.location.pathname;
 
     return (
         <>
-            <div className="dashboard-drawer-section">
+            { display !=='none' && <div className="dashboard-drawer-section" style={{height:height}}>
                 <div className="dashboard-fields-container">
                     <div className="dashboard-single-links" onClick={() => navigate('/dashboard')}>
                         <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
@@ -36,7 +36,7 @@ export default function DrawerMain() {
                     </div>
                 </div>
 
-            </div>
+            </div>}
             <div className="bottom-fixed-navbar-container">
                 <div className="bottom-navbar-section">
                     <div className="main-navbar-section" onClick={() => navigate('/dashboard')}>
@@ -49,25 +49,25 @@ export default function DrawerMain() {
                         <div style={{ margin: 'auto' }}>
                             <CampaignOutlinedIcon style={location === '/dashboard/live-deals' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>
-                        <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
+                        <span style={{ fontSize: '10px', color: '#777777' }}>Live Deals</span>
                     </div>
                     <div className="main-navbar-section" onClick={() => navigate('/dashboard/portfolio')}>
                         <div style={{ margin: 'auto' }}>
                             <BusinessCenterOutlinedIcon style={location === '/dashboard/portfolio' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>
-                        <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
+                        <span style={{ fontSize: '10px', color: '#777777' }}>Portfolio</span>
                     </div>
                     <div className="main-navbar-section" onClick={() => navigate('/dashboard/chat-with-expert')}>
                         <div style={{ margin: 'auto' }}>
                             <ChatBubbleOutlineOutlinedIcon style={location === '/dashboard/chat-with-expert' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>
-                        <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
+                        <span style={{ fontSize: '10px', color: '#777777' }}>Chat with Expert</span>
                     </div>
                     <div className="main-navbar-section" onClick={() => navigate('/dashboard/analytics')}>
                         <div style={{ margin: 'auto' }}>
                             <AddchartOutlinedIcon style={location === '/dashboard/analytics' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>
-                        <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
+                        <span style={{ fontSize: '10px', color: '#777777' }}>Analytics</span>
                     </div>
                 </div>
             </div>

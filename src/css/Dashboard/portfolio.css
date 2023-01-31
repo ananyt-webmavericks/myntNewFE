@@ -1,0 +1,9 @@
+.card-complete-kyc-notice.portfolio{
+    width: 90%;
+    margin-top: 40px !important;
+}
+@media screen and (max-width:1000px) {
+    .card-complete-kyc-notice.portfolio{
+        width: 100%;
+    }
+}

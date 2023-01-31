@@ -96,6 +96,8 @@ const LiveDeals = () => {
     }, [])
     return (
         <>
+        <div style={{ display: 'flex', position: 'relative' }}>
+                {location.includes('/dashboard') && <DrawerMain display={'none'} />}
             <div className="dashboard-container" style={{ height: '100%' ,marginBottom:'5em'}}>
                 <Container maxWidth="lg">
                     <div style={{ display: 'grid' }}>
@@ -204,7 +206,7 @@ const LiveDeals = () => {
                     </Grid>
                 </Container>
             </div>
-
+            </div>
             {ratio < 1000 ? null : <Footer />}
         </>
     )

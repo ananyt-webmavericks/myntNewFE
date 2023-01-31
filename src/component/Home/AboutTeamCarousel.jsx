@@ -7,6 +7,7 @@ import Avatar2 from '../../images/assets/avatar2.png';
 import { useRef } from "react";
 import Carousel from 'react-elastic-carousel'
 import styles from '../../css/Home/aboutTeamCarousel.css'
+
 const data = [
     { id: 1, avatar: Avatar, name: 'Kareem Pelletier', position: 'Joe M, CEO at LeadSpyder', head: 'WE’RE GOOD, THANKS', description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur felis risus, suscipit eget leo et, convallis suscipit velit. Curabitur efficitur, neque ac porttitor consequat, massa quam sollicitudin nisl, “' },
     { id: 2, avatar: Avatar, name: 'Kareem Pelletier', position: 'Joe M, CEO at LeadSpyder', head: 'WE’RE GOOD, THANKS', description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur felis risus, suscipit eget leo et, convallis suscipit velit. Curabitur efficitur, neque ac porttitor consequat, massa quam sollicitudin nisl, “' },

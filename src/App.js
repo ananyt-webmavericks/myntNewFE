@@ -22,6 +22,8 @@ import KycPanDetails from './component/CompleteYourProfile/KycPanDetails';
 import Login from './Pages/Login';
 import PayToSubscribe from './Pages/PayToSubscribe';
 import MyProfile from './Pages/MyProfile';
+import LoginAsFounder from './Pages/LoginAsFounder';
+import LiveDealsDetails from './Pages/LiveDealsDetails';
 
 function App() {
 
@@ -35,6 +37,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/login-founder" element={<LoginAsFounder />} />
           <Route exact path="/get-started" element={<GetStarted />} />
           <Route exact path="/otp-verification" element={<OtpVerification />} />
           <Route exact path="/about-you" element={<AboutYou />} />
@@ -52,6 +55,7 @@ function App() {
           <Route exact path="/payment-details" element={<PaymentDetails />} />
           <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
           <Route exact path="/my-profile" element={<MyProfile />} />
+          <Route exact path="/live-deals-details" element={<LiveDealsDetails />} />
         </Routes>
         {!location.includes('/dashboard') &&  <Footer />}
         

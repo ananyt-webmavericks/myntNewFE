@@ -32,7 +32,7 @@
 }
 
 .dropdown-container-live-deals {
-    width: 480%;
+    width: 48%;
     margin-top: 5px;
 }
 
@@ -41,6 +41,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 60px;
+    margin-bottom: 70px;
 }
 
 .active-btn-container {

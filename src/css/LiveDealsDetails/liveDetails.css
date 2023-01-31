@@ -1,0 +1,308 @@
+.header-section-deals-detail {
+    display: flex;
+    align-items: center;
+}
+
+.live-details-deals-txt-head {
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 1em;
+}
+
+.chipset-details-live {
+    width: fit-content;
+    padding: 0 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+    height: 26px;
+    /* UI Properties */
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    font-size: 13px;
+    color: #838383;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.live-deals-details-decription-conatiner {
+    margin-top: 40px;
+}
+
+.live-deals-details-decription {
+    color: #777777;
+    font-size: 14px;
+
+}
+
+.footer-card-section.live-details {
+    position: static;
+    margin-top: 30px;
+    width: fit-content;
+}
+
+.numbers-investors.live-details {
+    margin-right: 15px;
+}
+
+.vertical-line-invest.live-details {
+    margin-right: 15px;
+}
+
+.percentage-investment.live {
+    font-size: 20px;
+}
+
+.investment-status.live {
+    font-size: 12px;
+}
+
+.outline-progress-bar-live-deals {
+    width: 300px;
+    height: 6px;
+    /* UI Properties */
+    background: #E8E8E8 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    margin-top: 16px;
+}
+
+.inline-progress-bar-live-deals {
+    width: 70%;
+
+    height: 6px;
+    /* UI Properties */
+    background: #EBB429 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+}
+
+.header-section-deals-detail.btn-section {
+    margin-top: 30px;
+}
+
+.invest-btn-section-deals {
+    width: 230px !important;
+    height: 54px !important;
+    /* UI Properties */
+    background: #000000 0% 0% no-repeat padding-box !important;
+    border-radius: 27px !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+
+.rounded-container-share-btn {
+    width: 54px;
+    height: 54px;
+    /* UI Properties */
+    background: #E3E3E3 0% 0% no-repeat padding-box;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.heading-live-deals-details {
+    text-align: center;
+    display: grid;
+    margin-top: 92px;
+}
+
+.header-txt-deals-details {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.sub-header-txt-deals {
+    font-size: 16px;
+    color: #777777;
+}
+
+.date-booked-register-section {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    max-width: 790px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.live-deals-box-date {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+    align-items: center;
+    padding: 0 15px;
+    height: 50px;
+    /* UI Properties */
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 7px;
+}
+
+.live-deals-box-date.second {
+    width: 340px;
+}
+
+.btn-register-live-deals {
+
+    width: 148px;
+    height: 40px;
+    /* UI Properties */
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+}
+
+.card-content-live-details {
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 10px #0000001A !important;
+    border: 1px solid #DADADA !important;
+    border-radius: 7px !important;
+}
+
+.tabs-section-details-deals {
+    display: flex;
+    align-items: center;
+    margin-top: 130px;
+}
+
+.horizontal-ruler-tabs {
+    width: 25%;
+    height: 1px;
+    border: 1px solid black;
+}
+
+.active-btn-container.details {
+    min-width: 130px;
+    font-size: 14px !important;
+    height: 54px;
+}
+
+.btn-section-my-profile.details {
+    margin: auto;
+    margin-top: 0;
+}
+
+.deal-terms-conatiner {
+    display: grid;
+    margin-top: 30px;
+}
+
+.header-main-deal-terms {
+    font-size: 12px;
+    color: #777777;
+}
+
+.mainHead-main-deal-terms {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.subHead-main-deal-terms {
+    font-size: 11px;
+    color: #999999;
+}
+
+.documents-deal-terms-section {
+    margin-top: 70px;
+    display: grid;
+}
+
+.box-documents-download-pdf {
+    width: fit-content;
+    padding: 0 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    /* UI Properties */
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 7px;
+}
+
+.about-company-cards-deal-terms {
+    max-width: 382px;
+    width: 100%;
+    padding: 19px 30px;
+    display: grid;
+    justify-content: flex-start;
+    height: 120px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #D1D1D1;
+    border-radius: 7px;
+}
+.social-media-icons-deal-terms{
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+}
+
+@media screen and (max-width:850px) {
+    .header-section-deals-detail {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .live-deals-details-decription-conatiner {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .footer-card-section.live-details {
+        margin: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .outline-progress-bar-live-deals {
+        margin: auto;
+
+    }
+}
+
+@media screen and (max-width:790px) {
+    .date-booked-register-section {
+        display: grid;
+        justify-content: center;
+    }
+
+    .live-deals-box-date.second {
+        margin-top: 20px;
+        width: 380px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .horizontal-ruler-tabs {
+        display: none;
+    }
+
+    .active-btn-container.details {
+        margin-bottom: 1em;
+    }
+
+    .btn-section-my-profile.details {
+        overflow-y: hidden;
+        overflow: scroll;
+
+    }
+    .box-documents-download-pdf{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 422px) {
+    .live-deals-box-date{
+        width: 340px;
+    }
+    .live-deals-box-date.second {
+        margin-top: 20px;
+        width: 340px;
+    }
+}
