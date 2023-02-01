@@ -1,0 +1,32 @@
+.terms-condition-container{
+    height: 100%;
+    padding-top: 10em;
+    margin-bottom: 5em;
+    display: grid;
+}
+.heading-terms-condition{
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+.paragraph-terms-condition{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.list-items-container-terms{
+    margin-left: 5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: grid;
+
+}
+@media screen and (max-width:654px) {
+    .list-items-container-terms{
+        margin-left: 2em;
+    }
+}
+@media screen and (max-width:400px) {
+    .list-items-container-terms{
+        margin-left: 1em;
+    }
+}

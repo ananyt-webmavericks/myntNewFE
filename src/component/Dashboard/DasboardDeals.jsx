@@ -1,19 +1,12 @@
-import React, { useState,useEffect } from "react";
-import { Container,Grid,Card,CardContent } from "@mui/material";
-import DrawerMain from "../component/Dashboard/Drawer";
-import Footer from "../component/Footer";
-import '../css/Dashboard/liveDeals.css'
-import SearchBar from "../component/LiveDeals/SearchBar";
-import OpenInvestment from "../component/Home/OpenInvestment";
-import Eveez from '../images/investments/Eveez.png';
-import BG1 from '../images/investments/image1.png';
-import Logo1 from '../images/investments/logo1.png';
-import BG2 from '../images/investments/image2.png';
-import Logo2 from '../images/investments/logo2.png';
-import BG3 from '../images/investments/image3.png';
-import Logo3 from '../images/investments/logo3.png';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
+import React , {useState , useEffect} from "react";
+import { Grid , Card , CardContent } from "@mui/material";
+import Eveez from '../../images/investments/Eveez.png';
+import BG1 from '../../images/investments/image1.png';
+import Logo1 from '../../images/investments/logo1.png';
+import BG2 from '../../images/investments/image2.png';
+import Logo2 from '../../images/investments/logo2.png';
+import BG3 from '../../images/investments/image3.png';
+import Logo3 from '../../images/investments/logo3.png';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 const values = [
     {
@@ -40,66 +33,21 @@ const values = [
         invest: '₹10,000',
         checked:false
     },
-    {
-        id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
-        closesIn: '10 days',
-        invest: '₹5,000',
-        checked:false
-    },
-    {
-        id: 5, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
-        closesIn: '10 days',
-        invest: '₹5,000',
-        checked:false
-    },
-    {
-        id: 6, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
-        chip: [{ id: 1, name: 'Coliving' }],
-        raised: '206.01%',
-        closesIn: '3 days',
-        invest: '₹10,000',
-        checked:false
-    },
-    {
-        id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Investments & Earn Tax-free fixed income Diversify your portfolio',
-        chip: [{ id: 1, name: 'Managed Farmland' }],
-        raised: '206.01%',
-        closesIn: '3 days',
-        invest: '₹10,000',
-        checked:false
-    },
-    {
-        id: 8, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
-        closesIn: '10 days',
-        invest: '₹5,000',
-        checked:false
-    },
+    
 ]
-const LiveDeals = () => {
+export default function DashboardDeals(){
     const [data,setData] = useState(values)
-    const [activeBtn, setActiveBtn] = useState(1)
-    const [spaceing, setSpaceing] = useState(4)
-    const [gridxsFirst, setGridxsFirst] = useState(3)
+    const [spaceing, setSpaceing] = useState(3)
+    const [gridxsFirst, setGridxsFirst] = useState(4)
     const ratio = parseInt(window.innerWidth);
-    const location = window.location.pathname;
 
     useEffect(() => {
 
         if (ratio < 1230) {
-            setSpaceing(3)
-            setGridxsFirst(4)
-        }
-        if (ratio < 830) {
             setSpaceing(2)
             setGridxsFirst(6)
         }
-        if (ratio < 550) {
+        if (ratio < 634) {
             setSpaceing(1)
             setGridxsFirst(12)
         }
@@ -110,37 +58,11 @@ const LiveDeals = () => {
         console.log( new_array[index].checked)
         setData([...new_array])
     }
-    return (
-        <>
-        <div style={{ display: 'flex', position: 'relative' }}>
-                {location.includes('/dashboard') && <DrawerMain display={'none'} />}
-            <div className="dashboard-container" style={{ height: '100%' ,marginBottom:'5em'}}>
-                <Container maxWidth="lg">
-                    <div style={{ display: 'grid' }}>
-                        <span className="get-started-heading startup">Live Deals</span>
-                        <span style={{ fontSize: '16px', color: '#777777' }}>Browse current subscription opportunities on Mynt.</span>
-                    </div>
-                    <SearchBar />
-                    <div className="button-container-liveDeals">
-                        <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(1)}>
-                            CSOP
-                            <div className="mini-active-btn-highliter">Live</div>
-                        </div>
-                        <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(2)}>
-                            CCD
-                            {/* <div className="mini-active-btn-highliter">Live</div> */}
-                        </div>
-                        <div className="active-btn-container" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(3)}>
-                            CCPS
-                            {/* <div className="mini-active-btn-highliter">Live</div> */}
-                        </div>
-                        <div className="active-btn-container" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(4)}>
-                            NCD
-                            {/* <div className="mini-active-btn-highliter"></div> */}
-                        </div>
-                    </div>
-                    <span style={{fontSize:'20px',fontWeight:'600'}}>Live Deals</span>
-                    <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
+    return(
+        <div className="dashboard-container-deals" style={{display:'grid' , marginTop:'30px'}}>
+            <span>Explore Deals, Invest and Sign Documents</span>
+            <span>Get your wealth creation journey today, Explore Hot Deals…</span>
+            <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                         {data.map((item, index) => {
                             return (
                                 <Grid key={index} item xs={gridxsFirst}>
@@ -246,11 +168,6 @@ const LiveDeals = () => {
 
 
                     </Grid>
-                </Container>
-            </div>
-            </div>
-            {ratio < 1000 ? null : <Footer />}
-        </>
+        </div>
     )
 }
-export default LiveDeals;

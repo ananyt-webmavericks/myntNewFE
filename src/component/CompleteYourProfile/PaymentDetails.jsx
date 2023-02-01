@@ -6,9 +6,11 @@ import VerifyNumberOtp from "./VerifyNumberOtp";
 import KycPanDetails from "./KycPanDetails";
 import VerifyAddress from "./VerifyAddress";
 import BankDetails from "./BankDetails";
+import Footer from "../Footer";
 export default function PaymentDetails() {
-
+    const ratio = parseInt(window.innerWidth);
     return (
+        <>
         <div className="complete-your-profile-container">
             <Card className="card-complete-profile">
                 <CardContent style={{ padding: '16px 0' }}>
@@ -39,5 +41,7 @@ export default function PaymentDetails() {
                 </CardContent>
             </Card>
         </div>
+        {ratio < 768 ? null : <Footer />}
+        </>
     )
 }

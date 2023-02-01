@@ -1,6 +1,7 @@
 import { Button, Grid ,Card , CardContent} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 import '../../css/CompleteYourProfile/verifyAddress.css'
 export default function VerifyAddress() {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function VerifyAddress() {
         }
     }, [])
     return (
+        <>
         <div className="complete-your-profile-container">
             <Card className="card-complete-profile">
                 <CardContent style={{ padding: '16px 0' }}>
@@ -96,6 +98,7 @@ export default function VerifyAddress() {
                 </CardContent>
             </Card>
         </div>
-
+        {ratio < 768 ? null : <Footer />}
+        </>
     )
 }

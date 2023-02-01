@@ -213,6 +213,7 @@
     .card-main-dash {
         display: grid;
         margin-top: 90px;
+        max-width:100% !important;
         margin: auto !important;
     }
 

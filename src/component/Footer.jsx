@@ -7,8 +7,10 @@ import linkdin from '../images/social-logos/linkdin.png';
 import instagram from '../images/social-logos/instagram.png'
 import LocalPhoneSharpIcon from '@mui/icons-material/LocalPhoneSharp';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
-const Footer = () => {
+import { useNavigate } from "react-router-dom";
 
+const Footer = () => {
+    const navigate = useNavigate()
     const [space, setSpace] = useState(2)
     const [gridxsFirst, setGridxsFirst] = useState(4)
     const [gridxsSecond, setgridxsSecond] = useState(8)
@@ -76,9 +78,9 @@ const Footer = () => {
                         <div className="footer-links-section-Second">
                             <div className="investor-university-section">
                                 <span className="heading-link">Fine Print</span>
-                                <span className="Detail-link">Privacy Policy</span>
-                                <span className="Detail-link">Terms & Condition</span>
-                                <span className="Detail-link">Risk of Investment</span>
+                                <span onClick={()=>navigate('/privacy-policy')} className="Detail-link">Privacy Policy</span>
+                                <span onClick={()=>navigate('/terms-and-condition')} className="Detail-link">Terms & Condition</span>
+                                <span onClick={()=>navigate('/risk-investment')} className="Detail-link">Risk of Investment</span>
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Startups</span>

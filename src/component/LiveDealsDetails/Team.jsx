@@ -13,7 +13,7 @@ export default function Team() {
     return (
         <>
             <div  style={{overflow:'hidden',overflowX:'scroll', display:'flex'}}>
-                <Card style={{ background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px' ,marginTop:'10px',marginBottom:'10px',marginLeft:'10px',width:'280px'}}>
+                <Card style={{ minWidth:'280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px' ,marginTop:'10px',marginBottom:'10px',marginLeft:'10px'}}>
                     <CardContent>
                         <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Raghav} width={183} height={183}></img>
@@ -24,7 +24,7 @@ export default function Team() {
                     </CardContent>
                 </Card>
 
-                <Card style={{ background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px',marginTop:'10px',marginBottom:'10px' }}>
+                <Card style={{ minWidth:'280px',background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px',marginTop:'10px',marginBottom:'10px' }}>
                     <CardContent>
                         <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Shradha} width={183} height={183}></img>
@@ -35,7 +35,7 @@ export default function Team() {
                     </CardContent>
                 </Card>
 
-                <Card style={{ background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px',marginTop:'10px',marginBottom:'10px' }}>
+                <Card style={{ minWidth:'280px',background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px',marginTop:'10px',marginBottom:'10px' }}>
                     <CardContent>
                         <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Mukesh} width={183} height={183}></img>
@@ -49,8 +49,8 @@ export default function Team() {
 
             <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Investors & Advisors</div>
 
-            <div>
-                <Card style={{ background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px' }}>
+            <div  style={{overflow:'hidden',overflowX:'scroll', display:'flex'}}>
+                <Card style={{minWidth:'280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px' ,marginTop:'10px',marginBottom:'10px',marginLeft:'10px' }}>
                     <CardContent>
                         <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Kunal} width={183} height={183}></img>
@@ -60,9 +60,9 @@ export default function Team() {
                         </div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card style={{minWidth:'280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px' ,marginTop:'10px',marginBottom:'10px',marginLeft:'10px' }}>
                     <CardContent>
-                        <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
+                        <div style={{display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Lead} width={183} height={183}></img>
                             <span style={{ fontSize: '16px', fontWeight: '600', marginTop: '10px' }}>Lead Angels</span>
                             <span style={{ fontSize: '12px', fontWeight: '600', marginTop: '10px', marginBottom: '10px' }}>Investor</span>
@@ -70,9 +70,9 @@ export default function Team() {
                         </div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card style={{minWidth:'280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px' ,marginTop:'10px',marginBottom:'10px',marginLeft:'10px' }}>
                     <CardContent>
-                        <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
+                        <div style={{display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Nitish} width={183} height={183}></img>
                             <span style={{ fontSize: '16px', fontWeight: '600', marginTop: '10px' }}>Nitish Mittersain</span>
                             <span style={{ fontSize: '12px', fontWeight: '600', marginTop: '10px', marginBottom: '10px' }}>Investor || MD - Nazara</span>
@@ -80,9 +80,9 @@ export default function Team() {
                         </div>
                     </CardContent>
                 </Card>
-                <Card>
+                <Card style={{minWidth:'280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px',marginRight:'50px' ,marginTop:'10px',marginBottom:'10px',marginLeft:'10px' }}>
                     <CardContent>
-                        <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
+                        <div style={{display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
                             <img src={Blue} width={183} height={183}></img>
                             <span style={{ fontSize: '16px', fontWeight: '600', marginTop: '10px' }}>Blue Ashva Capital</span>
                             <span style={{ fontSize: '12px', fontWeight: '600', marginTop: '10px', marginBottom: '10px' }}>Investor</span>

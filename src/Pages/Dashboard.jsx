@@ -9,9 +9,17 @@ import ProgressNotifyDash from "../component/Dashboard/ProgressNotifyDash";
 import '../css/Dashboard/dashboard.css';
 import Faqs from '../component/Home/Faqs'
 import Footer from "../component/Footer";
+import DashboardDeals from "../component/Dashboard/DasboardDeals";
+import { useState } from "react";
 const Dashboard = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
+    const [showDeals,setShowDeals]= useState(false)
+
+    const fetchValue = (value)=>{
+        setShowDeals(value)
+    }
+
     return (
         <>
             <div style={{ display: 'flex', position: 'relative' }}>
@@ -22,8 +30,9 @@ const Dashboard = () => {
                             <span className="get-started-heading startup">Welcome Asad!</span>
                             <ProgressBarDash />
                         </div>
-                        <ProgressNotifyDash />
+                        { showDeals===false && <ProgressNotifyDash onClick={fetchValue} />}
                         <DashboardCard />
+                        {showDeals === true && <DashboardDeals />}
                         <div style={{ marginTop: '92px' }}>
                             <Faqs />
                         </div>

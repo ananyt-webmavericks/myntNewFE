@@ -280,6 +280,9 @@
     .number-verify-container.kyc.small {
         width: 64px;
     }
+    .card-complete-profile {
+        width: 90%;
+    }
     .verify-button {
         width: 300px !important;
         border-radius: 5px !important;

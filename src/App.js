@@ -24,6 +24,9 @@ import PayToSubscribe from './Pages/PayToSubscribe';
 import MyProfile from './Pages/MyProfile';
 import LoginAsFounder from './Pages/LoginAsFounder';
 import LiveDealsDetails from './Pages/LiveDealsDetails';
+import TermsAndCondition from './Pages/TermsAndCondition';
+import RiskOfInvestment from './Pages/RiskOfInvestment';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
 
 function App() {
 
@@ -52,12 +55,15 @@ function App() {
           <Route exact path="/complete-your-profile/verify-otp" element={<VerifyNumberOtp />} />
           <Route exact path="/complete-your-profile/verify-address" element={<VerifyAddress />} />
           <Route exact path="/complete-your-profile/verify-kyc" element={<KycPanDetails />} />
-          <Route exact path="/payment-details" element={<PaymentDetails />} />
+          <Route exact path="/complete-your-profile/payment-details" element={<PaymentDetails />} />
           <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
           <Route exact path="/my-profile" element={<MyProfile />} />
           <Route exact path="/live-deals-details" element={<LiveDealsDetails />} />
+          <Route exact path="/terms-and-condition" element={<TermsAndCondition />} />
+          <Route exact path="/risk-investment" element={<RiskOfInvestment />} />
+          <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
-        {!location.includes('/dashboard') &&  <Footer />}
+        {(!location.includes('/dashboard') ) && (!location.includes('/complete-your-profile'))  &&  <Footer />}
         
     </BrowserRouter>
   );

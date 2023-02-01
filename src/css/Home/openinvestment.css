@@ -1,188 +1,240 @@
 .background-img-card {
-    width: 100%;
-    height: 192px;
-    object-fit: contain;
+  width: 100%;
+  height: 192px;
+  object-fit: contain;
 }
 
 .card-header-logo {
-    position: absolute;
-    top: 23px;
-    left: 20px;
-    right: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: absolute;
+  top: 23px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .company-logo-section {
-    display: grid;
+  display: grid;
 }
 
 .logo-txt-script {
-    background: #F2DA58 0% 0% no-repeat padding-box;
-    border-radius: 10px;
-    opacity: 1;
-    width: 50px;
-    height: 20px;
-    font-size: 12px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
+  background: #F2DA58 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  opacity: 1;
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .info-card-txt {
-    position: absolute;
-    top: 60px;
-    left: 20px;
+  position: absolute;
+  top: 60px;
+  left: 20px;
 }
 
 .company-name {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 600;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .centered-txt-card {
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    text-align: center;
-    font-size: 15px;
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
 }
 
 .bottom-txt-card {
-    position: absolute;
-    bottom: 10%;
-    width: 100%;
-    text-align: center;
-    font-size: 11px;
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
 }
 
 .body-card-section {
-    padding: 1em;
-    min-height: 230px;
-    position: relative;
+  padding: 1em;
+  min-height: 230px;
+  position: relative;
 }
 
 .card-description {
-    font-size: 13px;
-    color: gray;
+  font-size: 13px;
+  color: gray;
 }
 
-.chip-status{
-    border-radius: 30px;
-    opacity: 1;
-    margin-right: 5px;
-    min-width: 62px;
-    /* height: 23px; */
-    padding: 5px;
-    font-size: 12px;
-    display: grid;
-    background: #F5F5F5 0% 0% no-repeat padding-box;
-    justify-content: center;
-    align-items: center;
-    margin-top: 14px;
+.chip-status {
+  border-radius: 30px;
+  opacity: 1;
+  margin-right: 5px;
+  min-width: 62px;
+  /* height: 23px; */
+  padding: 5px;
+  font-size: 12px;
+  display: grid;
+  background: #F5F5F5 0% 0% no-repeat padding-box;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
 }
-.footer-card-section{
-    position: absolute;
-    bottom: 0;
-    margin-top: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.numbers-investors{
-    display: grid;
-}
-.percentage-investment{
-    font-size: 16px;
-    font-weight: 600;
-}
-.investment-status{
-    font-size: 12px;
-    color: #AAAAAA;
-}
-.vertical-line-invest{
-    border:0.5px solid gray;
-    border-style: dashed;
-      height: 43px;
-      margin-left: 10px;
-        margin-right: 10px;
-  }
 
-.view-all-btn-invest{
-    display: flex;
-    margin: 2em;
-    justify-content: center;
+.footer-card-section {
+  position: absolute;
+  bottom: 0;
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.invest-load-btn{
-    width: 230px !important;
-    height: 54px !important;
-    background: #FFFFFF !important;
-    box-shadow: 0px 0px 10px #00000029 !important;
-    border: 1px solid #D1D1D1 !important;
-    border-radius: 27px !important;
-    color: black !important;
-    opacity: 1 !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-  
+
+.numbers-investors {
+  display: grid;
 }
-.invest-load-btn:hover{
-    color: white !important; 
-    background-color: #F0C127 !important;
+
+.percentage-investment {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.investment-status {
+  font-size: 12px;
+  color: #AAAAAA;
+}
+
+.vertical-line-invest {
+  border: 0.5px solid gray;
+  border-style: dashed;
+  height: 43px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.view-all-btn-invest {
+  display: flex;
+  margin: 2em;
+  justify-content: center;
+}
+
+.invest-load-btn {
+  width: 230px !important;
+  height: 54px !important;
+  background: #FFFFFF !important;
+  box-shadow: 0px 0px 10px #00000029 !important;
+  border: 1px solid #D1D1D1 !important;
+  border-radius: 27px !important;
+  color: black !important;
+  opacity: 1 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+
+}
+
+.invest-load-btn:hover {
+  color: white !important;
+  background-color: #F0C127 !important;
 }
 
 .overlay {
-    position: absolute;
-    padding:11px 18px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .6s ease;
-    background-color: white;
-  }
+  position: absolute;
+  padding: 11px 18px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .6s ease;
+  background-color: white;
+}
 
-  .text {
-    color: black;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  .investment-card-container{
-    position: relative;
-  }
-  .card-header-logo.hover{
-    justify-content: flex-start;
-    align-items: center;
+.text {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.investment-card-container {
+  position: relative;
+  overflow:hidden;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.card-header-logo.hover {
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.company-name.hover {
+  margin-top: 0;
+}
+
+.investment-txt.hover {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.investment-sub-txt.hover {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.investment-card-container:hover .overlay {
+  opacity: 1;
+}
+
+.chip-status.hover {
+  border-radius: 7px;
+  width: fit-content;
+  margin-top: 24px;
+  padding: 7px 12px;
+}
+
+.mobile-view-arrow-responsive {
+  display: none;
+  
+}
+.move-arrow-upside-down{
+  transition: all 0.4s ease;
+}
+@media screen and (max-width:640px) {
+    .overlay{
+      display: none;
+    }
+    .overlay.responsive{
+      display: block;
+    }
+     
     
-  }
-  .company-name.hover{
-    margin-top: 0;
-  }
-  .investment-txt.hover{
-    font-size: 12px;
-    margin-top: 10px;
-  }
-  .investment-sub-txt.hover{
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .investment-card-container:hover .overlay {
-    opacity: 1;
-  }
-  .chip-status.hover{
-    border-radius: 7px;
-    width: fit-content;
-    margin-top: 24px;
-    padding: 7px 12px;
-  }
+
+    
+    .mobile-view-arrow-responsive{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 27px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 24px;
+      /* UI Properties */
+      background: #F2DA58 0% 0% no-repeat padding-box;
+      border-radius: 8px 0px 0px 0px;
+    }
+}

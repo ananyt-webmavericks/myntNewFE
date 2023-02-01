@@ -144,6 +144,7 @@
 }
 .colored-text-get-started{
     font-weight: 600;
+    margin-left: 10px;
     color: #F0C127;
 }
 @media screen and (max-width: 600px) {
@@ -153,6 +154,8 @@
     }
     .google-signIn-getStarted{
         margin-top: 1em;
+        width: 300px;
+        justify-content: space-evenly;
     }
     .input-container{
         display: grid;

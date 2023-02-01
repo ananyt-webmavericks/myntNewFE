@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 import { Button , Card , CardContent} from "@mui/material";
 import '../../css/CompleteYourProfile/completeYourProfile.css';
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         marginTop: '11px',
@@ -12,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default function VerifyNumberOtp() {
+    const ratio = parseInt(window.innerWidth);
     const navigate = useNavigate();
     const [OTP, setOTP] = useState("");
     const classes = useStyles();
@@ -22,6 +24,7 @@ export default function VerifyNumberOtp() {
         return <span style={{color:'#777777'}}>{remainingTime}</span>;
     };
     return (
+        <>
         <div className="complete-your-profile-container">
             <Card className="card-complete-profile">
                 <CardContent style={{ padding: '16px 0' }}>
@@ -68,6 +71,8 @@ export default function VerifyNumberOtp() {
                 </CardContent>
             </Card>
         </div>
+        {ratio < 768 ? null : <Footer />}
+        </>
            
     )
 }

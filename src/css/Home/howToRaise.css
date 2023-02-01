@@ -7,6 +7,7 @@
     margin-top: 40px;
     position: relative;
    height: 800px;
+   min-width: 280px;
    will-change: transform;
    cursor: pointer;
    width: 300px !important;
@@ -99,4 +100,12 @@
     align-items: center;
     font-weight: 600;
     
+}
+@media screen and (max-width: 500px) {
+    .head-section-second{
+        text-align: initial;
+    }
+    .card-sub-header-txt{
+        margin-top: 10px;
+    }
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import '../../css/Dashboard/dashboard.css';
 import { useEffect } from "react";
-export default function ProgressNotifyDash() {
+export default function ProgressNotifyDash(props) {
     const ratio = parseInt(window.innerWidth);
     const [showHr, setShowHr] = useState(true);
 
@@ -12,6 +12,10 @@ export default function ProgressNotifyDash() {
         }
 
     }, [])
+
+    const fetchDeals = ()=>{
+        props.onClick(true)
+    }
 
     return (
         <div className="completion-status-round-dashed">
@@ -69,7 +73,9 @@ export default function ProgressNotifyDash() {
                 <div className="specific-info-section third">
                     <span className="header-info-section-dash">Explore Deals, Invest and Sign Documents</span>
                     <span className="sub-header-info-section-dash">Some description will come Here about the profile</span>
-                    <Button sx={{
+                    <Button 
+                        onClick={fetchDeals}
+                    sx={{
                         borderRadius: '20px', background: '#9A9A9A',
                         width: '200px', margin: 'auto', color: 'black', fontSize: '16px', fontWeight: '600'
                         , '&:hover': { background: '#9A9A9A', color: 'black', boxShadow: '0px 0px 23px #00000029' },

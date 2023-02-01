@@ -85,8 +85,12 @@
 }
 @media screen and (max-width: 500px) {
     .investor-home-heading{
+        
         font-size: 26px;
         font-weight: 600;
+    }
+    .how-to-raise-container{
+        text-align: center;
     }
 }
 @media screen and (max-width: 420px) {

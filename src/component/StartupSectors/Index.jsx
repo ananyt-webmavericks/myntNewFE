@@ -52,7 +52,7 @@ export default function StartupSectorsMain() {
                 <span className="get-started-heading startup">Please choose startup sectors you’re interested in</span>
                 
                 <Card className="card-investors">
-                    <CardContent>
+                    <CardContent style={{padding:'0'}}>
                         <Grid container spacing={gridxsFirst}>
                             {value.map((item, index) => {
                                 return (
