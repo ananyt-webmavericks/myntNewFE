@@ -1,0 +1,82 @@
+.faqDetails-container {
+    height: 100%;
+    margin-bottom: 5em;
+    padding-top: 8em;
+    /* flex-wrap: wrap; */
+}
+.heading-faq-container{
+    display: flex;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 2em;
+    font-weight: 600;
+}
+.card-content-faq-details {
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 10px #0000001A !important;
+    border: 1px solid #DADADA !important;
+    border-radius: 7px !important;
+    transition: all 0.2s linear !important;
+    width: 90% !important;
+    cursor: pointer !important;
+}
+
+.card-content-faq-details:hover {
+    transform: scale(1.09) !important;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+}
+
+.internal-card-faq {
+    display: grid;
+
+}
+
+.heading-internal-card {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.heading-internal-card {
+    --b: 0.1em;
+    /* the thickness of the line */
+    --c: #ffbf00;
+    /* the color */
+
+    color: #0000;
+    padding-block: var(--b);
+    background:
+        linear-gradient(var(--c) 50%, #000 0) 0% calc(100% - var(--_p, 0%))/100% 200%,
+        linear-gradient(var(--c) 0 0) 0% var(--_p, 0%)/var(--_p, 0%) var(--b) no-repeat;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    transition: .3s var(--_s, 0s) linear, background-size .3s calc(.3s - var(--_s, 0s));
+}
+
+.card-content-faq-details:hover .heading-internal-card {
+    --_p: 100%;
+    --_s: .3s;
+}
+
+.subHeading-internal-card {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #777777;
+    min-height: 60px;
+}
+@media screen and (max-width:500px) {
+    .card-content-faq-details {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: auto !important;
+        margin-top: 2em !important;
+    }
+}
+
+.detailed-faq-section{
+    padding-top: 8em;
+    margin-bottom: 5em;
+}
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before{
+    display: none;
+}

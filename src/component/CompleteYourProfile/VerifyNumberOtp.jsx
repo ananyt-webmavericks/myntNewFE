@@ -21,7 +21,7 @@ export default function VerifyNumberOtp() {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px' }} {...buttonProps}>Resend</button>;
     };
     const renderTime = remainingTime => {
-        return <span style={{color:'#777777'}}>{remainingTime}</span>;
+        return <span style={{color:'#777777'}}>resend after {remainingTime} s</span>;
     };
     return (
         <>

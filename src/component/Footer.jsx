@@ -71,7 +71,7 @@ const Footer = () => {
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Mynt University</span>
-                                <span className="Detail-link">FAQs</span>
+                                <span onClick={()=>navigate('/faq-details')} className="Detail-link">FAQs</span>
                                 <span className="Detail-link">Blogs</span>
                             </div>
                         </div>

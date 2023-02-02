@@ -6,6 +6,8 @@ import Facebook from '../../images/assets/facebook.png';
 import Username from '../../images/assets/username.png';
 import Email from '../../images/assets/email.png';
 import { useNavigate } from "react-router-dom";
+import GoogleSignIn from "../GoogleSignIn";
+import FacebookSignIn from "../FacebookSignIn";
 export default function GetStartedSection() {
 
     const navigate = useNavigate();
@@ -14,18 +16,11 @@ export default function GetStartedSection() {
             <div className="get-started-section">
                 <span className="get-started-heading">Get Started</span>
                 <span className="get-started-subheading">Please enter your details</span>
-                <Card  className="card-get-started">
+                <Card className="card-get-started">
                     <CardContent>
                         <div className="button-container-getStarted">
-                            <div className="google-signIn-getStarted">
-                                <img className="logo-sign-in" src={Google}></img>
-                                <span className="sign-in-txt">Sign up with Google</span>
-                            </div>
-                            <div className="google-signIn-getStarted">
-                                <img className="logo-sign-in" src={Facebook}></img>
-                                <span className="sign-in-txt">Sign up with Facebook</span>
-                            </div>
-
+                            <GoogleSignIn />
+                            <FacebookSignIn />
                         </div>
                         <div className="button-below-heading">
                             <span >Or Continue with</span>
@@ -45,7 +40,7 @@ export default function GetStartedSection() {
                                 <input className="in-input-email" placeholder="Email Address" />
                             </div>
                         </div>
-                        <button onClick={()=> navigate('/otp-verification')} className="sign-up-btn">Sign Up</button>
+                        <button onClick={() => navigate('/otp-verification')} className="sign-up-btn">Sign Up</button>
                     </CardContent>
                 </Card>
                 <div className="bottom-most-txt-get-started">

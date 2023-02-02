@@ -22,7 +22,7 @@ export default function OtpVerificationMain() {
         return <button style={{background:'none' , border:'none',float:'right' , marginRight:'20px'}} {...buttonProps}>Resend</button>;
       };
     const renderTime = remainingTime => {
-        return <span style={{color:'#777777'}}>{remainingTime}</span>;
+        return <span style={{color:'#777777'}}>resend after {remainingTime} s</span>;
       };
     return (
         <div className="verification-container ">
@@ -45,7 +45,7 @@ export default function OtpVerificationMain() {
                             // secure
                             inputStyles={{width:'35px' ,outline:'none', height:'35px',background: '#F4F4F4 0% 0% no-repeat padding-box',border:'none' , fontWeight:'600',fontSize:'20px'}}
                         />
-                        <ResendOTP className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false} handelResendClick={() => console.log("Resend clicked")} />
+                        <ResendOTP maxTime={180} className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false} handelResendClick={() => console.log("Resend clicked")} />
                         </div>
                         <button  className="sign-up-btn">Sign Up</button>
                     </CardContent>

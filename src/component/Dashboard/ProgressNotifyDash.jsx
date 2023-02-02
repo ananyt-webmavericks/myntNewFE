@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import '../../css/Dashboard/dashboard.css';
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function ProgressNotifyDash(props) {
     const ratio = parseInt(window.innerWidth);
     const [showHr, setShowHr] = useState(true);
-
+    const navigate = useNavigate()
     useEffect(() => {
         if (ratio < 775) {
             setShowHr(false)
@@ -53,7 +54,9 @@ export default function ProgressNotifyDash(props) {
                 <div className="specific-info-section second">
                     <span className="header-info-section-dash">Complete KYC & Share Bank Details</span>
                     <span className="sub-header-info-section-dash">Provide some identification details and The bank account in which we should credit returns</span>
-                    <Button sx={{
+                    <Button 
+                    onClick={()=>navigate('/complete-your-profile/payment-details')}
+                    sx={{
                         borderRadius: '20px', background: '#F8DA36',
                         width: '200px', margin: 'auto', color: 'black', fontSize: '16px', fontWeight: '600'
                         , '&:hover': { background: '#F8DA36', color: 'black', boxShadow: '0px 0px 23px #F4DC5991' },

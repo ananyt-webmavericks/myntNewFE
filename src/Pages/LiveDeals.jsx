@@ -15,6 +15,7 @@ import Logo3 from '../images/investments/logo3.png';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import { useNavigate } from "react-router-dom";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -88,7 +89,7 @@ const LiveDeals = () => {
     const [gridxsFirst, setGridxsFirst] = useState(3)
     const ratio = parseInt(window.innerWidth);
     const location = window.location.pathname;
-
+    const navigate = useNavigate()
     useEffect(() => {
 
         if (ratio < 1230) {
@@ -144,7 +145,7 @@ const LiveDeals = () => {
                         {data.map((item, index) => {
                             return (
                                 <Grid key={index} item xs={gridxsFirst}>
-                                    <Card className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
+                                    <Card onClick={()=>navigate('/live-deals-details')} className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
                                         <CardContent sx={{ padding: '0' }}>
                                             <div style={{ position: 'relative' }}>
                                                 <img src={item.backgroundImage} width='100%' height={192} />

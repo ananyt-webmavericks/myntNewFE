@@ -7,6 +7,8 @@ import Username from '../../images/assets/username.png';
 import Email from '../../images/assets/email.png';
 import Loginlogo from '../../images/assets/loginlogo.png';
 import { useNavigate } from "react-router-dom";
+import GoogleSignIn from "../GoogleSignIn";
+import FacebookSignIn from "../FacebookSignIn";
 
 export default function LoginMain() {
 
@@ -18,20 +20,12 @@ export default function LoginMain() {
                 <span className="get-started-subheading">Please enter your details</span>
                 <Card className="card-get-started">
                     <CardContent>
-                        <div style={{ display: 'flex', justifyContent: 'center', margin: 'auto', marginBottom: '13px',marginLeft: '2em' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', margin: 'auto', marginBottom: '13px', marginLeft: '2em' }}>
                             <img src={Loginlogo} width={172} height={76} style={{ objectFit: 'contain' }}></img>
                         </div>
                         <div className="button-container-getStarted">
-
-                            <div className="google-signIn-getStarted">
-                                <img className="logo-sign-in" src={Google}></img>
-                                <span className="sign-in-txt">Sign up with Google</span>
-                            </div>
-                            <div className="google-signIn-getStarted">
-                                <img className="logo-sign-in" src={Facebook}></img>
-                                <span className="sign-in-txt">Sign up with Facebook</span>
-                            </div>
-
+                            <GoogleSignIn />
+                            <FacebookSignIn />
                         </div>
                         <div className="button-below-heading">
                             <span >Or Continue with</span>
