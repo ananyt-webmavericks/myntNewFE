@@ -1,10 +1,34 @@
-import React from "react";
+import React ,{useState , useEffect} from "react";
 import { Button, Card, CardContent } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
+import { verifyPanKycAction } from "../../Redux/actions/verifyKycAction";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 export default function KycPanDetails() {
+
+    const {panDetails} = useSelector((state)=> state.panData)
+    const [panDetail, setPanDetail] = useState('')
+    const dispatch = useDispatch();
     const ratio = parseInt(window.innerWidth);
     const navigate = useNavigate()
+
+    const handleChange = (e)=>{
+        setPanDetail(e.target.value)
+    }
+    const handleSubmit = () =>{
+        dispatch(verifyPanKycAction(panDetail))
+    }
+
+    console.log("asd",panDetails)
+
+    useEffect(() => {
+      if(panDetails === "PAN verification done successfully!"){
+        navigate('/complete-your-profile/payment-details')
+      }
+    }, [panDetails])
+    
+    
     return (
         <>
             <div className="complete-your-profile-container">
@@ -35,7 +59,7 @@ export default function KycPanDetails() {
 
                         <div className="verify-number-container">
                             <span className="verify-number-head">Kyc</span>
-                            <div className="number-verify-container kyc"><input type="number" placeholder="Enter PAN Number" className="phoneNumberInput" name="countryCode" /></div>
+                            <div className="number-verify-container kyc"><input type="text" onChange={(e)=>handleChange(e)} value={panDetail} placeholder="Enter PAN Number" className="phoneNumberInput" name="countryCode" /></div>
                             <div className="input-number-box-section kyc">
                                 <div className="number-verify-container kyc small"><input type="number" placeholder="DD" className="phoneNumberInput" name="countryCode" /></div>
                                 <div className="number-verify-container kyc small"><input type="number" placeholder="MM" className="phoneNumberInput" name="countryCode" /></div>
@@ -43,7 +67,7 @@ export default function KycPanDetails() {
                             </div>
                         </div>
                         <div className="verify-button-container" style={{ paddingTop: '28px' }}>
-                            <Button varient="contained" className="verify-button" onClick={() => navigate('/complete-your-profile/verify-address')}>Submit</Button>
+                            <Button  varient="contained" className="verify-button" onClick={handleSubmit}>Submit</Button>
                         </div>
 
                     </CardContent>

@@ -7,8 +7,13 @@ import KycPanDetails from "./KycPanDetails";
 import VerifyAddress from "./VerifyAddress";
 import BankDetails from "./BankDetails";
 import Footer from "../Footer";
+
+
+
 export default function PaymentDetails() {
+   
     const ratio = parseInt(window.innerWidth);
+
     return (
         <>
         <div className="complete-your-profile-container">

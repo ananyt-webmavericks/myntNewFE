@@ -36,18 +36,17 @@ import StartedFaq from './component/FaqDetails/StartedFaq';
 import StartedInvestFaq from './component/FaqDetails/StartedInvestFaq';
 import SubscribtionFaq from './component/FaqDetails/SubscribtionFaq';
 import TaxtationFaq from './component/FaqDetails/TaxationFaq';
-
+import ToastNotify from './component/Toastify';
 function App() {
 
   const location = window.location.pathname;
   const ratio = parseInt(window.innerWidth);
-
-
+  
   
   return (
     <BrowserRouter>
     <Navbar />
-    
+    <ToastNotify />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />

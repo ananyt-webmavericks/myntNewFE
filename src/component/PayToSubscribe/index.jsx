@@ -62,6 +62,7 @@ export default function PayToSubscribeMain() {
     const ratio = parseInt(window.innerWidth);
     const classes = useStyles();
     const theme = useTheme();
+   
     const handleChange = (event) => {
         const {
             target: { value },
@@ -71,6 +72,9 @@ export default function PayToSubscribeMain() {
             typeof value === 'string' ? value.split(',') : value,
         );
     };
+    const handleSubmit =()=>{
+      
+    }
 
     useEffect(() => {
 
@@ -230,7 +234,7 @@ export default function PayToSubscribeMain() {
                                 />
                                 <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                             </div>
-                            <button className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
+                            <button onClick={handleSubmit} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
                         </Grid>
                     </Grid>
 
