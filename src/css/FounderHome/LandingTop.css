@@ -1,0 +1,118 @@
+.founderhome-landing-head-container {
+    display: grid;
+    justify-content: center;
+    padding-top: 10em;
+}
+
+.founderhome-test-script-regular {
+    font-size: 26px !important;
+    font-weight: 500 !important;
+}
+
+.founderhome-test-script-bold {
+    font-size: 36px !important;
+    font-weight: 600 !important;
+}
+
+.founderhome-test-script-bg {
+    color: #efc127;
+}
+
+.founderhome-landing-head-section {
+    width: 100%;
+    margin-top: 1em;
+    display: grid;
+
+}
+
+.founderhome-head-description {
+    font-size: 16px;
+    margin-top: 1.5em !important;
+    margin-bottom: 3em !important;
+}
+
+.founderhome-getStarted-landing-btn {
+
+    width: 200px !important;
+    border-radius: 30px !important;
+    text-transform: capitalize !important;
+    color: white !important;
+    /* box-shadow: none !important; */
+    background-color: black !important;
+    font-size: 16px !important;
+    margin: auto !important;
+}
+
+.founderhome-getStarted-landing-btn:hover {
+    /* box-shadow: none !important; */
+    background-color: #efc127 !important;
+}
+
+.founderhome-subhead-description {
+    font-size: 13px !important;
+    margin-top: 1em !important;
+}
+
+.founderhome-image-section-landing {
+    order: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.founderhome-landing-head-txt-section {
+    order: 2;
+    text-align: center;
+}
+
+.founderhome-banner-home-main {
+    width: 253px;
+    height: 203px;
+}
+
+.founderhome-text-script-smallgray{
+    color: #898989;
+    font-size: 20px !important;
+}
+
+.founderhome-text-script-million{
+    font-size: 26px !important;
+    font: normal normal 600 26px/45px Poppins;
+}
+
+
+@media screen and (min-width: 870px) {
+    .founderhome-image-section-landing {
+        order: 2;
+    }
+
+    .founderhome-landing-head-txt-section {
+        order: 1;
+        text-align: start;
+    }
+
+    .founderhome-landing-head-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .founderhome-landing-head-section {
+        text-align: start;
+    }
+
+    .founderhome-getStarted-landing-btn {
+        margin: 0 !important;
+    }
+
+    .founderhome-test-script-regular {
+        font-size: 36px !important;
+    }
+
+    .founderhome-test-script-bold {
+        font-size: 36px !important;
+    }
+
+    .founderhome-banner-home-main {
+        width: 434px;
+        height: 348px;
+    }
+}

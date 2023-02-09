@@ -35,7 +35,8 @@ export default function LoginFounder() {
                     </CardContent>
                 </Card>
                 <div className="bottom-most-txt-get-started">
-                    <div className="footer-get-started-txt-head"><span className="colored-text-get-started">Log in </span>as Investor</div>
+                    <div className="footer-get-started-txt-head">
+                        <span onClick={() => navigate('/login')} className="colored-text-get-started">Log in </span>as Investor</div>
                 </div>
             </div>
         </div>
