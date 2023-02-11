@@ -30,15 +30,15 @@ export default function HowToRaise() {
     // }, [])
     return (
         <div className="how-to-raise-container">
-            <div className="investor-home-heading">How to <span className="colored-investor-home-heading"> Raise? </span></div>
-            <span className="investors-subheading">Enjoy the benefits of a completely online and seamless process</span>
+            <div className="investor-home-heading">How to <span className="colored-investor-home-heading"> register? </span></div>
+            <span className="investors-subheading">Experience the advantages of a fully digital and smooth process.</span>
                 <div style={{overflow:'hidden',overflowX:'scroll',display:'flex' , alignItems:'center'}}>
                     <div className="first-raise-card">
                         <div className="head-container-raise">
                             <div className="head-section-first">1</div>
                             <div className="head-section-second">
-                                <span className="card-header-txt">Sign up using your Email ID</span>
-                                <span className="card-sub-header-txt">Register on the platform by entering your email address and finishing the one-time password (OTP) authentication process.</span>
+                                <span className="card-header-txt">Signup with your email address</span>
+                                <span className="card-sub-header-txt">Sign up on the platform by providing your email and completing the one-time password (OTP) verification procedure.</span>
                             </div>
                         </div>
                         <div className="raise-card-image-container">
@@ -50,8 +50,8 @@ export default function HowToRaise() {
                         <div className="head-container-raise">
                             <div className="head-section-non-active">2</div>
                             <div className="head-section-second">
-                                <span className="card-header-txt">Complete KYC and add Bank details</span>
-                                <span className="card-sub-header-txt">Complete your Know Your Customer (KYC) process by providing your PAN and add your bank account details.</span>
+                                <span className="card-header-txt">Complete KYC and add bank details</span>
+                                <span className="card-sub-header-txt">Finish the Know Your Customer (KYC) procedure by submitting your PAN (Permanent Account Number) and adding your bank account information.</span>
                             </div>
                         </div>
                         <div className="raise-card-image-container">
@@ -63,8 +63,8 @@ export default function HowToRaise() {
                         <div className="head-container-raise">
                             <div className="head-section-non-active">3</div>
                             <div className="head-section-second">
-                                <span className="card-header-txt">Subscribe to your favourite opportunities</span>
-                                <span className="card-sub-header-txt">Browse through the live campaigns and choose the one that is most suitable for you. Once you have selected a campaign, proceed for payment and complete the subscription process</span>
+                                <span className="card-header-txt">Register to your preferred opportunities</span>
+                                <span className="card-sub-header-txt">Examine the ongoing campaigns and select the one that fits your needs best. Upon choosing a campaign, proceed with payment and finalize the process.</span>
                             </div>
                         </div>
                         <div className="raise-card-image-container">
@@ -76,8 +76,8 @@ export default function HowToRaise() {
                         <div className="head-container-raise">
                             <div className="head-section-non-active">4</div>
                             <div className="head-section-second">
-                                <span className="card-header-txt">See your wealth grow</span>
-                                <span className="card-sub-header-txt">Your subscription process is now complete, and you can track your subscriptions to see how your investment is growing as the startups you have invested in succeed.</span>
+                                <span className="card-header-txt">Grow Your Wealth</span>
+                                <span className="card-sub-header-txt">Your process is now complete and you can monitor your investments to see the growth as the startups you have backed achieve success.</span>
                             </div>
                         </div>
                         <div className="raise-card-image-container-last">

@@ -31,7 +31,7 @@ export default function ProgressNotifyDash(props) {
                 </div>
                 <div className="specific-info-section first">
                     <span className="header-info-section-dash">Create Profile</span>
-                    <span className="sub-header-info-section-dash">Some description will come Here about the profile</span>
+                    <span className="sub-header-info-section-dash">Provide your general information to create a Mynt user account.</span>
                     <Button sx={{
                         borderRadius: '20px', background: '#01965D',
                         width: '200px', margin: 'auto', color: 'white', fontSize: '16px', fontWeight: '600'
@@ -53,7 +53,7 @@ export default function ProgressNotifyDash(props) {
                 </div>
                 <div className="specific-info-section second">
                     <span className="header-info-section-dash">Complete KYC & Share Bank Details</span>
-                    <span className="sub-header-info-section-dash">Provide some identification details and The bank account in which we should credit returns</span>
+                    <span className="sub-header-info-section-dash">Provide some identification information and the bank account in which transfer returns.</span>
                     <Button 
                     onClick={()=>navigate('/complete-your-profile/payment-details')}
                     sx={{
@@ -75,7 +75,7 @@ export default function ProgressNotifyDash(props) {
                 </div>
                 <div className="specific-info-section third">
                     <span className="header-info-section-dash">Explore Deals, Invest and Sign Documents</span>
-                    <span className="sub-header-info-section-dash">Some description will come Here about the profile</span>
+                    <span className="sub-header-info-section-dash">Learn more about what our platform has to offer and start investing by signing the necessary documents. </span>
                     <Button 
                         onClick={fetchDeals}
                     sx={{

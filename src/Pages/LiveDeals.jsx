@@ -136,9 +136,35 @@ const LiveDeals = () => {
                             {/* <div className="mini-active-btn-highliter">Live</div> */}
                         </div>
                         <div className="active-btn-container" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(4)}>
-                            NCD
+                            ID
                             {/* <div className="mini-active-btn-highliter"></div> */}
                         </div>
+                    </div>
+                    <div style={{textAlign:'center',marginBottom:'2em'}}>
+                            {activeBtn === 1 && 
+                            <div style={{display:'grid'}}>
+                            <span style={{fontSize:'14px'}}>( i - Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange)</span> 
+                            <span style={{fontSize:'18px'}}>Subscribe to rapidly growing companies with a low minimum investment requirement.</span> 
+                            </div>
+                            }
+                            {activeBtn === 2 && 
+                            <div style={{display:'grid'}}>
+                            <span style={{fontSize:'14px'}}>( i - Compulsory convertible debentures are hybrid securities that have the same financial rights like equity share but no voting rights.) </span> 
+                            <span style={{fontSize:'18px'}}>Hybrid securities convertible into equity</span> 
+                            </div>
+                            }
+                            {activeBtn === 3 && 
+                            <div style={{display:'grid'}}>
+                            <span style={{fontSize:'14px'}}>( i - Short-term offering that involves funding a company's unpaid invoice or purchase order in exchange for a fixed rate of return.)</span> 
+                            <span style={{fontSize:'18px'}}>Short term fixed income opportunities</span> 
+                            </div>
+                            }
+                            {activeBtn === 4 && 
+                            <div style={{display:'grid'}}>
+                            <span style={{fontSize:'14px'}}>( i - NCD (Non-Convertible Debenture) is a type of debt security issued by companies that pays a fixed rate of interest and has a maturity date.) </span> 
+                            <span style={{fontSize:'18px'}}>Short term fixed income opportunities</span> 
+                            </div>
+                            }
                     </div>
                     <span style={{fontSize:'20px',fontWeight:'600'}}>Live Deals</span>
                     <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>

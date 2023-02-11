@@ -9,11 +9,11 @@ import Carousel from 'react-elastic-carousel'
 import styles from '../../css/Home/aboutTeamCarousel.css'
 
 const data = [
-    { id: 1, avatar: Avatar, name: 'Kareem Pelletier', position: 'Joe M, CEO at LeadSpyder', head: 'WE’RE GOOD, THANKS', description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur felis risus, suscipit eget leo et, convallis suscipit velit. Curabitur efficitur, neque ac porttitor consequat, massa quam sollicitudin nisl, “' },
-    { id: 2, avatar: Avatar, name: 'Kareem Pelletier', position: 'Joe M, CEO at LeadSpyder', head: 'WE’RE GOOD, THANKS', description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur felis risus, suscipit eget leo et, convallis suscipit velit. Curabitur efficitur, neque ac porttitor consequat, massa quam sollicitudin nisl, “' },
-    { id: 3, avatar: Avatar, name: 'Kareem Pelletier', position: 'Joe M, CEO at LeadSpyder', head: 'WE’RE GOOD, THANKS', description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur felis risus, suscipit eget leo et, convallis suscipit velit. Curabitur efficitur, neque ac porttitor consequat, massa quam sollicitudin nisl, “' },
-    { id: 4, avatar: Avatar, name: 'Kareem Pelletier', position: 'Joe M, CEO at LeadSpyder', head: 'WE’RE GOOD, THANKS', description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur felis risus, suscipit eget leo et, convallis suscipit velit. Curabitur efficitur, neque ac porttitor consequat, massa quam sollicitudin nisl, “' },
-
+    { id: 1, avatar: Avatar, name: 'Priyanshi Pandey', position: 'VP at Goldman Sachs', head: 'Game-Changing Startups Now Accessible', description: '“Mynt is making investing in highly vetted and game-changing startups not only accessible but easy as well.' },
+    { id: 2, avatar: Avatar, name: 'Vicky', position: 'Director at Magnetic Fields', head: 'Diversified Investment Portfolio', description: "The platform provided me with a diversified investment portfolio, giving me access to a range of investment opportunities I wouldn't have otherwise found." },
+    { id: 3, avatar: Avatar, name: 'Tithi Chattopadhyay,', position: 'Executive Director at Princeton University ', head: 'Due Diligence Measures', description: "The due diligence process and investor protection measures in place gave me peace of mind and confidence in my investments." },
+    { id: 4, avatar: Avatar, name: 'Kavikrut', position: ' CGO at OYO', head: 'Investment Tracking Made Autonomous ', description: 'The user-friendly interface and straightforward investment process made it easy for me to invest and track my investments.' },
+    {id:5 , avatar:Avatar , name:"Harshit Vyas" , position:"CBO Pepper Content" , head:"Transparency And Communication " , description:"I was impressed by the level of transparency and communication from the platform and the startups I invested in."},
 ]
 
 export default function AboutTeamCarousel() {

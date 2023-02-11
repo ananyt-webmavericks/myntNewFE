@@ -56,7 +56,7 @@ export default function DashboardCard() {
                                 </div>
                                 <div className="text-card-container">
                                     <span style={{ fontSize: '26px', fontWeight: '600' }}>0</span>
-                                    <span style={{ fontSize: '14px', color: '#777777' }}>Startups Investments In</span>
+                                    <span style={{ fontSize: '14px', color: '#777777' }}>Startups in my portfolio</span>
                                 </div>
                             </div>
                         </CardContent>
@@ -70,7 +70,7 @@ export default function DashboardCard() {
                                     <img src={Performance} width={30} height={30} className="image-card-dashboard"></img>
                                 </div>
                                 <div className="text-card-container">
-                                    <span style={{ fontSize: '14px', color: '#777777' }}>Portfolio Performance</span>
+                                    <span style={{ fontSize: '14px', color: '#777777' }}>Portfolio Analytics </span>
                                 </div>
                             </div>
                         </CardContent>

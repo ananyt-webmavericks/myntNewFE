@@ -86,7 +86,7 @@ export default function LiveDetailsMain() {
                         <span className="live-deals-details-decription">24 Dec 2022</span>
                     </div>
                     <div className="live-deals-box-date second">
-                        <span style={{ fontSize: '14px' }}>Booked A Spot</span>
+                        <span style={{ fontSize: '14px' }}>Book A Spot</span>
                         <div className="btn-register-live-deals"><span>Register</span><img style={{ marginLeft: '10px' }} src={Arrow} width={8} height={10}></img></div>
                     </div>
                 </div>

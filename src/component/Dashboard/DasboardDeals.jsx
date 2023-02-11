@@ -60,8 +60,8 @@ export default function DashboardDeals(){
     }
     return(
         <div className="dashboard-container-deals" style={{display:'grid' , marginTop:'30px'}}>
-            <span>Explore Deals, Invest and Sign Documents</span>
-            <span>Get your wealth creation journey today, Explore Hot Deals…</span>
+            <span style={{fontSize:'20px',fontWeight:'600'}}>New Live Deals </span>
+            <span>Get your wealth creation journey started today! </span>
             <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                         {data.map((item, index) => {
                             return (

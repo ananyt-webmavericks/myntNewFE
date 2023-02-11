@@ -26,7 +26,7 @@ export default function SubscribegGraph() {
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
             <div className="subscribe-graph-heading">
-                <Typography className="test-script-regular">Subscribe to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+                <Typography className="test-script-regular">Register to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>
             <Grid sx={{ marginTop: '40px' }} container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>
@@ -34,12 +34,12 @@ export default function SubscribegGraph() {
                         <CardContent>
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
-                                    <Typography className="card-bold-txt" >Equity linked instruments</Typography>
-                                    <Typography className="regular-txt">Subscribe to gain access to exclusive high return opportunities in growing business</Typography>
+                                    <Typography className="card-bold-txt" >Equity linked Securities</Typography>
+                                    <Typography className="regular-txt">Sign up to gain access to exclusive high-return opportunities in growing businesses.</Typography>
                                 </div>
                                 <div className="container-for-text-and-graph">
                                     <div className="text-section-subscribe">
-                                        <Typography className="card-bold-number-text">25%+</Typography>
+                                        <Typography className="card-bold-number-text">28%+</Typography>
                                         <Typography className="regular-bold-text">Expected IRR</Typography>
                                         <Button className="learn-more-btn" varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
                                     </div>
@@ -65,12 +65,12 @@ export default function SubscribegGraph() {
                         <CardContent>
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
-                                    <Typography className="card-bold-txt" >Fixed Income instruments</Typography>
-                                    <Typography className="regular-txt">Enjoy regular payouts with high yield investment<br /> opportunities</Typography>
+                                    <Typography className="card-bold-txt" >Fixed-return securities</Typography>
+                                    <Typography className="regular-txt">Profit from lucrative investment opportunities with regular payouts and high returns. </Typography>
                                 </div>
                                 <div className="container-for-text-and-graph">
                                     <div className="text-section-subscribe">
-                                        <Typography className="card-bold-number-text">12 - 25%</Typography>
+                                        <Typography className="card-bold-number-text">10-25%</Typography>
                                         <Typography className="regular-bold-text">Expected IRR</Typography>
                                         <Button className="learn-more-btn" varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
                                     </div>

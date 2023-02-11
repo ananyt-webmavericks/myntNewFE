@@ -45,9 +45,11 @@
 }
 
 .active-btn-container {
-    width: fit-content;
+    
     padding:0 1em;
     height: 54px;
+    width: 100%;
+    max-width: 100px;
     /* UI Properties */
     border-radius: 27px;
     display: grid;

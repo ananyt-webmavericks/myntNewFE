@@ -28,7 +28,7 @@ const Dashboard = () => {
                     <Container maxWidth="lg">
                         <div style={{ display: 'grid' }}>
                             <span className="get-started-heading startup">Welcome Asad!</span>
-                            <ProgressBarDash />
+                            <ProgressBarDash  showDeals={showDeals} />
                         </div>
                         { showDeals===false && <ProgressNotifyDash onClick={fetchValue} />}
                         <DashboardCard />

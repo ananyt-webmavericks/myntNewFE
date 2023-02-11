@@ -20,14 +20,14 @@ import Sg from '../../images/investors/sg.png';
 
 
 const data = [
-    { id: 1, image: Asad, logo: Oyo, name: 'Asad R', amount: 'Invested $101.01' },
-    { id: 2, image: Arpit, logo: Leela, name: 'Arpit', amount: 'Invested $100' },
-    { id: 3, image: Rajiv, logo: Samsung, name: 'Rajiv', amount: 'Invested $1,080' },
-    { id: 4, image: Rajiv, logo: Byju, name: 'Sanjay S', amount: 'Invested $1,080' },
-    { id: 5, image: Farhat, logo: Owl, name: 'Farhat', amount: 'Invested $210' },
-    { id: 6, image: Kunal, logo: Microsoft, name: 'Kunal', amount: 'Invested $100' },
-    { id: 7, image: Manju, logo: Sg, name: 'Manju S', amount: 'Invested $1,080' },
-    { id: 8, image: Kunal, logo: Microsoft, name: 'Tapas', amount: 'Invested $100' },
+    { id: 1, image: Asad, logo: Oyo, name: 'Akhil', amount: 'Invested INR 8000' },
+    { id: 2, image: Arpit, logo: Leela, name: 'Dhurv', amount: 'Invested INR 10,000' },
+    { id: 3, image: Rajiv, logo: Samsung, name: 'Asad', amount: 'Invested INR 7000' },
+    { id: 4, image: Rajiv, logo: Byju, name: 'Rajeev', amount: 'Invested INR 9000' },
+    { id: 5, image: Rajiv, logo: Owl, name: 'Gaurav', amount: 'Invested INR 18,000' },
+    { id: 6, image: Kunal, logo: Microsoft, name: 'Kunal', amount: 'Invested INR 6000' },
+    { id: 7, image: Manju, logo: Sg, name: 'Manju', amount: 'Invested INR 8000' },
+    { id: 8, image: Kunal, logo: Microsoft, name: 'Sanjay', amount: 'Invested INR 15,000' },
 
 ]
 export default function InvestorsHome() {
@@ -61,9 +61,9 @@ export default function InvestorsHome() {
                 </Grid>
                 <Grid item xs={gridxsSecond}>
                 <div className="subscribe-graph-heading">
-                    <div className="investor-home-heading">Thousands of <span className="colored-investor-home-heading"> Investors </span></div>
+                    <div className="investor-home-heading">Join Thousands Of<span className="colored-investor-home-heading"> Investors </span></div>
                 
-                    <span className="investors-subheading">Individual and institutional investors. invest $10–$100,000 per deal on MyntInvest<br /><br />Investments are risky and may result in total loss of capital. Learn more</span>
+                    <span className="investors-subheading">Begin your investment journey and seize startup opportunities starting as low as ₹4000.</span>
                     </div>
                     <div className="profile-container-investors">
                         <Grid container spacing={4}>
