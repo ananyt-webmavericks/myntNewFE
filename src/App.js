@@ -38,6 +38,9 @@ import SubscribtionFaq from './component/FaqDetails/SubscribtionFaq';
 import TaxtationFaq from './component/FaqDetails/TaxationFaq';
 import ToastNotify from './component/Toastify';
 import HomeFounder from './Pages/Founder/HomeFounder';
+import FounderApplication from './Pages/Founder/FounderApplication';
+import DrawerFounder from './component/FounderDrawer/DrawerFounder';
+import DashboardFounder from './Pages/Founder/DashboardFounder';
 function App() {
 
   const location = window.location.pathname;
@@ -84,6 +87,8 @@ function App() {
         <Route exact path="/faq-details/taxtation-faq" element={<TaxtationFaq />} />
         {/* founder */}
         <Route exact path="/founder" element={<HomeFounder />} />
+        <Route exact path="/founder/application" element={<FounderApplication />} />
+        <Route exact path="/dashboard-founder" element={<DashboardFounder />} />
       </Routes>
       {(!location.includes('/dashboard')) && (!location.includes('/complete-your-profile')) && <Footer />}
 

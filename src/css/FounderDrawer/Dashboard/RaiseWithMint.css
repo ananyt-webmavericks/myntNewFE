@@ -1,0 +1,71 @@
+.raise-with-mint {
+    text-align: center;
+    font: normal normal 600 26px/48px Poppins !important;
+    letter-spacing: 0px;
+    color: #000000;
+}
+
+.raise-with-mint-desc {
+    padding-top: 1.5rem;
+    text-align: left;
+    font: normal normal normal 14px/23px Poppins;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
+.raise-with-mint-card {
+    margin-top: 4rem;
+    width: auto;
+    height: 130px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 20px #0000001A;
+    border-radius: 7px;
+}
+
+.download-button {
+
+    width: 147px !important;
+    height: 33px !important;
+    background: #CBCBCB 0% 0% no-repeat padding-box !important;
+    border-radius: 17px !important;
+    opacity: 1;
+}
+
+.action-pending-text {
+    text-align: left;
+    font: normal normal medium 5px/12px Poppins !important;
+    letter-spacing: 0px;
+    color: #A7A7A7;
+}
+
+.e-sign-title {
+    text-align: left;
+    font: normal normal 600 24px/48px Poppins !important;
+    letter-spacing: 0px;
+    color: #000000;
+}
+
+@media screen and (min-width: 870px) {
+    .raise-with-mint {
+        text-align: left;
+        font: normal normal 600 26px/48px Poppins !important;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+
+    .download-button {
+
+        width: 147px !important;
+        height: 33px !important;
+        background: #CBCBCB 0% 0% no-repeat padding-box !important;
+        border-radius: 17px !important;
+        opacity: 1;
+    }
+
+    .raise-with-mint-card {
+        display: flex;
+        padding: 24px 10px 10px 24px;
+        width: 30rem;
+    }
+
+}
