@@ -16,15 +16,15 @@ const Home = () => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-              <LandingHead />
+                <LandingHead />
             </Container>
             <FundedNetworks />
             <Container maxWidth="lg">
-            <SubscribegGraph />
-            <OpenInvestment />
-            <AboutTeamCarousel />
-            <InvestorsHome />
-            <HowToRaise />
+                <SubscribegGraph />
+                <OpenInvestment />
+                <AboutTeamCarousel />
+                <InvestorsHome />
+                <HowToRaise />
             </Container>
         </React.Fragment>
     )

@@ -1,0 +1,359 @@
+.founder-application-parent {
+    padding-top: 10em;
+    height: 100%;
+}
+
+.raise-with-mint-page-title {
+    margin-top: 100px;
+    text-align: center;
+    font: normal normal 600 24px Poppins !important;
+    font-weight: 7000 !important;
+}
+
+.raise-mint-title-desc {
+    text-align: center;
+    padding-top: 1.8em;
+    font: normal normal medium 18px/16px Poppins;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
+.raise-mint-appln-parent {
+    margin-top: 3%;
+    /* box-shadow: 0px 0px 20px #00000017; */
+    border-radius: 9px;
+    text-align: center;
+}
+
+.appln-heading {
+    text-align: left;
+    font: normal normal 600 16px Poppins !important;
+    padding-bottom: 1.5em;
+}
+
+.appln-logo-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 80px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    border-style: dashed;
+    border-radius: 5px;
+    font: normal normal medium 18px/16px Poppins;
+    letter-spacing: 0px;
+    background-color: #FFFFFF;
+    color: #777777;
+}
+
+.logo-selectfile-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #F4F4F4;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.select-file-btn {
+    color: white;
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 35px;
+    opacity: 1;
+    padding: 8px 30px;
+    margin-top: 20px;
+    text-align: center;
+    font: normal normal medium 16px/52px Poppins;
+    letter-spacing: 0px;
+}
+
+
+.inp-enter-name {
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    box-sizing: border-box;
+    opacity: 1;
+    border: none;
+    width: 100%;
+    height: 3.5em;
+    padding-left: 20px;
+    margin: 18px 0px 18px 0px;
+}
+
+.inp-textarea-desc {
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    font: normal normal medium 16px/52px Poppins !important;
+    border-radius: 5px;
+    box-sizing: border-box;
+    opacity: 1;
+    border: none;
+    width: 100%;
+    padding: 20px;
+    margin: 18px 0px 18px 0px;
+}
+
+
+input[type=text]:focus {
+    font-family: Poppins;
+    border-style: none;
+    border: 1px solid #F1C734 !important;
+}
+
+textarea::placeholder {
+    font-family: Poppins;
+    color: #333;
+}
+
+input::placeholder {
+    font-family: poppins;
+    color: #333;
+}
+
+.pick-the-services {
+    text-align: left;
+    font: normal normal medium 14px/16px Poppins;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    font-weight: 600 !important;
+}
+
+.grid-parent {
+    width: 100%;
+}
+
+.upload-ur-pitch {
+    text-align: left;
+    font: normal normal 100 20px/22px Poppins;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    font-weight: 600 !important;
+    padding-top: 1.5em;
+    padding-bottom: 1.4em;
+}
+
+.drag-and-drop-parent {
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border: 2px dashed #707070;
+    border-radius: 5px;
+    opacity: 1;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-and-drop-text {
+    text-align: left;
+    font: normal normal normal 18px/16px Poppins;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
+.max-size-text {
+    text-align: left;
+    font: normal normal normal 13px/16px Poppins;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
+.founder-appln-submit-button {
+    width: 280px;
+    height: 54px;
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 27px;
+    color: white;
+    font: normal normal normal 13px/16px Poppins;
+}
+
+.founder-appln-submit-parent {
+    text-align: center;
+    padding: 60px 10px;
+}
+
+@media screen and (min-width: 870px) {
+    .founder-application-parent {
+        padding-top: 10em;
+        height: 100%;
+        padding-bottom: 10em;
+    }
+
+    .raise-with-mint-page-title {
+        text-align: center;
+        font: normal normal 600 36px/16px Poppins !important;
+    }
+
+    .raise-mint-title-desc {
+        text-align: center;
+        padding-top: 1.8em;
+        font: normal normal medium 18px/16px Poppins;
+        letter-spacing: 0px;
+        color: #777777;
+    }
+
+    .raise-mint-appln-parent {
+        margin-top: 3%;
+        padding: 60px 50px;
+        box-shadow: 0px 0px 20px #00000017;
+        border-radius: 9px;
+        text-align: left;
+    }
+
+    .appln-heading {
+        text-align: left;
+        font: normal normal 600 24px/16px Poppins !important;
+        padding-bottom: 1.5em;
+    }
+
+    .appln-logo-parent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px !important;
+        width: 80px;
+        border: 1px solid black;
+        border-style: dashed;
+        border-radius: 5px;
+        margin-bottom: 0px;
+        font: normal normal medium 18px/16px Poppins;
+        letter-spacing: 0px;
+        background-color: #FFFFFF;
+        color: #777777;
+        align-self: center;
+    }
+
+    .logo-selectfile-parent {
+        width: 50rem;
+        border-radius: 5px;
+        padding: 18px 50px 18px 20px;
+        margin-bottom: 15px;
+        background-color: #F4F4F4;
+        justify-content: space-between;
+        align-items: center;
+        justify-items: center;
+        display: flex;
+        align-self: center;
+        flex-direction: row;
+    }
+
+    .select-file-btn {
+        color: white;
+        background: #000000 0% 0% no-repeat padding-box;
+        border-radius: 35px;
+        opacity: 1;
+        padding: 8px 30px;
+        margin-top: 0px;
+        text-align: center;
+        font: normal normal medium 16px/52px Poppins;
+        letter-spacing: 0px;
+    }
+
+    .select-file-btn-parent {
+        display: flex;
+        vertical-align: middle;
+    }
+
+    .inp-enter-name {
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        border-radius: 5px;
+        box-sizing: border-box;
+        opacity: 1;
+        border: none;
+        width: 50rem;
+        height: 3.5em;
+        padding-left: 20px;
+        margin: 18px 0px 18px 0px;
+    }
+
+    input[type=text]:focus {
+        border-style: none;
+        border: 1px solid #F1C734 !important;
+    }
+
+    .inp-textarea-desc {
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        font: normal normal medium 16px/52px Poppins !important;
+        border-radius: 5px;
+        box-sizing: border-box;
+        opacity: 1;
+        border: none;
+        width: 50rem;
+        padding: 20px;
+        margin: 18px 0px 18px 0px;
+    }
+
+    .pick-the-services {
+        text-align: left;
+        font: normal normal medium 14px/16px Poppins;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+        font-weight: bolder;
+    }
+
+    .grid-parent {
+        width: 50rem;
+    }
+
+    .checkbox-card {
+        padding-left: 10px;
+    }
+
+    .upload-ur-pitch {
+        text-align: left;
+        font: normal normal 100 20px/22px Poppins;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+        font-weight: 600 !important;
+    }
+
+    .drag-and-drop-parent {
+        background: #F4F4F4 0% 0% no-repeat padding-box;
+        border: 2px dashed #707070;
+        border-radius: 5px;
+        opacity: 1;
+        width: 50rem;
+        height: 10rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .drag-and-drop-text {
+        text-align: left;
+        font: normal normal normal 18px/16px Poppins;
+        letter-spacing: 0px;
+        color: #777777;
+    }
+
+    .max-size-text {
+        text-align: left;
+        font: normal normal normal 13px/16px Poppins;
+        letter-spacing: 0px;
+        color: #777777;
+    }
+
+    .founder-appln-submit-button {
+        width: 280px;
+        height: 54px;
+        background: #000000 0% 0% no-repeat padding-box;
+        border-radius: 27px;
+        color: white;
+        font: normal normal normal 13px/16px Poppins;
+    }
+
+    .founder-appln-submit-parent {
+        text-align: center;
+        padding: 60px 10px;
+    }
+}
