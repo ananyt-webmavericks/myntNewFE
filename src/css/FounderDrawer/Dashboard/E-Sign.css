@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.raise-with-mint-cards {
+    margin-top: 2rem;
+    padding: 10px 25px 10px 25px !important;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 53rem !important;
+    height: 7rem !important;
+}
+
+.AnalyticsBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+    height: 20rem !important;
+    border-radius: 7px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 20px #0000001A;
+    margin-bottom: 5rem !important;
+}
+
+.download-btn-Active {
+    padding: 40px 0px 0px 0px;
+}
+
+.AddCompany {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem !important;
+    height: 29rem !important;
+    width: 20rem !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 20px #00000014;
+    border-radius: 7px;
+    /* border: 1px solid red; */
+}
+
+.AddCompany2 {
+    margin-top: 4rem !important;
+    height: 29rem !important;
+    width: 20rem !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 20px #00000014;
+    border-radius: 7px;
+}
+
+.AddCompany2 img {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 999999;
+}
+
+.settlimg {
+    margin-top: -113px;
+    width: 100%;
+    height: 200px;
+}
+
+.settleindex {
+    z-index: 500000 !important;
+}
+
+.settlpara {
+    padding: 2px 2px 10px 14px;
+}
+
+.colivingBtn {
+    margin-left: 1rem !important;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    align-items: center;
+    color: #838383;
+    opacity: 1;
+    border: 1px solid #838383;
+    border-radius: 10px;
+}
+
+.companylogoimg img {
+    width: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60px;
+    padding: 16px 0px 0px 16px;
+}
+
+.raisedflex {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px 30px 20px;
+}
+
+.imgcenter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.setCornerIcon {
+    justify-content: space-between !important;
+    display: flex;
+    padding: 5px;
+}
+
+.Company-Add-Card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.plus-icon {
+    font: normal normal 300 40px/48px Poppins !important;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
+.campaign-Icon-Box {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px dashed #D1D1D1;
+    border-radius: 12px;
+    opacity: 1;
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .raise-with-mint-cards {
+        width: 36rem !important;
+        height: 10rem !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 10px 10px 10px !important;
+    }
+
+    .download-btn-Active {
+        margin-top: -2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .raise-with-mint-cards {
+        width: 20rem !important;
+        height: 12rem !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 10px 10px 10px !important;
+    }
+
+    .download-btn-Active {
+        padding: 50px;
+        margin-top: -2rem;
+    }
+
+    .raise-with-mint-cards {
+        height: 100%;
+        width: 100% !important;
+        padding: 2px 5px 5px 10px !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .companyAddbox {
+        flex-direction: column;
+        margin-bottom: 10rem;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .AddCompany {
+        height: 100%;
+        width: 100% !important;
+        flex-direction: column;
+    }
+
+    .AddCompany2 {
+        height: 100%;
+        width: 100% !important;
+        flex-direction: column;
+    }
+
+    .AnalyticsBox {
+        height: 100%;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .AddCompany {
+        height: 100%;
+        width: 100% !important;
+        flex-direction: column;
+    }
+
+    .AddCompany2 {
+        height: 100%;
+        width: 100% !important;
+        flex-direction: column;
+    }
+
+    .AnalyticsBox {
+        height: 100%;
+        width: 100% !important;
+    }
+}

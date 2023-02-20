@@ -1,0 +1,494 @@
+.formgroup {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3;
+    width: 100% !important;
+}
+
+.teamminput {
+    align-items: center;
+    width: 492px !important;
+    height: 42px;
+    background: #F4F4F4;
+    border-radius: 5px;
+    opacity: 1;
+    padding-left: 0.7rem;
+    font: normal normal normal 14px / 16px Poppins;
+    border: none;
+}
+
+.teammtextarea {
+    align-items: center;
+    width: 1020px;
+    height: 100px;
+    background: #F4F4F4;
+    border-radius: 5px;
+    opacity: 1;
+    padding-left: 0.7rem;
+    font: 14px / 16px Poppins;
+    padding-top: 0.7rem;
+    border: none;
+
+}
+
+.fileupload {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-left: 0.6rem;
+    padding: 1.3rem;
+}
+
+.formgroupTextArea {
+    width: 100% !important;
+}
+
+.uplodPhoto {
+    width: 109px;
+    height: 109px;
+    background: #FFFFFF;
+    border: 1px dashed #707070;
+    border-radius: 5px;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.PhotoText {
+    opacity: 1;
+    width: 28px;
+    height: 15px;
+    color: #676767;
+    text-align: center;
+    letter-spacing: 0px;
+    font: normal normal normal 10px / 11pxPoppins;
+}
+
+
+.UploadPicture {
+    width: 175px;
+    height: 42px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px #00000029;
+    border: 1px solid #F1C734;
+    border-radius: 21px;
+    opacity: 1;
+}
+
+
+.AddmemberBtn {
+    margin-top: -80px;
+    width: 280px;
+    height: 54px;
+    background: #FFFFFF 0% 0%;
+    border: 1px solid #D1D1D1;
+    border-radius: 27px;
+    opacity: 1;
+    float: right;
+    margin-right: 2.5rem;
+    font: 16px / 52px Poppins;
+}
+
+
+.hrline {
+    margin-top: 5rem;
+    border: 1px solid #F4F4F4;
+}
+
+.BtnSaveAndNext {
+    margin-top: 3rem;
+    float: right;
+    margin-right: 2.5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.SaveBtn {
+    width: 280px;
+    height: 54px;
+    background: #FADF35;
+    border-radius: 27px;
+    opacity: 1;
+    border: none;
+    font: 16px/52px Poppins;
+
+}
+
+.NextBtn {
+    width: 280px;
+    height: 54px;
+    background: #000000;
+    border-radius: 27px;
+    opacity: 1;
+    color: white;
+    font: 16px/52px Poppins;
+
+}
+
+@media screen and (max-width: 2560px) {
+    /* .formgroup {
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: row !important;
+    } */
+
+    .fileupload {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    /* .formgroup {
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: column !important;
+    } */
+
+    .fileupload {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+    }
+
+    .formgroupTextArea {
+        width: 52% !important;
+    }
+
+    .formgroupTextArea textarea {
+        width: 100% !important;
+    }
+
+    .AddmemberBtnParent {
+        width: 100% !important;
+    }
+
+    .AddmemberBtn {
+        margin-left: 10rem;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    /* .formgroup {
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: column !important;
+    } */
+
+    /* .fileupload {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+    } */
+
+    .formgroupTextArea {
+        width: 46% !important;
+        float: left;
+    }
+}
+
+@media screen and (min-width: 1309px) {
+
+    .fileupload {
+        flex-direction: row;
+        height: auto;
+        width: auto;
+    }
+
+    .formgroup {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px solid red; */
+    }
+
+    .formgroup input {
+        margin-top: 1rem;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+
+    .formgroup select {
+        margin-top: 1rem;
+        padding-top: 0.5rem !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .fileupload {
+        flex-direction: row;
+    }
+
+    .formgroupTextArea {
+        width: 100% !important;
+    }
+
+    .formgroupTextArea textarea {
+        width: 100% !important;
+    }
+
+    .AddmemberBtnParent {
+        width: 100% !important;
+    }
+
+    .AddmemberBtn {
+        margin-left: 10rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .formgroup {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px solid red; */
+    }
+
+    .formgroup input {
+        margin-top: 1rem;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+
+    .formgroup select {
+        margin-top: 1rem;
+        padding-top: 0.5rem !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroupTextArea textarea {
+        width: 100% !important;
+    }
+
+    .formgroupTextArea {
+        width: 100% !important;
+    }
+
+    .fileupload {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        gap: 7rem;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+    }
+
+    .AddmemberBtnParent {
+        width: 100% !important;
+        position: relative;
+    }
+
+    .AddmemberBtn {
+        position: absolute;
+        margin-left: 15rem;
+    }
+
+    .fileupload {
+        justify-content: center;
+        width: 100% !important;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 8rem;
+        border: 1px solid #eee;
+    }
+
+    .BtnSaveAndNext {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 85%;
+        flex-direction: row;
+        /* margin-left: 10rem !important; */
+    }
+}
+
+@media screen and (max-width:768px) {
+    .formgroup {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px solid red; */
+    }
+
+    .formgroup input {
+        margin-top: 1rem;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+
+    .formgroup select {
+        margin-top: 1rem;
+        padding-top: 0.5rem !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroupTextArea textarea {
+        width: 100% !important;
+    }
+
+    .fileupload {
+        justify-content: center;
+        width: 100% !important;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .BtnSaveAndNext {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 85%;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .formgroup {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroup input {
+        margin-left: 0.7rem !important;
+        align-items: center;
+        justify-content: center !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        /* margin: 0rem; */
+    }
+
+    .formgroup select {
+        text-align: center !important;
+        margin-left: 0.8rem !important;
+        align-items: center;
+        justify-content: center !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding-top: 0.6rem !important;
+    }
+
+    .formgroupTextArea {
+        width: 100% !important;
+    }
+
+    .formgroupTextArea textarea {
+        margin-left: 0.7rem !important;
+        width: 100% !important;
+    }
+
+    .fileupload {
+        flex-direction: column;
+        /* height: auto;
+        width: auto; */
+    }
+
+    .AddmemberBtnParent {
+        width: 100% !important;
+        align-items: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0.7rem !important;
+    }
+
+    .AddmemberBtn {
+        width: 100%;
+        margin-left: -0rem !important;
+        align-items: center;
+    }
+
+    .BtnSaveAndNext {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-right: 0.9rem !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .formgroup {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroup input {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroupTextArea textarea {
+        width: 100% !important;
+    }
+
+    .fileupload {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+    }
+
+    .AddmemberBtnParent {
+        width: 100% !important;
+        position: relative;
+    }
+
+    .AddmemberBtn {
+        width: 100% !important;
+        position: absolute;
+    }
+
+    .BtnSaveAndNext {
+        width: 90%;
+        position: absolute;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .formgroup {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroup input {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .formgroupTextArea textarea {
+        width: 100% !important;
+    }
+
+    .fileupload {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+    }
+
+    .AddmemberBtnParent {
+        width: 100% !important;
+        position: relative;
+    }
+
+    .AddmemberBtn {
+        width: 100% !important;
+        position: absolute;
+    }
+
+    .BtnSaveAndNext {
+        width: 100%;
+        flex-direction: column;
+        position: absolute;
+    }
+
+}
