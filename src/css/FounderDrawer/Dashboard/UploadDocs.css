@@ -1,0 +1,110 @@
+.upload-docs-title {
+    width: 194px;
+    height: 28px;
+    text-align: left;
+    font: normal normal medium 20px/48px Poppins !important;
+    letter-spacing: 0px;
+    font-weight: bold !important;
+}
+
+.upload-docs-desc {
+    margin-top: 1rem !important;
+    max-width: 1070px;
+    width: 100%;
+    height: 44px;
+    text-align: left;
+    font: normal normal normal 14px/24px Poppins;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
+.upload-doc-parent {
+    margin-top: 4rem;
+    max-width: 757px;
+    width: 100%;
+    height: 62px;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem 0.8rem 1rem;
+}
+
+.upload-docs-btn {
+    width: 175px;
+    height: 42px;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 6px #00000029 !important;
+    border: 1px solid #F1C734 !important;
+    border-radius: 21px !important;
+}
+
+.doc-list-parent {
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+}
+
+.doc-name {
+    text-align: left;
+    font: normal normal medium 11px/48px Poppins !important;
+    letter-spacing: 0px;
+}
+
+.icon-name-upload-doc {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Choose-file-text {
+    text-align: left;
+    font: normal normal normal 14px/48px Poppins !important;
+    letter-spacing: 0px;
+    color: #777777 !important;
+}
+
+.upload-fun-parent {
+    padding-bottom: 3rem;
+    max-width: 757px !important;
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
+@media screen and (max-width:768px) {
+    .upload-doc-parent {
+        flex-direction: column;
+        height: 8rem !important;
+        margin-top: 8rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .upload-doc-parent {
+        flex-direction: column;
+        height: 8rem !important;
+        margin-top: 8rem;
+    }
+
+    .doc-list-parent {
+        max-width: 300px;
+        margin-top: 1.6rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 3rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .upload-doc-parent {
+        flex-direction: column;
+        height: 8rem !important;
+        margin-top: 8rem;
+    }
+}

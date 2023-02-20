@@ -1,0 +1,124 @@
+.hightlight-heading {
+    text-align: left !important;
+    font: 20px/48px Poppins !important;
+    letter-spacing: 0px !important;
+    font-weight: 500 !important;
+    color: #000000;
+}
+
+.highlight-desc {
+    padding-right: 7%;
+}
+
+.tell-us-litt-more {
+    text-align: left !important;
+    font: normal normal medium 14px/24px Poppins !important;
+    letter-spacing: 0px;
+    color: #777777 !important;
+    opacity: 1;
+}
+
+.parent-of-card {
+    margin: 1.1rem 0.4rem 1.1rem 0.4rem;
+    padding: 10px 14px 18px 22px;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 20px #0000001A !important;
+    border-radius: 7px !important;
+    opacity: 1;
+}
+
+.hightlight-submit-button {
+    width: 280px;
+    height: 54px;
+    background: #000000 0% 0% no-repeat padding-box !important;
+    border-radius: 27px !important;
+    opacity: 1;
+}
+
+.hightlight-btn-parent {
+    text-align: right;
+    margin-right: 6.9rem;
+    margin-top: 1.8rem;
+}
+
+
+@media screen and (max-width:768px) {
+
+    .buttonsParent {
+        margin-bottom: 8rem !important;
+        text-align: center !important;
+        margin-top: 2rem;
+        font-family: poppins !important;
+    }
+
+    .hightlight-btn-parent {
+        text-align: center;
+        margin-right: 0;
+        margin-top: 1rem;
+        margin-bottom: 6rem;
+    }
+
+    .highlight-desc {
+        padding-right: 2%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .gridParent {
+        padding-right: 5%
+    }
+
+    .highlight-desc {
+        padding-right: 2%;
+    }
+
+    .parent-of-card {
+        margin: 0.5rem 0rem 0.5rem 0rem;
+        padding: 10px 14px 18px 22px;
+    }
+
+    .hightlight-btn-parent {
+        text-align: center;
+        margin-right: 0;
+        margin-top: 1rem;
+        margin-bottom: 6rem;
+    }
+
+    .buttonsParent {
+        margin-bottom: 8rem !important;
+        text-align: center !important;
+        margin-top: 2rem;
+        font-family: poppins !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .gridParent {
+        padding-right: 0%;
+        text-align: center;
+    }
+
+    .parent-of-card {
+        margin: 0.5rem 0rem 0.5rem 0rem;
+        padding: 10px 14px 18px 22px;
+    }
+
+    .hightlight-btn-parent {
+        text-align: center;
+        margin-right: 0;
+        margin-top: 1rem;
+        margin-bottom: 6rem;
+    }
+
+
+    .highlight-desc {
+        padding-right: 2%;
+    }
+
+    .buttonsParent {
+        margin-bottom: 8rem !important;
+        text-align: center !important;
+        margin-top: 2rem;
+        font-family: poppins !important;
+    }
+}

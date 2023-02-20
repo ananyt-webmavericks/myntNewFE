@@ -1,4 +1,3 @@
-
 import './App.css';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useEffect } from 'react';
@@ -41,6 +40,9 @@ import HomeFounder from './Pages/Founder/HomeFounder';
 import FounderApplication from './Pages/Founder/FounderApplication';
 import DrawerFounder from './component/FounderDrawer/DrawerFounder';
 import DashboardFounder from './Pages/Founder/DashboardFounder';
+import DashBoardESign from './Pages/Founder/DashBoardESign';
+import FounderCampaigns from './Pages/Founder/FounderCampaigns';
+import FounderCampaingsTabs from './Pages/Founder/FounderCampaingsTabs';
 function App() {
 
   const location = window.location.pathname;
@@ -89,6 +91,9 @@ function App() {
         <Route exact path="/founder" element={<HomeFounder />} />
         <Route exact path="/founder/application" element={<FounderApplication />} />
         <Route exact path="/dashboard-founder" element={<DashboardFounder />} />
+        <Route exact path="/dashboard-founder/e-signin" element={<DashBoardESign />} />
+        <Route exact path="/dashboard-founder/campaigns" element={<FounderCampaigns />} />
+        <Route exact path="/dashboard-founder/campaigns-tabs" element={<FounderCampaingsTabs />} />
       </Routes>
       {(!location.includes('/dashboard')) && (!location.includes('/complete-your-profile')) && <Footer />}
 
