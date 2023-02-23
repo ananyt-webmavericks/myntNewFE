@@ -1,3 +1,4 @@
+
 import { Button, Card, Container, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
@@ -30,9 +31,9 @@ const DashboardFounder = () => {
                                 <Typography className="e-sign-title">E-sign</Typography>
                                 <Typography>E-sign your agreements to finalize investments in your campaign</Typography>
                             </div>
-                            <div className="download_btntext_center">
+                            <div>
                                 <Button sx={{ color: 'white', fontFamily: 'poppins' }} className="download-button">Download</Button>
-                                <span style={{ fontSize: "11px" }} className="action-pending-text">(Action Pending by Mynt)</span>
+                                <span style={{ fontSize: "12px" }} className="action-pending-text">(Action Pending by Mynt)</span>
                             </div>
                         </Card>
                     </Container>
