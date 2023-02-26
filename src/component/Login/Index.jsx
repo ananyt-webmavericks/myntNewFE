@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../css/GetStarted/getStarted.css'
 import { Card, CardContent } from "@mui/material";
 import Google from '../../images/assets/google.png';
@@ -9,10 +9,51 @@ import Loginlogo from '../../images/assets/loginlogo.png';
 import { useNavigate } from "react-router-dom";
 import GoogleSignIn from "../GoogleSignIn";
 import FacebookSignIn from "../FacebookSignIn";
-
+import { toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import UserServices from "../../service/UserService";
+import { userEmailAction } from "../../Redux/actions/auth";
+import { useSelector } from "react-redux";
 export default function LoginMain() {
-
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const [email , setEmail]= useState('')
+    const { userInfo } = useSelector((state) => state.loginData)
+    const isEmail = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+    const notify = (data) => {
+        toast.error(data)
+    }
+
+    const handleChange =(e)=>{
+        setEmail(e.target.value)
+    }
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        if (!isEmail(email)) {
+              notify("Please enter a valid email")
+        }
+        else{
+            try{
+                UserServices.LoginUserByEmail(email).then(
+                    (response) => {
+                        console.log(response)
+                        if(response.status === 200){
+                            dispatch(userEmailAction({...userInfo , username:email}))
+                            navigate('/otp-verification')
+                        }
+                            
+                    })
+            }
+            catch{
+                notify("Try after few minutes")
+            }
+        }
+    }
+   
+
+    // notifySuccess(response.data.message)
+
+
     return (
         <div className="get-started-container">
             <div className="get-started-section">
@@ -42,10 +83,10 @@ export default function LoginMain() {
                         <div className="input-container-second">
                             <div className="email-input-get-started">
                                 <img src={Email} width={16} height={16} style={{ marginLeft: '10px' }}></img>
-                                <input className="in-input-email" placeholder="Email Address" />
+                                <input value={email} onChange={handleChange}  className="in-input-email" placeholder="Email Address" />
                             </div>
                         </div>
-                        <button onClick={() => navigate('/otp-verification')} className="sign-up-btn">Login</button>
+                        <button onClick={handleSubmit} className="sign-up-btn">Login</button>
                     </CardContent>
                 </Card>
                 <div className="bottom-most-txt-get-started">

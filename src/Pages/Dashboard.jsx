@@ -14,25 +14,26 @@ import { useState } from "react";
 const Dashboard = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
-    const [showDeals,setShowDeals]= useState(false)
+    const [showDeals,setShowDeals]= useState({})
 
     const fetchValue = (value)=>{
         setShowDeals(value)
     }
+    console.log(showDeals)
 
     return (
         <>
             <div style={{ display: 'flex', position: 'relative' }}>
-                {location.includes('/dashboard') && <DrawerMain />}
+                {location.includes('/dashboard') && <DrawerMain height={'inherit'} />}
                 <div className="dashboard-container">
                     <Container maxWidth="lg">
                         <div style={{ display: 'grid' }}>
                             <span className="get-started-heading startup">Welcome Asad!</span>
-                            <ProgressBarDash  showDeals={showDeals} />
+                            <ProgressBarDash  fetchValue={fetchValue} />
                         </div>
-                        { showDeals===false && <ProgressNotifyDash onClick={fetchValue} />}
+                        <ProgressNotifyDash  data={showDeals} />
                         <DashboardCard />
-                        {showDeals === true && <DashboardDeals />}
+                       <DashboardDeals />
                         <div style={{ marginTop: '92px' }}>
                             <Faqs />
                         </div>

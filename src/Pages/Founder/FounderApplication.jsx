@@ -26,7 +26,7 @@ const FounderApplication = () => {
             <Container maxWidth="lg">
                 <div className='founder-application-parent'>
                     <Typography className='raise-with-mint-page-title'>
-                        Raise with mint
+                        Raise with Mynt
                     </Typography>
                     <Typography className='raise-mint-title-desc'>
                         Tell us a little about your company. This will help us understand your business better.

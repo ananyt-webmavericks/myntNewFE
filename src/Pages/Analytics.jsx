@@ -9,9 +9,9 @@ const Analytics = () => {
     return (
         <>
         <div style={{ display: 'flex' }}>
-            {location.includes('/dashboard') && <DrawerMain />}
+            {location.includes('/dashboard') && <DrawerMain height={'inherit'} />}
             <div className="dashboard-container">
-                <Container maxWidth="lg">
+                <Container maxWidth="lg" style={{overflowY:'scroll'}}>
                     <AnalyticsMain />
                 </Container>
             </div>

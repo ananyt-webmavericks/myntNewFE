@@ -85,15 +85,16 @@ width: 100px;
   display: none;
 }
 
-.navbar a{
+.navbar span{
     color: #444;
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
+    cursor: pointer;
     transition: color 0.3s ease-in-out;
 }
 
-.navbar a:hover{
+.navbar span:hover{
     color: #fbdf35;
 }
 .ham-menu-img{

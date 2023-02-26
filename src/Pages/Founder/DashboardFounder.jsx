@@ -29,7 +29,7 @@ const DashboardFounder = () => {
                         <Card className="raise-with-mint-card" elevation={5}>
                             <div>
                                 <Typography className="e-sign-title">E-sign</Typography>
-                                <Typography>E-sign your agreements to finalize investments in your campaign</Typography>
+                                <Typography>E-sign your agreements to finalize Subscriptions in your campaign</Typography>
                             </div>
                             <div>
                                 <Button sx={{ color: 'white', fontFamily: 'poppins' }} className="download-button">Download</Button>

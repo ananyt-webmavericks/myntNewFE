@@ -34,7 +34,7 @@ const values = [
         checked:false
     },
     {
-        id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Investments & Earn Tax-free fixed income Diversify your portfolio',
+        id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
         raised: '206.01%',
         closesIn: '3 days',
@@ -66,7 +66,7 @@ const values = [
         checked:false
     },
     {
-        id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Investments & Earn Tax-free fixed income Diversify your portfolio',
+        id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
         raised: '206.01%',
         closesIn: '3 days',
@@ -144,7 +144,7 @@ const LiveDeals = () => {
                             {activeBtn === 1 && 
                             <div style={{display:'grid'}}>
                             <span style={{fontSize:'14px'}}>( i - Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange)</span> 
-                            <span style={{fontSize:'18px'}}>Subscribe to rapidly growing companies with a low minimum investment requirement.</span> 
+                            <span style={{fontSize:'18px'}}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span> 
                             </div>
                             }
                             {activeBtn === 2 && 

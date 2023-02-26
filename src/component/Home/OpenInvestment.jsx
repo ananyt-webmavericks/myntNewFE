@@ -34,7 +34,7 @@ const values = [
         checked: false
     },
     {
-        id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Investments & Earn Tax-free fixed income Diversify your portfolio',
+        id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
         raised: '206.01%',
         closesIn: '3 days',
@@ -66,7 +66,7 @@ const values = [
         checked: false
     },
     {
-        id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Investments & Earn Tax-free fixed income Diversify your portfolio',
+        id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
         raised: '206.01%',
         closesIn: '3 days',
@@ -131,7 +131,7 @@ export default function OpenInvestment() {
             <Box sx={{ minHeight: '80vh', marginTop: '60px', marginBottom: '2em' }}>
                 <div className="subscribe-graph-heading">
                     <Typography className="test-script-regular">Open<span className="test-script-bg"> Deals</span></Typography>
-                    <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities - register now available now!</Typography>
+                    <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities - </Typography>
                 </div>
                 <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                     {data.slice(0, showItem).map((item, index) => {

@@ -1,10 +1,6 @@
 import React from "react";
 import '../../css/CompleteYourProfile/completeYourProfile.css';
 import { Card, CardContent } from "@mui/material";
-import VerifyNumber from "./VerifyNumber";
-import VerifyNumberOtp from "./VerifyNumberOtp";
-import KycPanDetails from "./KycPanDetails";
-import VerifyAddress from "./VerifyAddress";
 import BankDetails from "./BankDetails";
 import Footer from "../Footer";
 

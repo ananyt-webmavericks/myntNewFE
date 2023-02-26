@@ -1,16 +1,31 @@
-.analytics-main-container{
+.analytics-main-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.highchart-bar{
+
+.card-details-chart {
+    order: 2;
+}
+
+.highchart-bar {
     width: 100%;
+    order: 1;
     max-width: 512px;
     max-height: 550px;
     margin-top: 1em;
 }
-.card-details-chart{
-    width: 350px;
+
+.highchart-bar.last {
+    width: 100%;
+    max-width: 917px;
+    max-height: 550px;
+    margin-top: 57px;
+}
+
+.card-details-chart {
+    max-width: 350px;
+    width: 100%;
     min-height: 100px;
     margin-left: 4em;
     /* UI Properties */
@@ -20,31 +35,191 @@
     padding: 20px 30px;
     display: grid;
 }
-.chart-detail-head{
+
+.chart-detail-head {
     font-weight: 600;
-    
+
     font-size: 16px;
 }
-.chart-detail-numbers{
+
+.chart-detail-numbers {
     font-weight: 600;
-    
+
     font-size: 24px;
 }
-.chart-detail-description{
+
+.chart-detail-description {
     font-size: 16px;
     color: #777777;
 }
-.startup-updates-section{
+
+.startup-updates-section {
     font-weight: 600;
     margin-bottom: 20px;
     font-size: 20px;
-    
+
 }
-.single-card-data-analytics{
+
+.single-card-data-analytics {
     width: 250px;
     height: 164px;
     /* UI Properties */
     background: #F4F4F4 0% 0% no-repeat padding-box;
     border-radius: 9px;
     margin-left: 1em;
+}
+
+.accordian-analytics-container {
+    margin-top: 35px;
+}
+
+.company-info-section-analytics {
+    display: flex;
+    align-items: center;
+}
+
+.active-btn-anaytics {
+    width: 120px !important;
+    height: 30px !important;
+    /* UI Properties */
+    background: #01965D 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 0px 23px #00000029 !important;
+    border-radius: 20px !important;
+    margin-left: 43px !important;
+}
+
+.card-details-analytics {
+    margin-top: 35px;
+    display: flex;
+    max-width: 900px;
+}
+
+.update-dialog-tabs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.year-wise-pdfs-btn {
+    width: 101px;
+    height: 34px;
+    /* UI Properties */
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+.year-wise-pdfs-btn:hover {
+    border: 1px solid #DEA20A !important;
+}
+
+.pdf-container-startup {
+    max-height: 160px;
+    height: 100%;
+    margin-top: 35px;
+
+}
+
+.single-pdf-enlist-section {
+    margin-top: 1em;
+
+}
+
+.modal-btn-complete-new {
+    background-color: black !important;
+    color: white !important;
+    width: 120px !important;
+    height: 40px !important;
+    margin-top: 1em !important;
+    border-radius: 20px !important;
+}
+
+.repayment-received-analytics-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: block;
+}
+.repayment-section-detail-horizontal{
+    display: block;
+}
+.repayment-detail-section-vertical{
+    display: none;
+}
+.card-repayment {
+   width: 100%;
+    box-shadow: 0px 0px 10px #0000001A !important;
+}
+
+.box-payments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 15px;
+    height: 24px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 6px #0000001A;
+    border: 1px solid #FDDB00;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.box-payments.final {
+    background: #009A57 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 6px #0000001A;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+@media screen and (max-width:940px) {
+    .repayment-section-detail-horizontal{
+        display:none;
+    }
+    .repayment-detail-section-vertical{
+        display: block;
+        margin-left: 5em;
+        position: relative;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .analytics-main-container {
+        display: grid;
+        justify-content: center;
+    }
+
+    .card-details-chart {
+        order: 1;
+        margin-bottom: 2em;
+        margin-top: 1em;
+        margin-left: 0;
+    }
+
+    .highchart-bar {
+        order: 2;
+        margin-bottom: 2em;
+    }
+}
+
+@media screen and (max-width:540px) {
+    .repayment-detail-section-vertical{
+  
+        margin-left: 1em;
+    }
+   
+}
+@media screen  and (max-width:450px){
+    .image-repayments{
+        display: none;
+    }
+    .repayment-detail-section-vertical{
+  
+        margin: auto;
+    }
 }

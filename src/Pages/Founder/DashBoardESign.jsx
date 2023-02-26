@@ -31,7 +31,7 @@ const DashBoardESign = () => {
                         <Card className="raise-with-mint-cards" elevation={5}>
                             <div>
                                 <Typography className="e-sign-title">E-sign</Typography>
-                                <Typography>E-sign your agreements to finalize investments in your campaign</Typography>
+                                <Typography>E-sign your agreements to finalize Subscriptions in your campaign</Typography>
                             </div>
                             <div className="download-btn-Active">
                                 <Button style={{ borderRadius: "50px", backgroundColor: "#fbdf35", color: "black" }} variant="contained"><b>Download</b></Button>

@@ -40,8 +40,8 @@ const Footer = () => {
                     <div className="footer-head-section">
                         <img src={logo} alt="Mynt logo" className="logo-web-footer" />
                         <span className="footer-text-header">Mynt Invest is a technology & transparency
-                            -focused alternate investment platform that is
-                            making accessible the best investment
+                            -focused alternate Subscription platform that is
+                            making accessible the best Subscription
                             opportunities across the entire risk-reward
                             spectrum that can best add value to a investor's
                             wealth creation goals.
@@ -80,7 +80,7 @@ const Footer = () => {
                                 <span className="heading-link">Fine Print</span>
                                 <span onClick={()=>navigate('/privacy-policy')} className="Detail-link">Privacy Policy</span>
                                 <span onClick={()=>navigate('/terms-and-condition')} className="Detail-link">Terms & Condition</span>
-                                <span onClick={()=>navigate('/risk-investment')} className="Detail-link">Risk of Investment</span>
+                                <span onClick={()=>navigate('/risk-investment')} className="Detail-link">Risk of Subscription</span>
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Startups</span>
@@ -122,7 +122,7 @@ const Footer = () => {
                     any other form of loss incurred by the user or any affiliated party on the basis of information provided herein.
 
                     MXi Technologies Pvt Ltd is neither a stock exchange nor does it intend to get recognized as a stock exchange under the Securities Contracts Regulation Act, 1956. MXi Technologies Pvt Ltd
-                    is not authorized by the capital markets regulator to solicit investments. The securities traded on these platforms are not traded on any regulated exchange. Mynt also provides that it
+                    is not authorized by the capital markets regulator to solicit Subscriptions. The securities traded on these platforms are not traded on any regulated exchange. Mynt also provides that it
 
                     does not facilitate any online or offline buying, selling, or trading of securities.
 

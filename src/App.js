@@ -43,6 +43,18 @@ import DashboardFounder from './Pages/Founder/DashboardFounder';
 import DashBoardESign from './Pages/Founder/DashBoardESign';
 import FounderCampaigns from './Pages/Founder/FounderCampaigns';
 import FounderCampaingsTabs from './Pages/Founder/FounderCampaingsTabs';
+
+import MyntFaq from './Pages/MyntUniversity/MyntFaq';
+import MyntBlogs from './Pages/MyntUniversity/MyntBlogs';
+import MyntVideoClips from './Pages/MyntUniversity/MyntVideoClips';
+import GettingStartedMynt from './component/MyntUniversity/MyntFaq/GettingStartedMynt';
+import StartupInvestMynt from './component/MyntUniversity/MyntFaq/StartupInvestMynt';
+import GeneralMynt from './component/MyntUniversity/MyntFaq/GeneralMynt';
+import SubscriptionMynt from './component/MyntUniversity/MyntFaq/SubscriptionMynt';
+import CampaignsMynt from './component/MyntUniversity/MyntFaq/CampaignsMynt';
+import ReturnTaxMynt from './component/MyntUniversity/MyntFaq/ReturnTaxMynt';
+import FounderMynt from './component/MyntUniversity/MyntFaq/FounderMynt';
+import MyntBlogsDetail from './component/MyntUniversity/myntBlogs/MyntBlogsDetail';
 function App() {
 
   const location = window.location.pathname;
@@ -62,6 +74,18 @@ function App() {
         <Route exact path="/about-you" element={<AboutYou />} />
         <Route exact path="/become-investor" element={<BecomeInvestor />} />
         <Route exact path="/startup-sectors" element={<StartupSectors />} />
+        <Route exact path="/myntUniversity/faqs" element={<MyntFaq/>} />
+        <Route exact path="/myntUniversity/blogs" element={<MyntBlogs />} />
+        <Route exact path="/myntUniversity/videoClips" element={<MyntVideoClips />} />
+        <Route exact path="/myntUniversity/faq/getting-started" element={<GettingStartedMynt />} />
+        <Route exact path="/myntUniversity/faq/startup-invest" element={<StartupInvestMynt />} />
+        <Route exact path="/myntUniversity/faq/general" element={<GeneralMynt />} />
+        <Route exact path="/myntUniversity/faq/subscriptions" element={<SubscriptionMynt />} />
+        <Route exact path="/myntUniversity/faq/campaigns" element={<CampaignsMynt />} />
+        <Route exact path="/myntUniversity/faq/returntax" element={<ReturnTaxMynt />} />
+        <Route exact path="/myntUniversity/faq/founder" element={<FounderMynt />} />
+        <Route exact path="/myntUniversity/blogs/detail" element={<MyntBlogsDetail />} />
+        
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/dashboard/live-deals" element={<LiveDeals />} />
         <Route exact path="/dashboard/analytics" element={<Analytics />} />
@@ -95,7 +119,7 @@ function App() {
         <Route exact path="/dashboard-founder/campaigns" element={<FounderCampaigns />} />
         <Route exact path="/dashboard-founder/campaigns-tabs" element={<FounderCampaingsTabs />} />
       </Routes>
-      {(!location.includes('/dashboard')) && (!location.includes('/complete-your-profile')) && <Footer />}
+      {(!location.includes('/dashboard')) && (!location.includes('/complete-your-profile')) &&(!location.includes('/myntUniversity')) && <Footer />}
 
     </BrowserRouter>
   );

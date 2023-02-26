@@ -59,7 +59,7 @@ export default function DealTerm() {
                     <div className="deal-terms-conatiner">
                         <span className="header-main-deal-terms">Valuation Cap</span>
                         <span className="mainHead-main-deal-terms">₹40,00,00,000</span>
-                        <span className="subHead-main-deal-terms">A valuation cap is a maximum value that a company is willing to accept for a round of financing or investment. It is the highest price at which a company is willing to sell its equity to investors</span>
+                        <span className="subHead-main-deal-terms">A valuation cap is a maximum value that a company is willing to accept for a round of financing or Subscription. It is the highest price at which a company is willing to sell its equity to investors</span>
                     </div>
                 </Grid>
                 <Grid item xs={gridxsFirst}>

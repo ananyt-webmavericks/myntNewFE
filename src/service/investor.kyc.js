@@ -1,8 +1,7 @@
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { Base_Url } from "../Utils/Configurable";
 
-const BASE_URL = process.env.REACT_APP_API_URL;
-axios.defaults.baseURL = BASE_URL;
 
 const notify = (data) => {
     toast.error(data)
@@ -11,40 +10,69 @@ const notifySuccess = (data)=>{
     toast.success(data)
 }
 
-const VerifyKycPan = async (pan_card) => {
-    
+const VerifyKycPan = async (data) => {
     try{
-        const response = await axios.post("http://13.126.226.242:8000/api/investorkyc/verifypan", { pan_card });
+        const response = await axios.post(`${Base_Url}/api/investor-kyc/pan/manage`,data);
         notifySuccess(response.data.message)
-        return response.data.message;
+        return response;
     }
     catch (error) {
-        if(error.response.status !== 200){
-            notify(error.response.data.data.error.message)
+        if(error){
+            notify("investor kyc already exists!")
         }
-        return error.response.data.data.error.message;
+        return error;
+    }
+   
+}
+const VerifyAddress = async (data) => {
+    try{
+        const response = await axios.patch(`${Base_Url}/api/investor-kyc/address/manage`,data);
+        notifySuccess(response.data.message)
+        return response;
+    }
+    catch (error) {
+        if(error){
+            notify('investor kyc already exists!')
+        }
+        return error;
     }
    
 }
 
-const VerifyKycBank = async (account_number , ifsc_code , name) => {
-    
+const VerifyKycBank = async (data) => {
+   
     try{
-        const response = await axios.post("http://13.126.226.242:8000/api/investorkyc/verifybankdetails", { account_number , ifsc_code , name });
+        const response = await axios.patch(`${Base_Url}/api/investor-kyc/bank-verification/manage`,data);
         notifySuccess(response.data.message)
-        return response.data.message;
+        return response;
     }
     catch (error) {
-        if(error.response.status !== 200){
-            notify(error.response.message)
+        if(error){
+            notify("investor kyc already exists!")
         }
-        return error.response.message;
+        return error;
+    }
+   
+}
+const getInvestorKycData = async (id) => {
+   
+    try{
+        const response = await axios.get(`${Base_Url}/api/investor-kyc/${id}`);
+        return response;
+    }
+    catch (error) {
+        if(error){
+            notify("data not found")
+        }
+        return error;
     }
    
 }
 const services = {
     VerifyKycPan,
-    VerifyKycBank
+    VerifyKycBank,
+    VerifyAddress,
+    getInvestorKycData
 };
 
 export default services

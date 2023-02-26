@@ -2,6 +2,7 @@ import React , {useState ,useEffect} from "react";
 import { Card, CardContent, Grid } from "@mui/material";
 import '../../css/StartupSectors/startupSectors.css';
 import DoneIcon from '@mui/icons-material/Done';
+import { useNavigate } from "react-router-dom";
 const data = [
     { id: 1, name: 'HealthTech', isChecked: true },
     { id: 2, name: 'Artificial Intelligence', isChecked: true },
@@ -25,12 +26,15 @@ export default function StartupSectorsMain() {
     const [gridxsFirst, setGridxsFirst] = useState(3)
     const [gridxsSecond, setgridxsSecond] = useState(4)
     const ratio = parseInt(window.innerWidth);
-
+    const navigate = useNavigate()
     const handleChange =(index)=>{
         let new_array = value;
         new_array[index].isChecked = !new_array[index].isChecked;
         console.log( new_array[index].isChecked)
         setValue([...new_array])
+    }
+    const handleSubmit = ()=>{
+        navigate('/dashboard')
     }
 
     useEffect(() => {
@@ -65,7 +69,7 @@ export default function StartupSectorsMain() {
                                 )
                             })}
                         </Grid>
-                        <button className="submit-btn-startup">Submit</button>
+                        <button className="submit-btn-startup" onClick={handleSubmit}>Submit</button>
                     </CardContent>
                 </Card>
                 </div>

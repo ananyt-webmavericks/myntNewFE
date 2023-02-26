@@ -61,9 +61,9 @@ export default function InvestorsHome() {
                 </Grid>
                 <Grid item xs={gridxsSecond}>
                 <div className="subscribe-graph-heading">
-                    <div className="investor-home-heading">Join Thousands Of<span className="colored-investor-home-heading"> Investors </span></div>
+                    <div className="investor-home-heading">Join Thousands <span className="colored-investor-home-heading"> </span></div>
                 
-                    <span className="investors-subheading">Begin your investment journey and seize startup opportunities starting as low as ₹4000.</span>
+                    <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹4000.</span>
                     </div>
                     <div className="profile-container-investors">
                         <Grid container spacing={4}>

@@ -77,7 +77,7 @@ export default function HowToRaise() {
                             <div className="head-section-non-active">4</div>
                             <div className="head-section-second">
                                 <span className="card-header-txt">Grow Your Wealth</span>
-                                <span className="card-sub-header-txt">Your process is now complete and you can monitor your investments to see the growth as the startups you have backed achieve success.</span>
+                                <span className="card-sub-header-txt">Your process is now complete and you can monitor your Subscriptions to see the growth as the startups you have backed achieve success.</span>
                             </div>
                         </div>
                         <div className="raise-card-image-container-last">

@@ -23,7 +23,7 @@ const FounderFaqs = () => {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What is the meaning of early-stage or startup investments?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What is the meaning of early-stage or startup Subscriptions?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>

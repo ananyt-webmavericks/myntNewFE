@@ -1,8 +1,12 @@
 import { Card, CardContent, Grid } from "@mui/material";
-import React from "react";
+import React,{useState , useEffect} from "react";
 import '../../css/MyProfile/myProfile.css';
 import KycProfile from '../../images/assets/KycProfile.png'
-export default function BankDetailsAfterKyc() {
+
+
+export default function BankDetailsAfterKyc({data}) {
+
+    
     return (
         <>
             <div style={{ marginTop: '60px' }} >
@@ -17,7 +21,7 @@ export default function BankDetailsAfterKyc() {
                                 <span className="txt-bank-details">:</span>  
                             </Grid>
                             <Grid item xs={2}>
-                                    <span className="txt-bank-details">ICICI Bank</span>
+                                    <span className="txt-bank-details">{data?.bank_name}</span>
                                 </Grid>
                         </Grid>
                         <Grid style={{paddingTop:'20px'}} container spacing={8}>
@@ -28,7 +32,7 @@ export default function BankDetailsAfterKyc() {
                                 <span className="txt-bank-details">:</span>  
                             </Grid>
                             <Grid item xs={2}>
-                                    <span className="txt-bank-details">07543692343678</span>
+                                    <span className="txt-bank-details">{data.bank_account}</span>
                                 </Grid>
                         </Grid>
                         <Grid style={{paddingTop:'20px'}} container spacing={8}>
@@ -39,7 +43,7 @@ export default function BankDetailsAfterKyc() {
                                 <span className="txt-bank-details">:</span>  
                             </Grid>
                             <Grid item xs={2}>
-                                    <span className="txt-bank-details">ICICI000001</span>
+                                    <span className="txt-bank-details">{data.ifsc_code}</span>
                                 </Grid>
                         </Grid>
                     </CardContent>

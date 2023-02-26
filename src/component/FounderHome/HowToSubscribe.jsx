@@ -55,7 +55,7 @@ const HowToSubscribe = () => {
                         <div className="head-section-non-active">4</div>
                         <div className="head-section-second">
                             <span className="card-header-txt">See your wealth grow</span>
-                            <span className="card-sub-header-txt">Your subscription process is now complete, and you can track your subscriptions to see how your investment is growing as the startups you have invested in succeed.</span>
+                            <span className="card-sub-header-txt">Your subscription process is now complete, and you can track your subscriptions to see how your Subscription is growing as the startups you have invested in succeed.</span>
                         </div>
                     </div>
                     <div className="raise-card-image-container-last">

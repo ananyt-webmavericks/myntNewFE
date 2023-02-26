@@ -5,6 +5,10 @@ import { Button , Card , CardContent} from "@mui/material";
 import '../../css/CompleteYourProfile/completeYourProfile.css';
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
+import { useSelector } from "react-redux";
+import OtpServices from "../../service/OtpService";
+import { toast } from 'react-toastify';
+
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         marginTop: '11px',
@@ -16,7 +20,49 @@ export default function VerifyNumberOtp() {
     const ratio = parseInt(window.innerWidth);
     const navigate = useNavigate();
     const [OTP, setOTP] = useState("");
+    const  {userData}  = useSelector((state)=> state.loginData)
     const classes = useStyles();
+    const navigateToProfile = localStorage.getItem('navigateToVerifyMobile')
+    const notify = (data) => {
+        toast.error(data)
+    }
+
+    const handleResendOtp = () => {
+        // const usernames = username ? username : userData.email
+        // try {
+        //     OtpServices.ResendOtpMail(usernames).then(
+        //         (response) => {
+        //         })
+        // }
+        // catch {
+        //     notify("Try after few minutes")
+        // }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+       let data = { user_id: userData.id , otp:OTP}
+        try {
+            OtpServices.MobileOtp(data).then(
+                (response) => {
+                    if (response.data.status !== 'false') {
+                        navigateToProfile ? navigate('/my-profile') : navigate('/complete-your-profile/verify-kyc')
+                        localStorage.removeItem('navigateToVerifyMobile')
+                    }
+                    else{
+                        setOTP('')
+                    }
+
+                })
+        }
+        catch {
+            notify("Try after few minutes")
+        }
+
+    }
+
+
+
     const renderButton = buttonProps => {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px' }} {...buttonProps}>Resend</button>;
     };
@@ -62,10 +108,10 @@ export default function VerifyNumberOtp() {
                     // secure
                     inputStyles={{ width: '35px',outline:'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
                 />
-                <ResendOTP className={classes.menuItem} style={{ width:'330px',display:'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} handelResendClick={() => console.log("Resend clicked")} />
+                <ResendOTP className={classes.menuItem} style={{ width:'330px',display:'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} onResendClick={() =>handleResendOtp() } />
             </div>
             <div className="verify-button-container">
-                <Button varient="contained" onClick={()=>navigate('/complete-your-profile/verify-kyc')} className="verify-button">Verify</Button>
+                <Button varient="contained" onClick={handleSubmit} className="verify-button">Verify</Button>
             </div>
 
                 </CardContent>

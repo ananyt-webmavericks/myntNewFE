@@ -26,7 +26,7 @@ export default function SubscribegGraph() {
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
             <div className="subscribe-graph-heading">
-                <Typography className="test-script-regular">Register to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+                <Typography className="test-script-regular">Enroll in<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>
             <Grid sx={{ marginTop: '40px' }} container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>
@@ -66,7 +66,7 @@ export default function SubscribegGraph() {
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
                                     <Typography className="card-bold-txt" >Fixed-return securities</Typography>
-                                    <Typography className="regular-txt">Profit from lucrative investment opportunities with regular payouts and high returns. </Typography>
+                                    <Typography className="regular-txt">Profit from lucrative Subscription opportunities with regular payouts and high returns. </Typography>
                                 </div>
                                 <div className="container-for-text-and-graph">
                                     <div className="text-section-subscribe">

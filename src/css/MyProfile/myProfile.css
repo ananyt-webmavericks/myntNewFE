@@ -40,6 +40,10 @@
     color: black !important;
     font-size: 16px !important;
 }
+.kyc-pending-btn-my-profile.completed{
+    background: #01965D 0% 0% no-repeat padding-box !important;
+    color: white !important;
+}
 
 .card-complete-kyc-notice {
     margin-top: 65px !important;

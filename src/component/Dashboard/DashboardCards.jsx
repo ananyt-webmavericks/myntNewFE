@@ -40,7 +40,7 @@ export default function DashboardCard() {
                                 </div>
                                 <div className="text-card-container">
                                     <span style={{ fontSize: '26px', fontWeight: '600' }}>0.0K</span>
-                                    <span style={{ fontSize: '14px', color: '#777777' }}>Total Investments Value</span>
+                                    <span style={{ fontSize: '14px', color: '#777777' }}>Total Subscriptions Value</span>
                                 </div>
                             </div>
                         </CardContent>

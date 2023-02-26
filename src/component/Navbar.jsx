@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 import '../css/navbar.css';
 import logo from '../images/mynt1.png'
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import Logout from '@mui/icons-material/Logout';
 const Navbar = () => {
     const navigate = useNavigate()
     const location = window.location.pathname;
@@ -20,12 +24,17 @@ const Navbar = () => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
-        navigate('/login')
-        window.location.reload()
     };
+    const handleProfile=()=>{
+        navigate('/my-profile')
+    }
+    const handleLogout=()=>{
+        navigate('/login')
+        localStorage.clear();
+        window.location.reload()
+    }
     return (
         <nav class="navbar">
             <div class="navbar-container container">
@@ -41,42 +50,93 @@ const Navbar = () => {
                 </div>}
 
                 <ul class="menu-items">
-                    <li><a href="/">Home</a></li>
+                    <li><span onClick={() => navigate('/')}>Home</span></li>
                     <hr className="ruler-navbar" />
-                    <li><a href="/dashboard/live-deals">Deals</a></li>
+                    <li><span onClick={() => navigate('/dashboard/live-deals')}>Deals</span></li>
                     <hr className="ruler-navbar" />
-                    <li><a href="#">Raise</a></li>
+                    <li><span onClick={() => navigate('/')} >Raise</span></li>
                     <hr className="ruler-navbar" />
-                    <li><a href="#">MyntUniversity</a></li>
+                    <li><span onClick={() => navigate('/myntUniversity/faqs')}>MyntUniversity</span></li>
                     <hr className="ruler-navbar" />
                     {Object.keys(userData).length !== 0 ?
                         <>
-                            <li><a href="#">{userData.name}</a></li>
+                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name : userData.first_name + userData.last_name}</span></li>
 
-                            { (ratio > 768) ?
+                            {(ratio > 768) ?
                                 <> <Tooltip title={userData.name}>
+                                    <Tooltip title="Account settings">
+                                        <IconButton
+                                            onClick={handleClick}
+                                            size="small"
+                                            sx={{ ml: 2 }}
+                                            aria-controls={open ? 'account-menu' : undefined}
+                                            aria-haspopup="true"
+                                            aria-expanded={open ? 'true' : undefined}
+                                        >
+                                            <Avatar alt="Remy Sharp" src={userData.accessToken ? userData.picture.data.url : userData.picture} style={{ margin: '0 10px' }} />
+                                        </IconButton>
+                                    </Tooltip>
 
-                                    <Avatar alt="Remy Sharp" src={userData.accessToken ? userData.picture.data.url : userData.picture} style={{ margin: '0 10px' }} />
 
                                 </Tooltip>
-                                    <KeyboardArrowDownOutlinedIcon onClick={handleClick} style={{ margin: '8px 0px' }} />
                                     <Menu
-                                        id="basic-menu"
                                         anchorEl={anchorEl}
+                                        id="account-menu"
                                         open={open}
                                         onClose={handleClose}
-                                        MenuListProps={{
-                                            'aria-labelledby': 'basic-button',
+                                        onClick={handleClose}
+                                        PaperProps={{
+                                            elevation: 0,
+                                            sx: {
+                                                overflow: 'visible',
+                                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                                mt: 1.5,
+                                                '& .MuiAvatar-root': {
+                                                    width: 32,
+                                                    height: 32,
+                                                    ml: -0.5,
+                                                    mr: 1,
+                                                },
+                                                '&:before': {
+                                                    content: '""',
+                                                    display: 'block',
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    right: 14,
+                                                    width: 10,
+                                                    height: 10,
+                                                    bgcolor: 'background.paper',
+                                                    transform: 'translateY(-50%) rotate(45deg)',
+                                                    zIndex: 0,
+                                                },
+                                            },
                                         }}
+                                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                     >
-                                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                        <MenuItem onClick={handleProfile}>
+                                            <Avatar /> Profile
+                                        </MenuItem>
+                                        <MenuItem onClick={()=>navigate('/dashboard')}>
+                                        <ListItemIcon>
+                                                <GridViewOutlinedIcon fontSize="small" />
+                                            </ListItemIcon>
+                                           Dashboard
+                                        </MenuItem>
+                                        <Divider />
+                                        <MenuItem onClick={handleLogout}>
+                                            <ListItemIcon>
+                                                <Logout fontSize="small" />
+                                            </ListItemIcon>
+                                            Logout
+                                        </MenuItem>
                                     </Menu>
                                 </>
                                 :
-                            <div className="btn-section-navbar">
-                                <li><button className="get-started-btn-mobile" onClick={() => navigate('/login')} >Logout</button></li>
-                                
-                            </div>
+                                <div className="btn-section-navbar">
+                                    <li><button className="get-started-btn-mobile" onClick={() => navigate('/login')} >Logout</button></li>
+
+                                </div>
                             }
                         </>
                         :
