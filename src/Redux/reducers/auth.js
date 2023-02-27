@@ -2,10 +2,7 @@ import { LOGIN_SUCCESS , LOGIN_REQUEST , LOGIN_FAILED  , USER_EMAIL_SUCCESS , US
 
 const initialState = {
     userData: [],
-    userInfo:{
-        username:'',
-        mobileNo:''
-    }
+    userMail: ''
     
 };
 
@@ -30,7 +27,7 @@ export const userDataReducer = (state = initialState, { type, payload }) => {
             return { ...state }
 
         case USER_EMAIL_SUCCESS:
-            return { ...state, userInfo: payload }
+            return { ...state, userMail: payload }
 
         case USER_EMAIL_FAILED:
             return { ...state, error: payload }

@@ -17,7 +17,7 @@ const getUserConsent = async (id) => {
     }
     catch (error) {
         if (error) {
-            notify("Data not found")
+            console.log("Data not found !!")
         }
         return error;
     }
@@ -27,22 +27,37 @@ const createUserConsent = async (data) => {
     console.log(data)
     try {
         const response = await axios.post(`${Base_Url}/api/investor-consent/manage` , data);
-        notifySuccess("updated!")
+        notifySuccess("updated !!")
         return response;
     }
     catch (error) {
         if (error) {
-            notify("Data not found")
+           notify("error while uploading !!")
+        }
+        return error;
+    }
+
+}
+const updateUserConsent = async (data) => {
+    console.log(data)
+    try {
+        const response = await axios.patch(`${Base_Url}/api/investor-consent/manage` , data);
+        notifySuccess("updated !!")
+        return response;
+    }
+    catch (error) {
+        if (error) {
+           notify("error while uploading !!")
         }
         return error;
     }
 
 }
 
-
 const ConsentSerivce = {
     getUserConsent,
-    createUserConsent
+    createUserConsent,
+    updateUserConsent
 };
 
 export default ConsentSerivce

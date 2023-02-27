@@ -534,11 +534,11 @@ export default function AboutYouMain() {
     const handleSubmit =(e)=>{
         e.preventDefault()
         if(nationality.length===0 && country.length===0){
-            notify("Please choose both fields")
+            notify("Please choose both fields !!")
         }else if(nationality.length===0){
-            notify("Please choose nationality")
+            notify("Please choose nationality !!")
         }else if(country.length===0){
-            notify("Please choose country")
+            notify("Please choose country !!")
         }else{
             try {
                 UserServices.UpdateUser({user_id:userData.id , email:userData.email, nationality:nationality.toString() ,country:country.toString() }).then(
@@ -556,7 +556,7 @@ export default function AboutYouMain() {
                     })
             }
             catch {
-                notify("Try after few minutes")
+                notify("Try after few minutes !!")
             }
         }
         

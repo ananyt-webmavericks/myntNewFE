@@ -14,7 +14,6 @@ const data = {
 }
 export default function KycPanDetails() {
 
-    const {panDetails} = useSelector((state)=> state.panData)
     const [value, setValue] = useState(data)
     const  {userData}  = useSelector((state)=> state.loginData)
     const ratio = parseInt(window.innerWidth);
@@ -50,7 +49,7 @@ export default function KycPanDetails() {
                     (response) => {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
-                            navigate('/complete-your-profile/verify-address')
+                            navigate('/complete-your-profile/payment-details')
                            
                         }
                         else{

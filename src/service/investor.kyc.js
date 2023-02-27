@@ -12,13 +12,13 @@ const notifySuccess = (data)=>{
 
 const VerifyKycPan = async (data) => {
     try{
-        const response = await axios.post(`${Base_Url}/api/investor-kyc/pan/manage`,data);
+        const response = await axios.patch(`${Base_Url}/api/investor-kyc/pan/manage`,data);
         notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
         if(error){
-            notify("investor kyc already exists!")
+            notify("investor kyc already exists !!")
         }
         return error;
     }
@@ -26,13 +26,27 @@ const VerifyKycPan = async (data) => {
 }
 const VerifyAddress = async (data) => {
     try{
+        const response = await axios.post(`${Base_Url}/api/investor-kyc/address/manage`,data);
+        notifySuccess(response.data.message)
+        return response;
+    }
+    catch (error) {
+        if(error){
+            notify('investor kyc already exists !!')
+        }
+        return error;
+    }
+   
+}
+const UpdateAddress = async (data) => {
+    try{
         const response = await axios.patch(`${Base_Url}/api/investor-kyc/address/manage`,data);
         notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
         if(error){
-            notify('investor kyc already exists!')
+            notify('investor kyc already exists !!')
         }
         return error;
     }
@@ -48,7 +62,7 @@ const VerifyKycBank = async (data) => {
     }
     catch (error) {
         if(error){
-            notify("investor kyc already exists!")
+            notify("investor kyc already exists !!")
         }
         return error;
     }
@@ -62,7 +76,7 @@ const getInvestorKycData = async (id) => {
     }
     catch (error) {
         if(error){
-            notify("data not found")
+            console.log("data not found !!")
         }
         return error;
     }
@@ -72,6 +86,7 @@ const services = {
     VerifyKycPan,
     VerifyKycBank,
     VerifyAddress,
+    UpdateAddress,
     getInvestorKycData
 };
 

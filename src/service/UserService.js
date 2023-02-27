@@ -18,7 +18,7 @@ const LoginUserByEmail = async (email) => {
     }
     catch (error) {
         if (error) {
-            notify("User Doesn't Exist!")
+            notify("User Doesn't Exist !!")
         }
         return error;
     }
@@ -29,7 +29,7 @@ const CreateUser = async (value) => {
 
     try {
         const response = await axios.post(`${Base_Url}/api/users/manage`, value);
-        notifySuccess('Sign up successfully')
+        notifySuccess('Sign up successfully !!')
         return response;
     }
     catch (error) {
@@ -44,7 +44,7 @@ const UpdateUser = async (obj) => {
   
     try {
         const response = await axios.patch(`${Base_Url}/api/users/manage`, obj);
-        notifySuccess('successfully updated')
+        notifySuccess('successfully updated !!')
         return response;
     }
     catch (error) {

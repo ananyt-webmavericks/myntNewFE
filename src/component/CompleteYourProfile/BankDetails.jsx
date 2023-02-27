@@ -64,7 +64,7 @@ export default function BankDetails() {
             <Grid container spacing={1}>
                 <Grid item xs={12}>
                     <div className="verifyAddress-input">
-                        <input type="text" value={value.bank_name} name="bank_name" onChange={handleChange} placeholder="Name in bank account" className="verifyAddress-input-section" />
+                        <input type="text" value={value.bank_name} name="bank_name" onChange={handleChange} placeholder="Bank name" className="verifyAddress-input-section" />
                     </div>
                 </Grid>
                 <Grid item xs={12}>

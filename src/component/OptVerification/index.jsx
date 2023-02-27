@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 import OtpServices from "../../service/OtpService";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { userLoginAction } from "../../Redux/actions/auth";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         marginTop: '11px',
@@ -22,35 +23,46 @@ const useStyles = makeStyles((theme) => ({
 export default function OtpVerificationMain() {
     const [OTP, setOTP] = useState("");
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const classes = useStyles();
-    const { userInfo } = useSelector((state) => state.loginData)
+    let loginType = localStorage.getItem('loginType')
+    const { userMail } = useSelector((state) => state.userInfo)
     const  {userData}  = useSelector((state)=> state.loginData)
+
 
     const notify = (data) => {
         toast.error(data)
     }
-    console.log(userInfo)
+    const notifySuccess = (data) => {
+        toast.success(data)
+    }
     const handleResendOtp = () => {
-        const usernames =  userInfo.username ? userInfo.username : userData.email
+        const usernames =  userMail ? userMail: userData.email
         try {
             OtpServices.ResendOtpMail(usernames).then(
                 (response) => {
+                   console.log(response?.data.message)
                 })
         }
         catch {
             notify("Try after few minutes")
         }
     }
-
+    console.log(loginType)
     const handleSubmit = (e) => {
         e.preventDefault();
-        const usernames = userInfo.username ? userInfo.username : userData.email
+        const usernames = userMail ? userMail : userData.email
         let data = { email: usernames, otp: OTP }
         try {
             OtpServices.VerifyEmailOtp(data).then(
                 (response) => {
                     if (response.data.status !== 'false') {
-                        navigate('/about-you')
+                        dispatch(userLoginAction(response.data.data))
+                        if(loginType === 'new'){
+                            navigate('/about-you')
+                        }else{
+                            navigate('/dashboard')
+                        }
                     }
                     else{
                         setOTP('')
@@ -93,7 +105,7 @@ export default function OtpVerificationMain() {
                             />
                             <ResendOTP maxTime={10} onResendClick={() =>handleResendOtp() } className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false}  />
                         </div>
-                        <button className="sign-up-btn" onClick={handleSubmit} >Sign Up</button>
+                        <button className="sign-up-btn" onClick={handleSubmit} > {loginType==='new' ? "Sign Up" : "Sign In"}</button>
                     </CardContent>
                 </Card>
             </div>

@@ -69,7 +69,7 @@ export default function BecomeInvestorMain() {
         console.log( new_array[index].toggle)
         setValue([...new_array])
     }
-
+    console.log(userData.id)
     const notify = (data) => {
         toast.error(data)
     }
@@ -106,7 +106,22 @@ export default function BecomeInvestorMain() {
             research_consent:value[4].toggle
         }
         if(predefinedConsent === true){
-            navigate('/startup-sectors')
+            try {
+                ConsentSerivce.updateUserConsent(data).then(
+                    (response) => {
+                        console.log(response)
+                        if (response.status === 201 || response.status === 200) {
+                            // dispatch(userLoginAction({...userData , nationality:nationality.toString() ,country:country.toString()} ))
+                            navigate('/startup-sectors')
+                        }
+                        else{
+                            console.log("error")
+                        }
+                    })
+            }
+            catch {
+                notify("Try after few minutes")
+            }
         }else{
             try {
                 ConsentSerivce.createUserConsent(data).then(

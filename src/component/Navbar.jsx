@@ -54,13 +54,13 @@ const Navbar = () => {
                     <hr className="ruler-navbar" />
                     <li><span onClick={() => navigate('/dashboard/live-deals')}>Deals</span></li>
                     <hr className="ruler-navbar" />
-                    <li><span onClick={() => navigate('/')} >Raise</span></li>
+                    <li><span onClick={() => navigate('/founder')} >Raise</span></li>
                     <hr className="ruler-navbar" />
                     <li><span onClick={() => navigate('/myntUniversity/faqs')}>MyntUniversity</span></li>
                     <hr className="ruler-navbar" />
                     {Object.keys(userData).length !== 0 ?
                         <>
-                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name : userData.first_name + userData.last_name}</span></li>
+                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name: userData?.first_name + " " + userData?.last_name}</span></li>
 
                             {(ratio > 768) ?
                                 <> <Tooltip title={userData.name}>

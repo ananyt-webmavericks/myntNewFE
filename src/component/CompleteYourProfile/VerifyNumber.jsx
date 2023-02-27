@@ -42,7 +42,7 @@ export default function VerifyNumber() {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
                             navigate('/complete-your-profile/verify-otp')
-                            dispatch(userEmailAction({...userInfo , mobileNo:data.mobile_number}))
+                            dispatch(userEmailAction(data.mobile_number))
                         }
                         else{
                             console.log("error")

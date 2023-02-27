@@ -4,10 +4,12 @@ import '../../css/Dashboard/dashboard.css';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-export default function ProgressNotifyDash(data) {
-
+let myEmptyObj = {};
+export default function ProgressNotifyDash({data}) {
+    const _ = require('lodash');
     const ratio = parseInt(window.innerWidth);
     const [showHr, setShowHr] = useState(true);
+    const [noData , setNoData] = useState(false)
     const navigate = useNavigate()
     useEffect(() => {
         if (ratio < 775) {
@@ -15,16 +17,27 @@ export default function ProgressNotifyDash(data) {
         }
 
     }, [])
+
+    useEffect(() => {
+      if(_.isEmpty(data)){
+        setNoData(true)
+      }else{
+        setNoData(false)
+      }
+    }, [data])
+    
+    console.log((data))
+
     const notifySuccess = (data) => {
         toast.success(data)
     }
 
     const handleNavigate = ()=>{
-        if(data.bank_account ===''){
-            navigate('/complete-your-profile')
-        }
-        else{
-           
+        if(noData){
+            navigate('/complete-your-profile/verify-address')
+        }else if(data.bank_account ===''){
+            navigate('/complete-your-profile/verify-address')
+        }else{
             notifySuccess("Already verified Please check profile")
         }
     }
@@ -57,9 +70,14 @@ export default function ProgressNotifyDash(data) {
                 <div className="sub-main-container-dashboard">
                     {showHr && <hr className="dashed-line-new" />}
                     <div className="outer-circle-dash not-completed">
-                        <div style={data.bank_account ===''? {background: '#EBEBEB' }: {background: '#F8DA36'}} className="inner-circle-dashed not-completed">
+                        {noData ? 
+                        <div style={ {background: '#EBEBEB'}} className="inner-circle-dashed not-completed">
                             <span className="font-inner-circle" >2</span>
                         </div>
+                        :
+                        <div style={noData ?  {background: '#EBEBEB'} :  data?.bank_account ===''? {background: '#EBEBEB' }: {background: '#F8DA36'}} className="inner-circle-dashed not-completed">
+                            <span className="font-inner-circle" >2</span>
+                        </div>}
                     </div>
                     <hr className="dashed-line-new" />
                 </div>
@@ -68,13 +86,13 @@ export default function ProgressNotifyDash(data) {
                     <span className="sub-header-info-section-dash">Provide some identification information and the bank account in which transfer returns.</span>
                     <Button  
                     onClick={handleNavigate}
-                    style={data.bank_account ===''? {background: '#EBEBEB',color:'black' }: {background: '#01965D' , color:'white'}}
+                    style={noData ?  {background: '#EBEBEB',color:'black' } : data?.bank_account ===''? {background: '#EBEBEB',color:'black' }: {background: '#01965D' , color:'white'}}
                     sx={{
                         borderRadius: '20px',
                         width: '200px', margin: 'auto', fontSize: '16px', fontWeight: '600'
                         , '&:hover': { background: '#F8DA36', color: 'black', boxShadow: '0px 0px 23px #F4DC5991' },
                     }}>
-                        {data.bank_account ==='' ? "Complete It ": "Completed"}
+                        {noData ? "Complete It " : data.bank_account ==='' ? "Complete It ": "Completed"}
                     
                         </Button>
                 </div>
@@ -93,6 +111,7 @@ export default function ProgressNotifyDash(data) {
                     <span className="header-info-section-dash">Explore Deals, Invest and Sign Documents</span>
                     <span className="sub-header-info-section-dash">Learn more about what our platform has to offer and start investing by signing the necessary documents. </span>
                     <Button 
+                    onClick={()=>navigate('/dashboard/live-deals')}
                     sx={{
                         borderRadius: '20px', background: '#9A9A9A',
                         width: '200px', margin: 'auto', color: 'black', fontSize: '16px', fontWeight: '600'

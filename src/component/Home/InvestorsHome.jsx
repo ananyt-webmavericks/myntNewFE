@@ -17,7 +17,7 @@ import Kunal from '../../images/investors/kunal.png';
 import Microsoft from '../../images/investors/microsoft.png';
 import Manju from '../../images/investors/manju.png';
 import Sg from '../../images/investors/sg.png';
-
+import { useNavigate } from "react-router-dom";
 
 const data = [
     { id: 1, image: Asad, logo: Oyo, name: 'Akhil', amount: 'Invested INR 8000' },
@@ -34,7 +34,7 @@ export default function InvestorsHome() {
     const [gridxsFirst, setGridxsFirst] = useState(2)
     const [gridxsSecond, setgridxsSecond] = useState(6)
     const ratio = parseInt(window.innerWidth);
-
+    const navigate = useNavigate()
     useEffect(() => {
 
         if (ratio < 1042) {
@@ -83,7 +83,7 @@ export default function InvestorsHome() {
                         </Grid>
                     </div>
                     <div className="get-started-btn-investor">
-                    <Button variant="contained" className="getStarted-landing-btn">Get Started</Button>
+                    <Button variant="contained" onClick={()=>navigate('/get-started') } className="getStarted-landing-btn">Get Started</Button>
                     </div>
                 </Grid>
             </Grid>

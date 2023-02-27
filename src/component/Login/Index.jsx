@@ -14,11 +14,11 @@ import { useDispatch } from "react-redux";
 import UserServices from "../../service/UserService";
 import { userEmailAction } from "../../Redux/actions/auth";
 import { useSelector } from "react-redux";
+
 export default function LoginMain() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const [email , setEmail]= useState('')
-    const { userInfo } = useSelector((state) => state.loginData)
     const isEmail = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
     const notify = (data) => {
         toast.error(data)
@@ -38,7 +38,8 @@ export default function LoginMain() {
                     (response) => {
                         console.log(response)
                         if(response.status === 200){
-                            dispatch(userEmailAction({...userInfo , username:email}))
+                            dispatch(userEmailAction(email))
+                            localStorage.setItem('loginType','existed')
                             navigate('/otp-verification')
                         }
                             
@@ -91,9 +92,9 @@ export default function LoginMain() {
                 </Card>
                 <div className="bottom-most-txt-get-started">
                     <div className="footer-get-started-txt-head">
-                        <span className="colored-text-get-started" onClick={() => navigate('/login-founder')}>Log in </span>as founder
+                        <span className="colored-text-get-started" onClick={() => navigate('/login-founder')} style={{cursor:'pointer'}}>Log in </span>as founder
                     </div>
-                    <div className="footer-get-started-txt-head">Don’t have an account? <span className="colored-text-get-started">Sign Up</span></div>
+                    <div className="footer-get-started-txt-head">Don’t have an account? <span className="colored-text-get-started" style={{cursor:'pointer'}} onClick={() => navigate('/login-founder')}>Sign Up</span></div>
                 </div>
             </div>
         </div>

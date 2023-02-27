@@ -21,6 +21,7 @@ export default function VerifyNumberOtp() {
     const navigate = useNavigate();
     const [OTP, setOTP] = useState("");
     const  {userData}  = useSelector((state)=> state.loginData)
+    const { userMail } = useSelector((state) => state.userInfo)
     const classes = useStyles();
     const navigateToProfile = localStorage.getItem('navigateToVerifyMobile')
     const notify = (data) => {
@@ -28,15 +29,26 @@ export default function VerifyNumberOtp() {
     }
 
     const handleResendOtp = () => {
-        // const usernames = username ? username : userData.email
-        // try {
-        //     OtpServices.ResendOtpMail(usernames).then(
-        //         (response) => {
-        //         })
-        // }
-        // catch {
-        //     notify("Try after few minutes")
-        // }
+        const data ={
+            user_id:userData.id,
+            mobile_number:userMail
+        }
+            try {
+                OtpServices.VerifyMobileOtp(data).then(
+                    (response) => {
+                        console.log(response)
+                        if (response.status === 201 || response.status === 200) {
+                            console.log("success")
+                        }
+                        else{
+                            console.log("error")
+                        }
+                    })
+            }
+            catch {
+                notify("Try after few minutes")
+            }
+        
     }
 
     const handleSubmit = (e) => {
@@ -108,7 +120,7 @@ export default function VerifyNumberOtp() {
                     // secure
                     inputStyles={{ width: '35px',outline:'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
                 />
-                <ResendOTP className={classes.menuItem} style={{ width:'330px',display:'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} onResendClick={() =>handleResendOtp() } />
+                <ResendOTP maxTime={10} className={classes.menuItem} style={{ width:'330px',display:'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} onResendClick={() =>handleResendOtp() } />
             </div>
             <div className="verify-button-container">
                 <Button varient="contained" onClick={handleSubmit} className="verify-button">Verify</Button>

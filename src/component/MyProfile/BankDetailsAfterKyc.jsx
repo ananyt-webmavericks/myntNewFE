@@ -5,7 +5,7 @@ import KycProfile from '../../images/assets/KycProfile.png'
 
 
 export default function BankDetailsAfterKyc({data}) {
-
+    const _ = require('lodash');
     
     return (
         <>
@@ -21,7 +21,7 @@ export default function BankDetailsAfterKyc({data}) {
                                 <span className="txt-bank-details">:</span>  
                             </Grid>
                             <Grid item xs={2}>
-                                    <span className="txt-bank-details">{data?.bank_name}</span>
+                                    <span className="txt-bank-details">{_.isEmpty(data) ? '' : data?.bank_name}</span>
                                 </Grid>
                         </Grid>
                         <Grid style={{paddingTop:'20px'}} container spacing={8}>
@@ -32,7 +32,7 @@ export default function BankDetailsAfterKyc({data}) {
                                 <span className="txt-bank-details">:</span>  
                             </Grid>
                             <Grid item xs={2}>
-                                    <span className="txt-bank-details">{data.bank_account}</span>
+                                    <span className="txt-bank-details">{_.isEmpty(data) ? '' : data?.bank_account}</span>
                                 </Grid>
                         </Grid>
                         <Grid style={{paddingTop:'20px'}} container spacing={8}>
@@ -43,7 +43,7 @@ export default function BankDetailsAfterKyc({data}) {
                                 <span className="txt-bank-details">:</span>  
                             </Grid>
                             <Grid item xs={2}>
-                                    <span className="txt-bank-details">{data.ifsc_code}</span>
+                                    <span className="txt-bank-details">{_.isEmpty(data) ? '' : data.ifsc_code}</span>
                                 </Grid>
                         </Grid>
                     </CardContent>

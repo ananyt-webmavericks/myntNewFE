@@ -8,18 +8,60 @@ import { AppId } from "../Utils/Configurable";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../Redux/actions/auth";
 import { toast } from 'react-toastify';
+import UserServices from "../service/UserService";
+import { userEmailAction } from "../Redux/actions/auth";
+
 export default function FacebookSignIn() {
   const navigate = useNavigate()
   const [auth, setAuth] = useState(false)
   const dispatch = useDispatch()
-
-  const notify = () => toast.success("Successfully Logged In.");
+  const location = window.location.pathname;
+  const notify = (data) => toast.success(data);
   const responseFacebook = (response) => {
-    dispatch(userLoginAction(response))
-    console.log(response);
-    navigate('/dashboard')
-    notify()
-    localStorage.setItem("user"  ,JSON.stringify(response))
+    console.log(response)
+    if (location.includes('/login')) {
+      try {
+        UserServices.LoginUserByEmail(response.email).then(
+          (res) => {
+            console.log(res)
+            if (res.status === 200) {
+              dispatch(userLoginAction(response))
+              localStorage.setItem('loginType', 'existed')
+              navigate('/dashboard')
+            }
+
+          })
+      }
+      catch {
+        notify("Try after few minutes")
+      }
+    } else {
+      var [first_namee , last_namee] = response.name.split(' ')
+      const value = {
+
+        first_name: first_namee,
+        last_name: last_namee,
+        email: response.email,
+        social_login: true,
+        user_type: "INVESTOR"
+      }
+      try {
+        UserServices.CreateUser(value).then(
+          (response) => {
+            console.log(response)
+            if (response.status === 201) {
+              dispatch(userLoginAction(response.data))
+
+              navigate('/about-you')
+            }
+
+          })
+      }
+      catch {
+        notify("Try after few minutes")
+      }
+    }
+
   }
 
   return (

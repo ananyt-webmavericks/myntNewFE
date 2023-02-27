@@ -11,21 +11,16 @@ const notifySuccess = (data) => {
 
 const VerifyEmailOtp = async (data) => {
     if(data.otp === ""){
-        notify("otp can not be empty!")
+        notify("otp can not be empty !!")
     }else{
         try {
             const response = await axios.post(`${Base_Url}/api/users/verify-email-otp`, {email: data.email , otp:data.otp});
-            if(response.data.status === true){
                 notifySuccess(response.data.message)
-            }else{
-                notify("Invalid OTP!")
-            }
-           
             return response;
         }
         catch (error) {
             if (error) {
-                notify("Invalid OTP!")
+                notify("Invalid OTP !!")
             }
             return error;
         }
@@ -40,7 +35,7 @@ const ResendOtpMail = async (data) =>{
     }
     catch (error) {
         if (error) {
-            notify("Try again")
+            notify("Try again !!")
         }
         return error;
     }
@@ -54,28 +49,25 @@ const VerifyMobileOtp = async (data) =>{
     }
     catch (error) {
         if (error) {
-            notify("Try again")
+            notify("Try again !!")
         }
         return error;
     }
 }
 const MobileOtp = async (data) => {
     if(data.otp === ""){
-        notify("otp can not be empty!")
+        notify("otp can not be empty !!")
     }else{
         try {
-            const response = await axios.post(`${Base_Url}/api/users/verify-email-otp`, data);
-            if(response.data.status === true){
+            const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/verify-otp`, data);
+       
                 notifySuccess(response.data.message)
-            }else{
-                notify("Invalid OTP!")
-            }
-           
+            
             return response;
         }
         catch (error) {
             if (error) {
-                notify("Invalid OTP!")
+                notify("Invalid OTP !!")
             }
             return error;
         }

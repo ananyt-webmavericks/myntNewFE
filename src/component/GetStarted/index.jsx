@@ -55,7 +55,7 @@ export default function GetStartedSection() {
                         console.log(response)
                         if(response.status === 201){
                             dispatch(userLoginAction(response.data))
-                        
+                            localStorage.setItem('loginType','new')
                             navigate('/otp-verification')
                         }
                           
@@ -99,8 +99,8 @@ export default function GetStartedSection() {
                     </CardContent>
                 </Card>
                 <div className="bottom-most-txt-get-started">
-                    <div className="footer-get-started-txt-head">Already have an account? <span className="colored-text-get-started">Log in instead</span></div>
-                    <div className="footer-get-started-txt-head">Are you a founder looking to raise funds? <span className="colored-text-get-started">Apply Here</span></div>
+                    <div className="footer-get-started-txt-head">Already have an account? <span onClick={()=> navigate('/login')} style={{cursor:'pointer'}} className="colored-text-get-started">Log in instead</span></div>
+                    <div className="footer-get-started-txt-head">Are you a founder looking to raise funds?  <span onClick={()=> navigate('/founder')} style={{cursor:'pointer'}}  className="colored-text-get-started">Apply Here</span></div>
                 </div>
             </div>
         </div>

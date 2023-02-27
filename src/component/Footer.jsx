@@ -65,14 +65,14 @@ const Footer = () => {
                         <div className="footer-links-section-first">
                             <div className="investor-university-section">
                                 <span className="heading-link">Investors</span>
-                                <span className="Detail-link">Deals</span>
-                                <span className="Detail-link">Invest</span>
-                                <span className="Detail-link">Learn</span>
+                                <span onClick={()=>navigate('/dashboard/live-deals')} className="Detail-link">Deals</span>
+                                <span onClick={()=>navigate('/login')} className="Detail-link">Invest</span>
+                                <span onClick={()=>navigate('/myntUniversity/faqs')} className="Detail-link">Learn</span>
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Mynt University</span>
                                 <span onClick={()=>navigate('/faq-details')} className="Detail-link">FAQs</span>
-                                <span className="Detail-link">Blogs</span>
+                                <span onClick={()=>navigate('/myntUniversity/blogs')} className="Detail-link">Blogs</span>
                             </div>
                         </div>
                         <div className="footer-links-section-Second">
@@ -84,9 +84,9 @@ const Footer = () => {
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Startups</span>
-                                <span className="Detail-link">Raise</span>
-                                <span className="Detail-link">Log In</span>
-                                <span className="Detail-link">Learn</span>
+                                <span onClick={()=>navigate('/founder')} className="Detail-link">Raise</span>
+                                <span onClick={()=>navigate('/login-founder')} className="Detail-link">Log In</span>
+                                <span onClick={()=>navigate('/myntUniversity/faqs')} className="Detail-link">Learn</span>
                             </div>
                         </div>
                         <div className="contact-us-at">

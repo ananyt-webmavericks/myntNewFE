@@ -1,9 +1,10 @@
 import React from "react";
 import { AccordionDetails, Accordion, AccordionSummary, Typography, Button } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useNavigate } from "react-router-dom";
 export default function Faqs() {
     const [expanded, setExpanded] = React.useState(false);
-
+    const navigate = useNavigate()
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
@@ -142,7 +143,7 @@ export default function Faqs() {
                     </Accordion>
                 </div>
                 <div className="get-started-btn-investor">
-                    <Button variant="contained" className="getStarted-landing-btn">Need More Helps</Button>
+                    <Button variant="contained" onClick={()=>navigate('/myntUniversity/faqs') } className="getStarted-landing-btn">Need More Help</Button>
                 </div>
             </div>
         </>

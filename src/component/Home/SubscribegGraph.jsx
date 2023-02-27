@@ -6,8 +6,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import YellowArrow from '../../images/assets/yellowArrow.png';
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function SubscribegGraph() {
-
+    const navigate = useNavigate()
     const [gridxsFirst, setGridxsFirst] = useState(2)
     const [gridxsSecond, setgridxsSecond] = useState(6)
     const ratio = parseInt(window.innerWidth);
@@ -41,7 +42,7 @@ export default function SubscribegGraph() {
                                     <div className="text-section-subscribe">
                                         <Typography className="card-bold-number-text">28%+</Typography>
                                         <Typography className="regular-bold-text">Expected IRR</Typography>
-                                        <Button className="learn-more-btn" varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
+                                        <Button className="learn-more-btn" onClick={()=>navigate('/myntUniversity/faqs') } varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
                                     </div>
                                     <div className="aditya-ahda" style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
                                         <p className="risk-factor">Risk</p>
@@ -72,7 +73,7 @@ export default function SubscribegGraph() {
                                     <div className="text-section-subscribe">
                                         <Typography className="card-bold-number-text">10-25%</Typography>
                                         <Typography className="regular-bold-text">Expected IRR</Typography>
-                                        <Button className="learn-more-btn" varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
+                                        <Button className="learn-more-btn" onClick={()=>navigate('/myntUniversity/faqs') } varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
                                         <p className="risk-factor fixed">Risk</p>

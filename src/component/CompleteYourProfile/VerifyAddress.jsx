@@ -6,7 +6,7 @@ import '../../css/CompleteYourProfile/verifyAddress.css'
 import services from "../../service/investor.kyc";
 import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
-const data = {
+const dataa = {
     address_line_1:"",
     address_line_2:"",
     city:"",
@@ -15,7 +15,9 @@ const data = {
 }
 export default function VerifyAddress() {
     const navigate = useNavigate();
-    const [value, setValue] = useState(data)
+    const _ = require('lodash');
+    const [value, setValue] = useState(dataa)
+    const [data, setData] = useState({})
     const  {userData}  = useSelector((state)=> state.loginData)
     const [gridxsMain, setGridxsMain] = useState(2)
     const [gridxsSmall, setGridxsSmall] = useState(6)
@@ -27,6 +29,13 @@ export default function VerifyAddress() {
      const notify = (data) => {
          toast.error(data)
      }
+     useEffect(() => {
+        services.getInvestorKycData(userData.id).then((response , error)=>{
+          if(response.status === 200){
+              setData(response?.data)
+          }
+        })
+      }, [])
      const handleSubmit = () =>{
          const val ={
              user_id:userData.id,
@@ -46,14 +55,14 @@ export default function VerifyAddress() {
              notify('Please enter  state')
          }else if(value.pincode === ''){
              notify('Please enter  pincode')
-         }else{
+         }else if(_.isEmpty(data)){
              try {
                  services.VerifyAddress(val).then(
                      (response) => {
                          console.log(response)
                          if (response.status === 201 || response.status === 200) {
                             
-                             navigateToProfile ? navigate('/my-profile') :  navigate('/complete-your-profile/payment-details')
+                             navigateToProfile ? navigate('/my-profile') :  navigate('/complete-your-profile')
                             localStorage.removeItem('navigateToVerifyAddress')
                          }
                          else{
@@ -64,6 +73,24 @@ export default function VerifyAddress() {
              catch {
                  notify("Try after few minutes")
              }
+         }else{
+            try {
+            services.UpdateAddress(val).then(
+                (response) => {
+                    console.log(response)
+                    if (response.status === 201 || response.status === 200) {
+                       
+                        navigateToProfile ? navigate('/my-profile') :  navigate('/complete-your-profile')
+                       localStorage.removeItem('navigateToVerifyAddress')
+                    }
+                    else{
+                        console.log("error")
+                    }
+                })
+        }
+        catch {
+            notify("Try after few minutes")
+        }
          }
      }
 
@@ -75,6 +102,7 @@ export default function VerifyAddress() {
             setGridxsSmall(12)
         }
     }, [])
+    console.log(userData)
     return (
         <>
         <div className="complete-your-profile-container">
@@ -106,32 +134,32 @@ export default function VerifyAddress() {
                         <Grid container spacing={gridxsMain}>
                             <Grid item xs={12}>
                                 <div className="verifyAddress-input">
-                                    <input type="text" value={userData.name? userData.name :userData.first_name + userData.last_name} name="name" disabled placeholder="name" className="verifyAddress-input-section" />
+                                    <input type="text" value={userData.name? userData.name :(userData.first_name).toUpperCase() + " " + (userData.last_name).toUpperCase()} name="name" disabled placeholder="name" className="verifyAddress-input-section" />
                                 </div>
                             </Grid>
                             <Grid item xs={gridxsSmall}>
                                 <div className="verifyAddress-input">
-                                    <input type="text" value={value.address_line_1} name='address_line_1' onChange={handleChange} placeholder="Address Line 01" className="verifyAddress-input-section" />
+                                    <input type="text" value={value.address_line_1} name='address_line_1' onChange={handleChange} placeholder={_.isEmpty(data) ? "Address line 1" : data.address_line_1}  className="verifyAddress-input-section" />
                                 </div>
                             </Grid>
                             <Grid item xs={gridxsSmall}>
                                 <div className="verifyAddress-input">
-                                    <input type="text" value={value.address_line_2} name='address_line_2' onChange={handleChange}  placeholder="Address Line 02" className="verifyAddress-input-section" />
+                                    <input type="text" value={value.address_line_2}name='address_line_2' onChange={handleChange} placeholder={_.isEmpty(data) ? "Address line 2" : data.address_line_2}  className="verifyAddress-input-section" />
                                 </div>
                             </Grid>
                             <Grid item xs={gridxsSmall}>
                                 <div className="verifyAddress-input">
-                                    <input type="text"value={value.city} name='city' onChange={handleChange}   placeholder="City" className="verifyAddress-input-section" />
+                                    <input type="text" value={value.city}name='city' onChange={handleChange}   placeholder={_.isEmpty(data) ? "City" : data.city}  className="verifyAddress-input-section" />
                                 </div>
                             </Grid>
                             <Grid item xs={gridxsSmall}>
                                 <div className="verifyAddress-input">
-                                    <input type="text" value={value.state} name='state' onChange={handleChange}   placeholder="State" className="verifyAddress-input-section" />
+                                    <input type="text" value={value.state} name='state' onChange={handleChange}  placeholder={_.isEmpty(data) ? "State" : data.state}  className="verifyAddress-input-section" />
                                 </div>
                             </Grid>
                             <Grid item xs={gridxsSmall}>
                                 <div className="verifyAddress-input">
-                                    <input type="number" value={value.pincode} name='pincode' onChange={handleChange}  placeholder="Pincode" className="verifyAddress-input-section" />
+                                    <input type="number" value={value.pincode} name='pincode' onChange={handleChange}  placeholder={_.isEmpty(data) ? "Pincode" : data.pincode}  className="verifyAddress-input-section" />
                                 </div>
                             </Grid>
                             {gridxsSmall === 12 &&
