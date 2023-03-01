@@ -55,6 +55,7 @@ import CampaignsMynt from './component/MyntUniversity/MyntFaq/CampaignsMynt';
 import ReturnTaxMynt from './component/MyntUniversity/MyntFaq/ReturnTaxMynt';
 import FounderMynt from './component/MyntUniversity/MyntFaq/FounderMynt';
 import MyntBlogsDetail from './component/MyntUniversity/myntBlogs/MyntBlogsDetail';
+import PageNotFound from './Pages/PageNotFound';
 function App() {
 
   const location = window.location.pathname;
@@ -74,7 +75,7 @@ function App() {
         <Route exact path="/about-you" element={<AboutYou />} />
         <Route exact path="/become-investor" element={<BecomeInvestor />} />
         <Route exact path="/startup-sectors" element={<StartupSectors />} />
-        <Route exact path="/myntUniversity/faqs" element={<MyntFaq/>} />
+        <Route exact path="/myntUniversity/faqs" element={<MyntFaq />} />
         <Route exact path="/myntUniversity/blogs" element={<MyntBlogs />} />
         <Route exact path="/myntUniversity/videoClips" element={<MyntVideoClips />} />
         <Route exact path="/myntUniversity/faq/getting-started" element={<GettingStartedMynt />} />
@@ -85,7 +86,7 @@ function App() {
         <Route exact path="/myntUniversity/faq/returntax" element={<ReturnTaxMynt />} />
         <Route exact path="/myntUniversity/faq/founder" element={<FounderMynt />} />
         <Route exact path="/myntUniversity/blogs/detail" element={<MyntBlogsDetail />} />
-        
+
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/dashboard/live-deals" element={<LiveDeals />} />
         <Route exact path="/dashboard/analytics" element={<Analytics />} />
@@ -118,8 +119,12 @@ function App() {
         <Route exact path="/dashboard-founder/e-signin" element={<DashBoardESign />} />
         <Route exact path="/dashboard-founder/campaigns" element={<FounderCampaigns />} />
         <Route exact path="/dashboard-founder/campaigns-tabs" element={<FounderCampaingsTabs />} />
+
+        {/* page not found */}
+        <Route exact path="*" element={<PageNotFound />} />
+
       </Routes>
-      {(!location.includes('/dashboard')) && (!location.includes('/complete-your-profile')) &&(!location.includes('/myntUniversity')) && <Footer />}
+      {(!location.includes('/dashboard')) && (!location.includes('/complete-your-profile')) && (!location.includes('/myntUniversity')) && <Footer />}
 
     </BrowserRouter>
   );

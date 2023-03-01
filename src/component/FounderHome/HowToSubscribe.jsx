@@ -13,7 +13,7 @@ const HowToSubscribe = () => {
             <div style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
                 <div className="first-raise-card">
                     <div className="head-container-raise">
-                        <div className="head-section-first">1</div>
+                        <div className="head-section-non-active">1</div>
                         <div className="head-section-second">
                             <span className="card-header-txt">Sign up using your Email ID</span>
                             <span className="card-sub-header-txt">Register on the platform by entering your email address and finishing the one-time password (OTP) authentication process.</span>
