@@ -12,7 +12,7 @@ export default function PortfolioMain() {
             {showContent ? <Card className="card-complete-kyc-notice portfolio">
                 <CardContent>
                     <div className="card-complete-container">
-                        <img className="image-of-kyc-container" src={Portfolio} width={112} height={112}></img>
+                        <img className="image-of-kyc-container" src={Portfolio} width={117} height={106}></img>
                         <div className="text-container-card-kyc">
                             <span className="head-txt-kyc-card">No Subscription</span>
                             <span className="sub-txt-kyc-card">You have not subscribed to any campaigns on Mynt</span>

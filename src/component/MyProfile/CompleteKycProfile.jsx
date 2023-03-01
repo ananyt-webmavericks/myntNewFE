@@ -15,7 +15,7 @@ export default function CompleteKycProfile({data}) {
             <Card className="card-complete-kyc-notice">
                 <CardContent>
                     <div className="card-complete-container">
-                        <img className="image-of-kyc-container" src={KycProfile} width={112} height={112}></img>
+                        <img className="image-of-kyc-container" src={KycProfile} width={84} height={81}></img>
                         <div className="text-container-card-kyc">
                             <span className="head-txt-kyc-card">Complete your KYC</span>
                             <span className="sub-txt-kyc-card">As per RBI Mandate, you need to complete your KYC to start investing</span>

@@ -47,9 +47,11 @@ export default function FundedNetworks() {
                     </div>
                     <Carousel
                         className="react-carousel-networks"
-                   
+                        autoPlaySpeed={3000}
+                        easing="ease"
                         enableAutoPlay={true}
                         showArrows={false}
+                        transitionMs={1000}
                         enableMouseSwipe={true}
                         pagination={false}
                         itemsToShow={item}

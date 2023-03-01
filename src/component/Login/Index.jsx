@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import '../../css/GetStarted/getStarted.css'
 import { Card, CardContent } from "@mui/material";
-import Google from '../../images/assets/google.png';
-import Facebook from '../../images/assets/facebook.png';
-import Username from '../../images/assets/username.png';
 import Email from '../../images/assets/email.png';
 import Loginlogo from '../../images/assets/loginlogo.png';
 import { useNavigate } from "react-router-dom";

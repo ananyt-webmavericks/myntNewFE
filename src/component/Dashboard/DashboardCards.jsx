@@ -35,8 +35,8 @@ export default function DashboardCard() {
                     <Card className="card-main-dash">
                         <CardContent>
                             <div className="dash-card-section">
-                                <div className="card-image-container-dash" style={{ background: '#F7E1CF 0% 0% no-repeat padding-box' }}>
-                                    <img src={Investment} width={36} height={33} className="image-card-dashboard"></img>
+                                <div className="card-image-container-dash">
+                                    <img src={Investment} width={59} height={54} className="image-card-dashboard"></img>
                                 </div>
                                 <div className="text-card-container">
                                     <span style={{ fontSize: '26px', fontWeight: '600' }}>0.0K</span>
@@ -51,8 +51,8 @@ export default function DashboardCard() {
                     <Card className="card-main-dash">
                         <CardContent>
                             <div className="dash-card-section">
-                                <div className="card-image-container-dash" style={{ background: '#F7F5CF 0% 0% no-repeat padding-box' }}>
-                                    <img src={Startup} width={29} height={29} className="image-card-dashboard"></img>
+                                <div className="card-image-container-dash" >
+                                    <img src={Startup} width={50} height={48} className="image-card-dashboard"></img>
                                 </div>
                                 <div className="text-card-container">
                                     <span style={{ fontSize: '26px', fontWeight: '600' }}>0</span>
@@ -66,8 +66,8 @@ export default function DashboardCard() {
                     <Card className="card-main-dash">
                         <CardContent>
                             <div className="dash-card-section">
-                                <div className="card-image-container-dash" style={{ background: '#CFECF7 0% 0% no-repeat padding-box' }}>
-                                    <img src={Performance} width={30} height={30} className="image-card-dashboard"></img>
+                                <div className="card-image-container-dash" >
+                                    <img src={Performance} width={47} height={47} className="image-card-dashboard"></img>
                                 </div>
                                 <div className="text-card-container">
                                     <span style={{ fontSize: '14px', color: '#777777' }}>Portfolio Analytics </span>

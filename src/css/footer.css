@@ -30,10 +30,11 @@
     align-items: center;
 }
 .footer-text-header{
- 
-    font-size: 15px;
+    margin-top: 1em;
+    font-size: 13px;
 }
 .footer-bottom-section{
+    display: grid;
     margin: 2em;
 }
 .bottomMost-bar{

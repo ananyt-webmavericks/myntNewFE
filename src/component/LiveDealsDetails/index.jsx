@@ -4,6 +4,7 @@ import logo from '../../images/investments/logo1.png';
 import Share from '../../images/assets/share.png';
 import Arrow from '../../images/assets/yellowArrow.png';
 import Group1 from '../../images/highlights/group1.png';
+import { styled } from '@mui/material/styles';
 import Group2 from '../../images/highlights/group2.png';
 import Group3 from '../../images/highlights/group3.png';
 import Group4 from '../../images/highlights/group4.png';
@@ -14,13 +15,49 @@ import '../../css/LiveDealsDetails/liveDetails.css';
 import DealsFaqs from "./DealsFaqs";
 import YoutubeEmbed from "./YouTubeEmbed";
 import DealTerm from "./DealTerms";
+import { useNavigate } from "react-router-dom";
 import Team from "./Team";
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Switch from '@mui/material/Switch';
+import SpeedDial, { SpeedDialProps } from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+const actions = [
+    { icon: <FacebookRoundedIcon />, name: 'Facebook' },
+    { icon: <InstagramIcon />, name: 'Instagram' },
+    { icon: <TwitterIcon />, name: 'Twitter' },
+];
+
+const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
+    marginLeft:'1em'
+}));
 export default function LiveDetailsMain() {
     const [activeTab, setActiveTab] = useState(1)
     const [gridxsFirst, setGridxsFirst] = useState(2)
     const [gridxsSecond, setgridxsSecond] = useState(6)
     const ratio = parseInt(window.innerWidth);
+    const navigate = useNavigate()
+    const [direction, setDirection] = React.useState('right');
+    const [hidden, setHidden] = React.useState(false);
 
+    const handleDirectionChange = (event) => {
+        setDirection(event.target.value);
+    };
+
+    const handleHiddenChange = (event) => {
+        setHidden(event.target.checked);
+    };
     useEffect(() => {
 
         if (ratio < 850) {
@@ -70,8 +107,22 @@ export default function LiveDetailsMain() {
                             <div className="inline-progress-bar-live-deals"></div>
                         </div>
                         <div className="header-section-deals-detail btn-section" >
-                            <Button className="invest-btn-section-deals">Invest</Button>
-                            <div className="rounded-container-share-btn"><img src={Share} width={25} height={27}></img></div>
+                            <Button onClick={() => navigate('/pay-to-subscribe')} className="invest-btn-section-deals">Invest</Button>
+                            <StyledSpeedDial
+                                ariaLabel="SpeedDial playground example"
+                                hidden={hidden}
+                                icon={<ShareIcon />}
+                                direction={direction}
+                            >
+                                {actions.map((action) => (
+                                    <SpeedDialAction
+                                        key={action.name}
+                                        icon={action.icon}
+                                        tooltipTitle={action.name}
+                                    />
+                                ))}
+                            </StyledSpeedDial>
+                            {/* <div className="rounded-container-share-btn"><img src={Share} width={25} height={27}></img></div> */}
                         </div>
                     </Grid>
                 </Grid>
@@ -102,7 +153,7 @@ export default function LiveDetailsMain() {
                             <Card className="card-content-live-details">
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group1} height={68}></img>
+                                        <img src={Group1} height={47} width={53} ></img>
                                         <span style={{ fontSize: '18px', marginLeft: '25px' }}>10,000 + Strong community, Build organically</span>
                                     </div>
                                 </CardContent>
@@ -112,7 +163,7 @@ export default function LiveDetailsMain() {
                             <Card className="card-content-live-details">
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group2} height={68}></img>
+                                        <img src={Group2} height={47} width={55} ></img>
                                         <span style={{ fontSize: '18px', marginLeft: '25px' }}>200 + Host, creators and venue partners</span>
                                     </div>
                                 </CardContent>
@@ -122,7 +173,7 @@ export default function LiveDetailsMain() {
                             <Card className="card-content-live-details">
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group3} height={68}></img>
+                                        <img src={Group3} height={52} width={53} ></img>
                                         <span style={{ fontSize: '18px', marginLeft: '25px' }}>Community events & Experiences</span>
                                     </div>
                                 </CardContent>
@@ -132,7 +183,7 @@ export default function LiveDetailsMain() {
                             <Card className="card-content-live-details">
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group4} height={68}></img>
+                                        <img src={Group4} height={55} width={60} ></img>
                                         <span style={{ fontSize: '18px', marginLeft: '25px' }}>A full stack product for community assisted connections</span>
                                     </div>
                                 </CardContent>
@@ -163,24 +214,24 @@ export default function LiveDetailsMain() {
                 {activeTab === 1 &&
                     <div>
                         <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>MildCares - Pitch</div>
-                            <div style={{display:'grid' , justifyContent:'center',marginTop: '40px'}}>
-                            <img src={FirstImage} height={gridxsFirst === 1 ? '193' : '592'} style={gridxsFirst===1 ? {width:'90%',margin:'auto'} : {width:'90%',margin:'auto'}}></img>
-                            <img src={SecondImage} height={gridxsFirst === 1 ? '171' : '592'}style={gridxsFirst===1 ? {width:'90%',margin:'auto',paddingTop:'30px'} : {width:'90%',margin:'auto',paddingTop:'30px'}}></img>
-                            <img src={ThirdImage}  height={gridxsFirst === 1 ? '179' : '592'} style={gridxsFirst===1 ? {width:'90%',margin:'auto',paddingTop:'30px'} : {width:'90%',margin:'auto',paddingTop:'30px'}}></img>
+                        <div style={{ display: 'grid', justifyContent: 'center', marginTop: '40px' }}>
+                            <img src={FirstImage} height={gridxsFirst === 1 ? '193' : '592'} style={gridxsFirst === 1 ? { width: '90%', margin: 'auto' } : { width: '90%', margin: 'auto' }}></img>
+                            <img src={SecondImage} height={gridxsFirst === 1 ? '171' : '592'} style={gridxsFirst === 1 ? { width: '90%', margin: 'auto', paddingTop: '30px' } : { width: '90%', margin: 'auto', paddingTop: '30px' }}></img>
+                            <img src={ThirdImage} height={gridxsFirst === 1 ? '179' : '592'} style={gridxsFirst === 1 ? { width: '90%', margin: 'auto', paddingTop: '30px' } : { width: '90%', margin: 'auto', paddingTop: '30px' }}></img>
                         </div>
                     </div>
                 }
                 {
                     activeTab === 3 &&
                     <div>
-                         <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Deal Terms</div>
-                         <DealTerm />
+                        <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Deal Terms</div>
+                        <DealTerm />
                     </div>
                 }
                 {
                     activeTab === 4 &&
                     <div>
-                         <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px',marginBottom:'30px' }}>Meet the Team</div>
+                        <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px', marginBottom: '30px' }}>Meet the Team</div>
                         <Team />
                     </div>
                 }

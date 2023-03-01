@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Card, Grid, Typography } from '@mui/material'
 import React from 'react'
 import '../../css/FounderHome/BaseHighlight.css'
-
+import { useNavigate } from 'react-router-dom'
 const data = [
     { heading: 'Fast and easy', desc: 'No multiple negotiations and endless documentation' },
     { heading: 'Effective', desc: 'Happiness delivered to more than 100 startups' },
@@ -12,6 +12,7 @@ const data = [
 ]
 
 const BaseHighlights = () => {
+    const navigate = useNavigate()
     return (
         <React.Fragment>
             <div className="basehighlight-container-main">
@@ -48,7 +49,7 @@ const BaseHighlights = () => {
                     }
                 </Box>
                 <div className="apply-now-button-container">
-                    <Button variant="contained" className="founderhome-getStarted-landing-btn">Apply Now</Button>
+                    <Button variant="contained" onClick={()=>navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
                 </div>
             </Grid>
         </React.Fragment >

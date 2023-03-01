@@ -37,8 +37,8 @@
 .learn-more-btn:hover{
     width: 136px !important;
     border: 1px solid #F0C127 !important;
-    background: #F0C127 !important;
-    color: black !important;
+    background: black !important;
+    color: white !important;
     border-radius: 30px !important;
     font-size: 14px !important;
 }
@@ -111,8 +111,8 @@
 }
 
 .card-content-graph:hover .card-bold-number-text{
-    box-shadow: inset 200px 0 0 0 #F0C127;
-    color: white;
+    /* box-shadow: inset 200px 0 0 0 #F0C127; */
+    /* color: white; */
 }
 .risk-factor.two{
     right: 7em;

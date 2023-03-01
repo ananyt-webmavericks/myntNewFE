@@ -17,6 +17,9 @@ import Kunal from '../../images/investors/kunal.png';
 import Microsoft from '../../images/investors/microsoft.png';
 import Manju from '../../images/investors/manju.png';
 import Sg from '../../images/investors/sg.png';
+import Ola from '../../images/investors/ola.svg';
+import Uber from '../../images/investors/uber.svg';
+import makemytrip from '../../images/investors/makemytrip.svg';
 import { useNavigate } from "react-router-dom";
 
 const data = [
@@ -25,9 +28,9 @@ const data = [
     { id: 3, image: Rajiv, logo: Samsung, name: 'Asad', amount: 'Invested INR 7000' },
     { id: 4, image: Rajiv, logo: Byju, name: 'Rajeev', amount: 'Invested INR 9000' },
     { id: 5, image: Rajiv, logo: Owl, name: 'Gaurav', amount: 'Invested INR 18,000' },
-    { id: 6, image: Kunal, logo: Microsoft, name: 'Kunal', amount: 'Invested INR 6000' },
-    { id: 7, image: Manju, logo: Sg, name: 'Manju', amount: 'Invested INR 8000' },
-    { id: 8, image: Kunal, logo: Microsoft, name: 'Sanjay', amount: 'Invested INR 15,000' },
+    { id: 6, image: Kunal, logo: makemytrip, name: 'Kunal', amount: 'Invested INR 6000' },
+    { id: 7, image: Manju, logo: Uber, name: 'Manju', amount: 'Invested INR 8000' },
+    { id: 8, image: Kunal, logo: Ola, name: 'Sanjay', amount: 'Invested INR 15,000' },
 
 ]
 export default function InvestorsHome() {

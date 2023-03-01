@@ -114,6 +114,7 @@ const Footer = () => {
 
             </Grid>
             <div className="footer-bottom-section">
+                <span style={{fontWeight:'600' ,fontSize:'15px'}}>Disclaimer:</span>
                 <span className="footer-text-header">All trademarks and logos or registered trademarks and logos found on this Site or mentioned herein belong to their respective owners and are solely being used for informational
                     purposes.
 

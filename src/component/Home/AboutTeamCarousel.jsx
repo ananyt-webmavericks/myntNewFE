@@ -26,8 +26,11 @@ export default function AboutTeamCarousel() {
                 <img className="team-bg-img" src={Map} alt="Map" />
                 <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
                     <Carousel
-                        enableAutoPlay={true}
+                        enableAutoPlay={false}
                         showArrows={true}
+                        autoPlaySpeed={3000}
+                        easing="ease"
+                        transitionMs={1000}
                         enableMouseSwipe={true}
                         pagination={true}
                         itemsToShow={1}

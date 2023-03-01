@@ -2,8 +2,9 @@ import { Box, Button, Typography } from '@mui/material'
 import RaiseBanner from '../../images/assets/RaiseBanner.png'
 import '../../css/FounderHome/LandingTop.css'
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 const AutomatedStreamlined = () => {
+    const navigate = useNavigate()
     return (
         <>
             <Box sx={{ minHeight: '500px', marginBottom: '1em' }}>
@@ -18,7 +19,7 @@ const AutomatedStreamlined = () => {
                         </Typography>
                         <div className="founderhome-landing-head-section">
                             <span className="founderhome-head-description">Seed to Series C and beyond, Mynt Invest is invested in your success and Growth. Achieve the following benefits by partnering smart, from the start.</span>
-                            <Button variant="contained" className="founderhome-getStarted-landing-btn">Apply Now</Button>
+                            <Button variant="contained" onClick={()=>navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
                         </div>
                     </div>
                     <div className="founderhome-image-section-landing">
