@@ -16,18 +16,12 @@ export default function HomeFounder() {
       <Container maxWidth="lg">
         <AutomatedStreamlined />
       </Container>
-      {/* <FundedNetworks /> */}
       <Container maxWidth="lg">
         <Networks />
         <FundRaising />
         <HowToSubscribe />
         <AboutTeamCarousel />
         <BaseHighlights />
-        {/* <SubscribegGraph />
-            <OpenInvestment />
-            <AboutTeamCarousel />
-            <InvestorsHome />
-            <HowToRaise /> */}
         <FounderFaqs />
       </Container>
     </React.Fragment>

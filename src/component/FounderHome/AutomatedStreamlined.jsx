@@ -3,15 +3,28 @@ import RaiseBanner from '../../images/assets/RaiseBanner.png'
 import '../../css/FounderHome/LandingTop.css'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Lottie from 'react-lottie'
+import animationData from '../../lotties/HomeFounder.json';
 const AutomatedStreamlined = () => {
     const navigate = useNavigate()
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
     return (
         <>
             <Box sx={{ minHeight: '500px', marginBottom: '1em' }}>
                 <div className="founderhome-landing-head-container">
                     <div className="founderhome-landing-head-txt-section">
                         {/* <Typography className="test-script-regular">MAKING THE BEST</Typography> */}
-                        <Typography className="founderhome-test-script-bold"><span className="test-script-bg">AUTOMATED</span> STREAMLINED</Typography>
+                        <Typography className="founderhome-test-script-bold">
+                            <h3><b className="test-script-bg">AUTOMATED,</b> STREAMLINED</h3>
+                        </Typography>
                         <Typography className="founderhome-test-script-regular">
                             VENTURE CAPITAL
                             <span className='founderhome-text-script-smallgray'>  AMT.Raised </span>
@@ -19,11 +32,15 @@ const AutomatedStreamlined = () => {
                         </Typography>
                         <div className="founderhome-landing-head-section">
                             <span className="founderhome-head-description">Seed to Series C and beyond, Mynt Invest is invested in your success and Growth. Achieve the following benefits by partnering smart, from the start.</span>
-                            <Button variant="contained" onClick={()=>navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
+                            <Button variant="contained" onClick={() => navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
                         </div>
                     </div>
                     <div className="founderhome-image-section-landing">
-                        <img className="founderhome-banner-home-main" src={RaiseBanner} alt="raise-banner" />
+                        <Lottie
+                            width={478}
+                            height={478}
+                            options={defaultOptions}
+                        />
                     </div>
                 </div>
             </Box>

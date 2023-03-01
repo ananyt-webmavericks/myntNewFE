@@ -35,7 +35,7 @@ export default function HowToRaise() {
                 <div style={{overflow:'hidden',overflowX:'scroll',display:'flex' , alignItems:'center'}}>
                     <div className="first-raise-card">
                         <div className="head-container-raise">
-                            <div className="head-section-first">1</div>
+                        <div className="head-section-non-active">1</div>
                             <div className="head-section-second">
                                 <span className="card-header-txt">Signup with your email address</span>
                                 <span className="card-sub-header-txt">Sign up on the platform by providing your email and completing the one-time password (OTP) verification procedure.</span>

@@ -5,13 +5,16 @@
 }
 
 .founderhome-test-script-regular {
-    font-size: 26px !important;
-    font-weight: 500 !important;
+    font: normal normal medium 34px/45px Poppins !important;
+    font-weight: bold !important;
 }
 
 .founderhome-test-script-bold {
-    font-size: 36px !important;
-    font-weight: 600 !important;
+    text-align: left;
+    font: normal normal bold 37px/45px Poppins !important;
+    letter-spacing: 0px !important;
+    color: #000000;
+    text-transform: uppercase !important;
 }
 
 .founderhome-test-script-bg {
@@ -44,7 +47,9 @@
 }
 
 .founderhome-getStarted-landing-btn:hover {
-    /* box-shadow: none !important; */
+    color: #000000 !important;
+    text-align: center;
+    font-weight: 500 !important;
     background-color: #efc127 !important;
 }
 
@@ -62,6 +67,7 @@
 .founderhome-landing-head-txt-section {
     order: 2;
     text-align: center;
+    padding-top: 5rem;
 }
 
 .founderhome-banner-home-main {
@@ -69,12 +75,12 @@
     height: 203px;
 }
 
-.founderhome-text-script-smallgray{
+.founderhome-text-script-smallgray {
     color: #898989;
     font-size: 20px !important;
 }
 
-.founderhome-text-script-million{
+.founderhome-text-script-million {
     font-size: 26px !important;
     font: normal normal 600 26px/45px Poppins;
 }
@@ -108,7 +114,11 @@
     }
 
     .founderhome-test-script-bold {
-        font-size: 36px !important;
+        text-align: left;
+        font: normal normal bold 37px/45px Poppins !important;
+        letter-spacing: 0px !important;
+        color: #000000;
+        text-transform: uppercase;
     }
 
     .founderhome-banner-home-main {

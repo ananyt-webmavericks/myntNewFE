@@ -22,7 +22,7 @@
     width: 100%;
     margin-top: 1em;
     display: grid;
-   
+
 }
 
 .head-description {
@@ -31,7 +31,7 @@
 }
 
 .getStarted-landing-btn {
- 
+
     width: 200px !important;
     border-radius: 30px !important;
     text-transform: capitalize !important;
@@ -44,6 +44,7 @@
 
 .getStarted-landing-btn:hover {
     /* box-shadow: none !important; */
+    color: #000000 !important;
     background-color: #efc127 !important;
 }
 
@@ -63,7 +64,7 @@
     text-align: center;
 }
 
-.banner-home-main{
+.banner-home-main {
     width: 253px;
     height: 203px;
 }
@@ -72,28 +73,35 @@
     .image-section-landing {
         order: 2;
     }
+
     .landing-head-txt-section {
         order: 1;
         text-align: start;
     }
+
     .landing-head-container {
         display: flex;
         justify-content: space-between;
     }
+
     .landing-head-section {
         text-align: start;
     }
+
     .getStarted-landing-btn {
         margin: 0 !important;
     }
+
     .test-script-regular {
         font-size: 36px !important;
     }
+
     .test-script-bold {
         font-size: 36px !important;
     }
-    .banner-home-main{
-        width:596px; 
-        height:485px;
+
+    .banner-home-main {
+        width: 596px;
+        height: 485px;
     }
 }

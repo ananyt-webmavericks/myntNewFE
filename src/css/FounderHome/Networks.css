@@ -1,18 +1,19 @@
-
-.our-networks-label{
-margin-top: 2.5em !important;
-text-align: center;
-font: normal normal 600 24px Poppins !important;
-letter-spacing: 0px;
-opacity: 1;
+.our-networks-label {
+    margin-top: 2.5em !important;
+    text-align: center;
+    font: normal normal 600 24px Poppins !important;
+    letter-spacing: 0px;
+    opacity: 1;
 }
-.our-networks-label >span {
+
+.our-networks-label>span {
     display: block;
 }
 
-.portfolio-comp-label{
+.portfolio-comp-label {
     color: #F0C127;
 }
+
 .network-badge {
     align-self: center;
     background: #F2DA58 0% 0% no-repeat padding-box;
@@ -36,45 +37,52 @@ opacity: 1;
 .network-badge-bottom-text {
     padding-bottom: '10px';
     margin-left: '30px' !important;
+    font: normal normal medium 22px/52px Poppins !important;
+    font-weight: bold;
 }
 
 @media screen and (min-width: 870px) {
-.our-networks-label>span {
-    display: inline;
-    font: normal normal 600 36px Poppins !important;
-}
-.our-networks-label {
-    margin-top: 0;
-}
-.network-badge{
-    align-self: center;
-    background: #F2DA58 0% 0% no-repeat padding-box;
-    border-radius: 10px;
-    opacity: 1;
-    height: 20px;
-    padding: '2px'
-}
-.network-badge-text{
-    display: flex;
-    align-items: center;
-    height: 17px;
-    font: normal normal 600 12px/27px Poppins;
-    letter-spacing: 0px;
-    color: #000000;
-    opacity: 1;
-    padding: 10px;
-}
-.network-badge-bottom-text{
-    padding-bottom: '10px';
-    margin-left: '30px' !important;
-    text-align: left;
-    font-size: 22px;
-    font-weight: "7px";
-    font: normal normal medium 22px/52px Poppins;
-    letter-spacing: 0px;
-    color: #000000;
-}
-.capital{
+    .our-networks-label>span {
+        display: inline;
         font: normal normal 600 36px Poppins !important;
-}
+    }
+
+    .our-networks-label {
+        margin-top: 0;
+    }
+
+    .network-badge {
+        align-self: center;
+        background: #F2DA58 0% 0% no-repeat padding-box;
+        border-radius: 10px;
+        opacity: 1;
+        height: 20px;
+        padding: '2px'
+    }
+
+    .network-badge-text {
+        display: flex;
+        align-items: center;
+        height: 17px;
+        font: normal normal 600 12px/27px Poppins;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+        padding: 10px;
+    }
+
+    .network-badge-bottom-text {
+        padding-bottom: '10px';
+        margin-left: '30px' !important;
+        text-align: left;
+        font-size: 22px;
+        font-weight: "7px";
+        font: normal normal medium 22px/52px Poppins;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+
+    .capital {
+        font: normal normal 600 36px Poppins !important;
+    }
 }

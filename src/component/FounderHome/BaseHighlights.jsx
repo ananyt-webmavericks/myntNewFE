@@ -36,7 +36,7 @@ const BaseHighlights = () => {
                         data.map((item, index) => {
                             return <Card elevation={0} className="higlight-point-container">
                                 <div className='point-block'>
-                                    <Avatar sx={{ bgcolor: '#F0C127', width: 40, height: 40, border: '1px', borderColor: '#707070' }}>
+                                    <Avatar sx={{ bgcolor: '#F0C127', width: '24px', height: '24px', border: '1px', borderColor: '#707070' }}>
                                         <span className='point-number'>{index + 1}</span>
                                     </Avatar>
                                 </div>
@@ -49,7 +49,7 @@ const BaseHighlights = () => {
                     }
                 </Box>
                 <div className="apply-now-button-container">
-                    <Button variant="contained" onClick={()=>navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
+                    <Button variant="contained" onClick={() => navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
                 </div>
             </Grid>
         </React.Fragment >
