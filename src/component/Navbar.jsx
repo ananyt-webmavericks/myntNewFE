@@ -41,7 +41,7 @@ const Navbar = () => {
                 {location.includes('/complete-your-profile') && ratio < 768 && <ArrowBackIosRoundedIcon style={{ marginTop: '1em' }} onClick={() => navigate('/')} />}
 
                 {!location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} className='ham-menu-img'></img>}
-                {location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} style={{ width: '78px', height: '35px', position: 'sticky', left: '40%', top: '1em' }}></img>}
+                {location.includes('/complete-your-profile') && ratio < 768 && <img  src={logo} style={{ width: '78px', height: '35px', position: 'sticky', left: '40%', top: '1em' }}></img>}
                 <input type="checkbox" name="" id="" />
                 {!location.includes('/complete-your-profile') && <div class="hamburger-lines">
                     <span class="line line1"></span>
@@ -151,7 +151,7 @@ const Navbar = () => {
                     }
 
                 </ul>
-                <img class="logo-web" src={logo}></img>
+                <img onClick={() => navigate('/')} class="logo-web" src={logo}></img>
             </div>
         </nav>
     )

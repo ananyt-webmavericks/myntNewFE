@@ -6,16 +6,19 @@
 
 .test-script-regular {
     font-size: 26px !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
 }
 
 .test-script-bold {
+    font-family: "Roboto","Helvetica","Arial",sans-serif !important;
     font-size: 36px !important;
     font-weight: 600 !important;
 }
 
 .test-script-bg {
+    font-family: "Roboto","Helvetica","Arial",sans-serif !important;
     color: #efc127;
+    font-weight: 600 !important;
 }
 
 .landing-head-section {
@@ -26,12 +29,13 @@
 }
 
 .head-description {
-    font-size: 16px;
+    font-size: 15px;
+    color: #777777;
     margin-bottom: 1em !important;
 }
 
 .getStarted-landing-btn {
-
+    font-weight: 500 !important;
     width: 200px !important;
     border-radius: 30px !important;
     text-transform: capitalize !important;

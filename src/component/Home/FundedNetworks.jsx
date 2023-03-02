@@ -73,8 +73,8 @@ export default function FundedNetworks() {
                             return (
                                 <Item key={index} className='company-image'>
                                     <div style={{ display: 'grid', textAlign: 'center' }}>
-                                        <img height={80} width={100} style={{ objectFit: 'contain' }} src={item.image}></img>
-                                        <span style={{ fontSize: '16px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                                        <img height={100} width={100} style={{ objectFit: 'contain' }} src={item.image}></img>
+                                        <span style={{ fontSize: '13px', color: 'black', fontWeight: '600' }}>{item.name}</span>
                                     </div>
                                 </Item>
                             )

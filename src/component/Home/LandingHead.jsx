@@ -21,10 +21,10 @@ export default function LandingHead() {
             <div className="landing-head-container">
                 <div className="landing-head-txt-section">
                     <Typography className="test-script-regular">MAKING THE BEST</Typography>
-                    <Typography className="test-script-bold"><span className="test-script-bg">STARTUP</span> OPPORTUNITIES</Typography>
+                    <Typography className="test-script-bold"><span className="test-script-bg">INVESTMENT</span> OPPORTUNITIES</Typography>
                     <Typography className="test-script-regular">ACCESSIBLE</Typography>
                     <div className="landing-head-section">
-                        <span className="head-description">Own a small stake in the next big startup and diversify your portfolio ten folds.</span>
+                        <span className="head-description">About to know how to get started to invest</span>
                         <Button variant="contained" onClick={() => navigate('/get-started')} className="getStarted-landing-btn">Get Started</Button>
                         <Typography className="subhead-description">Are you a founder?<span className="test-script-bg" style={{ cursor: 'pointer' }} onClick={() => navigate('/founder')}> Raise Capital on Mynt</span></Typography>
                     </div>

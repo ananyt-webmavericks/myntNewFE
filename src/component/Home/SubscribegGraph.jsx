@@ -27,7 +27,7 @@ export default function SubscribegGraph() {
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
             <div className="subscribe-graph-heading">
-                <Typography className="test-script-regular">Enroll in<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+                <Typography className="test-script-regular">Subscribe to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>
             <Grid sx={{ marginTop: '40px' }} container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>

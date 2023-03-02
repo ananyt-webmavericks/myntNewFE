@@ -205,7 +205,8 @@ export default function OpenInvestment() {
                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                             </div>
                                         </div>
-                                        {item.checked && <div className="overlay responsive">
+                                        {item.checked && 
+                                        <div className="overlay responsive">
                                             <div className="card-header-logo hover">
                                                 <div className="company-logo-section">
                                                     <img src={Eveez} width={54} height={54} />

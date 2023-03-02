@@ -12,7 +12,7 @@ export default function Faqs() {
         <>
             <div style={{ marginBottom: '2em' }}>
                 <div className="investor-home-heading">FAQS</div>
-                <span className="investors-subheading">Mynt University: Your go-to resource for the most frequently asked questions</span>
+                <span className="investors-subheading">Mynt Academy is your destination for the most Frequently Asked Questions</span>
                 <div style={{ marginTop: '2em' }}>
                     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
                         <AccordionSummary

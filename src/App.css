@@ -8,7 +8,7 @@
   pointer-events: none;
 }
 span,h1,h2,h3,h4,h5,h6,div,p{
-  font-family: 'Poppins', sans-serif !important;
+  font-family: Poppins !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
