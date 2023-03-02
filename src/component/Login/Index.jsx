@@ -15,39 +15,39 @@ import { useSelector } from "react-redux";
 export default function LoginMain() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const [email , setEmail]= useState('')
+    const [email, setEmail] = useState('')
     const isEmail = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
     const notify = (data) => {
         toast.error(data)
     }
 
-    const handleChange =(e)=>{
+    const handleChange = (e) => {
         setEmail(e.target.value)
     }
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (!isEmail(email)) {
-              notify("Please enter a valid email")
+            notify("Please enter a valid email")
         }
-        else{
-            try{
+        else {
+            try {
                 UserServices.LoginUserByEmail(email).then(
                     (response) => {
                         console.log(response)
-                        if(response.status === 200){
+                        if (response.status === 200) {
                             dispatch(userEmailAction(email))
-                            localStorage.setItem('loginType','existed')
+                            localStorage.setItem('loginType', 'existed')
                             navigate('/otp-verification')
                         }
-                            
+
                     })
             }
-            catch{
+            catch {
                 notify("Try after few minutes")
             }
         }
     }
-   
+
 
     // notifySuccess(response.data.message)
 
@@ -81,7 +81,7 @@ export default function LoginMain() {
                         <div className="input-container-second">
                             <div className="email-input-get-started">
                                 <img src={Email} width={16} height={16} style={{ marginLeft: '10px' }}></img>
-                                <input value={email} onChange={handleChange}  className="in-input-email" placeholder="Email Address" />
+                                <input value={email} onChange={handleChange} className="in-input-email" placeholder="Email Address" />
                             </div>
                         </div>
                         <button onClick={handleSubmit} className="sign-up-btn">Login</button>
@@ -89,9 +89,9 @@ export default function LoginMain() {
                 </Card>
                 <div className="bottom-most-txt-get-started">
                     <div className="footer-get-started-txt-head">
-                        <span className="colored-text-get-started" onClick={() => navigate('/login-founder')} style={{cursor:'pointer'}}>Log in </span>as founder
+                        <span className="colored-text-get-started" onClick={() => navigate('/login-founder')} style={{ cursor: 'pointer' }}>Log in </span>as founder
                     </div>
-                    <div className="footer-get-started-txt-head">Don’t have an account? <span className="colored-text-get-started" style={{cursor:'pointer'}} onClick={() => navigate('/login-founder')}>Sign Up</span></div>
+                    <div className="footer-get-started-txt-head">Don’t have an account? <span className="colored-text-get-started" style={{ cursor: 'pointer' }} onClick={() => navigate('/get-started')}>Sign Up</span></div>
                 </div>
             </div>
         </div>

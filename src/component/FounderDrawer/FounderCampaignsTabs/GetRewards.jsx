@@ -9,7 +9,7 @@ const GetRewards = () => {
 
             <span className='hightlight-heading'>Get Rewards</span>
 
-            <Typography className='raise-with-mint-desc highlight-desc' >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.</Typography>
+            <Typography className='raise-with-mint-desc highlight-desc' >Mention the benefits or discounts an investor can get once he subscribes to your campaign</Typography>
 
             <form action="">
                 <div>

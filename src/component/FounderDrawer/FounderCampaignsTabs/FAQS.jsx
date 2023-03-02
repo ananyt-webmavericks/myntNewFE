@@ -33,7 +33,7 @@ const FAQS = () => {
             <Box sx={{ marginTop: 4, marginLeft: 2 }}>
                 <h3 className='faqs-title'>FAQs (Frequently Asked Questions)</h3>
 
-                <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.</Typography>
+                <Typography>Investors are curious. Answer the basics about your startup here. </Typography>
 
 
                 <Typography className='upload-ur-pitch' style={{ marginTop: '1.4rem', marginBottom: "-0.3rem" }}>Question 01</Typography>

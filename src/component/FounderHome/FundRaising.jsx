@@ -29,8 +29,9 @@ const FundRaising = () => {
                             <Avatar sx={{ bgcolor: '#F0C127', width: 56, height: 56 }}>OP</Avatar>
                         </div>
                         <div className='avatar-texts'>
-                            <Typography className='avatar-heading'>Raise via Equity Instruments</Typography>
-                            <Typography className='avatar-description'>This is not the actual text for this post, we will get the content in this section later.</Typography>
+                            <Typography className='avatar-heading'>Secure funding via Equity instruments
+                            </Typography>
+                            <Typography className='avatar-description'>Experience the benefits of an equity raise while preserving a clean cap table. Benefit from the added value of numerous investors with no limitations for participation.</Typography>
                         </div>
                     </Card>
                     <Card elevation={2} className="fund-raising-card">
@@ -38,8 +39,8 @@ const FundRaising = () => {
                             <Avatar sx={{ bgcolor: '#F0C127', width: 56, height: 56 }}>OP</Avatar>
                         </div>
                         <div className='avatar-texts'>
-                            <Typography className='avatar-heading'>Raise via Equity Instruments</Typography>
-                            <Typography className='avatar-description'>This is not the actual text for this post, we will get the content in this section later.</Typography>
+                            <Typography className='avatar-heading'>Secure funding via Debt instruments </Typography>
+                            <Typography className='avatar-description'>Acquire non-diluting capital through our flexible terms and repayment plans. Take advantage of all community linked benefits for increased sales.</Typography>
                         </div>
                     </Card>
                 </Box>

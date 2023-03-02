@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../css/navbar.css';
-import logo from '../images/mynt1.png'
+import logo from '../images/mynt-new.png'
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import { useDispatch, useSelector } from "react-redux";
 import Avatar from '@mui/material/Avatar';
@@ -27,10 +27,10 @@ const Navbar = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const handleProfile=()=>{
+    const handleProfile = () => {
         navigate('/my-profile')
     }
-    const handleLogout=()=>{
+    const handleLogout = () => {
         navigate('/login')
         localStorage.clear();
         window.location.reload()
@@ -41,7 +41,7 @@ const Navbar = () => {
                 {location.includes('/complete-your-profile') && ratio < 768 && <ArrowBackIosRoundedIcon style={{ marginTop: '1em' }} onClick={() => navigate('/')} />}
 
                 {!location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} className='ham-menu-img'></img>}
-                {location.includes('/complete-your-profile') && ratio < 768 && <img  src={logo} style={{ width: '78px', height: '35px', position: 'sticky', left: '40%', top: '1em' }}></img>}
+                {location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} style={{ width: '78px', height: '35px', position: 'sticky', left: '40%', top: '1em' }}></img>}
                 <input type="checkbox" name="" id="" />
                 {!location.includes('/complete-your-profile') && <div class="hamburger-lines">
                     <span class="line line1"></span>
@@ -60,7 +60,7 @@ const Navbar = () => {
                     <hr className="ruler-navbar" />
                     {Object.keys(userData).length !== 0 ?
                         <>
-                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name: userData?.first_name + " " + userData?.last_name}</span></li>
+                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name : userData?.first_name + " " + userData?.last_name}</span></li>
 
                             {(ratio > 768) ?
                                 <> <Tooltip title={userData.name}>
@@ -117,11 +117,11 @@ const Navbar = () => {
                                         <MenuItem onClick={handleProfile}>
                                             <Avatar /> Profile
                                         </MenuItem>
-                                        <MenuItem onClick={()=>navigate('/dashboard')}>
-                                        <ListItemIcon>
+                                        <MenuItem onClick={() => navigate('/dashboard')}>
+                                            <ListItemIcon>
                                                 <GridViewOutlinedIcon fontSize="small" />
                                             </ListItemIcon>
-                                           Dashboard
+                                            Dashboard
                                         </MenuItem>
                                         <Divider />
                                         <MenuItem onClick={handleLogout}>

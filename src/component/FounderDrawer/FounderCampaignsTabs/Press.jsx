@@ -8,7 +8,7 @@ const Press = () => {
         <Container maxWidth="lg">
             <Typography className='press-title'>Press</Typography>
 
-            <Typography className='press-title-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.</Typography>
+            <Typography className='press-title-desc'>Show your reach! Investors are always more inclined towards startups that have been covered by the media and are gaining traction. </Typography>
 
             <input type="text" className='press-input' placeholder='Enter your header/title here' />
 

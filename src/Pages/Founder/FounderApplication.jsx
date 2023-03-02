@@ -29,7 +29,7 @@ const FounderApplication = () => {
                         Raise with Mynt
                     </Typography>
                     <Typography className='raise-mint-title-desc'>
-                        Tell us a little about your company. This will help us understand your business better.
+                        Share some details about your company. Our team shall contact you shortly for the due diligence process.
                     </Typography>
                     <div className='raise-mint-appln-parent'>
 

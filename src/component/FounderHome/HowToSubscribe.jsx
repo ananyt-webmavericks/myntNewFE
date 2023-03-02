@@ -15,8 +15,9 @@ const HowToSubscribe = () => {
                     <div className="head-container-raise">
                         <div className="head-section-non-active">1</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">Sign up using your Email ID</span>
-                            <span className="card-sub-header-txt">Register on the platform by entering your email address and finishing the one-time password (OTP) authentication process.</span>
+                            <span className="card-header-txt">Reach out to us </span>
+                            <span className="card-sub-header-txt">Connect with our team and specify your requirements for raising funds. Our team will assist you in navigating the process and answering any questions you may have.
+                            </span>
                         </div>
                     </div>
                     <div className="raise-card-image-container">
@@ -28,8 +29,9 @@ const HowToSubscribe = () => {
                     <div className="head-container-raise">
                         <div className="head-section-non-active">2</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">Complete KYC and add Bank details</span>
-                            <span className="card-sub-header-txt">Complete your Know Your Customer (KYC) process by providing your PAN and add your bank account details.</span>
+                            <span className="card-header-txt">We recommend a model that aligns with your financial needs.</span>
+                            <span className="card-sub-header-txt">Based on your requirements and our prior experience with effective campaigns, we recommend a model.
+                            </span>
                         </div>
                     </div>
                     <div className="raise-card-image-container">
@@ -41,8 +43,9 @@ const HowToSubscribe = () => {
                     <div className="head-container-raise">
                         <div className="head-section-non-active">3</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">Subscribe to your favourite opportunities</span>
-                            <span className="card-sub-header-txt">Browse through the live campaigns and choose the one that is most suitable for you. Once you have selected a campaign, proceed for payment and complete the subscription process</span>
+                            <span className="card-header-txt">Create a unique campaign and go live</span>
+                            <span className="card-sub-header-txt">Use our powerful tools to create your campaign, include key information such as your pitch deck, deal terms, team and investor information.
+                            </span>
                         </div>
                     </div>
                     <div className="raise-card-image-container">
@@ -54,8 +57,9 @@ const HowToSubscribe = () => {
                     <div className="head-container-raise">
                         <div className="head-section-non-active">4</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">See your wealth grow</span>
-                            <span className="card-sub-header-txt">Your subscription process is now complete, and you can track your subscriptions to see how your Subscription is growing as the startups you have invested in succeed.</span>
+                            <span className="card-header-txt">Grow your customer base while you receive funds
+                            </span>
+                            <span className="card-sub-header-txt">Gain a new set of clients for your product or service while you raise funds from the platform. Digitally sign all relevant documents and receive your capital.</span>
                         </div>
                     </div>
                     <div className="raise-card-image-container-last">

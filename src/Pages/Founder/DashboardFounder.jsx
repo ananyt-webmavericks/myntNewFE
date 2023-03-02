@@ -23,7 +23,7 @@ const DashboardFounder = () => {
                     <Container maxWidth="lg">
                         <div>
                             <Typography className="raise-with-mint">Raise with Myntinvest!</Typography>
-                            <Typography className="raise-with-mint-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.</Typography>
+                            <Typography className="raise-with-mint-desc">Provide us with all the data required to make your campaign! Make sure to include all the important details to make your campaign as attractive as possible to our investors. </Typography>
                         </div>
 
                         <Card className="raise-with-mint-card" elevation={5}>

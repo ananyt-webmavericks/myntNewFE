@@ -10,7 +10,7 @@ const Highlights = () => {
 
             <span className='hightlight-heading'>Highlights</span>
 
-            <Typography className='raise-with-mint-desc highlight-desc' >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.</Typography>
+            <Typography className='raise-with-mint-desc highlight-desc' >Mention the top highlights about your startup that you want the investors to know about.</Typography>
 
 
             <div style={{ marginTop: '3rem' }} className='gridParent'>
@@ -34,7 +34,7 @@ const Highlights = () => {
                                 <h4>Highlights 1</h4>
                                 <img style={{ paddingTop: '10px' }} src={RightArrow} alt="right-arrow" width={60} />
                             </div>
-                            <Typography className='tell-us-litt-more'>Tell us a little about your company</Typography>
+                            <Typography className='tell-us-litt-more'>List the top unique selling points of your startup</Typography>
                         </Card>
 
                         <Card className='parent-of-card'>

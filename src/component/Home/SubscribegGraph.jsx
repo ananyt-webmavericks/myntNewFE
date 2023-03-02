@@ -49,7 +49,7 @@ export default function SubscribegGraph() {
                                         <div className="bar-graph-container one" style={{height: '160px', right: '9em' }}>
                                         </div>
                                         <p className="risk-factor two">Liquidity</p>
-                                        <div  className="bar-graph-container two"style={{ height: '210px', right: '5em' }}>
+                                        <div  className="bar-graph-container two"style={{ height: '122px', right: '5em' }}>
                                         </div>
                                         <p className="risk-factor three">Expected return</p>
                                         <div  className="bar-graph-container three" style={{height: '282px', right: '1em'}}>

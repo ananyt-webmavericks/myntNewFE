@@ -5,6 +5,7 @@ import '../../css/FounderDrawer/Dashboard/E-Sign.css'
 import { makeStyles } from '@material-ui/core/styles';
 import DrawerFounder from "../../component/FounderDrawer/DrawerFounder";
 import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -73,6 +74,8 @@ const FounderCampaigns = () => {
     const [showDeals, setShowDeals] = useState(false)
     const [progress, setProgress] = useState(10);
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         const timer = setInterval(() => {
             setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
@@ -95,7 +98,9 @@ const FounderCampaigns = () => {
                         <div className={classes.root}>
                             <Grid style={{ marginBottom: "5rem" }} container spacing={3} marginTop={3}>
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten}>
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 0 } })}
+                                        className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Company Profile</b>
                                             <Button className={classes.btn} variant="contained">Completed</Button>
@@ -106,90 +111,113 @@ const FounderCampaigns = () => {
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten} >
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 1 } })}
+                                        className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>People</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
                                         </div>
-                                        <Box><p className={classes.para}>Tell us little about your team</p></Box>
+                                        <Box><p className={classes.para}>Tell us about your team, investors and advisors </p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten}>
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 2 } })}
+                                        className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>FAQ’s</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
                                         </div>
-                                        <Box className={classes.para}><p>Lorem ipsum dolor sit amet, consectetur elit. Morbi et,</p></Box>
+                                        <Box className={classes.para}><p>Help investors understand your ideas even better</p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten} >
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 3 } })}
+                                        className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Highlights</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
                                         </div>
-                                        <Box><p className={classes.para}>Lorem ipsum dolor sit amet, consectetur elit. Morbi et,</p></Box>
+                                        <Box><p className={classes.para}>Mention the top highlights that you have achieved </p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten}>
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 4 } })}
+                                        className={classes.paperconten}>
                                         <div className={classes.Card}>
-                                            <b className={classes.typofont}>Get Rewards</b>
+                                            <b className={classes.typofont}>Promotion</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Completed</Button>
                                         </div>
-                                        <Box className={classes.para}><p>Tell us a little about your company</p></Box>
+                                        <Box className={classes.para}><p>Mention the benefits or discounts an investor can get once he enrols to your campaign</p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten} >
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 5 } })}
+                                        className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Press</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
                                         </div>
-                                        <Box><p className={classes.para}>Tell us little about your team</p></Box>
+                                        <Box><p className={classes.para}>Show your reach!
+                                        </p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten}>
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 6 } })}
+                                        className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Upload Documents</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Completed</Button>
                                         </div>
-                                        <Box className={classes.para}><p>Tell us a little about your company</p></Box>
+                                        <Box className={classes.para}><p>Upload all due diligence documents for investors to review </p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                                 <Grid item xs={12} sm={6}>
-                                    <Card className={classes.paperconten} >
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 7 } })}
+                                        className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Upload Pitch</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
                                         </div>
-                                        <Box><p className={classes.para}>Tell us little about your team</p></Box>
+                                        <Box><p className={classes.para}>Upload a pdf of your pitch deck</p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>
                                     </Card>
                                 </Grid>
+
                             </Grid>
                         </div>
                     </Container>

@@ -23,8 +23,7 @@ const UploadPitch = () => {
         <Box sx={{ marginTop: 4, marginLeft: 2 }}>
             <h3>Upload Pitch Deck</h3>
             <Typography>
-                <p style={{ marginTop: "10px", }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis</p>
-                <p> sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.</p>
+                <p style={{ marginTop: "10px", }}>Upload a pdf of your pitch deck - this will be displayed to your potential investors as your pitch for your campaign</p>
             </Typography>
 
             <div className='drag-and-drop-parent' style={{ marginTop: '4.8rem' }} onClick={e => {

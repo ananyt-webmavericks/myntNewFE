@@ -1,17 +1,20 @@
-.card-bold-txt{
+.card-bold-txt {
     font-size: 18px !important;
     font-weight: 600 !important;
 }
-.regular-txt{
+
+.regular-txt {
     width: 100%;
     font-size: 18px !important;
     color: gray !important;
     height: 150px !important;
 }
-.subscribe-graph-heading{
+
+.subscribe-graph-heading {
     text-align: center;
 }
-.card-bold-number-text{
+
+.card-bold-number-text {
     font-size: 50px !important;
     font-weight: 600 !important;
     padding-top: 15px !important;
@@ -21,11 +24,13 @@
     /* padding: 0 .25rem; */
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
-.regular-bold-text{
+
+.regular-bold-text {
     font-size: 16px !important;
 }
-.learn-more-btn{
-    
+
+.learn-more-btn {
+
     width: 136px !important;
     border: 1px solid gray !important;
     background: white !important;
@@ -34,7 +39,8 @@
     font-size: 14px !important;
     margin-top: 38px !important;
 }
-.learn-more-btn:hover{
+
+.learn-more-btn:hover {
     width: 136px !important;
     border: 1px solid #F0C127 !important;
     background: black !important;
@@ -42,29 +48,33 @@
     border-radius: 30px !important;
     font-size: 14px !important;
 }
-.card-container{
+
+.card-container {
     position: relative;
-    background: #FAFAFA !important; 
-    width: 100% !important; 
+    background: #FAFAFA !important;
+    width: 100% !important;
     height: max-content !important;
 }
-.bar-graph-image{
+
+.bar-graph-image {
     bottom: 10px;
     right: 1em;
     position: absolute;
     width: 219px;
     height: 282px;
 }
-.card-content-graph{
+
+.card-content-graph {
     /* display: flex; */
 }
-.card-sub-content{
+
+.card-sub-content {
     display: grid;
     /* width: 70%; */
 }
 
 
-.risk-factor{
+.risk-factor {
     /* left: calc(50% - 0.5rem); */
     line-height: 1;
     /* padding-top: 0.5rem; */
@@ -78,60 +88,68 @@
     right: 11em;
     bottom: 0;
     transition: all 0.5s ease-in;
-   font-weight: 550;
+    font-weight: 550;
 }
-.card-content-graph:hover .risk-factor{
-    transform: rotate(180deg)translateY(120px) ;
+
+.card-content-graph:hover .risk-factor {
+    transform: rotate(180deg)translateY(120px);
     transition: all 0.8s ease-out;
     /* -webkit-transform: rotate(180deg); */
-  }
-.card-content-graph:hover .risk-factor.two{
-    transform: rotate(180deg)translateY(130px) ;
+}
+
+.card-content-graph:hover .risk-factor.two {
+    transform: rotate(180deg)translateY(47px);
     transition: all 0.8s ease-out;
 }
 
-.card-content-graph:hover .risk-factor.three{
-    transform: rotate(180deg)translateY(140px) ;
+.card-content-graph:hover .risk-factor.three {
+    transform: rotate(180deg)translateY(140px);
     transition: all 0.8s ease-out;
 }
 
-.card-content-graph:hover .risk-factor.fixed{
-    transform: rotate(180deg)translateY(60px) ;
+.card-content-graph:hover .risk-factor.fixed {
+    transform: rotate(180deg)translateY(60px);
     transition: all 0.8s ease-out;
     /* -webkit-transform: rotate(180deg); */
-  }
-.card-content-graph:hover .risk-factor.fixed-two{
-    transform: rotate(180deg)translateY(210px) ;
+}
+
+.card-content-graph:hover .risk-factor.fixed-two {
+    transform: rotate(180deg)translateY(210px);
     transition: all 0.8s ease-out;
 }
 
-.card-content-graph:hover .risk-factor.fixed-three{
-    transform: rotate(180deg)translateY(20px) ;
+.card-content-graph:hover .risk-factor.fixed-three {
+    transform: rotate(180deg)translateY(20px);
     transition: all 0.8s ease-out;
 }
 
-.card-content-graph:hover .card-bold-number-text{
+.card-content-graph:hover .card-bold-number-text {
     /* box-shadow: inset 200px 0 0 0 #F0C127; */
     /* color: white; */
 }
-.risk-factor.two{
+
+.risk-factor.two {
     right: 7em;
 }
-.risk-factor.three{
-    right: 3.2em;
-}
-.risk-factor.fixed-two{
-    right: 7em;
-}
-.risk-factor.fixed-three{
+
+.risk-factor.three {
     right: 3.2em;
 }
 
-.container-for-text-and-graph{
+.risk-factor.fixed-two {
+    right: 7em;
+}
+
+.risk-factor.fixed-three {
+    right: 3.2em;
+}
+
+.container-for-text-and-graph {
     display: flex;
     justify-content: space-between;
 }
-.bar-graph-container{
+
+.bar-graph-container {
     background: #efc127;
     width: 25px;
     position: absolute;
@@ -141,94 +159,113 @@
 
 
 @media screen and (max-width: 920px) {
-    .card-container{
-        width: 100% !important; 
+    .card-container {
+        width: 100% !important;
         margin-top: 1em;
     }
 }
+
 @media screen and (min-width: 870px) {
-    .subscribe-graph-heading{
+    .subscribe-graph-heading {
         text-align: start;
     }
 }
+
 @media screen and (max-width: 550px) {
 
-    .container-for-text-and-graph{
+    .container-for-text-and-graph {
         display: block;
         margin: auto;
     }
-    .text-section-subscribe{
+
+    .text-section-subscribe {
         padding-bottom: 21em;
         text-align: center;
     }
-    .regular-txt{
+
+    .regular-txt {
         height: fit-content !important;
     }
-    .bar-graph-container.one{
-        margin-left:-80px;
-        left:50%;
+
+    .bar-graph-container.one {
+        margin-left: -80px;
+        left: 50%;
     }
-    .bar-graph-container.two{
-        margin-left:-10px;
-        left:50%;
+
+    .bar-graph-container.two {
+        margin-left: -10px;
+        left: 50%;
     }
-    .bar-graph-container.three{
-        margin-left:60px;
-        left:50%;
+
+    .bar-graph-container.three {
+        margin-left: 60px;
+        left: 50%;
     }
-    .risk-factor{
-        margin-left:-105px;
-        left:50%;
+
+    .risk-factor {
+        margin-left: -105px;
+        left: 50%;
     }
-    .risk-factor.fixed-two{
-        margin-left:-35px;
-        left:50%;
+
+    .risk-factor.fixed-two {
+        margin-left: -35px;
+        left: 50%;
     }
-    .risk-factor.fixed-three{
-        margin-left:35px;
-        left:50%;
+
+    .risk-factor.fixed-three {
+        margin-left: 35px;
+        left: 50%;
     }
-    .risk-factor.two{
-        margin-left:-35px;
-        left:50%;
+
+    .risk-factor.two {
+        margin-left: -35px;
+        left: 50%;
     }
-    .risk-factor.three{
-        margin-left:35px;
-        left:50%;
+
+    .risk-factor.three {
+        margin-left: 35px;
+        left: 50%;
     }
-    .card-content-graph:hover .card-bold-number-text{
-        box-shadow:none;
+
+    .card-content-graph:hover .card-bold-number-text {
+        box-shadow: none;
         color: black;
     }
-    
+
 }
+
 @media screen and (max-width: 500px) {
-    .bar-graph-image{
-        position:inherit;
+    .bar-graph-image {
+        position: inherit;
         margin: auto;
     }
-    .card-content-graph{
+
+    .card-content-graph {
         display: grid;
     }
-    .card-container{
+
+    .card-container {
         display: grid !important;
         justify-content: center !important;
     }
-    .card-sub-content{
+
+    .card-sub-content {
         display: grid;
         text-align: center;
         width: 100%;
     }
-    .learn-more-btn{
+
+    .learn-more-btn {
         margin: auto !important;
         margin-bottom: 1em !important;
     }
-    .regular-txt{
+
+    .regular-txt {
         height: 80px !important;
     }
-    .regular-bold-text{
+
+    .regular-bold-text {
         margin-top: 1em !important;
         margin-bottom: 1em !important;
     }
 }
-
