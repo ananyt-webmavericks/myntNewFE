@@ -41,7 +41,7 @@ const People = () => {
         <Box sx={{ marginTop: 4, marginLeft: 2, marginBottom: "3rem" }}>
             <h3>People</h3>
             <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc egestas nunc at nibh. Odio erat turpis sit at bibendum nunc adipiscing sed. Tincidunt enim, amet vitae nibh cursus imperdiet erat.
+                Add your founding team members, lead investors and advisors here. As we all know ‘Team work makes the dream work’. Investors are always keen to know the people that run the show behind the scenes.
             </Typography>
             <Box className={classes.peoplegroupbtn}>
                 <Button

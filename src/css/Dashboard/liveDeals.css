@@ -45,11 +45,12 @@
 }
 
 .active-btn-container {
-    
-    padding:0 1em;
+
+    padding: 0 1em;
     height: 54px;
     width: 100%;
     max-width: fit-content;
+    min-width: 90px !important;
     /* UI Properties */
     border-radius: 27px;
     display: grid;
@@ -57,7 +58,6 @@
     justify-content: center;
     margin-right: 5px;
     cursor: pointer;
-
 }
 
 .mini-active-btn-highliter {

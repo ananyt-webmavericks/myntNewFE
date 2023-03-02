@@ -74,12 +74,11 @@ export default function FundedNetworks() {
                                 <Item key={index} className='company-image'>
                                     <div style={{ display: 'grid', textAlign: 'center' }}>
                                         <img height={100} width={100} style={{ objectFit: 'contain' }} src={item.image}></img>
-                                        <span style={{ fontSize: '13px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                                        <span style={{ fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
                                     </div>
                                 </Item>
                             )
                         })}
-
 
                     </Carousel>
                 </div>

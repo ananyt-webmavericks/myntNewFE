@@ -13,7 +13,7 @@ const FounderFaqs = () => {
         <>
             <div style={{ marginBottom: '2em', marginTop: '6em' }}>
                 <div className="investor-home-heading">FAQs</div>
-                <span className="investors-subheading">Mynt Academy is your destination for the most Frequently Asked Questions</span>
+                <span className="investors-subheading">Mynt University is the ultimate source for answers to the most commonly asked questions.</span>
                 <div style={{ marginTop: '2em' }}>
                     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
                         <AccordionSummary
@@ -23,7 +23,7 @@ const FounderFaqs = () => {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What is the meaning of early-stage or startup Subscriptions?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I apply as a startup founder to Mynt invest? </span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -43,7 +43,7 @@ const FounderFaqs = () => {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>02.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>  Who can subscribe via Mynt? Can I subscribe as a company?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I start a campaign on MYNT INVEST?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -63,7 +63,7 @@ const FounderFaqs = () => {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>03.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How do I register as a subscriber on Mynt?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What documents/information is required to start a campaign?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -84,7 +84,7 @@ const FounderFaqs = () => {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>04.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the different instruments available for subscription on Mynt?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What kind of instruments can be used to start a campaign on MYNT INVEST?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -97,7 +97,7 @@ const FounderFaqs = () => {
 
                 </div>
                 <div className="get-started-btn-investor">
-                    <Button variant="contained" onClick={()=>navigate('/myntUniversity/faqs') } className="getStarted-landing-btn">Need More Help</Button>
+                    <Button variant="contained" onClick={() => navigate('/myntUniversity/faqs')} className="getStarted-landing-btn">Need More Help</Button>
                 </div>
             </div>
         </>

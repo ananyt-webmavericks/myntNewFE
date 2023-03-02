@@ -15,16 +15,24 @@ export default function DrawerFounder({ height, display }) {
             {display !== 'none' && <div className="dashboard-drawer-section" style={{ height: height }}>
                 <div className="dashboard-fields-container">
                     <div className="dashboard-single-links" onClick={() => navigate('/dashboard-founder')}>
-                        <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
-                        <span style={location === '/dashboard' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Dashboard</span>
+                        <GridViewOutlinedIcon style={location === '/dashboard-founder' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+                        <span style={location === '/dashboard-founder' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Dashboard</span>
                     </div>
 
-                    <div className="dashboard-single-links" onClick={() => navigate('/dashboard/live-deals')}>
-                        <CampaignOutlinedIcon style={location === '/dashboard/live-deals' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
-                        <span style={location === '/dashboard/live-deals' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Campaign</span>
+                    <div className="dashboard-single-links" onClick={() => navigate('/dashboard-founder/campaigns')}>
+                        <CampaignOutlinedIcon
+                            style={location === '/dashboard-founder/campaigns' || location === '/dashboard-founder/campaigns-tabs'
+                                ? { color: '#ECB92B' }
+                                : { color: 'gray' }} width={20} height={20} />
+                        <span
+                            style={location === '/dashboard-founder/campaigns' || location === '/dashboard-founder/campaigns-tabs'
+                                ? { color: 'black' }
+                                : { color: 'gray' }} className="link-dashboard">Campaign</span>
                     </div>
 
-                    <div className="dashboard-single-links" onClick={() => navigate('/dashboard/analytics')}>
+                    <div className="dashboard-single-links"
+                    // onClick={() => navigate('/dashboard/analytics')}
+                    >
                         <AddchartOutlinedIcon style={location === '/dashboard/analytics' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         <span style={location === '/dashboard/analytics' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Analytics</span>
                     </div>
@@ -39,14 +47,16 @@ export default function DrawerFounder({ height, display }) {
                         </div>
                         <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
                     </div>
-                    <div className="main-navbar-section" onClick={() => navigate('/dashboard/live-deals')}>
+                    <div className="main-navbar-section" onClick={() => navigate('/dashboard-founder/campaigns')}>
                         <div style={{ margin: 'auto' }}>
-                            <CampaignOutlinedIcon style={location === '/dashboard/live-deals' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+                            <CampaignOutlinedIcon style={location === '/dashboard-founder/campaigns' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>
                         <span style={{ fontSize: '10px', color: '#777777' }}>Campaign</span>
                     </div>
 
-                    <div className="main-navbar-section" onClick={() => navigate('/dashboard/analytics')}>
+                    <div className="main-navbar-section"
+                    // onClick={() => navigate('/dashboard/analytics')}
+                    >
                         <div style={{ margin: 'auto' }}>
                             <AddchartOutlinedIcon style={location === '/dashboard/analytics' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>

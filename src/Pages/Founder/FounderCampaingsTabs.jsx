@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Tab, Tabs } from '@mui/material'
 import Footer from '../../component/Footer'
 import DrawerFounder from '../../component/FounderDrawer/DrawerFounder'
@@ -13,6 +13,7 @@ import UploadDocuments from '../../component/FounderDrawer/FounderCampaignsTabs/
 import Press from '../../component/FounderDrawer/FounderCampaignsTabs/Press';
 import GetRewards from '../../component/FounderDrawer/FounderCampaignsTabs/GetRewards';
 import '../../css/FounderDrawer/Dashboard/GridBox.css'
+import { useLocation } from 'react-router-dom';
 const useStyles = makeStyles({
     fontstyle: {
         textTransform: 'capitalize'
@@ -31,8 +32,10 @@ const FounderCampaingsTabs = () => {
         setThisTab(handleRenderTab(newValue))
     };
 
+    const navLocation = useLocation()
 
     const handleRenderTab = (x) => {
+        console.log(x)
         switch (x) {
             case 0: return <CompanyProfile />
                 break;
@@ -67,6 +70,11 @@ const FounderCampaingsTabs = () => {
         height: "17px"
     }
 
+    useEffect(() => {
+        console.log(navLocation.state?.navTab)
+        handleChange("event", navLocation.state?.navTab)
+    }, [])
+
     return (
         <>
             <div style={{ display: 'flex', position: 'relative' }}>
@@ -80,9 +88,7 @@ const FounderCampaingsTabs = () => {
                                     "& .MuiTabs-indicator": {
                                         display: "none"
                                         //backgroundColor: "orange"
-                                    },
-                                    color: "red",
-
+                                    }
                                 }}
                                 value={value}
                                 onChange={handleChange}
@@ -105,7 +111,7 @@ const FounderCampaingsTabs = () => {
                                     sx={tabSxStyle} label="Highlights" />
                                 <Tab
                                     style={value === 4 ? tabStyle : null}
-                                    sx={tabSxStyle} label="Get Rewards" />
+                                    sx={tabSxStyle} label="Promotion" />
                                 <Tab
                                     style={value === 5 ? tabStyle : null}
                                     sx={tabSxStyle} label="Press" />

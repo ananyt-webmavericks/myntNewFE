@@ -3,12 +3,9 @@ import React from 'react'
 import '../../css/FounderHome/BaseHighlight.css'
 import { useNavigate } from 'react-router-dom'
 const data = [
-    { heading: 'Fast and easy', desc: 'No multiple negotiations and endless documentation' },
-    { heading: 'Effective', desc: 'Happiness delivered to more than 100 startups' },
-    { heading: 'Raise from your community', desc: 'Your audience roots for you from the sidelines' },
-    { heading: 'Fast and easy', desc: 'No multiple negotiations and endless documentation' },
-    { heading: 'Effective', desc: 'Happiness delivered to more than 100 startups' },
-    { heading: 'Raise from your community', desc: 'Your audience roots for you from the sidelines' },
+    { heading: 'Get Growth Partners', desc: 'Get industry leaders to be your mentors and growth partners.' },
+    { heading: 'Simple & effective ', desc: 'Raising capital has never been more easy.' },
+    { heading: 'Community Effect', desc: 'Get visibility and grow your customers base.  ' }
 ]
 
 const BaseHighlights = () => {
@@ -27,14 +24,15 @@ const BaseHighlights = () => {
                         paddingTop: 5,
                         bgcolor: 'background.default',
                         display: 'grid',
-                        gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
+                        gridTemplateColumns: { md: '1fr', sm: '1fr' },
                         gap: 2.5,
-                        marginBottom: 3
+                        marginBottom: 3,
+
                     }}
                 >
                     {
                         data.map((item, index) => {
-                            return <Card elevation={0} className="higlight-point-container">
+                            return <Card elevation={0} className="higlight-point-container" >
                                 <div className='point-block'>
                                     <Avatar sx={{ bgcolor: '#F0C127', width: '24px', height: '24px', border: '1px', borderColor: '#707070' }}>
                                         <span className='point-number'>{index + 1}</span>

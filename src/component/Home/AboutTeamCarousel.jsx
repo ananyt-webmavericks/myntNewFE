@@ -9,11 +9,30 @@ import Carousel from 'react-elastic-carousel'
 import styles from '../../css/Home/aboutTeamCarousel.css'
 
 const data = [
-    { id: 1, avatar: Avatar, name: 'Priyanshi Pandey', position: 'VP at Goldman Sachs', head: 'Game-Changing Startups Now Accessible', description: '“Mynt is making investing in highly vetted and game-changing startups not only accessible but easy as well.' },
-    { id: 2, avatar: Avatar, name: 'Vicky', position: 'Director at Magnetic Fields', head: 'Diversified Subscription Portfolio', description: "The platform provided me with a diversified Subscription portfolio, giving me access to a range of Subscription opportunities I wouldn't have otherwise found." },
-    { id: 3, avatar: Avatar, name: 'Tithi Chattopadhyay,', position: 'Executive Director at Princeton University ', head: 'Due Diligence Measures', description: "The due diligence process and investor protection measures in place gave me peace of mind and confidence in my Subscriptions." },
-    { id: 4, avatar: Avatar, name: 'Kavikrut', position: ' CGO at OYO', head: 'Subscription Tracking Made Autonomous ', description: 'The user-friendly interface and straightforward Subscription process made it easy for me to invest and track my Subscriptions.' },
-    {id:5 , avatar:Avatar , name:"Harshit Vyas" , position:"CBO Pepper Content" , head:"Transparency And Communication " , description:"I was impressed by the level of transparency and communication from the platform and the startups I invested in."},
+    {
+        id: 1,
+        avatar: Avatar,
+        name: "- Dhumil Javeri, Founder at Klassroom",
+        position: 'VP at Goldman Sachs',
+        head: 'Transparency & Seamless Process',
+        description: JSON.stringify("‘Our experience with the Mynt platform was nothing short of amazing. The platform's transparency and seamless process made it easy for us to focus on our business while they handled the fundraising part.We were able to raise capital in a matter of weeks and couldn't be happier with the results.")
+    },
+    {
+        id: 2,
+        avatar: Avatar,
+        name: '- Mayank, Founder of Ezyschooling ',
+        position: 'Director at Magnetic Fields',
+        head: 'Gain New Customers',
+        description: JSON.stringify("For any business that is looking to gain new customers and raise funds simultaneously. I highly recommend the Mynt platform.")
+    },
+    {
+        id: 3,
+        avatar: Avatar,
+        name: '- SAN NETWORK FOUNDER',
+        position: 'Executive Director at Princeton University ',
+        head: 'Powerful Community',
+        description: JSON.stringify("We raised funds through SAN in the past and were glad to see them along with Meter launch Mynt. The community that these networks bring are of great value add to any entrepreneur looking to raise capital and grow their reach.")
+    },
 ]
 
 export default function AboutTeamCarousel() {
