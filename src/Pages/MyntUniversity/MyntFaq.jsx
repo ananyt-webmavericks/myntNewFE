@@ -1,6 +1,6 @@
 
 import { Container } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import DrawerMynt from "../../component/Dashboard/DrawerMynt";
 import '../../css/Dashboard/dashboard.css';
 import Footer from "../../component/Footer";
@@ -11,6 +11,9 @@ const MyntFaq = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [])
 
     return (
         <>
