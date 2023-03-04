@@ -90,6 +90,11 @@
     font-weight: 600 !important;
 }
 
+.invest-btn-section-deals:hover {
+    /* UI Properties */
+    background: #EBB429 0% 0% no-repeat padding-box !important;
+}
+
 .rounded-container-share-btn {
     width: 54px;
     height: 54px;
@@ -121,7 +126,7 @@
 .date-booked-register-section {
     display: flex;
     margin: auto;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 790px;
     width: 100%;
     margin-top: 30px;
@@ -236,7 +241,8 @@
     border: 1px solid #D1D1D1;
     border-radius: 7px;
 }
-.social-media-icons-deal-terms{
+
+.social-media-icons-deal-terms {
     display: flex;
     align-items: center;
     margin-top: 24px;
@@ -291,16 +297,18 @@
         overflow: scroll;
 
     }
-    .box-documents-download-pdf{
+
+    .box-documents-download-pdf {
         width: 100%;
         justify-content: space-between;
     }
 }
 
 @media screen and (max-width: 422px) {
-    .live-deals-box-date{
+    .live-deals-box-date {
         width: 340px;
     }
+
     .live-deals-box-date.second {
         margin-top: 20px;
         width: 340px;

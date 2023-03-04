@@ -27,7 +27,7 @@ export default function OtpVerificationMain() {
     const classes = useStyles();
     let loginType = localStorage.getItem('loginType')
     const { userMail } = useSelector((state) => state.userInfo)
-    const  {userData}  = useSelector((state)=> state.loginData)
+    const { userData } = useSelector((state) => state.loginData)
 
 
     const notify = (data) => {
@@ -37,11 +37,11 @@ export default function OtpVerificationMain() {
         toast.success(data)
     }
     const handleResendOtp = () => {
-        const usernames =  userMail ? userMail: userData.email
+        const usernames = userMail ? userMail : userData.email
         try {
             OtpServices.ResendOtpMail(usernames).then(
                 (response) => {
-                   console.log(response?.data.message)
+                    console.log(response?.data.message)
                 })
         }
         catch {
@@ -58,13 +58,13 @@ export default function OtpVerificationMain() {
                 (response) => {
                     if (response.data.status !== 'false') {
                         dispatch(userLoginAction(response.data.data))
-                        if(loginType === 'new'){
+                        if (loginType === 'new') {
                             navigate('/about-you')
-                        }else{
+                        } else {
                             navigate('/dashboard')
                         }
                     }
-                    else{
+                    else {
                         setOTP('')
                     }
 
@@ -77,7 +77,7 @@ export default function OtpVerificationMain() {
     }
 
     const renderButton = buttonProps => {
-        return <button  style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px',cursor:'pointer' }} {...buttonProps}>Resend</button>;
+        return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px', cursor: 'pointer' }} {...buttonProps}>Resend</button>;
     };
     const renderTime = remainingTime => {
         return <span style={{ color: '#777777' }}>resend after {remainingTime} s</span>;
@@ -103,9 +103,9 @@ export default function OtpVerificationMain() {
                                 // secure
                                 inputStyles={{ width: '35px', outline: 'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
                             />
-                            <ResendOTP maxTime={10} onResendClick={() =>handleResendOtp() } className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false}  />
+                            <ResendOTP maxTime={90} onResendClick={() => handleResendOtp()} className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false} />
                         </div>
-                        <button className="sign-up-btn" onClick={handleSubmit} > {loginType==='new' ? "Sign Up" : "Sign In"}</button>
+                        <button className="sign-up-btn" onClick={handleSubmit} > {loginType === 'new' ? "Sign Up" : "Sign In"}</button>
                     </CardContent>
                 </Card>
             </div>

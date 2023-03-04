@@ -10,13 +10,13 @@
 }
 
 .test-script-bold {
-    font-family: "Roboto","Helvetica","Arial",sans-serif !important;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
     font-size: 36px !important;
-    font-weight: 600 !important;
+    font-weight: bolder !important;
 }
 
 .test-script-bg {
-    font-family: "Roboto","Helvetica","Arial",sans-serif !important;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
     color: #efc127;
     font-weight: 600 !important;
 }
@@ -36,7 +36,8 @@
 
 .getStarted-landing-btn {
     font-weight: 500 !important;
-    width: 200px !important;
+    height: 54px !important;
+    width: 230px !important;
     border-radius: 30px !important;
     text-transform: capitalize !important;
     color: white !important;
@@ -79,6 +80,7 @@
     }
 
     .landing-head-txt-section {
+        margin-top: 3rem;
         order: 1;
         text-align: start;
     }

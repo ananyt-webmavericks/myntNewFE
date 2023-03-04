@@ -6,8 +6,8 @@ import Container from '@mui/material/Container';
 import Networks from '../../component/FounderHome/Networks';
 import FundRaising from '../../component/FounderHome/FundRaising';
 import HowToSubscribe from '../../component/FounderHome/HowToSubscribe';
-import AboutTeamCarousel from '../../component/Home/AboutTeamCarousel';
 import BaseHighlights from '../../component/FounderHome/BaseHighlights';
+import FounderAboutTeamCarousal from '../../component/FounderHome/FounderAboutTeamCarousal';
 
 export default function HomeFounder() {
   return (
@@ -20,7 +20,7 @@ export default function HomeFounder() {
         <Networks />
         <FundRaising />
         <HowToSubscribe />
-        <AboutTeamCarousel />
+        <FounderAboutTeamCarousal />
         <BaseHighlights />
         <FounderFaqs />
       </Container>

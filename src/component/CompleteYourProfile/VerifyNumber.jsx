@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import Checkbox from '@mui/material/Checkbox';
 import WhatsAppLogo from '../../images/assets/whatsapp.png'
 import { Button, Card, CardContent } from "@mui/material";
@@ -11,11 +11,10 @@ import { userEmailAction } from "../../Redux/actions/auth";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-
 export default function VerifyNumber() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const  {userData}  = useSelector((state)=> state.loginData)
+    const { userData } = useSelector((state) => state.loginData)
     const { userInfo } = useSelector((state) => state.loginData)
     const [mobile, setMobile] = useState('')
     const handleChange = (e) => {
@@ -25,17 +24,17 @@ export default function VerifyNumber() {
     const notify = (data) => {
         toast.error(data)
     }
-    const handleSubmit = ()=>{
+    const handleSubmit = () => {
 
-        const data ={
-            user_id:userData.id,
-            mobile_number:"+91"+mobile
+        const data = {
+            user_id: userData.id,
+            mobile_number: "+91" + mobile
         }
-        if(mobile === ''){
+        if (mobile === '') {
             notify('Please enter your number')
-        }else if(mobile.length !== 10){
+        } else if (mobile.length !== 10) {
             notify('Please enter valid number')
-        }else{
+        } else {
             try {
                 OtpServices.VerifyMobileOtp(data).then(
                     (response) => {
@@ -44,7 +43,7 @@ export default function VerifyNumber() {
                             navigate('/complete-your-profile/verify-otp')
                             dispatch(userEmailAction(data.mobile_number))
                         }
-                        else{
+                        else {
                             console.log("error")
                         }
                     })
@@ -53,7 +52,7 @@ export default function VerifyNumber() {
                 notify("Try after few minutes")
             }
         }
-        
+
     }
     return (
         <div className="complete-your-profile-container">

@@ -44,6 +44,22 @@
     margin-bottom: 70px;
 }
 
+/* 
+.active-btn-container-csop {
+    padding: 0 1em;
+    height: 54px;
+    width: 100%;
+    max-width: fit-content;
+    min-width: 90px !important;
+
+    border-radius: 27px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    cursor: pointer;
+} */
+
 .active-btn-container {
 
     padding: 0 1em;
@@ -53,15 +69,16 @@
     min-width: 90px !important;
     /* UI Properties */
     border-radius: 27px;
-    display: grid;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 5px;
+    gap: 1rem;
     cursor: pointer;
 }
 
 .mini-active-btn-highliter {
-    margin-top: -20px;
+    margin-top: -2px;
     width: 41px;
     height: 11px;
     /* UI Properties */

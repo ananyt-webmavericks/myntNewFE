@@ -10,14 +10,15 @@ import Item from "../Item";
 import GOMech from '../../images/assets/GOMech.png';
 import FormLabs from '../../images/assets/FormLabs.png';
 import Reevoy from '../../images/assets/reevoy.png';
+import lw from '../../images/assets/lw.png';
 const data = [
-    { id: 1, image: Reevoy, name: '$12.6Mn' },
+    { id: 1, image: Reevoy, name: '$12.6 million' },
     { id: 2, image: GOMech, name: '$285Mn' },
-    { id: 3, image: FormLabs, name: '$2Bn' },
-    { id: 4, image: Reevoy, name: '$12.6Mn' },
+    { id: 3, image: FormLabs, name: '$2 billion' },
+    { id: 4, image: lw, name: '$12.6Mn' },
     { id: 5, image: GOMech, name: '$285Mn' },
     { id: 6, image: FormLabs, name: '$2Bn' },
-    { id: 7, image: Reevoy, name: '$12.6Mn' },
+    { id: 7, image: Reevoy, name: '$12.6 million' },
 ]
 export default function FundedNetworks() {
     const carouselRef2 = useRef(null);
@@ -73,8 +74,8 @@ export default function FundedNetworks() {
                             return (
                                 <Item key={index} className='company-image'>
                                     <div style={{ display: 'grid', textAlign: 'center' }}>
-                                        <img height={100} width={100} style={{ objectFit: 'contain' }} src={item.image}></img>
-                                        <span style={{ fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                                        <img height={40} style={{}} src={item.image}></img>
+                                        <span style={{ marginTop: '1.5rem', fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
                                     </div>
                                 </Item>
                             )

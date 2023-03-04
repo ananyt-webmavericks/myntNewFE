@@ -18,7 +18,7 @@ export default function MyntFaqMain() {
         <div className="faq-university-container">
             <div style={{ display: 'grid' }}>
                 <span className="get-started-heading startup">MyntUniversity</span>
-                <span className="sub-heading-mynt-faq">Your one-stop shop to learn everything related to startup investing and Myntinvest</span>
+                <span className="sub-heading-mynt-faq">Mynt University is the ultimate source for answers to the most commonly asked questions.</span>
             </div>
             <div className="searchbar-mynt-faq">
                 <input className="input-searchbar-mynt-faq" placeholder="Find Answers and Resources…" />
@@ -27,16 +27,16 @@ export default function MyntFaqMain() {
             <div className="info-provider-faq-mynt">
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">1</div>
-                    <span className="text-info-faq-mynt">What is CSOP ?</span>
+                    <span className="text-info-faq-mynt">How to Sign Up?</span>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">2</div>
-                    <span className="text-info-faq-mynt">What is SAR ?</span>
+                    <span className="text-info-faq-mynt">What are SAR’s?</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">3</div>
-                    <span className="text-info-faq-mynt">How to register as a subscriber?</span>
+                    <span className="text-info-faq-mynt">What are the different instruments used? </span>
                 </div>
             </div>
             <div style={{ fontSize: '22px', fontWeight: '600', marginTop: "60px" }}>FAQs</div>
