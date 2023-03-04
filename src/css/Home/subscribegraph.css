@@ -85,7 +85,7 @@
     writing-mode: vertical-rl;
     height: 22px;
     position: absolute;
-    right: 11em;
+    right: 14em;
     bottom: 0;
     transition: all 0.5s ease-in;
     font-weight: 550;
@@ -129,7 +129,7 @@
 }
 
 .risk-factor.two {
-    right: 7em;
+    right: 8.8em;
 }
 
 .risk-factor.three {
@@ -137,7 +137,7 @@
 }
 
 .risk-factor.fixed-two {
-    right: 7em;
+    right: 8.8em;
 }
 
 .risk-factor.fixed-three {

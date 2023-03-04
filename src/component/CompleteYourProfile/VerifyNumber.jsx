@@ -87,7 +87,7 @@ export default function VerifyNumber() {
                             <div className="country-code-container"> <input placeholder="+91" type="number" className="phoneNumberInput" name="countryCode" /></div>
                             <div className="number-verify-container"><input name="mobile_number" value={mobile} onChange={handleChange} type="number" className="phoneNumberInput" /></div>
                         </div>
-                        <div className="checkbox-whatsapp-group-verify">
+                        {/* <div className="checkbox-whatsapp-group-verify">
                             <Checkbox
                                 {...label}
                                 defaultChecked
@@ -102,7 +102,7 @@ export default function VerifyNumber() {
                             />
                             <img src={WhatsAppLogo} width={17} height={17} style={{ marginRight: '8px' }}></img>
                             <span style={{ fontSize: '14px', color: '#666666' }}>Reach out to me over Whatsapp</span>
-                        </div>
+                        </div> */}
 
                     </div>
                     <div className="verify-button-container">

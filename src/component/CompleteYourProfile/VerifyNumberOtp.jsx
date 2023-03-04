@@ -73,8 +73,6 @@ export default function VerifyNumberOtp() {
 
     }
 
-
-
     const renderButton = buttonProps => {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px' }} {...buttonProps}>Resend</button>;
     };
@@ -120,7 +118,7 @@ export default function VerifyNumberOtp() {
                     // secure
                     inputStyles={{ width: '35px',outline:'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
                 />
-                <ResendOTP maxTime={10} className={classes.menuItem} style={{ width:'330px',display:'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} onResendClick={() =>handleResendOtp() } />
+                <ResendOTP maxTime={90} className={classes.menuItem} style={{ width:'330px',display:'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} onResendClick={() =>handleResendOtp() } />
             </div>
             <div className="verify-button-container">
                 <Button varient="contained" onClick={handleSubmit} className="verify-button">Verify</Button>
