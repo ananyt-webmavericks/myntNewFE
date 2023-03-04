@@ -11,7 +11,7 @@ const HowToSubscribe = () => {
             <div className="how-to-sub-heading">How to <span className="colored-investor-home-heading"> Subscribe? </span></div>
             <div className="how-to-sub-subheading">Enjoy the benefits of a completely online and seamless process</div>
             <div style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
-                <div className="first-raise-card">
+                <div className="first-raise-card" style={{ marginLeft: '5px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">1</div>
                         <div className="head-section-second">
@@ -53,7 +53,7 @@ const HowToSubscribe = () => {
                     </div>
                 </div>
 
-                <div className="first-raise-card">
+                <div className="first-raise-card" style={{ marginRight: '5px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">4</div>
                         <div className="head-section-second">

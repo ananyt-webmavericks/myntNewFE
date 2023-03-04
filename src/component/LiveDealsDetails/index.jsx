@@ -40,7 +40,7 @@ const actions = [
 ];
 
 const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
-    marginLeft:'1em'
+    marginLeft: '1em'
 }));
 export default function LiveDetailsMain() {
     const [activeTab, setActiveTab] = useState(1)
@@ -109,6 +109,7 @@ export default function LiveDetailsMain() {
                         <div className="header-section-deals-detail btn-section" >
                             <Button onClick={() => navigate('/pay-to-subscribe')} className="invest-btn-section-deals">Invest</Button>
                             <StyledSpeedDial
+                                sx={{ '& .MuiFab-primary': { backgroundColor: '#E3E3E3', color: 'black' } }}
                                 ariaLabel="SpeedDial playground example"
                                 hidden={hidden}
                                 icon={<ShareIcon />}
@@ -132,14 +133,14 @@ export default function LiveDetailsMain() {
                 </div>
                 <div className="date-booked-register-section">
                     <div className="live-deals-box-date">
-                        <span style={{ fontSize: '14px' }}>Save the Date</span>
+                        <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Recorded on</span>
                         <span className="header-txt-deals-details">07:00 PM</span>
                         <span className="live-deals-details-decription">24 Dec 2022</span>
                     </div>
-                    <div className="live-deals-box-date second">
+                    {/* <div className="live-deals-box-date second">
                         <span style={{ fontSize: '14px' }}>Book A Spot</span>
                         <div className="btn-register-live-deals"><span>Register</span><img style={{ marginLeft: '10px' }} src={Arrow} width={8} height={10}></img></div>
-                    </div>
+                    </div> */}
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
                     <YoutubeEmbed width={gridxsFirst === 2 ? '486px' : '100%'} height={'271.6px'} embedId={"g_aELYEBc4Q"} />

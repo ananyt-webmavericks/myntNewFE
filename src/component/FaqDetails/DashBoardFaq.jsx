@@ -2,7 +2,7 @@ import React from "react";
 import { AccordionDetails, Accordion, AccordionSummary, Typography, Button } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from "react-router-dom";
-export default function Faqs() {
+export default function DashBoardFaq() {
     const [expanded, setExpanded] = React.useState(false);
     const navigate = useNavigate()
     const handleChange = (panel) => (event, isExpanded) => {
@@ -22,7 +22,7 @@ export default function Faqs() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I sign up on Mynt invest? </span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What do you understand by early-stage startups? </span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -48,7 +48,7 @@ export default function Faqs() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>02.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the required documents for completing the KYC process during sign-up?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the different ways I can transfer the enrollment amount?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -71,7 +71,7 @@ export default function Faqs() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>03.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What are the advantages of investing in startups?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> Where can I find all the campaigns currently open for investment?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -92,7 +92,7 @@ export default function Faqs() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>04.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What are the different types of instruments available for enrollment on Myntinvest?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the different types of instruments available for enrollment on Myntinvest?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -111,7 +111,7 @@ export default function Faqs() {
                     </Accordion>
 
                 </div>
-                {/* <div style={{ marginTop: '2em' }}>
+                <div style={{ marginTop: '2em' }}>
                     <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
@@ -119,8 +119,8 @@ export default function Faqs() {
                             id="panel1a-header"
                         >
                             <div>
-                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>03.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the different exit options available? </span>
+                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>05.</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What is the minimum enrollment amount for various campaigns?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -141,7 +141,7 @@ export default function Faqs() {
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-                </div> */}
+                </div>
                 <div className="get-started-btn-investor">
                     <Button variant="contained" onClick={() => navigate('/myntUniversity/faqs')} className="getStarted-landing-btn">Need More Help</Button>
                 </div>

@@ -11,12 +11,16 @@ import Faqs from '../component/Home/Faqs'
 import Footer from "../component/Footer";
 import DashboardDeals from "../component/Dashboard/DasboardDeals";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import DashBoardFaq from "../component/FaqDetails/DashBoardFaq";
 const Dashboard = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
-    const [showDeals,setShowDeals]= useState({})
+    const [showDeals, setShowDeals] = useState({})
 
-    const fetchValue = (value)=>{
+    const { userData } = useSelector(state => state.loginData)
+
+    const fetchValue = (value) => {
         setShowDeals(value)
     }
     console.log(showDeals)
@@ -28,17 +32,16 @@ const Dashboard = () => {
                 <div className="dashboard-container">
                     <Container maxWidth="lg">
                         <div style={{ display: 'grid' }}>
-                            <span className="get-started-heading startup">Welcome Asad!</span>
-                            <ProgressBarDash  fetchValue={fetchValue} />
+                            <span className="get-started-heading startup">Welcome {userData.first_name}!</span>
+                            <ProgressBarDash fetchValue={fetchValue} />
                         </div>
-                        <ProgressNotifyDash  data={showDeals} />
+                        <ProgressNotifyDash data={showDeals} />
                         <DashboardCard />
-                       <DashboardDeals />
+                        <DashboardDeals />
                         <div style={{ marginTop: '92px' }}>
-                            <Faqs />
+                            <DashBoardFaq />
                         </div>
                     </Container>
-
 
                 </div>
 

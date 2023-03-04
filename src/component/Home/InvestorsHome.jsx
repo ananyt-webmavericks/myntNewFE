@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Box, Grid,Button } from "@mui/material";
+import { Box, Grid, Button } from "@mui/material";
 import '../../css/Home/investorsHome.css';
 import Abstract from '../../images/assets/abstract1.png';
 import Investors from '../../images/assets/investors.png';
@@ -21,6 +21,9 @@ import Ola from '../../images/investors/ola.svg';
 import Uber from '../../images/investors/uber.svg';
 import makemytrip from '../../images/investors/makemytrip.svg';
 import { useNavigate } from "react-router-dom";
+import Carousel from "react-elastic-carousel";
+import styled from "styled-components";
+import { useRef } from "react";
 
 const data = [
     { id: 1, image: Asad, logo: Oyo, name: 'Akhil', amount: 'Invested INR 8000' },
@@ -49,24 +52,68 @@ export default function InvestorsHome() {
             setgridxsSecond(6)
         }
     }, [])
+
+    const [items, setItems] = useState([1, 2, 3, 4, 5]);
+
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+        { width: 768, itemsToShow: 3 },
+        { width: 1200, itemsToShow: 4 }
+    ];
+
+    const carouselRef = useRef(null);
+    let resetTimeout;
+
     return (
         <Box className="investor-home-container-main">
             <Grid container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>
-                <div className="subscribe-graph-heading">
-                    <div className="investor-home-heading">Trusted and<span className="colored-investor-home-heading"> Backed </span>by</div>
-                    <span className="investors-subheading">Collaboration with highly reputed Investors in the market</span>
+                    <div className="subscribe-graph-heading">
+                        <div className="investor-home-heading">Trusted and<span className="colored-investor-home-heading"> Backed </span>by</div>
+                        <span className="investors-subheading">Collaboration with highly reputed Investors in the market</span>
                     </div>
-                    <div className="investors-image-container">
-                        <img className="abstract-investment-bg" src={Abstract} alt="abstract"></img>
-                        <img className="investors-investment-main" src={Investors} alt="abstract"></img>
+                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                        <Carousel
+                            enableAutoPlay={true}
+                            showArrows={false}
+                            autoPlaySpeed={3000}
+                            easing="ease"
+                            transitionMs={1000}
+                            enableMouseSwipe={true}
+                            pagination={true}
+                            itemsToShow={1}
+                            ref={carouselRef}
+                            breakPoints={breakPoints}
+                            onNextEnd={({ index }) => {
+                                clearTimeout(resetTimeout)
+                                if (index + 1 === data.length) {
+                                    if (carouselRef?.current?.goTo) {
+                                        resetTimeout = setTimeout(() => {
+                                            if (carouselRef?.current?.goTo) {
+                                                carouselRef.current.goTo(0)
+                                            }
+                                        }, 3000)
+                                    }
+                                }
+                            }}
+                        >
+
+                            {items.map((item) => (
+                                <div className="investors-image-container">
+                                    <img className="abstract-investment-bg" src={Abstract} alt="abstract"></img>
+                                    <img className="investors-investment-main" src={Investors} alt="abstract"></img>
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
+
                 </Grid>
                 <Grid item xs={gridxsSecond}>
-                <div className="subscribe-graph-heading">
-                    <div className="investor-home-heading">Join Thousands <span className="colored-investor-home-heading"> </span></div>
-                
-                    <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹4000.</span>
+                    <div className="subscribe-graph-heading">
+                        <div className="investor-home-heading">Join Thousands <span className="colored-investor-home-heading"> </span></div>
+
+                        <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹4000.</span>
                     </div>
                     <div className="profile-container-investors">
                         <Grid container spacing={4}>
@@ -86,10 +133,10 @@ export default function InvestorsHome() {
                         </Grid>
                     </div>
                     <div className="get-started-btn-investor">
-                    <Button variant="contained" onClick={()=>navigate('/get-started') } className="getStarted-landing-btn">Get Started</Button>
+                        <Button variant="contained" onClick={() => navigate('/get-started')} className="getStarted-landing-btn">Get Started</Button>
                     </div>
                 </Grid>
-            </Grid>
-        </Box>
+            </Grid >
+        </Box >
     )
 }

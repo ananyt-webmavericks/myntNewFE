@@ -230,7 +230,7 @@ export default function OpenInvestment() {
                                         </div>}
                                         <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
                                             <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={item.checked ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
-
+ 
                                         </div>
                                     </CardContent>
                                 </Card>

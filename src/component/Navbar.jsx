@@ -77,7 +77,6 @@ const Navbar = () => {
                                         </IconButton>
                                     </Tooltip>
 
-
                                 </Tooltip>
                                     <Menu
                                         anchorEl={anchorEl}

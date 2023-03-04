@@ -124,11 +124,11 @@
 .invest-load-btn {
   width: 230px !important;
   height: 54px !important;
-  background: black !important;
+  background: #FFFFFF !important;
   box-shadow: 0px 0px 10px #00000029 !important;
   border: 1px solid #D1D1D1 !important;
   border-radius: 27px !important;
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
   opacity: 1 !important;
   font-size: 16px !important;
   font-weight: 600 !important;
@@ -168,7 +168,7 @@
 
 .investment-card-container {
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
@@ -208,33 +208,36 @@
 
 .mobile-view-arrow-responsive {
   display: none;
-  
+
 }
-.move-arrow-upside-down{
+
+.move-arrow-upside-down {
   transition: all 0.4s ease;
 }
-@media screen and (max-width:640px) {
-    .overlay{
-      display: none;
-    }
-    .overlay.responsive{
-      display: block;
-    }
-     
-    
 
-    
-    .mobile-view-arrow-responsive{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 27px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 24px;
-      /* UI Properties */
-      background: #F2DA58 0% 0% no-repeat padding-box;
-      border-radius: 8px 0px 0px 0px;
-    }
+@media screen and (max-width:640px) {
+  .overlay {
+    display: none;
+  }
+
+  .overlay.responsive {
+    display: block;
+  }
+
+
+
+
+  .mobile-view-arrow-responsive {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    /* UI Properties */
+    background: #F2DA58 0% 0% no-repeat padding-box;
+    border-radius: 8px 0px 0px 0px;
+  }
 }

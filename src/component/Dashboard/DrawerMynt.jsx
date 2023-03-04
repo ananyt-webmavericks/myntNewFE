@@ -4,27 +4,38 @@ import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import { useNavigate } from "react-router-dom";
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 import VideoLibraryOutlinedIcon from '@mui/icons-material/VideoLibraryOutlined';
-export default function DrawerMynt({height,display}) {
+import Blogs from '../../images/assets/Blogs.png';
+import blogYellow from '../../images/assets/blog-yellow.png';
+import Videos from '../../images/assets/Videos.png'
+
+export default function DrawerMynt({ height, display }) {
     const navigate = useNavigate()
     const location = window.location.pathname;
 
     return (
         <>
-            { display !=='none' && <div className="dashboard-drawer-section" style={{height:height}}>
+            {display !== 'none' && <div className="dashboard-drawer-section" style={{ height: height }}>
                 <div className="dashboard-fields-container">
                     <div className="dashboard-single-links" onClick={() => navigate('/myntUniversity/faqs')}>
                         <QuizOutlinedIcon style={location === '/myntUniversity/faqs' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         <span style={location === '/myntUniversity/faqs' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">FAQ's</span>
                     </div>
                     <div className="dashboard-single-links" onClick={() => navigate('/myntUniversity/blogs')}>
-                        <BookOutlinedIcon style={location === '/myntUniversity/blogs' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+                        <img
+                            src={location === '/myntUniversity/blogs'
+                                ? blogYellow
+                                : Blogs}
+                            alt='blog-logo'
+                            // style={location === '/myntUniversity/blogs' ? { color: '#ECB92B' } : { color: 'gray' }}
+                            style={{ paddingLeft: '3px' }}
+                            width={23} height={20} />
                         <span style={location === '/myntUniversity/blogs' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Blogs</span>
                     </div>
                     <div className="dashboard-single-links" onClick={() => navigate('/myntUniversity/videoClips')}>
                         <VideoLibraryOutlinedIcon style={location === '/myntUniversity/videoClips' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         <span style={location === '/myntUniversity/videoClips' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Video Clips</span>
                     </div>
-                   
+
                 </div>
 
             </div>}
@@ -48,7 +59,7 @@ export default function DrawerMynt({height,display}) {
                         </div>
                         <span style={{ fontSize: '10px', color: '#777777' }}>Video Clips</span>
                     </div>
-                  
+
                 </div>
             </div>
         </>

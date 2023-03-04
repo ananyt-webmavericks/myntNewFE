@@ -31,11 +31,11 @@ export default function LandingHead() {
                 </div>
                 <div className="image-section-landing">
                     <div className="banner-home-main">
-                    <Lottie
-                        
-                        options={defaultOptions}
-                      
-                    />
+                        <Lottie
+
+                            options={defaultOptions}
+
+                        />
                     </div>
                 </div>
             </div>

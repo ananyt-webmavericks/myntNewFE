@@ -1,4 +1,4 @@
-import React ,{useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import '../../css/AboutYou/aboutYou.css'
 import { Card, CardContent, Button } from "@mui/material";
 import MapLoc from '../../images/assets/mapLoc.png'
@@ -504,7 +504,7 @@ export default function AboutYouMain() {
     const [showMessage, setShowMessage] = useState(false)
     const classes = useStyles();
     const dispatch = useDispatch()
-    const  {userData}  = useSelector((state)=> state.loginData)
+    const { userData } = useSelector((state) => state.loginData)
     const navigate = useNavigate()
 
     console.log(userData)
@@ -513,70 +513,75 @@ export default function AboutYouMain() {
         const {
             target: { value },
         } = event;
+
         setNationality(
             // On autofill we get a stringified value.
             typeof value === 'string' ? value.split(',') : value,
         );
+
     };
     const handleChangeCountry = (event) => {
         const {
             target: { value },
         } = event;
-        setCountry(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
+
+        value === "India"
+            ? setCountry(
+                // On autofill we get a stringified value.
+                typeof value === 'string' ? value.split(',') : value,
+            )
+            : notify("Getting ready to assist you shortly, Myntinvest is presently only accessible to Resident Indians.we are actively working on making it available to Nonresident Indians in the near future.")
     };
 
     const notify = (data) => {
         toast.error(data)
     }
-    const handleSubmit =(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
-        if(nationality.length===0 && country.length===0){
+        if (nationality.length === 0 && country.length === 0) {
             notify("Please choose both fields !!")
-        }else if(nationality.length===0){
+        } else if (nationality.length === 0) {
             notify("Please choose nationality !!")
-        }else if(country.length===0){
+        } else if (country.length === 0) {
             notify("Please choose country !!")
-        }else{
+        } else {
             try {
-                UserServices.UpdateUser({user_id:userData.id , email:userData.email, nationality:nationality.toString() ,country:country.toString() }).then(
+                UserServices.UpdateUser({ user_id: userData.id, email: userData.email, nationality: nationality.toString(), country: country.toString() }).then(
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {
-                            dispatch(userLoginAction({...userData , nationality:nationality.toString() ,country:country.toString()} ))
+                            dispatch(userLoginAction({ ...userData, nationality: nationality.toString(), country: country.toString() }))
                             navigate('/become-investor')
                         }
-                        else{
+                        else {
                             setCountry([])
                             country([])
                         }
-    
+
                     })
             }
             catch {
                 notify("Try after few minutes !!")
             }
         }
-        
+
     }
 
     useEffect(() => {
-        
-        if(country.includes('India') ||country.length === 0 ){
+
+        if (country.includes('India') || country.length === 0) {
             setShowMessage(false)
         }
-        else{
+        else {
             setShowMessage(true)
         }
-    
+
 
     }, [country])
 
 
-    
-    
+
+
     return (
         <div className="about-you-container">
             <div className="get-started-section">
@@ -662,8 +667,8 @@ export default function AboutYouMain() {
                         </div>
                         <button className="sign-up-btn" onClick={handleSubmit}>Next</button>
                         {showMessage &&
-                            <div style={{display:'grid' , fontSize:'12px' , marginTop:'10px'}}>
-                                <span style={{marginBottom:'10px'}}>Getting ready to assist you shortly</span>
+                            <div style={{ display: 'grid', fontSize: '12px', marginTop: '10px' }}>
+                                <span style={{ marginBottom: '10px' }}>Getting ready to assist you shortly</span>
                                 <span>Myntinvest is currently available only for Resident Indians. We are working on making it available for Non resident Indians soon</span>
                             </div>
                         }
