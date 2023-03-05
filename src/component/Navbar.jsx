@@ -36,20 +36,20 @@ const Navbar = () => {
         window.location.reload()
     }
     return (
-        <nav class="navbar">
-            <div class="navbar-container container">
+        <nav className="navbar">
+            <div className="navbar-container container">
                 {location.includes('/complete-your-profile') && ratio < 768 && <ArrowBackIosRoundedIcon style={{ marginTop: '1em' }} onClick={() => navigate('/')} />}
 
                 {!location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} className='ham-menu-img'></img>}
                 {location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} style={{ width: '78px', height: '35px', position: 'sticky', left: '40%', top: '1em' }}></img>}
                 <input type="checkbox" name="" id="" />
                 {!location.includes('/complete-your-profile') && <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
+                    <span className="line line1"></span>
+                    <span className="line line2"></span>
+                    <span className="line line3"></span>
                 </div>}
 
-                <ul class="menu-items">
+                <ul className="menu-items">
                     <li><span onClick={() => navigate('/')}>Home</span></li>
                     <hr className="ruler-navbar" />
                     <li><span onClick={() => navigate('/dashboard/live-deals')}>Deals</span></li>
@@ -73,7 +73,7 @@ const Navbar = () => {
                                             aria-haspopup="true"
                                             aria-expanded={open ? 'true' : undefined}
                                         >
-                                            <Avatar alt="Remy Sharp" src={userData.accessToken ? userData.picture.data.url : userData.picture} style={{ margin: '0 10px' }} />
+                                            <Avatar alt="avatar" src={userData?.avatar?.length > 0 ? userData.avatar : null} style={{ margin: '0 10px' }} />
                                         </IconButton>
                                     </Tooltip>
 
@@ -114,7 +114,7 @@ const Navbar = () => {
                                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                     >
                                         <MenuItem onClick={handleProfile}>
-                                            <Avatar /> Profile
+                                            <Avatar alt="avatar" src={userData?.avatar?.length > 0 ? userData.avatar : null} /> Profile
                                         </MenuItem>
                                         <MenuItem onClick={() => navigate('/dashboard')}>
                                             <ListItemIcon>
@@ -150,7 +150,7 @@ const Navbar = () => {
                     }
 
                 </ul>
-                <img onClick={() => navigate('/')} class="logo-web" src={logo}></img>
+                <img onClick={() => navigate('/')} className="logo-web" src={logo}></img>
             </div>
         </nav>
     )

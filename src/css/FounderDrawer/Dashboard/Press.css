@@ -48,11 +48,12 @@
 
 .press-banner-photo-title {
     height: 20px;
-    width: 200px !important;
+    width: 100% !important;
     text-align: left;
     font: normal normal normal 14px/48px Poppins;
     letter-spacing: 0px;
     color: #777777;
+    margin-bottom: 1.2rem !important;
 }
 
 .Banner-Box {
@@ -83,11 +84,13 @@
     max-width: 760px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
 .press-upload-pic-btn {
+    margin-top: 2rem !important;
     width: 275px !important;
     height: 42px !important;
     background: #FFFFFF 0% 0% no-repeat padding-box !important;
@@ -101,4 +104,21 @@
     max-width: 760px;
     width: 100%;
     background-color: #d6d6d6;
+}
+
+@media screen and (min-width: 870px) {
+    .press-photos-parent {
+        margin-top: 3.2rem !important;
+        max-width: 760px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .press-banner-photo-title {
+        width: 200px !important;
+        text-align: left;
+    }
 }

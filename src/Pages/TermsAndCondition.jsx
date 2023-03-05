@@ -1,7 +1,13 @@
 import React from "react";
 import '../css/termsAndCondition.css';
 import { Container, CssBaseline } from "@mui/material";
+import { useEffect } from "react";
 const TermsAndCondition = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <React.Fragment>
             <CssBaseline />
@@ -64,7 +70,7 @@ const TermsAndCondition = () => {
                         <span className="heading-terms-condition">9. Disclaimers and Limitation of Liability </span>
                         <span className="paragraph-terms-condition"><b>1.</b> You agree and understand that the use of the Website is at your own risk. The Website is being made available to you on an “as is” and “as available” basis without providing any warranties, guarantees or conditions as to the usage being free from any faults, defects, interruptions, errors, viruses or to the accuracy, reliability, availability of content. You agree and understand that we shall not be responsible for any interference or damage that may be caused to your computer resource which arises in connection with your access to our Website.</span>
                         <span className="paragraph-terms-condition"><b>2.</b> You agree that you can choose to request a refund within 48 hours from the time of a successful transaction. Exceptions to this are as per below:</span>
-                        <div style={{marginLeft:'1em',display:'grid'}}>
+                        <div style={{ marginLeft: '1em', display: 'grid' }}>
                             <span className="paragraph-terms-condition"> i. A Discounting deal: no refunds will be processed in such offering</span>
                             <span className="paragraph-terms-condition"> ii. During last 48 hours of the campaign: no refunds will be processed if the campaign is set to end in 48 hours. </span>
                         </div>

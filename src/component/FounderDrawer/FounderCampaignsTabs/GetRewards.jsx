@@ -4,8 +4,7 @@ import '../../../css/FounderDrawer/Dashboard/GetRewards.css'
 
 const GetRewards = () => {
     return (
-        <Box sx={{ marginTop: 4, marginLeft: 2, }}>
-
+        <Box sx={{ marginTop: 4 }} className="promotions-parent">
 
             <span className='hightlight-heading'>Get Rewards</span>
 

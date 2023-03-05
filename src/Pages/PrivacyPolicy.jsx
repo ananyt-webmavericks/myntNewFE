@@ -1,7 +1,13 @@
 import React from "react";
 import '../css/termsAndCondition.css';
 import { Container, CssBaseline } from "@mui/material";
+import { useEffect } from "react";
 const PrivacyPolicy = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <React.Fragment>
             <CssBaseline />

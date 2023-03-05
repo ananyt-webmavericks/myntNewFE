@@ -10,7 +10,7 @@
 }
 
 .founderhome-test-script-bold {
-    text-align: left;
+    text-align: center;
     font: normal normal bold 37px/45px Poppins !important;
     letter-spacing: 0px !important;
     color: #000000;
@@ -62,12 +62,13 @@
     order: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .founderhome-landing-head-txt-section {
     order: 2;
-    text-align: center;
-    padding-top: 5rem;
+    text-align: center !important;
+    padding-top: 2rem;
 }
 
 .founderhome-banner-home-main {
@@ -87,6 +88,7 @@
 
 
 @media screen and (min-width: 870px) {
+
     .founderhome-image-section-landing {
         order: 2;
     }
@@ -94,6 +96,7 @@
     .founderhome-landing-head-txt-section {
         order: 1;
         text-align: start;
+        padding-top: 5rem;
     }
 
     .founderhome-landing-head-container {

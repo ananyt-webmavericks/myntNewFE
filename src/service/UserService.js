@@ -41,7 +41,7 @@ const CreateUser = async (value) => {
 
 }
 const UpdateUser = async (obj) => {
-  
+
     try {
         const response = await axios.patch(`${Base_Url}/api/users/manage`, obj);
         notifySuccess('successfully updated !!')
@@ -56,10 +56,26 @@ const UpdateUser = async (obj) => {
 
 }
 
+const getUserById = async (id) => {
+
+    try {
+        const response = await axios.get(`${Base_Url}/api/users/${id}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            notify(error.response.data.email[0])
+        }
+        return error;
+    }
+
+}
+
 const UserServices = {
     LoginUserByEmail,
     CreateUser,
-    UpdateUser
+    UpdateUser,
+    getUserById
 };
 
 export default UserServices

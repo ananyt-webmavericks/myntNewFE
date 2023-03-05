@@ -10,6 +10,8 @@ import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../../Redux/actions/auth";
+import ConsentSerivce from "../../service/ConsentService";
+import UserServices from "../../service/UserService";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         marginTop: '11px',
@@ -61,7 +63,18 @@ export default function OtpVerificationMain() {
                         if (loginType === 'new') {
                             navigate('/about-you')
                         } else {
-                            navigate('/dashboard')
+                            UserServices.getUserById(response.data.data.id).then(({ data }) => {
+                                console.log(data.nationality)
+                                if (!data.nationality) {
+                                    navigate('/about-you')
+                                } else {
+                                    ConsentSerivce.getUserConsent(response.data.data.id).then(({ data }) => {
+                                        console.log(data)
+                                        navigate(data ? '/dashboard' : '/become-investor')
+                                    })
+                                }
+                            })
+
                         }
                     }
                     else {

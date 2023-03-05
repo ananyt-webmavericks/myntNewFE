@@ -1,6 +1,6 @@
 .dashboard-container {
     padding-left: 30px;
-    padding-top: 9em;
+    padding-top: 6em;
     width: -webkit-fill-available;
 }
 
@@ -178,20 +178,36 @@
 .image-card-dashboard {
     object-fit: contain;
 }
-.outer-circle-dash.first{
+
+.outer-circle-dash.first {
     margin-left: 40%;
 }
+
 .text-card-container {
     display: grid;
     margin-left: 10px;
 }
-.main-container-dashboard-part{
+
+.main-container-dashboard-part {
     display: grid;
     justify-content: center;
 }
-.sub-main-container-dashboard{
-    display: flex; 
+
+.sub-main-container-dashboard {
+    display: flex;
     align-items: center;
+}
+
+
+@media screen and (min-width: 870px) {
+    .upload-pitch-parent {
+        margin-left: 2rem;
+    }
+
+    .dashboard-container {
+        padding-top: 9em;
+        padding-left: 0;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -213,7 +229,7 @@
     .card-main-dash {
         display: grid;
         margin-top: 90px;
-        max-width:100% !important;
+        max-width: 100% !important;
         margin: auto !important;
     }
 
@@ -221,23 +237,28 @@
         display: grid;
         position: relative;
     }
-    .main-container-dashboard-part{
+
+    .main-container-dashboard-part {
         display: flex;
     }
-    .outer-circle-dash.first{
+
+    .outer-circle-dash.first {
         margin-left: 0;
     }
-    .sub-main-container-dashboard{
+
+    .sub-main-container-dashboard {
         display: grid;
         align-items: flex-start;
     }
-    .dashed-line-new{
+
+    .dashed-line-new {
         width: 1px;
         height: 130px;
         margin: auto;
         border: 1px dashed #D1D1D1;
     }
-    .dashed-line-last{
+
+    .dashed-line-last {
         border: 1px dashed #D1D1D1;
         width: 1px;
         margin: auto;

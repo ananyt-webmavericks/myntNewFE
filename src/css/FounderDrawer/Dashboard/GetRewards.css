@@ -20,7 +20,16 @@
     margin-bottom: 5rem;
 }
 
+.promotions-parent {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+}
 
+@media screen and (min-width: 870px) {
+    .promotions-parent {
+        margin-left: 2rem;
+    }
+}
 
 @media screen and (max-width:768px) {
     .getRewards-btn-parent {

@@ -152,7 +152,7 @@ input::placeholder {
 }
 
 .drag-and-drop-text {
-    text-align: left;
+    text-align: center;
     font: normal normal normal 18px/16px Poppins;
     letter-spacing: 0px;
     color: #777777;

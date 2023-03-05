@@ -128,6 +128,18 @@
 
 }
 
+@media screen and (min-width: 870px) {
+
+    .fileupload {
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        gap: 1rem;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+    }
+}
+
 @media screen and (max-width: 2560px) {
     /* .formgroup {
         justify-content: center !important;
