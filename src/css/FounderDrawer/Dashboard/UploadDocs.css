@@ -80,7 +80,7 @@
     .upload-doc-parent {
         flex-direction: column;
         height: 8rem !important;
-        margin-top: 8rem;
+        margin-top: 2.5rem;
     }
 }
 
@@ -88,7 +88,7 @@
     .upload-doc-parent {
         flex-direction: column;
         height: 8rem !important;
-        margin-top: 8rem;
+        margin-top: 2.5rem;
     }
 
     .doc-list-parent {
@@ -105,6 +105,6 @@
     .upload-doc-parent {
         flex-direction: column;
         height: 8rem !important;
-        margin-top: 8rem;
+        margin-top: 2.5rem;
     }
 }

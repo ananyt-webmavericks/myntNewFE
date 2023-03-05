@@ -571,6 +571,7 @@ const LiveDeals = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
 
         if (ratio < 1230) {
             setSpaceing(3)

@@ -13,6 +13,7 @@ import DashboardDeals from "../component/Dashboard/DasboardDeals";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import DashBoardFaq from "../component/FaqDetails/DashBoardFaq";
+import { useEffect } from "react";
 const Dashboard = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
@@ -24,6 +25,11 @@ const Dashboard = () => {
         setShowDeals(value)
     }
     console.log(showDeals)
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
 
     return (
         <>

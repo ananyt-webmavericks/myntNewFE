@@ -37,8 +37,6 @@ const AutomatedStreamlined = () => {
                     </div>
                     <div className="founderhome-image-section-landing">
                         <Lottie
-                            width={478}
-                            height={478}
                             options={defaultOptions}
                         />
                     </div>

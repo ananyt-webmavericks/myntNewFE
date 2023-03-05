@@ -43,7 +43,7 @@ export default function DrawerFounder({ height, display }) {
                 <div className="bottom-navbar-section">
                     <div className="main-navbar-section" onClick={() => navigate('/dashboard-founder')}>
                         <div style={{ margin: 'auto' }}>
-                            <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+                            <GridViewOutlinedIcon style={location === '/dashboard-founder' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
                         </div>
                         <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
                     </div>

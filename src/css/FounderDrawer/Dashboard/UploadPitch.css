@@ -1,0 +1,10 @@
+.upload-pitch-parent {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+}
+
+@media screen and (min-width: 870px) {
+    .upload-pitch-parent {
+        margin-left: 2rem;
+    }
+}

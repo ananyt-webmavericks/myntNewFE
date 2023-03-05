@@ -8,8 +8,13 @@ import FundRaising from '../../component/FounderHome/FundRaising';
 import HowToSubscribe from '../../component/FounderHome/HowToSubscribe';
 import BaseHighlights from '../../component/FounderHome/BaseHighlights';
 import FounderAboutTeamCarousal from '../../component/FounderHome/FounderAboutTeamCarousal';
+import { useEffect } from 'react';
 
 export default function HomeFounder() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     <React.Fragment>
       <CssBaseline />

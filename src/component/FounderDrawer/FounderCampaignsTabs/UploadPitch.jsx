@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import { Box, Typography } from '@mui/material'
+import '../../../css/FounderDrawer/Dashboard/UploadPitch.css'
 import React from 'react'
 const useStyles = makeStyles({
     dropbox: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
 const UploadPitch = () => {
     const classes = useStyles()
     return (
-        <Box sx={{ marginTop: 4, marginLeft: 2 }}>
+        <Box sx={{ marginTop: 4 }} className="upload-pitch-parent">
             <h3>Upload Pitch Deck</h3>
             <Typography>
                 <p style={{ marginTop: "10px", }}>Upload a pdf of your pitch deck - this will be displayed to your potential investors as your pitch for your campaign</p>

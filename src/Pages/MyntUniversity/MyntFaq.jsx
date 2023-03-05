@@ -12,7 +12,8 @@ const MyntFaq = () => {
     const ratio = parseInt(window.innerWidth);
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [])
 
     return (

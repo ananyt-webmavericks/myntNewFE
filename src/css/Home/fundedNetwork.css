@@ -1,50 +1,60 @@
-.funded-networks-container{
+.funded-networks-container {
     display: flex;
     /* justify-content: center; */
     align-items: center;
     position: relative;
 }
-.networks-head-script{
+
+.networks-head-script {
     font-size: 20px !important;
     width: 300px;
     font-weight: 600 !important;
 }
 
-.bg-text-script{
+.bg-text-script {
     color: #F0C127 !important;
 }
-.vertical-line{
-  border:0.5px solid gray;
-  border-style: dashed;
+
+.vertical-line {
+    border: 0.5px solid gray;
+    border-style: dashed;
     height: 100px;
     margin-left: 10px;
     width: 1px;
-  
-}
-.react-carousel-networks{
-    margin-top:-1em !important;
+
 }
 
+.react-carousel-networks {
+    margin-top: -1em !important;
+}
+
+.comp-img {
+    margin-top: 2.2rem;
+}
 
 @media screen and (max-width:870px) {
-    .funded-networks-container{
+    .funded-networks-container {
         display: grid;
     }
-    .react-carousel-networks{
-        position:absolute !important;
-        top:1em !important;
+
+    .react-carousel-networks {
+        position: absolute !important;
+        top: 1em !important;
     }
-    .networks-head-script{
+
+    .networks-head-script {
         font-size: 18px !important;
         width: fit-content;
     }
-    .funded-head-txt{
+
+    .funded-head-txt {
         margin-bottom: 1em;
     }
 }
+
 @media screen and (max-width:483px) {
-    .react-carousel-networks{
-        position:absolute !important;
-        top:2.7em !important;
+    .react-carousel-networks {
+        position: absolute !important;
+        top: 2.7em !important;
     }
 }

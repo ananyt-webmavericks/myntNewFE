@@ -1,9 +1,9 @@
 .rec.rec-arrow {
     /* border-radius: 0; */
-background: none;
-box-shadow: none;
+    background: none;
+    box-shadow: none;
 }
 
-.company-image img{
-    object-fit: contain;
+.company-image img {
+    object-fit: contain !important;
 }

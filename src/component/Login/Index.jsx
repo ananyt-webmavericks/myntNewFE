@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import UserServices from "../../service/UserService";
 import { userEmailAction } from "../../Redux/actions/auth";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function LoginMain() {
     const navigate = useNavigate();
@@ -48,7 +49,9 @@ export default function LoginMain() {
         }
     }
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     // notifySuccess(response.data.message)
 
 

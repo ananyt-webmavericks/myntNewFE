@@ -4,7 +4,7 @@ import "../../../../css/FounderDrawer/Dashboard/PeopleTabs.css"
 const TeamMembers = () => {
     return (
         <>
-            <Box sx={{ marginTop: "2rem", width: "90%", marginBottom: "50rem" }} container spacing={2}>
+            <Box sx={{ marginTop: "2rem", width: "90%", marginBottom: "10rem" }} container spacing={2}>
                 <div>
 
                     <Box className='formgroup'>
