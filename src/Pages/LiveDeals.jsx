@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Card, CardContent } from "@mui/material";
+import { Container, Grid, Card, CardContent, Typography } from "@mui/material";
 import DrawerMain from "../component/Dashboard/Drawer";
 import Footer from "../component/Footer";
 import '../css/Dashboard/liveDeals.css'
@@ -95,8 +95,8 @@ const LiveDeals = () => {
     const navigate = useNavigate()
 
     const [tab1, settab1] = useState(
-        <>
-            <span style={{ fontSize: '20px', fontWeight: '600' }}>Live Deals</span>
+        <div id="tab-1">
+            <span style={{ fontSize: '20px', fontWeight: '600' }}>CSOP</span>
             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                 {data.map((item, index) => {
                     return (
@@ -201,10 +201,10 @@ const LiveDeals = () => {
                     )
                 })}
             </Grid>
-        </>
+        </div>
     )
     const [tab2, settab2] = useState(
-        <>
+        <div id="tab-2">
             <span style={{ fontSize: '20px', fontWeight: '600' }}>CCD</span>
             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                 {data.map((item, index) => {
@@ -313,10 +313,10 @@ const LiveDeals = () => {
 
             </Grid>
 
-        </>
+        </div>
     )
     const [tab3, settab3] = useState(
-        <>
+        <div id="tab-3">
             <span style={{ fontSize: '20px', fontWeight: '600' }}>NCD</span>
             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                 {data.map((item, index) => {
@@ -422,10 +422,10 @@ const LiveDeals = () => {
                     )
                 })}
             </Grid>
-        </>
+        </div>
     )
     const [tab4, settab4] = useState(
-        <>
+        <div id="tab-4">
             <span style={{ fontSize: '20px', fontWeight: '600' }}>ID</span>
             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                 {data.map((item, index) => {
@@ -532,42 +532,14 @@ const LiveDeals = () => {
                 })}
 
             </Grid>
-        </>
+        </div>
     )
-
-    const [showTab1, setshowTab1] = useState(tab1)
-    const [showTab2, setshowTab2] = useState(tab2)
-    const [showTab3, setshowTab3] = useState(tab3)
-    const [showTab4, setshowTab4] = useState(tab4)
-
     const handleOrderTabs = (tabNo) => {
         setActiveBtn(tabNo)
-        if (tabNo === 1) {
-            setshowTab1(tab1)
-            setshowTab2(tab2)
-            setshowTab3(tab3)
-            setshowTab4(tab4)
-        } else if (tabNo === 2) {
-            setshowTab1(tab2)
-            setshowTab2(tab1)
-            setshowTab3(tab3)
-            setshowTab4(tab4)
-        } else if (tabNo === 3) {
-            setshowTab1(tab3)
-            setshowTab2(tab1)
-            setshowTab3(tab2)
-            setshowTab4(tab4)
-        } else if (tabNo === 4) {
-            setshowTab1(tab4)
-            setshowTab2(tab1)
-            setshowTab3(tab2)
-            setshowTab4(tab3)
-        } else {
-            setshowTab1(tab1)
-            setshowTab2(tab2)
-            setshowTab3(tab3)
-            setshowTab4(tab4)
-        }
+        const content = document.getElementById(`tab-${tabNo}`);
+        const yOffset = -100;
+        const y = content.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
     }
 
     useEffect(() => {
@@ -605,6 +577,17 @@ const LiveDeals = () => {
         },
     }));
 
+    const popperOptions = {
+        modifiers: [
+            {
+                name: 'offset',
+                options: {
+                    offset: [50, 0], // adjust the second value to increase or decrease the space to the top
+                },
+            },
+        ],
+    }
+
     return (
         <>
             <div style={{ display: 'flex', position: 'relative' }}>
@@ -616,13 +599,18 @@ const LiveDeals = () => {
                             <span style={{ fontSize: '16px', color: '#777777' }}>Browse current subscription opportunities on Mynt.</span>
                         </div>
                         <SearchBar />
+
+                        <div style={{ marginTop: '60px' }}>
+                            <Typography className="live-deals-heading">Live Deals</Typography>
+                        </div>
+
                         <div className="button-container-liveDeals">
                             <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(1)}>
-                                <div>
+                                <div >
                                     <span >CSOP</span>
                                     <div className="mini-active-btn-highliter">Live</div>
                                 </div>
-                                <LightTooltip title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
+                                <LightTooltip popperOptions={{ popperOptions }} title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
                                     <img height={20} width={20} src={infoIcon} alt="info" />
                                 </LightTooltip>
                             </div>
@@ -630,7 +618,7 @@ const LiveDeals = () => {
                             <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
                                 <span>CCD</span>
                                 {/* <div className="mini-active-btn-highliter">Live</div> */}
-                                <LightTooltip title="Compulsory convertible debentures are hybrid securities that have the same financial rights like equity share but no voting rights.">
+                                <LightTooltip PopperProps={{ style: { marginTop: -12 } }} title="Compulsory convertible debentures are hybrid securities that have the same financial rights like equity share but no voting rights.">
                                     <img height={20} width={20} src={infoIcon} alt="info" />
                                 </LightTooltip>
                             </div>
@@ -672,13 +660,13 @@ const LiveDeals = () => {
                             }
                         </div>
 
-                        {showTab1}
+                        {tab1}
 
-                        {showTab2}
+                        {tab2}
 
-                        {showTab3}
+                        {tab3}
 
-                        {showTab4}
+                        {tab4}
                     </Container>
                 </div>
             </div>

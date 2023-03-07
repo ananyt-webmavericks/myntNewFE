@@ -65,28 +65,28 @@ const Footer = () => {
                         <div className="footer-links-section-first">
                             <div className="investor-university-section">
                                 <span className="heading-link">Investors</span>
-                                <span onClick={()=>navigate('/dashboard/live-deals')} className="Detail-link">Deals</span>
-                                <span onClick={()=>navigate('/login')} className="Detail-link">Invest</span>
-                                <span onClick={()=>navigate('/myntUniversity/faqs')} className="Detail-link">Learn</span>
+                                <span onClick={() => navigate('/dashboard/live-deals')} className="Detail-link">Deals</span>
+                                <span onClick={() => navigate('/login')} className="Detail-link">Invest</span>
+                                <span onClick={() => navigate('/myntUniversity/faqs')} className="Detail-link">Learn</span>
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Mynt University</span>
-                                <span onClick={()=>navigate('/faq-details')} className="Detail-link">FAQs</span>
-                                <span onClick={()=>navigate('/myntUniversity/blogs')} className="Detail-link">Blogs</span>
+                                <span onClick={() => navigate('/faq-details')} className="Detail-link">FAQs</span>
+                                <span onClick={() => navigate('/myntUniversity/blogs')} className="Detail-link">Blogs</span>
                             </div>
                         </div>
                         <div className="footer-links-section-Second">
                             <div className="investor-university-section">
                                 <span className="heading-link">Fine Print</span>
-                                <span onClick={()=>navigate('/privacy-policy')} className="Detail-link">Privacy Policy</span>
-                                <span onClick={()=>navigate('/terms-and-condition')} className="Detail-link">Terms & Condition</span>
-                                <span onClick={()=>navigate('/risk-investment')} className="Detail-link">Risk of Subscription</span>
+                                <span onClick={() => navigate('/privacy-policy')} className="Detail-link">Privacy Policy</span>
+                                <span onClick={() => navigate('/terms-and-condition')} className="Detail-link">Terms & Condition</span>
+                                <span onClick={() => navigate('/risk-investment')} className="Detail-link">Risk of Subscription</span>
                             </div>
                             <div className="investor-university-section">
                                 <span className="heading-link">Startups</span>
-                                <span onClick={()=>navigate('/founder')} className="Detail-link">Raise</span>
-                                <span onClick={()=>navigate('/login-founder')} className="Detail-link">Log In</span>
-                                <span onClick={()=>navigate('/myntUniversity/faqs')} className="Detail-link">Learn</span>
+                                <span onClick={() => navigate('/founder')} className="Detail-link">Raise</span>
+                                <span onClick={() => navigate('/login-founder')} className="Detail-link">Log In</span>
+                                <span onClick={() => navigate('/myntUniversity/faqs')} className="Detail-link">Learn</span>
                             </div>
                         </div>
                         <div className="contact-us-at">
@@ -114,7 +114,7 @@ const Footer = () => {
 
             </Grid>
             <div className="footer-bottom-section">
-                <span style={{fontWeight:'600' ,fontSize:'15px'}}>Disclaimer:</span>
+                <span style={{ fontWeight: '600', fontSize: '15px' }}>Disclaimer:</span>
                 <span className="footer-text-header">All trademarks and logos or registered trademarks and logos found on this Site or mentioned herein belong to their respective owners and are solely being used for informational
                     purposes.
 

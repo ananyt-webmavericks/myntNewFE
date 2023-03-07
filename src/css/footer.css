@@ -1,25 +1,29 @@
-.footer-container{
+.footer-container {
     width: 100%;
     min-height: 40vh;
     background: #f7f7f7;
-    bottom:0;
-    
+    bottom: 0;
+
     z-index: 200;
 }
-.footer-head-section{
+
+.footer-head-section {
     margin: 2em;
     display: grid;
 }
-.button-container-footer{
+
+.button-container-footer {
     padding-top: 1em;
     display: flex;
     justify-content: left;
 }
+
 .logo-web-footer {
     width: 100px;
     margin-bottom: 1em;
-  }
-.logo-footer{
+}
+
+.logo-footer {
     margin-right: 1em;
     background: #777777;
     border-radius: 50%;
@@ -29,52 +33,64 @@
     justify-content: center;
     align-items: center;
 }
-.footer-text-header{
+
+.footer-text-header {
     margin-top: 1em;
     font-size: 13px;
 }
-.footer-bottom-section{
+
+.footer-bottom-section {
     display: grid;
     margin: 2em;
 }
-.bottomMost-bar{
+
+.bottomMost-bar {
     background-color: black;
-    height: 4em;
-    padding: 1em;
-    text-align: center;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.bottomMost-text{
+
+.bottomMost-text {
     color: white;
-    font-size: 15px;
+    font-size: 13px;
 }
-.all-link-section{
+
+.all-link-section {
     display: flex;
     margin-top: 3em;
 }
-.footer-links-section-first{
+
+.footer-links-section-first {
     display: flex;
     height: fit-content;
 }
-.footer-links-section-Second{
+
+.footer-links-section-Second {
     display: flex;
     height: fit-content;
 }
-.investor-university-section{
+
+.investor-university-section {
     display: grid;
     margin-right: 3em;
     height: fit-content;
 }
-.investor-university-section-second{
+
+.investor-university-section-second {
     display: grid;
     height: fit-content;
 }
-.heading-link{
+
+.heading-link {
     font-weight: 600;
     font-size: 15px;
     width: max-content;
     padding-bottom: 15px;
 }
-.Detail-link{
+
+.Detail-link {
     cursor: pointer;
     align-items: center;
     color: gray;
@@ -83,64 +99,78 @@
     width: max-content;
     height: fit-content;
 }
-.contact-us-at{
+
+.contact-us-at {
     display: grid;
     height: fit-content;
 }
-.contact-us-at-mail{
+
+.contact-us-at-mail {
     padding-top: 15px;
     float: right;
     display: grid;
     height: fit-content;
 }
+
 @media screen and (max-width: 1203px) {
-    .footer-links-section-first{
+    .footer-links-section-first {
         display: grid;
     }
-    .footer-links-section-Second{
+
+    .footer-links-section-Second {
         display: grid;
         /* height: fit-content; */
     }
 }
+
 @media screen and (max-width: 920px) {
-    .all-link-section{
+    .all-link-section {
         display: flex;
         margin: 2em;
         margin-top: 0;
     }
-    .footer-links-section-first{
+
+    .footer-links-section-first {
         display: flex;
     }
-    .footer-links-section-Second{
+
+    .footer-links-section-Second {
         display: flex;
         /* height: fit-content; */
     }
 }
+
 @media screen and (max-width: 865px) {
-    .footer-links-section-first{
+    .footer-links-section-first {
         display: grid;
     }
-    .footer-links-section-Second{
+
+    .footer-links-section-Second {
         display: grid;
         /* height: fit-content; */
     }
 }
+
 @media screen and (max-width: 640px) {
-    .all-link-section{
+    .all-link-section {
         display: grid;
     }
-    .footer-links-section-first{
+
+    .footer-links-section-first {
         display: flex;
         width: 100%;
     }
-    .footer-links-section-Second{
+
+    .footer-links-section-Second {
         display: flex;
         /* height: fit-content; */
     }
-    .investor-university-section-second{
+
+    .investor-university-section-second {
         margin-top: 1em;
     }
-    .investor-university-section{
+
+    .investor-university-section {
         width: 50%;
         margin-top: 1em;
         margin-right: 0;

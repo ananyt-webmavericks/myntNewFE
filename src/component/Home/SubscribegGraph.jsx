@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function SubscribegGraph() {
     const navigate = useNavigate()
-    const [gridxsFirst, setGridxsFirst] = useState(2)
+    const [gridxsFirst, setGridxsFirst] = useState(4)
     const [gridxsSecond, setgridxsSecond] = useState(6)
     const ratio = parseInt(window.innerWidth);
 
@@ -36,7 +36,7 @@ export default function SubscribegGraph() {
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
                                     <Typography className="card-bold-txt" >Equity linked Securities</Typography>
-                                    <Typography className="regular-txt">Sign up to gain access to exclusive high-return opportunities in growing businesses.</Typography>
+                                    <Typography style={{ width: '90%' }} className="regular-txt">Sign up to gain access to exclusive high-return opportunities in growing businesses.</Typography>
                                 </div>
                                 <div className="container-for-text-and-graph">
                                     <div className="text-section-subscribe">
