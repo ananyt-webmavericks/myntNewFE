@@ -18,7 +18,7 @@ export default function LoginFounder() {
                 <span className="get-started-subheading">Please enter your details</span>
                 <Card className="card-get-started">
                     <CardContent>
-                        <div style={{ display: 'flex', justifyContent: 'center', margin: 'auto', marginBottom: '13px',marginLeft: '2em' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', margin: 'auto', marginBottom: '13px', marginLeft: '2em' }}>
                             <img src={Loginlogo} width={172} height={76} style={{ objectFit: 'contain' }}></img>
                         </div>
                         <div className="input-container-second">
@@ -36,7 +36,7 @@ export default function LoginFounder() {
                 </Card>
                 <div className="bottom-most-txt-get-started">
                     <div className="footer-get-started-txt-head">
-                        <span onClick={() => navigate('/login')} style={{cursor:'pointer'}} className="colored-text-get-started">Log in </span>as Investor</div>
+                        <span onClick={() => navigate('/login')} style={{ cursor: 'pointer' }} className="colored-text-get-started">Log in </span>as Investor</div>
                 </div>
             </div>
         </div>

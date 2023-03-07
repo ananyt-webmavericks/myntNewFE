@@ -7,9 +7,9 @@ const BecomeInvestor = () => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-            <BecomeInvestorMain />
+                <BecomeInvestorMain />
             </Container>
-            
+
         </React.Fragment>
     )
 }

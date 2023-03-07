@@ -1,4 +1,4 @@
-import React  , {useState} from "react";
+import React, { useEffect, useState } from "react";
 import '../../css/GetStarted/getStarted.css'
 import { Card, CardContent } from "@mui/material";
 import Google from '../../images/assets/google.png';
@@ -15,11 +15,11 @@ import { userEmailAction } from "../../Redux/actions/auth";
 import { userLoginAction } from "../../Redux/actions/auth";
 
 const data = {
-    first_name:'',
-    last_name:'',
-    email:'',
-    social_login:false,
-    user_type:"INVESTOR"
+    first_name: '',
+    last_name: '',
+    email: '',
+    social_login: false,
+    user_type: "INVESTOR"
 }
 export default function GetStartedSection() {
     const [value, setValue] = useState(data)
@@ -30,42 +30,48 @@ export default function GetStartedSection() {
     const notify = (data) => {
         toast.error(data)
     }
-    const handleChange = (e)=>{
-        setValue({...value,[e.target.name]:e.target.value})
+    const handleChange = (e) => {
+        setValue({ ...value, [e.target.name]: e.target.value })
     }
 
-     const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if(value.first_name==='' && value.last_name==='' && value.email===''){
+        if (value.first_name === '' && value.last_name === '' && value.email === '') {
             notify("Please enter all field")
-        }else if(value.first_name===''){
+        } else if (value.first_name === '') {
             notify("Please enter first name")
-        }else if(value.last_name===''){
+        } else if (value.last_name === '') {
             notify("Please enter last name")
-        }else if(value.email===''){
+        } else if (value.email === '') {
             notify("Please enter email")
         }
-        if (value.email !=='' && !isEmail(value.email)) {
-              notify("Please enter a valid email")
+        if (value.email !== '' && !isEmail(value.email)) {
+            notify("Please enter a valid email")
         }
-        else{
-            try{
+        else {
+            try {
                 UserServices.CreateUser(value).then(
                     (response) => {
                         console.log(response)
-                        if(response.status === 201){
+                        if (response.status === 201) {
                             dispatch(userLoginAction(response.data))
-                            localStorage.setItem('loginType','new')
+                            localStorage.setItem('loginType', 'new')
                             navigate('/otp-verification')
                         }
-                          
+
                     })
             }
-            catch{
+            catch {
                 notify("Try after few minutes")
             }
         }
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
     return (
         <div className="get-started-container">
             <div className="get-started-section">
@@ -83,7 +89,7 @@ export default function GetStartedSection() {
                         <div className="input-container">
                             <div className="name-input-get-started">
                                 <img src={Username} width={16} height={16} style={{ marginLeft: '10px' }}></img>
-                                <input name="first_name" value={value.first_name} onChange={handleChange}  className="in-input-name" placeholder="First Name" />
+                                <input name="first_name" value={value.first_name} onChange={handleChange} className="in-input-name" placeholder="First Name" />
                             </div>
                             <div className="name-input-get-started">
                                 <input name="last_name" value={value.last_name} onChange={handleChange} className="in-input-name" placeholder="Last Name" />
@@ -99,8 +105,8 @@ export default function GetStartedSection() {
                     </CardContent>
                 </Card>
                 <div className="bottom-most-txt-get-started">
-                    <div className="footer-get-started-txt-head">Already have an account? <span onClick={()=> navigate('/login')} style={{cursor:'pointer'}} className="colored-text-get-started">Log in instead</span></div>
-                    <div className="footer-get-started-txt-head">Are you a founder looking to raise funds?  <span onClick={()=> navigate('/founder')} style={{cursor:'pointer'}}  className="colored-text-get-started">Apply Here</span></div>
+                    <div className="footer-get-started-txt-head">Already have an account? <span onClick={() => navigate('/login')} style={{ cursor: 'pointer' }} className="colored-text-get-started">Log in instead</span></div>
+                    <div className="footer-get-started-txt-head">Are you a founder looking to raise funds?  <span onClick={() => navigate('/founder')} style={{ cursor: 'pointer' }} className="colored-text-get-started">Apply Here</span></div>
                 </div>
             </div>
         </div>

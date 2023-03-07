@@ -37,11 +37,13 @@
 }
 
 .button-container-liveDeals {
-    display: flex;
+    display: grid;
+    grid: 90px / auto auto auto auto;
+    /* grid-gap: 10px; */
     justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-    margin-bottom: 70px;
+    /* align-items: center; */
+    margin-top: 40px;
+    margin-bottom: 55px;
 }
 
 /* 
@@ -72,16 +74,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 5px;
-    gap: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    gap: 1.2rem;
     cursor: pointer;
 }
 
 .mini-active-btn-highliter {
-    margin-top: -2px;
+    position: absolute;
+    margin-top: -0px;
+    margin-left: 20px;
     width: 41px;
     height: 11px;
     /* UI Properties */
+    box-shadow: 0px 0px 20px #00000017 !important;
     background: #F2DA58 0% 0% no-repeat padding-box;
     border-radius: 6px;
     font-size: 9px;
@@ -91,7 +97,26 @@
     align-items: center;
 }
 
+.live-deals-heading {
+    text-align: center;
+    text-align: center;
+    font: normal normal 600 24px/14px Poppins !important;
+    letter-spacing: 0px;
+}
+
 @media screen and (max-width:450px) {
+
+
+    .button-container-liveDeals {
+        display: grid;
+        grid: 90px / auto auto;
+        /* grid-gap: 10px; */
+        justify-content: center;
+        /* align-items: center; */
+        margin-top: 40px;
+        margin-bottom: 55px;
+    }
+
     .search-sort-container {
         display: grid;
         height: 142px;

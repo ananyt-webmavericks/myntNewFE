@@ -10,7 +10,7 @@ const CompleteYourProfile = () => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="md">
-             <VerifyNumber />
+                <VerifyNumber />
             </Container>
             {ratio < 768 ? null : <Footer />}
         </React.Fragment>

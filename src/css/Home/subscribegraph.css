@@ -4,10 +4,12 @@
 }
 
 .regular-txt {
-    width: 100%;
+    padding-top: 17px !important;
+    width: 70%;
     font-size: 18px !important;
     color: gray !important;
-    height: 150px !important;
+    height: 100px !important;
+    text-justify: inter-word !important;
 }
 
 .subscribe-graph-heading {

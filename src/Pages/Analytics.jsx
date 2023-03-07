@@ -8,16 +8,16 @@ const Analytics = () => {
     const location = window.location.pathname;
     return (
         <>
-        <div style={{ display: 'flex' }}>
-            {location.includes('/dashboard') && <DrawerMain height={'inherit'} />}
-            <div className="dashboard-container">
-                <Container maxWidth="lg" style={{overflowY:'scroll'}}>
-                    <AnalyticsMain />
-                </Container>
+            <div style={{ display: 'flex' }}>
+                {location.includes('/dashboard') && <DrawerMain height={'inherit'} />}
+                <div className="dashboard-container">
+                    <Container maxWidth="lg" style={{ overflowY: 'scroll' }}>
+                        <AnalyticsMain />
+                    </Container>
+                </div>
             </div>
-        </div>
-              {ratio < 1000 ? null : <Footer />}
-              </>
+            {ratio < 1000 ? null : <Footer />}
+        </>
     )
 }
 export default Analytics;

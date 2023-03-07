@@ -19,6 +19,7 @@ const data = [
     { id: 5, image: GOMech, name: '$285Mn' },
     { id: 6, image: FormLabs, name: '$2Bn' },
     { id: 7, image: Reevoy, name: '$12.6 million' },
+    { id: 8, image: lw, name: '$12.6Mn' },
 ]
 export default function FundedNetworks() {
     const carouselRef2 = useRef(null);
@@ -44,11 +45,12 @@ export default function FundedNetworks() {
                         <Typography className="networks-head-script">Brought to you by the Networks that have <span style={{ color: '#F0C127' }}>Funded</span></Typography>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div className="vertical-line"></div><img src={Arrow} width={8} height={15} ></img>
+                        <div className="vertical-line"></div>
+                        <img src={Arrow} width={8} height={15} ></img>
                     </div>
                     <Carousel
                         className="react-carousel-networks"
-                        autoPlaySpeed={3000}
+                        autoPlaySpeed={2000}
                         easing="ease"
                         enableAutoPlay={true}
                         showArrows={false}
@@ -72,8 +74,8 @@ export default function FundedNetworks() {
                     >
                         {data.map((item, index) => {
                             return (
-                                <Item key={index} className='company-image'>
-                                    <div style={{ display: 'grid', textAlign: 'center' }}>
+                                <Item key={index} className='company-image' style={{ width: '100px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center' }}>
                                         <img className="comp-img" height={40} style={{ objectFit: 'contain' }} src={item.image}></img>
                                         <span style={{ marginTop: '1.5rem', fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
                                     </div>
