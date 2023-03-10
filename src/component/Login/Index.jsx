@@ -9,9 +9,10 @@ import FacebookSignIn from "../FacebookSignIn";
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import UserServices from "../../service/UserService";
-import { userEmailAction } from "../../Redux/actions/auth";
+import { userEmailAction, userLoginAction } from "../../Redux/actions/auth";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import ConsentSerivce from "../../service/ConsentService";
 
 export default function LoginMain() {
     const navigate = useNavigate();
@@ -36,9 +37,21 @@ export default function LoginMain() {
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {
+                            if (response.data.id) {
+                                dispatch(userLoginAction(response.data))
+                                if (!response.data.nationality) {
+                                    navigate('/about-you')
+                                } else {
+                                    ConsentSerivce.getUserConsent(response.data.id).then(({ data }) => {
+                                        console.log(data)
+                                        navigate(data ? '/dashboard' : '/become-investor')
+                                    })
+                                }
+                            } else {
+                                navigate('/otp-verification')
+                            }
                             dispatch(userEmailAction(email))
                             localStorage.setItem('loginType', 'existed')
-                            navigate('/otp-verification')
                         }
 
                     })

@@ -4,6 +4,7 @@ import '../../css/Dashboard/dashboard.css';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useSelector } from "react-redux";
 let myEmptyObj = {};
 export default function ProgressNotifyDash({ data }) {
     const _ = require('lodash');
@@ -11,6 +12,7 @@ export default function ProgressNotifyDash({ data }) {
     const [showHr, setShowHr] = useState(true);
     const [noData, setNoData] = useState(false)
     const navigate = useNavigate()
+
     useEffect(() => {
         if (ratio < 775) {
             setShowHr(false)
@@ -26,21 +28,38 @@ export default function ProgressNotifyDash({ data }) {
         }
     }, [data])
 
-    console.log((data))
+    // console.log((data))
 
     const notifySuccess = (data) => {
         toast.success(data)
     }
 
+    const { userKycData } = useSelector(state => state.kycData)
+
     const handleNavigate = () => {
-        if (noData) {
-            navigate('/complete-your-profile/verify-address')
-        } else if (data.bank_account === '') {
-            navigate('/complete-your-profile/verify-address')
-        } else {
-            notifySuccess("Already verified Please check profile")
-        }
+
+        (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+            ? navigate('/complete-your-profile/verify-address')
+            : (!userKycData?.mobile_number)
+                ? navigate('/complete-your-profile')
+                : (
+                    // !userKycData?.bank_account_verified ||
+                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                    ? navigate('/complete-your-profile/payment-details')
+                    : (
+                        !userKycData?.pan_card
+                        // || !userKycData?.pan_card_verified
+                    )
+                        ? navigate('/complete-your-profile/verify-kyc')
+                        : notifySuccess("Already verified! Please check profile")
     }
+    // if (noData) {
+    //     navigate('/complete-your-profile/verify-address')
+    // } else if (!data?.bank_name || !data?.bank_account || !data?.ifsc_code || !data?.bank_account_verified) {
+    //     navigate('/complete-your-profile/verify-address')
+    // } else {
+    //     notifySuccess("Already verified Please check profile")
+    // }
 
 
     return (
@@ -85,14 +104,49 @@ export default function ProgressNotifyDash({ data }) {
                     <span className="header-info-section-dash">Complete KYC & Share Bank Details</span>
                     <span className="sub-header-info-section-dash">Provide some identification information and the bank account in which transfer returns.</span>
                     <Button
-                        onClick={handleNavigate}
-                        style={noData ? { background: '#EBEBEB', color: 'black' } : data?.bank_account === '' ? { background: '#EBEBEB', color: 'black' } : { background: '#01965D', color: 'white' }}
+                        onClick={() => {
+                            handleNavigate()
+                            localStorage.setItem("kycDonePath", '/dashboard')
+                        }}
+                        style={noData
+                            ? { background: '#EBEBEB', color: 'black' }
+                            :
+                            data?.bank_account
+                                && data?.pan_card
+                                // && data?.pan_card_verified
+                                && data?.address_line_1
+                                && data?.city
+                                && data?.state
+                                && data?.country
+                                && data?.pincode
+                                && data?.bank_name
+                                && data?.bank_account
+                                && data?.ifsc_code
+                                // && data?.bank_account_verified
+                                && data?.mobile_number
+                                ? { background: '#01965D', color: 'white' }
+                                : { background: '#EBEBEB', color: 'black' }}
                         sx={{
                             borderRadius: '20px',
                             width: '200px', margin: 'auto', fontSize: '16px', fontWeight: '600'
                             , '&:hover': { background: '#F8DA36', color: 'black', boxShadow: '0px 0px 23px #F4DC5991' },
                         }}>
-                        {noData ? "Complete It " : data.bank_account === '' ? "Complete It " : "Completed"}
+                        {noData ? "Complete It " :
+                            data?.bank_account
+                                && data?.pan_card
+                                // && data?.pan_card_verified
+                                && data?.address_line_1
+                                && data?.city
+                                && data?.state
+                                && data?.country
+                                && data?.pincode
+                                && data?.bank_name
+                                && data?.bank_account
+                                && data?.ifsc_code
+                                // && data?.bank_account_verified
+                                && data?.mobile_number
+                                ? "Completed"
+                                : "Complete It "}
 
                     </Button>
                 </div>
@@ -120,6 +174,6 @@ export default function ProgressNotifyDash({ data }) {
                         }}>Explore</Button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

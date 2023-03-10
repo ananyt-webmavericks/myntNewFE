@@ -4,9 +4,11 @@ import { Button } from "@mui/material";
 import BrownArrow from '../../images/assets/brownArrow.png'
 import CompleteKycProfile from "./CompleteKycProfile";
 import BankDetailsAfterKyc from "./BankDetailsAfterKyc";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import services from "../../service/investor.kyc";
 import { useNavigate } from "react-router-dom";
+import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import { toast } from "react-toastify";
 
 export default function MyProfileMain() {
     const _ = require('lodash');
@@ -14,17 +16,39 @@ export default function MyProfileMain() {
     const navigate = useNavigate()
     const [hideDivShow, setHideDivShow] = useState(true)
     const [data, setData] = useState({})
+    const dispatch = useDispatch()
     const { userData } = useSelector((state) => state.loginData)
+    const { userKycData } = useSelector(state => state.kycData)
     useEffect(() => {
-        if(_.isEmpty(userData)){
+        if (_.isEmpty(userData)) {
             console.log('data not found')
-        }else{
+        } else {
             services.getInvestorKycData(userData?.id).then((response) => {
+                dispatch(storeKycDetailsAction(response.data))
                 setData(response.data)
             })
         }
-       
+
     }, [])
+
+
+    const handleNavigate = () => {
+        localStorage.setItem("kycDonePath", '/my-profile')
+
+            (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+            ? navigate('/complete-your-profile/verify-address')
+            : (!userKycData?.mobile_number)
+                ? navigate('/complete-your-profile')
+                : (
+                    // !userKycData?.bank_account_verified ||
+                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                    ? navigate('/complete-your-profile/payment-details')
+                    : (!userKycData?.pan_card
+                        // || !userKycData?.pan_card_verified
+                    )
+                        ? navigate('/complete-your-profile/verify-kyc')
+                        : toast.success("Your KYC is already completed!")
+    }
 
     const handleMobileNavigation = () => {
         localStorage.setItem("navigateToVerifyMobile", true)
@@ -35,7 +59,7 @@ export default function MyProfileMain() {
         localStorage.setItem("navigateToVerifyAddress", true)
         navigate('/complete-your-profile/verify-address')
     }
-    console.log(data)
+    console.log(userKycData)
     return (
         <div className="my-profile-container">
             <span className="get-started-heading">My Profile</span>
@@ -71,21 +95,32 @@ export default function MyProfileMain() {
                         <span className="heading-personal-details" >KYC Details</span>
                         <div style={{ display: 'flex', marginTop: '20px', alignItems: 'center' }}>
                             {_.isEmpty(data) ?
-                            <>
-                            <Button variant="contained" className="kyc-pending-btn-my-profile" >KYC Pending</Button>
-                            <a href="#" onClick={()=>navigate('/complete-your-profile/verify-address')} style={{cursor:'pointer'}} className="link-for-complete-kyc">Complete KYC   <img src={BrownArrow} width={10} height={10}></img></a>
-                            </>
-                            : data?.bank_account === "" && data?.pan_card === "" && data?.address_line_1 === ""
-                                ?
                                 <>
                                     <Button variant="contained" className="kyc-pending-btn-my-profile" >KYC Pending</Button>
-                                    <a href="#" onClick={()=>navigate('/complete-your-profile/verify-address')} style={{cursor:'pointer'}} className="link-for-complete-kyc">Complete KYC   <img src={BrownArrow} width={10} height={10}></img></a>
+                                    <a href="#" onClick={handleNavigate} style={{ cursor: 'pointer' }} className="link-for-complete-kyc">Complete KYC   <img src={BrownArrow} width={10} height={10}></img></a>
                                 </>
-                                :
-                                <>
-                                    <Button variant="contained"  className="kyc-pending-btn-my-profile completed" >KYC Completed</Button>
-
-                                </>
+                                : !userKycData?.bank_account
+                                    || !userKycData?.pan_card
+                                    // && !userKycData?.pan_card_verified
+                                    || !userKycData?.address_line_1
+                                    || !userKycData?.city
+                                    || !userKycData?.state
+                                    || !userKycData?.country
+                                    || !userKycData?.pincode
+                                    || !userKycData?.bank_name
+                                    || !userKycData?.bank_account
+                                    || !userKycData?.ifsc_code
+                                    // && !userKycData?.bank_account_verified
+                                    || !userKycData?.mobile_number
+                                    ?
+                                    <>
+                                        <Button variant="contained" className="kyc-pending-btn-my-profile" >KYC Pending</Button>
+                                        <a href="#" onClick={handleNavigate} style={{ cursor: 'pointer' }} className="link-for-complete-kyc">Complete KYC   <img src={BrownArrow} width={10} height={10}></img></a>
+                                    </>
+                                    :
+                                    <>
+                                        <Button variant="contained" className="kyc-pending-btn-my-profile completed" >KYC Completed</Button>
+                                    </>
                             }
                         </div>
                     </div>
@@ -98,14 +133,14 @@ export default function MyProfileMain() {
                     <div className="details-conatiner-myprofile">
                         <span className="heading-personal-details" >Address Details</span>
                         <div className="verifyAddress-input" style={{ width: '100%' }}>
-                            <input disabled value={ _.isEmpty(data) ? '' :data.address_line_1 + "," + data.address_line_2 + "," + data.city + "," + data.state + "," + data.country + "," + data.pincode} type="text" placeholder="Full Address" style={{ width: '95%' }} className="verifyAddress-input-section" />
+                            <input disabled value={_.isEmpty(data) ? '' : data.address_line_1 + "," + data.address_line_2 + "," + data.city + "," + data.state + "," + data.country + "," + data.pincode} type="text" placeholder="Full Address" style={{ width: '95%' }} className="verifyAddress-input-section" />
                             <span style={{ cursor: 'pointer', color: 'gray' }} onClick={handleAddressNavigation} >Edit</span>
                         </div>
                     </div>
                 </>
                 :
                 <>
-                    { _.isEmpty(data) ?
+                    {_.isEmpty(data) ?
                         <CompleteKycProfile data={data} />
                         :
                         <BankDetailsAfterKyc data={data} />

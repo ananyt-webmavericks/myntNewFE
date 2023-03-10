@@ -59,7 +59,7 @@ export default function LiveDetailsMain() {
         setHidden(event.target.checked);
     };
     useEffect(() => {
-
+        window.scrollTo(0, 0)
         if (ratio < 850) {
             setGridxsFirst(1)
             setgridxsSecond(12)
@@ -107,7 +107,7 @@ export default function LiveDetailsMain() {
                             <div className="inline-progress-bar-live-deals"></div>
                         </div>
                         <div className="header-section-deals-detail btn-section" >
-                            <Button onClick={() => navigate('/pay-to-subscribe')} className="invest-btn-section-deals">Invest</Button>
+                            <Button onClick={() => navigate('/pay-to-subscribe')} className="invest-btn-section-deals">enroll</Button>
                             <StyledSpeedDial
                                 sx={{ '& .MuiFab-primary': { backgroundColor: '#E3E3E3', color: 'black' } }}
                                 ariaLabel="SpeedDial playground example"

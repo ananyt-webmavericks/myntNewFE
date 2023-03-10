@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import '../../css/CompleteYourProfile/verifyAddress.css'
 import services from "../../service/investor.kyc";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
+import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 const dataa = {
     address_line_1: "",
     address_line_2: "",
@@ -19,10 +20,13 @@ export default function VerifyAddress() {
     const _ = require('lodash');
     const [value, setValue] = useState(dataa)
     const [data, setData] = useState({})
+    const dispatch = useDispatch()
     const { userData } = useSelector((state) => state.loginData)
+    const { userKycData } = useSelector(state => state.kycData)
     const [gridxsMain, setGridxsMain] = useState(2)
     const [gridxsSmall, setGridxsSmall] = useState(6)
     const ratio = parseInt(window.innerWidth);
+    const kycDonePath = localStorage.getItem('kycDonePath')
     const navigateToProfile = localStorage.getItem('navigateToVerifyAddress')
     const handleChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value })
@@ -62,9 +66,12 @@ export default function VerifyAddress() {
                     (response) => {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
-
-                            navigateToProfile ? navigate('/my-profile') : navigate('/complete-your-profile')
-                            localStorage.removeItem('navigateToVerifyAddress')
+                            services.getInvestorKycData(userData.id).then((response) => {
+                                if (response.status === 200) {
+                                    dispatch(storeKycDetailsAction(response.data))
+                                    handleNavigate()
+                                }
+                            })
                         }
                         else {
                             console.log("error")
@@ -80,9 +87,12 @@ export default function VerifyAddress() {
                     (response) => {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
-
-                            navigateToProfile ? navigate('/my-profile') : navigate('/complete-your-profile')
-                            localStorage.removeItem('navigateToVerifyAddress')
+                            services.getInvestorKycData(userData.id).then((response) => {
+                                if (response.status === 200) {
+                                    dispatch(storeKycDetailsAction(response.data))
+                                    handleNavigate()
+                                }
+                            })
                         }
                         else {
                             console.log("error")
@@ -95,14 +105,38 @@ export default function VerifyAddress() {
         }
     }
 
+
+    const handleNavigate = () => {
+        (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+            ? navigate('/complete-your-profile/verify-address')
+            : (!userKycData?.mobile_number)
+                ? navigate('/complete-your-profile')
+                : (
+                    // !userKycData?.bank_account_verified ||
+                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                    ? navigate('/complete-your-profile/payment-details')
+                    : (!userKycData?.pan_card
+                        // || !userKycData?.pan_card_verified
+                    )
+                        ? navigate('/complete-your-profile/verify-kyc')
+                        : navigate(kycDonePath ? kycDonePath : '/dashboard')
+    }
+
     useEffect(() => {
+        setValue({
+            address_line_1: _.isEmpty(data) ? "" : data.address_line_1,
+            address_line_2: _.isEmpty(data) ? "" : data.address_line_2,
+            city: _.isEmpty(data) ? "" : data.city,
+            state: _.isEmpty(data) ? "" : data.state,
+            pincode: _.isEmpty(data) ? "" : data.pincode
+        })
         window.scrollTo(0, 0);
         if (ratio < 600) {
 
             setGridxsMain(1)
             setGridxsSmall(12)
         }
-    }, [])
+    }, [data])
     console.log(userData)
     return (
         <>
@@ -135,7 +169,7 @@ export default function VerifyAddress() {
                             <Grid container spacing={gridxsMain}>
                                 <Grid item xs={12}>
                                     <div className="verifyAddress-input">
-                                        <input type="text" value={userData.name ? userData.name : (userData.first_name).toUpperCase() + " " + (userData.last_name).toUpperCase()} name="name" disabled placeholder="name" className="verifyAddress-input-section" />
+                                        <input type="text" value={userData.name ? userData.name : (userData.first_name)?.toUpperCase() + " " + (userData.last_name)?.toUpperCase()} name="name" disabled placeholder="name" className="verifyAddress-input-section" />
                                     </div>
                                 </Grid>
                                 <Grid item xs={gridxsSmall}>

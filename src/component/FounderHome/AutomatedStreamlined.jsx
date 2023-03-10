@@ -23,7 +23,7 @@ const AutomatedStreamlined = () => {
                     <div className="founderhome-landing-head-txt-section">
                         {/* <Typography className="test-script-regular">MAKING THE BEST</Typography> */}
                         <Typography className="founderhome-test-script-bold">
-                            <h3><b className="test-script-bg">AUTOMATED,</b> STREAMLINED</h3>
+                            <h2><b className="test-script-bg">AUTOMATED,</b> STREAMLINED</h2>
                         </Typography>
                         <Typography className="founderhome-test-script-regular">
                             VENTURE CAPITAL
@@ -31,7 +31,7 @@ const AutomatedStreamlined = () => {
                             <span className='founderhome-text-script-million'>2.4 Million</span>
                         </Typography>
                         <div className="founderhome-landing-head-section">
-                            <span className="founderhome-head-description">Seed to Series C and beyond, Mynt Invest is invested in your success and Growth. Achieve the following benefits by partnering smart, from the start.</span>
+                            <span className="founderhome-head-description">Use the power of community and raise funds while growing your brand & <br /> increasing sales. </span>
                             <Button variant="contained" onClick={() => navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
                         </div>
                     </div>

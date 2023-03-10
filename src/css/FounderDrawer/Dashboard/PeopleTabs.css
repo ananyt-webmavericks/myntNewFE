@@ -6,6 +6,13 @@
     width: 100% !important;
 }
 
+.AddmemberBtn:hover {
+    background-color: black !important;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 .teamminput {
     align-items: center;
     width: 492px !important;
@@ -90,6 +97,7 @@
     float: right;
     margin-right: 2.5rem;
     font: 16px / 52px Poppins;
+    transition: 0.2s;
 }
 
 

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import UserServices from "../service/UserService";
 import { userEmailAction } from "../Redux/actions/auth";
+import ConsentSerivce from "../service/ConsentService";
 export default function GoogleSignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -20,7 +21,7 @@ export default function GoogleSignIn() {
 
     const handleCallBackResponse = (response) => {
         var userObject = jwt_decode(response.credential)
-        console.log(userObject)
+        // console.log(userObject)
         if (location.includes('/login')) {
             try {
                 UserServices.LoginUserByEmail(userObject.email).then(
@@ -29,7 +30,14 @@ export default function GoogleSignIn() {
                         if (response.status === 200) {
                             dispatch(userLoginAction({ ...response.data, avatar: userObject?.picture }))
                             localStorage.setItem('loginType', 'existed')
-                            navigate('/dashboard')
+                            if (!response.data.nationality) {
+                                navigate('/about-you')
+                            } else {
+                                ConsentSerivce.getUserConsent(response.data.id).then(({ data }) => {
+                                    navigate(data ? '/dashboard' : '/become-investor')
+                                })
+                            }
+
                         }
 
                     })
@@ -42,6 +50,7 @@ export default function GoogleSignIn() {
                 first_name: userObject.given_name,
                 last_name: userObject.family_name,
                 email: userObject.email,
+                profile_image: userObject?.picture,
                 social_login: true,
                 user_type: "INVESTOR"
             }
@@ -52,7 +61,7 @@ export default function GoogleSignIn() {
                         if (response.status === 201) {
                             dispatch(userLoginAction(response.data))
 
-                            navigate('/about-you')
+                            navigate('/login')
                         }
 
                     })

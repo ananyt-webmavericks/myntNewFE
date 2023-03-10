@@ -25,6 +25,7 @@
     /* margin: 0 -.25rem; */
     /* padding: 0 .25rem; */
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    margin-top: 0px;
 }
 
 .regular-bold-text {
@@ -238,6 +239,10 @@
 }
 
 @media screen and (max-width: 500px) {
+    .card-bold-number-text {
+        margin-top: 47px !important;
+    }
+
     .bar-graph-image {
         position: inherit;
         margin: auto;

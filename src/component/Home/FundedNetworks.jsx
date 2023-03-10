@@ -7,19 +7,22 @@ import { useEffect, useState, useRef } from "react";
 import Arrow from '../../images/assets/arrow.png'
 import Carousel from 'react-elastic-carousel'
 import Item from "../Item";
-import GOMech from '../../images/assets/GOMech.png';
-import FormLabs from '../../images/assets/FormLabs.png';
-import Reevoy from '../../images/assets/reevoy.png';
-import lw from '../../images/assets/lw.png';
+
+import FormLabs from '../../images/Networks/FormLabs.png'
+import paralenz from '../../images/Networks/paralenz.png'
+import quantica from '../../images/Networks/quantica.png'
+import phasio from '../../images/Networks/phasio.png'
+import IGO3D from '../../images/Networks/IGO3D.png'
+import GO3DENT from '../../images/Networks/GO3DENT.png'
+import barrelHand from '../../images/Networks/barrelHand.png'
 const data = [
-    { id: 1, image: Reevoy, name: '$12.6 million' },
-    { id: 2, image: GOMech, name: '$285Mn' },
-    { id: 3, image: FormLabs, name: '$2 billion' },
-    { id: 4, image: lw, name: '$12.6Mn' },
-    { id: 5, image: GOMech, name: '$285Mn' },
-    { id: 6, image: FormLabs, name: '$2Bn' },
-    { id: 7, image: Reevoy, name: '$12.6 million' },
-    { id: 8, image: lw, name: '$12.6Mn' },
+    { id: 1, height: 30, image: FormLabs, name: '1 Bn USD', marginTop: "1.5rem" },
+    { id: 2, height: 30, image: paralenz, name: '10 million EUR', marginTop: "1.5rem" },
+    { id: 3, height: 30, image: quantica, name: '10 M EUR', marginTop: "1.5rem" },
+    { id: 4, height: 40, image: phasio, name: '10 M USD', marginTop: "0.9rem", },
+    { id: 5, height: 40, image: IGO3D, name: '10 M EUR', marginTop: "0.8rem" },
+    { id: 6, height: 30, image: GO3DENT, name: '10 M USD', marginTop: "1.5rem" },
+    { id: 7, height: 30, image: barrelHand, name: '10 M USD', marginTop: "1.5rem" }
 ]
 export default function FundedNetworks() {
     const carouselRef2 = useRef(null);
@@ -27,7 +30,7 @@ export default function FundedNetworks() {
 
     const [item, setItem] = useState(3)
     const ratio = parseInt(window.innerWidth);
-    const totalPages = Math.ceil(data.length / item)
+    const totalPages = Math.ceil(data.length / item + 4)
 
     useEffect(() => {
 
@@ -61,7 +64,7 @@ export default function FundedNetworks() {
                         ref={carouselRef2}
                         onNextEnd={({ index }) => {
                             clearTimeout(resetTimeout)
-                            if (index + 1 === totalPages) {
+                            if (index + 3 === totalPages) {
                                 if (carouselRef2?.current?.goTo) {
                                     resetTimeout = setTimeout(() => {
                                         if (carouselRef2?.current?.goTo) {
@@ -76,12 +79,19 @@ export default function FundedNetworks() {
                             return (
                                 <Item key={index} className='company-image' style={{ width: '100px' }}>
                                     <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center' }}>
-                                        <img className="comp-img" height={40} style={{ objectFit: 'contain' }} src={item.image}></img>
-                                        <span style={{ marginTop: '1.5rem', fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                                        <img className="comp-img" height={item.height} style={{ objectFit: 'contain' }} src={item.image}></img>
+                                        <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
                                     </div>
                                 </Item>
                             )
                         })}
+
+                        <Item className='company-image' style={{ width: '100px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center' }}>
+                                <img className="comp-img" height={40} style={{ objectFit: 'contain' }} src={item.image}></img>
+                                <span style={{ marginTop: '1.5rem', fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                            </div>
+                        </Item>
 
                     </Carousel>
                 </div>

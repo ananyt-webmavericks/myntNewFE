@@ -44,7 +44,7 @@ const ResendOtpMail = async (data) =>{
 const VerifyMobileOtp = async (data) =>{
     try {
         const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/send-otp`, data );
-        notifySuccess(response.data.message)
+        notifySuccess("OTP sent on your mobile number!")
         return response;
     }
     catch (error) {

@@ -73,7 +73,7 @@ const Navbar = () => {
                                             aria-haspopup="true"
                                             aria-expanded={open ? 'true' : undefined}
                                         >
-                                            <Avatar alt="avatar" src={userData?.avatar?.length > 0 ? userData.avatar : null} style={{ margin: '0 10px' }} />
+                                            <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} style={{ margin: '0 10px' }} />
                                         </IconButton>
                                     </Tooltip>
 
@@ -114,7 +114,7 @@ const Navbar = () => {
                                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                     >
                                         <MenuItem onClick={handleProfile}>
-                                            <Avatar alt="avatar" src={userData?.avatar?.length > 0 ? userData.avatar : null} /> Profile
+                                            <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} /> Profile
                                         </MenuItem>
                                         <MenuItem onClick={() => navigate('/dashboard')}>
                                             <ListItemIcon>

@@ -59,7 +59,7 @@
 
 .container {
     max-width: 1200px;
-    width: 90%;
+    width: 100% !important;
     margin: auto;
 }
 
@@ -121,10 +121,23 @@
     display: none;
 }
 
+@media only screen and (max-width: 767px) {
+    .logo-web {
+        display: none;
+    }
+}
+
+
 @media (max-width: 768px) {
     .ruler-navbar {
         margin: 0.8em 0;
         display: block;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: auto;
     }
 
     .menu-items li {
