@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Grid, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import services from "../../service/investor.kyc";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
+import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 
 const data = {
     bank_name: "",
@@ -15,7 +16,9 @@ export default function BankDetails() {
     const navigate = useNavigate()
     const [value, setValue] = useState(data)
     const { userData } = useSelector((state) => state.loginData)
-    const navigateToProfile = localStorage.getItem('navigateToVerifyBank')
+    const { userKycData } = useSelector(state => state.kycData)
+    const kycDonePath = localStorage.getItem('kycDonePath')
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value })
@@ -30,7 +33,7 @@ export default function BankDetails() {
             bank_account: value.bank_account,
             ifsc_code: value.ifsc_code.toUpperCase()
         }
-        if (value.bank_name === '' && value.bank_account === "" && value.ifsc_code === "" ) {
+        if (value.bank_name === '' && value.bank_account === "" && value.ifsc_code === "") {
             notify('Please enter bank details')
         } else if (value.bank_name === '') {
             notify('Please enter bank name')
@@ -44,9 +47,13 @@ export default function BankDetails() {
                     (response) => {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
-                            navigate('/dashboard')
-                            navigateToProfile ? navigate('/my-profile') :   navigate('/dashboard')
-                            localStorage.removeItem('navigateToVerifyBank')
+                            services.getInvestorKycData(userData.id).then((response) => {
+                                if (response.status === 200) {
+                                    dispatch(storeKycDetailsAction(response.data))
+                                    handleNavigate()
+                                    console.log(response.data)
+                                }
+                            })
                         }
                         else {
                             console.log("error")
@@ -57,6 +64,23 @@ export default function BankDetails() {
                 notify("Try after few minutes")
             }
         }
+    }
+
+
+    const handleNavigate = () => {
+        (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+            ? navigate('/complete-your-profile/verify-address')
+            : (!userKycData?.mobile_number)
+                ? navigate('/complete-your-profile')
+                : (
+                    // !userKycData?.bank_account_verified ||
+                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                    ? navigate('/complete-your-profile/payment-details')
+                    : (!userKycData?.pan_card
+                        // || !userKycData?.pan_card_verified
+                    )
+                        ? navigate('/complete-your-profile/verify-kyc')
+                        : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
 
     return (

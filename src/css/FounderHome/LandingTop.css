@@ -7,11 +7,12 @@
 .founderhome-test-script-regular {
     font: normal normal medium 34px/45px Poppins !important;
     font-weight: bold !important;
+    text-align: center;
 }
 
 .founderhome-test-script-bold {
     text-align: center;
-    font: normal normal bold 37px/45px Poppins !important;
+    font: normal normal bolder 30px/40px Poppins !important;
     letter-spacing: 0px !important;
     color: #000000;
     text-transform: uppercase !important;
@@ -60,9 +61,8 @@
 
 .founderhome-image-section-landing {
     order: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 15rem;
+    margin: auto;
 }
 
 .founderhome-landing-head-txt-section {
@@ -91,6 +91,7 @@
 
     .founderhome-image-section-landing {
         order: 2;
+        width: 28rem;
     }
 
     .founderhome-landing-head-txt-section {
@@ -114,11 +115,12 @@
 
     .founderhome-test-script-regular {
         font-size: 36px !important;
+        text-align: left;
     }
 
     .founderhome-test-script-bold {
         text-align: left;
-        font: normal normal bold 37px/45px Poppins !important;
+        font: normal normal bold 30px/45px Poppins !important;
         letter-spacing: 0px !important;
         color: #000000;
         text-transform: uppercase;

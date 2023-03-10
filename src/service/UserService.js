@@ -26,7 +26,7 @@ const LoginUserByEmail = async (email) => {
 }
 
 const CreateUser = async (value) => {
-
+    console.log(value)
     try {
         const response = await axios.post(`${Base_Url}/api/users/manage`, value);
         notifySuccess('Sign up successfully !!')

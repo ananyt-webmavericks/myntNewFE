@@ -2,7 +2,8 @@ import { Avatar, Card, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import '../../css/FounderHome/FundRaising.css'
 import React from 'react'
-import heliogen from '../../images/Networks/heliogen.png'
+import Equity from './../../images/founder/Equity.png'
+import Debt from './../../images/founder/Debt.png'
 
 const FundRaising = () => {
     return (
@@ -21,28 +22,28 @@ const FundRaising = () => {
                         bgcolor: 'background.default',
                         display: 'grid',
                         gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
-                        gap: 2.5,
+                        gap: 6,
                     }}
                 >
-                    <Card elevation={2} className="fund-raising-card">
-                        <div className='avatar-block'>
-                            <Avatar sx={{ bgcolor: '#F0C127', width: 56, height: 56 }}>OP</Avatar>
-                        </div>
-                        <div className='avatar-texts'>
-                            <Typography className='avatar-heading'>Secure funding via Equity instruments
-                            </Typography>
-                            <Typography className='avatar-description'>Experience the benefits of an equity raise while preserving a clean cap table. Benefit from the added value of numerous investors with no limitations for participation.</Typography>
-                        </div>
-                    </Card>
-                    <Card elevation={2} className="fund-raising-card">
-                        <div className='avatar-block'>
-                            <Avatar sx={{ bgcolor: '#F0C127', width: 56, height: 56 }}>OP</Avatar>
-                        </div>
-                        <div className='avatar-texts'>
-                            <Typography className='avatar-heading'>Secure funding via Debt instruments </Typography>
-                            <Typography className='avatar-description'>Acquire non-diluting capital through our flexible terms and repayment plans. Take advantage of all community linked benefits for increased sales.</Typography>
-                        </div>
-                    </Card>
+                    <div elevation={2} className="fund-raising-card">
+                        <img src={Equity} alt="equity_logo" className='fundRaise-Img' />
+                        <Typography style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                            Secure funding via Equity instruments
+                        </Typography>
+                        <Typography className='fund-raise-desc' style={{ fontSize: '14px', marginTop: '20px', marginBottom: '20px', paddingLeft: '3.5rem', paddingRight: '3.5rem' }}>
+                            Experience the benefits of an equity raise while preserving a clean cap table. Benefit from the added value of numerous investors with no limitations for participation.
+                        </Typography>
+                    </div>
+
+                    <div elevation={2} className="fund-raising-card">
+                        <img src={Debt} alt="Debt_logo" className='fundRaise-Img' />
+                        <Typography style={{ fontSize: '20px', fontWeight: 'bold' }} >
+                            Secure funding via Debt instruments
+                        </Typography>
+                        <Typography className='fund-raise-desc' style={{ fontSize: '14px', marginTop: '20px', marginBottom: '20px', paddingLeft: '3.5rem', paddingRight: '3.5rem' }}>
+                            Acquire non-diluting capital through our flexible terms and repayment plans. Take advantage of all community linked benefits for increased sales.
+                        </Typography>
+                    </div>
                 </Box>
             </Grid>
         </React.Fragment>

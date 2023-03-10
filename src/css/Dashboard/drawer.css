@@ -1,8 +1,9 @@
 
-.dashboard-drawer-section{
+
+.dashboard-drawer-section {
     min-width: 300px;
     max-width: 340px;
-    display:block;
+    display: block;
     width: 100%;
     height: 200vh;
     /* background-color: gray; */
@@ -10,25 +11,29 @@
     margin-bottom: 1em;
     box-shadow: 0px 3px 18px #00000014;
 }
-.dashboard-fields-container{
+
+.dashboard-fields-container {
     padding-top: 7em;
     display: grid;
     justify-content: center;
 }
-.dashboard-single-links{
+
+.dashboard-single-links {
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
     margin-top: 2em;
 }
-.link-dashboard{
+
+.link-dashboard {
     cursor: pointer;
     margin-left: 1em;
     text-align: left;
     text-decoration: none;
     color: black;
 }
-.bottom-fixed-navbar-container{
+
+.bottom-fixed-navbar-container {
     height: 56px;
     width: 100%;
     box-shadow: 0px -3px 6px #00000014;
@@ -37,25 +42,29 @@
     bottom: 0;
     max-width: 100%;
     display: none;
-    
+
 }
-.bottom-navbar-section{
+
+.bottom-navbar-section {
     display: flex;
     justify-content: space-evenly;
 
 }
-.main-navbar-section{
+
+.main-navbar-section {
     display: grid;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 @media screen and (max-width: 1000px) {
-    .dashboard-drawer-section{
+    .dashboard-drawer-section {
         display: none;
     }
-    .bottom-fixed-navbar-container{
+
+    .bottom-fixed-navbar-container {
         display: block;
         position: fixed;
         z-index: 10;

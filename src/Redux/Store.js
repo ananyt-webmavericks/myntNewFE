@@ -5,18 +5,21 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { userDataReducer } from "./reducers/auth"
 import { userEmailReducer } from "./reducers/auth";
+import { storeKycDetailsReducer } from "./reducers/verifyKycReducer";
 
 const rootReducer = combineReducers({
 
-    loginData : userDataReducer,
-    userInfo : userEmailReducer
+  loginData: userDataReducer,
+  userInfo: userEmailReducer,
+  kycData: storeKycDetailsReducer
+
 })
 
 const persistConfig = {
   key: 'root',
-  version:1,
+  version: 1,
   storage,
-  whitelist:['userInfo' , 'loginData']
+  whitelist: ['userInfo', 'loginData', 'kycData']
 }
 const pReducer = persistReducer(persistConfig, rootReducer)
 
@@ -27,4 +30,4 @@ const store = createStore(
 
 const persistor = persistStore(store)
 
-export { store , persistor}
+export { store, persistor }

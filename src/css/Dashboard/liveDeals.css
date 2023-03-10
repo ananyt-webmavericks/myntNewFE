@@ -64,19 +64,19 @@
 
 .active-btn-container {
 
-    padding: 0 1em;
+    padding: 1em;
     height: 54px;
-    width: 100%;
+    width: 140px;
     max-width: fit-content;
-    min-width: 90px !important;
+    min-width: 100px !important;
     /* UI Properties */
     border-radius: 27px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
-    margin-left: 1rem;
-    gap: 1.2rem;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+    gap: 2rem;
     cursor: pointer;
 }
 

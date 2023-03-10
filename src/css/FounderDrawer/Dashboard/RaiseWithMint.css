@@ -26,7 +26,7 @@
 }
 
 .download-button {
-
+    color: white !important;
     width: 147px !important;
     height: 33px !important;
     background: #CBCBCB 0% 0% no-repeat padding-box !important;

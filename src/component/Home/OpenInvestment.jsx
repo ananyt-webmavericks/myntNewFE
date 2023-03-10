@@ -16,6 +16,7 @@ import Logo3 from '../../images/investments/logo3.png';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import { useNavigate } from "react-router-dom";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -93,6 +94,8 @@ export default function OpenInvestment() {
     const [showItem, setShowItem] = useState(4)
     const [showBtn, setShowBtn] = useState(true)
     const [showSkeleton, setShowSkeleton] = useState(false)
+
+    const navigate = useNavigate()
     const handleLoadMore = () => {
         setShowSkeleton(true)
         setShowBtn(false)
@@ -136,7 +139,7 @@ export default function OpenInvestment() {
                 <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                     {data.slice(0, showItem).map((item, index) => {
                         return (
-                            <Grid key={index} item xs={gridxsFirst}>
+                            <Grid key={index} item xs={gridxsFirst} onClick={() => navigate('/live-deals-details')}>
                                 <Card className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
                                     <CardContent sx={{ padding: '0' }}>
                                         <div style={{ position: 'relative' }}>
@@ -205,32 +208,32 @@ export default function OpenInvestment() {
                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                             </div>
                                         </div>
-                                        {item.checked && 
-                                        <div className="overlay responsive">
-                                            <div className="card-header-logo hover">
-                                                <div className="company-logo-section">
-                                                    <img src={Eveez} width={54} height={54} />
+                                        {item.checked &&
+                                            <div className="overlay responsive">
+                                                <div className="card-header-logo hover">
+                                                    <div className="company-logo-section">
+                                                        <img src={Eveez} width={54} height={54} />
+                                                    </div>
+                                                    <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                                 </div>
-                                                <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
-                                            </div>
-                                            <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                <span className="investment-txt hover">Investors</span>
-                                                <span className="investment-sub-txt hover">18</span>
-                                                <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Raised</span>
-                                                <span className="investment-sub-txt hover">16.5%</span>
-                                                <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Minimum Subscription</span>
-                                                <span className="investment-sub-txt hover">5000</span>
-                                                <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Closes in</span>
-                                                <span className="investment-sub-txt hover">14 days</span>
-                                                <div className="chip-status hover"><span>Personal Health</span></div>
-                                            </div>
-                                        </div>}
+                                                <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                                    <span className="investment-txt hover">Investors</span>
+                                                    <span className="investment-sub-txt hover">18</span>
+                                                    <hr style={{ marginTop: '11.5px' }} />
+                                                    <span className="investment-txt hover">Raised</span>
+                                                    <span className="investment-sub-txt hover">16.5%</span>
+                                                    <hr style={{ marginTop: '11.5px' }} />
+                                                    <span className="investment-txt hover">Minimum Subscription</span>
+                                                    <span className="investment-sub-txt hover">5000</span>
+                                                    <hr style={{ marginTop: '11.5px' }} />
+                                                    <span className="investment-txt hover">Closes in</span>
+                                                    <span className="investment-sub-txt hover">14 days</span>
+                                                    <div className="chip-status hover"><span>Personal Health</span></div>
+                                                </div>
+                                            </div>}
                                         <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
                                             <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={item.checked ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
- 
+
                                         </div>
                                     </CardContent>
                                 </Card>

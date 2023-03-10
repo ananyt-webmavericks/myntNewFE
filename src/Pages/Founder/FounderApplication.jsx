@@ -108,23 +108,7 @@ const FounderApplication = () => {
                                             '&.Mui-checked': {
                                                 color: "#098211",
                                             },
-                                        }} />} label="Pitch Deck Creation" />
-                                    </Card>
-                                    <Card elevation={0} className='checkbox-card'>
-                                        <FormControlLabel control={<Checkbox sx={{
-                                            color: "black",
-                                            '&.Mui-checked': {
-                                                color: "#098211",
-                                            },
-                                        }} />} label="Growth Hack Marketing" />
-                                    </Card>
-                                    <Card elevation={0} className='checkbox-card'>
-                                        <FormControlLabel control={<Checkbox sx={{
-                                            color: "black",
-                                            '&.Mui-checked': {
-                                                color: "#098211",
-                                            },
-                                        }} />} label="Financial Coach" />
+                                        }} />} label="Growth Hacking" />
                                     </Card>
                                     <Card elevation={0} className='checkbox-card'>
                                         <FormControlLabel control={<Checkbox sx={{
@@ -140,7 +124,23 @@ const FounderApplication = () => {
                                             '&.Mui-checked': {
                                                 color: "#098211",
                                             },
-                                        }} />} label="Legal Coach" />
+                                        }} />} label="Financial Advisory" />
+                                    </Card>
+                                    <Card elevation={0} className='checkbox-card'>
+                                        <FormControlLabel control={<Checkbox sx={{
+                                            color: "black",
+                                            '&.Mui-checked': {
+                                                color: "#098211",
+                                            },
+                                        }} />} label="Investor Readiness" />
+                                    </Card>
+                                    <Card elevation={0} className='checkbox-card'>
+                                        <FormControlLabel control={<Checkbox sx={{
+                                            color: "black",
+                                            '&.Mui-checked': {
+                                                color: "#098211",
+                                            },
+                                        }} />} label="Legal Advisory " />
                                     </Card>
                                 </Box>
                             </Grid>

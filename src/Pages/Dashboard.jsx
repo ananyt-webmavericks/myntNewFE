@@ -11,18 +11,21 @@ import Faqs from '../component/Home/Faqs'
 import Footer from "../component/Footer";
 import DashboardDeals from "../component/Dashboard/DasboardDeals";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DashBoardFaq from "../component/FaqDetails/DashBoardFaq";
 import { useEffect } from "react";
+import { storeKycDetailsAction } from "../Redux/actions/verifyKycAction";
 const Dashboard = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
     const [showDeals, setShowDeals] = useState({})
+    const dispatch = useDispatch()
 
     const { userData } = useSelector(state => state.loginData)
 
     const fetchValue = (value) => {
         setShowDeals(value)
+        dispatch(storeKycDetailsAction(value))
     }
     console.log(showDeals)
 

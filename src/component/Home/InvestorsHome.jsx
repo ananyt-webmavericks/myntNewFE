@@ -53,7 +53,7 @@ export default function InvestorsHome() {
         }
     }, [])
 
-    const [items, setItems] = useState([1, 2, 3, 4, 5]);
+    const [items, setItems] = useState([1]);
 
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
@@ -84,7 +84,7 @@ export default function InvestorsHome() {
                             pagination={true}
                             itemsToShow={1}
                             ref={carouselRef}
-                            breakPoints={breakPoints}
+                            // breakPoints={breakPoints}
                             onNextEnd={({ index }) => {
                                 clearTimeout(resetTimeout)
                                 if (index + 1 === data.length) {

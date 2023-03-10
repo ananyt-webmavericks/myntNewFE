@@ -115,19 +115,7 @@ const Footer = () => {
             </Grid>
             <div className="footer-bottom-section">
                 <span style={{ fontWeight: '600', fontSize: '15px' }}>Disclaimer:</span>
-                <span className="footer-text-header">All trademarks and logos or registered trademarks and logos found on this Site or mentioned herein belong to their respective owners and are solely being used for informational
-                    purposes.
-
-                    Information provided herein has been gathered from public sources. Mynt Technologies Pvt Ltd disclaims any and all responsibility in connection with veracity of this data. Information
-                    presented on this website is for educational purposes only and should not be treated as legal, financial, or any other form of advice. MXi Technologies Pvt Ltd is not liable for financial or
-                    any other form of loss incurred by the user or any affiliated party on the basis of information provided herein.
-
-                    MXi Technologies Pvt Ltd is neither a stock exchange nor does it intend to get recognized as a stock exchange under the Securities Contracts Regulation Act, 1956. MXi Technologies Pvt Ltd
-                    is not authorized by the capital markets regulator to solicit Subscriptions. The securities traded on these platforms are not traded on any regulated exchange. Mynt also provides that it
-
-                    does not facilitate any online or offline buying, selling, or trading of securities.
-
-                    This Site will be updated on a regular basis.
+                <span className="footer-text-header">MXi Technologies Pvt Ltd (Mynt) is neither a stock exchange nor does it intend to get recognized as a stock exchange under the Securities Contracts Regulation Act, 1956. MXi Technologies Pvt Ltd is not authorized by the capital markets regulator to solicit investments. The securities traded on these platforms are not traded on any regulated exchange. All trademarks and logos or registered trademarks and logos found on this Site or mentioned herein belong to their respective owners, and are being used solely for informational purposes. The information contained herein has been collected from public sources, MXi Technologies Pvt Ltd disclaims any and all responsibility in connection with veracity of this data. The information on this website is intended solely for educational purposes and should not be considered as legal, financial, or any other type of advice. MXi Technologies Pvt Ltd holds no liability for any financial or other losses suffered by the user or any affiliated party based on the information provided here. In addition, MXi Technologies Pvt Ltd does not facilitate any buying, selling, or trading of securities either online or offline. This Site will be updated periodically.
 
                 </span>
             </div>
