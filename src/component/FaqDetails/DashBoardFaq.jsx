@@ -21,8 +21,8 @@ export default function DashBoardFaq() {
                             id="panel1a-header"
                         >
                             <div>
-                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What do you understand by early-stage startups? </span>
+                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01. </span>
+                                <span style={{ fontWeight: 600, fontSize: '16px', fontFamily: 'poppins' }}> What do you understand by early-stage startups? </span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>

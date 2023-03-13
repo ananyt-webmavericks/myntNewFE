@@ -33,13 +33,13 @@
 }
 
 .learn-more-btn {
-
+    font-weight: bold !important;
     width: 136px !important;
+    font: normal normal medium 14px/52px Poppins !important;
     border: 1px solid gray !important;
     background: white !important;
     color: black !important;
     border-radius: 30px !important;
-    font-size: 14px !important;
     margin-top: 38px !important;
 }
 
@@ -92,13 +92,13 @@
     right: 14em;
     bottom: 0;
     transition: all 0.5s ease-in;
-    font-weight: 550;
+    font-weight: bold;
 }
 
+/* 
 .card-content-graph:hover .risk-factor {
     transform: rotate(180deg)translateY(120px);
     transition: all 0.8s ease-out;
-    /* -webkit-transform: rotate(180deg); */
 }
 
 .card-content-graph:hover .risk-factor.two {
@@ -114,7 +114,6 @@
 .card-content-graph:hover .risk-factor.fixed {
     transform: rotate(180deg)translateY(60px);
     transition: all 0.8s ease-out;
-    /* -webkit-transform: rotate(180deg); */
 }
 
 .card-content-graph:hover .risk-factor.fixed-two {
@@ -125,7 +124,7 @@
 .card-content-graph:hover .risk-factor.fixed-three {
     transform: rotate(180deg)translateY(20px);
     transition: all 0.8s ease-out;
-}
+} */
 
 .card-content-graph:hover .card-bold-number-text {
     /* box-shadow: inset 200px 0 0 0 #F0C127; */
@@ -161,6 +160,9 @@
     border-radius: 20px 20px 0 0;
 }
 
+.graphs-logo {
+    margin-top: 5rem;
+}
 
 @media screen and (max-width: 920px) {
     .card-container {
@@ -173,9 +175,16 @@
     .subscribe-graph-heading {
         text-align: start;
     }
+
+    .graphs-logo {
+        margin-top: 1.2rem;
+    }
 }
 
 @media screen and (max-width: 550px) {
+    .graphs-logo {
+        margin-top: 1.4rem;
+    }
 
     .container-for-text-and-graph {
         display: block;
