@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
+        chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
         raised: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
@@ -44,7 +44,7 @@ const values = [
     },
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
+        chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
         raised: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
@@ -52,7 +52,7 @@ const values = [
     },
     {
         id: 5, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
+        chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
         raised: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
@@ -76,7 +76,7 @@ const values = [
     },
     {
         id: 8, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-        chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
+        chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
         raised: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
@@ -156,7 +156,7 @@ export default function OpenInvestment() {
                                             <div className="centered-txt-card">
                                                 <span className="company-name">{item.heading}</span>
                                             </div>
-                                            <div className="bottom-txt-card">
+                                            <div className="bottom-txt-card" style={{ paddingLeft: '10px', paddingRight: '15px', lineHeight: '1.2' }}>
                                                 <span>{item.subHeading}</span>
                                             </div>
                                         </div>

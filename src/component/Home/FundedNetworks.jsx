@@ -77,10 +77,10 @@ export default function FundedNetworks() {
                     >
                         {data.map((item, index) => {
                             return (
-                                <Item key={index} className='company-image' style={{ width: '100px' }}>
+                                <Item key={index} className='company-image' style={{ width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center' }}>
-                                        <img className="comp-img" height={item.height} style={{ objectFit: 'contain' }} src={item.image}></img>
-                                        <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                                        <img className="comp-img" height={item.height} style={{}} src={item.image}></img>
+                                        {/* <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span> */}
                                     </div>
                                 </Item>
                             )

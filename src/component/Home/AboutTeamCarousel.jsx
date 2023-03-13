@@ -12,7 +12,7 @@ const data = [
     {
         id: 1,
         avatar: Avatar,
-        name: "- Priyanshi Pandey, VP at Goldman Sachs",
+        name: " Priyanshi Pandey, VP at Goldman Sachs",
         position: 'VP at Goldman Sachs',
         head: 'Game-Changing Startups Now Accessible',
         description: JSON.stringify('Mynt is making investing in highly vetted and game-changing startups not only accessible but easy as well.')
@@ -20,7 +20,7 @@ const data = [
     {
         id: 2,
         avatar: Avatar,
-        name: '- Vicky, Director at Magnetic Fields  ',
+        name: ' Vicky, Director at Magnetic Fields  ',
         position: 'Director at Magnetic Fields',
         head: 'Diversified Investment Portfolio',
         description: JSON.stringify("The platform provided me with a diversified investment portfolio, giving me access to a range of investment opportunities I wouldn't have otherwise found.")
@@ -28,7 +28,7 @@ const data = [
     {
         id: 3,
         avatar: Avatar,
-        name: '- Tithi Chattopadhyay, Executive Director at Princeton University ',
+        name: ' Tithi Chattopadhyay, Executive Director at Princeton University ',
         position: 'Executive Director at Princeton University ',
         head: 'Due Diligence Measures',
         description: JSON.stringify("The due diligence process and investor protection measures in place gave me peace of mind and confidence in my investments.")
@@ -36,7 +36,7 @@ const data = [
     {
         id: 4,
         avatar: Avatar,
-        name: '- Kavikrut, CGO at OYO',
+        name: ' Kavikrut, CGO at OYO',
         position: 'Executive Director at Princeton University ',
         head: 'Investment Tracking Made Autonomous',
         description: JSON.stringify("The user-friendly interface and straightforward investment process made it easy for me to invest and track my investments.")
@@ -44,7 +44,7 @@ const data = [
     {
         id: 5,
         avatar: Avatar,
-        name: '- Harshit Vyas, CBO Pepper Content',
+        name: ' Harshit Vyas, CBO Pepper Content',
         position: 'Executive Director at Princeton University ',
         head: 'Transparency And Communication ',
         description: JSON.stringify("I was impressed by the level of transparency and communication from the platform and the startups I invested in.")

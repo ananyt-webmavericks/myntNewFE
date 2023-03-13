@@ -73,8 +73,8 @@ export default function InvestorsHome() {
                         <div className="investor-home-heading">Trusted and<span className="colored-investor-home-heading"> Backed </span>by</div>
                         <span className="investors-subheading">Collaboration with highly reputed Investors in the market</span>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-                        <Carousel
+                    {/* <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}> */}
+                    {/* <Carousel
                             enableAutoPlay={true}
                             showArrows={false}
                             autoPlaySpeed={3000}
@@ -99,14 +99,14 @@ export default function InvestorsHome() {
                             }}
                         >
 
-                            {items.map((item) => (
-                                <div className="investors-image-container">
-                                    <img className="abstract-investment-bg" src={Abstract} alt="abstract"></img>
-                                    <img className="investors-investment-main" src={Investors} alt="abstract"></img>
-                                </div>
-                            ))}
-                        </Carousel>
+                            {items.map((item) => ( */}
+                    <div className="investors-image-container">
+                        <img className="abstract-investment-bg" src={Abstract} alt="abstract"></img>
+                        <img className="investors-investment-main" src={Investors} alt="abstract"></img>
                     </div>
+                    {/* ))}
+                        </Carousel> */}
+                    {/* </div> */}
 
                 </Grid>
                 <Grid item xs={gridxsSecond}>
