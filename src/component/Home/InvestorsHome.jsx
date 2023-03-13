@@ -113,7 +113,7 @@ export default function InvestorsHome() {
                     <div className="subscribe-graph-heading">
                         <div className="investor-home-heading">Join Thousands <span className="colored-investor-home-heading"> </span></div>
 
-                        <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹4000.</span>
+                        <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹25000.</span>
                     </div>
                     <div className="profile-container-investors">
                         <Grid container spacing={4}>

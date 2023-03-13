@@ -100,11 +100,11 @@ const Footer = () => {
                             <div className="contact-us-at-mail">
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <MailOutlineRoundedIcon style={{ width: '30px', height: '30px', color: '#fbdf35', paddingBottom: '8px' }} />
-                                    <span className="Detail-link">Info@myntinvest.com</span>
+                                    <span className="Detail-link">contact@myntinvest.com</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <LocalPhoneSharpIcon style={{ width: '30px', height: '30px', color: '#fbdf35', paddingBottom: '8px' }} />
-                                    <span className="Detail-link">+91 9811200000</span>
+                                    <span className="Detail-link">+91 8769740854</span>
                                 </div>
                             </div>
                         </div>

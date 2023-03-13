@@ -27,8 +27,8 @@ const AutomatedStreamlined = () => {
                         </Typography>
                         <Typography className="founderhome-test-script-regular">
                             VENTURE CAPITAL
-                            <span className='founderhome-text-script-smallgray'>  AMT.Raised </span>
-                            <span className='founderhome-text-script-million'>2.4 Million</span>
+                            {/* <span className='founderhome-text-script-smallgray'>  AMT.Raised </span>
+                            <span className='founderhome-text-script-million'>2.4 Million</span> */}
                         </Typography>
                         <div className="founderhome-landing-head-section">
                             <span className="founderhome-head-description">Use the power of community and raise funds while growing your brand & <br /> increasing sales. </span>
