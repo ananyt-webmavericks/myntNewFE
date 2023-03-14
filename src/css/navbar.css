@@ -16,7 +16,8 @@
 }
 
 .logo-web {
-    width: 100px;
+    padding-top: 1em;
+    width: 134px;
     cursor: pointer;
 }
 
@@ -29,6 +30,7 @@
     width: 100px;
     height: 2.5em;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .login-btn:hover {
@@ -49,6 +51,7 @@
     font-size: 14px;
     height: 2.5em;
     transition: 0.3s;
+    font-weight: bold !important;
 }
 
 .get-started-btn:hover {
@@ -181,9 +184,9 @@
         /* UI Properties */
         background: #FFFFFF 0% 0% no-repeat padding-box;
         border: 1px solid #F0C127;
-        font: normal normal medium 14px/21px Poppins !important;
+        /* font: medium 14px/21px Poppins !important; */
         border-radius: 27px;
-        font-weight: 700 !important;
+        font-weight: bold !important;
     }
 
     .navbar-container input[type="checkbox"],

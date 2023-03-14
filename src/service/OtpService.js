@@ -10,12 +10,12 @@ const notifySuccess = (data) => {
 }
 
 const VerifyEmailOtp = async (data) => {
-    if(data.otp === ""){
+    if (data.otp === "") {
         notify("otp can not be empty !!")
-    }else{
+    } else {
         try {
-            const response = await axios.post(`${Base_Url}/api/users/verify-email-otp`, {email: data.email , otp:data.otp});
-                notifySuccess(response.data.message)
+            const response = await axios.post(`${Base_Url}/api/users/verify-email-otp`, { email: data.email, otp: data.otp });
+            notifySuccess(response.data.message)
             return response;
         }
         catch (error) {
@@ -27,10 +27,10 @@ const VerifyEmailOtp = async (data) => {
     }
 }
 
-const ResendOtpMail = async (data) =>{
+const ResendOtpMail = async (data) => {
     try {
-        const response = await axios.post(`${Base_Url}/api/users/send-otp`,{email:data} );
-        notifySuccess(response.data.message)
+        const response = await axios.post(`${Base_Url}/api/users/send-otp`, { email: data });
+        // notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
@@ -41,9 +41,9 @@ const ResendOtpMail = async (data) =>{
     }
 }
 
-const VerifyMobileOtp = async (data) =>{
+const VerifyMobileOtp = async (data) => {
     try {
-        const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/send-otp`, data );
+        const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/send-otp`, data);
         notifySuccess("OTP sent on your mobile number!")
         return response;
     }
@@ -55,14 +55,14 @@ const VerifyMobileOtp = async (data) =>{
     }
 }
 const MobileOtp = async (data) => {
-    if(data.otp === ""){
+    if (data.otp === "") {
         notify("otp can not be empty !!")
-    }else{
+    } else {
         try {
             const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/verify-otp`, data);
-       
-                notifySuccess(response.data.message)
-            
+
+            notifySuccess(response.data.message)
+
             return response;
         }
         catch (error) {

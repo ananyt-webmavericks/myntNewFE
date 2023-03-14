@@ -1,4 +1,4 @@
-import React , {useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, Grid } from "@mui/material";
 import '../../css/StartupSectors/startupSectors.css';
 import DoneIcon from '@mui/icons-material/Done';
@@ -27,13 +27,13 @@ export default function StartupSectorsMain() {
     const [gridxsSecond, setgridxsSecond] = useState(4)
     const ratio = parseInt(window.innerWidth);
     const navigate = useNavigate()
-    const handleChange =(index)=>{
+    const handleChange = (index) => {
         let new_array = value;
         new_array[index].isChecked = !new_array[index].isChecked;
-        console.log( new_array[index].isChecked)
+        console.log(new_array[index].isChecked)
         setValue([...new_array])
     }
-    const handleSubmit = ()=>{
+    const handleSubmit = () => {
         navigate('/dashboard')
     }
 
@@ -44,7 +44,7 @@ export default function StartupSectorsMain() {
             setGridxsFirst(2)
             setgridxsSecond(6)
         }
-        if(ratio < 572) {
+        if (ratio < 572) {
 
             setGridxsFirst(1)
             setgridxsSecond(12)
@@ -53,17 +53,27 @@ export default function StartupSectorsMain() {
     return (
         <div className="startup-sectors-container">
             <div className="get-started-section">
-                <span className="get-started-heading startup">Please choose startup sectors you’re interested in</span>
-                
+                <h2 className="get-started-heading startup" style={{ fontWeight: "bolder", fontFamily: 'poppins' }}>
+                    Please choose startup sectors you’re interested in
+                </h2>
+
                 <Card className="card-investors">
-                    <CardContent style={{padding:'0'}}>
+                    <CardContent style={{ padding: '0' }}>
                         <Grid container spacing={gridxsFirst}>
                             {value.map((item, index) => {
                                 return (
                                     <Grid key={index} item xs={gridxsSecond}>
-                                        <div className="sectors-box-container">
+                                        <div
+                                            onClick={() => handleChange(index)}
+                                            className="sectors-box-container"
+                                            style={{ cursor: "pointer" }}>
                                             <span className="startup-category-names">{item.name}</span>
-                                            <div className="check-status-sectors" onClick={()=>handleChange(index)} style={item.isChecked ? {color: 'white' ,background:'#01965D' }:{color: 'black' ,background:'white' } }><DoneIcon style={{width:'20px' , height:'20px'}} /></div>
+                                            <div className="check-status-sectors"
+                                                style={item.isChecked
+                                                    ?
+                                                    { color: 'white', background: '#01965D' }
+                                                    : { color: 'white', background: 'white', border: "none", boxShadow: "none" }}>
+                                                <DoneIcon style={{ width: '20px', height: '20px' }} /></div>
                                         </div>
                                     </Grid>
                                 )
@@ -72,7 +82,7 @@ export default function StartupSectorsMain() {
                         <button className="submit-btn-startup" onClick={handleSubmit}>Submit</button>
                     </CardContent>
                 </Card>
-                </div>
+            </div>
         </div>
     )
 }

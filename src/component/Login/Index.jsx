@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../../css/GetStarted/getStarted.css'
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import Email from '../../images/assets/email.png';
 import Loginlogo from '../../images/assets/loginlogo.png';
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ export default function LoginMain() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState('')
     const isEmail = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+    const [errorMsg, setErrorMsg] = useState(false)
     const notify = (data) => {
         toast.error(data)
     }
@@ -28,9 +29,7 @@ export default function LoginMain() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!isEmail(email)) {
-            notify("Please enter a valid email")
-        }
+        if (!isEmail(email)) setErrorMsg(true)
         else {
             try {
                 UserServices.LoginUserByEmail(email).then(
@@ -95,10 +94,13 @@ export default function LoginMain() {
                             </div>
                         </div> */}
                         <div className="input-container-second">
-                            <div className="email-input-get-started">
+                            <div className="email-input-get-started" style={errorMsg ? { border: '1px solid #FF9494' } : {}}>
                                 <img src={Email} width={16} height={16} style={{ marginLeft: '10px' }}></img>
                                 <input value={email} onChange={handleChange} className="in-input-email" placeholder="Email Address" />
                             </div>
+                            {
+                                errorMsg && <Typography style={{ color: '#FF9494', textAlign: 'left', fontSize: '14px', paddingTop: '5px' }}>Please enter a valid email</Typography>
+                            }
                         </div>
                         <button onClick={handleSubmit} className="sign-up-btn">Login</button>
                     </CardContent>

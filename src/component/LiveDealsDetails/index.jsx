@@ -59,6 +59,7 @@ export default function LiveDetailsMain() {
         setHidden(event.target.checked);
     };
     useEffect(() => {
+        
         window.scrollTo(0, 0)
         if (ratio < 850) {
             setGridxsFirst(1)

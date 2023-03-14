@@ -41,7 +41,7 @@ const Dashboard = () => {
                 <div className="dashboard-container">
                     <Container maxWidth="lg">
                         <div style={{ display: 'grid' }}>
-                            <span className="get-started-heading startup">Welcome {userData.first_name}!</span>
+                            <span className="get-started-heading startup" style={{ fontWeight: 'bolder !important' }}>Welcome {userData.first_name}!</span>
                             <ProgressBarDash fetchValue={fetchValue} />
                         </div>
                         <ProgressNotifyDash data={showDeals} />

@@ -165,65 +165,63 @@ const LiveDeals = () => {
                         </div>
 
                         <div className="button-container-liveDeals">
-                            <LightTooltip popperOptions={{ popperOptions }} title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
-                                <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(1)}>
-                                    <div >
-                                        <span >CSOP</span>
-                                        <div className="mini-active-btn-highliter">Live</div>
-                                    </div>
-                                    <img height={20} width={20} src={infoIcon} alt="info" />
+                            <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(1)}>
+                                <div >
+                                    <span >CSOP</span>
+                                    <div className="mini-active-btn-highliter">Live</div>
                                 </div>
-                            </LightTooltip>
-
-                            <LightTooltip PopperProps={{ style: { marginTop: -12 } }} title="Compulsory convertible debentures are hybrid securities that have the same financial rights like equity share but no voting rights.">
-                                <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
-                                    <span>CCD</span>
-                                    {/* <div className="mini-active-btn-highliter">Live</div> */}
-                                    <img height={20} width={20} src={infoIcon} alt="info" />
-                                </div>
-                            </LightTooltip>
+                            </div>
 
 
-                            <LightTooltip title="Short-term offering that involves funding a company's unpaid invoice or purchase order in exchange for a fixed rate of return.">
-                                <div className="active-btn-container" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(3)}>
-                                    <span>NCD</span>
-                                    <img height={20} width={20} src={infoIcon} alt="info" />
-                                </div>
-                            </LightTooltip>
+                            <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
+                                <span>CCD</span>
+                                {/* <div className="mini-active-btn-highliter">Live</div> */}
+                            </div>
 
-                            <LightTooltip title=" NCD (Non-Convertible Debenture) is a type of debt security issued by companies that pays a fixed rate of interest and has a maturity date.">
-                                <div className="active-btn-container" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(4)}>
-                                    <span>ID</span>
-                                    <img height={20} width={20} src={infoIcon} alt="info" />
-                                </div>
-                            </LightTooltip>
+
+                            <div className="active-btn-container" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(3)}>
+                                <span>NCD</span>
+                            </div>
+
+
+                            <div className="active-btn-container" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(4)}>
+                                <span>ID</span>
+                            </div>
                         </div>
-                        <div style={{ textAlign: 'center', marginBottom: '2em' }}>
+                        {/* <div style={{ textAlign: 'center', marginBottom: '2em' }}>
                             {activeBtn === 1 &&
                                 <div style={{ display: 'grid' }}>
                                     <span style={{ fontSize: '18px' }}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span>
                                 </div>
                             }
                             {activeBtn === 2 &&
-                                <div style={{ display: 'grid' }}>
+                                <div style={{ display: 'grid', marginTop: '0.5rem' }}>
                                     <span style={{ fontSize: '18px' }}>Hybrid securities convertible into equity</span>
                                 </div>
                             }
                             {activeBtn === 3 &&
-                                <div style={{ display: 'grid' }}>
+                                <div style={{ display: 'grid', marginTop: '0.5rem' }}>
                                     <span style={{ fontSize: '18px' }}>Short term fixed income opportunities</span>
                                 </div>
                             }
                             {activeBtn === 4 &&
-                                <div style={{ display: 'grid' }}>
+                                <div style={{ display: 'grid', marginTop: '0.5rem' }}>
                                     <span style={{ fontSize: '18px' }}>Short term fixed income opportunities</span>
                                 </div>
                             }
-                        </div>
+                        </div> */}
 
                         {/* CSOP */}
                         <div id="tab-1">
-                            <span style={{ fontSize: '20px', fontWeight: '600' }}>CSOP</span>
+                            <span style={{ fontSize: '20px', fontWeight: '600', }}>
+                                CSOP
+                                <LightTooltip placement="top" popperOptions={{ popperOptions }} title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
+                                    <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
+                                </LightTooltip>
+                            </span>
+                            <div style={{ display: 'grid', marginTop: '0.5rem' }}>
+                                <span style={{ fontSize: '18px' }}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span>
+                            </div>
                             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                                 {data.map((item, index) => {
                                     return (
@@ -332,7 +330,16 @@ const LiveDeals = () => {
 
                         {/* CCD */}
                         <div id="tab-2">
-                            <span style={{ fontSize: '20px', fontWeight: '600' }}>CCD</span>
+                            <span style={{ fontSize: '20px', fontWeight: '600' }}>
+                                CCD
+                                <LightTooltip placement="top" PopperProps={{ style: { marginTop: -12 } }} title="Compulsory convertible debentures are hybrid securities that have the same financial rights like equity share but no voting rights.">
+                                    <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
+                                </LightTooltip>
+
+                            </span>
+                            <div style={{ display: 'grid', marginTop: '0.5rem' }}>
+                                <span style={{ fontSize: '18px' }}>Hybrid securities convertible into equity</span>
+                            </div>
                             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                                 {data.map((item, index) => {
                                     return (
@@ -444,7 +451,17 @@ const LiveDeals = () => {
 
                         {/* NCD */}
                         <div id="tab-3">
-                            <span style={{ fontSize: '20px', fontWeight: '600' }}>NCD</span>
+                            <span style={{ fontSize: '20px', fontWeight: '600' }}>
+                                NCD
+
+                                <LightTooltip placement="top" title="Short-term offering that involves funding a company's unpaid invoice or purchase order in exchange for a fixed rate of return.">
+                                    <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
+                                </LightTooltip>
+
+                            </span>
+                            <div style={{ display: 'grid', marginTop: '0.5rem' }}>
+                                <span style={{ fontSize: '18px' }}>Short term fixed income opportunities</span>
+                            </div>
                             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                                 {data.map((item, index) => {
                                     return (
@@ -553,7 +570,16 @@ const LiveDeals = () => {
 
                         {/* ID */}
                         <div id="tab-4">
-                            <span style={{ fontSize: '20px', fontWeight: '600' }}>ID</span>
+                            <span style={{ fontSize: '20px', fontWeight: '600' }}>
+                                ID
+                                <LightTooltip placement="top" title=" NCD (Non-Convertible Debenture) is a type of debt security issued by companies that pays a fixed rate of interest and has a maturity date.">
+                                    <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
+                                </LightTooltip>
+
+                            </span>
+                            <div style={{ display: 'grid', marginTop: '0.5rem' }}>
+                                <span style={{ fontSize: '18px' }}>Short term fixed income opportunities</span>
+                            </div>
                             <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                                 {data.map((item, index) => {
                                     return (
@@ -662,8 +688,8 @@ const LiveDeals = () => {
                         </div>
                     </Container>
                 </div>
-            </div>
-            {ratio < 1000 ? null : <Footer />}
+            </div >
+            {ratio < 1000 ? null : < Footer />}
         </>
     )
 }

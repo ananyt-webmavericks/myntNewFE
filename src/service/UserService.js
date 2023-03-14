@@ -13,7 +13,7 @@ const LoginUserByEmail = async (email) => {
 
     try {
         const response = await axios.post(`${Base_Url}/api/users/login`, { email });
-        notifySuccess(response.data.message)
+        // notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
