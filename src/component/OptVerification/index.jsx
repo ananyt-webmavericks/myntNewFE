@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../../css/OptVerification/otpVerification.css';
-import { Card, CardContent, Button } from "@mui/material";
+import { Card, CardContent, Button, Typography } from "@mui/material";
 import MobilePng from '../../images/assets/otpMobile.png'
 import OTPInput, { ResendOTP } from "otp-input-react";
 import { makeStyles } from "@material-ui/styles";
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function OtpVerificationMain() {
     const [OTP, setOTP] = useState("");
+    const [WarnMsg, setWarnMsg] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const classes = useStyles();
@@ -79,6 +80,7 @@ export default function OtpVerificationMain() {
                     }
                     else {
                         setOTP('')
+                        setWarnMsg(true)
                     }
 
                 })
@@ -93,7 +95,7 @@ export default function OtpVerificationMain() {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px', cursor: 'pointer' }} {...buttonProps}>Resend</button>;
     };
     const renderTime = remainingTime => {
-        return <span style={{ color: '#777777' }}>resend after {remainingTime} s</span>;
+        return <span style={{ color: '#777777' }}>Resend after {remainingTime} s</span>;
     };
     return (
         <div className="verification-container ">
@@ -116,8 +118,11 @@ export default function OtpVerificationMain() {
                                 // secure
                                 inputStyles={{ width: '35px', outline: 'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
                             />
+                            {WarnMsg &&
+                                <Typography style={{ fontSize: '14px', textAlign: 'left', color: '#FF9494', paddingTop: '10px' }}>Invalid OTP! please enter correct OTP.</Typography>}
                             <ResendOTP maxTime={90} onResendClick={() => handleResendOtp()} className={classes.menuItem} renderTime={renderTime} renderButton={renderButton} disable={false} />
                         </div>
+
                         <button className="sign-up-btn" onClick={handleSubmit} > {loginType === 'new' ? "Sign Up" : "Sign In"}</button>
                     </CardContent>
                 </Card>

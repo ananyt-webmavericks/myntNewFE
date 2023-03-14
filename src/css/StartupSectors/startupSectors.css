@@ -1,8 +1,9 @@
-.startup-sectors-container{
+.startup-sectors-container {
     height: 100%;
     margin-bottom: 5em;
 }
-.sectors-box-container{
+
+.sectors-box-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -13,10 +14,12 @@
     border: 1px solid #D1D1D1;
     border-radius: 7px;
 }
-.startup-category-names{
+
+.startup-category-names {
     font-size: 16px;
 }
-.check-status-sectors{
+
+.check-status-sectors {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -25,7 +28,8 @@
     height: 24px;
     border-radius: 50%;
 }
-.submit-btn-startup{
+
+.submit-btn-startup {
     margin-top: 20px;
     width: 100%;
     max-width: 360px;
@@ -38,16 +42,20 @@
     font-size: 14px;
     font-weight: 600;
 }
+
 .submit-btn-startup:hover {
     transition: all 0.2s ease;
     background: #F0C127;
+    cursor: pointer;
 }
+
 @media screen and (max-width: 900px) {
-    .sectors-box-container{
+    .sectors-box-container {
         margin-top: 30px;
     }
-    .get-started-heading.startup{
+
+    .get-started-heading.startup {
         font-size: 26px;
     }
-    
+
 }

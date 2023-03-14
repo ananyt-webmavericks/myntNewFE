@@ -75,45 +75,47 @@ const FounderApplication = () => {
                     <Typography className='raise-mint-title-desc'>
                         Share some details about your company. Our team shall contact you shortly for the due diligence process.
                     </Typography>
-                    <form action="">
-                        <div className='raise-mint-appln-parent'>
-                            <Typography className='appln-heading'>Application</Typography>
-                            <div className='logo-selectfile-parent'>
-                                <div style={{ position: 'relative', width: '80px', height: '80px' }} className='appln-logo-parent'>
-                                    {
-                                        preview
-                                            ? <img style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                objectFit: 'cover'
-                                            }} src={preview} alt="Preview" />
-                                            : "Logo"
-                                    }
-                                </div>
-                                <div className='select-file-btn-parent'>
-                                    <Typography style={{ paddingTop: 4, marginRight: 10 }}>Upload Company Logo here or</Typography>
-                                    <button
-                                        onClick={() => document.getElementById("uploadCompanyLogo").click()}
-                                        className='select-file-btn'> Select File
-                                        <img src={yellowArrow} alt="arrow-img" height={'10px'} style={{ marginLeft: '10px' }} />
-                                    </button>
-
-                                    <input id='uploadCompanyLogo' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
-                                </div>
+                    <div className='raise-mint-appln-parent'>
+                        <Typography className='appln-heading'>Application</Typography>
+                        <div className='logo-selectfile-parent'>
+                            <div style={{ position: 'relative', width: '80px', height: '80px' }} className='appln-logo-parent'>
+                                {
+                                    preview
+                                        ? <img style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover'
+                                        }} src={preview} alt="Preview" />
+                                        : "Logo"
+                                }
                             </div>
+                            <div className='select-file-btn-parent'>
+                                <Typography style={{ paddingTop: 4, marginRight: 10 }}>Upload Company Logo here or</Typography>
+                                <button
+                                    onClick={() => document.getElementById("uploadCompanyLogo").click()}
+                                    className='select-file-btn'> Select File
+                                    <img src={yellowArrow} alt="arrow-img" height={'10px'} style={{ marginLeft: '10px' }} />
+                                </button>
+
+                                <input id='uploadCompanyLogo' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
+                            </div>
+                        </div>
+                        <form action="">
 
                             <CustomWidthTooltip title="This should be the name your company uses on your website and in the market." arrow placement='right'>
                                 <input
+                                    id='company_name'
                                     name='company_name'
                                     value={formik.values.company_name}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     placeholder='Enter Your Name*'
                                     type="text"
-                                    className='inp-enter-name' />
+                                    className='inp-enter-name'
+                                />
                             </CustomWidthTooltip>
 
                             <CustomWidthTooltip title="Enter Your Company Email ID*" arrow placement='right'>
@@ -332,8 +334,8 @@ const FounderApplication = () => {
                             <div className='founder-appln-submit-parent'>
                                 <button type='submit' className='founder-appln-submit-button'>Submit</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </Container>
         </React.Fragment >

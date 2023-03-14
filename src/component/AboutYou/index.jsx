@@ -499,14 +499,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AboutYouMain() {
     const theme = useTheme();
-    const [nationality, setNationality] = React.useState([]);
-    const [country, setCountry] = React.useState([]);
+    const [nationality, setNationality] = React.useState(['Indian']);
+    const [country, setCountry] = React.useState(['India']);
     const [showMessage, setShowMessage] = useState(false)
     const classes = useStyles();
     const dispatch = useDispatch()
     const { userData } = useSelector((state) => state.loginData)
     const navigate = useNavigate()
-
     console.log(userData)
 
     const handleChangeNationality = (event) => {
@@ -530,7 +529,7 @@ export default function AboutYouMain() {
                 // On autofill we get a stringified value.
                 typeof value === 'string' ? value.split(',') : value,
             )
-            : notify("Getting ready to assist you shortly, Myntinvest is presently only accessible to Resident Indians.we are actively working on making it available to Nonresident Indians in the near future.")
+            : setShowMessage("Getting ready to assist you shortly, Myntinvest is presently only accessible to Resident Indians.we are actively working on making it available to Nonresident Indians in the near future.")
     };
 
     const notify = (data) => {
@@ -566,20 +565,6 @@ export default function AboutYouMain() {
         }
 
     }
-
-    useEffect(() => {
-
-        if (country.includes('India') || country.length === 0) {
-            setShowMessage(false)
-        }
-        else {
-            setShowMessage(true)
-        }
-
-
-    }, [country])
-
-
 
 
     return (
@@ -667,9 +652,10 @@ export default function AboutYouMain() {
                         </div>
                         <button className="sign-up-btn" onClick={handleSubmit}>Next</button>
                         {showMessage &&
-                            <div style={{ display: 'grid', fontSize: '12px', marginTop: '10px' }}>
-                                <span style={{ marginBottom: '10px' }}>Getting ready to assist you shortly</span>
-                                <span>Myntinvest is currently available only for Resident Indians. We are working on making it available for Non resident Indians soon</span>
+                            <div style={{ display: 'grid', fontSize: '12px', marginTop: '10px', color: "#FF9494" }}>
+                                <span style={{ marginBottom: '10px' }}>Getting ready to assist you shortly!</span>
+                                <span style={{ color: '#FF9494' }}> Myntinvest is presently only accessible to Resident
+                                    Indians. We are actively working on making it available to nonresident Indians in the near future.</span>
                             </div>
                         }
 

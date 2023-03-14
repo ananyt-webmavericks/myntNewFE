@@ -75,7 +75,9 @@ export default function ProgressNotifyDash({ data }) {
                 </div>
                 <div className="specific-info-section first">
                     <span className="header-info-section-dash">Create Profile</span>
-                    <span className="sub-header-info-section-dash">Provide your general information to create a Mynt user account.</span>
+                    <span className="sub-header-info-section-dash">
+                        Provide your general information to create a Mynt user account.
+                    </span>
                     <Button sx={{
                         borderRadius: '20px', background: '#01965D',
                         width: '200px', margin: 'auto', color: 'white', fontSize: '16px', fontWeight: '600'
@@ -90,8 +92,25 @@ export default function ProgressNotifyDash({ data }) {
                     {showHr && <hr className="dashed-line-new" />}
                     <div className="outer-circle-dash not-completed">
                         {noData ?
-                            <div style={{ background: '#EBEBEB' }} className="inner-circle-dashed not-completed">
-                                <span className="font-inner-circle" >2</span>
+                            <div style={noData
+                                ? { background: '#F8DA36 ', color: 'black' }
+                                :
+                                data?.bank_account
+                                    && data?.pan_card
+                                    // && data?.pan_card_verified
+                                    && data?.address_line_1
+                                    && data?.city
+                                    && data?.state
+                                    && data?.country
+                                    && data?.pincode
+                                    && data?.bank_name
+                                    && data?.bank_account
+                                    && data?.ifsc_code
+                                    // && data?.bank_account_verified
+                                    && data?.mobile_number
+                                    ? { background: '#01965D', color: 'white' }
+                                    : { background: '#F8DA36', color: 'black' }} className="inner-circle-dashed not-completed">
+                                <span className="font-inner-circle"  >2</span>
                             </div>
                             :
                             <div style={noData ? { background: '#EBEBEB' } : data?.bank_account === '' ? { background: '#EBEBEB' } : { background: '#F8DA36' }} className="inner-circle-dashed not-completed">
@@ -109,7 +128,7 @@ export default function ProgressNotifyDash({ data }) {
                             localStorage.setItem("kycDonePath", '/dashboard')
                         }}
                         style={noData
-                            ? { background: '#EBEBEB', color: 'black' }
+                            ? { background: '#F8DA36 ', color: 'black' }
                             :
                             data?.bank_account
                                 && data?.pan_card
@@ -125,11 +144,11 @@ export default function ProgressNotifyDash({ data }) {
                                 // && data?.bank_account_verified
                                 && data?.mobile_number
                                 ? { background: '#01965D', color: 'white' }
-                                : { background: '#EBEBEB', color: 'black' }}
+                                : { background: '#F8DA36', color: 'black' }}
                         sx={{
                             borderRadius: '20px',
                             width: '200px', margin: 'auto', fontSize: '16px', fontWeight: '600'
-                            , '&:hover': { background: '#F8DA36', color: 'black', boxShadow: '0px 0px 23px #F4DC5991' },
+                            , '&:hover': { background: '#EBEBEB', color: 'black', boxShadow: '0px 0px 23px #00000029' },
                         }}>
                         {noData ? "Complete It " :
                             data?.bank_account
@@ -166,7 +185,22 @@ export default function ProgressNotifyDash({ data }) {
                     <span className="sub-header-info-section-dash">Learn more about what our platform has to offer and start enrolling by signing the necessary documents.
                     </span>
                     <Button
-                        onClick={() => navigate('/dashboard/live-deals')}
+                        onClick={() => {
+                            (data?.bank_account
+                                && data?.pan_card
+                                // && data?.pan_card_verified
+                                && data?.address_line_1
+                                && data?.city
+                                && data?.state
+                                && data?.country
+                                && data?.pincode
+                                && data?.bank_name
+                                && data?.bank_account
+                                && data?.ifsc_code
+                                // && data?.bank_account_verified
+                                && data?.mobile_number)
+                                && navigate('/dashboard/live-deals')
+                        }}
                         sx={{
                             borderRadius: '20px', background: '#9A9A9A',
                             width: '200px', margin: 'auto', color: 'black', fontSize: '16px', fontWeight: '600'

@@ -130,50 +130,61 @@
     font-size: 14px;
     font-weight: 600;
 }
+
 .sign-up-btn:hover {
     transition: all 0.2s ease;
     background: #F0C127;
 }
-.bottom-most-txt-get-started{
+
+.bottom-most-txt-get-started {
     margin-top: 20px;
     display: grid;
     text-align: center;
 }
-.footer-get-started-txt-head{
+
+.footer-get-started-txt-head {
     font-size: 14px;
 }
-.colored-text-get-started{
+
+.colored-text-get-started {
     font-weight: 600;
     margin-left: 10px;
     color: #F0C127;
 }
+
 @media screen and (max-width: 600px) {
-    .button-container-getStarted{
+    .button-container-getStarted {
         display: grid;
         justify-content: center;
     }
-    .google-signIn-getStarted{
+
+    .google-signIn-getStarted {
         margin-top: 1em;
         width: 300px;
         justify-content: space-evenly;
     }
-    .input-container{
+
+    .input-container {
         display: grid;
         width: 100%;
         justify-content: center;
     }
+
     .email-input-get-started {
         width: 300px;
         margin: auto;
     }
-    .name-input-get-started{
+
+    .name-input-get-started {
         margin-bottom: 1em;
-        width: 300px ;
+        width: 300px;
     }
+
     .card-get-started {
         width: 100% !important;
         padding: 0 !important;
     }
+
     .sign-up-btn {
         width: 300px;
     }

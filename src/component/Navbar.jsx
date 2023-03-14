@@ -150,7 +150,7 @@ const Navbar = () => {
                     }
 
                 </ul>
-                <img onClick={() => navigate('/')} className="logo-web" src={logo}></img>
+                <img onClick={() => navigate('/')} alt="mynt_logo" className="logo-web" src={logo}></img>
             </div>
         </nav>
     )
