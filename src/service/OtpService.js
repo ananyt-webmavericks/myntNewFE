@@ -43,6 +43,7 @@ const ResendOtpMail = async (data) => {
 
 const VerifyMobileOtp = async (data) => {
     try {
+        console.log("ll")
         const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/send-otp`, data);
         notifySuccess("OTP sent on your mobile number!")
         return response;
@@ -54,6 +55,7 @@ const VerifyMobileOtp = async (data) => {
         return error;
     }
 }
+
 const MobileOtp = async (data) => {
     if (data.otp === "") {
         notify("otp can not be empty !!")

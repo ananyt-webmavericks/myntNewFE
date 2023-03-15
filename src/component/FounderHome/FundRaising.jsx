@@ -9,8 +9,10 @@ const FundRaising = () => {
     return (
         <React.Fragment>
             <Typography className='our-networks-label'>
-                <span>Fund Raising</span>
-                <span className='portfolio-comp-label'> Re-Imaging    <span className='capital' style={{ color: 'black' }}> Capital </span></span>
+                <span className='portfolio-comp-label'> Re-envision  <span className='capital' style={{ color: 'black' }}> Capital </span></span>
+            </Typography>
+            <Typography className='re-envi-descript'>
+                Secure funding on terms tailored to your company's unique requirements.
             </Typography>
 
 

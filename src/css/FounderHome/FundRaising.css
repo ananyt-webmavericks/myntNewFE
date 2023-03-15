@@ -23,6 +23,14 @@
     font: normal normal normal 14px/22px Poppins;
 }
 
+.re-envi-descript {
+    text-align: center;
+    padding-top: 8px;
+    font: normal normal normal 16px/27px Poppins;
+    letter-spacing: 0px;
+    color: #777777;
+}
+
 @media screen and (min-width: 870px) {
     .fund-raising-card {
         align-items: center;

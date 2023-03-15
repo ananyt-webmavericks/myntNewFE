@@ -29,7 +29,7 @@ export default function MyProfileMain() {
             })
         }
 
-    }, [])
+    }, [userData])
 
 
     const handleNavigate = () => {
@@ -64,10 +64,10 @@ export default function MyProfileMain() {
         <div className="my-profile-container">
             <span className="get-started-heading">My Profile</span>
             <div className="btn-section-my-profile">
-                <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => { setActiveBtn(1); setHideDivShow(true) }}>
+                <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white', width: 'auto' } : { background: '#F4F4F4', color: 'black', width: 'auto' }} onClick={() => { setActiveBtn(1); setHideDivShow(true) }}>
                     General Details
                 </div>
-                <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => { setActiveBtn(2); setHideDivShow(false) }}>
+                <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white', width: 'auto' } : { background: '#F4F4F4', color: 'black', width: 'auto' }} onClick={() => { setActiveBtn(2); setHideDivShow(false) }}>
                     Bank Details
                 </div>
             </div>
@@ -76,10 +76,31 @@ export default function MyProfileMain() {
                     <div className="details-conatiner-myprofile">
                         <span className="heading-personal-details" >Personal Details</span>
                         <div className="verifyAddress-input">
-                            <input type="text" disabled value={_.isEmpty(data) ? '' : userData?.name ? userData?.name : (userData?.first_name).toUpperCase() + " " + (userData?.last_name).toUpperCase()} placeholder="Full Name" className="verifyAddress-input-section" />
+                            <input
+                                type="text"
+                                disabled
+                                value={
+                                    (_.isEmpty(data))
+                                        ? userData?.first_name?.length > 0
+                                            ? (userData?.first_name).toUpperCase() + " " + (userData?.last_name).toUpperCase()
+                                            : ""
+                                        : data?.name
+                                            ? (data?.first_name).toUpperCase() + " " + (data?.last_name).toUpperCase()
+                                            : ""} placeholder="Full Name" className="verifyAddress-input-section" />
                         </div>
                         <div className="verifyAddress-input">
-                            <input type="text" disabled value={_.isEmpty(data) ? '' : userData?.email} placeholder="Email Address" className="verifyAddress-input-section" />
+                            <input
+                                type="text"
+                                disabled
+                                value={(_.isEmpty(data))
+                                    ? userData?.email?.length > 0
+                                        ? userData?.email
+                                        : ""
+                                    : data?.email
+                                        ? data?.email
+                                        : ""}
+                                placeholder="Email Address"
+                                className="verifyAddress-input-section" />
                         </div>
                         <div style={{ marginTop: '20px' }} className="input-number-box-section">
                             <div className="country-code-container" >

@@ -40,9 +40,11 @@
     color: black !important;
     font-size: 16px !important;
 }
-.kyc-pending-btn-my-profile.completed{
+
+.kyc-pending-btn-my-profile.completed {
     background: #01965D 0% 0% no-repeat padding-box !important;
     color: white !important;
+    cursor: context-menu;
 }
 
 .card-complete-kyc-notice {
@@ -62,48 +64,57 @@
     display: grid;
     margin-left: 25px;
 }
-.head-txt-kyc-card{
-font-size: 18px;
-font-weight: 600;
+
+.head-txt-kyc-card {
+    font-size: 18px;
+    font-weight: 600;
 }
-.sub-txt-kyc-card{
+
+.sub-txt-kyc-card {
     max-width: 414px;
     width: 100%;
     font-size: 14px;
     color: #777777;
 }
-.submit-btn-startup.kyc{
+
+.submit-btn-startup.kyc {
     margin-left: 15px;
 }
 
-.card-complete-kyc-notice.brief{
+.card-complete-kyc-notice.brief {
     margin-top: 15px !important;
 
 }
-.card-complete-container.brief{
-   display: flex; 
-   margin-top: 15px ;
-   align-items: center;
-   max-width: 300px;
+
+.card-complete-container.brief {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    max-width: 300px;
 }
+
 @media screen and (max-width:680px) {
     .card-complete-container {
         display: grid;
         justify-content: center;
         text-align: center;
     }
-    .image-of-kyc-container{
+
+    .image-of-kyc-container {
         margin: auto;
     }
-    .text-container-card-kyc{
+
+    .text-container-card-kyc {
         margin-top: 14px;
     }
-    .sub-txt-kyc-card{
+
+    .sub-txt-kyc-card {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    .submit-btn-startup.kyc{
+
+    .submit-btn-startup.kyc {
         margin: auto;
-        
+
     }
 }

@@ -30,14 +30,15 @@
 }
 
 .founderhome-head-description {
-    font-size: 16px;
-    margin-top: 1.5em !important;
+    font: normal normal medium 16px/25px Poppins !important;
+    color: #777777 !important;
+    margin-top: 1.4em !important;
     margin-bottom: 3em !important;
 }
 
 .founderhome-getStarted-landing-btn {
-
-    width: 200px !important;
+    height: 54px !important;
+    width: 230px !important;
     border-radius: 30px !important;
     text-transform: capitalize !important;
     color: white !important;
@@ -45,12 +46,12 @@
     background-color: black !important;
     font-size: 16px !important;
     margin: auto !important;
+    font-weight: bold !important;
 }
 
 .founderhome-getStarted-landing-btn:hover {
     color: #000000 !important;
     text-align: center;
-    font-weight: 500 !important;
     background-color: #efc127 !important;
 }
 

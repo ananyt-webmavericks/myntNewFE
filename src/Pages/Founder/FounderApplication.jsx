@@ -6,6 +6,7 @@ import { Box, textAlign } from '@mui/system'
 import { styled } from '@material-ui/styles'
 import { useFormik } from 'formik'
 import FounderApplicationValSchema from '../../Validations/FounderApplicationValSchema'
+import { useEffect } from 'react'
 
 const FounderApplication = () => {
     const CustomWidthTooltip = styled(({ className, ...props }) => (
@@ -62,6 +63,10 @@ const FounderApplication = () => {
             console.log(values)
         }
     });
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
 
     return (

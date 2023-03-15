@@ -45,7 +45,7 @@
 }
 
 .getStarted-landing-btn {
-    font-weight: 500 !important;
+    font-weight: bold !important;
     height: 54px !important;
     width: 230px !important;
     border-radius: 30px !important;
@@ -60,7 +60,6 @@
 
 .getStarted-landing-btn:hover {
     /* box-shadow: none !important; */
-    font-weight: bold !important;
     color: #000000 !important;
     background-color: #efc127 !important;
     transition: 0.3s;
