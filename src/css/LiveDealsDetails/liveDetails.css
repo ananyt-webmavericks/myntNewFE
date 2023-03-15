@@ -114,8 +114,7 @@
 }
 
 .header-txt-deals-details {
-    font-size: 24px;
-    font-weight: 600;
+    font: normal normal 600 24px/52px Poppins !important;
 }
 
 .sub-header-txt-deals {
@@ -182,7 +181,7 @@
 }
 
 .active-btn-container.details {
-    min-width: 130px;
+    min-width: 130px !important;
     font-size: 14px !important;
     height: 54px;
 }

@@ -38,19 +38,17 @@ export default function ProgressNotifyDash({ data }) {
 
     const handleNavigate = () => {
 
-        (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
-            ? navigate('/complete-your-profile/verify-address')
-            : (!userKycData?.mobile_number)
-                ? navigate('/complete-your-profile')
-                : (
-                    // !userKycData?.bank_account_verified ||
-                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
-                    ? navigate('/complete-your-profile/payment-details')
-                    : (
-                        !userKycData?.pan_card
-                        // || !userKycData?.pan_card_verified
-                    )
-                        ? navigate('/complete-your-profile/verify-kyc')
+        (!userKycData?.mobile_number)
+            ? navigate('/complete-your-profile')
+            : (
+                !userKycData?.pan_card
+                // || !userKycData?.pan_card_verified
+            )
+                ? navigate('/complete-your-profile/verify-kyc')
+                : (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+                    ? navigate('/complete-your-profile/verify-address')
+                    : (!userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                        ? navigate('/complete-your-profile/payment-details')
                         : notifySuccess("Already verified! Please check profile")
     }
     // if (noData) {
@@ -113,7 +111,24 @@ export default function ProgressNotifyDash({ data }) {
                                 <span className="font-inner-circle"  >2</span>
                             </div>
                             :
-                            <div style={noData ? { background: '#EBEBEB' } : data?.bank_account === '' ? { background: '#EBEBEB' } : { background: '#F8DA36' }} className="inner-circle-dashed not-completed">
+                            <div style={noData
+                                ? { background: '#F8DA36' }
+                                : data?.bank_account
+                                    && data?.pan_card
+                                    // && data?.pan_card_verified
+                                    && data?.address_line_1
+                                    && data?.city
+                                    && data?.state
+                                    && data?.country
+                                    && data?.pincode
+                                    && data?.bank_name
+                                    && data?.bank_account
+                                    && data?.ifsc_code
+                                    // && data?.bank_account_verified
+                                    && data?.mobile_number
+                                    ? { background: '#01965D' }
+                                    : { background: '#F8DA36' }}
+                                className="inner-circle-dashed not-completed">
                                 <span className="font-inner-circle" >2</span>
                             </div>}
                     </div>

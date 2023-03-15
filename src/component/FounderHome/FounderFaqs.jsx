@@ -21,7 +21,7 @@ const FounderFaqs = () => {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            <div>
+                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
                                 <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I apply as a startup founder to Mynt invest? </span>
                             </div>
@@ -41,7 +41,7 @@ const FounderFaqs = () => {
                             aria-controls="panel2a-content"
                             id="panel2a-header"
                         >
-                            <div>
+                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>02.</span>
                                 <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I start a campaign on MYNT INVEST?</span>
                             </div>
@@ -61,7 +61,7 @@ const FounderFaqs = () => {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            <div>
+                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>03.</span>
                                 <span style={{ fontWeight: 600, fontSize: '16px' }}>What documents/information is required to start a campaign?</span>
                             </div>
@@ -82,7 +82,7 @@ const FounderFaqs = () => {
                             aria-controls="panel2a-content"
                             id="panel2a-header"
                         >
-                            <div>
+                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>04.</span>
                                 <span style={{ fontWeight: 600, fontSize: '16px' }}> What kind of instruments can be used to start a campaign on MYNT INVEST?</span>
                             </div>

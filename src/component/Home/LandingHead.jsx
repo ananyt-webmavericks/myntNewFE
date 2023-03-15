@@ -24,9 +24,22 @@ export default function LandingHead() {
                     <Typography className="test-script-bold"><span className="test-script-bg">STARTUP </span> OPPORTUNITIES</Typography>
                     <Typography className="test-script-regular-makingbest">ACCESSIBLE</Typography>
                     <div className="landing-head-section">
-                        <span className="head-description"> Own a small stake in the next big startup and diversify your portfolio ten folds.  </span>
-                        <Button variant="contained" onClick={() => navigate('/get-started')} className="getStarted-landing-btn">Get Started</Button>
-                        <Typography className="subhead-description" style={{fontWeight : "bold"}}>Are you a founder?<span className="test-script-bg" style={{ cursor: 'pointer' }} onClick={() => navigate('/founder/application')}> Raise Capital on Mynt</span></Typography>
+                        <span className="head-description">
+                            Own a small stake in the next big startup and diversify your portfolio ten folds.
+                        </span>
+                        <Button
+                            variant="contained"
+                            onClick={() => navigate('/get-started')} className="getStarted-landing-btn">
+                            Get Started
+                        </Button>
+                        <Typography className="subhead-description" style={{ fontWeight: "bold" }}>
+                            Are you a founder?
+                            <span
+                                className="test-script-bg"
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => navigate('/founder/application')}> Raise Capital on Mynt
+                            </span>
+                        </Typography>
                     </div>
                 </div>
                 <div className="image-section-landing">

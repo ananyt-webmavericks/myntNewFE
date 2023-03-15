@@ -59,7 +59,7 @@ export default function LiveDetailsMain() {
         setHidden(event.target.checked);
     };
     useEffect(() => {
-        
+
         window.scrollTo(0, 0)
         if (ratio < 850) {
             setGridxsFirst(1)
@@ -90,7 +90,7 @@ export default function LiveDetailsMain() {
                         </div>
                         <div className="footer-card-section live-details">
                             <div className="numbers-investors live-details">
-                                <span className="percentage-investment">14.6%</span>
+                                <span className="percentage-investment" style={{ fontSize: '20px' }}>14.6%</span>
                                 <span className="investment-status">Raised</span>
                             </div>
                             <div className="vertical-line-invest live-details" ></div>
@@ -108,9 +108,12 @@ export default function LiveDetailsMain() {
                             <div className="inline-progress-bar-live-deals"></div>
                         </div>
                         <div className="header-section-deals-detail btn-section" >
-                            <Button onClick={() => navigate('/pay-to-subscribe')} className="invest-btn-section-deals">enroll</Button>
+                            <Button onClick={() => navigate('/pay-to-subscribe')} style={{ textTransform: "none" }} className="invest-btn-section-deals">Enroll</Button>
                             <StyledSpeedDial
-                                sx={{ '& .MuiFab-primary': { backgroundColor: '#E3E3E3', color: 'black' } }}
+                                sx={{
+                                    '& .MuiFab-primary': { backgroundColor: '#E3E3E3', color: 'black' },
+                                    '& .MuiFab-primary:hover': { backgroundColor: '#F0C127', color: 'black' }
+                                }}
                                 ariaLabel="SpeedDial playground example"
                                 hidden={hidden}
                                 icon={<ShareIcon />}
@@ -129,13 +132,13 @@ export default function LiveDetailsMain() {
                     </Grid>
                 </Grid>
                 <div className="heading-live-deals-details">
-                    <span className="header-txt-deals-details">Ask Me Anything</span>
+                    <h2 className="header-txt-deals-details">Ask Me Anything</h2>
                     <span className="sub-header-txt-deals" style={{ maxWidth: '645px', margin: 'auto' }}>Investors can interact directly with the founders in a 45 minute online zoom session and ask any questions that they have regarding the campaign.</span>
                 </div>
                 <div className="date-booked-register-section">
                     <div className="live-deals-box-date">
                         <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Recorded on</span>
-                        <span className="header-txt-deals-details">07:00 PM</span>
+                        <span className="header-txt-deals-details" style={{ fontFamily: "poppins", fontSIze: "18px" }}>07:00 PM</span>
                         <span className="live-deals-details-decription">24 Dec 2022</span>
                     </div>
                     {/* <div className="live-deals-box-date second">
@@ -143,9 +146,9 @@ export default function LiveDetailsMain() {
                         <div className="btn-register-live-deals"><span>Register</span><img style={{ marginLeft: '10px' }} src={Arrow} width={8} height={10}></img></div>
                     </div> */}
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+                {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
                     <YoutubeEmbed width={gridxsFirst === 2 ? '486px' : '100%'} height={'271.6px'} embedId={"g_aELYEBc4Q"} />
-                </div>
+                </div> */}
                 <div className="heading-live-deals-details">
                     <span className="header-txt-deals-details">Highlights</span>
                 </div>
@@ -156,7 +159,7 @@ export default function LiveDetailsMain() {
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         <img src={Group1} height={47} width={53} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px' }}>10,000 + Strong community, Build organically</span>
+                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>10,000 + Strong community, Build organically</span>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -166,7 +169,7 @@ export default function LiveDetailsMain() {
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         <img src={Group2} height={47} width={55} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px' }}>200 + Host, creators and venue partners</span>
+                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>200 + Host, creators and venue partners</span>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -176,7 +179,7 @@ export default function LiveDetailsMain() {
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         <img src={Group3} height={52} width={53} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px' }}>Community events & Experiences</span>
+                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>Community events & Experiences</span>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -186,7 +189,7 @@ export default function LiveDetailsMain() {
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         <img src={Group4} height={55} width={60} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px' }}>A full stack product for community assisted connections</span>
+                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>A full stack product for community assisted connections</span>
                                     </div>
                                 </CardContent>
                             </Card>

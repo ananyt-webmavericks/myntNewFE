@@ -165,7 +165,7 @@ const LiveDeals = () => {
                         </div>
 
                         <div className="button-container-liveDeals">
-                            <div className="active-btn-container" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(1)}>
+                            <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(1)}>
                                 <div >
                                     <span >CSOP</span>
                                     <div className="mini-active-btn-highliter">Live</div>
@@ -173,18 +173,18 @@ const LiveDeals = () => {
                             </div>
 
 
-                            <div className="active-btn-container" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
+                            <div className="active-btn-container details" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
                                 <span>CCD</span>
                                 {/* <div className="mini-active-btn-highliter">Live</div> */}
                             </div>
 
 
-                            <div className="active-btn-container" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(3)}>
+                            <div className="active-btn-container details" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(3)}>
                                 <span>NCD</span>
                             </div>
 
 
-                            <div className="active-btn-container" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(4)}>
+                            <div className="active-btn-container details" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(4)}>
                                 <span>ID</span>
                             </div>
                         </div>

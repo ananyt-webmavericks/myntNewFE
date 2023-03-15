@@ -60,7 +60,7 @@ const Navbar = () => {
                     <hr className="ruler-navbar" />
                     {Object.keys(userData).length !== 0 ?
                         <>
-                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name : userData?.first_name + " " + userData?.last_name}</span></li>
+                            <li><span onClick={() => navigate('/')}>{userData.name ? userData.name : userData?.first_name}</span></li>
 
                             {(ratio > 768) ?
                                 <> <Tooltip title={userData.name}>
@@ -69,9 +69,9 @@ const Navbar = () => {
                                             onClick={handleClick}
                                             size="small"
                                             sx={{ ml: 2 }}
-                                            aria-controls={open ? 'account-menu' : undefined}
+                                            aria-controls={open ? 'account-menu' : null}
                                             aria-haspopup="true"
-                                            aria-expanded={open ? 'true' : undefined}
+                                            aria-expanded={open ? 'true' : null}
                                         >
                                             <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} style={{ margin: '0 10px' }} />
                                         </IconButton>

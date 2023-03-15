@@ -5,7 +5,11 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import heliogen from '../../images/Networks/heliogen.png'
+import heliogen from '../../images/Networks/heliogen.png';
+import formlabs_logo from "./../../images/founder/formlabs_logo.png"
+import autoshield_logo from "./../../images/founder/autoshield_logo.png"
+import klassroom_logo from "./../../images/founder/classroom_logo.png"
+import deciwood_logo from "./../../images/founder/deciwood_logo.png"
 
 const Networks = () => {
 
@@ -25,10 +29,10 @@ const Networks = () => {
     }));
 
     const Networks = [
-        { badgeName: "PUBLIC", bottomBadgeName: "Heliogen" },
-        { badgeName: "IPO", bottomBadgeName: "Winc" },
-        { badgeName: "Acquired", bottomBadgeName: "Wyre" },
-        { badgeName: "IPO", bottomBadgeName: "Knightscope" },
+        { badgeName: "PRE SERIES-A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 13 },
+        { badgeName: "IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17 },
+        { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
+        { badgeName: "SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22 },
     ]
 
     return (
@@ -51,16 +55,16 @@ const Networks = () => {
                     }}
                 >
                     {Networks.map((item, index) => (
-                        <Item key={index} elevation={2}>
+                        <div key={index} className="networks-box">
                             <FlexDiv>
-                                <div><img src={heliogen} alt="network-logo" /></div>
+                                <div><img height={item.height} src={item.logo} alt="network-logo" /></div>
                                 <div className='network-badge'><span className='network-badge-text'>{item.badgeName}</span></div>
                             </FlexDiv>
-                            <FlexDiv style={{ paddingLeft: '30px' }}>
+                            <FlexDiv style={{ paddingLeft: '14px', paddingTop: '2rem' }}>
                                 <span className='network-badge-bottom-text'>{item.bottomBadgeName}</span>
                                 <span></span>
                             </FlexDiv>
-                        </Item>
+                        </div>
                     ))}
                 </Box>
             </Grid>
