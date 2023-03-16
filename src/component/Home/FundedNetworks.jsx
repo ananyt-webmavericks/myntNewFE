@@ -8,21 +8,23 @@ import Arrow from '../../images/assets/arrow.png'
 import Carousel from 'react-elastic-carousel'
 import Item from "../Item";
 
-import FormLabs from '../../images/Networks/FormLabs.png'
-import paralenz from '../../images/Networks/paralenz.png'
-import quantica from '../../images/Networks/quantica.png'
-import phasio from '../../images/Networks/phasio.png'
-import IGO3D from '../../images/Networks/IGO3D.png'
-import GO3DENT from '../../images/Networks/GO3DENT.png'
+import eazyschooling from '../../images/Networks/eazyschooling.png'
+import formlabs_logo from '../../images/Networks/formlabs_logo.png'
+import classroom_logo from '../../images/Networks/classroom_logo.png'
+import autoshield_logo from '../../images/Networks/autoshield_logo.png'
+import incuspaze from '../../images/Networks/incuspaze.png'
+import PeopleTeckLabs from '../../images/Networks/PeopleTeckLabs.png'
 import barrelHand from '../../images/Networks/barrelHand.png'
+import deciwood_logo from '../../images/Networks/deciwood_logo.png'
 const data = [
-    { id: 1, height: 30, image: FormLabs, name: '1 Bn USD', marginTop: "1.5rem" },
-    { id: 2, height: 30, image: paralenz, name: '10 million EUR', marginTop: "1.5rem" },
-    { id: 3, height: 30, image: quantica, name: '10 M EUR', marginTop: "1.5rem" },
-    { id: 4, height: 40, image: phasio, name: '10 M USD', marginTop: "0.9rem", },
-    { id: 5, height: 40, image: IGO3D, name: '10 M EUR', marginTop: "0.8rem" },
-    { id: 6, height: 30, image: GO3DENT, name: '10 M USD', marginTop: "1.5rem" },
-    { id: 7, height: 30, image: barrelHand, name: '10 M USD', marginTop: "1.5rem" }
+    { id: 1, height: 30, image: eazyschooling, name: '1 Bn USD' },
+    { id: 2, height: 30, image: formlabs_logo, name: '10 million EUR' },
+    { id: 3, height: 20, image: classroom_logo, name: '10 M EUR' },
+    { id: 4, height: 35, image: autoshield_logo, name: '10 M USD' },
+    { id: 5, height: 40, image: incuspaze, name: '10 M EUR' },
+    { id: 6, height: 70, image: PeopleTeckLabs, name: '10 M USD' },
+    { id: 7, height: 30, image: barrelHand, name: '10 M USD' },
+    { id: 8, height: 30, image: deciwood_logo, name: '10 M USD' }
 ]
 export default function FundedNetworks() {
     const carouselRef2 = useRef(null);
@@ -30,8 +32,8 @@ export default function FundedNetworks() {
 
     const [item, setItem] = useState(3)
     const ratio = parseInt(window.innerWidth);
-    const totalPages = Math.ceil(data.length / item + 4)
-
+    // const totalPages = Math.ceil(data.length / (item + 1))
+    const totalPages = 6
     useEffect(() => {
 
         if (ratio < 450) {
@@ -64,7 +66,7 @@ export default function FundedNetworks() {
                         ref={carouselRef2}
                         onNextEnd={({ index }) => {
                             clearTimeout(resetTimeout)
-                            if (index + 3 === totalPages) {
+                            if (index + 1 === totalPages) {
                                 if (carouselRef2?.current?.goTo) {
                                     resetTimeout = setTimeout(() => {
                                         if (carouselRef2?.current?.goTo) {
@@ -77,8 +79,8 @@ export default function FundedNetworks() {
                     >
                         {data.map((item, index) => {
                             return (
-                                <Item key={index} className='company-image' style={{ width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center' }}>
+                                <Item key={index} className='company-image' style={{ width: '100px ', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                         <img className="comp-img" height={item.height} style={{}} src={item.image}></img>
                                         {/* <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span> */}
                                     </div>
