@@ -6,12 +6,14 @@ import storage from 'redux-persist/lib/storage';
 import { userDataReducer } from "./reducers/auth"
 import { userEmailReducer } from "./reducers/auth";
 import { storeKycDetailsReducer } from "./reducers/verifyKycReducer";
+import { storeFounderSignUpData } from "./reducers/FounderSignUp";
 
 const rootReducer = combineReducers({
 
   loginData: userDataReducer,
   userInfo: userEmailReducer,
-  kycData: storeKycDetailsReducer
+  kycData: storeKycDetailsReducer,
+  founderSignUpData: storeFounderSignUpData
 
 })
 

@@ -102,8 +102,8 @@ export default function DataTablePortfolio() {
                                             })}
                                         </div>
                                         :
-                                        <div style={{boxShadow:'0px 0px 20px #00000017',width:'fit-content',margin:'auto',height:'30px',display:'flex',alignItems:'center',justifyContent:'center',padding:'0 10px',background:'white'}}>
-                                                Pending from Startup
+                                        <div style={{ boxShadow: '0px 0px 20px #00000017', width: 'fit-content', margin: 'auto', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 10px', background: 'white' }}>
+                                            Pending from Startup
                                         </div>
                                     }
 

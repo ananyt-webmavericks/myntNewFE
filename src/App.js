@@ -58,6 +58,7 @@ import MyntBlogsDetail from './component/MyntUniversity/myntBlogs/MyntBlogsDetai
 import PageNotFound from './Pages/PageNotFound';
 import FounderSignUp from './component/GetStarted/FounderSignUp';
 import ProtectedLiveDeals from './Pages/ProtectedLiveDeals';
+import FounderOtpVerification from './Pages/Founder/FounderOtpVerification';
 function App() {
 
   const location = window.location.pathname;
@@ -116,6 +117,7 @@ function App() {
         <Route exact path="/faq-details/taxtation-faq" element={<TaxtationFaq />} />
         {/* founder */}
         <Route exact path="/signup-founder" element={<FounderSignUp />} />
+        <Route exact path="/otp-verification-founder" element={<FounderOtpVerification />} />
         <Route exact path="/founder" element={<HomeFounder />} />
         <Route exact path="/founder/application" element={<FounderApplication />} />
         <Route exact path="/dashboard-founder" element={<DashboardFounder />} />

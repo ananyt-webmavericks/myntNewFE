@@ -12,6 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import facebook from './../../../images/assets/facebook.png'
 import instagram from './../../../images/assets/instagram.png'
 import date from './../../../images/assets/date.png'
+import { useFormik } from 'formik';
+import CompanyProfileValSchema from '../../../Validations/CompanyProfileValSchema';
+import CompanyServices from '../../../service/Company';
+import { useSelector } from 'react-redux';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -61,7 +65,7 @@ const CompanyProfile = () => {
     const classes = useStyles()
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
-
+    const { userData } = useSelector(state => state.loginData)
     const handleChange = (event) => {
         const {
             target: { value },
@@ -78,6 +82,40 @@ const CompanyProfile = () => {
         font: "normal normal Poppins !important"
     }
 
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            country: '',
+            state: '',
+            city: '',
+            pincode: '',
+            company_address: '',
+
+            website_url: '',
+            facebook_link: '',
+            instagram_link: '',
+            //linkedin link required here
+
+            legal_name: '',
+            cin: '',
+            date_of_incorporation: '',
+            incorporation_type: '',
+
+            invested_so_far: ''
+
+        },
+
+        validationSchema: CompanyProfileValSchema,
+
+        onSubmit: (values) => {
+            console.log(values)
+            CompanyServices.updateCompany({ ...values, user_id: userData.id }).then(res => {
+                console.log(res)
+            })
+        }
+    });
+
     return (
         <Container maxWidth="lg">
             <Box sx={{ marginTop: 4, marginLeft: 2, }} style={{ width: "80%" }}>
@@ -86,340 +124,397 @@ const CompanyProfile = () => {
                     <p style={{ marginTop: "10px", width: "100%" }}>Tell us a little about your company. Applications are usually processed within 5 working days. </p>
                 </Typography>
             </Box>
+            <form onSubmit={formik.handleSubmit}>
+                <Typography className="comp-info-appl-title">Application</Typography>
 
-            <Typography className="comp-info-appl-title">Application</Typography>
-
-            <div className='gridParent'>
-                <Grid item xs={6} md={3}>
-                    <Box
-                        sx={{
-                            p: 2,
-                            paddingTop: 4.2,
-                            bgcolor: 'background.default',
-                            display: 'grid',
-                            gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
-                            gap: 2.5,
-                            width: '492',
-                            textAlign: 'left',
-                            fontFamily: 'poppins'
-                        }}
-                    >
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <InputLabel
-                                color='warning'
-                                id="demo-multiple-name-label"
-                                sx={{ marginTop: '-6px' }} >Select Country*</InputLabel>
-                            <Select
-                                sx={selectStyle}
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
-                                value={personName}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Name" />}
-                                MenuProps={MenuProps}
-                            >
-                                {names.map((name) => (
-                                    <MenuItem
-                                        key={name}
-                                        value={name}
-                                        style={getStyles(name, personName, theme)}
-                                    >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <InputLabel
-                                color='warning'
-                                sx={{ marginTop: '-6px' }}
-                                id="demo-multiple-name-label">Select State*</InputLabel>
-                            <Select
-                                sx={selectStyle}
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
-                                value={personName}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Name" />}
-                                MenuProps={MenuProps}
-                            >
-                                {names.map((name) => (
-                                    <MenuItem
-                                        key={name}
-                                        value={name}
-                                        style={getStyles(name, personName, theme)}
-                                    >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <InputLabel
-                                color='warning'
-                                sx={{ marginTop: '-6px' }}
-                                id="demo-multiple-name-label">Select City*</InputLabel>
-                            <Select
-                                sx={selectStyle}
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
-                                value={personName}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Name" />}
-                                MenuProps={MenuProps}
-                            >
-                                {names.map((name) => (
-                                    <MenuItem
-                                        key={name}
-                                        value={name}
-                                        style={getStyles(name, personName, theme)}
-                                    >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-
-
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='Enter Pin Code*'
-                                type="text"
-                                className='amount-invested-till-date' />
-
-                        </FormControl>
-
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='Enter your Company Address*'
-                                type="text"
-                                className='amount-invested-till-date' />
-
-                        </FormControl>
-                    </Box>
-                </Grid>
-            </div>
-
-            <Typography className="comp-info-appl-title">Online Presence</Typography>
-
-            <div className='gridParent'>
-                <Grid item xs={6} md={3}>
-                    <Box
-                        sx={{
-                            p: 2,
-                            paddingTop: 4.2,
-                            bgcolor: 'background.default',
-                            display: 'grid',
-                            gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
-                            gap: 2.5,
-                            width: '492',
-                            textAlign: 'left',
-                            fontFamily: 'poppins'
-                        }}
-                    >
+                <div className='gridParent'>
+                    <Grid item xs={6} md={3}>
+                        <Box
+                            sx={{
+                                p: 2,
+                                paddingTop: 4.2,
+                                bgcolor: 'background.default',
+                                display: 'grid',
+                                gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
+                                gap: 2.5,
+                                width: '492',
+                                textAlign: 'left',
+                                fontFamily: 'poppins'
+                            }}
+                        >
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <InputLabel
+                                    color='warning'
+                                    id="demo-multiple-name-label"
+                                    sx={{ marginTop: '-6px' }} >Select Country*</InputLabel>
+                                <Select
+                                    sx={selectStyle}
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                    // multiple
+                                    name='country'
+                                    value={formik.values.country}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    input={<OutlinedInput label="Name" />}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(name, personName, theme)}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                                {formik.touched.country && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.country}</div>}
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <InputLabel
+                                    color='warning'
+                                    sx={{ marginTop: '-6px' }}
+                                    id="demo-multiple-name-label">Select State*</InputLabel>
+                                <Select
+                                    name='state'
+                                    value={formik.values.state}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    sx={selectStyle}
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                    input={<OutlinedInput label="Name" />}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(name, personName, theme)}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                                {formik.touched.state && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.state}</div>}
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <InputLabel
+                                    color='warning'
+                                    sx={{ marginTop: '-6px' }}
+                                    id="demo-multiple-name-label">Select City*</InputLabel>
+                                <Select
+                                    sx={selectStyle}
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                    name='city'
+                                    value={formik.values.city}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    input={<OutlinedInput label="Name" />}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(name, personName, theme)}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                                {formik.touched.city && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.city}</div>}
+                            </FormControl>
 
 
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='Enter your company website*'
-                                type="text"
-                                className='amount-invested-till-date' />
-
-                        </FormControl>
-
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
-                                <IconButton sx={{ p: '10px' }} aria-label="menu">
-                                    <img src={facebook} alt="facebook-logo" width={30} />
-                                </IconButton>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
                                 <input
-                                    style={{ border: 'none', height: '40px' }}
-                                    placeholder='Facebook Link'
+                                    name='pincode'
+                                    value={formik.values.pincode}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='Enter Pin Code*'
                                     type="text"
-                                    className='icon-input' />
-                            </div>
-                        </FormControl>
+                                    className='amount-invested-till-date' />
+                                {formik.touched.pincode && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.pincode}</div>}
+                            </FormControl>
 
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
-                                <IconButton sx={{ p: '10px' }} aria-label="menu">
-                                    <img src={instagram} alt="insta-logo" width={30} />
-                                </IconButton>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
                                 <input
-                                    style={{ border: 'none', height: '40px' }}
-                                    placeholder='Instagram Link'
+                                    name='company_address'
+                                    value={formik.values.company_address}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='Enter your Company Address*'
                                     type="text"
-                                    className='icon-input' />
-                            </div>
-                        </FormControl>
+                                    className='amount-invested-till-date' />
+                                {formik.touched.company_address && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.company_address}</div>}
+                            </FormControl>
+                        </Box>
+                    </Grid>
+                </div>
 
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
-                                <IconButton sx={{ p: '10px' }} aria-label="menu">
-                                    <img src={facebook} alt="facebook-logo" width={30} />
-                                </IconButton>
+                <Typography className="comp-info-appl-title">Online Presence</Typography>
+
+                <div className='gridParent'>
+                    <Grid item xs={6} md={3}>
+                        <Box
+                            sx={{
+                                p: 2,
+                                paddingTop: 4.2,
+                                bgcolor: 'background.default',
+                                display: 'grid',
+                                gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
+                                gap: 2.5,
+                                width: '492',
+                                textAlign: 'left',
+                                fontFamily: 'poppins'
+                            }}
+                        >
+
+
+                            <FormControl sx={{ m: 1, width: "100%" }}>
                                 <input
-                                    style={{ border: 'none', height: '40px' }}
-                                    placeholder='Linked In Link'
+                                    name='website_url'
+                                    value={formik.values.website_url}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='Enter your company website*'
                                     type="text"
-                                    className='icon-input' />
-                            </div>
-                        </FormControl>
+                                    className='amount-invested-till-date' />
+                                {formik.touched.website_url && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.website_url}</div>}
+                            </FormControl>
+
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
+                                    <IconButton sx={{ p: '10px' }} aria-label="menu">
+                                        <img src={facebook} alt="facebook-logo" width={30} />
+                                    </IconButton>
+                                    <input
+                                        name='facebook_link'
+                                        value={formik.values.facebook_link}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        style={{ border: 'none', height: '40px' }}
+                                        placeholder='Facebook Link'
+                                        type="text"
+                                        className='icon-input' />
+                                </div>
+                                {formik.touched.facebook_link && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.facebook_link}</div>}
+                            </FormControl>
+
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
+                                    <IconButton sx={{ p: '10px' }} aria-label="menu">
+                                        <img src={instagram} alt="insta-logo" width={30} />
+                                    </IconButton>
+                                    <input
+                                        name='instagram_link'
+                                        value={formik.values.instagram_link}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        style={{ border: 'none', height: '40px' }}
+                                        placeholder='Instagram Link'
+                                        type="text"
+                                        className='icon-input' />
+                                </div>
+                                {formik.touched.instagram_link && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.instagram_link}</div>}
+                            </FormControl>
+
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
+                                    <IconButton sx={{ p: '10px' }} aria-label="menu">
+                                        <img src={facebook} alt="facebook-logo" width={30} />
+                                    </IconButton>
+                                    <input
+                                        style={{ border: 'none', height: '40px' }}
+                                        placeholder='Linked In Link'
+                                        type="text"
+                                        className='icon-input' />
+                                </div>
+                            </FormControl>
 
 
-                    </Box>
-                </Grid>
-            </div>
+                        </Box>
+                    </Grid>
+                </div>
 
-            <Typography className="comp-info-appl-title">Legal</Typography>
+                <Typography className="comp-info-appl-title">Legal</Typography>
 
-            <div className='gridParent'>
-                <Grid item xs={6} md={3}>
-                    <Box
-                        sx={{
-                            p: 2,
-                            paddingTop: 4.2,
-                            bgcolor: 'background.default',
-                            display: 'grid',
-                            gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
-                            gap: 2.5,
-                            width: '492',
-                            textAlign: 'left',
-                            fontFamily: 'poppins'
-                        }}
-                    >
+                <div className='gridParent'>
+                    <Grid item xs={6} md={3}>
+                        <Box
+                            sx={{
+                                p: 2,
+                                paddingTop: 4.2,
+                                bgcolor: 'background.default',
+                                display: 'grid',
+                                gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
+                                gap: 2.5,
+                                width: '492',
+                                textAlign: 'left',
+                                fontFamily: 'poppins'
+                            }}
+                        >
 
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='Enter your legal name*'
-                                type="text"
-                                className='amount-invested-till-date' />
-
-                        </FormControl>
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='Enter CIN Number*'
-                                type="text"
-                                className='amount-invested-till-date' />
-
-                        </FormControl>
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
                                 <input
-                                    style={{ border: 'none', height: '40px', paddingLeft: 0 }}
-                                    placeholder='Date of Incorporation'
+                                    name='legal_name'
+                                    value={formik.values.legal_name}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='Enter your legal name*'
                                     type="text"
-                                    className='icon-input' />
-                                <IconButton sx={{ p: '10px' }} aria-label="menu">
-                                    <img src={date} alt="date-logo" width={24} />
-                                </IconButton>
-                            </div>
-                        </FormControl>
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='incorporation Type e.g. Private, public etc.'
-                                type="text"
-                                className='amount-invested-till-date' />
+                                    className='amount-invested-till-date' />
+                                {formik.touched.legal_name && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.legal_name}</div>}
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <input
+                                    name='cin'
+                                    value={formik.values.cin}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='Enter CIN Number*'
+                                    type="text"
+                                    className='amount-invested-till-date' />
+                                {formik.touched.cin && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.cin}</div>}
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        name='date_of_incorporation'
+                                        value={formik.values.date_of_incorporation}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        style={{ border: 'none', height: '40px', paddingLeft: 0 }}
+                                        placeholder='Date of Incorporation'
+                                        type="text"
+                                        className='icon-input' />
+                                    <IconButton sx={{ p: '10px' }} aria-label="menu">
+                                        <img src={date} alt="date-logo" width={24} />
+                                    </IconButton>
+                                </div>
+                                {formik.touched.date_of_incorporation && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.date_of_incorporation}</div>}
+                            </FormControl>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <input
+                                    name='incorporation_type'
+                                    value={formik.values.incorporation_type}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='incorporation Type e.g. Private, public etc.'
+                                    type="text"
+                                    className='amount-invested-till-date' />
+                                {formik.touched.incorporation_type && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.incorporation_type}</div>}
+                            </FormControl>
+                        </Box>
+                    </Grid>
+                </div>
 
-                        </FormControl>
-                    </Box>
-                </Grid>
-            </div>
+                <Typography className="comp-info-appl-title">About Company</Typography>
 
-            <Typography className="comp-info-appl-title">About Company</Typography>
-
-            <div className='gridParent'>
-                <Grid item xs={6} md={3}>
-                    <Box
-                        sx={{
-                            p: 2,
-                            paddingTop: 4.2,
-                            bgcolor: 'background.default',
-                            display: 'grid',
-                            gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
-                            gap: 2.5,
-                            width: '492',
-                            textAlign: 'left',
-                            fontFamily: 'poppins'
-                        }}
-                    >
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <InputLabel
-                                color='warning'
-                                id="demo-multiple-name-label"
-                                sx={{ marginTop: '-6px' }} >Select Country*</InputLabel>
-                            <Select
-                                sx={selectStyle}
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
-                                value={personName}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Name" />}
-                                MenuProps={MenuProps}
-                            >
-                                {names.map((name) => (
-                                    <MenuItem
-                                        key={name}
-                                        value={name}
-                                        style={getStyles(name, personName, theme)}
-                                    >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
+                <div className='gridParent'>
+                    <Grid item xs={6} md={3}>
+                        <Box
+                            sx={{
+                                p: 2,
+                                paddingTop: 4.2,
+                                bgcolor: 'background.default',
+                                display: 'grid',
+                                gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
+                                gap: 2.5,
+                                width: '492',
+                                textAlign: 'left',
+                                fontFamily: 'poppins'
+                            }}
+                        >
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <InputLabel
+                                    color='warning'
+                                    id="demo-multiple-name-label"
+                                    sx={{ marginTop: '-6px' }} >Select Country*</InputLabel>
+                                <Select
+                                    sx={selectStyle}
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                    name="country"
+                                    value={formik.values.country}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    input={<OutlinedInput label="Name" />}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(name, personName, theme)}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                                {formik.touched.country && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.country}</div>}
+                            </FormControl>
 
 
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <input
-                                placeholder='Amount Invested in the business till date *'
-                                type="text"
-                                className='amount-invested-till-date' />
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <input
+                                    name='invested_so_far'
+                                    value={formik.values.invested_so_far}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder='Amount Invested in the business till date *'
+                                    type="text"
+                                    className='amount-invested-till-date' />
+                                {formik.touched.invested_so_far && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.invested_so_far}</div>}
+                            </FormControl>
 
-                        </FormControl>
+                            <FormControl sx={{ m: 1, width: "100%" }}>
+                                <InputLabel
+                                    color='warning'
+                                    sx={{ marginTop: '-6px' }}
+                                    id="demo-multiple-name-label">Select City*</InputLabel>
+                                <Select
+                                    sx={selectStyle}
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                    name='city'
+                                    value={formik.values.city}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    input={<OutlinedInput label="Name" />}
+                                    MenuProps={MenuProps}
+                                >
+                                    {names.map((name) => (
+                                        <MenuItem
+                                            key={name}
+                                            value={name}
+                                            style={getStyles(name, personName, theme)}
+                                        >
+                                            {name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                                {formik.touched.city && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.city}</div>}
+                            </FormControl>
+                        </Box>
+                    </Grid>
+                </div>
 
-                        <FormControl sx={{ m: 1, width: "100%" }}>
-                            <InputLabel
-                                color='warning'
-                                sx={{ marginTop: '-6px' }}
-                                id="demo-multiple-name-label">Select City*</InputLabel>
-                            <Select
-                                sx={selectStyle}
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
-                                value={personName}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Name" />}
-                                MenuProps={MenuProps}
-                            >
-                                {names.map((name) => (
-                                    <MenuItem
-                                        key={name}
-                                        value={name}
-                                        style={getStyles(name, personName, theme)}
-                                    >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Box>
-                </Grid>
-            </div>
-
-            <div className="buttonsParent">
-                <Button
-                    style={{ margin: '20px', color: 'black' }}
-                    variant='contained' className="comp-prof-button1">Save</Button>
-                <Button
-                    style={{ margin: '20px' }}
-                    variant="contained" className="comp-prof-button2">Submit</Button>
-            </div>
+                <div className="buttonsParent">
+                    <Button
+                        type='submit'
+                        style={{ margin: '20px', color: 'black' }}
+                        variant='contained' className="comp-prof-button1">Save</Button>
+                    <Button
+                        type='submit'
+                        style={{ margin: '20px' }}
+                        variant="contained" className="comp-prof-button2">Submit</Button>
+                </div>
+            </form>
         </Container>
     )
 }

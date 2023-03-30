@@ -2,13 +2,18 @@ import { Card, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Tooltip
 import React, { useState } from 'react'
 import './../../css/Founder/FounderApplication.css'
 import yellowArrow from '../../images/assets/yellowArrow.png'
-import { Box, textAlign } from '@mui/system'
+import { Box } from '@mui/system'
 import { styled } from '@material-ui/styles'
 import { useFormik } from 'formik'
 import FounderApplicationValSchema from '../../Validations/FounderApplicationValSchema'
 import { useEffect } from 'react'
+import { storeFounderSignUpData } from '../../Redux/actions/FounderSignUp'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const FounderApplication = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const CustomWidthTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))({
@@ -38,29 +43,43 @@ const FounderApplication = () => {
         }
     }
 
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            company_name: '',
+            name: '',
             company_email: "",
-            founder_linkedIn_url: "",
+            founder_linked_in_profile: "",
             registered_company_name: "",
-            company_linkedIn_page: "",
+            company_linked_in_profile: "",
             website_url: "",
-            prev_fundraising_rounds: "",
+            previous_funding: "",
             product_description: "",
             traction_description: "",
-            revenue_description: "",
-            community_raise_reason: "",
-            right_invest_thinking: "",
+            revenue: "",
+            reason_for_community_round: "",
+            reason_for_mynt: "",
             existing_commitments: "",
+            // checks
+            is_fund_raise: false,
+            is_growth_hack: false,
+            is_tech_p_dev: false,
+            is_ivestor_readiness: false,
+            is_finan_advisory: false,
+            is_legal_advisory: false
         },
 
         validationSchema: FounderApplicationValSchema,
 
         onSubmit: (values) => {
+            delete values.is_fund_raise;
+            delete values.is_growth_hack;
+            delete values.is_tech_p_dev;
+            delete values.is_ivestor_readiness;
+            delete values.is_finan_advisory;
+            delete values.is_legal_advisory;
+            // dispatch(storeFounderSignUpData(values))
             console.log(values)
+            navigate("/signup-founder")
         }
     });
 
@@ -92,7 +111,8 @@ const FounderApplication = () => {
                                             left: 0,
                                             width: '100%',
                                             height: '100%',
-                                            objectFit: 'cover'
+                                            objectFit: 'cover',
+                                            borderRadius: '4px'
                                         }} src={preview} alt="Preview" />
                                         : "Logo"
                                 }
@@ -108,86 +128,98 @@ const FounderApplication = () => {
                                 <input id='uploadCompanyLogo' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
                             </div>
                         </div>
-                        <form action="">
+                        <form onSubmit={formik.handleSubmit}>
 
-                            <CustomWidthTooltip title="This should be the name your company uses on your website and in the market." arrow placement='right'>
-                                <input
-                                    id='company_name'
-                                    name='company_name'
-                                    value={formik.values.company_name}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Enter Your Name*'
-                                    type="text"
-                                    className='inp-enter-name'
-                                />
-                            </CustomWidthTooltip>
+                            {/* <CustomWidthTooltip disableFocusListener title="This should be the name your company uses on your website and in the market." arrow placement='right'> */}
+                            <input
+                                id='name'
+                                name='name'
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Enter Your Name*'
+                                type="text"
+                                className='inp-enter-name'
+                            />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.name && <div className="raise-err-text">{formik.errors.name}</div>}
 
-                            <CustomWidthTooltip title="Enter Your Company Email ID*" arrow placement='right'>
-                                <input
-                                    name="company_email"
-                                    value={formik.values.company_email}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Enter Your Company Email ID*' type="email" className='inp-enter-name' />
-                            </CustomWidthTooltip>
 
-                            <CustomWidthTooltip
-                                title="Founder’s LinkedIn URL*" arrow placement='right'>
-                                <input
-                                    name="founder_linkedIn_url"
-                                    value={formik.values.founder_linkedIn_url}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Founder’s LinkedIn URL*'
-                                    type="text"
-                                    className='inp-enter-name' />
-                            </CustomWidthTooltip>
+                            {/* <CustomWidthTooltip title="Enter Your Company Email ID*" arrow placement='right'> */}
+                            <input
+                                name="company_email"
+                                value={formik.values.company_email}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Enter Your Company Email ID*' type="email" className='inp-enter-name' />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.company_email && <div className="raise-err-text">{formik.errors.company_email}</div>}
 
-                            <CustomWidthTooltip title="Registered Company Name*" arrow placement='right'>
-                                <input
-                                    name="registered_company_name"
-                                    value={formik.values.registered_company_name}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Registered Company Name*'
-                                    type="text"
-                                    className='inp-enter-name' />
-                            </CustomWidthTooltip>
 
-                            <CustomWidthTooltip title="Company’s LinkedIn Page*" arrow placement='right'>
-                                <input
-                                    name="company_linkedIn_page"
-                                    value={formik.values.company_linkedIn_page}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Company’s LinkedIn Page*'
-                                    type="text"
-                                    className='inp-enter-name' />
-                            </CustomWidthTooltip>
+                            {/* <CustomWidthTooltip
+                                title="Founder’s LinkedIn URL*" arrow placement='right'> */}
+                            <input
+                                name="founder_linked_in_profile"
+                                value={formik.values.founder_linked_in_profile}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Founder’s LinkedIn URL*'
+                                type="text"
+                                className='inp-enter-name' />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.founder_linked_in_profile && <div className="raise-err-text">{formik.errors.founder_linked_in_profile}</div>}
 
-                            <CustomWidthTooltip title="Website URL*" arrow placement='right'>
-                                <input
-                                    name="website_url"
-                                    value={formik.values.website_url}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Website URL*'
-                                    type="text"
-                                    className='inp-enter-name' />
-                            </CustomWidthTooltip>
 
-                            <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'>
-                                <textarea
-                                    name="prev_fundraising_rounds"
-                                    value={formik.values.prev_fundraising_rounds}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Describe your previous fundraising rounds*' className='inp-textarea-desc'
-                                    id="describe"
-                                    rows="7"></textarea>
-                            </CustomWidthTooltip>
+                            {/* <CustomWidthTooltip title="Registered Company Name*" arrow placement='right'> */}
+                            <input
+                                name="registered_company_name"
+                                value={formik.values.registered_company_name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Registered Company Name*'
+                                type="text"
+                                className='inp-enter-name' />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.registered_company_name && <div className="raise-err-text">{formik.errors.registered_company_name}</div>}
 
+
+                            {/* <CustomWidthTooltip title="Company’s LinkedIn Page*" arrow placement='right'> */}
+                            <input
+                                name="company_linked_in_profile"
+                                value={formik.values.company_linked_in_profile}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Company’s LinkedIn Page*'
+                                type="text"
+                                className='inp-enter-name' />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.company_linked_in_profile && <div className="raise-err-text">{formik.errors.company_linked_in_profile}</div>}
+
+
+                            {/* <CustomWidthTooltip title="Website URL*" arrow placement='right'> */}
+                            <input
+                                name="website_url"
+                                value={formik.values.website_url}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Website URL*'
+                                type="text"
+                                className='inp-enter-name' />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.website_url && <div className="raise-err-text">{formik.errors.website_url}</div>}
+
+
+                            {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
+                            <textarea
+                                name="previous_funding"
+                                value={formik.values.previous_funding}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Describe your previous fundraising rounds*' className='inp-textarea-desc'
+                                id="describe"
+                                rows="7"></textarea>
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.previous_funding && <div className="raise-err-text">{formik.errors.previous_funding}</div>}
 
                             <Typography className='pick-the-services'>Pick the services you need from our vetted domain partners*</Typography>
 
@@ -207,133 +239,185 @@ const FounderApplication = () => {
                                         }}
                                     >
                                         <Card elevation={0} className='checkbox-card'>
-                                            <FormControlLabel control={<Checkbox defaultChecked sx={{
-                                                color: "black",
-                                                '&.Mui-checked': {
-                                                    color: "#098211",
-                                                },
-                                            }} />} label="Fund Raising" />
+                                            <FormControlLabel
+                                                name="is_fund_raise"
+                                                value={formik.values.is_fund_raise}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                control={<Checkbox defaultChecked sx={{
+                                                    color: "black",
+                                                    '&.Mui-checked': {
+                                                        color: "#098211",
+                                                    },
+                                                }} />} label="Fund Raising" />
+                                            {formik.touched.is_fund_raise && <div className="raise-err-text" style={{ paddinTop: "5px" }}>{formik.errors.is_fund_raise}</div>}
+                                        </Card>
+
+                                        <Card elevation={0} className='checkbox-card'>
+                                            <FormControlLabel
+                                                name="is_growth_hack"
+                                                value={formik.values.is_growth_hack}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                control={<Checkbox sx={{
+                                                    color: "black",
+                                                    '&.Mui-checked': {
+                                                        color: "#098211",
+                                                    },
+                                                }} />} label="Growth Hacking" />
+                                            {formik.touched.is_growth_hack && <div className="raise-err-text" style={{ paddingTop: "5px" }}>{formik.errors.is_growth_hack}</div>}
                                         </Card>
                                         <Card elevation={0} className='checkbox-card'>
-                                            <FormControlLabel control={<Checkbox sx={{
-                                                color: "black",
-                                                '&.Mui-checked': {
-                                                    color: "#098211",
-                                                },
-                                            }} />} label="Growth Hacking" />
+                                            <FormControlLabel
+                                                name="is_tech_p_dev"
+                                                value={formik.values.is_tech_p_dev}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                control={<Checkbox sx={{
+                                                    color: "black",
+                                                    '&.Mui-checked': {
+                                                        color: "#098211",
+                                                    },
+                                                }} />} label="Tech Product Development" />
+                                            {formik.touched.is_tech_p_dev && <div className="raise-err-text" style={{ paddingTop: "5px" }}>{formik.errors.is_tech_p_dev}</div>}
                                         </Card>
                                         <Card elevation={0} className='checkbox-card'>
-                                            <FormControlLabel control={<Checkbox sx={{
-                                                color: "black",
-                                                '&.Mui-checked': {
-                                                    color: "#098211",
-                                                },
-                                            }} />} label="Tech Product Development" />
+                                            <FormControlLabel
+                                                name="is_finan_advisory"
+                                                value={formik.values.is_finan_advisory}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                control={<Checkbox sx={{
+                                                    color: "black",
+                                                    '&.Mui-checked': {
+                                                        color: "#098211",
+                                                    },
+                                                }} />} label="Financial Advisory" />
+                                            {formik.touched.is_finan_advisory && <div className="raise-err-text" style={{ paddingTop: "5px" }}>{formik.errors.is_finan_advisory}</div>}
                                         </Card>
                                         <Card elevation={0} className='checkbox-card'>
-                                            <FormControlLabel control={<Checkbox sx={{
-                                                color: "black",
-                                                '&.Mui-checked': {
-                                                    color: "#098211",
-                                                },
-                                            }} />} label="Financial Advisory" />
+                                            <FormControlLabel
+                                                name="is_ivestor_readiness"
+                                                value={formik.values.is_ivestor_readiness}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                control={<Checkbox sx={{
+                                                    color: "black",
+                                                    '&.Mui-checked': {
+                                                        color: "#098211",
+                                                    },
+                                                }} />} label="Investor Readiness" />
+                                            {formik.touched.is_ivestor_readiness && <div className="raise-err-text" style={{ paddingTop: "5px" }}>{formik.errors.is_ivestor_readiness}</div>}
                                         </Card>
                                         <Card elevation={0} className='checkbox-card'>
-                                            <FormControlLabel control={<Checkbox sx={{
-                                                color: "black",
-                                                '&.Mui-checked': {
-                                                    color: "#098211",
-                                                },
-                                            }} />} label="Investor Readiness" />
-                                        </Card>
-                                        <Card elevation={0} className='checkbox-card'>
-                                            <FormControlLabel control={<Checkbox sx={{
-                                                color: "black",
-                                                '&.Mui-checked': {
-                                                    color: "#098211",
-                                                },
-                                            }} />} label="Legal Advisory " />
+                                            <FormControlLabel
+                                                name="is_legal_advisory"
+                                                value={formik.values.is_legal_advisory}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                control={<Checkbox sx={{
+                                                    color: "black",
+                                                    '&.Mui-checked': {
+                                                        color: "#098211",
+                                                    },
+                                                }} />} label="Legal Advisory " />
+                                            {formik.touched.is_legal_advisory && <div className="raise-err-text" style={{ paddingTop: "5px" }}>{formik.errors.is_legal_advisory}</div>}
                                         </Card>
                                     </Box>
                                 </Grid>
                             </div>
 
-                            <CustomWidthTooltip title="Describe your product*" arrow placement='right'>
-                                <textarea
-                                    name="product_description"
-                                    value={formik.values.product_description}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Describe your product*'
-                                    className='inp-textarea-desc'
-                                    rows="7"></textarea>
-                            </CustomWidthTooltip>
-
-                            <CustomWidthTooltip title="Describe the traction*" arrow placement='right'>
-                                <textarea
-                                    name="traction_description"
-                                    value={formik.values.traction_description}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Describe the traction*'
-                                    className='inp-textarea-desc'
-                                    id="describe" rows="7"></textarea>
-                            </CustomWidthTooltip>
-
-                            <CustomWidthTooltip title="Describe the revenue you are making*" arrow placement='right'>
-                                <input
-                                    name="revenue_description"
-                                    value={formik.values.revenue_description}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Describe the revenue you are making*'
-                                    type="text"
-                                    className='inp-enter-name' />
-                            </CustomWidthTooltip>
-
-                            <CustomWidthTooltip title="Why do you want to raise a Community round?*" arrow placement='right'>
-                                <textarea
-                                    name="community_raise_reason"
-                                    value={formik.values.community_raise_reason}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Why do you want to raise a Community round?*' className='inp-textarea-desc'
-                                    id="describe"
-                                    rows="7"></textarea>
-                            </CustomWidthTooltip>
-
-                            <CustomWidthTooltip title="What makes you think MyntInvest is the right fit for you?*" arrow placement='right'>
-                                <textarea
-                                    name="right_invest_thinking"
-                                    value={formik.values.right_invest_thinking}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='What makes you think MyntInvest is the right fit for you?*'
-                                    className='inp-textarea-desc'
-                                    id="describe"
-                                    rows="7"></textarea>
-                            </CustomWidthTooltip>
-
-                            <CustomWidthTooltip title="Do you have any existing commitments?*" arrow placement='right'>
-                                <textarea
-                                    name="existing_commitments"
-                                    value={formik.values.existing_commitments}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    placeholder='Do you have any existing commitments?*' className='inp-textarea-desc'
-                                    id="describe"
-                                    rows="7"></textarea>
-                            </CustomWidthTooltip>
+                            {/* <CustomWidthTooltip title="Describe your product*" arrow placement='right'> */}
+                            <textarea
+                                name="product_description"
+                                value={formik.values.product_description}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Describe your product*'
+                                className='inp-textarea-desc'
+                                rows="7"></textarea>
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.product_description && <div className="raise-err-text">{formik.errors.product_description}</div>}
 
 
-                            {/* <Typography className='upload-ur-pitch'>Upload your Pitch*</Typography>
+                            {/* <CustomWidthTooltip title="Describe the traction*" arrow placement='right'> */}
+                            <textarea
+                                name="traction_description"
+                                value={formik.values.traction_description}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Describe the traction*'
+                                className='inp-textarea-desc'
+                                id="describe" rows="7"></textarea>
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.traction_description && <div className="raise-err-text">{formik.errors.traction_description}</div>}
 
-                        <div className='drag-and-drop-parent' >
-                            <div style={{ textAlign: 'center' }}>
-                                <Typography className='drag-and-drop-text'>Drag and Drop or click here to browse</Typography>
-                                <span className='max-size-text'>Max size 10 MB</span>
+
+                            {/* <CustomWidthTooltip title="Describe the revenue you are making*" arrow placement='right'> */}
+                            <input
+                                name="revenue"
+                                value={formik.values.revenue}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Describe the revenue you are making*'
+                                type="text"
+                                className='inp-enter-name' />
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.revenue && <div className="raise-err-text">{formik.errors.revenue}</div>}
+
+
+
+                            {/* <CustomWidthTooltip title="Why do you want to raise a Community round?*" arrow placement='right'> */}
+                            <textarea
+                                name="reason_for_community_round"
+                                value={formik.values.reason_for_community_round}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Why do you want to raise a Community round?*' className='inp-textarea-desc'
+                                id="describe"
+                                rows="7"></textarea>
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.reason_for_community_round && <div className="raise-err-text">{formik.errors.reason_for_community_round}</div>}
+
+
+
+                            {/* <CustomWidthTooltip title="What makes you think MyntInvest is the right fit for you?*" arrow placement='right'> */}
+                            <textarea
+                                name="reason_for_mynt"
+                                value={formik.values.reason_for_mynt}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='What makes you think MyntInvest is the right fit for you?*'
+                                className='inp-textarea-desc'
+                                id="describe"
+                                rows="7"></textarea>
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.reason_for_mynt && <div className="raise-err-text">{formik.errors.reason_for_mynt}</div>}
+
+
+
+                            {/* <CustomWidthTooltip title="Do you have any existing commitments?*" arrow placement='right'> */}
+                            <textarea
+                                name="existing_commitments"
+                                value={formik.values.existing_commitments}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder='Do you have any existing commitments?*' className='inp-textarea-desc'
+                                id="describe"
+                                rows="7"></textarea>
+                            {/* </CustomWidthTooltip> */}
+                            {formik.touched.existing_commitments && <div className="raise-err-text">{formik.errors.existing_commitments}</div>}
+
+
+
+                            <Typography className='upload-ur-pitch'>Upload your Pitch*</Typography>
+
+                            <div className='drag-and-drop-parent' >
+                                <div style={{ textAlign: 'center' }}>
+                                    <Typography className='drag-and-drop-text'>Drag and Drop or click here to browse</Typography>
+                                    <span className='max-size-text'>Max size 10 MB</span>
+                                </div>
                             </div>
-                        </div> */}
 
 
                             <div className='founder-appln-submit-parent'>
@@ -342,7 +426,7 @@ const FounderApplication = () => {
                         </form>
                     </div>
                 </div>
-            </Container>
+            </Container >
         </React.Fragment >
     )
 }
