@@ -57,7 +57,7 @@ const UploadDocuments = () => {
                         </div>)
                     }
 
-                    <div className='icon-name-upload-doc'>
+                    {/* <div className='icon-name-upload-doc'>
                         <img src={pptxIcon} alt="doc-icon" width={62} />
                         <Typography className='doc-name'>MOA.PPTX</Typography>
                     </div>
@@ -68,7 +68,7 @@ const UploadDocuments = () => {
                     <div style={{ height: '100px', width: '100px' }}>
                         <img src={pdfIcon} alt="doc-icon" width={62} />
                         <Typography className='doc-name'>COI.PDF</Typography>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

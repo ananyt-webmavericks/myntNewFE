@@ -15,6 +15,7 @@ import UserServices from "../../service/UserService";
 import { useDispatch } from "react-redux";
 import { userEmailAction } from "../../Redux/actions/auth";
 import { userLoginAction } from "../../Redux/actions/auth";
+import { useEffect } from 'react';
 
 
 const data = {
@@ -22,7 +23,7 @@ const data = {
     last_name: '',
     email: '',
     social_login: false,
-    user_type: "INVESTOR"
+    user_type: "FOUNDER"
 }
 
 const FounderSignUp = () => {
@@ -34,6 +35,7 @@ const FounderSignUp = () => {
     const notify = (data) => {
         toast.error(data)
     }
+
     const handleChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value })
     }
@@ -60,7 +62,7 @@ const FounderSignUp = () => {
                         if (response.status === 201) {
                             dispatch(userLoginAction(response.data))
                             localStorage.setItem('loginType', 'new')
-                            navigate('/otp-verification')
+                            navigate('/otp-verification-founder')
                         }
 
                     })
@@ -70,6 +72,11 @@ const FounderSignUp = () => {
             }
         }
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <React.Fragment>
             <CssBaseline />

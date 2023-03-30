@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 const FounderApplicationValSchema = Yup.object({
     // company_name: '',
     // company_email: "",
-    // founder_linkedIn_url: "",
+    // founder_linked_in_profile: "",
     // registered_company_name: "",
     // company_linkedIn_page: "",
     // website_url: "",
@@ -11,62 +11,90 @@ const FounderApplicationValSchema = Yup.object({
     // product_description: "",
     // traction_description: "",
     // revenue_description: "",
-    // community_raise_reason: "",
-    // right_invest_thinking: "",
+    // reason_for_community_round: "",
+    // reason_for_mynt: "",
     // existing_commitments: "",
-    company_name:
+    name:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("Your name is required!"),
 
     company_email:
         Yup
             .string()
-            .required("Name is required!"),
-    founder_linkedIn_url:
+            .required("Email is required!"),
+    founder_linked_in_profile:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("Linkedin url is required!"),
     registered_company_name:
         Yup
             .string()
-            .required("Name is required!"),
-    company_linkedIn_page:
+            .required("Registered company name is required!"),
+    company_linked_in_profile:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("company's linkedin page url is required!"),
     website_url:
         Yup
             .string()
-            .required("Name is required!"),
-    prev_fundraising_rounds:
+            .required("Website url is required!"),
+    previous_funding:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("previous fund raising round is required!"),
     product_description:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("Product description is required!"),
     traction_description:
         Yup
             .string()
-            .required("Name is required!"),
-    revenue_description:
+            .required("Traction is required!"),
+    revenue:
         Yup
             .string()
-            .required("Name is required!"),
-    community_raise_reason:
+            .required("Revenue description is required!"),
+    reason_for_community_round:
         Yup
             .string()
-            .required("Name is required!"),
-    right_invest_thinking:
+            .required("Community raise reason is required!"),
+    reason_for_mynt:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("This field is required!"),
     existing_commitments:
         Yup
             .string()
-            .required("Name is required!"),
+            .required("This field is required!"),
+
+
+    // is_fund_raise: false,
+    // is_growth_hack: false,
+    // is_tech_p_dev: false,
+    // is_ivestor_readiness: false,
+    // is_finan_advisory: false,
+    // is_legal_advisory: false
+
+
+    is_fund_raise:
+        Yup
+            .boolean(),
+    is_growth_hack:
+        Yup
+            .boolean(),
+    is_tech_p_dev:
+        Yup
+            .boolean(),
+    is_ivestor_readiness:
+        Yup
+            .boolean(),
+    is_finan_advisory:
+        Yup
+            .boolean(),
+    is_legal_advisory:
+        Yup
+            .boolean(),
 
 });
 

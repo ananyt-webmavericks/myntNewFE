@@ -3,12 +3,14 @@ import { styled } from '@material-ui/styles';
 import { Box, Button, Container, Tooltip, tooltipClasses, Typography } from '@mui/material'
 import '../../../css/FounderDrawer/Dashboard/FAQs.css'
 import { useState } from 'react';
+import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
 
 const FAQS = () => {
 
     const [q1Count, setQ1Count] = useState(0)
     const [q2Count, setQ2Count] = useState(0)
-
+    const { userData } = useSelector(state => state.loginData)
     const CustomWidthTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))({
@@ -27,6 +29,21 @@ const FAQS = () => {
         console.log(count)
         setQ1Count(string.target.value)
     }
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            user_id: userData.id,
+            type: 'INVESTOR',
+            profile_image: 'https://i.pinimg.com/736x/d8/ea/1b/d8ea1be3acc5102e993e8b1780f6a569.jpg',
+        },
+
+        validationSchema: "",
+
+        onSubmit: (values) => {
+        }
+    });
+
 
     return (
         <Container maxWidth="lg">
