@@ -7,10 +7,10 @@ const PeopleTabValSchema = Yup.object({
     // instagram_link: '',
     // linked_in_link: '',
     // description: '',
-    user_id: Yup
+    company_id: Yup
         .number()
         .typeError("Id must be a number!")
-        .required("Name is required!"),
+        .required("Company id is required!"),
     name: Yup
         .string()
         .required("Name is required!"),

@@ -32,7 +32,7 @@ export default function LoginMain() {
         if (!isEmail(email)) setErrorMsg(true)
         else {
             try {
-                UserServices.LoginUserByEmail(email).then(
+                UserServices.LoginUserByEmail({ email, login_type: "INVESTOR" }).then(
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {

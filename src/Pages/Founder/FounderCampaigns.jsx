@@ -112,9 +112,25 @@ const FounderCampaigns = () => {
                                     </Card>
                                 </Grid>
 
+
                                 <Grid item xs={12} sm={6}>
                                     <Card
                                         onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 1 } })}
+                                        className={classes.paperconten} >
+                                        <div className={classes.Card}>
+                                            <b className={classes.typofont}>Upload Pitch</b>
+                                            <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
+                                        </div>
+                                        <Box><p className={classes.para}>Upload a pdf of your pitch deck</p></Box>
+                                        <div className={classes.root2}>
+                                            <LinearProgressWithLabel value={progress} />
+                                        </div>
+                                    </Card>
+                                </Grid>
+
+                                <Grid item xs={12} sm={6}>
+                                    <Card
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 2 } })}
                                         className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>People</b>
@@ -129,7 +145,7 @@ const FounderCampaigns = () => {
 
                                 <Grid item xs={12} sm={6}>
                                     <Card
-                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 2 } })}
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 3 } })}
                                         className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>FAQ’s</b>
@@ -144,7 +160,7 @@ const FounderCampaigns = () => {
 
                                 <Grid item xs={12} sm={6}>
                                     <Card
-                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 3 } })}
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 4 } })}
                                         className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Highlights</b>
@@ -159,7 +175,7 @@ const FounderCampaigns = () => {
 
                                 <Grid item xs={12} sm={6}>
                                     <Card
-                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 4 } })}
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 5 } })}
                                         className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Promotion</b>
@@ -174,7 +190,7 @@ const FounderCampaigns = () => {
 
                                 <Grid item xs={12} sm={6}>
                                     <Card
-                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 5 } })}
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 6 } })}
                                         className={classes.paperconten} >
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Press</b>
@@ -190,28 +206,13 @@ const FounderCampaigns = () => {
 
                                 <Grid item xs={12} sm={6}>
                                     <Card
-                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 6 } })}
+                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 7 } })}
                                         className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Upload Documents</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Completed</Button>
                                         </div>
                                         <Box className={classes.para}><p>Upload all due diligence documents for investors to review </p></Box>
-                                        <div className={classes.root2}>
-                                            <LinearProgressWithLabel value={progress} />
-                                        </div>
-                                    </Card>
-                                </Grid>
-
-                                <Grid item xs={12} sm={6}>
-                                    <Card
-                                        onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 7 } })}
-                                        className={classes.paperconten} >
-                                        <div className={classes.Card}>
-                                            <b className={classes.typofont}>Upload Pitch</b>
-                                            <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
-                                        </div>
-                                        <Box><p className={classes.para}>Upload a pdf of your pitch deck</p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import CompanyServices from '../../../../service/Company'
 import PeopleTabValSchema from '../../../../Validations/PeopleTabValSchema'
+import { toast } from 'react-toastify'
 const Advisors = () => {
     const { userData } = useSelector(state => state.loginData)
 
@@ -35,7 +36,7 @@ const Advisors = () => {
             description: '',
             type: 'ADVISOR',
             profile_image: 'https://i.pinimg.com/736x/d8/ea/1b/d8ea1be3acc5102e993e8b1780f6a569.jpg',
-            user_id: userData.id
+            company_id: localStorage.getItem("company_id")
         },
 
         validationSchema: PeopleTabValSchema,
@@ -43,7 +44,9 @@ const Advisors = () => {
         onSubmit: (values) => {
             console.log(values)
             CompanyServices.addPeopleToCompany(values).then(res => {
-                console.log(res.data)
+                if (res.status === 200 || 201) {
+                    toast.success("Advisor added to company successfull!")
+                }
             })
         }
     });

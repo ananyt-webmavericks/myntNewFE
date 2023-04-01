@@ -10,7 +10,7 @@ const GetStarted = () => {
 
                 <GetStartedSection />
             </Container>
-            
+
         </React.Fragment>
     )
 }

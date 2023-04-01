@@ -39,20 +39,21 @@ const FounderCampaingsTabs = () => {
         switch (x) {
             case 0: return <CompanyProfile />
                 break;
-            case 1: return <People />
+            case 1: return <UploadPitch />
                 break;
-            case 2: return <FAQS />
+            case 2: return <People />
                 break;
-            case 3: return <Highlights />
+            case 3: return <FAQS />
                 break;
-            case 4: return <GetRewards />
+            case 4: return <Highlights />
                 break;
-            case 5: return <Press />
+            case 5: return <GetRewards />
                 break;
-            case 6: return <UploadDocuments />
+            case 6: return <Press />
                 break;
-            case 7: return <UploadPitch />
+            case 7: return <UploadDocuments />
                 break;
+
 
             default: return <CompanyProfile />
                 break;
@@ -102,25 +103,26 @@ const FounderCampaingsTabs = () => {
                                     label="Company Profile" />
                                 <Tab
                                     style={value === 1 ? tabStyle : null}
-                                    sx={tabSxStyle} label="People" />
+                                    sx={tabSxStyle} label="Upload Pitch" />
                                 <Tab
                                     style={value === 2 ? tabStyle : null}
-                                    sx={tabSxStyle} label="FAQs" />
+                                    sx={tabSxStyle} label="People" />
                                 <Tab
                                     style={value === 3 ? tabStyle : null}
-                                    sx={tabSxStyle} label="Highlights" />
+                                    sx={tabSxStyle} label="FAQs" />
                                 <Tab
                                     style={value === 4 ? tabStyle : null}
-                                    sx={tabSxStyle} label="Promotion" />
+                                    sx={tabSxStyle} label="Highlights" />
                                 <Tab
                                     style={value === 5 ? tabStyle : null}
-                                    sx={tabSxStyle} label="Press" />
+                                    sx={tabSxStyle} label="Promotion" />
                                 <Tab
                                     style={value === 6 ? tabStyle : null}
-                                    sx={tabSxStyle} label="Upload Documents" />
+                                    sx={tabSxStyle} label="Press" />
                                 <Tab
                                     style={value === 7 ? tabStyle : null}
-                                    sx={tabSxStyle} label="Upload Pitch" />
+                                    sx={tabSxStyle} label="Upload Documents" />
+
                             </Tabs>
                         </Box>
                     </div>

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function OtpVerificationMainFounder() {
+export default function OtpVerificationMainFounder({ email, founderLoginData, isNewCreate }) {
     const [OTP, setOTP] = useState("");
     const [WarnMsg, setWarnMsg] = useState(false)
     const navigate = useNavigate()
@@ -59,22 +59,26 @@ export default function OtpVerificationMainFounder() {
         const usernames = userMail ? userMail : userData.email
         let data = { email: usernames, otp: OTP }
         try {
-            OtpServices.VerifyEmailOtp(data).then(
+            OtpServices.VerifyEmailOtp({ otp: data.otp, email }).then(
                 (response) => {
                     console.log(response.data)
                     if (response.data.status !== 'false') {
                         localStorage.setItem("access_token", response.data.access_token)
                         console.log(response.data)
-                        CompanyServices.createCompany({ user_id: response.data.id }).then(
-                            (response) => {
-                                if (response.data) {
-                                    console.log("founder created")
-                                    navigate('dashboard-founder')
-                                } else {
-                                    console.log("failed! founder create")
+                        dispatch(userLoginAction(founderLoginData ? founderLoginData : response.data.data))
+                        isNewCreate
+                            ? CompanyServices.createCompany({ user_id: response.data.data.id, ...founderData }).then(
+                                (response) => {
+                                    if (response.data) {
+                                        console.log("founder created")
+                                        navigate('/dashboard-founder/e-signin')
+                                    } else {
+                                        console.log("failed! founder create")
+                                        toast.error("Something went wrong! please try again later")
+                                    }
                                 }
-                            }
-                        )
+                            )
+                            : navigate('/dashboard-founder/e-signin')
                     }
                     else {
                         setOTP('')

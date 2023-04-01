@@ -43,6 +43,9 @@ const CompanyProfileValSchema = Yup.object({
     instagram_link: Yup
         .string()
         .required("Instagram link is required!"),
+    company_linked_in_profile: Yup
+        .string()
+        .required("Linked in link is required!"),
     legal_name: Yup
         .string()
         .required("Legal name is required!"),

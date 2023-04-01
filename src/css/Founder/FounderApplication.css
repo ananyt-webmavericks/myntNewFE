@@ -187,6 +187,7 @@ input::placeholder {
     color: black;
     font-weight: bold;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .founder-appln-submit-parent {

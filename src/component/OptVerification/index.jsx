@@ -60,6 +60,7 @@ export default function OtpVerificationMain() {
             OtpServices.VerifyEmailOtp(data).then(
                 (response) => {
                     if (response.data.status !== 'false') {
+                        localStorage.setItem("access_token", response.data.access_token)
                         dispatch(userLoginAction(response.data.data))
                         if (loginType === 'new') {
                             navigate('/about-you')

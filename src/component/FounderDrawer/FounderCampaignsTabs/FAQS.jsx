@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { styled } from '@material-ui/styles';
 import { Box, Button, Container, Tooltip, tooltipClasses, Typography } from '@mui/material'
 import '../../../css/FounderDrawer/Dashboard/FAQs.css'
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
+import FAQsValSchema from '../../../Validations/FAQsValSchema';
+import CompanyServices from '../../../service/Company';
+import { toast } from 'react-toastify';
 
 const FAQS = () => {
 
     const [q1Count, setQ1Count] = useState(0)
     const [q2Count, setQ2Count] = useState(0)
+    const [addedFaqs, setAddedFaqs] = useState([])
+    const [count, setcount] = useState(0)
     const { userData } = useSelector(state => state.loginData)
     const CustomWidthTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
@@ -33,65 +38,111 @@ const FAQS = () => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            user_id: userData.id,
-            type: 'INVESTOR',
-            profile_image: 'https://i.pinimg.com/736x/d8/ea/1b/d8ea1be3acc5102e993e8b1780f6a569.jpg',
+            campaign_id: sessionStorage.getItem("campaign_id"),
+            question: '',
+            answer: '',
         },
 
-        validationSchema: "",
+        validationSchema: FAQsValSchema,
 
         onSubmit: (values) => {
+            console.log(values)
+            let obj = {
+                campaign_id: values.campaign_id,
+                faqs: [
+                    {
+                        question: values.question,
+                        answer: values.answer,
+                    }
+                ]
+            }
+            CompanyServices.addFAQ(obj).then(res => {
+                console.log(res)
+                if (res.status === 200 || res.status === 201) {
+                    toast.success("FAQ added successfully!")
+                    setcount(pre => pre + 1)
+                } else {
+                    toast.error("Something went wrong, please try again later")
+                }
+            })
         }
     });
+
+    useEffect(() => {
+        CompanyServices.getCampaignsFaqs(sessionStorage.getItem("campaign_id")).then(res => {
+            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                setAddedFaqs(res.data)
+            }
+        })
+    }, [count])
 
 
     return (
         <Container maxWidth="lg">
-            <Box sx={{ marginTop: 4, marginLeft: 2 }}>
-                <h3 className='faqs-title'>FAQs (Frequently Asked Questions)</h3>
+            <form onSubmit={formik.handleSubmit}>
+                <Box sx={{ marginTop: 4, marginLeft: 2 }}>
+                    <h3 className='faqs-title'>FAQs (Frequently Asked Questions)</h3>
 
-                <Typography>Investors are curious. Answer the basics about your startup here. </Typography>
+                    <Typography>Investors are curious. Answer the basics about your startup here. </Typography>
 
+                    <Typography className='upload-ur-pitch' style={{ marginTop: '1.4rem', marginBottom: "-0.3rem" }}>Add FAQ</Typography>
 
-                <Typography className='upload-ur-pitch' style={{ marginTop: '1.4rem', marginBottom: "-0.3rem" }}>Question 01</Typography>
+                    {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+                    <input
+                        name='question'
+                        value={formik.values.question}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        placeholder='Type your question here…' type="text" className='inp-enter-name' />
+                    {formik.touched.question && <div className="raise-err-text" >{formik.errors.question}</div>}
+                    {/* </CustomWidthTooltip> */}
 
-                <CustomWidthTooltip title="Type your question here…" arrow placement='right'>
-                    <input placeholder='Type your question here…' type="text" className='inp-enter-name' />
-                </CustomWidthTooltip>
-
-                <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'>
+                    {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
                     <textarea
-                        value={q1Count}
-                        onChange={handleCount}
-                        style={{ marginBottom: 0 }} placeholder='Describe your previous fundraising rounds*' className='inp-textarea-desc' name="descibe" id="describe" rows="7"></textarea>
-                </CustomWidthTooltip>
-                <div className='zero-of-threehundred'>{q1Count?.length}/300</div>
+                        name='answer'
+                        value={formik.values.answer}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        style={{ marginBottom: 0 }} placeholder='Describe your previous fundraising rounds*' className='inp-textarea-desc' id="describe" rows="7"></textarea>
+                    <div className='zero-of-threehundred'>{q1Count?.length}/300</div>
+                    {formik.touched.answer && <div className="raise-err-text" >{formik.errors.answer}</div>}
+                    {/* </CustomWidthTooltip> */}
 
-                <hr style={{ color: '#F4F4F4', maxWidth: "800px", width: '100%', marginTop: '2rem' }} />
+                    <hr style={{ color: '#F4F4F4', maxWidth: "800px", width: '100%', marginTop: '2rem' }} />
+
+                    <div className="faqs-button-parent">
+                        <Button
+                            style={{ margin: '20px', color: 'black' }}
+                            variant='contained' className="comp-prof-button1">Save</Button>
+                        <Button
+                            type="submit"
+                            style={{ margin: '20px' }}
+                            variant="contained" className="comp-prof-button2">Submit</Button>
+                    </div>
+                </Box >
+            </form>
 
 
-                <Typography style={{ marginTop: '1.4rem', marginBottom: "-0.3rem" }} className='upload-ur-pitch'>Question 02</Typography>
+            <Box sx={{ marginTop: 4, marginLeft: 2 }}>
+                {addedFaqs.length > 0 && <h3 className='faqs-title'>Added FAQs</h3>}
+                {
+                    addedFaqs?.map((item, index) => <div key={index}>
+                        <Typography style={{ marginTop: '1.4rem', marginBottom: "-0.3rem" }} className='upload-ur-pitch'>Question {index + 1}</Typography>
 
-                <CustomWidthTooltip title="Type your question here…" arrow placement='right'>
-                    <input placeholder='Type your question here…' type="text" className='inp-enter-name' />
-                </CustomWidthTooltip>
+                        {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+                        <input value={item.question} placeholder='Type your question here…' type="text" className='inp-enter-name' />
+                        {/* </CustomWidthTooltip> */}
 
-                <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'>
-                    <textarea style={{ marginBottom: 0 }} placeholder='Describe your previous fundraising rounds*' className='inp-textarea-desc' name="descibe" id="describe" rows="7"></textarea>
-                </CustomWidthTooltip>
-                <div className='zero-of-threehundred'>{q2Count}/300</div>
+                        {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
+                        <textarea value={item.answer} style={{ marginBottom: 0 }} placeholder='Describe your previous fundraising rounds*' className='inp-textarea-desc' name="descibe" id="describe" rows="7"></textarea>
+                        {/* </CustomWidthTooltip> */}
+                        <div className='zero-of-threehundred'>{q2Count}/300</div>
 
-                <hr style={{ color: '#F4F4F4', maxWidth: "800px", width: '100%', marginTop: '2rem' }} />
-
-                <div className="faqs-button-parent">
-                    <Button
-                        style={{ margin: '20px', color: 'black' }}
-                        variant='contained' className="comp-prof-button1">Save</Button>
-                    <Button
-                        style={{ margin: '20px' }}
-                        variant="contained" className="comp-prof-button2">Submit</Button>
-                </div>
-            </Box >
+                        <hr style={{ color: '#F4F4F4', maxWidth: "800px", width: '100%', marginTop: '2rem' }} />
+                    </div>)
+                }
+            </Box>
         </Container>
     )
 }

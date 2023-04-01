@@ -19,11 +19,11 @@ export default function DrawerFounder({ height, display }) {
         <>
             {display !== 'none' && <div className="dashboard-drawer-section" style={{ height: height }}>
                 <div className="dashboard-fields-container">
-                    <div className="dashboard-single-links" onClick={() => navigate('/dashboard-founder')}>
+                    <div className="dashboard-single-links" onClick={() => navigate('/dashboard-founder/e-signin')}>
                         {/* <GridViewOutlinedIcon style={location === '/dashboard-founder' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} /> */}
 
-                        <img src={location === '/dashboard-founder' ? dashboardIcon : dashboardIconBlack} alt="dashboard-icon" width={20} height={20} />
-                        <span style={location === '/dashboard-founder' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Dashboard</span>
+                        <img src={location === '/dashboard-founder/e-signin' ? dashboardIcon : dashboardIconBlack} alt="dashboard-icon" width={20} height={20} />
+                        <span style={location === '/dashboard-founder/e-signin' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Dashboard</span>
                     </div>
 
                     <div className="dashboard-single-links" onClick={() => navigate('/dashboard-founder/campaigns')}>
@@ -53,9 +53,9 @@ export default function DrawerFounder({ height, display }) {
 
             <div className="bottom-fixed-navbar-container">
                 <div className="bottom-navbar-section">
-                    <div className="main-navbar-section" onClick={() => navigate('/dashboard-founder')}>
+                    <div className="main-navbar-section" onClick={() => navigate('/dashboard-founder/e-signin')}>
                         <div style={{ margin: 'auto' }}>
-                            <img src={location === '/dashboard-founder' ? dashboardIcon : dashboardIconBlack} alt="dashboard-icon" width={20} height={20} />
+                            <img src={location === '/dashboard-founder/e-signin' ? dashboardIcon : dashboardIconBlack} alt="dashboard-icon" width={20} height={20} />
                         </div>
                         <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
                     </div>

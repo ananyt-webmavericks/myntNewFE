@@ -59,6 +59,7 @@ import PageNotFound from './Pages/PageNotFound';
 import FounderSignUp from './component/GetStarted/FounderSignUp';
 import ProtectedLiveDeals from './Pages/ProtectedLiveDeals';
 import FounderOtpVerification from './Pages/Founder/FounderOtpVerification';
+import KycAadharUid from './component/CompleteYourProfile/KycAadharUid';
 function App() {
 
   const location = window.location.pathname;
@@ -99,6 +100,7 @@ function App() {
         <Route exact path="/complete-your-profile/verify-otp" element={<VerifyNumberOtp />} />
         <Route exact path="/complete-your-profile/verify-address" element={<VerifyAddress />} />
         <Route exact path="/complete-your-profile/verify-kyc" element={<KycPanDetails />} />
+        <Route exact path="/complete-your-profile/verify-kyc/aadhar-uid" element={<KycAadharUid />} />
         <Route exact path="/complete-your-profile/payment-details" element={<PaymentDetails />} />
         <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
         <Route exact path="/my-profile" element={<MyProfile />} />
@@ -124,6 +126,10 @@ function App() {
         <Route exact path="/dashboard-founder/e-signin" element={<DashBoardESign />} />
         <Route exact path="/dashboard-founder/campaigns" element={<FounderCampaigns />} />
         <Route exact path="/dashboard-founder/campaigns-tabs" element={<FounderCampaingsTabs />} />
+
+        {/* payment success */}
+        <Route exact path="/payment/status-successful" element={<PageNotFound />} />
+        <Route exact path="/payment/status-failed" element={<PageNotFound />} />
 
         {/* page not found */}
         <Route exact path="*" element={<PageNotFound />} />
