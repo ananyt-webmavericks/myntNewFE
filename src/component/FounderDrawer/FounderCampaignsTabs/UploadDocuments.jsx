@@ -4,21 +4,61 @@ import React, { useState } from 'react'
 import '../../../css/FounderDrawer/Dashboard/UploadDocs.css'
 import pptxIcon from './../../../images/founder/pptxIcon.png'
 import pdfIcon from './../../../images/founder/pdfIcon.png'
+import CompanyServices from '../../../service/Company'
+import { toast } from 'react-toastify'
+import { useEffect } from 'react'
 
 const UploadDocuments = () => {
     const [selectedFile, setSelectedFile] = useState([]);
+    const [uploadedDocs, setUploadedDocs] = useState([])
+    const [toggle, settoggle] = useState(false)
 
     const handleFileInput = (event) => {
-        setSelectedFile([...selectedFile, event.target.files[0]]);
+        setSelectedFile([...selectedFile,
+        {
+            document_type: "DOCUMENTS",
+            document_name: event.target.files[0],
+            agreement_status: "SIGNED BY FOUNDER"
+        }]
+        );
         const fileName = event.target.files[0]
         const extension = fileName?.name?.split('.').pop();
         console.log(extension)
     };
 
     const handleUpload = () => {
-        const formData = new FormData();
-        formData.append('pdf', selectedFile);
+        // const formData = new FormData();
+        // formData.append('pdf', selectedFile);
+        let arr = [];
+        selectedFile.map(item => {
+            arr.push({ ...item, document_name: item.document_name.name })
+        })
+        const values = {
+            company_id: +localStorage.getItem("company_id"),
+            documents: arr
+        }
+
+        CompanyServices.uploadCompanyDocs(values).then(res => {
+            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                toast.success("Document uploaded successful!")
+                settoggle(pre => !pre)
+                setSelectedFile([])
+            } else {
+                toast.error("Something went wrong, please try again later")
+            }
+        })
     };
+
+    useEffect(() => {
+        CompanyServices.getUploadedDocs(localStorage.getItem("company_id")).then(res => {
+            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                setUploadedDocs(res.data)
+            }
+        })
+    }, [toggle])
+
 
     return (
         <Container maxWidth="lg">
@@ -42,17 +82,17 @@ const UploadDocuments = () => {
                             key={index}
                             className='icon-name-upload-doc'>
                             <img src={
-                                item?.name?.split('.').pop() === 'pptx'
+                                item?.document_name.name?.split('.').pop() === 'pptx'
                                     ? pptxIcon
-                                    : item?.name?.split('.').pop() === 'pdf'
+                                    : item?.document_name?.name?.split('.').pop() === 'pdf'
                                         ? pdfIcon
                                         : null
                             }
                                 alt="doc-icon" width={62} />
                             <Typography className='doc-name'>{
-                                item?.name.length < 10
-                                    ? item?.name
-                                    : item?.name?.slice(0, 5) + "..." + item?.name?.split('.').pop()
+                                item?.document_name?.name.length < 10
+                                    ? item?.document_name?.name
+                                    : item?.document_name?.name?.slice(0, 5) + "..." + item?.document_name?.name?.split('.').pop()
                             }</Typography>
                         </div>)
                     }
@@ -75,8 +115,35 @@ const UploadDocuments = () => {
 
             <div className='getRewards-btn-parent'>
                 <Button
+                    onClick={handleUpload}
                     style={{ margin: '20px', color: "white" }}
                     variant='contained' className="hightlight-submit-button">Submit</Button>
+            </div>
+
+
+            <div style={{ marginBottom: '3rem' }}>
+                <Typography className='upload-docs-title' style={{ marginBottom: '1rem' }}>Uploaded Documents</Typography>
+                <div className='doc-list-parent'>
+                    {
+                        uploadedDocs?.slice(0)?.reverse().map((item, index) => <div
+                            key={index}
+                            className='icon-name-upload-doc'>
+                            <img src={
+                                item?.document_name?.split('.').pop() === 'pptx'
+                                    ? pptxIcon
+                                    : item?.document_name?.split('.').pop() === 'pdf'
+                                        ? pdfIcon
+                                        : null
+                            }
+                                alt="doc-icon" width={62} />
+                            <Typography className='doc-name'>{
+                                item?.document_name.length < 10
+                                    ? item?.document_name
+                                    : item?.document_name?.slice(0, 5) + "..." + item?.document_name?.split('.').pop()
+                            }</Typography>
+                        </div>)
+                    }
+                </div>
             </div>
         </Container >
     )

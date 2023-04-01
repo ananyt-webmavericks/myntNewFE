@@ -8,15 +8,30 @@ import DrawerFounder from "../../component/FounderDrawer/DrawerFounder";
 import '../../css/FounderDrawer/Dashboard/E-Sign.css'
 import E_Singbg from "../../images/founder/E_SingBg.png"
 import CopanyLogo from "../../images/founder/companylogo.png"
+import { useEffect } from "react";
+import CompanyServices from "../../service/Company";
+import session from "redux-persist/lib/storage/session";
+import { useNavigate } from "react-router-dom";
 
 const DashBoardESign = () => {
     const location = window.location.pathname;
     const ratio = parseInt(window.innerWidth);
+    const [campaigns, setCampaigns] = useState([])
     const [showDeals, setShowDeals] = useState(false)
+    const navigate = useNavigate()
 
     const fetchValue = (value) => {
         setShowDeals(value)
     }
+
+    useEffect(() => {
+        CompanyServices.getAllCampaignOfCompany(localStorage.getItem("company_id")).then(res => {
+            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                setCampaigns(res.data)
+            }
+        })
+    }, [])
 
     return (
         <>
@@ -38,57 +53,72 @@ const DashBoardESign = () => {
                             </div>
                         </Card>
 
-                        <Box className="companyAddbox" style={{ display: "flex", gap: "5rem", marginBottom: "5rem", marginTop: "2rem" }}>
-                            <div>
-                                <Typography>Campaign</Typography>
-                                <div className="AddCompany">
-                                    <div className="Add-new-campaign">
-                                        <div className="campaign-Icon-Box">
-                                            <Typography className="plus-icon">+</Typography>
-                                        </div>
+                        <div>
+                            <Typography>Campaign</Typography>
+                            <div onClick={() => {
+                                console.log("clicked")
+                                sessionStorage.removeItem("campaign_id")
+                                sessionStorage.setItem("is_campaign_added", false)
+                                sessionStorage.removeItem("campaign_data")
+                                navigate("/dashboard-founder/campaigns-tabs")
+                            }}
+                                className="AddCompany">
+                                <div className="Add-new-campaign">
+                                    <div className="campaign-Icon-Box">
+                                        <Typography className="plus-icon">+</Typography>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <Typography>Previous Campaigns</Typography>
-                                <div className="AddCompany2">
-                                    <Box className="companylogoimg">
-                                        <Box className="setCornerIcon">
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', textAlign: "center", width: "100%", padding: "10px 20px" }}>
-                                                <img src={CopanyLogo} alt="not found" />
-                                                <div style={{ height: "30px", width: "100px", backgroundColor: "yellow", textAlign: "center", marginTop: "15px", borderRLeft: "50%", borderRight: "50%", borderRadius: "1rem", zIndex: "444499" }}>CSOP</div>
+                        </div>
+
+                        {
+                            campaigns?.map(item => <Box className="companyAddbox" style={{ display: "flex", gap: "5rem", marginBottom: "5rem", marginTop: "2rem" }}>
+
+                                <div onClick={() => {
+                                    sessionStorage.setItem("campaign_id", item.id)
+                                    sessionStorage.setItem("is_campaign_added", true)
+                                    navigate("/dashboard-founder/campaigns-tabs")
+                                }}>
+                                    <Typography>Previous Campaigns</Typography>
+                                    <div className="AddCompany2">
+                                        <Box className="companylogoimg">
+                                            <Box className="setCornerIcon">
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', textAlign: "center", width: "100%", padding: "10px 20px" }}>
+                                                    <img src={CopanyLogo} alt="not found" />
+                                                    <div style={{ height: "30px", width: "100px", backgroundColor: "yellow", textAlign: "center", marginTop: "15px", borderRLeft: "50%", borderRight: "50%", borderRadius: "1rem", zIndex: "444499" }}>CSOP</div>
+                                                </div>
+                                            </Box>
+                                            <b className="settleindex" style={{ marginLeft: "3rem", zIndex: "90000000 !important" }}>Settl</b>
+
+                                        </Box>
+                                        <div>
+                                            <img src={E_Singbg} alt="not found" className="settlimg" />
+                                            <div>
+                                                <Typography className="settlpara" style={{ fontSize: "12px" }}>
+                                                    Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…
+                                                </Typography>
+                                                <button className="colivingBtn">Coliving</button>
+                                            </div>
+                                        </div>
+                                        <Box className="raisedflex">
+                                            <div >
+                                                <b>206.01%</b><br />
+                                                <span>Raised</span>
+                                            </div>
+                                            <div>
+                                                <b>3 days</b><br />
+                                                <span>Closes in</span>
+                                            </div>
+                                            <div>
+                                                <b>₹10,000</b><br />
+                                                <span>Min invest</span>
                                             </div>
                                         </Box>
-                                        <b className="settleindex" style={{ marginLeft: "3rem", zIndex: "90000000 !important" }}>Settl</b>
-
-                                    </Box>
-                                    <div>
-                                        <img src={E_Singbg} alt="not found" className="settlimg" />
-                                        <div>
-                                            <Typography className="settlpara" style={{ fontSize: "12px" }}>
-                                                Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…
-                                            </Typography>
-                                            <button className="colivingBtn">Coliving</button>
-                                        </div>
                                     </div>
-                                    <Box className="raisedflex">
-                                        <div >
-                                            <b>206.01%</b><br />
-                                            <span>Raised</span>
-                                        </div>
-                                        <div>
-                                            <b>3 days</b><br />
-                                            <span>Closes in</span>
-                                        </div>
-                                        <div>
-                                            <b>₹10,000</b><br />
-                                            <span>Min invest</span>
-                                        </div>
-                                    </Box>
                                 </div>
-                            </div>
-                        </Box>
-
+                            </Box>
+                            )
+                        }
                         <div>
                             <Typography>Analytics</Typography><br />
                             <Box className="AnalyticsBox">

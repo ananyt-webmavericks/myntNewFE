@@ -17,17 +17,29 @@ const FounderApplicationValSchema = Yup.object({
     name:
         Yup
             .string()
+            .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/, 'Please enter full name!')
+            .test('two-part-name', 'Full name must have at least two parts', (value) => {
+                if (value) {
+                    const parts = value.split(' ');
+                    return parts.length >= 2;
+                }
+                return false;
+            })
             .required("Your name is required!"),
 
     company_email:
         Yup
             .string()
             .required("Email is required!"),
+    company_logo:
+        Yup
+            .string()
+            .required("Logo is required!"),
     founder_linked_in_profile:
         Yup
             .string()
             .required("Linkedin url is required!"),
-    registered_company_name:
+    company_name:
         Yup
             .string()
             .required("Registered company name is required!"),
@@ -64,6 +76,10 @@ const FounderApplicationValSchema = Yup.object({
             .string()
             .required("This field is required!"),
     existing_commitments:
+        Yup
+            .string()
+            .required("This field is required!"),
+    company_pitch:
         Yup
             .string()
             .required("This field is required!"),

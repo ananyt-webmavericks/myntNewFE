@@ -11,11 +11,15 @@ import '../../../css/FounderDrawer/Dashboard/GridBox.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import facebook from './../../../images/assets/facebook.png'
 import instagram from './../../../images/assets/instagram.png'
+import linkedin from './../../../images/assets/linkedin.png'
 import date from './../../../images/assets/date.png'
 import { useFormik } from 'formik';
 import CompanyProfileValSchema from '../../../Validations/CompanyProfileValSchema';
 import CompanyServices from '../../../service/Company';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -64,7 +68,8 @@ const useStyles = makeStyles({
 const CompanyProfile = () => {
     const classes = useStyles()
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    const [personName, setPersonName] = useState([]);
+    const [companyData, setCompanyData] = useState({})
     const { userData } = useSelector(state => state.loginData)
     const handleChange = (event) => {
         const {
@@ -86,23 +91,23 @@ const CompanyProfile = () => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            country: '',
-            state: '',
-            city: '',
-            pincode: '',
-            company_address: '',
+            country: companyData?.country ? companyData?.country : '',
+            state: companyData?.state ? companyData?.state : '',
+            city: companyData?.city ? companyData?.city : '',
+            pincode: companyData?.pincode ? companyData?.pincode : '',
+            company_address: companyData?.company_address ? companyData?.company_address : '',
 
-            website_url: '',
-            facebook_link: '',
-            instagram_link: '',
-            //linkedin link required here
+            website_url: companyData?.website_url ? companyData?.website_url : '',
+            facebook_link: companyData?.facebook_link ? companyData?.facebook_link : '',
+            instagram_link: companyData?.instagram_link ? companyData?.instagram_link : '',
+            company_linked_in_profile: companyData?.company_linked_in_profile ? companyData?.company_linked_in_profile : '',
 
-            legal_name: '',
-            cin: '',
-            date_of_incorporation: '',
-            incorporation_type: '',
+            legal_name: companyData?.legal_name ? companyData?.legal_name : '',
+            cin: companyData?.cin ? companyData?.cin : '',
+            date_of_incorporation: companyData?.date_of_incorporation ? companyData?.date_of_incorporation : '',
+            incorporation_type: companyData?.incorporation_type ? companyData?.incorporation_type : '',
 
-            invested_so_far: ''
+            invested_so_far: companyData?.invested_so_far ? companyData?.invested_so_far : '',
 
         },
 
@@ -110,11 +115,21 @@ const CompanyProfile = () => {
 
         onSubmit: (values) => {
             console.log(values)
-            CompanyServices.updateCompany({ ...values, user_id: userData.id }).then(res => {
+            CompanyServices.updateCompany({ ...values, company_id: companyData?.id }).then(res => {
                 console.log(res)
+                toast.success("Company details added successfully!")
             })
         }
     });
+
+    useEffect(() => {
+        return CompanyServices.getCompanyDetailsByFounderId(userData?.id).then(res => {
+            if (res.status === 200) {
+                setCompanyData(res.data)
+                localStorage.setItem("company_id", res.data.id)
+            }
+        })
+    }, [userData?.id])
 
     return (
         <Container maxWidth="lg">
@@ -326,16 +341,20 @@ const CompanyProfile = () => {
                             <FormControl sx={{ m: 1, width: "100%" }}>
                                 <div className="input-with-logo" style={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
                                     <IconButton sx={{ p: '10px' }} aria-label="menu">
-                                        <img src={facebook} alt="facebook-logo" width={30} />
+                                        <img src={linkedin} alt="linkedin-logo" width={30} />
                                     </IconButton>
                                     <input
+                                        name="company_linked_in_profile"
+                                        value={formik.values.company_linked_in_profile}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                         style={{ border: 'none', height: '40px' }}
                                         placeholder='Linked In Link'
                                         type="text"
                                         className='icon-input' />
                                 </div>
+                                {formik.touched.company_linked_in_profile && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.company_linked_in_profile}</div>}
                             </FormControl>
-
 
                         </Box>
                     </Grid>

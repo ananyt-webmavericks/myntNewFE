@@ -43,6 +43,10 @@
     /* border: 1px solid red; */
 }
 
+.AddCompany:hover {
+    cursor: pointer;
+}
+
 .AddCompany2 {
     margin-top: 4rem !important;
     height: 29rem !important;

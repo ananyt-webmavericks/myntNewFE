@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const PressValSchema = Yup.object({
-    user_id: Yup
+    company_id: Yup
         .number()
         .typeError("Id must be a number!")
         .required("Name is required!"),
@@ -10,10 +10,7 @@ const PressValSchema = Yup.object({
         .required("Title is required!"),
     link: Yup
         .string()
-        .matches(
-            /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-            'Enter correct url!'
-        )
+        .url('Invalid URL')
         .required("Link is required!"),
     description: Yup
         .string()

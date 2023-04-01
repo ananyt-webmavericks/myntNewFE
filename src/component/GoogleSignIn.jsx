@@ -24,7 +24,7 @@ export default function GoogleSignIn() {
         // console.log(userObject)
         if (location.includes('/login')) {
             try {
-                UserServices.LoginUserByEmail(userObject.email).then(
+                UserServices.LoginUserByEmail({ email: userObject.email, login_type: 'INVESTOR' }).then(
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {

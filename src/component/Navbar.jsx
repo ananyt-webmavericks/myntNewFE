@@ -116,7 +116,12 @@ const Navbar = () => {
                                         <MenuItem onClick={handleProfile}>
                                             <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} /> Profile
                                         </MenuItem>
-                                        <MenuItem onClick={() => navigate('/dashboard')}>
+                                        <MenuItem
+                                            onClick={() => navigate(
+                                                userData.user_type === "FOUNDER"
+                                                    ? '/dashboard-founder'
+                                                    : '/dashboard'
+                                            )}>
                                             <ListItemIcon>
                                                 <GridViewOutlinedIcon fontSize="small" />
                                             </ListItemIcon>

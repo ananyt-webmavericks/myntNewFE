@@ -17,11 +17,42 @@ const createCompany = async (companyData) => {
     }
 }
 
+const createCampaign = async (campaignData) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/campaign/manage`, campaignData);
+        console.log(response)
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+
+const updateCampaign = async (campaignData) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/campaign/manage`, campaignData);
+        console.log(response)
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
 
 const updateCompany = async (companyData) => {
 
     try {
-        const response = await axios.patch(`${Base_Url}/api/company/manage`, companyData);
+        const response = await authAxios.patch(`${Base_Url}/api/company/manage`, companyData);
         return response;
     }
     catch (error) {
@@ -35,7 +66,7 @@ const updateCompany = async (companyData) => {
 const addPeopleToCompany = async (peopleData) => {
 
     try {
-        const response = await axios.post(`${Base_Url}/api/people/manage`, peopleData);
+        const response = await authAxios.post(`${Base_Url}/api/people/manage`, peopleData);
         return response;
     }
     catch (error) {
@@ -74,12 +105,157 @@ const addPress = async (pressData) => {
     }
 }
 
+const addFAQ = async (faqData) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/faqs/manage`, faqData);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+const getCampaignsFaqs = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/faqs/get-faqs-by-campaign-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+const updatePress = async (pressData) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/press/manage`, pressData);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const getCompanyDetailsByFounderId = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/company/company-by-user-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const uploadCompanyDocs = async (values) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/documents/manage`, values);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const createReward = async (rewardData) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/rewards/manage`, rewardData);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+const getUploadedDocs = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/documents/get-documents-by-comapny-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const getRewardByCampaingID = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/rewards/get-rewards-by-campaign-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const getPressByCompanyID = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/press/get-press-by-company-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const getAllCampaignOfCompany = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/campaign/campaign-by-company-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
 const CompanyServices = {
     createCompany,
     updateCompany,
+    createCampaign,
+    updateCampaign,
     addPeopleToCompany,
-    addPress
-
+    addPress,
+    addFAQ,
+    getCampaignsFaqs,
+    getCompanyDetailsByFounderId,
+    uploadCompanyDocs,
+    getUploadedDocs,
+    updatePress,
+    createReward,
+    getRewardByCampaingID,
+    getPressByCompanyID,
+    getAllCampaignOfCompany
 };
 
 export default CompanyServices

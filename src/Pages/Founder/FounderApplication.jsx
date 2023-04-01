@@ -10,6 +10,8 @@ import { useEffect } from 'react'
 import { storeFounderSignUpData } from '../../Redux/actions/FounderSignUp'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import UserServices from '../../service/UserService'
+import { toast } from 'react-toastify'
 
 const FounderApplication = () => {
     const dispatch = useDispatch()
@@ -42,14 +44,22 @@ const FounderApplication = () => {
             reader.readAsDataURL(file);
         }
     }
+    const credentials = {
+        first_name: '',
+        last_name: '',
+        email: '',
+        social_login: false,
+        user_type: "FOUNDER"
+    }
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
             name: '',
             company_email: "",
+            company_logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7DiSDaj7wmM2JCXF6AZN96uwLG5HsXUzZVg&usqp=CAU",
             founder_linked_in_profile: "",
-            registered_company_name: "",
+            company_name: "",
             company_linked_in_profile: "",
             website_url: "",
             previous_funding: "",
@@ -59,6 +69,7 @@ const FounderApplication = () => {
             reason_for_community_round: "",
             reason_for_mynt: "",
             existing_commitments: "",
+            company_pitch: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7DiSDaj7wmM2JCXF6AZN96uwLG5HsXUzZVg&usqp=CAU',
             // checks
             is_fund_raise: false,
             is_growth_hack: false,
@@ -77,9 +88,34 @@ const FounderApplication = () => {
             delete values.is_ivestor_readiness;
             delete values.is_finan_advisory;
             delete values.is_legal_advisory;
-            // dispatch(storeFounderSignUpData(values))
+            dispatch(storeFounderSignUpData(values))
             console.log(values)
-            navigate("/signup-founder")
+            try {
+                const fullName = values.name;
+                const nameParts = fullName.split(" ");
+                const first_name = nameParts[0];
+                const last_name = nameParts.slice(1).join(" ");
+                UserServices.CreateUser({ ...credentials, first_name, last_name, email: values.company_email }).then(
+                    (response) => {
+                        console.log(response)
+                        if (response.status === 201) {
+                            // dispatch(userLoginAction(response.data))
+                            // localStorage.setItem('loginType', 'new')
+                            console.log(response.data.id)
+                            navigate('/otp-verification-founder', {
+                                state: {
+                                    email: response.data.email,
+                                    founderLoginData: response.data,
+                                    isNewCreate: true
+                                }
+                            })
+                        }
+
+                    })
+            }
+            catch {
+                toast.errors("Try after few minutes")
+            }
         }
     });
 
@@ -172,15 +208,15 @@ const FounderApplication = () => {
 
                             {/* <CustomWidthTooltip title="Registered Company Name*" arrow placement='right'> */}
                             <input
-                                name="registered_company_name"
-                                value={formik.values.registered_company_name}
+                                name="company_name"
+                                value={formik.values.company_name}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 placeholder='Registered Company Name*'
                                 type="text"
                                 className='inp-enter-name' />
                             {/* </CustomWidthTooltip> */}
-                            {formik.touched.registered_company_name && <div className="raise-err-text">{formik.errors.registered_company_name}</div>}
+                            {formik.touched.company_name && <div className="raise-err-text">{formik.errors.company_name}</div>}
 
 
                             {/* <CustomWidthTooltip title="Company’s LinkedIn Page*" arrow placement='right'> */}

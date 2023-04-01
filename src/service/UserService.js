@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Base_Url } from "../Utils/Configurable";
 import { toast } from 'react-toastify';
+import { authAxios } from "./Auth-header";
 
 const notify = (data) => {
     toast.error(data)
@@ -9,10 +10,10 @@ const notifySuccess = (data) => {
     toast.success(data)
 }
 
-const LoginUserByEmail = async (email) => {
+const LoginUserByEmail = async (data) => {
 
     try {
-        const response = await axios.post(`${Base_Url}/api/users/login`, { email });
+        const response = await axios.post(`${Base_Url}/api/users/login`, data);
         // notifySuccess(response.data.message)
         return response;
     }
@@ -28,7 +29,7 @@ const LoginUserByEmail = async (email) => {
 const CreateUser = async (value) => {
     console.log(value)
     try {
-        const response = await axios.post(`${Base_Url}/api/users/manage`, value);
+        const response = await axios.post(`${Base_Url}/api/users/sign-up`, value);
         notifySuccess('Sign up successfully !!')
         return response;
     }
@@ -43,7 +44,7 @@ const CreateUser = async (value) => {
 const UpdateUser = async (obj) => {
 
     try {
-        const response = await axios.patch(`${Base_Url}/api/users/manage`, obj);
+        const response = await authAxios.patch(`${Base_Url}/api/users/manage`, obj);
         notifySuccess('successfully updated !!')
         return response;
     }
@@ -57,14 +58,15 @@ const UpdateUser = async (obj) => {
 }
 
 const getUserById = async (id) => {
-
+    console.log(id)
     try {
-        const response = await axios.get(`${Base_Url}/api/users/${id}`);
+        const response = await authAxios(`${Base_Url}/api/users/${id}`);
         return response;
     }
     catch (error) {
+        console.log(error)
         if (error) {
-            notify(error.response.data.email[0])
+            notify(error.response)
         }
         return error;
     }
