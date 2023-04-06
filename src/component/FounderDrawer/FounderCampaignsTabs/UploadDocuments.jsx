@@ -30,9 +30,8 @@ const UploadDocuments = () => {
         // const formData = new FormData();
         // formData.append('pdf', selectedFile);
         let arr = [];
-        selectedFile.map(item => {
-            arr.push({ ...item, document_name: item.document_name.name })
-        })
+        selectedFile.map(item => arr.push({ ...item, document_name: item.document_name.name })
+        )
         const values = {
             company_id: +localStorage.getItem("company_id"),
             documents: arr
@@ -122,7 +121,9 @@ const UploadDocuments = () => {
 
 
             <div style={{ marginBottom: '3rem' }}>
-                <Typography className='upload-docs-title' style={{ marginBottom: '1rem' }}>Uploaded Documents</Typography>
+                {
+                    uploadedDocs?.length > 0 && <Typography className='upload-docs-title' style={{ marginBottom: '1rem' }}>Uploaded Documents</Typography>
+                }
                 <div className='doc-list-parent'>
                     {
                         uploadedDocs?.slice(0)?.reverse().map((item, index) => <div

@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import UserServices from '../../service/UserService'
 import { toast } from 'react-toastify'
+import { authAxios } from '../../service/Auth-header'
+import { Base_Url } from '../../Utils/Configurable'
 
 const FounderApplication = () => {
     const dispatch = useDispatch()
@@ -31,8 +33,10 @@ const FounderApplication = () => {
     });
 
     const [preview, setPreview] = useState(null);
+    const [pdfName, setPdfName] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
-    function handleFileSelect(event) {
+    const handleFileSelect = async (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
 
@@ -42,6 +46,45 @@ const FounderApplication = () => {
 
         if (file) {
             reader.readAsDataURL(file);
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const { data } = await authAxios.post(`${Base_Url}/api/users/upload-files`, formData);
+            console.log(data)
+            formik.setFieldValue("company_logo", data.message)
+            return data
+        }
+        catch (error) {
+            console.log("Data not found !!")
+        }
+    }
+
+    const handlePitchFileSelect = async (event) => {
+        const file = event.target.files[0];
+        setPdfName(event.target.files[0].name)
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const { data } = await authAxios.post(`${Base_Url}/api/users/upload-files`, formData);
+            console.log(data)
+            formik.setFieldValue("company_pitch", data.message)
+            return data
+        }
+        catch (error) {
+            console.log("Data not found !!")
         }
     }
     const credentials = {
@@ -57,7 +100,7 @@ const FounderApplication = () => {
         initialValues: {
             name: '',
             company_email: "",
-            company_logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7DiSDaj7wmM2JCXF6AZN96uwLG5HsXUzZVg&usqp=CAU",
+            company_logo: '',
             founder_linked_in_profile: "",
             company_name: "",
             company_linked_in_profile: "",
@@ -69,7 +112,7 @@ const FounderApplication = () => {
             reason_for_community_round: "",
             reason_for_mynt: "",
             existing_commitments: "",
-            company_pitch: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7DiSDaj7wmM2JCXF6AZN96uwLG5HsXUzZVg&usqp=CAU',
+            company_pitch: '',
             // checks
             is_fund_raise: false,
             is_growth_hack: false,
@@ -136,35 +179,36 @@ const FounderApplication = () => {
                         Share some details about your company. Our team shall contact you shortly for the due diligence process.
                     </Typography>
                     <div className='raise-mint-appln-parent'>
-                        <Typography className='appln-heading'>Application</Typography>
-                        <div className='logo-selectfile-parent'>
-                            <div style={{ position: 'relative', width: '80px', height: '80px' }} className='appln-logo-parent'>
-                                {
-                                    preview
-                                        ? <img style={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            borderRadius: '4px'
-                                        }} src={preview} alt="Preview" />
-                                        : "Logo"
-                                }
-                            </div>
-                            <div className='select-file-btn-parent'>
-                                <Typography style={{ paddingTop: 4, marginRight: 10 }}>Upload Company Logo here or</Typography>
-                                <button
-                                    onClick={() => document.getElementById("uploadCompanyLogo").click()}
-                                    className='select-file-btn'> Select File
-                                    <img src={yellowArrow} alt="arrow-img" height={'10px'} style={{ marginLeft: '10px' }} />
-                                </button>
-
-                                <input id='uploadCompanyLogo' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
-                            </div>
-                        </div>
                         <form onSubmit={formik.handleSubmit}>
+                            <Typography className='appln-heading'>Application</Typography>
+                            <div className='logo-selectfile-parent'>
+                                <div style={{ position: 'relative', width: '80px', height: '80px' }} className='appln-logo-parent'>
+                                    {
+                                        preview
+                                            ? <img style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                                borderRadius: '4px'
+                                            }} src={preview} alt="Preview" />
+                                            : "Logo"
+                                    }
+                                </div>
+                                <div className='select-file-btn-parent'>
+                                    <Typography style={{ paddingTop: 4, marginRight: 10 }}>Upload Company Logo here or</Typography>
+                                    <button
+                                        onClick={() => document.getElementById("uploadCompanyLogo").click()}
+                                        className='select-file-btn'> Select File
+                                        <img src={yellowArrow} alt="arrow-img" height={'10px'} style={{ marginLeft: '10px' }} />
+                                    </button>
+
+                                    <input name='company_logo' id='uploadCompanyLogo' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
+                                </div>
+                            </div>
+                            {formik.touched.company_logo && <div className="raise-err-text">{formik.errors.company_logo}</div>}
 
                             {/* <CustomWidthTooltip disableFocusListener title="This should be the name your company uses on your website and in the market." arrow placement='right'> */}
                             <input
@@ -448,12 +492,23 @@ const FounderApplication = () => {
 
                             <Typography className='upload-ur-pitch'>Upload your Pitch*</Typography>
 
-                            <div className='drag-and-drop-parent' >
-                                <div style={{ textAlign: 'center' }}>
-                                    <Typography className='drag-and-drop-text'>Drag and Drop or click here to browse</Typography>
-                                    <span className='max-size-text'>Max size 10 MB</span>
+                            <div className='drag-and-drop-parent' name="company_pitch"
+                                onClick={() => document.getElementById('raisePitch').click()}>
+                                <div style={{ textAlign: 'center' }} >
+
+                                    {
+                                        pdfName
+                                            ? <Typography className='drag-and-drop-text'>{pdfName}</Typography>
+                                            : <>
+                                                <Typography className='drag-and-drop-text'>Drag and Drop or click here to browse</Typography>
+                                                <span className='max-size-text'>Max size 10 MB</span>
+                                            </>
+                                    }
+
+                                    <input accept=".pdf, .PDF" name='company_pitch' id='raisePitch' hidden onChange={handlePitchFileSelect} type="file" />
                                 </div>
                             </div>
+                            {formik.touched.company_pitch && <div style={{ marginTop: '4px' }} className="raise-err-text">{formik.errors.company_pitch}</div>}
 
 
                             <div className='founder-appln-submit-parent'>

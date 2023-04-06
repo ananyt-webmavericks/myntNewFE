@@ -7,6 +7,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from "@material-ui/styles";
 import Enquiry from '../../images/assets/enquiry.png'
+import { useLocation } from "react-router-dom";
+import CompanyServices from "../../service/Company";
+import { useFormik } from "formik";
+import PayToSubscribeValSchema from "../../Validations/PayToSubscribeValSchema";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -59,10 +63,12 @@ export default function PayToSubscribeMain() {
     const [personName, setPersonName] = React.useState([]);
     const [gridxsFirst, setGridxsFirst] = useState(2)
     const [gridxsSecond, setgridxsSecond] = useState(6)
+    const [rewards, setRewards] = useState([])
     const ratio = parseInt(window.innerWidth);
     const classes = useStyles();
     const theme = useTheme();
-
+    const location = useLocation()
+    console.log(location.state)
     const handleChange = (event) => {
         const {
             target: { value },
@@ -72,12 +78,34 @@ export default function PayToSubscribeMain() {
             typeof value === 'string' ? value.split(',') : value,
         );
     };
+
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            amount: '',
+        },
+
+        validationSchema: PayToSubscribeValSchema,
+
+        onSubmit: (values) => {
+            console.log(values)
+        }
+    });
+
     const handleSubmit = () => {
 
     }
 
     useEffect(() => {
-
+        CompanyServices.getRewardByCampaingID(location.state?.campaignId).then(res => {
+            console.log("rewards = ", res.data)
+            if (res.status === 200 || res.status === 201) {
+                setRewards(res.data)
+            } else {
+                setRewards([])
+            }
+        })
         if (ratio < 700) {
 
             setGridxsFirst(1)
@@ -95,50 +123,44 @@ export default function PayToSubscribeMain() {
                         <Grid item xs={gridxsSecond}>
                             <span className="pay-amount-label">Amount</span>
                             <div className="verifyAddress-input" style={gridxsFirst === 1 ? { width: '100%' } : { width: '90%' }}>
-                                <input type="text" placeholder="₹25,000" className="verifyAddress-input-section" />
+                                <input
+                                    name="amount"
+                                    value={formik.values.amount}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    type="number"
+                                    placeholder="₹25,000"
+                                    style={{ WebkitAppearance: "none" }} className="verifyAddress-input-section" />
+                                {formik.touched.amount && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.amount}</div>}
                             </div>
                             <div className="chips-pay-to-subscribe-cointainer">
-                                <div className="particular-mentioned-chip-pay">+ ₹5,000</div>
-                                <div className="particular-mentioned-chip-pay">+ ₹10,000</div>
-                                <div className="particular-mentioned-chip-pay">+ ₹15,000</div>
+                                <div
+                                    onClick={e => formik.setFieldValue("amount", 5000)}
+                                    className="particular-mentioned-chip-pay">+ ₹5,000</div>
+                                <div
+                                    onClick={e => formik.setFieldValue("amount", 10000)}
+                                    className="particular-mentioned-chip-pay">+ ₹10,000</div>
+                                <div
+                                    onClick={e => formik.setFieldValue("amount", 15000)}
+                                    className="particular-mentioned-chip-pay">+ ₹15,000</div>
                             </div>
                             <span className="pay-amount-heading">Subscription Benefits</span>
-                            <Card className="secondary-card-pay-section">
-                                <CardContent>
-                                    <span className="pay-amount-label">Subscribe for</span>
-                                    <div className="pay-amount-sub-label-head"><span style={{ color: '#EBB429' }}>₹5,000 </span>or more</div>
-                                </CardContent>
-                                <hr />
-                                <CardContent>
-                                    <span className="pay-amount-label">Get Rewards</span>
-                                    <div className="pay-amount-sub-label-head" style={{ marginBottom: '10px' }}>Discount on MildCares Products</div>
-                                    <span className="pay-amount-label">20% off on products for Mynt Community</span>
-                                </CardContent>
-                            </Card>
-                            <Card className="secondary-card-pay-section">
-                                <CardContent>
-                                    <span className="pay-amount-label">Subscribe for</span>
-                                    <div className="pay-amount-sub-label-head"><span style={{ color: '#EBB429' }}>₹20,000 </span>or more</div>
-                                </CardContent>
-                                <hr />
-                                <CardContent>
-                                    <span className="pay-amount-label">Get Rewards</span>
-                                    <div className="pay-amount-sub-label-head" style={{ marginBottom: '10px' }}>Discount on MildCares Products</div>
-                                    <span className="pay-amount-label">30% off on products for Mynt Community</span>
-                                </CardContent>
-                            </Card>
-                            <Card className="secondary-card-pay-section">
-                                <CardContent>
-                                    <span className="pay-amount-label">Subscribe for</span>
-                                    <div className="pay-amount-sub-label-head"><span style={{ color: '#EBB429' }}>₹30,000 </span>or more</div>
-                                </CardContent>
-                                <hr />
-                                <CardContent>
-                                    <span className="pay-amount-label">Get Rewards</span>
-                                    <div className="pay-amount-sub-label-head" style={{ marginBottom: '10px' }}>Discount on MildCares Products</div>
-                                    <span className="pay-amount-label">40% off on products for Mynt Community</span>
-                                </CardContent>
-                            </Card>
+                            {
+                                rewards.map((item, index) => <Card key={index} className="secondary-card-pay-section">
+                                    <CardContent>
+                                        <span className="pay-amount-label">Subscribe for</span>
+                                        <div className="pay-amount-sub-label-head"><span style={{ color: '#EBB429' }}>₹{item.amount} </span>or more</div>
+                                    </CardContent>
+                                    <hr />
+                                    <CardContent>
+                                        <span className="pay-amount-label">Get Rewards</span>
+                                        <div className="pay-amount-sub-label-head" style={{ marginBottom: '10px' }}>Discount on MildCares Products</div>
+                                        <span className="pay-amount-label">{item.discounted_price}% off on products for Mynt Community</span>
+                                    </CardContent>
+                                </Card>
+                                )
+                            }
+
                         </Grid>
                         <Grid item xs={gridxsSecond}>
                             <span className="pay-amount-label">Have a Coupon Code?</span>
@@ -182,7 +204,7 @@ export default function PayToSubscribeMain() {
                                 <CardContent>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                         <span style={{ fontSize: '14px', fontWeight: '600' }}>Subscription Amount</span>
-                                        <span style={{ fontSize: '16px', fontWeight: '600' }}>₹20,000</span>
+                                        <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{formik.values.amount ? formik.values.amount : 0}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                         <div style={{ alignItems: 'center', display: 'flex' }}>
@@ -197,12 +219,12 @@ export default function PayToSubscribeMain() {
                                             <span style={{ fontSize: '14px', fontWeight: '600', marginRight: '5px' }}>GST</span>
                                             <img src={Enquiry} width={20} height={20} alt="" />
                                         </div>
-                                        <span style={{ fontSize: '16px', fontWeight: '600' }}>₹72</span>
+                                        <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{(18 / 100) * formik.values.amount}</span>
                                     </div>
                                     <hr />
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                         <span style={{ fontSize: '18px', fontWeight: '600' }}>Total</span>
-                                        <span style={{ fontSize: '18px', fontWeight: '600' }}>₹20,472</span>
+                                        <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{400 + ((18 / 100) * formik.values.amount) + formik.values.amount}</span>
                                     </div>
                                 </CardContent>
 

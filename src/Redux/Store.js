@@ -7,13 +7,15 @@ import { userDataReducer } from "./reducers/auth"
 import { userEmailReducer } from "./reducers/auth";
 import { storeKycDetailsReducer } from "./reducers/verifyKycReducer";
 import { storeFounderSignUpData } from "./reducers/FounderSignUp";
+import { storeCompanyData } from "./reducers/company";
 
 const rootReducer = combineReducers({
 
   loginData: userDataReducer,
   userInfo: userEmailReducer,
   kycData: storeKycDetailsReducer,
-  founderSignUpData: storeFounderSignUpData
+  founderSignUpData: storeFounderSignUpData,
+  companyData: storeCompanyData
 
 })
 

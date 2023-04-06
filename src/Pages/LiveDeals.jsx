@@ -19,6 +19,7 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import CompanyServices from "../service/Company";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -90,6 +91,9 @@ const LiveDeals = () => {
     const [activeBtn, setActiveBtn] = useState(1)
     const [spaceing, setSpaceing] = useState(4)
     const [gridxsFirst, setGridxsFirst] = useState(3)
+    const [dealTypes, setDealTypes] = useState([])
+    const [dealTerms, setDealTerms] = useState([])
+    const [superArray, setSuperArray] = useState([])
     const ratio = parseInt(window.innerWidth);
     const location = window.location.pathname;
     const navigate = useNavigate()
@@ -102,7 +106,50 @@ const LiveDeals = () => {
         window.scrollTo({ top: y, behavior: 'smooth' });
     }
 
+    const handleArrange = (dealTypes, campaigns) => {
+        const result = campaigns.reduce((acc, campaign) => {
+            const dealTypeId = campaign.security_type;
+            const dealType = dealTypes.find((dt) => dt.id === dealTypeId);
+            const campaignObj = { ...campaign };
+
+            if (acc[dealTypeId]) {
+                acc[dealTypeId].campaigns.push(campaignObj);
+            } else {
+                acc[dealTypeId] = { id: dealTypeId, deal_type: dealType?.deal_name, campaigns: [campaignObj] };
+            }
+
+            return acc;
+        }, {});
+
+        const groupedCampaigns = Object.values(result);
+
+        console.log(groupedCampaigns);
+        setSuperArray(groupedCampaigns)
+    }
+
     useEffect(() => {
+        return handleArrange(dealTypes, dealTerms)
+    }, [dealTypes, dealTerms])
+
+
+    useEffect(() => {
+        CompanyServices.getAllDealTypes().then(res => {
+            if (res.status === 200 || res.status === 201) {
+                setDealTypes(res.data)
+            } else {
+                console.log("Get Deal Type Failed!")
+            }
+        })
+
+        CompanyServices.getAllDealTerms().then(res => {
+            if (res.status === 200 || res.status === 201) {
+                console.log(res.data)
+                setDealTerms(res.data)
+            } else {
+                console.log("Get Deal Terms Failed!")
+            }
+        })
+
         window.scrollTo(0, 0);
 
         if (ratio < 1230) {
@@ -142,7 +189,7 @@ const LiveDeals = () => {
             {
                 name: 'offset',
                 options: {
-                    offset: [50, 0], // adjust the second value to increase or decrease the space to the top
+                    offset: [50, 0],
                 },
             },
         ],
@@ -165,28 +212,28 @@ const LiveDeals = () => {
                         </div>
 
                         <div className="button-container-liveDeals">
-                            <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(1)}>
-                                <div >
-                                    <span >CSOP</span>
-                                    <div className="mini-active-btn-highliter">Live</div>
-                                </div>
-                            </div>
 
+                            {
+                                dealTypes?.map((item, index) => <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
+                                    onClick={() => handleOrderTabs(index + 1)}>
+                                    <div >
+                                        <span >{item.deal_name}</span>
+                                        {/* <div className="mini-active-btn-highliter">Live</div> */}
+                                    </div>
+                                </div>)
+                            }
 
-                            <div className="active-btn-container details" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
+                            {/* <div className="active-btn-container details" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
                                 <span>CCD</span>
-                                {/* <div className="mini-active-btn-highliter">Live</div> */}
                             </div>
-
 
                             <div className="active-btn-container details" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(3)}>
                                 <span>NCD</span>
                             </div>
 
-
                             <div className="active-btn-container details" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(4)}>
                                 <span>ID</span>
-                            </div>
+                            </div> */}
                         </div>
                         {/* <div style={{ textAlign: 'center', marginBottom: '2em' }}>
                             {activeBtn === 1 &&
@@ -212,124 +259,135 @@ const LiveDeals = () => {
                         </div> */}
 
                         {/* CSOP */}
-                        <div id="tab-1">
-                            <span style={{ fontSize: '20px', fontWeight: '600', }}>
-                                CSOP
-                                <LightTooltip placement="top" popperOptions={{ popperOptions }} title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
-                                    <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
-                                </LightTooltip>
-                            </span>
-                            <div style={{ display: 'grid', marginTop: '0.5rem' }}>
-                                <span style={{ fontSize: '18px' }}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span>
-                            </div>
-                            <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
-                                {data.map((item, index) => {
-                                    return (
-                                        <Grid key={index} item xs={gridxsFirst}>
-                                            <Card onClick={() => navigate('/live-deals-details')} className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
-                                                <CardContent sx={{ padding: '0' }}>
-                                                    <div style={{ position: 'relative' }}>
-                                                        <img src={item.backgroundImage} width='100%' height={192} />
-                                                        <div className="card-header-logo">
-                                                            <div className="company-logo-section">
-                                                                <img src={Logo1} width={102} height={34} />
+                        {
+                            superArray?.map((item, index) => <div id={`tab-${item.id}`} key={index}>
+                                <span style={{ fontSize: '20px', fontWeight: '600', }}>
+                                    {item.deal_type}
+                                    <LightTooltip placement="top" popperOptions={{ popperOptions }} title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
+                                        <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
+                                    </LightTooltip>
+                                </span>
+                                <div style={{ display: 'grid', marginTop: '0.5rem' }}>
+                                    <span style={{ fontSize: '18px' }}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span>
+                                </div>
+                                <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
+                                    {item.campaigns?.map((campaign, index) => {
+                                        return (
+                                            <Grid key={index} item xs={gridxsFirst}>
+                                                <Card onClick={() =>
+                                                    navigate('/live-deals-details', {
+                                                        state: {
+                                                            campaignId: campaign.campaign_id,
+                                                            campaignData: { ...campaign, deal_type: item.deal_type }
+                                                        }
+                                                    })}
+                                                    className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
+                                                    <CardContent sx={{ padding: '0' }}>
+                                                        <div style={{ position: 'relative' }}>
+                                                            <img src={BG1} width='100%' height={192} />
+                                                            <div className="card-header-logo">
+                                                                <div className="company-logo-section">
+                                                                    <img src={Logo1} width={102} height={34} />
+                                                                </div>
+                                                                <div className="logo-txt-script">
+                                                                    LIVE
+                                                                </div>
                                                             </div>
-                                                            <div className="logo-txt-script">{item.logoText}</div>
-                                                        </div>
-                                                        <div className="info-card-txt">
-                                                            <span className="company-name">{item.logoName}</span>
-                                                        </div>
-                                                        <div className="centered-txt-card">
-                                                            <span className="company-name">{item.heading}</span>
-                                                        </div>
-                                                        <div className="bottom-txt-card">
-                                                            <span>{item.subHeading}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="body-card-section">
-                                                        <span className="card-description">{item.description}</span>
-                                                        <div style={{ display: 'flex' }}>
-                                                            {item.chip.map((item, index) => {
-                                                                return (
-                                                                    <div key={index} className="chip-status"><span>{item.name}</span></div>
-                                                                )
-                                                            })}
-                                                        </div>
-                                                        <div className="footer-card-section">
-                                                            <div className="numbers-investors">
-                                                                <span className="percentage-investment">{item.raised}</span>
-                                                                <span className="investment-status">Raised</span>
+                                                            <div className="info-card-txt">
+                                                                <span className="company-name">{item.deal_type}</span>
                                                             </div>
-                                                            <div className="vertical-line-invest"></div>
-                                                            <div className="numbers-investors">
-                                                                <span className="percentage-investment">{item.closesIn}</span>
-                                                                <span className="investment-status">Closes in</span>
+                                                            <div className="centered-txt-card">
+                                                                <span className="company-name">Mildcares gynocup</span>
                                                             </div>
-                                                            <div className="vertical-line-invest"></div>
-                                                            <div className="numbers-investors">
-                                                                <span className="percentage-investment">{item.invest}</span>
-                                                                <span className="investment-status">Min Invest</span>
+                                                            <div className="bottom-txt-card">
+                                                                <span>This is not the actual text for this section of this card, something else will come here</span>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="overlay">
-                                                        <div className="card-header-logo hover">
-                                                            <div className="company-logo-section">
-                                                                <img src={Eveez} width={54} height={54} />
+                                                        <div className="body-card-section">
+                                                            <span className="card-description">We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…</span>
+                                                            <div style={{ display: 'flex' }}>
+                                                                <div key={index} className="chip-status"><span>health</span></div>
                                                             </div>
-                                                            <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
-                                                        </div>
-                                                        <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                            <span className="investment-txt hover">Investors</span>
-                                                            <span className="investment-sub-txt hover">18</span>
-                                                            <hr style={{ marginTop: '11.5px' }} />
-                                                            <span className="investment-txt hover">Raised</span>
-                                                            <span className="investment-sub-txt hover">16.5%</span>
-                                                            <hr style={{ marginTop: '11.5px' }} />
-                                                            <span className="investment-txt hover">Minimum Subscription</span>
-                                                            <span className="investment-sub-txt hover">5000</span>
-                                                            <hr style={{ marginTop: '11.5px' }} />
-                                                            <span className="investment-txt hover">Closes in</span>
-                                                            <span className="investment-sub-txt hover">14 days</span>
-                                                            <div className="chip-status hover"><span>Personal Health</span></div>
-                                                        </div>
-                                                    </div>
-                                                    {item.checked && <div className="overlay responsive">
-                                                        <div className="card-header-logo hover">
-                                                            <div className="company-logo-section">
-                                                                <img src={Eveez} width={54} height={54} />
+                                                            <div className="footer-card-section">
+                                                                <div className="numbers-investors">
+                                                                    <span className="percentage-investment">0%</span>
+                                                                    <span className="investment-status">Raised</span>
+                                                                </div>
+                                                                <div className="vertical-line-invest"></div>
+                                                                <div className="numbers-investors">
+                                                                    <span className="percentage-investment">
+                                                                        10 days
+                                                                    </span>
+                                                                    <span className="investment-status">Closes in</span>
+                                                                </div>
+                                                                <div className="vertical-line-invest"></div>
+                                                                <div className="numbers-investors">
+                                                                    <span className="percentage-investment">
+                                                                        5000
+                                                                    </span>
+                                                                    <span className="investment-status">Min Invest</span>
+                                                                </div>
                                                             </div>
-                                                            <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                                         </div>
-                                                        <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                            <span className="investment-txt hover">Investors</span>
-                                                            <span className="investment-sub-txt hover">18</span>
-                                                            <hr style={{ marginTop: '11.5px' }} />
-                                                            <span className="investment-txt hover">Raised</span>
-                                                            <span className="investment-sub-txt hover">16.5%</span>
-                                                            <hr style={{ marginTop: '11.5px' }} />
-                                                            <span className="investment-txt hover">Minimum Subscription</span>
-                                                            <span className="investment-sub-txt hover">5000</span>
-                                                            <hr style={{ marginTop: '11.5px' }} />
-                                                            <span className="investment-txt hover">Closes in</span>
-                                                            <span className="investment-sub-txt hover">14 days</span>
-                                                            <div className="chip-status hover"><span>Personal Health</span></div>
+                                                        <div className="overlay">
+                                                            <div className="card-header-logo hover">
+                                                                <div className="company-logo-section">
+                                                                    <img src={Eveez} width={54} height={54} />
+                                                                </div>
+                                                                <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                                            </div>
+                                                            <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                                                <span className="investment-txt hover">Investors</span>
+                                                                <span className="investment-sub-txt hover">0</span>
+                                                                <hr style={{ marginTop: '11.5px' }} />
+                                                                <span className="investment-txt hover">Raised</span>
+                                                                <span className="investment-sub-txt hover">0%</span>
+                                                                <hr style={{ marginTop: '11.5px' }} />
+                                                                <span className="investment-txt hover">Minimum Subscription</span>
+                                                                <span className="investment-sub-txt hover">5000</span>
+                                                                <hr style={{ marginTop: '11.5px' }} />
+                                                                <span className="investment-txt hover">Closes in</span>
+                                                                <span className="investment-sub-txt hover">10 days</span>
+                                                                <div className="chip-status hover"><span>Personal Health</span></div>
+                                                            </div>
                                                         </div>
-                                                    </div>}
-                                                    <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
-                                                        <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={item.checked ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
+                                                        {item.checked && <div className="overlay responsive">
+                                                            <div className="card-header-logo hover">
+                                                                <div className="company-logo-section">
+                                                                    <img src={Eveez} width={54} height={54} />
+                                                                </div>
+                                                                <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                                            </div>
+                                                            <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                                                <span className="investment-txt hover">Investors</span>
+                                                                <span className="investment-sub-txt hover">18</span>
+                                                                <hr style={{ marginTop: '11.5px' }} />
+                                                                <span className="investment-txt hover">Raised</span>
+                                                                <span className="investment-sub-txt hover">16.5%</span>
+                                                                <hr style={{ marginTop: '11.5px' }} />
+                                                                <span className="investment-txt hover">Minimum Subscription</span>
+                                                                <span className="investment-sub-txt hover">5000</span>
+                                                                <hr style={{ marginTop: '11.5px' }} />
+                                                                <span className="investment-txt hover">Closes in</span>
+                                                                <span className="investment-sub-txt hover">14 days</span>
+                                                                <div className="chip-status hover"><span>Personal Health</span></div>
+                                                            </div>
+                                                        </div>}
+                                                        <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
+                                                            <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={item.checked ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
 
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
-                                        </Grid>
-                                    )
-                                })}
-                            </Grid>
-                        </div>
+                                                        </div>
+                                                    </CardContent>
+                                                </Card>
+                                            </Grid>
+                                        )
+                                    })}
+                                </Grid>
+                            </div>)
+                        }
 
                         {/* CCD */}
-                        <div id="tab-2">
+                        {/* <div id="tab-2">
                             <span style={{ fontSize: '20px', fontWeight: '600' }}>
                                 CCD
                                 <LightTooltip placement="top" PopperProps={{ style: { marginTop: -12 } }} title="Compulsory convertible debentures are hybrid securities that have the same financial rights like equity share but no voting rights.">
@@ -447,10 +505,10 @@ const LiveDeals = () => {
 
                             </Grid>
 
-                        </div>
+                        </div> */}
 
                         {/* NCD */}
-                        <div id="tab-3">
+                        {/* <div id="tab-3">
                             <span style={{ fontSize: '20px', fontWeight: '600' }}>
                                 NCD
 
@@ -566,10 +624,10 @@ const LiveDeals = () => {
                                     )
                                 })}
                             </Grid>
-                        </div>
+                        </div> */}
 
                         {/* ID */}
-                        <div id="tab-4">
+                        {/* <div id="tab-4">
                             <span style={{ fontSize: '20px', fontWeight: '600' }}>
                                 ID
                                 <LightTooltip placement="top" title=" NCD (Non-Convertible Debenture) is a type of debt security issued by companies that pays a fixed rate of interest and has a maturity date.">
@@ -685,7 +743,7 @@ const LiveDeals = () => {
                                 })}
 
                             </Grid>
-                        </div>
+                        </div> */}
                     </Container>
                 </div>
             </div >

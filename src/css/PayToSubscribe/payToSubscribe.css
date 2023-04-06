@@ -34,35 +34,42 @@
     font-size: 16px;
 }
 
-.pay-amount-heading{
+.particular-mentioned-chip-pay:hover {
+    cursor: pointer;
+}
+
+.pay-amount-heading {
     font-size: 20px;
     font-weight: 600;
 }
-.secondary-card-pay-section{
+
+.secondary-card-pay-section {
     margin-top: 20px !important;
     border: 1px solid #D1D1D1 !important;
-border-radius: 5px !important;
-box-shadow: none !important;
-width: 90% !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
+    width: 90% !important;
 }
-.pay-amount-sub-label-head{
+
+.pay-amount-sub-label-head {
     font-size: 18px;
     font-weight: 600;
     margin-top: 5px;
 }
-.secondary-card-pay-section.second{
+
+.secondary-card-pay-section.second {
     width: 100% !important;
     margin-top: 28px !important;
 }
 
-.aggrement-pay-subscribe-container{
+.aggrement-pay-subscribe-container {
     display: flex;
     margin-top: 22px;
     align-items: center;
 }
 
 @media screen and (max-width:700px) {
-    .secondary-card-pay-section{
+    .secondary-card-pay-section {
         width: 100% !important;
     }
 }

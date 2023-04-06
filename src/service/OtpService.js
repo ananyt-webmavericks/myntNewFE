@@ -43,7 +43,20 @@ const ResendOtpMail = async (data) => {
 
 const VerifyMobileOtp = async (data) => {
     try {
-        console.log("ll")
+        const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/manage`, data);
+        notifySuccess("OTP sent on your mobile number!")
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            notify("Try again !!")
+        }
+        return error;
+    }
+}
+
+const VerifyMobileOtpPatch = async (data) => {
+    try {
         const response = await axios.patch(`${Base_Url}/api/investor-kyc/mobile/manage`, data);
         notifySuccess("OTP sent on your mobile number!")
         return response;
@@ -80,6 +93,7 @@ const OtpServices = {
     VerifyEmailOtp,
     ResendOtpMail,
     VerifyMobileOtp,
+    VerifyMobileOtpPatch,
     MobileOtp
 };
 

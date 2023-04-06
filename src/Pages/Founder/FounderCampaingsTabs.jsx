@@ -14,6 +14,7 @@ import Press from '../../component/FounderDrawer/FounderCampaignsTabs/Press';
 import GetRewards from '../../component/FounderDrawer/FounderCampaignsTabs/GetRewards';
 import '../../css/FounderDrawer/Dashboard/GridBox.css'
 import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const useStyles = makeStyles({
     fontstyle: {
         textTransform: 'capitalize'
@@ -28,6 +29,15 @@ const FounderCampaingsTabs = () => {
     const [thisTab, setThisTab] = useState(<CompanyProfile />)
 
     const handleChange = (event, newValue) => {
+        if (!(newValue === 0)) {
+            if (!localStorage.getItem("company_id")) {
+                return toast.error("Please fill up company details")
+            } else if (!sessionStorage.getItem("campaign_id")) {
+                if (!(newValue === 1)) {
+                    return toast.error("Please upload pitch")
+                }
+            }
+        }
         setValue(newValue);
         setThisTab(handleRenderTab(newValue))
     };
@@ -37,23 +47,22 @@ const FounderCampaingsTabs = () => {
     const handleRenderTab = (x) => {
         console.log(x)
         switch (x) {
-            case 0: return <CompanyProfile />
+            case 0: return <CompanyProfile tabChangeFn={handleChange} />
                 break;
-            case 1: return <UploadPitch />
+            case 1: return <UploadPitch tabChangeFn={handleChange} />
                 break;
-            case 2: return <People />
+            case 2: return <People tabChangeFn={handleChange} />
                 break;
-            case 3: return <FAQS />
+            case 3: return <FAQS tabChangeFn={handleChange} />
                 break;
-            case 4: return <Highlights />
+            case 4: return <Highlights tabChangeFn={handleChange} />
                 break;
-            case 5: return <GetRewards />
+            case 5: return <GetRewards tabChangeFn={handleChange} />
                 break;
-            case 6: return <Press />
+            case 6: return <Press tabChangeFn={handleChange} />
                 break;
-            case 7: return <UploadDocuments />
+            case 7: return <UploadDocuments tabChangeFn={handleChange} />
                 break;
-
 
             default: return <CompanyProfile />
                 break;

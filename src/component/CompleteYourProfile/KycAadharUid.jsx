@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import services from "../../service/investor.kyc";
 import { toast } from 'react-toastify';
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import { useFormik } from "formik";
+import AadharValSchema from "../../Validations/AadharValSchema";
 const data = {
     pan_card: '',
     birth_date: '',
@@ -23,69 +25,49 @@ export default function KycAadharUid() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const handleChange = (e) => {
-        setValue({ ...value, [e.target.name]: e.target.value })
-    }
-    const notify = (data) => {
-        toast.error(data)
-    }
-    const handleSubmit = () => {
-        const val = {
-            user_id: userData.id,
-            pan_card: value.pan_card.toUpperCase(),
-            birth_date: value.birth_date,
-            birth_month: value.birth_month,
-            birth_year: value.birth_year
-        }
-        if (value.pan_card === '' && value.birth_date === "" && value.birth_month === "" && value.birth_year === '') {
-            notify('Please enter pan details')
-        } else if (value.pan_card === '') {
-            notify('Please enter pan number')
-        } else if (value.birth_date === '') {
-            notify('Please enter  date')
-        } else if (value.birth_month === '') {
-            notify('Please enter  month')
-        } else if (value.birth_year === '') {
-            notify('Please enter  year')
-        } else {
-            try {
-                services.VerifyKycPan(val).then(
-                    (response) => {
-                        console.log(response)
-                        if (response.status === 201 || response.status === 200) {
-                            services.getInvestorKycData(userData.id).then((response) => {
-                                if (response.status === 200) {
-                                    dispatch(storeKycDetailsAction(response.data))
-                                    handleNavigate()
-                                    console.log(response.data)
-                                }
-                            })
-                        }
-                        else {
-                            console.log("error")
-                        }
-                    })
-            }
-            catch {
-                notify("Try after few minutes")
-            }
-        }
-    }
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            user_id: userData?.id,
+            aadhaar_card_number: '',
+        },
 
+        validationSchema: AadharValSchema,
+
+        onSubmit: (values) => {
+            console.log(values)
+            services.verifyAadharKyc(values).then(async res => {
+                console.log(res)
+                if (res.status === 200 || res.status === 201) {
+                    console.log(res.data.data.aadhaar_card_verified)
+                    if (res.data.data.aadhaar_card_verified) {
+                        toast.success("Aadhar verified  successfully!")
+                        await dispatch(storeKycDetailsAction(res.data.data))
+                        handleNavigate()
+                    } else {
+                        toast.error("Invalid aadhar number, please enter valid aadhar number")
+                        await dispatch(storeKycDetailsAction(res.data.data))
+                    }
+                } else {
+                    toast.error("Something went wrong, please try again later")
+                }
+            })
+        }
+    });
     const handleNavigate = () => {
-        (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
-            ? navigate('/complete-your-profile/verify-address')
-            : (!userKycData?.mobile_number)
-                ? navigate('/complete-your-profile')
-                : (
-                    // !userKycData?.bank_account_verified ||
-                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
-                    ? navigate('/complete-your-profile/payment-details')
-                    : (!userKycData?.pan_card
-                        // || !userKycData?.pan_card_verified
-                    )
-                        ? navigate('/complete-your-profile/verify-kyc')
-                        : navigate(kycDonePath ? kycDonePath : '/dashboard')
+        (!userKycData?.mobile_number_verified)
+            ? navigate('/complete-your-profile')
+            : (
+                !userKycData?.pan_card_verified || !userKycData?.pan_card
+            )
+                ? navigate('/complete-your-profile/verify-kyc')
+                : (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+                    ? navigate('/complete-your-profile/verify-address')
+                    : (!userKycData?.aadhaar_card_verified || !userKycData?.aadhaar_card_number)
+                        ? navigate('/complete-your-profile/verify-kyc/aadhar-uid')
+                        : (!userKycData?.bank_account_verified || !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                            ? navigate('/complete-your-profile/payment-details')
+                            : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
 
     return (
@@ -115,23 +97,26 @@ export default function KycAadharUid() {
                             </div>
                         </div>
                         <hr className="dashed-line-profile main" />
+                        <form onSubmit={formik.handleSubmit}>
+                            <div className="verify-number-container">
+                                <span className="verify-number-head">Enter your Aadhar UID</span>
+                                <div className="number-verify-container kyc">
+                                    <input
+                                        type="text"
+                                        name="aadhaar_card_number"
+                                        value={formik.values.aadhaar_card_number}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        placeholder="Enter Aadhar UID"
+                                        className="phoneNumberInput" />
+                                </div>
+                                {formik.touched.aadhaar_card_number && <div style={{ marginTop: '4px' }} className="raise-err-text">{formik.errors.aadhaar_card_number}</div>}
 
-                        <div className="verify-number-container">
-                            <span className="verify-number-head">Enter your Aadhar UID</span>
-                            <div className="number-verify-container kyc">
-                                <input
-                                    type="text"
-                                    name="pan_card"
-                                    value={value.pan_card}
-                                    onChange={handleChange}
-                                    placeholder="Enter Aadhar UID" className="phoneNumberInput" />
                             </div>
-
-                        </div>
-                        <div className="verify-button-container" style={{ paddingTop: '28px' }}>
-                            <Button varient="contained" className="verify-button" onClick={handleSubmit}>Submit</Button>
-                        </div>
-
+                            <div className="verify-button-container" style={{ paddingTop: '28px' }}>
+                                <Button type="submit" varient="contained" className="verify-button">Submit</Button>
+                            </div>
+                        </form>
                     </CardContent>
                 </Card>
             </div>

@@ -53,9 +53,9 @@ export default function KycPanDetails() {
                     (response) => {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
-                            services.getInvestorKycData(userData.id).then((response) => {
+                            services.getInvestorKycData(userData.id).then(async (response) => {
                                 if (response.status === 200) {
-                                    dispatch(storeKycDetailsAction(response.data))
+                                    await dispatch(storeKycDetailsAction(response.data))
                                     handleNavigate()
                                     console.log(response.data)
                                 }
@@ -73,19 +73,19 @@ export default function KycPanDetails() {
     }
 
     const handleNavigate = () => {
-        (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
-            ? navigate('/complete-your-profile/verify-address')
-            : (!userKycData?.mobile_number)
-                ? navigate('/complete-your-profile')
-                : (
-                    // !userKycData?.bank_account_verified ||
-                    !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
-                    ? navigate('/complete-your-profile/payment-details')
-                    : (!userKycData?.pan_card
-                        // || !userKycData?.pan_card_verified
-                    )
-                        ? navigate('/complete-your-profile/verify-kyc')
-                        : navigate(kycDonePath ? kycDonePath : '/dashboard')
+        (!userKycData?.mobile_number_verified)
+            ? navigate('/complete-your-profile')
+            : (
+                !userKycData?.pan_card_verified || !userKycData?.pan_card
+            )
+                ? navigate('/complete-your-profile/verify-kyc')
+                : (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+                    ? navigate('/complete-your-profile/verify-address')
+                    : (!userKycData?.aadhaar_card_verified || !userKycData?.aadhaar_card_number)
+                        ? navigate('/complete-your-profile/verify-kyc/aadhar-uid')
+                        : (!userKycData?.bank_account_verified || !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                            ? navigate('/complete-your-profile/payment-details')
+                            : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
 
     return (

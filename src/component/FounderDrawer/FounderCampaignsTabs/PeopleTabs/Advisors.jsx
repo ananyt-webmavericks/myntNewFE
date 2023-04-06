@@ -7,12 +7,14 @@ import { useFormik } from 'formik'
 import CompanyServices from '../../../../service/Company'
 import PeopleTabValSchema from '../../../../Validations/PeopleTabValSchema'
 import { toast } from 'react-toastify'
-const Advisors = () => {
+import { authAxios } from '../../../../service/Auth-header'
+import { Base_Url } from '../../../../Utils/Configurable'
+const Advisors = ({ getPeopleData, tabChangeFn }) => {
     const { userData } = useSelector(state => state.loginData)
 
     const [preview, setPreview] = useState(null);
 
-    function handleFileSelect(event) {
+    const handleFileSelect = async (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
 
@@ -23,7 +25,21 @@ const Advisors = () => {
         if (file) {
             reader.readAsDataURL(file);
         }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const { data } = await authAxios.post(`${Base_Url}/api/users/upload-files`, formData);
+            console.log(data)
+            formik.setFieldValue("profile_image", data.message)
+            return data
+        }
+        catch (error) {
+            console.log("Data not found !!")
+        }
     }
+
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -35,7 +51,7 @@ const Advisors = () => {
             linked_in_link: '',
             description: '',
             type: 'ADVISOR',
-            profile_image: 'https://i.pinimg.com/736x/d8/ea/1b/d8ea1be3acc5102e993e8b1780f6a569.jpg',
+            profile_image: '',
             company_id: localStorage.getItem("company_id")
         },
 
@@ -46,6 +62,9 @@ const Advisors = () => {
             CompanyServices.addPeopleToCompany(values).then(res => {
                 if (res.status === 200 || 201) {
                     toast.success("Advisor added to company successfull!")
+                    getPeopleData()
+                    formik.handleReset()
+                    setPreview(null)
                 }
             })
         }
@@ -151,14 +170,14 @@ const Advisors = () => {
                         <input id='teamMemberProfile' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
                     </div>
                     {formik.touched.profile_image && <div className="raise-err-text" >{formik.errors.profile_image}</div>}
-                    <div className='AddmemberBtnParent'>
+                    {/* <div className='AddmemberBtnParent'>
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
-                        <div className="hrline"></div>
-                    </div>
+                    </div> */}
                     <Box className="BtnSaveAndNext">
                         <button type='submit' className="SaveBtn">Save</button>
-                        <button className="NextBtn">Next</button>
+                        <button onClick={e => tabChangeFn(e, 3)} className="NextBtn">Next</button>
                     </Box>
+                    <div className="hrline"></div>
                 </form>
             </Box>
 
