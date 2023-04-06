@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { userEmailAction } from "../../Redux/actions/auth";
+import { useEffect } from "react";
+import services from "../../service/investor.kyc";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -16,6 +18,7 @@ export default function VerifyNumber() {
     const dispatch = useDispatch()
     const { userData } = useSelector((state) => state.loginData)
     const { userInfo } = useSelector((state) => state.loginData)
+    const [kycData, setkycData] = useState(false)
     const [mobile, setMobile] = useState('')
     const handleChange = (e) => {
         setMobile(e.target.value)
@@ -36,17 +39,29 @@ export default function VerifyNumber() {
             notify('Please enter valid number')
         } else {
             try {
-                OtpServices.VerifyMobileOtp(data).then(
-                    (response) => {
-                        console.log(response)
-                        if (response.status === 201 || response.status === 200) {
-                            navigate('/complete-your-profile/verify-otp')
-                            dispatch(userEmailAction(data.mobile_number))
-                        }
-                        else {
-                            console.log("error")
-                        }
-                    })
+                !kycData
+                    ? OtpServices.VerifyMobileOtp(data).then(
+                        (response) => {
+                            console.log(response)
+                            if (response.status === 201 || response.status === 200) {
+                                navigate('/complete-your-profile/verify-otp')
+                                dispatch(userEmailAction(data.mobile_number))
+                            }
+                            else {
+                                console.log("error")
+                            }
+                        })
+                    : OtpServices.VerifyMobileOtpPatch(data).then(
+                        (response) => {
+                            console.log(response)
+                            if (response.status === 201 || response.status === 200) {
+                                navigate('/complete-your-profile/verify-otp')
+                                dispatch(userEmailAction(data.mobile_number))
+                            }
+                            else {
+                                console.log("error")
+                            }
+                        })
             }
             catch {
                 notify("Try after few minutes")
@@ -54,6 +69,16 @@ export default function VerifyNumber() {
         }
 
     }
+    console.log(kycData)
+    useEffect(() => {
+        services.getInvestorKycData(userData.id).then((response, error) => {
+            if (response.status === 200 || response.status === 201) {
+                setkycData(true)
+            } else {
+                setkycData(false)
+            }
+        })
+    }, [])
     return (
         <div className="complete-your-profile-container">
             <Card className="card-complete-profile">
@@ -112,7 +137,5 @@ export default function VerifyNumber() {
                 </CardContent>
             </Card>
         </div>
-
-
     )
 }

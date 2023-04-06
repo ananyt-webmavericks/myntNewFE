@@ -65,7 +65,7 @@ const useStyles = makeStyles({
         color: 'red'
     }
 });
-const CompanyProfile = () => {
+const CompanyProfile = ({ tabChangeFn }) => {
     const classes = useStyles()
     const theme = useTheme();
     const [personName, setPersonName] = useState([]);
@@ -118,6 +118,9 @@ const CompanyProfile = () => {
             CompanyServices.updateCompany({ ...values, company_id: companyData?.id }).then(res => {
                 console.log(res)
                 toast.success("Company details added successfully!")
+                setTimeout(() => {
+                    tabChangeFn(0, 1)
+                }, 1000);
             })
         }
     });
@@ -529,9 +532,10 @@ const CompanyProfile = () => {
                         style={{ margin: '20px', color: 'black' }}
                         variant='contained' className="comp-prof-button1">Save</Button>
                     <Button
-                        type='submit'
+                        onClick={e => tabChangeFn(e, 1)}
+                        type="button"
                         style={{ margin: '20px' }}
-                        variant="contained" className="comp-prof-button2">Submit</Button>
+                        variant="contained" className="comp-prof-button2">Next</Button>
                 </div>
             </form>
         </Container>

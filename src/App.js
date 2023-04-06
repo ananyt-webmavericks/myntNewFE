@@ -57,9 +57,11 @@ import FounderMynt from './component/MyntUniversity/MyntFaq/FounderMynt';
 import MyntBlogsDetail from './component/MyntUniversity/myntBlogs/MyntBlogsDetail';
 import PageNotFound from './Pages/PageNotFound';
 import FounderSignUp from './component/GetStarted/FounderSignUp';
-import ProtectedLiveDeals from './Pages/ProtectedLiveDeals';
 import FounderOtpVerification from './Pages/Founder/FounderOtpVerification';
 import KycAadharUid from './component/CompleteYourProfile/KycAadharUid';
+import PaymentSuccess from './Pages/Payment/PaymentSuccess';
+import PaymentFailed from './Pages/Payment/PaymentFailed';
+import WaitTime from './Pages/Payment/WaitTime';
 function App() {
 
   const location = window.location.pathname;
@@ -104,7 +106,7 @@ function App() {
         <Route exact path="/complete-your-profile/payment-details" element={<PaymentDetails />} />
         <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
         <Route exact path="/my-profile" element={<MyProfile />} />
-        <Route exact path="/live-deals-details" element={<ProtectedLiveDeals LiveDealsDetails={<LiveDealsDetails />} />} />
+        <Route exact path="/live-deals-details" element={<LiveDealsDetails />} />
         <Route exact path="/terms-and-condition" element={<TermsAndCondition />} />
         <Route exact path="/risk-investment" element={<RiskOfInvestment />} />
         <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -128,8 +130,9 @@ function App() {
         <Route exact path="/dashboard-founder/campaigns-tabs" element={<FounderCampaingsTabs />} />
 
         {/* payment success */}
-        <Route exact path="/payment/status-successful" element={<PageNotFound />} />
-        <Route exact path="/payment/status-failed" element={<PageNotFound />} />
+        <Route exact path="/payment/status-successful" element={<PaymentSuccess />} />
+        <Route exact path="/payment/fetching-details" element={<WaitTime />} />
+        <Route exact path="/payment/status-failed" element={<PaymentFailed />} />
 
         {/* page not found */}
         <Route exact path="*" element={<PageNotFound />} />

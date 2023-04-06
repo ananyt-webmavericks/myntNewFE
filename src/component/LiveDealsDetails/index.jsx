@@ -15,7 +15,7 @@ import '../../css/LiveDealsDetails/liveDetails.css';
 import DealsFaqs from "./DealsFaqs";
 import YoutubeEmbed from "./YouTubeEmbed";
 import DealTerm from "./DealTerms";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Team from "./Team";
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -33,6 +33,9 @@ import ShareIcon from '@mui/icons-material/Share';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { useSelector } from "react-redux";
+import UserServices from "../../service/UserService";
+import CompanyServices from "../../service/Company";
 const actions = [
     { icon: <FacebookRoundedIcon />, name: 'Facebook' },
     { icon: <InstagramIcon />, name: 'Instagram' },
@@ -50,47 +53,85 @@ export default function LiveDetailsMain() {
     const navigate = useNavigate()
     const [direction, setDirection] = React.useState('right');
     const [hidden, setHidden] = React.useState(false);
-
+    const [campaignData, setCampaignData] = useState({})
+    const [hightLightData, setHightLightData] = useState([])
+    const [companyData, setCompanyData] = useState({})
+    const [faqData, setFaqData] = useState([])
+    const [peopleData, setPeopleData] = useState([])
+    const { userData } = useSelector((state) => state.loginData)
     const handleDirectionChange = (event) => {
         setDirection(event.target.value);
     };
-
+    const location = useLocation()
     const handleHiddenChange = (event) => {
         setHidden(event.target.checked);
     };
     useEffect(() => {
+        CompanyServices.getCampaignById(location.state?.campaignId).then(res => {
+            if (res.status === 200 || res.status === 201) {
+                console.log(res.data)
+                setCampaignData(res.data)
+            }
+        })
+        CompanyServices.getHighlights(location.state?.campaignId).then(res => {
+            if (res.status === 200 || res.status === 201) {
+                console.log(res.data)
+                setHightLightData(res.data)
+            }
+        })
+        CompanyServices.getCampaignsFaqs(location.state?.campaignId).then(res => {
+            if (res.status === 200 || res.status === 201) {
+                console.log(res.data)
+                setFaqData(res.data)
+            }
+        })
+        CompanyServices.getCompanyDetailByCampaign(location.state?.campaignId).then(res => {
+            if (res.status === 200 || res.status === 201) {
+                console.log("companyData = ", res.data)
+                setCompanyData(res.data.company_id)
+                CompanyServices.getPeopleByCompanyId(res.data.company_id.id).then(response => {
+                    if (response.status === 200 || response.status === 201) {
+                        console.log("peopleData = ", response.data)
+                        setPeopleData(response.data)
+                    }
+                })
+            }
+        })
 
         window.scrollTo(0, 0)
         if (ratio < 850) {
             setGridxsFirst(1)
             setgridxsSecond(12)
         }
-
+        setBlurAmount(userData?.id ? 0 : 4.5);
     }, [])
+    console.log(location.state)
+    const [blurAmount, setBlurAmount] = useState(0);
+
     return (
         <div className="get-started-container">
             <div style={{ paddingTop: '8em' }}>
                 <Grid container spacing={gridxsFirst}>
                     <Grid item xs={gridxsSecond}>
-                        <YoutubeEmbed width={gridxsFirst === 2 ? '90%' : '100%'} height={'357px'} embedId={"g_aELYEBc4Q"} />
+                        <YoutubeEmbed link={campaignData?.ama_youtube_video} width={gridxsFirst === 2 ? '90%' : '100%'} height={'357px'} embedId={"g_aELYEBc4Q"} />
 
                     </Grid>
                     <Grid item xs={gridxsSecond}>
                         <div className="header-section-deals-detail">
-                            <img src={logo} height={39}></img>
-                            <span className="live-details-deals-txt-head">MildCares - GynoCup</span>
+                            <img src={companyData.company_logo} height={90}></img>
+                            <span className="live-details-deals-txt-head">{companyData.company_name}</span>
                         </div>
                         <div className="header-section-deals-detail">
                             <div className="chipset-details-live">Health</div>
                             <div className="chipset-details-live">Personal Health</div>
                             <div className="chipset-details-live">WELLNESS</div>
                         </div>
-                        <div className="live-deals-details-decription-conatiner">
-                            <span className="live-deals-details-decription">We at MildCares strive to empower womanhood! By building high-quality Hygiene and personal care products, our mission is to create a life-changing impact through our cost-effective, chemical free & high-quality range of products available to all. Together, we aim to create an impactful experience and a better tomorrow for every woman across the country.</span>
+                        <div style={{ filter: `blur(${blurAmount}px)` }} className="live-deals-details-decription-conatiner">
+                            <span className="live-deals-details-decription">{companyData.product_description}</span>
                         </div>
                         <div className="footer-card-section live-details">
                             <div className="numbers-investors live-details">
-                                <span className="percentage-investment" style={{ fontSize: '20px' }}>14.6%</span>
+                                <span className="percentage-investment" style={{ fontSize: '20px' }}>0%</span>
                                 <span className="investment-status">Raised</span>
                             </div>
                             <div className="vertical-line-invest live-details" ></div>
@@ -108,7 +149,12 @@ export default function LiveDetailsMain() {
                             <div className="inline-progress-bar-live-deals"></div>
                         </div>
                         <div className="header-section-deals-detail btn-section" >
-                            <Button onClick={() => navigate('/pay-to-subscribe')} style={{ textTransform: "none" }} className="invest-btn-section-deals">Enroll</Button>
+                            <Button onClick={() => {
+                                userData?.id
+                                    ? navigate('/pay-to-subscribe', { state: { campaignId: campaignData.id } })
+                                    : navigate('/login')
+                            }
+                            } style={{ textTransform: "none" }} className="invest-btn-section-deals">Enroll</Button>
                             <StyledSpeedDial
                                 sx={{
                                     '& .MuiFab-primary': { backgroundColor: '#E3E3E3', color: 'black' },
@@ -131,11 +177,11 @@ export default function LiveDetailsMain() {
                         </div>
                     </Grid>
                 </Grid>
-                <div className="heading-live-deals-details">
+                <div className="heading-live-deals-details" style={{ filter: `blur(${blurAmount}px)` }}>
                     <h2 className="header-txt-deals-details">Ask Me Anything</h2>
                     <span className="sub-header-txt-deals" style={{ maxWidth: '645px', margin: 'auto' }}>Investors can interact directly with the founders in a 45 minute online zoom session and ask any questions that they have regarding the campaign.</span>
                 </div>
-                <div className="date-booked-register-section">
+                <div className="date-booked-register-section" style={{ filter: `blur(${blurAmount}px)` }}>
                     <div className="live-deals-box-date">
                         <span style={{ fontSize: '14px', fontWeight: 'bold' }}>Recorded on</span>
                         <span className="header-txt-deals-details" style={{ fontFamily: "poppins", fontSIze: "18px" }}>07:00 PM</span>
@@ -154,17 +200,19 @@ export default function LiveDetailsMain() {
                 </div>
                 <div style={{ marginTop: '30px' }}>
                     <Grid container spacing={gridxsFirst}>
-                        <Grid item xs={gridxsSecond}>
-                            <Card className="card-content-live-details">
-                                <CardContent>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group1} height={47} width={53} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>10,000 + Strong community, Build organically</span>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item xs={gridxsSecond}>
+                        {
+                            hightLightData?.map((item, index) => <Grid key={index} item xs={gridxsSecond}>
+                                <Card className="card-content-live-details">
+                                    <CardContent>
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <img src={Group1} height={47} width={53} ></img>
+                                            <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>{item.title}</span>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </Grid>)
+                        }
+                        {/* <Grid item xs={gridxsSecond}>
                             <Card className="card-content-live-details">
                                 <CardContent>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -193,7 +241,7 @@ export default function LiveDetailsMain() {
                                     </div>
                                 </CardContent>
                             </Card>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </div>
                 <div className="tabs-section-details-deals">
@@ -215,11 +263,11 @@ export default function LiveDetailsMain() {
                     </div>
                     <div className="horizontal-ruler-tabs"></div>
                 </div>
-                {activeTab === 2 && <DealsFaqs />}
+                {activeTab === 2 && <DealsFaqs faqData={faqData} companyData={companyData} />}
                 {activeTab === 1 &&
                     <div>
-                        <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>MildCares - Pitch</div>
-                        <div style={{ display: 'grid', justifyContent: 'center', marginTop: '40px' }}>
+                        <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>{companyData.company_name} - Pitch</div>
+                        <div style={{ display: 'grid', justifyContent: 'center', marginTop: '40px', filter: `blur(${blurAmount}px)` }}>
                             <img src={FirstImage} height={gridxsFirst === 1 ? '193' : '592'} style={gridxsFirst === 1 ? { width: '90%', margin: 'auto' } : { width: '90%', margin: 'auto' }}></img>
                             <img src={SecondImage} height={gridxsFirst === 1 ? '171' : '592'} style={gridxsFirst === 1 ? { width: '90%', margin: 'auto', paddingTop: '30px' } : { width: '90%', margin: 'auto', paddingTop: '30px' }}></img>
                             <img src={ThirdImage} height={gridxsFirst === 1 ? '179' : '592'} style={gridxsFirst === 1 ? { width: '90%', margin: 'auto', paddingTop: '30px' } : { width: '90%', margin: 'auto', paddingTop: '30px' }}></img>
@@ -230,17 +278,17 @@ export default function LiveDetailsMain() {
                     activeTab === 3 &&
                     <div>
                         <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Deal Terms</div>
-                        <DealTerm />
+                        <DealTerm companyData={companyData} blurAmount={blurAmount} dealTermData={location.state?.campaignData} />
                     </div>
                 }
                 {
                     activeTab === 4 &&
-                    <div>
-                        <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px', marginBottom: '30px' }}>Meet the Team</div>
-                        <Team />
+                    <div >
+                        <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px', marginBottom: '30px' }}></div>
+                        <Team blurAmount={blurAmount} peopleData={peopleData} />
                     </div>
                 }
             </div>
-        </div>
+        </div >
     )
 }

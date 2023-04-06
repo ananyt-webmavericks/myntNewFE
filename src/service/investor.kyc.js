@@ -68,6 +68,19 @@ const VerifyKycBank = async (data) => {
     }
 
 }
+
+const verifyAadharKyc = async (aadharCredentials) => {
+
+    try {
+        const response = await axios.patch(`${Base_Url}/api/investor-kyc/aadhaar-verification/manage`, aadharCredentials);
+        return response;
+    }
+    catch (error) {
+        notify("Something went wrong, please try again later !!")
+        return error;
+    }
+
+}
 const getInvestorKycData = async (id) => {
 
     try {
@@ -88,7 +101,8 @@ const services = {
     VerifyKycBank,
     VerifyAddress,
     UpdateAddress,
-    getInvestorKycData
+    getInvestorKycData,
+    verifyAadharKyc
 };
 
 export default services

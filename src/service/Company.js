@@ -183,6 +183,30 @@ const createReward = async (rewardData) => {
     }
 }
 
+const createHighlights = async (rewardData) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/highlights/manage`, rewardData);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+const getHighlights = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/highlights/get-highlights-by-campaign-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
 const getUploadedDocs = async (ID) => {
 
     try {
@@ -239,6 +263,81 @@ const getAllCampaignOfCompany = async (ID) => {
     }
 }
 
+const getCampaignById = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/campaign/campaign-by-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+
+const getPeopleByCompanyId = async (ID) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/people/get-peoples-by-company-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+const getCompanyDetailByCampaign = async (ID) => {
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/campaign/campaign-with-company-data-by-campaign-id/${ID}`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+
+const getAllDealTypes = async () => {
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/deal_type/manage`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+
+const getAllDealTerms = async () => {
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/deal_terms/manage`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
+
+const getApprovedCampaigns = async () => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/campaign/campaign-by-status`, { status: 'TRUE' });
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
 const CompanyServices = {
     createCompany,
     updateCompany,
@@ -255,7 +354,16 @@ const CompanyServices = {
     createReward,
     getRewardByCampaingID,
     getPressByCompanyID,
-    getAllCampaignOfCompany
+    getAllCampaignOfCompany,
+    getPeopleByCompanyId,
+    createHighlights,
+    getHighlights,
+
+    getAllDealTypes,
+    getAllDealTerms,
+    getApprovedCampaigns,
+    getCampaignById,
+    getCompanyDetailByCampaign
 };
 
 export default CompanyServices

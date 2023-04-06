@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const GetRewards = () => {
+const GetRewards = ({ tabChangeFn }) => {
     const { userData } = useSelector(state => state.loginData)
     const [rewardData, setRewardData] = useState([])
     const [isRewardAdded, setIsRewardAdded] = useState(false)
@@ -33,6 +33,7 @@ const GetRewards = () => {
                     toast.success("Reward added successfully!")
                     sessionStorage.setItem("is_reward_added", true)
                     setCount(pre => pre + 1)
+                    formik.handleReset()
                 } else {
                     toast.error("Something went wrong, please try again later")
                 }
@@ -90,7 +91,7 @@ const GetRewards = () => {
                     {formik.touched.discounted_price && <div className="raise-err-text">{formik.errors.discounted_price}</div>}
 
                 </div>
-
+                {/* 
                 <div className='getRewards-btn-parent'>
                     <Button
                         type="submit"
@@ -102,29 +103,41 @@ const GetRewards = () => {
                                 : "Save"
                         }
                     </Button>
-                    <div className="promotions-parent">
-                        {rewardData?.length > 0 && <div className='hightlight-heading'>Rewards Added</div>}
+                </div> */}
 
-                        {
-                            rewardData?.map((item, index) => <div key={index}>
-                                <div style={{ textAlign: 'center', fontFamily: 'poppins', fontSize: "16px" }}>Reward {index + 1}</div>
-                                <input value={item.product_name} type="text" className='get-reward-inputs' />
-
-                                <input
-                                    value={item.amount}
-                                    type="text" className='get-reward-inputs' />
-
-
-                                <input
-                                    value={item.discounted_price}
-                                    type="text"
-                                    className='get-reward-inputs' />
-
-                                {/* <hr /> */}
-                            </div>)
-                        }
-                    </div>
+                <div className="faqs-button-parent">
+                    <Button
+                        type="submit"
+                        style={{ margin: '20px', color: 'black' }}
+                        variant='contained' className="comp-prof-button1">Save</Button>
+                    <Button
+                        onClick={e => tabChangeFn(e, 6)}
+                        style={{ margin: '20px' }}
+                        variant="contained" className="comp-prof-button2">Next</Button>
                 </div>
+
+                <div className="promotions-parent">
+                    {rewardData?.length > 0 && <div className='hightlight-heading' style={{ marginBottom: '1.8rem' }}>Rewards Added</div>}
+
+                    {
+                        rewardData?.map((item, index) => <div key={index}>
+                            <div style={{ textAlign: 'left', fontFamily: 'poppins', fontSize: "16px" }}>Reward {index + 1}</div>
+                            <input value={item.product_name} type="text" className='get-reward-inputs' />
+
+                            <input
+                                value={item.amount}
+                                type="text" className='get-reward-inputs' />
+
+                            <input
+                                value={item.discounted_price}
+                                type="text"
+                                className='get-reward-inputs' />
+
+                            {/* <hr /> */}
+                        </div>)
+                    }
+                </div>
+
 
             </form>
         </Box>

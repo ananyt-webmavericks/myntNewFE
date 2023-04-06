@@ -9,7 +9,7 @@ import FAQsValSchema from '../../../Validations/FAQsValSchema';
 import CompanyServices from '../../../service/Company';
 import { toast } from 'react-toastify';
 
-const FAQS = () => {
+const FAQS = ({ tabChangeFn }) => {
 
     const [q1Count, setQ1Count] = useState(0)
     const [q2Count, setQ2Count] = useState(0)
@@ -61,14 +61,16 @@ const FAQS = () => {
                 if (res.status === 200 || res.status === 201) {
                     toast.success("FAQ added successfully!")
                     setcount(pre => pre + 1)
+                    formik.handleReset()
                 } else {
                     toast.error("Something went wrong, please try again later")
                 }
             })
         }
     });
-
+    console.log(formik.values)
     useEffect(() => {
+        window.scrollTo(0, 0)
         CompanyServices.getCampaignsFaqs(sessionStorage.getItem("campaign_id")).then(res => {
             console.log(res)
             if (res.status === 200 || res.status === 201) {
@@ -113,12 +115,13 @@ const FAQS = () => {
 
                     <div className="faqs-button-parent">
                         <Button
+                            type="submit"
                             style={{ margin: '20px', color: 'black' }}
                             variant='contained' className="comp-prof-button1">Save</Button>
                         <Button
-                            type="submit"
+                            onClick={e => tabChangeFn(e, 4)}
                             style={{ margin: '20px' }}
-                            variant="contained" className="comp-prof-button2">Submit</Button>
+                            variant="contained" className="comp-prof-button2">Next</Button>
                     </div>
                 </Box >
             </form>

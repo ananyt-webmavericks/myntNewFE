@@ -7,9 +7,11 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import CompanyServices from '../../../service/Company'
 import { toast } from 'react-toastify'
+import hightLightValSchema from '../../../Validations/hightLightValSchema'
+import { useEffect } from 'react'
 
-const Highlights = () => {
-    const [pitchData, setPitchData] = useState({})
+const Highlights = ({ tabChangeFn }) => {
+    const [pitchData, setPitchData] = useState([])
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -19,21 +21,40 @@ const Highlights = () => {
             highlight4: pitchData?.highlight4 ? pitchData?.highlight4 : '',
         },
 
-        validationSchema: "PitchValSchema",
+        validationSchema: hightLightValSchema,
 
         onSubmit: (values) => {
             console.log(values)
-            const formattedValues = changeFormat()
-            CompanyServices.createCampaign({ ...values, company_id: localStorage.getItem("company_id") }).then(res => {
+            const formattedValues = changeFormat(values)
+            CompanyServices.createHighlights(formattedValues).then(res => {
                 console.log(res)
-                toast.success("Compaign added successfully!")
+                if (res.status === 200 || res.status === 201) {
+                    toast.success("Highlights added successfully!")
+                    getHighLights()
+                    formik.handleReset()
+                }
             })
         }
     });
 
+    const getHighLights = () => {
+        CompanyServices.getHighlights(sessionStorage.getItem("campaign_id")).then(res => {
+            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                console.log(res.data)
+                setPitchData(res.data)
+            }
+        })
+    }
+
+    useEffect(() => {
+        return getHighLights()
+    }, [])
+
+
     const changeFormat = (obj) => {
         let DATA = {
-            campaign_id: 0,
+            campaign_id: sessionStorage.getItem("campaign_id"),
             highlights: [
                 {
                     title: obj.highlight1,
@@ -57,6 +78,7 @@ const Highlights = () => {
                 },
             ]
         }
+        return DATA;
     }
 
     return (
@@ -184,11 +206,29 @@ const Highlights = () => {
                 {formik.touched.highlight4 && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.highlight4}</div>}
 
                 {formik.touched.pitch && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.pitch}</div>}
-                <div className='founder-appln-submit-parent'>
+                {/* <div className='founder-appln-submit-parent'>
                     <button type='submit' className='founder-appln-submit-button'>Save</button>
+                </div> */}
+                <div className="faqs-button-parent">
+                    <Button
+                        type="submit"
+                        style={{ margin: '20px', color: 'black' }}
+                        variant='contained' className="comp-prof-button1">Save</Button>
+                    <Button
+                        onClick={e => tabChangeFn(e, 5)}
+                        style={{ margin: '20px' }}
+                        variant="contained" className="comp-prof-button2">Next</Button>
                 </div>
             </form>
 
+
+            <div>
+                {
+                    pitchData?.map((item, index) => <input
+                        value={item.title}
+                        className='inp-enter-name' />)
+                }
+            </div>
         </Box >
     )
 }

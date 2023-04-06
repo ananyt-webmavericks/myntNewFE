@@ -7,6 +7,8 @@ import CompanyServices from '../../../service/Company';
 import { toast } from 'react-toastify';
 import PitchValSchema from '../../../Validations/PitchValSchema';
 import { useEffect } from 'react';
+import { authAxios } from '../../../service/Auth-header'
+import { Base_Url } from '../../../Utils/Configurable';
 const useStyles = makeStyles({
     dropbox: {
         marginTop: 30,
@@ -23,7 +25,7 @@ const useStyles = makeStyles({
         marginBottom: 4,
     },
 });
-const UploadPitch = () => {
+const UploadPitch = ({ tabChangeFn }) => {
     const CustomWidthTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))({
@@ -37,18 +39,31 @@ const UploadPitch = () => {
             padding: '10px 20px'
         },
     });
-    const [preview, setPreview] = useState(null);
+    const [pdfName, setPdfName] = useState(null)
 
-    function handleFileSelect(event) {
+    const handlePitchFileSelect = async (event) => {
         const file = event.target.files[0];
+        setPdfName(event.target.files[0].name)
         const reader = new FileReader();
 
         reader.addEventListener("load", function () {
-            setPreview(reader.result);
         }, false);
 
         if (file) {
             reader.readAsDataURL(file);
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const { data } = await authAxios.post(`${Base_Url}/api/users/upload-files`, formData);
+            console.log(data)
+            formik.setFieldValue("pitch", data.message)
+            return data
+        }
+        catch (error) {
+            console.log("Data not found !!")
         }
     }
 
@@ -59,10 +74,6 @@ const UploadPitch = () => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            youtube_link: pitchData?.youtube_link ? pitchData?.youtube_link : '',
-            ama_date: pitchData?.ama_date ? pitchData?.ama_date : '',
-            ama_meet_link: pitchData?.ama_meet_link ? pitchData?.ama_meet_link : '',
-            ama_youtube_video: pitchData?.ama_youtube_video ? pitchData?.ama_youtube_video : '',
             pitch: pitchData?.pitch ? pitchData?.pitch : 'https.jasdjlfjlksadjflkasdf',
         },
 
@@ -78,6 +89,9 @@ const UploadPitch = () => {
                         sessionStorage.setItem("campaign_id", res.data.id)
                         sessionStorage.setItem("campaign_data", JSON.stringify(res.data))
                         toast.success("Compaign added successfully!")
+                        setTimeout(() => {
+                            tabChangeFn(0, 2)
+                        }, 2000);
                     } else {
                         toast.error("Something went wrong, please try again later")
                     }
@@ -88,6 +102,9 @@ const UploadPitch = () => {
                     if (res.status === 200 || res.status === 201) {
                         sessionStorage.setItem("campaign_data", JSON.stringify(res.data.data)) //need to remove this line
                         toast.success("Compaign updated successfully!")
+                        setTimeout(() => {
+                            tabChangeFn(0, 2)
+                        }, 1000);
                     } else {
                         toast.error("Something went wrong, please try again later")
                     }
@@ -95,58 +112,15 @@ const UploadPitch = () => {
         }
     });
     useEffect(() => {
+        window.scrollTo(0, 0)
         setPitchData(JSON.parse(sessionStorage.getItem("campaign_data")))
-        setIsCampaignAdded(sessionStorage.getItem("is_campaign_added"))
+        setIsCampaignAdded(JSON.parse(sessionStorage.getItem("is_campaign_added")))
     }, [x])
 
     return (
         <Box sx={{ marginTop: 4 }} className="upload-pitch-parent">
             <h3>Upload Pitch Deck</h3>
             <form onSubmit={formik.handleSubmit}>
-                {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-                <input
-                    name='youtube_link'
-                    value={formik.values.youtube_link}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder='Enter youtube link'
-                    type="text"
-                    className='inp-enter-name' />
-                {/* </CustomWidthTooltip> */}
-                {formik.touched.youtube_link && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.youtube_link}</div>}
-                {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-                <input
-                    name='ama_date'
-                    value={formik.values.ama_date}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder='Enter AMA Date'
-                    type="text"
-                    className='inp-enter-name' />
-                {/* </CustomWidthTooltip> */}
-                {formik.touched.ama_date && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.ama_date}</div>}
-                {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-                <input
-                    name='ama_meet_link'
-                    value={formik.values.ama_meet_link}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder='Enter AMA meet link'
-                    type="text"
-                    className='inp-enter-name' />
-                {/* </CustomWidthTooltip> */}
-                {formik.touched.ama_meet_link && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.ama_meet_link}</div>}
-                {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-                <input
-                    name='ama_youtube_video'
-                    value={formik.values.ama_youtube_video}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder='Enter AMA youtube link'
-                    type="text"
-                    className='inp-enter-name' />
-                {/* </CustomWidthTooltip> */}
-                {formik.touched.ama_youtube_video && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.ama_youtube_video}</div>}
 
                 <Typography>
                     <p style={{ marginTop: "10px", }}>Upload a pdf of your pitch deck - this will be displayed to your potential investors as your pitch for your campaign</p>
@@ -156,23 +130,15 @@ const UploadPitch = () => {
                     document.getElementById('uploadPitchInput').click()
                 }}>
                     {
-                        preview
-                            ? <img style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                borderRadius: '4px'
-                            }} src={preview} alt="Preview" />
+                        pdfName?.length > 0
+                            ? <Typography className='drag-and-drop-text'>{pdfName}</Typography>
                             : <>
                                 <Typography className='drag-and-drop-text'>Drag and Drop or click here to browse</Typography>
                                 <span className='max-size-text'>Max size 10 MB</span>
                             </>
                     }
                 </div>
-                <input id='uploadPitchInput' hidden onChange={handleFileSelect} type="file" accept="image/*,.png" />
+                <input id='uploadPitchInput' hidden onChange={handlePitchFileSelect} type="file" accept=".pdf,.PDF" />
                 {/* </div> */}
                 {formik.touched.pitch && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.pitch}</div>}
                 <div className='founder-appln-submit-parent'>
