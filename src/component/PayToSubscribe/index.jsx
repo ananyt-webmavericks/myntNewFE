@@ -7,10 +7,13 @@ import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
 import { makeStyles } from "@material-ui/styles";
 import Enquiry from '../../images/assets/enquiry.png'
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import CompanyServices from "../../service/Company";
 import { useFormik } from "formik";
 import PayToSubscribeValSchema from "../../Validations/PayToSubscribeValSchema";
+import { authAxios } from "../../service/Auth-header";
+import { Base_Url } from "../../Utils/Configurable";
+import { useSelector } from "react-redux";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -68,6 +71,8 @@ export default function PayToSubscribeMain() {
     const classes = useStyles();
     const theme = useTheme();
     const location = useLocation()
+    const [paymentSessionId, setPaymentSessionId] = useState(null)
+    const { userData } = useSelector(state => state.loginData)
     console.log(location.state)
     const handleChange = (event) => {
         const {
@@ -79,7 +84,6 @@ export default function PayToSubscribeMain() {
         );
     };
 
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -88,13 +92,21 @@ export default function PayToSubscribeMain() {
 
         validationSchema: PayToSubscribeValSchema,
 
-        onSubmit: (values) => {
-            console.log(values)
-        }
+        onSubmit: (values) => handleSubmit(values)
     });
 
-    const handleSubmit = () => {
-
+    const handleSubmit = async (vals) => {
+        console.log(vals)
+        const values = {
+            user_id: userData.id,
+            campaign_id: location.state?.campaignId,
+            amount: vals.amount,
+            total_amount: Math.floor(vals.amount + 400 + ((100 / 18) * vals.amount))
+        }
+        const { data: { data } } = await authAxios.post(`${Base_Url}//api/payment/create-order`, values)
+        console.log(data)
+        const cf = new window.Cashfree(data.payment_session_id);
+        cf.redirect();
     }
 
     useEffect(() => {
@@ -107,32 +119,35 @@ export default function PayToSubscribeMain() {
             }
         })
         if (ratio < 700) {
-
             setGridxsFirst(1)
             setgridxsSecond(12)
         }
-
     }, [])
+
     return (
         <div className="pay-to-subscribe-container">
-            <span className="get-started-heading">Subscribe to MildCares - GynoCup</span>
+            <span className="get-started-heading">Subscribe to {location.state?.companyName}</span>
             <Card className="card-pay-main-section">
                 <CardContent>
                     <Grid container spacing={gridxsFirst}>
 
                         <Grid item xs={gridxsSecond}>
                             <span className="pay-amount-label">Amount</span>
-                            <div className="verifyAddress-input" style={gridxsFirst === 1 ? { width: '100%' } : { width: '90%' }}>
-                                <input
-                                    name="amount"
-                                    value={formik.values.amount}
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    type="number"
-                                    placeholder="₹25,000"
-                                    style={{ WebkitAppearance: "none" }} className="verifyAddress-input-section" />
-                                {formik.touched.amount && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.amount}</div>}
-                            </div>
+
+                            <form onSubmit={formik.handleSubmit}>
+                                <div className="verifyAddress-input" style={gridxsFirst === 1 ? { width: '100%' } : { width: '90%' }}>
+                                    <input
+                                        name="amount"
+                                        value={formik.values.amount}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        type="number"
+                                        placeholder="₹25,000"
+                                        style={{ WebkitAppearance: "none" }} className="verifyAddress-input-section" />
+                                    {formik.touched.amount && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.amount}</div>}
+                                </div>
+                            </form>
+
                             <div className="chips-pay-to-subscribe-cointainer">
                                 <div
                                     onClick={e => formik.setFieldValue("amount", 5000)}
@@ -144,9 +159,9 @@ export default function PayToSubscribeMain() {
                                     onClick={e => formik.setFieldValue("amount", 15000)}
                                     className="particular-mentioned-chip-pay">+ ₹15,000</div>
                             </div>
-                            <span className="pay-amount-heading">Subscription Benefits</span>
+                            {rewards.length > 0 && <span className="pay-amount-heading">Subscription Benefits</span>}
                             {
-                                rewards.map((item, index) => <Card key={index} className="secondary-card-pay-section">
+                                rewards?.map((item, index) => <Card key={index} className="secondary-card-pay-section">
                                     <CardContent>
                                         <span className="pay-amount-label">Subscribe for</span>
                                         <div className="pay-amount-sub-label-head"><span style={{ color: '#EBB429' }}>₹{item.amount} </span>or more</div>
@@ -154,7 +169,7 @@ export default function PayToSubscribeMain() {
                                     <hr />
                                     <CardContent>
                                         <span className="pay-amount-label">Get Rewards</span>
-                                        <div className="pay-amount-sub-label-head" style={{ marginBottom: '10px' }}>Discount on MildCares Products</div>
+                                        <div className="pay-amount-sub-label-head" style={{ marginBottom: '10px' }}>Discount on {location.state?.companyName} Products</div>
                                         <span className="pay-amount-label">{item.discounted_price}% off on products for Mynt Community</span>
                                     </CardContent>
                                 </Card>
@@ -256,8 +271,8 @@ export default function PayToSubscribeMain() {
                                 />
                                 <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                             </div>
-                            <button onClick={handleSubmit} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
-                            <button onClick={handleSubmit} className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button>
+                            <button onClick={() => formik.handleSubmit()} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
+                            <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button>
                         </Grid>
                     </Grid>
 
