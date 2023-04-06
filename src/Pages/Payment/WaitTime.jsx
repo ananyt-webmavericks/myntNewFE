@@ -3,9 +3,17 @@ import Lottie from "react-lottie";
 import animationData from '../.././lotties/loading_payment.json';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import PaymentServices from '../../service/Payment';
 
 export default function WaitTime() {
     const [time, setTime] = useState(10)
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [paymentStatus, setPaymentStatus] = useState('')
+    const paramKey = searchParams.get("order_id")
+    const navigate = useNavigate()
+    console.log(paramKey)
+    console.log(paramKey)
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -14,7 +22,34 @@ export default function WaitTime() {
             preserveAspectRatio: "xMidYMid slice"
         }
     };
+
+    const handleNavigate = async (status) => {
+        if (status === "COMPLETED") {
+            return navigate('/payment/status-successful', { state: { orderId: searchParams.get("order_id") } })
+        } else if (status === "PENDING") {
+            return navigate('', { state: { orderId: searchParams.get("order_id") } })
+        } else if (status === "FAILED") {
+            return navigate('', { state: { orderId: searchParams.get("order_id") } })
+        } else {
+            return navigate('/')
+        }
+    }
+
+    console.log(paymentStatus)
     useEffect(() => {
+        if (time === 0) {
+            handleNavigate(paymentStatus)
+        }
+    }, [time])
+
+    useEffect(() => {
+        PaymentServices.checkPaymentStatus(searchParams.get("order_id")).then(res => {
+            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                console.log(res.data?.status)
+                setPaymentStatus(res.data?.status)
+            }
+        })
         const intervalId = setInterval(() => {
             setTime((prevTime) => {
                 if (prevTime === 0) {
@@ -27,7 +62,7 @@ export default function WaitTime() {
         return () => {
             clearInterval(intervalId);
         };
-    }, [])
+    }, [searchParams.get("order_id")])
 
     return (
         <div>

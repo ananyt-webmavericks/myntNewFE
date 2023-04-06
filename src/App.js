@@ -62,6 +62,7 @@ import KycAadharUid from './component/CompleteYourProfile/KycAadharUid';
 import PaymentSuccess from './Pages/Payment/PaymentSuccess';
 import PaymentFailed from './Pages/Payment/PaymentFailed';
 import WaitTime from './Pages/Payment/WaitTime';
+import PaymentPending from './Pages/Payment/PaymentPending';
 function App() {
 
   const location = window.location.pathname;
@@ -130,8 +131,9 @@ function App() {
         <Route exact path="/dashboard-founder/campaigns-tabs" element={<FounderCampaingsTabs />} />
 
         {/* payment success */}
+        <Route exact path="/redirect" element={<WaitTime />} />
         <Route exact path="/payment/status-successful" element={<PaymentSuccess />} />
-        <Route exact path="/payment/fetching-details" element={<WaitTime />} />
+        <Route exact path="/payment/status-pending" element={<PaymentPending />} />
         <Route exact path="/payment/status-failed" element={<PaymentFailed />} />
 
         {/* page not found */}

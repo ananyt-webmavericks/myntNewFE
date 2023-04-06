@@ -151,7 +151,7 @@ export default function LiveDetailsMain() {
                         <div className="header-section-deals-detail btn-section" >
                             <Button onClick={() => {
                                 userData?.id
-                                    ? navigate('/pay-to-subscribe', { state: { campaignId: campaignData.id } })
+                                    ? navigate('/pay-to-subscribe', { state: { campaignId: campaignData.id, companyName: companyData.company_name } })
                                     : navigate('/login')
                             }
                             } style={{ textTransform: "none" }} className="invest-btn-section-deals">Enroll</Button>

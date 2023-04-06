@@ -1,10 +1,10 @@
 import React from 'react'
 import '../../css/Payment/payment_success.css'
 import Lottie from "react-lottie";
-import animationData from '../.././lotties/order_placed.json';
+import animationData from '../.././lotties/order_pending.json';
 import { useNavigate } from 'react-router-dom';
 
-export default function PaymentSuccess() {
+export default function PaymentPending() {
     const navigate = useNavigate()
     const defaultOptions = {
         loop: true,
@@ -24,7 +24,7 @@ export default function PaymentSuccess() {
                     {/* <i class="ion-checkmark"></i> */}
                 </span>
 
-                <h1 class="card__msg">Payment Successful</h1>
+                <h1 class="card__msg">Payment Pending</h1>
                 <h2 class="card__submsg">Thank you for your transfer</h2>
                 <h2 class="card__submsg">TransactionID : XXZR1565455465132</h2>
 
