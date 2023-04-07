@@ -272,7 +272,7 @@ export default function PayToSubscribeMain() {
                                 <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                             </div>
                             <button onClick={() => formik.handleSubmit()} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
-                            <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button>
+                            {/* <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button> */}
                         </Grid>
                     </Grid>
 
