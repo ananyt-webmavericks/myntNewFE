@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import RewardValSchema from '../../../Validations/RewardValSchema'
 import CompanyServices from '../../../service/Company'
-import { toast } from 'react-toastify'
+import { toast } from "react-hot-toast";
 import { useState } from 'react'
 import { useEffect } from 'react'
 

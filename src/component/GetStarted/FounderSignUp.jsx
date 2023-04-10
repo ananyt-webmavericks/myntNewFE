@@ -10,7 +10,7 @@ import Email from '../../images/assets/email.png';
 import { useNavigate } from "react-router-dom";
 import GoogleSignIn from "..//GoogleSignIn";
 import FacebookSignIn from "../FacebookSignIn";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import UserServices from "../../service/UserService";
 import { useDispatch } from "react-redux";
 import { userEmailAction } from "../../Redux/actions/auth";

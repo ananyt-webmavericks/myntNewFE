@@ -19,7 +19,7 @@ import CompanyServices from '../../../service/Company';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

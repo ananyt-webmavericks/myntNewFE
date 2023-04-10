@@ -14,7 +14,7 @@ import Press from '../../component/FounderDrawer/FounderCampaignsTabs/Press';
 import GetRewards from '../../component/FounderDrawer/FounderCampaignsTabs/GetRewards';
 import '../../css/FounderDrawer/Dashboard/GridBox.css'
 import { useLocation } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 const useStyles = makeStyles({
     fontstyle: {
         textTransform: 'capitalize'

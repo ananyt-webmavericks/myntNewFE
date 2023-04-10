@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Base_Url } from "../Utils/Configurable";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 
 const notify = (data) => {
     toast.error(data)
@@ -75,8 +75,6 @@ const MobileOtp = async (data) => {
     } else {
         try {
             const response = await axios.post(`${Base_Url}/api/investor-kyc/mobile/verify-otp`, data);
-
-            notifySuccess(response.data.message)
 
             return response;
         }

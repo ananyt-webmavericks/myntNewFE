@@ -1,5 +1,5 @@
 import { Base_Url } from "../Utils/Configurable";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { authAxios } from "./Auth-header";
 
 const notify = (data) => {

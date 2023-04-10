@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import FAQsValSchema from '../../../Validations/FAQsValSchema';
 import CompanyServices from '../../../service/Company';
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 
 const FAQS = ({ tabChangeFn }) => {
 

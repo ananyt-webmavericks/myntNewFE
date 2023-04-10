@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import services from "../../service/investor.kyc";
 import { useNavigate } from "react-router-dom";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 export default function MyProfileMain() {
     const _ = require('lodash');

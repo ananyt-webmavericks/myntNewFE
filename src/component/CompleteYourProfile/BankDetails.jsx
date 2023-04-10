@@ -3,7 +3,7 @@ import { Grid, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import services from "../../service/investor.kyc";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 
 const data = {
@@ -19,7 +19,7 @@ export default function BankDetails() {
     const { userKycData } = useSelector(state => state.kycData)
     const kycDonePath = localStorage.getItem('kycDonePath')
     const dispatch = useDispatch()
-
+    console.log(userKycData)
     const handleChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value })
     }
@@ -48,14 +48,17 @@ export default function BankDetails() {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
                             services.getInvestorKycData(userData.id).then(async (response) => {
-                                if (response.status === 200) {
+                                if (response.status === 200 && response.data.bank_account_verified) {
+                                    toast.success("Bank details verify successful")
+                                    toast.success("KYC COMPLETED!")
                                     await dispatch(storeKycDetailsAction(response.data))
-                                    handleNavigate()
-                                    console.log(response.data)
+                                } else {
+                                    toast.error("Invalid bank details!")
                                 }
                             })
                         }
                         else {
+                            toast.error("Something went wrong!")
                             console.log("error")
                         }
                     })
@@ -83,6 +86,10 @@ export default function BankDetails() {
                             ? navigate('/complete-your-profile/payment-details')
                             : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
+
+    useEffect(() => {
+        handleNavigate()
+    }, [userKycData])
 
     return (
         <div className="verify-number-container">

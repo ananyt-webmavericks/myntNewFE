@@ -5,7 +5,7 @@ import Footer from "../Footer";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import services from "../../service/investor.kyc";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import { useFormik } from "formik";
 import AadharValSchema from "../../Validations/AadharValSchema";
@@ -21,6 +21,7 @@ export default function KycAadharUid() {
     const { userData } = useSelector((state) => state.loginData)
     const { userKycData } = useSelector(state => state.kycData)
     const ratio = parseInt(window.innerWidth);
+    console.log(userKycData)
     const kycDonePath = localStorage.getItem('kycDonePath')
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -43,9 +44,8 @@ export default function KycAadharUid() {
                     if (res.data.data.aadhaar_card_verified) {
                         toast.success("Aadhar verified  successfully!")
                         await dispatch(storeKycDetailsAction(res.data.data))
-                        handleNavigate()
                     } else {
-                        toast.error("Invalid aadhar number, please enter valid aadhar number")
+                        toast.error("Invalid aadhar number!")
                         await dispatch(storeKycDetailsAction(res.data.data))
                     }
                 } else {
@@ -69,6 +69,10 @@ export default function KycAadharUid() {
                             ? navigate('/complete-your-profile/payment-details')
                             : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
+
+    useEffect(() => {
+        handleNavigate()
+    }, [userKycData])
 
     return (
         <>

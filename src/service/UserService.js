@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Base_Url } from "../Utils/Configurable";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { authAxios } from "./Auth-header";
 
 const notify = (data) => {
@@ -45,7 +45,6 @@ const UpdateUser = async (obj) => {
 
     try {
         const response = await authAxios.patch(`${Base_Url}/api/users/manage`, obj);
-        notifySuccess('successfully updated !!')
         return response;
     }
     catch (error) {

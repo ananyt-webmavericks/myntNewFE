@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Base_Url } from "../Utils/Configurable";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 
 const notify = (data) => {
     toast.error(data)
@@ -27,7 +27,6 @@ const createUserConsent = async (data) => {
     console.log(data)
     try {
         const response = await axios.post(`${Base_Url}/api/investor-consent/manage` , data);
-        notifySuccess("updated !!")
         return response;
     }
     catch (error) {
@@ -42,7 +41,6 @@ const updateUserConsent = async (data) => {
     console.log(data)
     try {
         const response = await axios.patch(`${Base_Url}/api/investor-consent/manage` , data);
-        notifySuccess("updated !!")
         return response;
     }
     catch (error) {

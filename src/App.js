@@ -63,6 +63,7 @@ import PaymentSuccess from './Pages/Payment/PaymentSuccess';
 import PaymentFailed from './Pages/Payment/PaymentFailed';
 import WaitTime from './Pages/Payment/WaitTime';
 import PaymentPending from './Pages/Payment/PaymentPending';
+import { Toaster } from 'react-hot-toast';
 function App() {
 
   const location = window.location.pathname;
@@ -72,7 +73,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <ToastNotify />
+      <Toaster />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />

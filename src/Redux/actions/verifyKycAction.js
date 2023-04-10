@@ -53,7 +53,9 @@ export const storeKycDetailsAction = (kycData) => (dispatch) => {
   try {
     dispatch({ type: STORE_KYC_REQUEST });
     dispatch({ type: STORE_KYC_SUCCESS, payload: kycData });
+    return;
   } catch (error) {
     dispatch({ type: STORE_KYC_FAIL })
+    return;
   }
 };

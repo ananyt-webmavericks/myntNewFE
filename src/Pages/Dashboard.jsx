@@ -44,7 +44,27 @@ const Dashboard = () => {
                             <span className="get-started-heading startup" style={{ fontWeight: 'bolder !important' }}>Welcome {userData.first_name}!</span>
                             <ProgressBarDash fetchValue={fetchValue} />
                         </div>
-                        <ProgressNotifyDash data={showDeals} />
+                        {
+                            !showDeals?.bank_account
+                                || !showDeals?.pan_card
+                                || !showDeals?.pan_card_verified
+                                || !showDeals?.address_line_1
+                                || !showDeals?.city
+                                || !showDeals?.state
+                                || !showDeals?.country
+                                || !showDeals?.pincode
+                                || !showDeals?.bank_name
+                                || !showDeals?.bank_account
+                                || !showDeals?.ifsc_code
+                                || !showDeals?.bank_account_verified
+                                || !showDeals?.mobile_number
+                                || !showDeals?.mobile_number_verified
+                                || !showDeals?.aadhaar_card_verified
+                                || !showDeals?.aadhaar_card_number
+                                ? <ProgressNotifyDash data={showDeals} />
+                                : null
+                        }
+
                         <DashboardCard />
                         <DashboardDeals />
                         <div style={{ marginTop: '92px' }}>

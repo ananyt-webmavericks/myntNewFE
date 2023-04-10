@@ -5,7 +5,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
+import { toast } from "react-hot-toast";
 import '../../../css/FounderDrawer/Dashboard/Press.css'
 import CompanyServices from '../../../service/Company'
 import PressValSchema from '../../../Validations/PressValSchema'

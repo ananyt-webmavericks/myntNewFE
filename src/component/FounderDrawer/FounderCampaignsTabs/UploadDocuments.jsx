@@ -5,7 +5,7 @@ import '../../../css/FounderDrawer/Dashboard/UploadDocs.css'
 import pptxIcon from './../../../images/founder/pptxIcon.png'
 import pdfIcon from './../../../images/founder/pdfIcon.png'
 import CompanyServices from '../../../service/Company'
-import { toast } from 'react-toastify'
+import { toast } from "react-hot-toast";
 import { useEffect } from 'react'
 
 const UploadDocuments = () => {
