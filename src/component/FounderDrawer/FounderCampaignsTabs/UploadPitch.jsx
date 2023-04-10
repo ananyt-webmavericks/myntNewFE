@@ -4,7 +4,7 @@ import '../../../css/FounderDrawer/Dashboard/UploadPitch.css'
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
 import CompanyServices from '../../../service/Company';
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import PitchValSchema from '../../../Validations/PitchValSchema';
 import { useEffect } from 'react';
 import { authAxios } from '../../../service/Auth-header'

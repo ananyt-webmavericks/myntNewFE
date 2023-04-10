@@ -7,7 +7,7 @@ import { ClientId } from "../Utils/Configurable";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../Redux/actions/auth";
 import { useSelector } from "react-redux";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import UserServices from "../service/UserService";
 import { userEmailAction } from "../Redux/actions/auth";
 import ConsentSerivce from "../service/ConsentService";

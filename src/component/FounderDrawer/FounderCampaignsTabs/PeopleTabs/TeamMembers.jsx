@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import PeopleTabValSchema from '../../../../Validations/PeopleTabValSchema';
 import { useState } from 'react';
 import CompanyServices from '../../../../service/Company';
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { authAxios } from '../../../../service/Auth-header';
 import { Base_Url } from '../../../../Utils/Configurable';
 const TeamMembers = ({ getPeopleData, tabChangeFn }) => {

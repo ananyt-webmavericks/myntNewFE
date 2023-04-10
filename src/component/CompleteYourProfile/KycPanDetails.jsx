@@ -5,7 +5,7 @@ import Footer from "../Footer";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import services from "../../service/investor.kyc";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 const data = {
     pan_card: '',
@@ -19,6 +19,7 @@ export default function KycPanDetails() {
     const { userData } = useSelector((state) => state.loginData)
     const { userKycData } = useSelector(state => state.kycData)
     const ratio = parseInt(window.innerWidth);
+    console.log(userKycData)
     const kycDonePath = localStorage.getItem('kycDonePath')
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -29,7 +30,7 @@ export default function KycPanDetails() {
     const notify = (data) => {
         toast.error(data)
     }
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const val = {
             user_id: userData.id,
             pan_card: value.pan_card.toUpperCase(),
@@ -50,16 +51,16 @@ export default function KycPanDetails() {
         } else {
             try {
                 services.VerifyKycPan(val).then(
-                    (response) => {
+                    async (response) => {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
-                            services.getInvestorKycData(userData.id).then(async (response) => {
-                                if (response.status === 200) {
-                                    await dispatch(storeKycDetailsAction(response.data))
-                                    handleNavigate()
-                                    console.log(response.data)
-                                }
-                            })
+                            const kycDetails = await services.getInvestorKycData(userData.id)
+                            if (kycDetails.status === 200) {
+                                toast.success("Pan card verified!")
+                                await dispatch(storeKycDetailsAction(response.data.data))
+                            } else {
+                                toast.error("Please enter valid details!")
+                            }
                         }
                         else {
                             console.log("error")
@@ -87,6 +88,10 @@ export default function KycPanDetails() {
                             ? navigate('/complete-your-profile/payment-details')
                             : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
+
+    useEffect(() => {
+        handleNavigate()
+    }, [userKycData])
 
     return (
         <>

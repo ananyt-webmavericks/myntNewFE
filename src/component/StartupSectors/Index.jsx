@@ -3,6 +3,7 @@ import { Card, CardContent, Grid } from "@mui/material";
 import '../../css/StartupSectors/startupSectors.css';
 import DoneIcon from '@mui/icons-material/Done';
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 const data = [
     { id: 1, name: 'HealthTech', isChecked: true },
     { id: 2, name: 'Artificial Intelligence', isChecked: true },
@@ -34,6 +35,7 @@ export default function StartupSectorsMain() {
         setValue([...new_array])
     }
     const handleSubmit = () => {
+        toast.success("Welcome to mynt invest!")
         navigate('/dashboard')
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import { makeStyles } from "@material-ui/styles";
 import { Button, Card, CardContent } from "@mui/material";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import { useDispatch, useSelector } from "react-redux";
 import OtpServices from "../../service/OtpService";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import services from "../../service/investor.kyc";
 
@@ -25,6 +25,7 @@ export default function VerifyNumberOtp() {
     const { userData } = useSelector((state) => state.loginData)
     const { userMail } = useSelector((state) => state.userInfo)
     const { userKycData } = useSelector(state => state.kycData)
+    const [callFn, setCallFn] = useState(false)
     const classes = useStyles();
     const dispatch = useDispatch()
     const kycDonePath = localStorage.getItem('kycDonePath')
@@ -32,7 +33,7 @@ export default function VerifyNumberOtp() {
     const notify = (data) => {
         toast.error(data)
     }
-
+    console.log(userKycData)
     const handleResendOtp = () => {
         const data = {
             user_id: userData.id,
@@ -53,7 +54,6 @@ export default function VerifyNumberOtp() {
         catch {
             notify("Try after few minutes")
         }
-
     }
 
     const handleSubmit = (e) => {
@@ -61,17 +61,17 @@ export default function VerifyNumberOtp() {
         let data = { user_id: userData.id, otp: OTP }
         try {
             OtpServices.MobileOtp(data).then(
-                (response) => {
+                async (response) => {
                     if (response.data.status !== 'false') {
-
-                        services.getInvestorKycData(userData.id).then(async (response) => {
-                            if (response.status === 200) {
-                                await dispatch(storeKycDetailsAction(response.data))
-                                handleNavigate()
-                                console.log(response.data)
-                            }
-                        })
-
+                        const kycDetail = await services.getInvestorKycData(userData.id)
+                        if (kycDetail.status === 200) {
+                            setCallFn(true)
+                            await dispatch(storeKycDetailsAction(response.data.data))
+                            toast.success("Mobile number verified!")
+                            console.log(kycDetail.data)
+                        } else {
+                            toast.error("Invalid OTP!")
+                        }
                         // navigateToProfile ? navigate('/my-profile') : navigate('/complete-your-profile/verify-kyc')
                         localStorage.removeItem('navigateToVerifyMobile')
                     }
@@ -87,9 +87,8 @@ export default function VerifyNumberOtp() {
 
     }
 
-
     const handleNavigate = () => {
-        (!userKycData?.mobile_number_verified)
+        (!userKycData?.mobile_number)
             ? navigate('/complete-your-profile')
             : (
                 !userKycData?.pan_card_verified || !userKycData?.pan_card
@@ -103,6 +102,11 @@ export default function VerifyNumberOtp() {
                             : navigate('/complete-your-profile/payment-details')
                         : navigate(kycDonePath ? kycDonePath : '/dashboard')
     }
+
+    useEffect(() => {
+        console.log(!userKycData?.mobile_number)
+        callFn && handleNavigate()
+    }, [userKycData])
 
     const renderButton = buttonProps => {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px' }} {...buttonProps}>Resend</button>;

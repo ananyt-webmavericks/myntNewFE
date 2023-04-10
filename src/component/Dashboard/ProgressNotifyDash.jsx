@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import '../../css/Dashboard/dashboard.css';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 let myEmptyObj = {};
 export default function ProgressNotifyDash({ data }) {

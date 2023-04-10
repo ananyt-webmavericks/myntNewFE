@@ -6,7 +6,7 @@ import { Container } from '@mui/system'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import CompanyServices from '../../../service/Company'
-import { toast } from 'react-toastify'
+import { toast } from "react-hot-toast";
 import hightLightValSchema from '../../../Validations/hightLightValSchema'
 import { useEffect } from 'react'
 

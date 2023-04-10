@@ -36,6 +36,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { useSelector } from "react-redux";
 import UserServices from "../../service/UserService";
 import CompanyServices from "../../service/Company";
+import services from "../../service/investor.kyc";
+import { toast } from "react-hot-toast";
 const actions = [
     { icon: <FacebookRoundedIcon />, name: 'Facebook' },
     { icon: <InstagramIcon />, name: 'Instagram' },
@@ -58,6 +60,8 @@ export default function LiveDetailsMain() {
     const [companyData, setCompanyData] = useState({})
     const [faqData, setFaqData] = useState([])
     const [peopleData, setPeopleData] = useState([])
+    const [kycData, setKycData] = useState({})
+    console.log(kycData)
     const { userData } = useSelector((state) => state.loginData)
     const handleDirectionChange = (event) => {
         setDirection(event.target.value);
@@ -67,6 +71,11 @@ export default function LiveDetailsMain() {
         setHidden(event.target.checked);
     };
     useEffect(() => {
+        services.getInvestorKycData(userData.id).then((response, error) => {
+            if (response.status === 200) {
+                setKycData(response?.data)
+            }
+        })
         CompanyServices.getCampaignById(location.state?.campaignId).then(res => {
             if (res.status === 200 || res.status === 201) {
                 console.log(res.data)
@@ -107,6 +116,23 @@ export default function LiveDetailsMain() {
     }, [])
     console.log(location.state)
     const [blurAmount, setBlurAmount] = useState(0);
+    const { userKycData } = useSelector(state => state.kycData)
+
+    const handleNavigate = () => {
+        (!userKycData?.mobile_number_verified)
+            ? navigate('/complete-your-profile')
+            : (
+                !userKycData?.pan_card_verified || !userKycData?.pan_card
+            )
+                ? navigate('/complete-your-profile/verify-kyc')
+                : (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+                    ? navigate('/complete-your-profile/verify-address')
+                    : (!userKycData?.aadhaar_card_verified || !userKycData?.aadhaar_card_number)
+                        ? navigate('/complete-your-profile/verify-kyc/aadhar-uid')
+                        : (!userKycData?.bank_account_verified || !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                            ? navigate('/complete-your-profile/payment-details')
+                            : toast.success("Already verified! Please check profile")
+    }
 
     return (
         <div className="get-started-container">
@@ -151,7 +177,24 @@ export default function LiveDetailsMain() {
                         <div className="header-section-deals-detail btn-section" >
                             <Button onClick={() => {
                                 userData?.id
-                                    ? navigate('/pay-to-subscribe', { state: { campaignId: campaignData.id, companyName: companyData.company_name } })
+                                    ? kycData?.bank_account
+                                        && kycData?.pan_card
+                                        && kycData?.pan_card_verified
+                                        && kycData?.address_line_1
+                                        && kycData?.city
+                                        && kycData?.state
+                                        && kycData?.country
+                                        && kycData?.pincode
+                                        && kycData?.bank_name
+                                        && kycData?.bank_account
+                                        && kycData?.ifsc_code
+                                        && kycData?.bank_account_verified
+                                        && kycData?.mobile_number
+                                        && kycData?.mobile_number_verified
+                                        && kycData?.aadhaar_card_verified
+                                        && kycData?.aadhaar_card_number
+                                        ? navigate('/pay-to-subscribe', { state: { campaignId: campaignData.id, companyName: companyData.company_name } })
+                                        : handleNavigate()
                                     : navigate('/login')
                             }
                             } style={{ textTransform: "none" }} className="invest-btn-section-deals">Enroll</Button>

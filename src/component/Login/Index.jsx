@@ -6,7 +6,7 @@ import Loginlogo from '../../images/assets/loginlogo.png';
 import { useNavigate } from "react-router-dom";
 import GoogleSignIn from "../GoogleSignIn";
 import FacebookSignIn from "../FacebookSignIn";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import UserServices from "../../service/UserService";
 import { userEmailAction, userLoginAction } from "../../Redux/actions/auth";

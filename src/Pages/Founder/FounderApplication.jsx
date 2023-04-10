@@ -11,7 +11,7 @@ import { storeFounderSignUpData } from '../../Redux/actions/FounderSignUp'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import UserServices from '../../service/UserService'
-import { toast } from 'react-toastify'
+import { toast } from "react-hot-toast";
 import { authAxios } from '../../service/Auth-header'
 import { Base_Url } from '../../Utils/Configurable'
 

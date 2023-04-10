@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { Base_Url } from "../Utils/Configurable";
 
 
@@ -13,7 +13,6 @@ const notifySuccess = (data) => {
 const VerifyKycPan = async (data) => {
     try {
         const response = await axios.patch(`${Base_Url}/api/investor-kyc/pan/manage`, data);
-        notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
@@ -27,7 +26,7 @@ const VerifyKycPan = async (data) => {
 const VerifyAddress = async (data) => {
     try {
         const response = await axios.post(`${Base_Url}/api/investor-kyc/address/manage`, data);
-        notifySuccess(response.data.message)
+        // notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
@@ -41,7 +40,7 @@ const VerifyAddress = async (data) => {
 const UpdateAddress = async (data) => {
     try {
         const response = await axios.patch(`${Base_Url}/api/investor-kyc/address/manage`, data);
-        notifySuccess(response.data.message)
+        // notifySuccess(response.data.message)
         return response;
     }
     catch (error) {
@@ -57,12 +56,12 @@ const VerifyKycBank = async (data) => {
 
     try {
         const response = await axios.patch(`${Base_Url}/api/investor-kyc/bank-verification/manage`, data);
-        notifySuccess("Bank details uploaded successfully!")
+        // notifySuccess("Bank details uploaded successfully!")
         return response;
     }
     catch (error) {
         if (error) {
-            notify("investor kyc already exists !!")
+            notify("Something went wrong !!")
         }
         return error;
     }

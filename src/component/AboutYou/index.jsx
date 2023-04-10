@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/styles";
 import Residency from '../../images/assets/residency.png';
 import Nationality from '../../images/assets/nationality.png';
 import UserServices from "../../service/UserService";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoginAction } from "../../Redux/actions/auth";

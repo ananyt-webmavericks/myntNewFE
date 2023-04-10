@@ -4,12 +4,13 @@ import WhatsAppLogo from '../../images/assets/whatsapp.png'
 import { Button, Card, CardContent } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import OtpServices from "../../service/OtpService";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { userEmailAction } from "../../Redux/actions/auth";
 import { useEffect } from "react";
 import services from "../../service/investor.kyc";
+import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -23,7 +24,9 @@ export default function VerifyNumber() {
     const handleChange = (e) => {
         setMobile(e.target.value)
     }
-    console.log(mobile)
+
+    const { userKycData } = useSelector(state => state.kycData)
+    console.log(userKycData)
     const notify = (data) => {
         toast.error(data)
     }
@@ -41,22 +44,24 @@ export default function VerifyNumber() {
             try {
                 !kycData
                     ? OtpServices.VerifyMobileOtp(data).then(
-                        (response) => {
+                        async (response) => {
                             console.log(response)
                             if (response.status === 201 || response.status === 200) {
+                                await dispatch(storeKycDetailsAction(response.data.data))
+                                await dispatch(userEmailAction(data.mobile_number))
                                 navigate('/complete-your-profile/verify-otp')
-                                dispatch(userEmailAction(data.mobile_number))
                             }
                             else {
                                 console.log("error")
                             }
                         })
                     : OtpServices.VerifyMobileOtpPatch(data).then(
-                        (response) => {
+                        async (response) => {
                             console.log(response)
                             if (response.status === 201 || response.status === 200) {
+                                await dispatch(storeKycDetailsAction(response.data.data))
+                                await dispatch(userEmailAction(data.mobile_number))
                                 navigate('/complete-your-profile/verify-otp')
-                                dispatch(userEmailAction(data.mobile_number))
                             }
                             else {
                                 console.log("error")
@@ -67,10 +72,25 @@ export default function VerifyNumber() {
                 notify("Try after few minutes")
             }
         }
-
     }
     console.log(kycData)
     useEffect(() => {
+        const handleNavigate = () => {
+            (!userKycData?.mobile_number_verified)
+                ? navigate('/complete-your-profile')
+                : (
+                    !userKycData?.pan_card_verified || !userKycData?.pan_card
+                )
+                    ? navigate('/complete-your-profile/verify-kyc')
+                    : (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode)
+                        ? navigate('/complete-your-profile/verify-address')
+                        : (!userKycData?.aadhaar_card_verified || !userKycData?.aadhaar_card_number)
+                            ? navigate('/complete-your-profile/verify-kyc/aadhar-uid')
+                            : (!userKycData?.bank_account_verified || !userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name)
+                                ? navigate('/complete-your-profile/payment-details')
+                                : navigate('/dashboard')
+        }
+        // handleNavigate()
         services.getInvestorKycData(userData.id).then((response, error) => {
             if (response.status === 200 || response.status === 201) {
                 setkycData(true)

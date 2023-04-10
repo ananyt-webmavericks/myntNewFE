@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import CompanyServices from '../../../../service/Company'
 import PeopleTabValSchema from '../../../../Validations/PeopleTabValSchema'
-import { toast } from 'react-toastify'
+import { toast } from "react-hot-toast";
 import { authAxios } from '../../../../service/Auth-header'
 import { Base_Url } from '../../../../Utils/Configurable'
 const Advisors = ({ getPeopleData, tabChangeFn }) => {

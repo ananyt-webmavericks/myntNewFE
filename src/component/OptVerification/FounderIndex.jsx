@@ -6,7 +6,7 @@ import OTPInput, { ResendOTP } from "otp-input-react";
 import { makeStyles } from "@material-ui/styles";
 import { useSelector } from "react-redux";
 import OtpServices from "../../service/OtpService";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../../Redux/actions/auth";

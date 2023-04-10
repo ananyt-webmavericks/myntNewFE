@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import FounderSignInValSchema from "../../Validations/FounderSignInValSchema";
 import UserServices from "../../service/UserService";
 import { useFormik } from "formik";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 export default function LoginFounder() {
 

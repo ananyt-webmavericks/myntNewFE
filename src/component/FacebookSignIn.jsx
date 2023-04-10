@@ -7,7 +7,7 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import { AppId } from "../Utils/Configurable";
 import { useDispatch } from "react-redux";
 import { userLoginAction } from "../Redux/actions/auth";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import UserServices from "../service/UserService";
 import { userEmailAction } from "../Redux/actions/auth";
 
