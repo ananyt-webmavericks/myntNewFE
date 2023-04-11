@@ -292,7 +292,7 @@ const getPeopleByCompanyId = async (ID) => {
 
 const getCompanyDetailByCampaign = async (ID) => {
     try {
-        const response = await authAxios.get(`${Base_Url}/api/campaign/campaign-with-company-data-by-campaign-id/${ID}`);
+        const response = await authAxios.get(`${Base_Url}/api/campaign/campaign-with-all-data-by-campaign-id/${ID}`);
         return response;
     }
     catch (error) {
