@@ -13,27 +13,29 @@ export default function DealsFaqs({ faqData, companyData }) {
             <div style={{ marginBottom: '2em', marginTop: '60px' }}>
                 <div className="investor-home-heading" style={{ fontSize: '24px' }}>About {companyData.company_name}</div>
                 {
-                    faqData?.map((item, index) => <div key={index} style={{ marginTop: '2em' }}>
-                        <Accordion expanded={expanded === `panel${index + 1}`} onChange={handleChange(`panel${index + 1}`)} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <div>
-                                    <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                    <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                        {item.question}
-                                    </span>
-                                </div>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    {item.answer}
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                    </div>)
+                    faqData.length > 0
+                        ? faqData?.map((item, index) => <div key={index} style={{ marginTop: '2em' }}>
+                            <Accordion expanded={expanded === `panel${index + 1}`} onChange={handleChange(`panel${index + 1}`)} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <div>
+                                        <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
+                                        <span style={{ fontWeight: 600, fontSize: '16px' }}>
+                                            {item.question}
+                                        </span>
+                                    </div>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        {item.answer}
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        </div>)
+                        : <div className="investor-home-heading" style={{ fontSize: '14px' }}>No FAQs to show</div>
                 }
                 <div className="get-started-btn-investor" style={{ display: 'grid', justifyContent: 'center', alignItems: 'center' }}>
 

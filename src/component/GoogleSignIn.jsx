@@ -28,18 +28,16 @@ export default function GoogleSignIn() {
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {
-                            dispatch(userLoginAction({ ...response.data, avatar: userObject?.picture }))
+                            dispatch(userLoginAction({ ...response.data?.data, avatar: userObject?.picture }))
                             localStorage.setItem('loginType', 'existed')
-                            if (!response.data.nationality) {
+                            if (!response.data?.data?.nationality) {
                                 navigate('/about-you')
                             } else {
-                                ConsentSerivce.getUserConsent(response.data.id).then(({ data }) => {
+                                ConsentSerivce.getUserConsent(response.data?.data?.id).then(({ data }) => {
                                     navigate(data ? '/dashboard' : '/become-investor')
                                 })
                             }
-
                         }
-
                     })
             }
             catch {
@@ -57,13 +55,18 @@ export default function GoogleSignIn() {
             try {
                 UserServices.CreateUser(value).then(
                     (response) => {
-                        console.log(response)
-                        if (response.status === 201) {
-                            dispatch(userLoginAction(response.data))
-
-                            navigate('/login')
+                        if (response.status === 201 || response.status === 200) {
+                            dispatch(userLoginAction({ ...response.data.data, avatar: userObject?.picture }))
+                            console.log(response)
+                            localStorage.setItem("access_token", response.data?.access_token)
+                            if (!response.data.data.nationality) {
+                                navigate('/about-you')
+                            } else {
+                                ConsentSerivce.getUserConsent(response.data.id).then(({ data }) => {
+                                    navigate(data ? '/dashboard' : '/become-investor')
+                                })
+                            }
                         }
-
                     })
             }
             catch {

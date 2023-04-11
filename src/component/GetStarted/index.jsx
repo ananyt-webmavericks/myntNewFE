@@ -40,7 +40,6 @@ export default function GetStartedSection() {
         onSubmit: (values) => handleSubmit(values)
     });
 
-
     const handleSubmit = (userData) => {
         try {
             UserServices.CreateUser(userData).then(

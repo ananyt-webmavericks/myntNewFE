@@ -103,53 +103,53 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                 </Grid>
             </div>
             <div className="documents-deal-terms-section">
-                <span style={{ fontSize: '18px', fontWeight: 600 }}>About company</span>
+                {companyData?.company_name && <span style={{ fontSize: '18px', fontWeight: 600 }}>About company</span>}
                 <Grid container spacing={gridxsMainThird}>
-                    <Grid item xs={gridxsThird}>
+                    {companyData?.company_name && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
                             <span className="header-main-deal-terms">Legal Name</span>
                             <span style={{ fontSize: '22px', fontWeight: '600' }}>{companyData?.company_name}</span>
                         </div>
-                    </Grid>
-                    <Grid item xs={gridxsThird}>
+                    </Grid>}
+                    {companyData?.invested_so_far && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
                             <span className="header-main-deal-terms">Founded</span>
                             <span style={{ fontSize: '22px', fontWeight: '600' }}>{companyData?.invested_so_far}</span>
                         </div>
-                    </Grid>
-                    <Grid item xs={gridxsThird}>
+                    </Grid>}
+                    {companyData?.incorporation_type && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
                             <span className="header-main-deal-terms">Form</span>
                             <span style={{ fontSize: '22px', fontWeight: '600' }}>{companyData?.incorporation_type}</span>
                         </div>
-                    </Grid>
-                    <Grid item xs={gridxsThird}>
+                    </Grid>}
+                    {companyData?.number_of_employees && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
-                            <span className="header-main-deal-terms">{companyData?.number_of_employees}</span>
-                            <span style={{ fontSize: '22px', fontWeight: '600' }}>10</span>
+                            <span className="header-main-deal-terms"> Number of employees</span>
+                            <span style={{ fontSize: '22px', fontWeight: '600' }}>{companyData?.number_of_employees}</span>
                         </div>
-                    </Grid>
-                    <Grid item xs={gridxsThird}>
+                    </Grid>}
+                    {companyData?.website_url && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
                             <span className="header-main-deal-terms">Website</span>
                             <span style={{ fontSize: '22px', fontWeight: '600' }}>
                                 {companyData?.website_url}
                             </span>
                         </div>
-                    </Grid>
-                    <Grid item xs={gridxsThird}>
+                    </Grid>}
+                    {companyData?.company_address && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
                             <span className="header-main-deal-terms">Location</span>
                             <span style={{ fontSize: '22px', fontWeight: '600' }}> {companyData?.company_address
                             }</span>
                         </div>
-                    </Grid>
-                    <Grid item xs={gridxsThird}>
+                    </Grid>}
+                    {companyData?.company_linked_in_profile && <Grid item xs={gridxsThird}>
                         <div className="about-company-cards-deal-terms">
                             <span className="header-main-deal-terms">Social Media</span>
-                            <span style={{ fontSize: '22px', fontWeight: '600' }}></span>
+                            <span style={{ fontSize: '22px', fontWeight: '600' }}>{companyData?.company_linked_in_profile}</span>
                         </div>
-                    </Grid>
+                    </Grid>}
                 </Grid>
                 <div className="social-media-icons-deal-terms">
                     <a href={companyData?.company_linked_in_profile} target="_blank" rel="noopener noreferrer">  <img src={Linkdin} style={{ width: '40px', height: '40px', marginRight: '51px' }}></img>   </a>

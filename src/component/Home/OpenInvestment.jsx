@@ -17,6 +17,9 @@ import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import CompanyServices from "../../service/Company";
+import { dealsStoreAction } from "../../Redux/actions/company";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -94,20 +97,32 @@ export default function OpenInvestment() {
     const [showItem, setShowItem] = useState(4)
     const [showBtn, setShowBtn] = useState(true)
     const [showSkeleton, setShowSkeleton] = useState(false)
-
+    const { deals } = useSelector(state => state.companyData)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const handleLoadMore = () => {
         setShowSkeleton(true)
         setShowBtn(false)
         const timer = setTimeout(() => {
             setShowSkeleton(false)
-            setShowItem(data.length)
+            setShowItem(deals.length)
         }, 2000);
 
         return () => clearTimeout(timer);
     }
 
     useEffect(() => {
+        const getAllDealTerms = () => {
+            CompanyServices.getAllDealTerms().then(res => {
+                if (res.status === 200 || res.status === 201) {
+                    console.log(res.data)
+                    dispatch(dealsStoreAction(res.data))
+                } else {
+                    console.log("Get Deal Terms Failed!")
+                }
+            })
+        }
+        deals.length === 0 && getAllDealTerms()
 
         if (ratio < 1230) {
             setSpaceing(3)
@@ -124,7 +139,7 @@ export default function OpenInvestment() {
     }, [])
 
     const handleRotate = (index) => {
-        let new_array = data;
+        let new_array = deals;
         new_array[index].checked = !new_array[index].checked;
         console.log(new_array[index].checked)
         setData([...new_array])
@@ -137,51 +152,66 @@ export default function OpenInvestment() {
                     <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities - </Typography>
                 </div>
                 <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
-                    {data.slice(0, showItem).map((item, index) => {
+                    {/* {data.slice(0, showItem).map((item, index) => { */}
+                    {deals.slice(0, showItem)?.map((campaign, index) => {
                         return (
-                            <Grid key={index} item xs={gridxsFirst} onClick={() => navigate('/live-deals-details')}>
-                                <Card className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
+                            <Grid key={index} item xs={gridxsFirst}>
+                                <Card onClick={() =>
+                                    navigate('/live-deals-details', {
+                                        state: {
+                                            campaignId: campaign.campaign_id,
+                                            campaignData: {
+                                                ...campaign,
+                                                // deal_type: item.deal_type
+                                            }
+                                        }
+                                    })}
+                                    className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
                                     <CardContent sx={{ padding: '0' }}>
                                         <div style={{ position: 'relative' }}>
-                                            <img src={item.backgroundImage} width='100%' height={192} />
+                                            <img src={BG1} width='100%' height={192} />
                                             <div className="card-header-logo">
                                                 <div className="company-logo-section">
                                                     <img src={Logo1} width={102} height={34} />
                                                 </div>
-                                                <div className="logo-txt-script">{item.logoText}</div>
+                                                <div className="logo-txt-script">
+                                                    CSON
+                                                </div>
                                             </div>
                                             <div className="info-card-txt">
-                                                <span className="company-name">{item.logoName}</span>
+                                                <span className="company-name">
+                                                    {/* {"deal_type"} */}
+                                                </span>
                                             </div>
                                             <div className="centered-txt-card">
-                                                <span className="company-name">{item.heading}</span>
+                                                <span className="company-name">Mildcares gynocup</span>
                                             </div>
-                                            <div className="bottom-txt-card" style={{ paddingLeft: '10px', paddingRight: '15px', lineHeight: '1.2' }}>
-                                                <span>{item.subHeading}</span>
+                                            <div className="bottom-txt-card">
+                                                <span>This is not the actual text for this section of this card, something else will come here</span>
                                             </div>
                                         </div>
                                         <div className="body-card-section">
-                                            <span className="card-description">{item.description}</span>
+                                            <span className="card-description">We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…</span>
                                             <div style={{ display: 'flex' }}>
-                                                {item.chip.map((item, index) => {
-                                                    return (
-                                                        <div key={index} className="chip-status"><span>{item.name}</span></div>
-                                                    )
-                                                })}
+                                                <div key={index} className="chip-status"><span>health</span></div>
                                             </div>
                                             <div className="footer-card-section">
                                                 <div className="numbers-investors">
-                                                    <span className="percentage-investment">{item.raised}</span>
+                                                    <span className="percentage-investment">0%</span>
                                                     <span className="investment-status">Raised</span>
                                                 </div>
                                                 <div className="vertical-line-invest"></div>
                                                 <div className="numbers-investors">
-                                                    <span className="percentage-investment">{item.closesIn}</span>
+                                                    <span className="percentage-investment">
+                                                        10 days
+                                                    </span>
                                                     <span className="investment-status">Closes in</span>
                                                 </div>
                                                 <div className="vertical-line-invest"></div>
                                                 <div className="numbers-investors">
-                                                    <span className="percentage-investment">{item.invest}</span>
+                                                    <span className="percentage-investment">
+                                                        5000
+                                                    </span>
                                                     <span className="investment-status">Min Invest</span>
                                                 </div>
                                             </div>
@@ -195,21 +225,22 @@ export default function OpenInvestment() {
                                             </div>
                                             <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
                                                 <span className="investment-txt hover">Investors</span>
-                                                <span className="investment-sub-txt hover">18</span>
+                                                <span className="investment-sub-txt hover">0</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Raised</span>
-                                                <span className="investment-sub-txt hover">16.5%</span>
+                                                <span className="investment-sub-txt hover">0%</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Minimum Subscription</span>
                                                 <span className="investment-sub-txt hover">5000</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Closes in</span>
-                                                <span className="investment-sub-txt hover">14 days</span>
+                                                <span className="investment-sub-txt hover">10 days</span>
                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                             </div>
                                         </div>
-                                        {item.checked &&
-                                            <div className="overlay responsive">
+                                        {
+                                            // item.checked
+                                            false && <div className="overlay responsive">
                                                 <div className="card-header-logo hover">
                                                     <div className="company-logo-section">
                                                         <img src={Eveez} width={54} height={54} />
@@ -232,20 +263,17 @@ export default function OpenInvestment() {
                                                 </div>
                                             </div>}
                                         <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
-                                            <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={item.checked ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
-
+                                            <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={true ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
                                         </div>
                                     </CardContent>
                                 </Card>
                             </Grid>
                         )
                     })}
-
-
                 </Grid>
                 {showSkeleton &&
                     <Grid sx={{ marginTop: '20px' }} container spacing={spaceing}>
-                        {data.slice(0, 4).map((item, index) => {
+                        {deals.slice(0, 4).map((item, index) => {
                             return (
                                 <Grid key={index} item xs={gridxsFirst}>
                                     <Stack spacing={1}>

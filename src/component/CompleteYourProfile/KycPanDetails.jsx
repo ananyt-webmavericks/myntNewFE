@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import { useRef } from "react";
 const data = {
     pan_card: '',
     birth_date: '',
@@ -23,6 +24,7 @@ export default function KycPanDetails() {
     const kycDonePath = localStorage.getItem('kycDonePath')
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const inputRefs = [useRef(null), useRef(null), useRef(null)];
 
     const handleChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value })
@@ -72,6 +74,16 @@ export default function KycPanDetails() {
             }
         }
     }
+
+    const handleInput = (index, event) => {
+        const input = event.target;
+        if (input.value.length === 2) {
+            inputRefs[index + 1]?.current?.focus();
+        }
+        if (input.value.length === 4 && index < 2) {
+            inputRefs[index + 1]?.current?.focus();
+        }
+    };
 
     const handleNavigate = () => {
         (!userKycData?.mobile_number_verified)
@@ -125,9 +137,24 @@ export default function KycPanDetails() {
                             <span className="verify-number-head">Kyc</span>
                             <div className="number-verify-container kyc"><input type="text" name="pan_card" value={value.pan_card} onChange={handleChange} placeholder="Enter PAN Number" className="phoneNumberInput" /></div>
                             <div className="input-number-box-section kyc">
-                                <div className="number-verify-container kyc small"><input name="birth_date" value={value.birth_date} onChange={handleChange} type="number" placeholder="DD" className="phoneNumberInput" /></div>
-                                <div className="number-verify-container kyc small"><input name="birth_month" value={value.birth_month} onChange={handleChange} type="number" placeholder="MM" className="phoneNumberInput" /></div>
-                                <div className="number-verify-container kyc small"><input name="birth_year" value={value.birth_year} onChange={handleChange} type="number" placeholder="YYYY" className="phoneNumberInput" /></div>
+                                <div className="number-verify-container kyc small">
+                                    <input
+                                        ref={inputRefs[0]}
+                                        onInput={(e) => handleInput(0, e)}
+                                        name="birth_date" value={value.birth_date} onChange={handleChange} type="number" placeholder="DD" className="phoneNumberInput" />
+                                </div>
+                                <div className="number-verify-container kyc small">
+                                    <input
+                                        ref={inputRefs[1]}
+                                        onInput={(e) => handleInput(1, e)}
+                                        name="birth_month" value={value.birth_month} onChange={handleChange} type="number" placeholder="MM" className="phoneNumberInput" />
+                                </div>
+                                <div className="number-verify-container kyc small">
+                                    <input
+                                        ref={inputRefs[2]}
+                                        onInput={(e) => handleInput(2, e)}
+                                        name="birth_year" value={value.birth_year} onChange={handleChange} type="number" placeholder="YYYY" className="phoneNumberInput" />
+                                </div>
                             </div>
                         </div>
                         <div className="verify-button-container" style={{ paddingTop: '28px' }}>

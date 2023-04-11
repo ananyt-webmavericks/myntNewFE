@@ -15,6 +15,7 @@ const LoginUserByEmail = async (data) => {
     try {
         const response = await axios.post(`${Base_Url}/api/users/login`, data);
         // notifySuccess(response.data.message)
+        localStorage.setItem("access_token", response.data.access_token)
         return response;
     }
     catch (error) {

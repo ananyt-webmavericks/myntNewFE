@@ -142,7 +142,7 @@ export default function PayToSubscribeMain() {
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         type="number"
-                                        placeholder="₹25,000"
+                                        placeholder="Eg. ₹25,000"
                                         style={{ WebkitAppearance: "none" }} className="verifyAddress-input-section" />
                                     {formik.touched.amount && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.amount}</div>}
                                 </div>

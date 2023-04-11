@@ -20,6 +20,8 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import CompanyServices from "../service/Company";
+import { dealsStoreAction } from "../Redux/actions/company";
+import { useDispatch, useSelector } from "react-redux";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -92,12 +94,14 @@ const LiveDeals = () => {
     const [spaceing, setSpaceing] = useState(4)
     const [gridxsFirst, setGridxsFirst] = useState(3)
     const [dealTypes, setDealTypes] = useState([])
-    const [dealTerms, setDealTerms] = useState([])
     const [superArray, setSuperArray] = useState([])
     const ratio = parseInt(window.innerWidth);
     const location = window.location.pathname;
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
+    const { deals } = useSelector(state => state.companyData)
+    console.log(deals)
     const handleOrderTabs = (tabNo) => {
         setActiveBtn(tabNo)
         const content = document.getElementById(`tab-${tabNo}`);
@@ -128,8 +132,8 @@ const LiveDeals = () => {
     }
 
     useEffect(() => {
-        return handleArrange(dealTypes, dealTerms)
-    }, [dealTypes, dealTerms])
+        return handleArrange(dealTypes, deals)
+    }, [dealTypes, deals])
 
 
     useEffect(() => {
@@ -140,15 +144,17 @@ const LiveDeals = () => {
                 console.log("Get Deal Type Failed!")
             }
         })
-
-        CompanyServices.getAllDealTerms().then(res => {
-            if (res.status === 200 || res.status === 201) {
-                console.log(res.data)
-                setDealTerms(res.data)
-            } else {
-                console.log("Get Deal Terms Failed!")
-            }
-        })
+        const getAllDealTerms = () => {
+            CompanyServices.getAllDealTerms().then(res => {
+                if (res.status === 200 || res.status === 201) {
+                    console.log(res.data)
+                    dispatch(dealsStoreAction(res.data))
+                } else {
+                    console.log("Get Deal Terms Failed!")
+                }
+            })
+        }
+        deals.length === 0 && getAllDealTerms()
 
         window.scrollTo(0, 0);
 
