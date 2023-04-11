@@ -80,7 +80,7 @@ export default function MyProfileMain() {
                                 type="text"
                                 disabled
                                 value={
-                                    (_.isEmpty(data))
+                                    (!_.isEmpty(data))
                                         ? userData?.first_name?.length > 0
                                             ? (userData?.first_name).toUpperCase() + " " + (userData?.last_name).toUpperCase()
                                             : ""
@@ -92,7 +92,7 @@ export default function MyProfileMain() {
                             <input
                                 type="text"
                                 disabled
-                                value={(_.isEmpty(data))
+                                value={(!_.isEmpty(data))
                                     ? userData?.email?.length > 0
                                         ? userData?.email
                                         : ""

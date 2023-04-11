@@ -38,6 +38,7 @@ import UserServices from "../../service/UserService";
 import CompanyServices from "../../service/Company";
 import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
+import { Highlight } from "@mui/icons-material";
 const actions = [
     { icon: <FacebookRoundedIcon />, name: 'Facebook' },
     { icon: <InstagramIcon />, name: 'Instagram' },
@@ -139,7 +140,11 @@ export default function LiveDetailsMain() {
             <div style={{ paddingTop: '8em' }}>
                 <Grid container spacing={gridxsFirst}>
                     <Grid item xs={gridxsSecond}>
-                        <YoutubeEmbed link={campaignData?.ama_youtube_video} width={gridxsFirst === 2 ? '90%' : '100%'} height={'357px'} embedId={"g_aELYEBc4Q"} />
+                        {
+                            campaignData?.ama_youtube_video
+                                ? <YoutubeEmbed link={campaignData?.ama_youtube_video} width={gridxsFirst === 2 ? '90%' : '100%'} height={'357px'} embedId={"g_aELYEBc4Q"} />
+                                : <div className="investor-home-heading" style={{ fontSize: '16px', marginTop: '8rem' }}>No youtube link available for preview</div>
+                        }
 
                     </Grid>
                     <Grid item xs={gridxsSecond}>
@@ -238,55 +243,29 @@ export default function LiveDetailsMain() {
                 {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
                     <YoutubeEmbed width={gridxsFirst === 2 ? '486px' : '100%'} height={'271.6px'} embedId={"g_aELYEBc4Q"} />
                 </div> */}
-                <div className="heading-live-deals-details">
-                    <span className="header-txt-deals-details">Highlights</span>
-                </div>
-                <div style={{ marginTop: '30px' }}>
-                    <Grid container spacing={gridxsFirst}>
-                        {
-                            hightLightData?.map((item, index) => <Grid key={index} item xs={gridxsSecond}>
-                                <Card className="card-content-live-details">
-                                    <CardContent>
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <img src={Group1} height={47} width={53} ></img>
-                                            <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>{item.title}</span>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </Grid>)
-                        }
-                        {/* <Grid item xs={gridxsSecond}>
-                            <Card className="card-content-live-details">
-                                <CardContent>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group2} height={47} width={55} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>200 + Host, creators and venue partners</span>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item xs={gridxsSecond}>
-                            <Card className="card-content-live-details">
-                                <CardContent>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group3} height={52} width={53} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>Community events & Experiences</span>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item xs={gridxsSecond}>
-                            <Card className="card-content-live-details">
-                                <CardContent>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={Group4} height={55} width={60} ></img>
-                                        <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>A full stack product for community assisted connections</span>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Grid> */}
-                    </Grid>
-                </div>
+                {
+                    hightLightData?.length > 0 && <>
+                        <div className="heading-live-deals-details">
+                            <span className="header-txt-deals-details">Highlights</span>
+                        </div>
+                        <div style={{ marginTop: '30px' }}>
+                            <Grid container spacing={gridxsFirst}>
+                                {
+                                    hightLightData?.map((item, index) => <Grid key={index} item xs={gridxsSecond}>
+                                        <Card className="card-content-live-details">
+                                            <CardContent>
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <img src={Group1} height={47} width={53} ></img>
+                                                    <span style={{ fontSize: '18px', marginLeft: '25px', fontWeight: "bold" }}>{item.title}</span>
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>)
+                                }
+                            </Grid>
+                        </div>
+                    </>
+                }
                 <div className="tabs-section-details-deals">
                     <div className="horizontal-ruler-tabs"></div>
                     <div className="btn-section-my-profile details">

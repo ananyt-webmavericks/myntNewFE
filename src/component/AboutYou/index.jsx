@@ -545,7 +545,7 @@ export default function AboutYouMain() {
             notify("Please choose country !!")
         } else {
             try {
-                UserServices.UpdateUser({ user_id: userData.id, email: userData.email, nationality: nationality.toString(), country: country.toString() }).then(
+                UserServices.UpdateUser({ user_id: userData.id, nationality: nationality.toString(), country: country.toString() }).then(
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {
