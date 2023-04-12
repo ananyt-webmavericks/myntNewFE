@@ -7,34 +7,44 @@ import pdfIcon from './../../../images/founder/pdfIcon.png'
 import CompanyServices from '../../../service/Company'
 import { toast } from "react-hot-toast";
 import { useEffect } from 'react'
+import { Base_Url } from '../../../Utils/Configurable'
+import { authAxios } from '../../../service/Auth-header'
 
 const UploadDocuments = () => {
     const [selectedFile, setSelectedFile] = useState([]);
     const [uploadedDocs, setUploadedDocs] = useState([])
     const [toggle, settoggle] = useState(false)
 
-    const handleFileInput = (event) => {
-        setSelectedFile([...selectedFile,
-        {
-            document_type: "DOCUMENTS",
-            document_name: event.target.files[0],
-            agreement_status: "SIGNED BY FOUNDER"
-        }]
-        );
-        const fileName = event.target.files[0]
-        const extension = fileName?.name?.split('.').pop();
-        console.log(extension)
-    };
+    const handleFileInput = async (event) => {
 
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+            const { data } = await authAxios.post(`${Base_Url}/api/users/upload-files`, formData);
+            console.log(data)
+            setSelectedFile([...selectedFile,
+            {
+                document_type: "DOCUMENTS",
+                document_name: event.target.files[0].name,
+                agreement_status: "SIGNED BY FOUNDER",
+                document_url: data.message
+            }]
+            );
+            return data
+        }
+        catch (error) {
+            console.log("Data not found !!")
+        }
+    };
     const handleUpload = () => {
-        // const formData = new FormData();
-        // formData.append('pdf', selectedFile);
-        let arr = [];
-        selectedFile.map(item => arr.push({ ...item, document_name: item.document_name.name })
-        )
         const values = {
             company_id: +localStorage.getItem("company_id"),
-            documents: arr
+            documents: selectedFile
         }
 
         CompanyServices.uploadCompanyDocs(values).then(res => {
@@ -81,17 +91,17 @@ const UploadDocuments = () => {
                             key={index}
                             className='icon-name-upload-doc'>
                             <img src={
-                                item?.document_name.name?.split('.').pop() === 'pptx'
+                                item?.document_name?.split('.').pop() === 'pptx'
                                     ? pptxIcon
-                                    : item?.document_name?.name?.split('.').pop() === 'pdf'
+                                    : item?.document_name?.split('.').pop() === 'pdf'
                                         ? pdfIcon
                                         : null
                             }
                                 alt="doc-icon" width={62} />
                             <Typography className='doc-name'>{
-                                item?.document_name?.name.length < 10
-                                    ? item?.document_name?.name
-                                    : item?.document_name?.name?.slice(0, 5) + "..." + item?.document_name?.name?.split('.').pop()
+                                item?.document_name?.length < 10
+                                    ? item?.document_name
+                                    : item?.document_name?.slice(0, 5) + "..." + item?.document_name?.split('.').pop()
                             }</Typography>
                         </div>)
                     }
