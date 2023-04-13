@@ -77,37 +77,35 @@ export default function LiveDetailsMain() {
                 setKycData(response?.data)
             }
         })
-        CompanyServices.getCampaignById(location.state?.campaignId).then(res => {
-            if (res.status === 200 || res.status === 201) {
-                console.log(res.data)
-                setCampaignData(res.data)
-            }
-        })
-        CompanyServices.getHighlights(location.state?.campaignId).then(res => {
-            if (res.status === 200 || res.status === 201) {
-                console.log(res.data)
-                setHightLightData(res.data)
-            }
-        })
-        CompanyServices.getCampaignsFaqs(location.state?.campaignId).then(res => {
-            if (res.status === 200 || res.status === 201) {
-                console.log(res.data)
-                setFaqData(res.data)
-            }
-        })
+        // CompanyServices.getCampaignById(location.state?.campaignId).then(res => {
+        //     if (res.status === 200 || res.status === 201) {
+        //         console.log(res.data)
+        //         setCampaignData(res.data)
+        //     }
+        // })
+        // CompanyServices.getHighlights(location.state?.campaignId).then(res => {
+        //     if (res.status === 200 || res.status === 201) {
+        //         console.log(res.data)
+        //         setHightLightData(res.data)
+        //     }
+        // })
+        // CompanyServices.getCampaignsFaqs(location.state?.campaignId).then(res => {
+        //     if (res.status === 200 || res.status === 201) {
+        //         console.log(res.data)
+        //         setFaqData(res.data)
+        //     }
+        // })
         CompanyServices.getCompanyDetailByCampaign(location.state?.campaignId).then(res => {
             if (res.status === 200 || res.status === 201) {
                 console.log("companyData = ", res.data)
                 setCompanyData(res.data.company_id)
-                CompanyServices.getPeopleByCompanyId(res.data.company_id.id).then(response => {
-                    if (response.status === 200 || response.status === 201) {
-                        console.log("peopleData = ", response.data)
-                        setPeopleData(response.data)
-                    }
-                })
+                setFaqData(res.data.faqs)
+                setPeopleData(res.data.company_id.peoples)
+                setCampaignData(res.data)
+                setHightLightData(res.data.higlights)
             }
         })
-
+        
         window.scrollTo(0, 0)
         if (ratio < 850) {
             setGridxsFirst(1)
