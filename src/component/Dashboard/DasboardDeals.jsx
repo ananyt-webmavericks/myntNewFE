@@ -77,6 +77,13 @@ export default function DashboardDeals() {
         console.log(new_array[index].checked)
         setData([...new_array])
     }
+
+    const daysRemaining = (dateString) => {
+        const now = new Date();
+        const targetDate = new Date(dateString);
+        const timeDiff = targetDate.getTime() - now.getTime();
+        return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    }
     return (
         <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px' }}>
             <span style={{ fontSize: '20px', fontWeight: '600' }}>New Live Deals </span>
@@ -89,11 +96,7 @@ export default function DashboardDeals() {
                             <Card onClick={() =>
                                 navigate('/live-deals-details', {
                                     state: {
-                                        campaignId: campaign.campaign_id,
-                                        campaignData: {
-                                            ...campaign,
-                                            // deal_type: item.deal_type
-                                        }
+                                        campaignId: campaign?.campaign_id?.id
                                     }
                                 })}
                                 className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
@@ -102,45 +105,52 @@ export default function DashboardDeals() {
                                         <img src={BG1} width='100%' height={192} />
                                         <div className="card-header-logo">
                                             <div className="company-logo-section">
-                                                <img src={Logo1} width={102} height={34} />
+                                                <img loading="lazy" src={campaign?.campaign_id?.company_id?.company_logo} height={44} />
                                             </div>
                                             <div className="logo-txt-script">
-                                                CSON
+                                                {campaign?.deal_type}
                                             </div>
                                         </div>
                                         <div className="info-card-txt">
-                                            <span className="company-name">
-                                                {/* {"deal_type"} */}
-                                            </span>
+                                            {/* <span className="company-name">{item.deal_type}
+                                                                </span> */}
                                         </div>
                                         <div className="centered-txt-card">
-                                            <span className="company-name">Mildcares gynocup</span>
+                                            <span className="company-name">
+                                                {campaign?.campaign_id?.company_id?.company_name}
+                                            </span>
                                         </div>
                                         <div className="bottom-txt-card">
-                                            <span>This is not the actual text for this section of this card, something else will come here</span>
+                                            <span>
+                                                {campaign?.campaign_id?.company_id?.product_description.slice(0, 80)}
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="body-card-section">
-                                        <span className="card-description">We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…</span>
+                                        <span className="card-description">
+                                            {`${campaign?.campaign_id?.company_id?.traction_description.slice(0, 100)}...`}
+                                        </span>
                                         <div style={{ display: 'flex' }}>
                                             <div key={index} className="chip-status"><span>health</span></div>
                                         </div>
                                         <div className="footer-card-section">
                                             <div className="numbers-investors">
                                                 <span className="percentage-investment">0%</span>
-                                                <span className="investment-status">Raised</span>
+                                                <span className="investment-status">
+                                                    Raised
+                                                </span>
                                             </div>
                                             <div className="vertical-line-invest"></div>
                                             <div className="numbers-investors">
                                                 <span className="percentage-investment">
-                                                    10 days
+                                                    {daysRemaining(campaign?.end_date)} days
                                                 </span>
                                                 <span className="investment-status">Closes in</span>
                                             </div>
                                             <div className="vertical-line-invest"></div>
                                             <div className="numbers-investors">
                                                 <span className="percentage-investment">
-                                                    5000
+                                                    {campaign?.min_subscription}
                                                 </span>
                                                 <span className="investment-status">Min Invest</span>
                                             </div>
@@ -168,32 +178,31 @@ export default function DashboardDeals() {
                                             <div className="chip-status hover"><span>Personal Health</span></div>
                                         </div>
                                     </div>
-                                    {
-                                        // item.checked
-                                        false && <div className="overlay responsive">
-                                            <div className="card-header-logo hover">
-                                                <div className="company-logo-section">
-                                                    <img src={Eveez} width={54} height={54} />
-                                                </div>
-                                                <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                    {true && <div className="overlay responsive">
+                                        <div className="card-header-logo hover">
+                                            <div className="company-logo-section">
+                                                <img src={Eveez} width={54} height={54} />
                                             </div>
-                                            <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                <span className="investment-txt hover">Investors</span>
-                                                <span className="investment-sub-txt hover">18</span>
-                                                <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Raised</span>
-                                                <span className="investment-sub-txt hover">16.5%</span>
-                                                <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Minimum Subscription</span>
-                                                <span className="investment-sub-txt hover">5000</span>
-                                                <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Closes in</span>
-                                                <span className="investment-sub-txt hover">14 days</span>
-                                                <div className="chip-status hover"><span>Personal Health</span></div>
-                                            </div>
-                                        </div>}
+                                            <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                        </div>
+                                        <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                            <span className="investment-txt hover">Investors</span>
+                                            <span className="investment-sub-txt hover">18</span>
+                                            <hr style={{ marginTop: '11.5px' }} />
+                                            <span className="investment-txt hover">Raised</span>
+                                            <span className="investment-sub-txt hover">16.5%</span>
+                                            <hr style={{ marginTop: '11.5px' }} />
+                                            <span className="investment-txt hover">Minimum Subscription</span>
+                                            <span className="investment-sub-txt hover">5000</span>
+                                            <hr style={{ marginTop: '11.5px' }} />
+                                            <span className="investment-txt hover">Closes in</span>
+                                            <span className="investment-sub-txt hover">14 days</span>
+                                            <div className="chip-status hover"><span>Personal Health</span></div>
+                                        </div>
+                                    </div>}
                                     <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
                                         <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={true ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
+
                                     </div>
                                 </CardContent>
                             </Card>

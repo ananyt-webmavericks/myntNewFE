@@ -112,7 +112,7 @@ const LiveDeals = () => {
 
     const handleArrange = (dealTypes, campaigns) => {
         const result = campaigns.reduce((acc, campaign) => {
-            const dealTypeId = campaign.security_type;
+            const dealTypeId = campaign.security_type.id;
             const dealType = dealTypes.find((dt) => dt.id === dealTypeId);
             const campaignObj = { ...campaign };
 
@@ -201,6 +201,12 @@ const LiveDeals = () => {
         ],
     }
 
+    const daysRemaining = (dateString) => {
+        const now = new Date();
+        const targetDate = new Date(dateString);
+        const timeDiff = targetDate.getTime() - now.getTime();
+        return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    }
     return (
         <>
             <div style={{ display: 'flex', position: 'relative' }}>
@@ -283,7 +289,7 @@ const LiveDeals = () => {
                                                 <Card onClick={() =>
                                                     navigate('/live-deals-details', {
                                                         state: {
-                                                            campaignId: campaign.campaign_id,
+                                                            campaignId: campaign?.campaign_id?.id,
                                                             campaignData: { ...campaign, deal_type: item.deal_type }
                                                         }
                                                     })}
@@ -293,43 +299,52 @@ const LiveDeals = () => {
                                                             <img src={BG1} width='100%' height={192} />
                                                             <div className="card-header-logo">
                                                                 <div className="company-logo-section">
-                                                                    <img src={Logo1} width={102} height={34} />
+                                                                    <img loading="lazy" src={campaign?.campaign_id?.company_id?.company_logo} height={44} />
                                                                 </div>
                                                                 <div className="logo-txt-script">
-                                                                    LIVE
+                                                                    {item.deal_type}
                                                                 </div>
                                                             </div>
                                                             <div className="info-card-txt">
-                                                                <span className="company-name">{item.deal_type}</span>
+                                                                {/* <span className="company-name">{item.deal_type}
+                                                                </span> */}
                                                             </div>
                                                             <div className="centered-txt-card">
-                                                                <span className="company-name">Mildcares gynocup</span>
+                                                                <span className="company-name">
+                                                                    {campaign?.campaign_id?.company_id?.company_name}
+                                                                </span>
                                                             </div>
                                                             <div className="bottom-txt-card">
-                                                                <span>This is not the actual text for this section of this card, something else will come here</span>
+                                                                <span>
+                                                                    {campaign?.campaign_id?.company_id?.product_description.slice(0, 80)}
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div className="body-card-section">
-                                                            <span className="card-description">We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…</span>
+                                                            <span className="card-description">
+                                                                {`${campaign?.campaign_id?.company_id?.traction_description.slice(0, 100)}...`}
+                                                            </span>
                                                             <div style={{ display: 'flex' }}>
                                                                 <div key={index} className="chip-status"><span>health</span></div>
                                                             </div>
                                                             <div className="footer-card-section">
                                                                 <div className="numbers-investors">
                                                                     <span className="percentage-investment">0%</span>
-                                                                    <span className="investment-status">Raised</span>
+                                                                    <span className="investment-status">
+                                                                        Raised
+                                                                    </span>
                                                                 </div>
                                                                 <div className="vertical-line-invest"></div>
                                                                 <div className="numbers-investors">
                                                                     <span className="percentage-investment">
-                                                                        10 days
+                                                                        {daysRemaining(campaign?.end_date)} days
                                                                     </span>
                                                                     <span className="investment-status">Closes in</span>
                                                                 </div>
                                                                 <div className="vertical-line-invest"></div>
                                                                 <div className="numbers-investors">
                                                                     <span className="percentage-investment">
-                                                                        5000
+                                                                        {campaign?.min_subscription}
                                                                     </span>
                                                                     <span className="investment-status">Min Invest</span>
                                                                 </div>
