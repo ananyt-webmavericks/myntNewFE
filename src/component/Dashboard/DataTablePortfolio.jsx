@@ -73,8 +73,8 @@ export default function DataTablePortfolio() {
                         <TableRow>
 
                             <StyledTableCell align='left'>Company</StyledTableCell>
-                            <StyledTableCell align='center'>Amt.Invested</StyledTableCell>
-                            <StyledTableCell align='center'>Date of Subscription</StyledTableCell>
+                            <StyledTableCell align='center'>Amt.Enrolled</StyledTableCell>
+                            <StyledTableCell align='center'>Date of Enrollment</StyledTableCell>
                             <StyledTableCell align='center'>Documents</StyledTableCell>
                             <StyledTableCell align='center'>Action</StyledTableCell>
                         </TableRow>

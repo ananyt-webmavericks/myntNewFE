@@ -31,7 +31,7 @@ export default function HowToRaise() {
     return (
         <div className="how-to-raise-container">
             <div className="investor-home-heading">How to <span className="colored-investor-home-heading"> register? </span></div>
-            <span className="investors-subheading">Experience the advantages of a fully digital and smooth process.</span>
+            <span className="investors-subheading">Experience the advantages of a fully digital and hassle-free process.</span>
             <div style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
 
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
@@ -52,7 +52,7 @@ export default function HowToRaise() {
                         <div className="head-section-non-active">2</div>
                         <div className="head-section-second">
                             <span className="card-header-txt">Complete KYC and add bank details</span>
-                            <span className="card-sub-header-txt">Finish the Know Your Customer (KYC) procedure by submitting your PAN (Permanent Account Number) and adding your bank account information.</span>
+                            <span className="card-sub-header-txt">Finish the KYC procedure by submitting your PAN card, Aadhar card and bank account details.</span>
                         </div>
                     </div>
                     <div className="raise-card-image-container">
@@ -64,8 +64,8 @@ export default function HowToRaise() {
                     <div className="head-container-raise">
                         <div className="head-section-non-active">3</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">Register to your preferred opportunities</span>
-                            <span className="card-sub-header-txt">Examine the ongoing campaigns and select the one that fits your needs best. Upon choosing a campaign, proceed with payment and finalize the process.</span>
+                            <span className="card-header-txt">Explore curated opportunities</span>
+                            <span className="card-sub-header-txt">Discover unique enrollment opportunities qualified through comprehensive due diligence. Upon choosing a campaign, proceed with payment and finalize the process.</span>
                         </div>
                     </div>
                     <div className="raise-card-image-container">
@@ -77,8 +77,8 @@ export default function HowToRaise() {
                     <div className="head-container-raise">
                         <div className="head-section-non-active">4</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">Grow Your Wealth</span>
-                            <span className="card-sub-header-txt">Your process is now complete and you can monitor your Subscriptions to see the growth as the startups you have backed achieve success.</span>
+                            <span className="card-header-txt">Track your portfolio and grow your wealth </span>
+                            <span className="card-sub-header-txt">Your process is now complete and you can monitor your portfolio to get periodic updates.</span>
                         </div>
                     </div>
                     <div className="raise-card-image-container-last">

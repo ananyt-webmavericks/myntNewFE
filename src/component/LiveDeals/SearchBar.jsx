@@ -19,10 +19,11 @@ const MenuProps = {
     },
 };
 const names = [
-   'latest',
-   'oldest',
-   'mix',
-   'newly released'
+   'All',
+   'Minimum',
+   '5001 - 10000',
+   '10001 - 20000',
+   'More than 20000'
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -85,7 +86,7 @@ export default function SearchBar() {
                     input={<OutlinedInput />}
                     renderValue={(selected) => {
                         if (selected.length === 0) {
-                            return <span>Sort By</span>;
+                            return <span>Sort By Amount</span>;
                         }
 
                         return selected.join(', ');
@@ -95,7 +96,40 @@ export default function SearchBar() {
                     inputProps={{ 'aria-label': 'Without label' }}
                 >
                     <MenuItem disabled value="">
-                        <em>Sort By</em>
+                        <em>Sort By Amount</em>
+                    </MenuItem>
+                    {names.map((name) => (
+                        <MenuItem
+                            key={name}
+                            value={name}
+                            style={getStyles(name, personName, theme)}
+                        >
+                            {name}
+                        </MenuItem>
+                    ))}
+                </Select>
+                <Select
+                    className={classes.select}
+                    // multiple
+                    variant="standard"
+                    sx={{ textAlign: 'left', fontStyle: 'normal', background: 'none', height: '42px' }}
+                    displayEmpty
+                    value={personName}
+                    onChange={handleChange}
+                    input={<OutlinedInput />}
+                    renderValue={(selected) => {
+                        if (selected.length === 0) {
+                            return <span>Sort By Sector</span>;
+                        }
+
+                        return selected.join(', ');
+                    }}
+                    MenuProps={MenuProps}
+
+                    inputProps={{ 'aria-label': 'Without label' }}
+                >
+                    <MenuItem disabled value="">
+                        <em>Sort By Amount</em>
                     </MenuItem>
                     {names.map((name) => (
                         <MenuItem

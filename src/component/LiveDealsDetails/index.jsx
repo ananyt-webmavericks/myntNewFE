@@ -161,17 +161,17 @@ export default function LiveDetailsMain() {
                         <div className="footer-card-section live-details">
                             <div className="numbers-investors live-details">
                                 <span className="percentage-investment" style={{ fontSize: '20px' }}>0%</span>
-                                <span className="investment-status">Raised</span>
+                                <span className="investment-status">Completed</span>
                             </div>
                             <div className="vertical-line-invest live-details" ></div>
                             <div className="numbers-investors live-details">
                                 <span className="percentage-investment live" style={{ fontSize: '20px' }}>10 days</span>
-                                <span className="investment-status live">Closes in</span>
+                                <span className="investment-status live">End Date </span>
                             </div>
                             <div className="vertical-line-invest live-details" ></div>
                             <div className="numbers-investors live-details">
                                 <span className="percentage-investment live" style={{ fontSize: '20px' }}>₹5,000</span>
-                                <span className="investment-status live">Min Invest</span>
+                                <span className="investment-status live">Min Enrollment</span>
                             </div>
                         </div>
                         <div className="outline-progress-bar-live-deals">
@@ -200,7 +200,7 @@ export default function LiveDetailsMain() {
                                         : handleNavigate()
                                     : navigate('/login')
                             }
-                            } style={{ textTransform: "none" }} className="invest-btn-section-deals">Enroll</Button>
+                            } style={{ textTransform: "none" }} className="invest-btn-section-deals">ENROLL NOW</Button>
                             <StyledSpeedDial
                                 sx={{
                                     '& .MuiFab-primary': { backgroundColor: '#E3E3E3', color: 'black' },
@@ -225,7 +225,7 @@ export default function LiveDetailsMain() {
                 </Grid>
                 <div className="heading-live-deals-details" style={{ filter: `blur(${blurAmount}px)` }}>
                     <h2 className="header-txt-deals-details">Ask Me Anything</h2>
-                    <span className="sub-header-txt-deals" style={{ maxWidth: '645px', margin: 'auto' }}>Investors can interact directly with the founders in a 45 minute online zoom session and ask any questions that they have regarding the campaign.</span>
+                    <span className="sub-header-txt-deals" style={{ maxWidth: '645px', margin: 'auto' }}>Mynt users can interact directly with the founders with a 60 mins online session and can ask any questions they have regarding the campaign.</span>
                 </div>
                 <div className="date-booked-register-section" style={{ filter: `blur(${blurAmount}px)` }}>
                     <div className="live-deals-box-date">

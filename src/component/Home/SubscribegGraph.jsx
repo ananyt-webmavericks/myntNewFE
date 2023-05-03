@@ -68,7 +68,7 @@ export default function SubscribegGraph() {
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
             <div className="subscribe-graph-heading">
-                <Typography className="test-script-regular">Subscribe to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+                <Typography className="test-script-regular">Signup to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>
             <Grid sx={{ marginTop: '40px' }} container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>
@@ -76,8 +76,8 @@ export default function SubscribegGraph() {
                         <CardContent>
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
-                                    <Typography className="card-bold-txt" >Equity linked Securities</Typography>
-                                    <Typography style={{ width: '90%' }} className="regular-txt">Sign up to gain access to exclusive high-return opportunities in growing businesses.</Typography>
+                                    <Typography className="card-bold-txt" >Startup Opportunities</Typography>
+                                    <Typography style={{ width: '90%' }} className="regular-txt">Acquire access to exclusive high-yield opportunities in emerging businesses.</Typography>
                                 </div>
                                 <div className="container-for-text-and-graph">
                                     <div className="text-section-subscribe">
@@ -100,7 +100,7 @@ export default function SubscribegGraph() {
                                         <p className="risk-factor two">Liquidity</p>
                                         <div className="bar-graph-container two" style={secondGStyle}>
                                         </div>
-                                        <p className="risk-factor three">Expected return</p>
+                                        <p className="risk-factor three">Expected Gain</p>
                                         <div className="bar-graph-container three" style={thirdGStyle}>
                                         </div>
                                     </div>
@@ -115,8 +115,8 @@ export default function SubscribegGraph() {
                         <CardContent>
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
-                                    <Typography className="card-bold-txt" >Fixed-return securities</Typography>
-                                    <Typography className="regular-txt">Profit from lucrative Subscription opportunities with regular payouts and high returns. </Typography>
+                                    <Typography className="card-bold-txt" >Fixed-return Opportunities</Typography>
+                                    <Typography className="regular-txt">Profit from lucrative opportunities with regular payouts and high returns. </Typography>
                                 </div>
                                 <div className="container-for-text-and-graph">
                                     <div className="text-section-subscribe">
@@ -132,7 +132,7 @@ export default function SubscribegGraph() {
                                         <p className="risk-factor fixed-two">Liquidity</p>
                                         <div className="bar-graph-container two" style={fifthGStyle}>
                                         </div>
-                                        <p className="risk-factor fixed-three ">Expected return</p>
+                                        <p className="risk-factor fixed-three ">Expected Gain</p>
                                         <div className="bar-graph-container three" style={sixthGStyle}>
                                         </div>
                                     </div>

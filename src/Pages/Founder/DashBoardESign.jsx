@@ -40,7 +40,10 @@ const DashBoardESign = () => {
                 <div className="dashboard-container">
                     <Container maxWidth="lg">
                         <div>
-                            <Typography className="raise-with-mint">E-Sing Document</Typography>
+                            {/* <Typography className="raise-with-mint">E-Sing Document</Typography> */}
+                            <Typography className="raise-with-mint">Raise with Mynt</Typography>
+                            <Typography className="raise-with-mint-desc">Provide us with all the data required to make your campaign! Make sure to include all the important details to make your campaign as attractive as possible to our investors. </Typography>
+
                         </div>
 
                         <Card className="raise-with-mint-cards" elevation={2}>

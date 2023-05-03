@@ -36,7 +36,7 @@ export default function GettingStartedMynt() {
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             <Typography>
-                                            Using an email ID, you can create a profile and register on the platform. Before enrolling in any live campaigns, it is necessary to complete your KYC process. You can do this by either visiting your profile page or starting the Subscription process.
+                                            Using an email ID, you can create a profile and register on the platform. Before enrolling in any live campaigns, it is necessary to complete your KYC process. You can do this by either visiting your profile page or starting the enrollment process.
                                             </Typography>
                                         </AccordionDetails>
                                     </Accordion>
@@ -49,13 +49,12 @@ export default function GettingStartedMynt() {
                                             </div>
                                         </AccordionSummary>
                                         <AccordionDetails>
+
                                             <Typography>
                                             The required documents are: <br /> <br />
                                             a PAN card for identification  <br />
                                             an Aadhaar for e-signing <br />
                                             as well as bank account information for processing refunds or repayment of principal and interest.
-
-
                                             </Typography>
                                         </AccordionDetails>
                                     </Accordion>
@@ -69,7 +68,7 @@ export default function GettingStartedMynt() {
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             <Typography>
-                                            Any individual above the age of 18 years having a PAN and AADHAR CARD can invest . The platform is presently catering to only Indian citizens.                                             </Typography>
+                                            Any individual above the age of 18 years having a PAN and AADHAR CARD can enroll . The platform is presently catering to only Indian citizens.</Typography>
                                         </AccordionDetails>
                                     </Accordion>
                                 </div>
@@ -82,8 +81,7 @@ export default function GettingStartedMynt() {
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             <Typography>
-                                            Minimum enrollment amount on the platform for startups is INR 4,000. However, the minimum amount for each campaign can be different and is disclosed on the campaign page.
-                                            </Typography>
+                                            Minimum enrollment amount on the platform for startups is INR 8,000. However, the minimum amount for each campaign can be different and is disclosed on the campaign page.</Typography>
                                         </AccordionDetails>
                                     </Accordion>
                                 </div>

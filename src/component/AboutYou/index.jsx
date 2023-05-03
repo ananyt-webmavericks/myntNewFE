@@ -654,8 +654,7 @@ export default function AboutYouMain() {
                         {showMessage &&
                             <div style={{ display: 'grid', fontSize: '12px', marginTop: '10px', color: "#777777" }}>
                                 <span style={{ marginBottom: '10px' }}>Getting ready to assist you shortly!</span>
-                                <span style={{ color: '#777777' }}> Myntinvest is presently only accessible to Resident
-                                    Indians. We are actively working on making it available to nonresident Indians in the near future.</span>
+                                <span style={{ color: '#777777' }}>Mynt is presently only accessible to Resident Indians. We are actively working on making it available to nonresident Indians in the near future.</span>
                             </div>
                         }
 

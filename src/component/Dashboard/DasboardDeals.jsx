@@ -16,7 +16,7 @@ const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -24,7 +24,7 @@ const values = [
     {
         id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -32,7 +32,7 @@ const values = [
     {
         id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -86,8 +86,8 @@ export default function DashboardDeals() {
     }
     return (
         <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px' }}>
-            <span style={{ fontSize: '20px', fontWeight: '600' }}>New Live Deals </span>
-            <span>Get your wealth creation journey started today! </span>
+            <span style={{ fontSize: '20px', fontWeight: '600' }}>NEW LIVE OPPORTUNITIES  </span>
+            <span>Get your wealth creation journey started today!</span>
             <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                 {/* {data.slice(0, showItem).map((item, index) => { */}
                 {deals.slice(0, 3)?.map((campaign, index) => {
@@ -137,7 +137,7 @@ export default function DashboardDeals() {
                                             <div className="numbers-investors">
                                                 <span className="percentage-investment">0%</span>
                                                 <span className="investment-status">
-                                                    Raised
+                                                Completed
                                                 </span>
                                             </div>
                                             <div className="vertical-line-invest"></div>
@@ -145,14 +145,14 @@ export default function DashboardDeals() {
                                                 <span className="percentage-investment">
                                                     {daysRemaining(campaign?.end_date)} days
                                                 </span>
-                                                <span className="investment-status">Closes in</span>
+                                                <span className="investment-status">End Date</span>
                                             </div>
                                             <div className="vertical-line-invest"></div>
                                             <div className="numbers-investors">
                                                 <span className="percentage-investment">
                                                     {campaign?.min_subscription}
                                                 </span>
-                                                <span className="investment-status">Min Invest</span>
+                                                <span className="investment-status">Min Enrollment</span>
                                             </div>
                                         </div>
                                     </div>
@@ -167,13 +167,13 @@ export default function DashboardDeals() {
                                             <span className="investment-txt hover">Investors</span>
                                             <span className="investment-sub-txt hover">0</span>
                                             <hr style={{ marginTop: '11.5px' }} />
-                                            <span className="investment-txt hover">Raised</span>
+                                            <span className="investment-txt hover">Completed</span>
                                             <span className="investment-sub-txt hover">0%</span>
                                             <hr style={{ marginTop: '11.5px' }} />
-                                            <span className="investment-txt hover">Minimum Subscription</span>
+                                            <span className="investment-txt hover">Minimum Enrollment</span>
                                             <span className="investment-sub-txt hover">5000</span>
                                             <hr style={{ marginTop: '11.5px' }} />
-                                            <span className="investment-txt hover">Closes in</span>
+                                            <span className="investment-txt hover">End Date </span>
                                             <span className="investment-sub-txt hover">10 days</span>
                                             <div className="chip-status hover"><span>Personal Health</span></div>
                                         </div>
@@ -189,13 +189,13 @@ export default function DashboardDeals() {
                                             <span className="investment-txt hover">Investors</span>
                                             <span className="investment-sub-txt hover">18</span>
                                             <hr style={{ marginTop: '11.5px' }} />
-                                            <span className="investment-txt hover">Raised</span>
+                                            <span className="investment-txt hover">Completed</span>
                                             <span className="investment-sub-txt hover">16.5%</span>
                                             <hr style={{ marginTop: '11.5px' }} />
-                                            <span className="investment-txt hover">Minimum Subscription</span>
+                                            <span className="investment-txt hover">Minimum Enrollment</span>
                                             <span className="investment-sub-txt hover">5000</span>
                                             <hr style={{ marginTop: '11.5px' }} />
-                                            <span className="investment-txt hover">Closes in</span>
+                                            <span className="investment-txt hover">End Date</span>
                                             <span className="investment-sub-txt hover">14 days</span>
                                             <div className="chip-status hover"><span>Personal Health</span></div>
                                         </div>

@@ -24,7 +24,7 @@ export default function StartupInvestMynt() {
                         <div className="faq-university-container">
                             <div style={{display:'grid'}}>
                             <img src={BackButton} onClick={()=>navigate('/myntUniversity/faqs')} alt='backbtn' style={{marginBottom:'20px'}}/>
-                            <span className="get-started-heading startup">STARTUP FUNDING </span>
+                            <span className="get-started-heading startup">STARTUP FUNDING</span>
                             </div>
                             <div style={{ marginTop: '30px' }}>
                                     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>

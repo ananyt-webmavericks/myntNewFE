@@ -23,7 +23,7 @@ const FounderFaqs = () => {
                         >
                             <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I apply as a startup founder to Mynt invest? </span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I apply as a startup founder to Mynt? </span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -43,7 +43,7 @@ const FounderFaqs = () => {
                         >
                             <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>02.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I start a campaign on MYNT INVEST?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> How can I start a campaign on MYNT?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -84,7 +84,7 @@ const FounderFaqs = () => {
                         >
                             <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>04.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What kind of instruments can be used to start a campaign on MYNT INVEST?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What kind of instruments can be used to start a campaign on MYNT?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>

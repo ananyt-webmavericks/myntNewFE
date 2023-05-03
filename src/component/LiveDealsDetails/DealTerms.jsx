@@ -44,7 +44,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
             <Grid container spacing={gridxsMainFirst} style={{ filter: `blur(${blurAmount}px)` }}>
                 <Grid item xs={gridxsFirst}>
                     <div className="deal-terms-conatiner">
-                        <span className="header-main-deal-terms">Type Of Security</span>
+                        <span className="header-main-deal-terms">Type</span>
                         <span className="mainHead-main-deal-terms">{dealTermData?.deal_type}</span>
                         <span className="subHead-main-deal-terms">CSOP is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange</span>
                     </div>
@@ -64,16 +64,24 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                 </Grid>
                 <Grid item xs={gridxsFirst}>
                     <div className="deal-terms-conatiner">
-                        <span className="header-main-deal-terms">Min Subscription</span>
+                        <span className="header-main-deal-terms">Pre Money Valuation</span>
+                        <span className="mainHead-main-deal-terms">{"-"}</span>
+                        <span className="subHead-main-deal-terms">"Pre-money valuation" refers to the value of a company before it receives any external funding. This term is commonly used in the context of startups that are seeking funds from potential investors. For instance, if a startup has a pre-money valuation of $10 million and receives an investment of $2 million, the resulting post-money valuation (the value of the company after the investment) would be $12 million.
+</span>
+                    </div>
+                </Grid>
+                <Grid item xs={gridxsFirst}>
+                    <div className="deal-terms-conatiner">
+                        <span className="header-main-deal-terms">Minimum Enrollment </span>
                         <span className="mainHead-main-deal-terms">{dealTermData?.min_subscription}</span>
-                        <span className="subHead-main-deal-terms">This is the minimum amount that can be subscribe in the current deal. Only amounts equal to or greater than this will be accepted</span>
+                        <span className="subHead-main-deal-terms">Only amounts equal to or greater than the minimum will be accepted.</span>
                     </div>
                 </Grid>
                 <Grid item xs={gridxsFirst}>
                     <div className="deal-terms-conatiner">
                         <span className="header-main-deal-terms">Target</span>
                         <span className="mainHead-main-deal-terms">{dealTermData?.target}</span>
-                        <span className="subHead-main-deal-terms">This is the amount a startup is looking to raise</span>
+                        <span className="subHead-main-deal-terms">This is the amount the startup is looking to raise</span>
                     </div>
                 </Grid>
                 <Grid item xs={gridxsFirst}>

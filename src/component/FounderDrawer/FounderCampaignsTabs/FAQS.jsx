@@ -84,7 +84,7 @@ const FAQS = ({ tabChangeFn }) => {
         <Container maxWidth="lg">
             <form onSubmit={formik.handleSubmit}>
                 <Box sx={{ marginTop: 4, marginLeft: 2 }}>
-                    <h3 className='faqs-title'>FAQs (Frequently Asked Questions)</h3>
+                    <h3 className='faqs-title'>FAQs</h3>
 
                     <Typography>Investors are curious. Answer the basics about your startup here. </Typography>
 

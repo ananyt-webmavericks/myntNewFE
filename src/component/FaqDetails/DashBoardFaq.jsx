@@ -22,7 +22,7 @@ export default function DashBoardFaq() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01. </span>
-                                <span style={{ fontWeight: 600, fontSize: '16px', fontFamily: 'poppins' }}> What do you understand by early-stage startups? </span>
+                                <span style={{ fontWeight: 600, fontSize: '16px', fontFamily: 'poppins' }}> What do you understand by early-stage startups?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -48,7 +48,7 @@ export default function DashBoardFaq() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>02.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the different ways I can transfer the enrollment amount?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> Where can I find all the campaigns currently open?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -71,7 +71,8 @@ export default function DashBoardFaq() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>03.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> Where can I find all the campaigns currently open for investment?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What are the different types of instruments available for enrollment on Mynt?
+                                </span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -92,7 +93,7 @@ export default function DashBoardFaq() {
                         >
                             <div>
                                 <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>04.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What are the different types of instruments available for enrollment on Myntinvest?</span>
+                                <span style={{ fontWeight: 600, fontSize: '16px' }}> What is the minimum enrollment amount for various campaigns?</span>
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -111,7 +112,7 @@ export default function DashBoardFaq() {
                     </Accordion>
 
                 </div>
-                <div style={{ marginTop: '2em' }}>
+                {/* <div style={{ marginTop: '2em' }}>
                     <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
@@ -141,7 +142,7 @@ export default function DashBoardFaq() {
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-                </div>
+                </div> */}
                 <div className="get-started-btn-investor">
                     <Button variant="contained" onClick={() => navigate('/myntUniversity/faqs')} className="getStarted-landing-btn">Need More Help</Button>
                 </div>

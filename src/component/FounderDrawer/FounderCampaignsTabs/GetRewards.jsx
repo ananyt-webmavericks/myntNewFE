@@ -57,9 +57,9 @@ const GetRewards = ({ tabChangeFn }) => {
     return (
         <Box sx={{ marginTop: 4 }} className="promotions-parent">
 
-            <span className='hightlight-heading'>Get Rewards</span>
+            <span className='hightlight-heading'>Promotion</span>
 
-            <Typography className='raise-with-mint-desc highlight-desc' >Mention the benefits or discounts an investor can get once he subscribes to your campaign</Typography>
+            <Typography className='raise-with-mint-desc highlight-desc' >Mention the benefits or discounts an investor can get once he enrolls to your campaign</Typography>
 
             <form onSubmit={formik.handleSubmit}>
                 <div>

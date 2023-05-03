@@ -11,43 +11,45 @@ import styles from '../../css/Home/aboutTeamCarousel.css'
 const data = [
     {
         id: 1,
-        avatar: Avatar,
-        name: " Priyanshi Pandey, VP at Goldman Sachs",
-        position: 'VP at Goldman Sachs',
+        avatar: 'https://rb.gy/g7xzt',
+        name: "Shishir Pratap Singh, Professor at Rutgers University",
+        position: 'Professor at Rutgers University',
         head: 'Game-Changing Startups Now Accessible',
-        description: JSON.stringify('Mynt is making investing in highly vetted and game-changing startups not only accessible but easy as well.')
+        description: JSON.stringify("Mynt has simplified the process of investing in promising startups that have undergone rigorous vetting and have the potential to revolutionize their industries. It's now both accessible and effortless.")
     },
     {
         id: 2,
-        avatar: Avatar,
-        name: ' Vicky, Director at Magnetic Fields  ',
-        position: 'Director at Magnetic Fields',
-        head: 'Diversified Investment Portfolio',
-        description: JSON.stringify("The platform provided me with a diversified investment portfolio, giving me access to a range of investment opportunities I wouldn't have otherwise found.")
+        avatar: 'https://media.licdn.com/dms/image/C4D03AQGfL3tdWCveJw/profile-displayphoto-shrink_800_800/0/1645490059111?e=2147483647&v=beta&t=ShgQUmldlj-lVEZ3cvzBJcg-p7rYgnTzFtOXouvBOEE',
+        name: 'Mr. Simon Murthaty , CEO at Ocean Blue Boating Pvt. Ltd.',
+        position: 'CEO at Ocean Blue Boating Pvt. Ltd.',
+        head: 'Diversified Startup Portfolio',
+        description: JSON.stringify("The platform provided me with a diversified portfolio, giving me access to a range of startup opportunities I wouldn't have otherwise found."
+)
     },
     {
         id: 3,
-        avatar: Avatar,
-        name: ' Tithi Chattopadhyay, Executive Director at Princeton University ',
+        avatar: 'https://rb.gy/1vr4f',
+        name: 'Tithi Chattopadhyay, Executive Director at Princeton University  ',
         position: 'Executive Director at Princeton University ',
-        head: 'Due Diligence Measures',
-        description: JSON.stringify("The due diligence process and investor protection measures in place gave me peace of mind and confidence in my investments.")
+        head: 'Impeccable Due Diligence Measures',
+        description: JSON.stringify("After examining the portfolio companies of the networks that have supported Mynt, I am confident that the startups they will bring in will be of unparalleled quality."
+        )
     },
     {
         id: 4,
-        avatar: Avatar,
-        name: ' Kavikrut, CGO at OYO',
-        position: 'Executive Director at Princeton University ',
-        head: 'Investment Tracking Made Autonomous',
-        description: JSON.stringify("The user-friendly interface and straightforward investment process made it easy for me to invest and track my investments.")
+        avatar: 'https://rb.gy/if7kl',
+        name: ' Harshit Vyas, CBO Pepper Content',
+        position: 'CBO Pepper Content',
+        head: 'Transparency And Communication',
+        description: JSON.stringify("Mynt provides us with a platform that meets our investment needs by offering high levels of transparency and by carefully selecting and onboarding only verified startups")
     },
     {
         id: 5,
         avatar: Avatar,
-        name: ' Harshit Vyas, CBO Pepper Content',
-        position: 'Executive Director at Princeton University ',
-        head: 'Transparency And Communication ',
-        description: JSON.stringify("I was impressed by the level of transparency and communication from the platform and the startups I invested in.")
+        name: 'Shishir Pratap Singh, Professor at Rutgers University',
+        position: 'Professor at Rutgers University',
+        head: 'Game-Changing Startups Now Accessible',
+        description: JSON.stringify("Mynt has simplified the process of investing in promising startups that have undergone rigorous vetting and have the potential to revolutionize their industries. It's now both accessible and effortles")
     },
 ]
 

@@ -12,19 +12,25 @@ import eazyschooling from '../../images/Networks/eazyschooling.png'
 import formlabs_logo from '../../images/Networks/formlabs_logo.png'
 import classroom_logo from '../../images/Networks/classroom_logo.png'
 import autoshield_logo from '../../images/Networks/autoshield_logo.png'
-import incuspaze from '../../images/Networks/incuspaze.png'
+import livewell from '../../images/Networks/livewell.png'
 import PeopleTeckLabs from '../../images/Networks/PeopleTeckLabs.png'
 import barrelHand from '../../images/Networks/barrelHand.png'
-import deciwood_logo from '../../images/Networks/deciwood_logo.png'
+import go3d from '../../images/Networks/GO3D.png'
+import paralenz from '../../images/Networks/paralenz.png'
+import phasio from '../../images/Networks/phasio.png'
+import quantica from '../../images/Networks/quantica.png'
 const data = [
     { id: 1, height: 30, image: eazyschooling, name: '1 Bn USD' },
     { id: 2, height: 30, image: formlabs_logo, name: '10 million EUR' },
     { id: 3, height: 20, image: classroom_logo, name: '10 M EUR' },
     { id: 4, height: 35, image: autoshield_logo, name: '10 M USD' },
-    { id: 5, height: 40, image: incuspaze, name: '10 M EUR' },
+    { id: 5, height: 70, image: livewell, name: '10 M EUR' },
     { id: 6, height: 70, image: PeopleTeckLabs, name: '10 M USD' },
     { id: 7, height: 30, image: barrelHand, name: '10 M USD' },
-    { id: 8, height: 30, image: deciwood_logo, name: '10 M USD' }
+    { id: 8, height: 70, image: go3d, name: '10 M USD' },
+    { id: 9, height: 50, image: paralenz, name: '10 M USD' },
+    { id: 10, height: 50, image: phasio, name: '10 M USD' },
+    { id: 11, height: 50, image: quantica, name: '10 M USD' },
 ]
 export default function FundedNetworks() {
     const carouselRef2 = useRef(null);
@@ -33,7 +39,7 @@ export default function FundedNetworks() {
     const [item, setItem] = useState(3)
     const ratio = parseInt(window.innerWidth);
     // const totalPages = Math.ceil(data.length / (item + 1))
-    const totalPages = 6
+    const totalPages = 9
     useEffect(() => {
 
         if (ratio < 450) {

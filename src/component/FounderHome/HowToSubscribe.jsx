@@ -8,14 +8,14 @@ import Screen4 from '../../images/assets/screen4.png';
 const HowToSubscribe = () => {
     return (
         <div className="how-to-raise-container">
-            <div className="how-to-sub-heading">How to <span className="colored-investor-home-heading"> Subscribe? </span></div>
-            <div className="how-to-sub-subheading">Enjoy the benefits of a completely online and seamless process</div>
+            <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div>
+            <div className="how-to-sub-subheading">Experience the advantages of a fully digital and hassle-free process.</div>
             <div style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">1</div>
                         <div className="head-section-second">
-                            <span className="card-header-txt">Reach out to us </span>
+                            <span className="card-header-txt">Contact us </span>
                             <span className="card-sub-header-txt">Connect with our team and specify your requirements for raising funds. Our team will assist you in navigating the process and answering any questions you may have.
                             </span>
                         </div>

@@ -10,6 +10,8 @@ import formlabs_logo from "./../../images/founder/formlabs_logo.png"
 import autoshield_logo from "./../../images/founder/autoshield_logo.png"
 import klassroom_logo from "./../../images/founder/classroom_logo.png"
 import deciwood_logo from "./../../images/founder/deciwood_logo.png"
+import Livewell from "./../../images/founder/livewell.png"
+import Ezyschooling from "./../../images/founder/eazyschooling.png"
 
 const Networks = () => {
 
@@ -30,9 +32,11 @@ const Networks = () => {
 
     const Networks = [
         { badgeName: "PRE SERIES-A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 13 },
-        { badgeName: "IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17 },
-        { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
-        { badgeName: "SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22 },
+        { badgeName: "PRE IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17 },
+        // { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
+        { badgeName: "POST SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22 },
+        { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell , height: 30 },
+        { badgeName: "POST SEED", bottomBadgeName: "Ezyschooling ", logo: Ezyschooling  , height: 22 },
     ]
 
     return (

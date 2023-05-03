@@ -148,7 +148,7 @@ const FounderCampaigns = () => {
                                         onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 3 } })}
                                         className={classes.paperconten}>
                                         <div className={classes.Card}>
-                                            <b className={classes.typofont}>FAQ’s</b>
+                                            <b className={classes.typofont}>FAQs</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Pending</Button>
                                         </div>
                                         <Box className={classes.para}><p>Help investors understand your ideas even better</p></Box>
@@ -178,10 +178,10 @@ const FounderCampaigns = () => {
                                         onClick={() => navigate("/dashboard-founder/campaigns-tabs", { state: { navTab: 5 } })}
                                         className={classes.paperconten}>
                                         <div className={classes.Card}>
-                                            <b className={classes.typofont}>Promotion</b>
+                                            <b className={classes.typofont}>Get Promotion</b>
                                             <Button className={classes.btn2} color="secondary" variant="outlined">Completed</Button>
                                         </div>
-                                        <Box className={classes.para}><p>Mention the benefits or discounts an investor can get once he enrols to your campaign</p></Box>
+                                        <Box className={classes.para}><p>Mention the benefits or discounts an investor can get once he enrolls to your campaign</p></Box>
                                         <div className={classes.root2}>
                                             <LinearProgressWithLabel value={progress} />
                                         </div>

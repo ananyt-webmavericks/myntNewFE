@@ -137,7 +137,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
     return (
         <Container maxWidth="lg">
             <Box sx={{ marginTop: 4, marginLeft: 2, }} style={{ width: "80%" }}>
-                <h3>Company Info</h3>
+                <h3>Company Information</h3>
                 <Typography className='companyinformation' >
                     <p style={{ marginTop: "10px", width: "100%" }}>Tell us a little about your company. Applications are usually processed within 5 working days. </p>
                 </Typography>

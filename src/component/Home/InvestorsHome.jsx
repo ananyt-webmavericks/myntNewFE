@@ -26,14 +26,14 @@ import styled from "styled-components";
 import { useRef } from "react";
 
 const data = [
-    { id: 1, image: Asad, logo: Oyo, name: 'Akhil', amount: 'Invested INR 8000' },
-    { id: 2, image: Arpit, logo: Leela, name: 'Dhurv', amount: 'Invested INR 10,000' },
-    { id: 3, image: Rajiv, logo: Samsung, name: 'Asad', amount: 'Invested INR 7000' },
-    { id: 4, image: Rajiv, logo: Byju, name: 'Rajeev', amount: 'Invested INR 9000' },
-    { id: 5, image: Rajiv, logo: Owl, name: 'Gaurav', amount: 'Invested INR 18,000' },
-    { id: 6, image: Kunal, logo: makemytrip, name: 'Kunal', amount: 'Invested INR 6000' },
-    { id: 7, image: Manju, logo: Uber, name: 'Manju', amount: 'Invested INR 8000' },
-    { id: 8, image: Kunal, logo: Ola, name: 'Sanjay', amount: 'Invested INR 15,000' },
+    { id: 1, image: Asad, logo: Oyo, name: 'Akhil', amount: 'Enrolled INR 27,000' },
+    { id: 2, image: Arpit, logo: Leela, name: 'Dhurv', amount: 'Enrolled INR 30,000' },
+    { id: 3, image: Rajiv, logo: Samsung, name: 'Asad', amount: 'Enrolled INR 25,000' },
+    { id: 4, image: Rajiv, logo: Byju, name: 'Rajeev', amount: 'Enrolled INR 20,000' },
+    { id: 5, image: Rajiv, logo: Owl, name: 'Gaurav', amount: 'Enrolled INR 18,000' },
+    { id: 6, image: Kunal, logo: makemytrip, name: 'Kunal', amount: 'Enrolled INR 9,000' },
+    { id: 7, image: Manju, logo: Uber, name: 'Manju', amount: 'Enrolled INR 15,000' },
+    { id: 8, image: Kunal, logo: Ola, name: 'Sanjay', amount: 'Enrolled INR 19,000' },
 
 ]
 export default function InvestorsHome() {
@@ -113,7 +113,7 @@ export default function InvestorsHome() {
                     <div className="subscribe-graph-heading">
                         <div className="investor-home-heading">Join Thousands <span className="colored-investor-home-heading"> </span></div>
 
-                        <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹25000.</span>
+                        <span className="investors-subheading">Begin today and seize the best startup opportunities that the market has to offer</span>
                     </div>
                     <div className="profile-container-investors">
                         <Grid container spacing={4}>

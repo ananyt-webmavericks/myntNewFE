@@ -76,7 +76,7 @@ export default function ProgressNotifyDash({ data }) {
                     <div className="specific-info-section first">
                         <span className="header-info-section-dash">Create Profile</span>
                         <span className="sub-header-info-section-dash">
-                            Provide your general information to create a Mynt user account.
+                        Provide your general information to create a Mynt user account.
                         </span>
                         <Button sx={{
                             borderRadius: '20px', background: '#01965D',
@@ -143,7 +143,7 @@ export default function ProgressNotifyDash({ data }) {
                     </div>
                     <div className="specific-info-section second">
                         <span className="header-info-section-dash">Complete KYC & Share Bank Details</span>
-                        <span className="sub-header-info-section-dash">Provide some identification information and the bank account in which transfer returns.</span>
+                        <span className="sub-header-info-section-dash">Provide some identification information and the bank account to which we should credit returns.</span>
                         <Button
                             onClick={() => {
                                 handleNavigate()
@@ -209,7 +209,7 @@ export default function ProgressNotifyDash({ data }) {
                         </div>
                     </div>
                     <div className="specific-info-section third">
-                        <span className="header-info-section-dash">Explore Deals, Invest and Sign Documents</span>
+                        <span className="header-info-section-dash">Explore Deals</span>
                         <span className="sub-header-info-section-dash">Learn more about what our platform has to offer and start enrolling by signing the necessary documents.
                         </span>
                         <Button

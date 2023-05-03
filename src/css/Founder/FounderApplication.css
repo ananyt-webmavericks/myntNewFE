@@ -90,6 +90,10 @@
     padding-left: 20px;
     margin: 18px 0px 18px 0px;
 }
+.highlight:focus{
+    border-style: none;
+    border: 1px solid #F1C734 !important;
+}
 
 .inp-textarea-desc {
     background: #F4F4F4 0% 0% no-repeat padding-box;
@@ -195,6 +199,65 @@ input::placeholder {
     padding: 60px 10px;
 }
 
+.popup {
+    width: 260px;
+    margin: 0 auto;
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+    right: 200px
+  }
+  .popup:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 1px 14px rgba(0,0,0,.2);
+  }
+  .popup:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+    box-shadow: 0 1px 14px rgba(0,0,0,.2);
+    background: #fff;
+    position: absolute;
+    z-index: 998;
+  }
+  
+  .popup.arrow-top:before {
+    left: calc(50% - 10px);
+    top: -8px;
+  }
+  .popup.arrow-right:before {
+    top: calc(50% - 10px);
+    right: -8px;
+  }
+  .popup.arrow-bottom:before {
+    left: calc(50% - 10px);
+    bottom: -8px;
+  }
+  .popup.arrow-left:before {
+    top: calc(50% - 6px);
+    left: -5px;
+  }
+  
+  .popup-wrapper {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+    z-index: 998;  
+  }
+  .popup-wrapper > p {
+    font-size: 10px;
+    text-align: start;
+  }
+
 @media screen and (min-width: 870px) {
     .founder-application-parent {
         padding-top: 10em;
@@ -295,6 +358,10 @@ input::placeholder {
         padding-left: 20px;
         margin: 18px 0px 18px 0px;
     }
+    .highlight:focus{
+        border-style: none;
+        border: 1px solid #F1C734 !important;
+    }
 
     input[type=text]:focus {
         border-style: none;
@@ -379,4 +446,5 @@ input::placeholder {
         text-align: center;
         padding: 60px 10px;
     }
+
 }

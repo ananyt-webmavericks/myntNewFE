@@ -15,7 +15,7 @@ export default function PortfolioMain() {
                         <img className="image-of-kyc-container" src={Portfolio} width={117} height={106}></img>
                         <div className="text-container-card-kyc">
                             <span className="head-txt-kyc-card">No Subscription</span>
-                            <span className="sub-txt-kyc-card">You have not subscribed to any campaigns on Mynt</span>
+                            <span className="sub-txt-kyc-card">You have not enrolled in any campaigns on Mynt</span>
                         </div>
                         <button className="submit-btn-startup kyc" onClick={()=> setShowContent(false)} style={{ maxWidth: '320px' }}>Explore Now</button>
 

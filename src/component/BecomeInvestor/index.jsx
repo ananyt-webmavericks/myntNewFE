@@ -10,24 +10,20 @@ import { toast } from "react-hot-toast";
 
 const investor = [
     {
-        id: 1, number: '01.', name: 'Risk', description: 'Investing in startups is extremely risky. You should only invest money that you can afford to lose entirely without compromising your standard of living.',
+        id: 1, number: '01.', name: 'Risk', description:  'Investing in startups is extremely risky. You should only invest money that you can afford to lose entirely without compromising your standard of living.',
         toggleText: 'I understand that I can lose the money I’m investing', toggle: true
     },
     {
-        id: 2, number: '02.', name: 'Limited Transfer', description: 'As these companies are not publicly traded, Subscriptions in startups are extremely illiquid. These securities are private and cannot be sold easily on an exchange or other secondary trading platform.',
-        toggleText: 'I understand that it may be difficult to transfer my Subscriptions', toggle: true
+        id: 2, number: '02.', name: 'Limited Transfer', description: ' As these companies are not publicly traded, investments in startups are extremely illiquid. These securities are private and cannot be sold easily on an exchange or other secondary trading platform.', toggle: true
     },
     {
-        id: 3, number: '03.', name: 'Diversification', description: 'Investing in startups is highly speculative, and every Subscription carries the risk of loss. By investing small sums in multiple transactions, you can reduce your risk in comparison to a large Subscription in a single company.',
-        toggleText: 'I understand that it’s safer to split money across many Subscriptions across asset classes', toggle: true
+        id: 3, number: '03.', name: 'Diversification', description: 'Investing in startups is highly speculative, and every investment carries the risk of loss. By investing small sums in multiple transactions, you can reduce your risk in comparison to a large investment in a single company.', toggle: true
     },
     {
-        id: 4, number: '04.', name: 'Cancellation', description: 'We are planning to remove this point. You may cancel your Subscription up to 24 hours prior to the close of the deal. After that, your transaction will be final and you will no longer have access to your funds',
-        toggleText: 'I understand that I can’t cancel after the 48-hour cancellation deadline', toggle: true
+        id: 4, number: '04.', name: 'Cancellation', description: 'We are planning to remove this point. You may cancel your investment up to 24 hours prior to the close of the deal. After that, your transaction will be final and you will no longer have access to your funds.', toggle: true
     },
     {
-        id: 5, number: '05.', name: 'Research', description: 'Research independently & review the documentation supplied by each company. Obtain impartial legal, accounting, and financial counsel. If you have any questions or require additional information, please contact us through support.',
-        toggleText: 'I understand that doing research is my own responsibility', toggle: true
+        id: 5, number: '05.', name: 'Research', description: 'Research independently & review the documentation supplied by each company. Obtain impartial legal, accounting, and financial counsel. If you have any questions or require additional information, please contact us through support.', toggle: true
     },
 
 ]

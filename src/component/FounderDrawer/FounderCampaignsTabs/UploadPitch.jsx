@@ -119,7 +119,7 @@ const UploadPitch = ({ tabChangeFn }) => {
 
     return (
         <Box sx={{ marginTop: 4 }} className="upload-pitch-parent">
-            <h3>Upload Pitch Deck</h3>
+            <h3>Upload Pitch</h3>
             <form onSubmit={formik.handleSubmit}>
 
                 <Typography>

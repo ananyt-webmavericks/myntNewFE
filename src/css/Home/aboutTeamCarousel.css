@@ -44,11 +44,13 @@
     margin-right: 10px;
     width: 82px;
     height: 82px;
-    object-fit: contain;
+    /* object-fit: contain; */
+    border-radius: 50px;
 }
 
 .section-profile-info-about {
     display: grid;
+    width: 76%
 }
 
 .profile-name-about {

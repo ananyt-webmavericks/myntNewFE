@@ -36,7 +36,7 @@ export default function MyntFaqMain() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">3</div>
-                    <span className="text-info-faq-mynt">What are the different instruments used? </span>
+                    <span className="text-info-faq-mynt"> What are the advantages of startup investing?</span>
                 </div>
             </div>
             <div style={{ fontSize: '22px', fontWeight: '600', marginTop: "60px" }}>FAQs</div>

@@ -70,7 +70,7 @@ export default function LoginMain() {
     return (
         <div className="get-started-container">
             <div className="get-started-section">
-                <span className="get-started-heading">Log In as Investor</span>
+                <span className="get-started-heading">Login As A Enroller</span>
                 <span className="get-started-subheading">Please enter your details</span>
                 <Card className="card-get-started">
                     <CardContent>

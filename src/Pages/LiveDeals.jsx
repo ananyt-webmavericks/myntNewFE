@@ -220,20 +220,20 @@ const LiveDeals = () => {
                         <SearchBar />
 
                         <div style={{ marginTop: '60px' }}>
-                            <Typography className="live-deals-heading">Live Deals</Typography>
+                            <Typography className="live-deals-heading">Live Opportunities</Typography>
                         </div>
 
-                        <div className="button-container-liveDeals">
+                        {/* <div className="button-container-liveDeals"> */}
 
-                            {
+                            {/* {
                                 dealTypes?.map((item, index) => <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
                                     onClick={() => handleOrderTabs(index + 1)}>
                                     <div >
-                                        <span >{item.deal_name}</span>
+                                        <span >{item.deal_name}</span> */}
                                         {/* <div className="mini-active-btn-highliter">Live</div> */}
-                                    </div>
+                                    {/* </div>
                                 </div>)
-                            }
+                            } */}
 
                             {/* <div className="active-btn-container details" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(2)}>
                                 <span>CCD</span>
@@ -246,7 +246,7 @@ const LiveDeals = () => {
                             <div className="active-btn-container details" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => handleOrderTabs(4)}>
                                 <span>ID</span>
                             </div> */}
-                        </div>
+                        {/* </div> */}
                         {/* <div style={{ textAlign: 'center', marginBottom: '2em' }}>
                             {activeBtn === 1 &&
                                 <div style={{ display: 'grid' }}>
@@ -331,7 +331,7 @@ const LiveDeals = () => {
                                                                 <div className="numbers-investors">
                                                                     <span className="percentage-investment">0%</span>
                                                                     <span className="investment-status">
-                                                                        Raised
+                                                                        Completed
                                                                     </span>
                                                                 </div>
                                                                 <div className="vertical-line-invest"></div>
@@ -339,14 +339,14 @@ const LiveDeals = () => {
                                                                     <span className="percentage-investment">
                                                                         {daysRemaining(campaign?.end_date)} days
                                                                     </span>
-                                                                    <span className="investment-status">Closes in</span>
+                                                                    <span className="investment-status">End Date</span>
                                                                 </div>
                                                                 <div className="vertical-line-invest"></div>
                                                                 <div className="numbers-investors">
                                                                     <span className="percentage-investment">
                                                                         {campaign?.min_subscription}
                                                                     </span>
-                                                                    <span className="investment-status">Min Invest</span>
+                                                                    <span className="investment-status">Min Enrollment</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -361,13 +361,13 @@ const LiveDeals = () => {
                                                                 <span className="investment-txt hover">Investors</span>
                                                                 <span className="investment-sub-txt hover">0</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                                <span className="investment-txt hover">Raised</span>
+                                                                <span className="investment-txt hover">Completed</span>
                                                                 <span className="investment-sub-txt hover">0%</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                                <span className="investment-txt hover">Minimum Subscription</span>
+                                                                <span className="investment-txt hover">Minimum Enrollment</span>
                                                                 <span className="investment-sub-txt hover">5000</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                                <span className="investment-txt hover">Closes in</span>
+                                                                <span className="investment-txt hover">End Date</span>
                                                                 <span className="investment-sub-txt hover">10 days</span>
                                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                                             </div>
@@ -383,13 +383,13 @@ const LiveDeals = () => {
                                                                 <span className="investment-txt hover">Investors</span>
                                                                 <span className="investment-sub-txt hover">18</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                                <span className="investment-txt hover">Raised</span>
+                                                                <span className="investment-txt hover">Completed</span>
                                                                 <span className="investment-sub-txt hover">16.5%</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                                <span className="investment-txt hover">Minimum Subscription</span>
+                                                                <span className="investment-txt hover">Minimum Enrollment</span>
                                                                 <span className="investment-sub-txt hover">5000</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                                <span className="investment-txt hover">Closes in</span>
+                                                                <span className="investment-txt hover">End Date</span>
                                                                 <span className="investment-sub-txt hover">14 days</span>
                                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                                             </div>

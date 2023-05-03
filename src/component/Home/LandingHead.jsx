@@ -25,7 +25,7 @@ export default function LandingHead() {
                     <Typography className="test-script-regular-makingbest">ACCESSIBLE</Typography>
                     <div className="landing-head-section">
                         <span className="head-description">
-                            Own a small stake in the next big startup and diversify your portfolio ten folds.
+                            Own a small stake in the next big startup and diversify your portfolio tenfolds.
                         </span>
                         <Button
                             variant="contained"

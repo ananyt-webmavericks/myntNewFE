@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, Checkbox } from "@mui/material";
+import { Card, CardContent, Grid, Checkbox, Tooltip } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import '../../css/PayToSubscribe/payToSubscribe.css'
 import Select from '@mui/material/Select';
@@ -126,7 +126,7 @@ export default function PayToSubscribeMain() {
 
     return (
         <div className="pay-to-subscribe-container">
-            <span className="get-started-heading">Subscribe to {location.state?.companyName}</span>
+            <span className="get-started-heading">Enroll To {location.state?.companyName}</span>
             <Card className="card-pay-main-section">
                 <CardContent>
                     <Grid container spacing={gridxsFirst}>
@@ -159,7 +159,7 @@ export default function PayToSubscribeMain() {
                                     onClick={e => formik.setFieldValue("amount", 15000)}
                                     className="particular-mentioned-chip-pay">+ ₹15,000</div>
                             </div>
-                            {rewards.length > 0 && <span className="pay-amount-heading">Subscription Benefits</span>}
+                            {rewards.length > 0 && <span className="pay-amount-heading">Enrollment Benefits</span>}
                             {
                                 rewards?.map((item, index) => <Card key={index} className="secondary-card-pay-section">
                                     <CardContent>
@@ -218,13 +218,13 @@ export default function PayToSubscribeMain() {
                             <Card className="secondary-card-pay-section second">
                                 <CardContent>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
-                                        <span style={{ fontSize: '14px', fontWeight: '600' }}>Subscription Amount</span>
+                                        <span style={{ fontSize: '14px', fontWeight: '600' }}>Enrollment Amount</span>
                                         <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{formik.values.amount ? formik.values.amount : 0}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                         <div style={{ alignItems: 'center', display: 'flex' }}>
                                             <span style={{ fontSize: '14px', fontWeight: '600', marginRight: '5px' }}>Convenience Fee</span>
-                                            <img src={Enquiry} width={20} height={20} alt="" />
+                                            <Tooltip title="A convenience fee of 2% is charged by Mynt for sourcing deals and maintaining the platform"><img src={Enquiry} width={20} height={20} alt="" /></Tooltip>
                                         </div>
 
                                         <span style={{ fontSize: '16px', fontWeight: '600' }}>₹400</span>
@@ -232,7 +232,7 @@ export default function PayToSubscribeMain() {
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em', marginBottom: '1em' }}>
                                         <div style={{ alignItems: 'center', display: 'flex' }}>
                                             <span style={{ fontSize: '14px', fontWeight: '600', marginRight: '5px' }}>GST</span>
-                                            <img src={Enquiry} width={20} height={20} alt="" />
+                                            <Tooltip title="GST is applicable at 18% of the convenience Fee."><img src={Enquiry} width={20} height={20} alt="" /></Tooltip>
                                         </div>
                                         <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{(18 / 100) * formik.values.amount}</span>
                                     </div>
@@ -272,6 +272,7 @@ export default function PayToSubscribeMain() {
                                 <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                             </div>
                             <button onClick={() => formik.handleSubmit()} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
+                            <button onClick={() => {}} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Offline</button>
                             {/* <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button> */}
                         </Grid>
                     </Grid>

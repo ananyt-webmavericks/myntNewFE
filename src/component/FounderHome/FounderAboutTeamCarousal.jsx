@@ -14,8 +14,8 @@ const data = [
         avatar: Avatar,
         name: "- Dhumil Javeri, Founder at Klassroom",
         position: 'VP at Goldman Sachs',
-        head: 'Transparency & Seamless Process',
-        description: JSON.stringify("‘Our experience with the Mynt platform was nothing short of amazing. The platform's transparency and seamless process made it easy for us to focus on our business while they handled the fundraising part.We were able to raise capital in a matter of weeks and couldn't be happier with the results.")
+        head: 'The Community Effect',
+        description: JSON.stringify("We have previously raised funds from the networks leading the Mynt platform. And our experience has been nothing short of amazing. The community that Mynt can bring will be of great value to any entrepreneur looking to raise capital and grow their customer base.")
     },
     {
         id: 2,
@@ -30,8 +30,8 @@ const data = [
         avatar: Avatar,
         name: '- SAN NETWORK FOUNDER',
         position: 'Executive Director at Princeton University ',
-        head: 'Powerful Community',
-        description: JSON.stringify("We raised funds through SAN in the past and were glad to see them along with Meter launch Mynt. The community that these networks bring are of great value add to any entrepreneur looking to raise capital and grow their reach.")
+        head: 'New Age Fundraising',
+        description: JSON.stringify("Thanks to Mynt fundraising platform, our startup not only raised the funds we needed, but also received top-notch growth hacking and financial advisory services. Their expertise and guidance helped us scale our business faster than we ever could have on our own. We highly recommend ABC to any startup looking for a comprehensive fundraising and growth solution.")
     },
 ]
 
