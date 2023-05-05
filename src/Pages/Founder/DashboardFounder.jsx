@@ -20,9 +20,9 @@ const DashboardFounder = () => {
             <div style={{ display: 'flex', position: 'relative' }}>
                 {location.includes('/dashboard') && <DrawerFounder />}
                 <div className="dashboard-container">
-                    <Container maxWidth="lg">
+                    <Container style={{padding:'0px 40px'}} maxWidth="lg">
                         <div>
-                            <Typography className="raise-with-mint">Raise with Myntinvest!</Typography>
+                            <Typography className="raise-with-mint">Raise with Mynt!</Typography>
                             <Typography className="raise-with-mint-desc">Provide us with all the data required to make your campaign! Make sure to include all the important details to make your campaign as attractive as possible to our investors. </Typography>
                         </div>
 

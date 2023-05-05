@@ -24,7 +24,7 @@ const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -32,7 +32,7 @@ const values = [
     {
         id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -40,7 +40,7 @@ const values = [
     {
         id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -48,7 +48,7 @@ const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -56,7 +56,7 @@ const values = [
     {
         id: 5, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -64,7 +64,7 @@ const values = [
     {
         id: 6, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -72,7 +72,7 @@ const values = [
     {
         id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -80,7 +80,7 @@ const values = [
     {
         id: 8, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -155,7 +155,7 @@ export default function OpenInvestment() {
         <>
             <Box sx={{ minHeight: '80vh', marginTop: '60px', marginBottom: '2em' }}>
                 <div className="subscribe-graph-heading">
-                    <Typography className="test-script-regular"><span className="test-script-bg">LIVE</span></Typography>
+                    <Typography className="test-script-regular"><span style={{color:'black'}} className="test-script-bg">LIVE</span></Typography>
                     <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities</Typography>
                 </div>
                 <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
@@ -207,7 +207,7 @@ export default function OpenInvestment() {
                                                 <div className="numbers-investors">
                                                     <span className="percentage-investment">0%</span>
                                                     <span className="investment-status">
-                                                        Raised
+                                                        Completed
                                                     </span>
                                                 </div>
                                                 <div className="vertical-line-invest"></div>
@@ -215,7 +215,7 @@ export default function OpenInvestment() {
                                                     <span className="percentage-investment">
                                                         {daysRemaining(campaign?.end_date)} days
                                                     </span>
-                                                    <span className="investment-status">Closes in</span>
+                                                    <span className="investment-status">End Date</span>
                                                 </div>
                                                 <div className="vertical-line-invest"></div>
                                                 <div className="numbers-investors">
@@ -237,7 +237,7 @@ export default function OpenInvestment() {
                                                 <span className="investment-txt hover">Investors</span>
                                                 <span className="investment-sub-txt hover">0</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Raised</span>
+                                                <span className="investment-txt hover">Completed</span>
                                                 <span className="investment-sub-txt hover">0%</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Minimum Subscription</span>
@@ -259,13 +259,13 @@ export default function OpenInvestment() {
                                                 <span className="investment-txt hover">Investors</span>
                                                 <span className="investment-sub-txt hover">18</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Raised</span>
+                                                <span className="investment-txt hover">Completed</span>
                                                 <span className="investment-sub-txt hover">16.5%</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Minimum Subscription</span>
                                                 <span className="investment-sub-txt hover">5000</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
-                                                <span className="investment-txt hover">Closes in</span>
+                                                <span className="investment-txt hover">End Date</span>
                                                 <span className="investment-sub-txt hover">14 days</span>
                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                             </div>

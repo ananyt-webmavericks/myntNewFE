@@ -36,7 +36,7 @@ const Networks = () => {
         // { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
         { badgeName: "POST SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22 },
         { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell , height: 30 },
-        { badgeName: "POST SEED", bottomBadgeName: "Ezyschooling ", logo: Ezyschooling  , height: 22 },
+        // { badgeName: "POST SEED", bottomBadgeName: "Ezyschooling ", logo: Ezyschooling  , height: 22 },
     ]
 
     return (

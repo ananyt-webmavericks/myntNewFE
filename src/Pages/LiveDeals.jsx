@@ -26,7 +26,7 @@ const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -34,7 +34,7 @@ const values = [
     {
         id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -42,7 +42,7 @@ const values = [
     {
         id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -50,7 +50,7 @@ const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -58,7 +58,7 @@ const values = [
     {
         id: 5, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false
@@ -66,7 +66,7 @@ const values = [
     {
         id: 6, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -74,7 +74,7 @@ const values = [
     {
         id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
         chip: [{ id: 1, name: 'Managed Farmland' }],
-        raised: '206.01%',
+        Completed: '206.01%',
         closesIn: '3 days',
         invest: '₹10,000',
         checked: false
@@ -82,7 +82,7 @@ const values = [
     {
         id: 8, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-        raised: '14.16%',
+        Completed: '14.16%',
         closesIn: '10 days',
         invest: '₹5,000',
         checked: false

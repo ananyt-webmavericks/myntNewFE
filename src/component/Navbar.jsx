@@ -114,9 +114,9 @@ const Navbar = () => {
                                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                     >
-                                        <MenuItem onClick={handleProfile}>
+                                        {userData.user_type === "FOUNDER"? null :<MenuItem onClick={handleProfile}>
                                             <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} /> Profile
-                                        </MenuItem>
+                                        </MenuItem>}
                                         <MenuItem
                                             onClick={() => navigate(
                                                 userData.user_type === "FOUNDER"

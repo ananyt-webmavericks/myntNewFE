@@ -145,7 +145,7 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
                             </div>
                         </Box>
                     </div>
-                    <div className='fileupload'>
+                    <div style={{borderBottom: '1px solid #F4F4F4'}} className='fileupload'>
                         <span>Profile Picture*</span>
                         <div className="uplodPhoto" style={{ position: 'relative' }}>
                             {
@@ -177,7 +177,7 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
                         <button type='submit' className="SaveBtn">Save</button>
                         <button onClick={e => tabChangeFn(e, 3)} className="NextBtn">Next</button>
                     </Box>
-                    <div className="hrline"></div>
+                    {/* <div className="hrline"></div> */}
                 </form>
             </Box>
 

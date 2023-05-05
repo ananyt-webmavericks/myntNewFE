@@ -13,7 +13,7 @@ const BaseHighlights = () => {
     return (
         <React.Fragment>
             <div className="basehighlight-container-main">
-                <Typography className='base-highlight-heading '>Go Beyond <span className='base-highlight-yellow-text'> just Raising </span> Funds</Typography>
+                <Typography className='base-highlight-heading '>Go Beyond <span className='base-highlight-yellow-text'> Just Raising </span> Funds</Typography>
             </div>
 
 

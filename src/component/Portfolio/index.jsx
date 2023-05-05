@@ -108,7 +108,7 @@ export default function AnalyticsMain() {
                         </Typography>
 
                     </AccordionSummary>
-                    <AccordionDetails >
+                    <AccordionDetails style={{    padding: '8px 16px 16px 0px'}} >
                         <div className="accordian-analytics-container">
                             <div className="company-info-section-analytics">
                                 <img src={Image} width={43} height={43} />
@@ -121,7 +121,7 @@ export default function AnalyticsMain() {
                             </div>
                             <div className="card-details-analytics">
                             <ScrollContainer className="scroll-container" style={{display:'flex'}}>
-                                <Card style={{ minWidth: '160px', width: '100%', background: '#FFFCE6 0% 0% no-repeat padding-box', boxShadow: 'none', borderRadius: '7px', marginRight: '50px', marginTop: '10px', marginBottom: '10px', marginLeft: '10px' }}>
+                                <Card style={{ minWidth: '160px', width: '100%', background: '#FFFCE6 0% 0% no-repeat padding-box', boxShadow: 'none', borderRadius: '7px',margin: '10px 50px 10px 0px' }}>
                                     <CardContent>
                                         <div style={{ display: 'grid' }}>
                                             <span style={{ fontSize: '16px', fontWeight: '600' }}>₹00.00</span>

@@ -135,7 +135,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
     }, [userData?.id])
 
     return (
-        <Container maxWidth="lg">
+        <Container style={{padding:'0px'}} maxWidth="lg">
             <Box sx={{ marginTop: 4, marginLeft: 2, }} style={{ width: "80%" }}>
                 <h3>Company Information</h3>
                 <Typography className='companyinformation' >
@@ -146,7 +146,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 <Typography className="comp-info-appl-title">Application</Typography>
 
                 <div className='gridParent'>
-                    <Grid item xs={6} md={3}>
+                    <Grid item xs={6} md={12}>
                         <Box
                             sx={{
                                 p: 2,
@@ -155,7 +155,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                                 display: 'grid',
                                 gridTemplateColumns: { md: '1fr 1fr', sm: '1fr 1fr' },
                                 gap: 2.5,
-                                width: '492',
+                                width: '100%',
                                 textAlign: 'left',
                                 fontFamily: 'poppins'
                             }}
@@ -277,7 +277,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 <Typography className="comp-info-appl-title">Online Presence</Typography>
 
                 <div className='gridParent'>
-                    <Grid item xs={6} md={3}>
+                    <Grid item xs={6} md={12}>
                         <Box
                             sx={{
                                 p: 2,
@@ -366,7 +366,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 <Typography className="comp-info-appl-title">Legal</Typography>
 
                 <div className='gridParent'>
-                    <Grid item xs={6} md={3}>
+                    <Grid item xs={6} md={12}>
                         <Box
                             sx={{
                                 p: 2,
@@ -438,7 +438,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 <Typography className="comp-info-appl-title">About Company</Typography>
 
                 <div className='gridParent'>
-                    <Grid item xs={6} md={3}>
+                    <Grid item xs={6} md={12}>
                         <Box
                             sx={{
                                 p: 2,

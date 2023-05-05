@@ -210,7 +210,7 @@ const FounderCampaigns = () => {
                                         className={classes.paperconten}>
                                         <div className={classes.Card}>
                                             <b className={classes.typofont}>Upload Documents</b>
-                                            <Button className={classes.btn2} color="secondary" variant="outlined">Completed</Button>
+                                            <Button className={classes.btn}  variant="contained">Completed</Button>
                                         </div>
                                         <Box className={classes.para}><p>Upload all due diligence documents for investors to review </p></Box>
                                         <div className={classes.root2}>

@@ -72,6 +72,7 @@ const FounderCampaingsTabs = () => {
         color: "#F4D262",
         backgroundColor: '#FFFFFF',
         fontWeight: 500,
+        
     }
 
     const tabSxStyle = {
@@ -90,10 +91,11 @@ const FounderCampaingsTabs = () => {
             <div style={{ display: 'flex', position: 'relative' }}>
                 {location.includes('/dashboard') && <DrawerFounder />}
                 <div className="dashboard-container">
-                    <div className='mainparent'>
+                    <div className='mainparent' >
                         <h3 style={{ padding: "17px 16px" }}>Compaigns</h3><br />
                         <Box className="tabscenter" sx={{ width: "auto", bgcolor: 'background.paper', marginBottom: 4 }}>
                             <Tabs
+                            style={{justifyContent:'space-between',gap: 10}}
                                 sx={{
                                     "& .MuiTabs-indicator": {
                                         display: "none"
@@ -107,29 +109,29 @@ const FounderCampaingsTabs = () => {
                                 aria-label="scrollable auto tabs example"
                             >
                                 <Tab
-                                    style={value === 0 ? tabStyle : null}
+                                    style={value === 0 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle}
                                     label="Company Profile" />
                                 <Tab
-                                    style={value === 1 ? tabStyle : null}
+                                    style={value === 1 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="Upload Pitch" />
                                 <Tab
-                                    style={value === 2 ? tabStyle : null}
+                                    style={value === 2 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="People" />
                                 <Tab
-                                    style={value === 3 ? tabStyle : null}
+                                    style={value === 3 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="FAQs" />
                                 <Tab
-                                    style={value === 4 ? tabStyle : null}
+                                    style={value === 4 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="Highlights" />
                                 <Tab
-                                    style={value === 5 ? tabStyle : null}
+                                    style={value === 5 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="Promotion" />
                                 <Tab
-                                    style={value === 6 ? tabStyle : null}
+                                    style={value === 6 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="Press" />
                                 <Tab
-                                    style={value === 7 ? tabStyle : null}
+                                    style={value === 7 ? tabStyle : {padding: '12px 16px'}}
                                     sx={tabSxStyle} label="Upload Documents" />
 
                             </Tabs>

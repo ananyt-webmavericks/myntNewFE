@@ -76,6 +76,7 @@ const Dashboard = () => {
 
             </div>
             {ratio < 1000 ? null : <Footer />}
+            {/* <Footer/> */}
         </>
     )
 }

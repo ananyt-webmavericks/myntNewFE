@@ -38,7 +38,7 @@ const DashBoardESign = () => {
             <div style={{ display: 'flex', position: 'relative' }}>
                 {location.includes('/dashboard') && <DrawerFounder />}
                 <div className="dashboard-container">
-                    <Container maxWidth="lg">
+                    <Container  maxWidth="lg">
                         <div>
                             {/* <Typography className="raise-with-mint">E-Sing Document</Typography> */}
                             <Typography className="raise-with-mint">Raise with Mynt</Typography>
@@ -63,8 +63,8 @@ const DashBoardESign = () => {
                             <Box
                                 sx={{
                                     p: 2,
-                                    paddingTop: 4.2,
-                                    bgcolor: 'background.default',
+                                    padding: '4.2px 0px 0px 0px',
+                                    // bgcolor: 'background.default',
                                     display: 'grid',
                                     gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr' },
                                     gap: 2.5,
@@ -126,7 +126,7 @@ const DashBoardESign = () => {
                                                     </div>
                                                     <div>
                                                         <b>3 days</b><br />
-                                                        <span>Closes in</span>
+                                                        <span>End Date</span>
                                                     </div>
                                                     <div>
                                                         <b>₹10,000</b><br />

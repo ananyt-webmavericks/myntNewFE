@@ -3,7 +3,7 @@ import React from "react";
 import Map from '../../images/assets/map.png';
 import Avatar from '../../images/assets/avatar.png';
 import Item from "../Item";
-import Avatar2 from '../../images/assets/avatar2.png';
+import Avatar3 from '../../images/assets/avatar3.png';
 import { useRef } from "react";
 import Carousel from 'react-elastic-carousel'
 import styles from '../../css/Home/aboutTeamCarousel.css'
@@ -11,7 +11,7 @@ import styles from '../../css/Home/aboutTeamCarousel.css'
 const data = [
     {
         id: 1,
-        avatar: Avatar,
+        avatar: 'https://rb.gy/8byyv',
         name: "- Dhumil Javeri, Founder at Klassroom",
         position: 'VP at Goldman Sachs',
         head: 'The Community Effect',
@@ -19,7 +19,7 @@ const data = [
     },
     {
         id: 2,
-        avatar: Avatar,
+        avatar: 'https://rb.gy/qt2z9',
         name: '- Mayank, Founder of Ezyschooling ',
         position: 'Director at Magnetic Fields',
         head: 'Gain New Customers',
@@ -40,7 +40,7 @@ export default function FounderAboutTeamCarousal() {
     let resetTimeout;
 
     return (
-        <Box sx={{ minHeight: 'fit-content', marginTop: '90px', marginBottom: '10px' }}>
+        <Box sx={{ minHeight: 'fit-content', marginTop: '90px', marginBottom: '20px' }}>
             <div className="team-container">
                 <img className="team-bg-img" src={Map} alt="Map" />
                 <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
@@ -87,7 +87,7 @@ export default function FounderAboutTeamCarousal() {
 
 
                     </Carousel>
-                    <img className="new-avatar-static" src={Avatar2} witdth={100} height={100} alt="avatar"></img>
+                    <img className="new-avatar-static" src={Avatar3} witdth={100} height={100} alt="avatar"></img>
                 </div>
             </div>
         </Box>

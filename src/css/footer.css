@@ -112,6 +112,11 @@
     height: fit-content;
 }
 
+.footer-wrapper{
+    margin: auto;
+    width: 80%;
+}
+
 @media screen and (max-width: 1203px) {
     .footer-links-section-first {
         display: grid;
@@ -124,6 +129,9 @@
 }
 
 @media screen and (max-width: 920px) {
+    .footer-wrapper{
+        width: 100%;
+    }
     .all-link-section {
         display: flex;
         margin: 2em;
@@ -152,6 +160,7 @@
 }
 
 @media screen and (max-width: 640px) {
+   
     .all-link-section {
         display: grid;
     }

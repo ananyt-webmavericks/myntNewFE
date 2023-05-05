@@ -24,6 +24,7 @@ import UserServices from "../../service/UserService";
 import { toast } from "react-hot-toast";
 import { authAxios } from "../../service/Auth-header";
 import { Base_Url } from "../../Utils/Configurable";
+import yellowDesign from "../../images/founder/ApplicationYellowLine.svg";
 
 const InputHelperTooltip = ({ title, isVisible }) => {
   return isVisible ? (
@@ -205,6 +206,7 @@ const FounderApplication = () => {
   return (
     <React.Fragment>
       <CssBaseline />
+      <img style={{ width: "28%", position: "absolute" }} src={yellowDesign} />
       <Container maxWidth="lg">
         <div className="founder-application-parent">
           <Typography className="raise-with-mint-page-title">
@@ -325,7 +327,7 @@ const FounderApplication = () => {
                   className="inp-enter-name highlight"
                 />
                 <InputHelperTooltip
-                  title="Enter Your Company Email ID*"
+                  title="Please provide your business email"
                   isVisible={helperTooltip === "company_email"}
                 />
               </div>
@@ -686,7 +688,7 @@ const FounderApplication = () => {
                   rows="7"
                 ></textarea>
                 <InputHelperTooltip
-                  title="Describe your product*"
+                  title="Please provide details like the product url, demo videos or anything that will help us understand your product better"
                   isVisible={helperTooltip === "product_description"}
                 />
               </div>
@@ -714,7 +716,7 @@ const FounderApplication = () => {
                   rows="7"
                 ></textarea>
                 <InputHelperTooltip
-                  title="Describe the traction"
+                  title="Please provide details on your business and product metrics"
                   isVisible={helperTooltip === "traction_description"}
                 />
               </div>
@@ -741,7 +743,7 @@ const FounderApplication = () => {
                   className="inp-enter-name"
                 />
                 <InputHelperTooltip
-                  title="Describe the revenue you are making*"
+                  title="Pre-revenue startups are not suited for a community round"
                   isVisible={helperTooltip === "revenue"}
                 />
               </div>
@@ -767,7 +769,7 @@ const FounderApplication = () => {
                   rows="7"
                 ></textarea>
                 <InputHelperTooltip
-                  title="Why do you want to raise a Community round?*"
+                  title="Please elaborate on why you think community round best suits you"
                   isVisible={helperTooltip === "reason_for_community_round"}
                 />
               </div>
@@ -780,26 +782,25 @@ const FounderApplication = () => {
 
               {/* <CustomWidthTooltip title="What makes you think MyntInvest is the right fit for you?*" arrow placement='right'> */}
               <div style={{ display: "flex", alignItems: "center" }}>
-
-              <textarea
-                name="reason_for_mynt"
-                value={formik.values.reason_for_mynt}
-                onChange={formik.handleChange}
-                onFocus={(e) => setHelperTooltip(e.target.name)}
+                <textarea
+                  name="reason_for_mynt"
+                  value={formik.values.reason_for_mynt}
+                  onChange={formik.handleChange}
+                  onFocus={(e) => setHelperTooltip(e.target.name)}
                   onBlur={(event) => {
                     formik.handleBlur(event);
                     handleHelperTooltip(event.target.name);
                   }}
-                placeholder="What makes you think MyntInvest is the right fit for you?*"
-                className="inp-textarea-desc"
-                id="describe"
-                rows="7"
-              ></textarea>
-              <InputHelperTooltip
-                  title="What makes you think MyntInvest is the right fit for you?*"
+                  placeholder="What makes you think MyntInvest is the right fit for you?*"
+                  className="inp-textarea-desc"
+                  id="describe"
+                  rows="7"
+                ></textarea>
+                <InputHelperTooltip
+                  title="Please elaborate on why you chose Tyke over other fundraise options"
                   isVisible={helperTooltip === "reason_for_mynt"}
                 />
-                </div>
+              </div>
               {/* </CustomWidthTooltip> */}
               {formik.touched.reason_for_mynt && (
                 <div className="raise-err-text">
@@ -809,23 +810,22 @@ const FounderApplication = () => {
 
               {/* <CustomWidthTooltip title="Do you have any existing commitments?*" arrow placement='right'> */}
               <div style={{ display: "flex", alignItems: "center" }}>
-
-              <textarea
-                name="existing_commitments"
-                value={formik.values.existing_commitments}
-                onChange={formik.handleChange}
-                onFocus={(e) => setHelperTooltip(e.target.name)}
+                <textarea
+                  name="existing_commitments"
+                  value={formik.values.existing_commitments}
+                  onChange={formik.handleChange}
+                  onFocus={(e) => setHelperTooltip(e.target.name)}
                   onBlur={(event) => {
                     formik.handleBlur(event);
                     handleHelperTooltip(event.target.name);
                   }}
-                placeholder="Do you have any existing commitments?*"
-                className="inp-textarea-desc"
-                id="describe"
-                rows="7"
-              ></textarea>
-              <InputHelperTooltip
-                  title="Do you have any existing commitments?*"
+                  placeholder="Do you have any existing commitments?*"
+                  className="inp-textarea-desc"
+                  id="describe"
+                  rows="7"
+                ></textarea>
+                <InputHelperTooltip
+                  title="Please provide details about interested investors for this round"
                   isVisible={helperTooltip === "existing_commitments"}
                 />
               </div>

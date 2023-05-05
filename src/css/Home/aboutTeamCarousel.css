@@ -12,7 +12,9 @@
 }
 
 .team-bg-img {
-    width: 100%;
+    width: 88%;
+    display: block;
+    margin: auto;
     height: 477;
 }
 

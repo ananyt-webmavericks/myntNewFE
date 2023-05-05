@@ -196,7 +196,11 @@ input::placeholder {
 
 .founder-appln-submit-parent {
     text-align: center;
+    width: 50em;
     padding: 60px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .popup {
