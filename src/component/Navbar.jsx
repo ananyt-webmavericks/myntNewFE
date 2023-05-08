@@ -118,6 +118,7 @@ const Navbar = () => {
                                             <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} /> Profile
                                         </MenuItem>}
                                         <MenuItem
+                                        style={{padding:'6px 16px'}}
                                             onClick={() => navigate(
                                                 userData.user_type === "FOUNDER"
                                                     ? '/dashboard-founder'
@@ -129,7 +130,7 @@ const Navbar = () => {
                                             Dashboard
                                         </MenuItem>
                                         <Divider />
-                                        <MenuItem onClick={handleLogout}>
+                                        <MenuItem style={{padding:'6px 16px'}} onClick={handleLogout}>
                                             <ListItemIcon>
                                                 <Logout fontSize="small" />
                                             </ListItemIcon>

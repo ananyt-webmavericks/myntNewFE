@@ -72,6 +72,7 @@ const FounderCampaingsTabs = () => {
         color: "#F4D262",
         backgroundColor: '#FFFFFF',
         fontWeight: 500,
+        padding: '12px 16px'
         
     }
 

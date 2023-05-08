@@ -70,7 +70,7 @@ const UploadDocuments = () => {
 
 
     return (
-        <Container maxWidth="lg">
+        <Container style={{padding:'16px'}} maxWidth="lg">
             <Typography className='upload-docs-title'>Upload Documents</Typography>
 
             <Typography className='upload-docs-desc'>Upload all due diligence documents for investors perusal</Typography>

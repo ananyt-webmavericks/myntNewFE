@@ -27,7 +27,8 @@
 
 @media screen and (min-width: 870px) {
     .promotions-parent {
-        margin-left: 2rem;
+        /* margin-left: 2rem; */
+        margin: 16px;
     }
 }
 

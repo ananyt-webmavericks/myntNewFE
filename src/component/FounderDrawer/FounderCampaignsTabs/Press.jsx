@@ -84,7 +84,7 @@ const Press = () => {
     }, [toggle])
 
     return (
-        <Container maxWidth="lg">
+        <Container style={{padding: '16px'}} maxWidth="lg">
             <form onSubmit={formik.handleSubmit}>
                 <Typography className='press-title'>Press</Typography>
 

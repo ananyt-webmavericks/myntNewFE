@@ -81,7 +81,7 @@ const FAQS = ({ tabChangeFn }) => {
 
 
     return (
-        <Container maxWidth="lg">
+        <Container style={{padding:'0px'}} maxWidth="lg">
             <form onSubmit={formik.handleSubmit}>
                 <Box sx={{ marginTop: 4, marginLeft: 2 }}>
                     <h3 className='faqs-title'>FAQs</h3>
