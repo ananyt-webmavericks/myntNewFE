@@ -84,7 +84,7 @@ export default function GeneralMynt() {
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                Can I enrol as a company?                                                     </span>
+                                                Can I enroll as a company?                                                     </span>
                                         </div>
                                     </AccordionSummary>
                                     <AccordionDetails>

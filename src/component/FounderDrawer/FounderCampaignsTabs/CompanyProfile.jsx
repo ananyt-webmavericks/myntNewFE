@@ -108,6 +108,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
             incorporation_type: companyData?.incorporation_type ? companyData?.incorporation_type : '',
 
             invested_so_far: companyData?.invested_so_far ? companyData?.invested_so_far : '',
+            sector: companyData?.sector ? companyData?.sector : '',
 
         },
 
@@ -456,13 +457,13 @@ const CompanyProfile = ({ tabChangeFn }) => {
                                 <InputLabel
                                     color='warning'
                                     id="demo-multiple-name-label"
-                                    sx={{ marginTop: '-6px' }} >Select Country*</InputLabel>
+                                    sx={{ marginTop: '-6px' }} >Select Sector*</InputLabel>
                                 <Select
                                     sx={selectStyle}
                                     labelId="demo-multiple-name-label"
                                     id="demo-multiple-name"
                                     name="country"
-                                    value={formik.values.country}
+                                    value={formik.values.sector}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     input={<OutlinedInput label="Name" />}
@@ -478,7 +479,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                                         </MenuItem>
                                     ))}
                                 </Select>
-                                {formik.touched.country && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.country}</div>}
+                                {formik.touched.sector && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.sector}</div>}
                             </FormControl>
 
 
@@ -498,7 +499,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                                 <InputLabel
                                     color='warning'
                                     sx={{ marginTop: '-6px' }}
-                                    id="demo-multiple-name-label">Select City*</InputLabel>
+                                    id="demo-multiple-name-label">No. of Employees *</InputLabel>
                                 <Select
                                     sx={selectStyle}
                                     labelId="demo-multiple-name-label"

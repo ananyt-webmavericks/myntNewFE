@@ -97,7 +97,7 @@ export default function OtpVerificationMainFounder({ email, founderLoginData, is
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px', cursor: 'pointer' }} {...buttonProps}>Resend</button>;
     };
     const renderTime = remainingTime => {
-        return <span style={{ color: '#777777' }}>Resend after {remainingTime} s</span>;
+        return <span style={{ color: '#777777', fontSize:'14px' }}>Resend after {remainingTime} s</span>;
     };
     return (
         <div className="verification-container ">

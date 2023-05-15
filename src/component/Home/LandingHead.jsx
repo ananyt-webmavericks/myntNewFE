@@ -4,6 +4,7 @@ import '../../css/Home/landingHead.css'
 import Banner from '../../images/assets/banner.png'
 import { useNavigate } from "react-router-dom";
 import Lottie from 'react-lottie';
+import bgLine from '../../images/investors/headerBgLine.png'
 import animationData from '../../lotties/homePage';
 export default function LandingHead() {
 
@@ -42,6 +43,7 @@ export default function LandingHead() {
                         </Typography>
                     </div>
                 </div>
+                <img className="homeHeaderBgline" src={bgLine} width={'100%'} height={'200px'}/>
                 <div className="image-section-landing">
                     <div className="banner-home-main">
                         <Lottie

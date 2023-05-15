@@ -66,7 +66,7 @@ const DashBoardESign = () => {
                                     padding: '4.2px 0px 0px 0px',
                                     // bgcolor: 'background.default',
                                     display: 'grid',
-                                    gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr' },
+                                    gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr 1fr' },
                                     gap: 2.5,
                                     width: '492',
                                     textAlign: 'left',
@@ -92,7 +92,7 @@ const DashBoardESign = () => {
                                 </div>
 
                                 {
-                                    campaigns?.map(item => <Box className="companyAddbox" style={{ display: "flex", gap: "5rem", marginBottom: "5rem", marginTop: "2rem" }}>
+                                    campaigns?.map(item => <Box className="companyAddbox" style={{ display: "flex", gap: "5rem", marginBottom: "5rem", marginTop: "2.5rem" }}>
 
                                         <div onClick={() => {
                                             sessionStorage.setItem("campaign_id", item.id)

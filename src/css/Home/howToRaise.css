@@ -13,6 +13,9 @@
     cursor: pointer;
     width: 300px !important;
 }
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}
 
 .first-raise-card:hover {
     box-shadow: 0px 0px 10px #0000001A !important;

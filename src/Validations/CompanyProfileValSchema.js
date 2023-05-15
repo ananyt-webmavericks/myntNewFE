@@ -61,6 +61,12 @@ const CompanyProfileValSchema = Yup.object({
     invested_so_far: Yup
         .string()
         .required("This field is required!"),
+    sector: Yup
+        .string()
+        .required("Sector is required!"),
+    employee: Yup
+        .string()
+        .required("No. of Employees is required!"),
 
 });
 

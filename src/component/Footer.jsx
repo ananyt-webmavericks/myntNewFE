@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../css/footer.css";
 import Grid from "@mui/material/Grid";
-import logo from "../images/mynt1.png";
+import logo from "../images/mynt-new.png";
 import facebook from "../images/social-logos/facebook.png";
 import linkdin from "../images/social-logos/linkdin.png";
 import instagram from "../images/social-logos/instagram.png";
+import youtube from "../images/social-logos/youtube.png";
 import LocalPhoneSharpIcon from "@mui/icons-material/LocalPhoneSharp";
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import { useNavigate } from "react-router-dom";
@@ -50,6 +51,9 @@ const Footer = () => {
                 </div>
                 <div className="logo-footer">
                   <img src={linkdin} width="20px"></img>
+                </div>
+                <div className="logo-footer">
+                  <img src={youtube} width="20px"></img>
                 </div>
               </div>
             </div>

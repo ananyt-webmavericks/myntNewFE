@@ -10,7 +10,7 @@ const HowToSubscribe = () => {
         <div className="how-to-raise-container">
             <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div>
             <div className="how-to-sub-subheading">Experience the advantages of a fully digital and hassle-free process.</div>
-            <div style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
+            <div className='hide-scroll' style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">1</div>

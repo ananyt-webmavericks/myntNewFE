@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import heliogen from '../../images/Networks/heliogen.png';
 import formlabs_logo from "./../../images/founder/formlabs_logo.png"
 import autoshield_logo from "./../../images/founder/autoshield_logo.png"
-import klassroom_logo from "./../../images/founder/classroom_logo.png"
+import klassroom_logo from "./../../images/founder/classRoom.png"
 import deciwood_logo from "./../../images/founder/deciwood_logo.png"
 import Livewell from "./../../images/founder/livewell.png"
 import Ezyschooling from "./../../images/founder/eazyschooling.png"
@@ -31,11 +31,11 @@ const Networks = () => {
     }));
 
     const Networks = [
-        { badgeName: "PRE SERIES-A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 13 },
-        { badgeName: "PRE IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17 },
+        { badgeName: "PRE SERIES-A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 50, width: 50},
+        { badgeName: "PRE IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17, width: '' },
         // { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
-        { badgeName: "POST SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22 },
-        { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell , height: 30 },
+        { badgeName: "POST SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22, width: '' },
+        { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell , height: 30, width: '' },
         // { badgeName: "POST SEED", bottomBadgeName: "Ezyschooling ", logo: Ezyschooling  , height: 22 },
     ]
 
@@ -61,10 +61,10 @@ const Networks = () => {
                     {Networks.map((item, index) => (
                         <div key={index} className="networks-box">
                             <FlexDiv>
-                                <div><img height={item.height} src={item.logo} alt="network-logo" /></div>
+                                <div><img height={item.height} width={item.width} src={item.logo} alt="network-logo" /></div>
                                 <div className='network-badge'><span className='network-badge-text'>{item.badgeName}</span></div>
                             </FlexDiv>
-                            <FlexDiv style={{ paddingLeft: '14px', paddingTop: '2rem' }}>
+                            <FlexDiv style={{ paddingLeft: '14px' }}>
                                 <span className='network-badge-bottom-text'>{item.bottomBadgeName}</span>
                                 <span></span>
                             </FlexDiv>

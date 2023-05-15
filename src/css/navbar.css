@@ -16,8 +16,11 @@
 }
 
 .logo-web {
-    padding-top: 1em;
-    width: 134px;
+    /* padding-top: 1em; */
+    width: 173px;
+    height: 43px;
+    margin-left: 25px;
+    object-fit: cover;
     cursor: pointer;
 }
 
@@ -62,8 +65,8 @@
 }
 
 .container {
-    max-width: 1200px;
-    width: 100% !important;
+    /* max-width: 1200px; */
+    width: 93% !important;
     margin: auto;
 }
 
@@ -235,8 +238,9 @@
 
     .ham-menu-img {
         display: block;
-        width: 78px;
-        height: 35px;
+        width: 190px;
+        object-fit: cover;
+        height: 50px;
         margin-top: 12px;
         margin-left: 10px;
         position: absolute;

@@ -8,15 +8,15 @@ import Image1 from '../../../images/myntblogs/image1.png';
 import Image2 from '../../../images/myntblogs/image2.png';
 import Image3 from '../../../images/myntblogs/image3.png';
 const data = [
-    {id:1 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th feb 2023' , image:Image1},
-    {id:2 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'8th feb 2023' , image:Image2},
-    {id:3 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'8th feb 2023' , image:Image3},
-    {id:4 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th feb 2023' , image:Image1},
-    {id:5 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'8th feb 2023' , image:Image2},
-    {id:6 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'8th feb 2023' , image:Image3},
-    {id:7 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th feb 2023' , image:Image1},
-    {id:8 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'8th feb 2023' , image:Image2},
-    {id:9 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'8th feb 2023' , image:Image3},
+    {id:1 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th jan 2023' , image:Image1},
+    {id:2 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'15th jan 2023' , image:Image2},
+    {id:3 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'20th jan 2023' , image:Image3},
+    {id:4 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'5th jan 2023' , image:Image1},
+    {id:5 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'16th feb 2023' , image:Image2},
+    {id:6 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'25th feb 2023' , image:Image3},
+    {id:7 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'3th mar 2023' , image:Image1},
+    {id:8 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'16th feb 2023' , image:Image2},
+    {id:9 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'23th mar 2023' , image:Image3},
 ]
 export default function MyntBlogsMain() {
     const navigate = useNavigate()

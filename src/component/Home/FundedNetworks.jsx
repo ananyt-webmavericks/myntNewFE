@@ -10,7 +10,7 @@ import Item from "../Item";
 
 import eazyschooling from '../../images/Networks/eazyschooling.png'
 import formlabs_logo from '../../images/Networks/formlabs_logo.png'
-import classroom_logo from '../../images/Networks/classroom_logo.png'
+import classroom_logo from '../../images/Networks/classRoom.png'
 import autoshield_logo from '../../images/Networks/autoshield_logo.png'
 import livewell from '../../images/Networks/livewell.png'
 import PeopleTeckLabs from '../../images/Networks/PeopleTeckLabs.png'
@@ -22,14 +22,14 @@ import quantica from '../../images/Networks/quantica.png'
 const data = [
     { id: 1, height: 30, image: eazyschooling, name: '1 Bn USD' },
     { id: 2, height: 30, image: formlabs_logo, name: '10 million EUR' },
-    { id: 3, height: 20, image: classroom_logo, name: '10 M EUR' },
+    { id: 3, height: 70, image: PeopleTeckLabs, name: '10 M USD' },
     { id: 4, height: 35, image: autoshield_logo, name: '10 M USD' },
-    { id: 5, height: 70, image: livewell, name: '10 M EUR' },
-    { id: 6, height: 70, image: PeopleTeckLabs, name: '10 M USD' },
+    { id: 5, height: 50, image: phasio, name: '10 M USD' },
+    { id: 6, height: 70, image: livewell, name: '10 M EUR' },
     { id: 7, height: 30, image: barrelHand, name: '10 M USD' },
     { id: 8, height: 70, image: go3d, name: '10 M USD' },
-    { id: 9, height: 50, image: paralenz, name: '10 M USD' },
-    { id: 10, height: 50, image: phasio, name: '10 M USD' },
+    { id: 9, height: 90, image: classroom_logo, name: '10 M EUR' },
+    { id: 10, height: 50, image: paralenz, name: '10 M USD' },
     { id: 11, height: 50, image: quantica, name: '10 M USD' },
 ]
 export default function FundedNetworks() {

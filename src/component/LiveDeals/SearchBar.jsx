@@ -13,7 +13,8 @@ const MenuProps = {
     PaperProps: {
         style: {
             maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: '30%',
+            // width: '30%',
+            top: '297px'
 
         },
     },
@@ -76,10 +77,10 @@ export default function SearchBar() {
             </div>
             <div className="dropdown-container-live-deals">
                 <Select
-                    className={classes.select}
+                    className={`${classes.select} dropdown-position`}
                     // multiple
                     variant="standard"
-                    sx={{ textAlign: 'left', fontStyle: 'normal', background: 'none', height: '42px' }}
+                    sx={{ textAlign: 'left', fontStyle: 'normal', background: 'red', height: '42px' }}
                     displayEmpty
                     value={personName}
                     onChange={handleChange}

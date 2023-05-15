@@ -10,7 +10,7 @@ export default function DashBoardFaq() {
     };
     return (
         <>
-            <div style={{ marginBottom: '2em' }}>
+            <div style={{ marginBottom: '2em', width: '96%' }}>
                 <div className="investor-home-heading">FAQS</div>
                 <span className="investors-subheading">Mynt University is the ultimate source for answers to the most commonly asked questions.</span>
                 <div style={{ marginTop: '2em' }}>

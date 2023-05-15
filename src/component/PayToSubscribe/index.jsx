@@ -163,7 +163,7 @@ export default function PayToSubscribeMain() {
                             {
                                 rewards?.map((item, index) => <Card key={index} className="secondary-card-pay-section">
                                     <CardContent>
-                                        <span className="pay-amount-label">Subscribe for</span>
+                                        <span className="pay-amount-label">Enroll for</span>
                                         <div className="pay-amount-sub-label-head"><span style={{ color: '#EBB429' }}>₹{item.amount} </span>or more</div>
                                     </CardContent>
                                     <hr />

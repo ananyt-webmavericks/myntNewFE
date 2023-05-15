@@ -84,6 +84,13 @@
     padding-top: 1.5em;
 }
 
+.homeHeaderBgline{
+    position: absolute;
+    height: 392px;
+    top: 100px;
+    left: 0
+}
+
 .banner-home-main {
     width: 253px;
     height: 203px;

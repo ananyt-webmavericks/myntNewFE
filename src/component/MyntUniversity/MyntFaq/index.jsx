@@ -27,16 +27,16 @@ export default function MyntFaqMain() {
             <div className="info-provider-faq-mynt">
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">1</div>
-                    <span className="text-info-faq-mynt">How to Sign Up?</span>
+                    <span style={{cursor:'pointer'}} onClick={()=> navigate('/myntUniversity/faq/getting-started')} className="text-info-faq-mynt">How to Sign Up?</span>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">2</div>
-                    <span className="text-info-faq-mynt">What are SAR’s?</span>
+                    <span style={{cursor:'pointer'}} onClick={()=>navigate('/myntUniversity/faq/campaigns')} className="text-info-faq-mynt">What are SAR’s?</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '1em' }}>
                     <div className="circular-do-info-numeric">3</div>
-                    <span className="text-info-faq-mynt"> What are the advantages of startup investing?</span>
+                    <span style={{cursor:'pointer'}} onClick={()=> navigate('/myntUniversity/faq/startup-invest')} className="text-info-faq-mynt"> What are the advantages of startup investing?</span>
                 </div>
             </div>
             <div style={{ fontSize: '22px', fontWeight: '600', marginTop: "60px" }}>FAQs</div>

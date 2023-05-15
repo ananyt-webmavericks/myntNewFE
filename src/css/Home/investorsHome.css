@@ -82,6 +82,10 @@
     margin-bottom: 5em;
 }
 
+.hide-scroll::-webkit-scrollbar{
+    display: hidden;
+}
+
 @media screen and (max-width: 481px) {
     .investors-image-container {
         max-width: 100%;

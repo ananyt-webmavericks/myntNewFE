@@ -5,6 +5,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Lottie from 'react-lottie'
 import animationData from '../../lotties/HomeFounder.json';
+import graphline from '../../images/founder/graphLines.png'
 const AutomatedStreamlined = () => {
     const navigate = useNavigate()
 
@@ -36,7 +37,9 @@ const AutomatedStreamlined = () => {
                         </div>
                     </div>
                     <div className="founderhome-image-section-landing">
+                        <img style={{position:'absolute', height: 470}} src={graphline}  />
                         <Lottie
+                        style={{marginLeft: 20}}
                             options={defaultOptions}
                         />
                     </div>

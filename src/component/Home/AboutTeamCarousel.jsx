@@ -43,14 +43,14 @@ const data = [
         head: 'Transparency And Communication',
         description: JSON.stringify("Mynt provides us with a platform that meets our investment needs by offering high levels of transparency and by carefully selecting and onboarding only verified startups")
     },
-    {
-        id: 5,
-        avatar: Avatar,
-        name: 'Shishir Pratap Singh, Professor at Rutgers University',
-        position: 'Professor at Rutgers University',
-        head: 'Game-Changing Startups Now Accessible',
-        description: JSON.stringify("Mynt has simplified the process of investing in promising startups that have undergone rigorous vetting and have the potential to revolutionize their industries. It's now both accessible and effortles")
-    },
+    // {
+    //     id: 5,
+    //     avatar: Avatar,
+    //     name: 'Shishir Pratap Singh, Professor at Rutgers University',
+    //     position: 'Professor at Rutgers University',
+    //     head: 'Game-Changing Startups Now Accessible',
+    //     description: JSON.stringify("Mynt has simplified the process of investing in promising startups that have undergone rigorous vetting and have the potential to revolutionize their industries. It's now both accessible and effortles")
+    // },
 ]
 
 export default function AboutTeamCarousel() {
@@ -63,11 +63,11 @@ export default function AboutTeamCarousel() {
                 <img className="team-bg-img" src={Map} alt="Map" />
                 <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
                     <Carousel
-                        enableAutoPlay={false}
+                        enableAutoPlay={true}
                         showArrows={true}
-                        autoPlaySpeed={3000}
+                        autoPlaySpeed={1000}
                         easing="ease"
-                        transitionMs={1000}
+                        transitionMs={1300}
                         enableMouseSwipe={true}
                         pagination={true}
                         itemsToShow={1}
@@ -80,7 +80,7 @@ export default function AboutTeamCarousel() {
                                         if (carouselRef?.current?.goTo) {
                                             carouselRef.current.goTo(0)
                                         }
-                                    }, 3000)
+                                    }, 1000)
                                 }
                             }
                         }}

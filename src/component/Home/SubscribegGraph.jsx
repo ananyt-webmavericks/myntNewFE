@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Equity from './../../images/founder/Equity.png'
 import Debt from './../../images/founder/Debt.png'
+import homeSubscribeYellowLine from '../../images/investors/homeSubcribeYellowLine.png'
 
 export default function SubscribegGraph() {
     const navigate = useNavigate()
@@ -67,6 +68,7 @@ export default function SubscribegGraph() {
     }, []);
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
+            <img className="homeSubscribeYellowLine" src={homeSubscribeYellowLine} width={'100%'} height={'200px'}/>
             <div className="subscribe-graph-heading">
                 <Typography className="test-script-regular">Signup to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>

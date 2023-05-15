@@ -12,7 +12,7 @@ export default function Team({ blurAmount, peopleData }) {
     return (
         <>
             <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Meet the Team</div>
-            <div style={{ filter: `blur(${blurAmount}px)`, overflow: 'hidden', overflowX: 'scroll', display: 'flex', }}>
+            <div className="hide-scroll" style={{ filter: `blur(${blurAmount}px)`, overflow: 'hidden', overflowX: 'scroll', display: 'flex', }}>
                 {
                     peopleData?.filter(item => item.type === "TEAM").length > 0
                         ? peopleData?.filter(item => item.type === "TEAM").slice(0).reverse().map((item, index) => <Card key={index} style={{ minWidth: '280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px', marginRight: '50px', marginTop: '10px', marginBottom: '10px', marginLeft: '10px' }}>
@@ -31,7 +31,7 @@ export default function Team({ blurAmount, peopleData }) {
 
             <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Investors & Advisors</div>
 
-            <div style={{ filter: `blur(${blurAmount}px)`, overflow: 'hidden', overflowX: 'scroll', display: 'flex' }}>
+            <div className="hide-scroll" style={{ filter: `blur(${blurAmount}px)`, overflow: 'hidden', overflowX: 'scroll', display: 'flex' }}>
                 {
                     peopleData?.filter(item => item.type === "INVESTOR" || item.type === "ADVISOR").length > 0
                         ? peopleData?.filter(item => item.type === "INVESTOR" || item.type === "ADVISOR").slice(0).reverse().map((item, index) => <Card key={index} style={{ minWidth: '280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px', marginRight: '50px', marginTop: '10px', marginBottom: '10px', marginLeft: '10px' }}>

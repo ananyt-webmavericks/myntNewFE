@@ -7,3 +7,7 @@
 .company-image img {
     object-fit: contain !important;
 }
+
+.rec-item-wrapper{
+    width: 100%;
+}

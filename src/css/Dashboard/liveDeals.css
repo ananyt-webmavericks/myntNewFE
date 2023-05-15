@@ -38,6 +38,10 @@
     gap: 20px;
 }
 
+/* .dropdown-position{
+    top: 297px !important;
+} */
+
 .button-container-liveDeals {
     display: grid;
     grid: 90px / auto auto auto auto;

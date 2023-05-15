@@ -214,8 +214,8 @@ const LiveDeals = () => {
                 <div className="dashboard-container" style={{ height: '100%', marginBottom: '5em' }}>
                     <Container maxWidth="lg">
                         <div style={{ display: 'grid' }}>
-                            <span className="get-started-heading startup">Live Deals</span>
-                            <span style={{ fontSize: '16px', color: '#777777' }}>Browse current subscription opportunities on Mynt.</span>
+                            <span className="get-started-heading startup">Live Opportunities</span>
+                            <span style={{ fontSize: '16px', color: '#777777' }}>Browse current enrollment opportunities on Mynt.</span>
                         </div>
                         <SearchBar />
 
@@ -358,7 +358,7 @@ const LiveDeals = () => {
                                                                 <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                                             </div>
                                                             <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                                <span className="investment-txt hover">Investors</span>
+                                                                <span className="investment-txt hover">Enroller</span>
                                                                 <span className="investment-sub-txt hover">0</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
                                                                 <span className="investment-txt hover">Completed</span>
@@ -380,7 +380,7 @@ const LiveDeals = () => {
                                                                 <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                                             </div>
                                                             <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                                <span className="investment-txt hover">Investors</span>
+                                                                <span className="investment-txt hover">Enroller</span>
                                                                 <span className="investment-sub-txt hover">18</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
                                                                 <span className="investment-txt hover">Completed</span>

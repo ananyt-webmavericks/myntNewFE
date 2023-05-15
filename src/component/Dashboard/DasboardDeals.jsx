@@ -85,7 +85,7 @@ export default function DashboardDeals() {
         return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
     }
     return (
-        <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px' }}>
+        <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px',width: '96%' }}>
             <span style={{ fontSize: '20px', fontWeight: '600' }}>NEW LIVE OPPORTUNITIES  </span>
             <span>Get your wealth creation journey started today!</span>
             <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
@@ -164,7 +164,7 @@ export default function DashboardDeals() {
                                             <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                         </div>
                                         <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                            <span className="investment-txt hover">Investors</span>
+                                            <span className="investment-txt hover">Enroller</span>
                                             <span className="investment-sub-txt hover">0</span>
                                             <hr style={{ marginTop: '11.5px' }} />
                                             <span className="investment-txt hover">Completed</span>
@@ -186,7 +186,7 @@ export default function DashboardDeals() {
                                             <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                         </div>
                                         <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                            <span className="investment-txt hover">Investors</span>
+                                            <span className="investment-txt hover">Enroller</span>
                                             <span className="investment-sub-txt hover">18</span>
                                             <hr style={{ marginTop: '11.5px' }} />
                                             <span className="investment-txt hover">Completed</span>

@@ -12,6 +12,10 @@
     border-radius: 9px;
     opacity: 1;
     height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
 }
 
 .our-networks-label>span {

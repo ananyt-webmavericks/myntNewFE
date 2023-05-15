@@ -234,7 +234,7 @@ export default function OpenInvestment() {
                                                 <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                             </div>
                                             <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                <span className="investment-txt hover">Investors</span>
+                                                <span className="investment-txt hover">Enroller</span>
                                                 <span className="investment-sub-txt hover">0</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Completed</span>
@@ -256,7 +256,7 @@ export default function OpenInvestment() {
                                                 <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                             </div>
                                             <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                <span className="investment-txt hover">Investors</span>
+                                                <span className="investment-txt hover">Enroller</span>
                                                 <span className="investment-sub-txt hover">18</span>
                                                 <hr style={{ marginTop: '11.5px' }} />
                                                 <span className="investment-txt hover">Completed</span>
@@ -299,7 +299,10 @@ export default function OpenInvestment() {
                 }
 
                 {showBtn && <div className="view-all-btn-invest">
-                    <Button variant="contained" className="invest-load-btn" onClick={handleLoadMore}>View All</Button>
+                    <Button variant="contained" className="invest-load-btn" 
+                    // onClick={handleLoadMore}
+                    onClick={() => navigate('/dashboard/live-deals')}
+                    >View All</Button>
                 </div>}
             </Box>
         </>

@@ -32,7 +32,7 @@ export default function HowToRaise() {
         <div className="how-to-raise-container">
             <div className="investor-home-heading">How to <span className="colored-investor-home-heading"> register? </span></div>
             <span className="investors-subheading">Experience the advantages of a fully digital and hassle-free process.</span>
-            <div style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
+            <div className="hide-scroll" style={{ overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
 
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
                     <div className="head-container-raise">
