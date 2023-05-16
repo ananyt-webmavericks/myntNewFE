@@ -64,7 +64,7 @@ const CompanyProfileValSchema = Yup.object({
     sector: Yup
         .string()
         .required("Sector is required!"),
-    employee: Yup
+    number_of_employees: Yup
         .string()
         .required("No. of Employees is required!"),
 

@@ -37,6 +37,8 @@ const useStyles = makeStyles({
 
 const People = ({ tabChangeFn }) => {
     const [subTabNo, setSubTabNo] = useState(0)
+  const [isLoading, setIsLoading] = useState(false);
+
     const handleClick = tabNo => {
         setSubTabNo(tabNo)
     };
@@ -94,7 +96,7 @@ const People = ({ tabChangeFn }) => {
             {subTabNo === 2 && <Advisors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />}
 
             {subTabNo === 0 && peopleData?.filter(item => item.type === "TEAM").length > 0 &&
-                <div className="investor-home-heading" style={{ fontSize: '18px' }}>Added Team Members</div>}
+                <div className="investor-home-heading" style={{ fontSize: '18px',marginTop:150 }}>Added Team Members</div>}
             {subTabNo === 1 && peopleData?.filter(item => item.type === "INVESTOR").length > 0 && <div className="investor-home-heading" style={{ fontSize: '18px' }}>Added Investors</div>}
             {subTabNo === 2 && peopleData?.filter(item => item.type === "ADVISOR").length > 0 && <div className="investor-home-heading" style={{ fontSize: '18px' }}>Added Advisors</div>}
 

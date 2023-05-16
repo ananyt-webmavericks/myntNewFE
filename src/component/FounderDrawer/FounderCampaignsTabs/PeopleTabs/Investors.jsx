@@ -9,10 +9,16 @@ import { useFormik } from 'formik'
 import { toast } from "react-hot-toast";
 import { authAxios } from '../../../../service/Auth-header'
 import { Base_Url } from '../../../../Utils/Configurable'
+import { CircularProgress } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 const Investors = ({ getPeopleData, tabChangeFn }) => {
     const { userData } = useSelector(state => state.loginData)
+  const navigate = useNavigate();
+
 
     const [preview, setPreview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
 
     const handleFileSelect = async (event) => {
         const file = event.target.files[0];
@@ -57,9 +63,13 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
         validationSchema: PeopleTabValSchema,
 
         onSubmit: (values) => {
+      setIsLoading(true);
+
             console.log(values)
             CompanyServices.addPeopleToCompany(values).then(res => {
                 if (res.status === 200 || 201) {
+      setIsLoading(false);
+
                     toast.success("Investor added to company successfull!")
                     getPeopleData()
                     formik.handleReset()
@@ -173,7 +183,18 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
                     <Box className="BtnSaveAndNext">
-                        <button type='submit' className="SaveBtn">Save</button>
+                        <button type='submit' className="SaveBtn">{isLoading === true ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Save"
+              )}</button>
                         <button onClick={e => tabChangeFn(e, 3)} className="NextBtn">Next</button>
                     </Box>
                     {/* <div className="hrline"></div> */}
