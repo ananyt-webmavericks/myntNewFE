@@ -32,10 +32,24 @@ const FounderCampaingsTabs = () => {
     if (!(newValue === 0)) {
       console.log(newValue);
       if (!localStorage.getItem("company_id")) {
-        return toast.error("Please fill up company details");
+        return toast.error("Please fill up company details",{
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "red",
+            color: "#fff",
+          },
+        });
       } else if (!sessionStorage.getItem("campaign_id")) {
         if (!(newValue === 1)) {
-          return toast.error("Please upload pitch");
+          return toast.error("Please upload pitch",{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          });
         }
       }
     }

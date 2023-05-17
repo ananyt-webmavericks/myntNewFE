@@ -188,7 +188,14 @@ const FounderApplication = () => {
           }
         });
       } catch {
-        toast.errors("Try after few minutes");
+        toast.error("Try after few minutes",{
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "red",
+            color: "#fff",
+          },
+        });
       }
     },
   });

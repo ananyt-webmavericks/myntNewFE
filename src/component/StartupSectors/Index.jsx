@@ -35,7 +35,14 @@ export default function StartupSectorsMain() {
         setValue([...new_array])
     }
     const handleSubmit = () => {
-        toast.success("Welcome to mynt invest!")
+        toast.success("Welcome to mynt invest!",{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          })
         navigate('/dashboard')
     }
 

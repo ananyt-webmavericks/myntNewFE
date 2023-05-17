@@ -31,7 +31,14 @@ export default function VerifyNumberOtp() {
     const kycDonePath = localStorage.getItem('kycDonePath')
     // const navigateToProfile = localStorage.getItem('navigateToVerifyMobile')
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     console.log(userKycData)
     const handleResendOtp = () => {
@@ -67,10 +74,24 @@ export default function VerifyNumberOtp() {
                         if (kycDetail.status === 200) {
                             setCallFn(true)
                             await dispatch(storeKycDetailsAction(response.data.data))
-                            toast.success("Mobile number verified!")
+                            toast.success("Mobile number verified!",{
+                                position: "top-right",
+                                style: {
+                                  borderRadius: "3px",
+                                  background: "green",
+                                  color: "#fff",
+                                },
+                              })
                             console.log(kycDetail.data)
                         } else {
-                            toast.error("Invalid OTP!")
+                            toast.error("Invalid OTP!", {
+                                position: "top-right",
+                                style: {
+                                  borderRadius: "3px",
+                                  background: "red",
+                                  color: "#fff",
+                                },
+                              })
                         }
                         // navigateToProfile ? navigate('/my-profile') : navigate('/complete-your-profile/verify-kyc')
                         localStorage.removeItem('navigateToVerifyMobile')

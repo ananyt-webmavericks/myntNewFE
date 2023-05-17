@@ -98,13 +98,27 @@ const UploadPitch = ({ tabChangeFn }) => {
               sessionStorage.setItem("campaign_id", res.data.id);
               sessionStorage.setItem("campaign_data", JSON.stringify(res.data));
               setIsLoading(false);
-              toast.success("Compaign added successfully!");
+              toast.success("Compaign added successfully!",{
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
               setTimeout(() => {
                 tabChangeFn(0, 2);
               }, 2000);
             } else {
               setIsLoading(false);
-              toast.error("Something went wrong, please try again later");
+              toast.error("Something went wrong, please try again later",{
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
             }
           })
         : CompanyServices.updateCampaign({
@@ -120,13 +134,25 @@ const UploadPitch = ({ tabChangeFn }) => {
                 JSON.stringify(res.data.data)
               ); //need to remove this line
               setIsLoading(false);
-              toast.success("Compaign updated successfully!");
+              toast.success("Compaign updated successfully!",{ 
+                position:"top-right",
+                style: {
+                borderRadius: '3px',
+                background: 'green',
+                color: '#fff',
+              },});
               setTimeout(() => {
                 tabChangeFn(0, 2);
               }, 1000);
             } else {
               setIsLoading(false);
-              toast.error("Something went wrong, please try again later");
+              toast.error("Something went wrong, please try again later",{ 
+                position:"top-right",
+                style: {
+                borderRadius: '3px',
+                background: 'red',
+                color: '#fff',
+              },});
             }
           });
     },

@@ -74,14 +74,26 @@ const FAQS = ({ tabChangeFn }) => {
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
 
-          toast.success("FAQ added successfully!");
+          toast.success("FAQ added successfully!",{ 
+            position:"top-right",
+            style: {
+            borderRadius: '3px',
+            background: 'green',
+            color: '#fff',
+          },});
           setcount((pre) => pre + 1);
           formik.handleReset();
-          navigate("/dashboard-founder");
+          
         } else {
           setIsLoading(false);
 
-          toast.error("Something went wrong, please try again later");
+          toast.error("Something went wrong, please try again later",{ 
+            position:"top-right",
+            style: {
+            borderRadius: '3px',
+            background: 'red',
+            color: '#fff',
+          },});
         }
       });
     },
@@ -101,7 +113,7 @@ const FAQS = ({ tabChangeFn }) => {
 
   return (
     <Container style={{ padding: "0px" }} maxWidth="lg">
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
         <Box sx={{ marginTop: 4, marginLeft: 2 }}>
           <h3 className="faqs-title">FAQs</h3>
 
@@ -179,7 +191,7 @@ const FAQS = ({ tabChangeFn }) => {
               )}
             </Button>
             <Button
-              onClick={(e) => tabChangeFn(e, 4)}
+              onClick={(e) => {tabChangeFn(e, 4); formik.handleSubmit();}}
               style={{ margin: "20px" }}
               variant="contained"
               className="comp-prof-button2"

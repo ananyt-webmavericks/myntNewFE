@@ -33,7 +33,14 @@ const FounderSignUp = () => {
     const isEmail = (email) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
 
     const handleChange = (e) => {

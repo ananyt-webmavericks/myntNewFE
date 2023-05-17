@@ -36,10 +36,24 @@ export default function OtpVerificationMainFounder({ email, founderLoginData, is
 
     console.log(founderData)
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     const notifySuccess = (data) => {
-        toast.success(data)
+        toast.success(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          })
     }
     const handleResendOtp = () => {
         const usernames = userMail ? userMail : userData.email
@@ -74,7 +88,14 @@ export default function OtpVerificationMainFounder({ email, founderLoginData, is
                                         navigate('/dashboard-founder/e-signin')
                                     } else {
                                         console.log("failed! founder create")
-                                        toast.error("Something went wrong! please try again later")
+                                        toast.error("Something went wrong! please try again later",{
+                                            position: "top-right",
+                                            style: {
+                                              borderRadius: "3px",
+                                              background: "red",
+                                              color: "#fff",
+                                            },
+                                          })
                                     }
                                 }
                             )

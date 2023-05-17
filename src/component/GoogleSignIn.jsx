@@ -17,7 +17,14 @@ export default function GoogleSignIn() {
     const { userData } = useSelector((state) => state.loginData)
     const location = window.location.pathname;
 
-    const notify = (data) => toast.warn(data);
+    const notify = (data) => toast.warn(data,{
+        position: "top-right",
+        style: {
+          borderRadius: "3px",
+          background: "red",
+          color: "#fff",
+        },
+      });
 
     const handleCallBackResponse = (response) => {
         var userObject = jwt_decode(response.credential)

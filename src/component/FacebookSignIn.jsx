@@ -16,7 +16,14 @@ export default function FacebookSignIn() {
   const [auth, setAuth] = useState(false)
   const dispatch = useDispatch()
   const location = window.location.pathname;
-  const notify = (data) => toast.success(data);
+  const notify = (data) => toast.success(data, {
+    position: "top-right",
+    style: {
+      borderRadius: "3px",
+      background: "green",
+      color: "#fff",
+    },
+  });
   const responseFacebook = (response) => {
     console.log(response)
     if (location.includes('/login')) {

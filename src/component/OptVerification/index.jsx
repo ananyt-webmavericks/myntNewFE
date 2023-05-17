@@ -34,10 +34,24 @@ export default function OtpVerificationMain() {
 
 
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     const notifySuccess = (data) => {
-        toast.success(data)
+        toast.success(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          })
     }
     const handleResendOtp = () => {
         const usernames = userMail ? userMail : userData.email

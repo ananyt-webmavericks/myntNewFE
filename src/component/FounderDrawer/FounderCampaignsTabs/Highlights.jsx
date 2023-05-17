@@ -44,10 +44,16 @@ const Highlights = ({ tabChangeFn }) => {
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
 
-          toast.success("Highlights added successfully!");
+          toast.success("Highlights added successfully!",{ 
+            position:"top-right",
+            style: {
+            borderRadius: '3px',
+            background: 'green',
+            color: '#fff',
+          },});
           getHighLights();
           formik.handleReset();
-          navigate("/dashboard-founder");
+          
         }
       });
     },
@@ -166,7 +172,7 @@ const Highlights = ({ tabChangeFn }) => {
 
            */}
 
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
         {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
         <input
           name="highlight1"
@@ -261,7 +267,7 @@ const Highlights = ({ tabChangeFn }) => {
             )}
           </Button>
           <Button
-            onClick={(e) => tabChangeFn(e, 5)}
+            onClick={(e) =>{ tabChangeFn(e, 5); formik.handleSubmit();}}
             style={{ margin: "20px" }}
             variant="contained"
             className="comp-prof-button2"

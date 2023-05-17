@@ -60,14 +60,26 @@ const UploadDocuments = () => {
       if (res.status === 200 || res.status === 201) {
         setIsLoading(false);
 
-        toast.success("Document uploaded successful!");
+        toast.success("Document uploaded successful!",{ 
+          position:"top-right",
+          style: {
+          borderRadius: '3px',
+          background: 'green',
+          color: '#fff',
+        },});
         settoggle((pre) => !pre);
         setSelectedFile([]);
         navigate("/dashboard-founder");
       } else {
         setIsLoading(false);
 
-        toast.error("Something went wrong, please try again later");
+        toast.error("Something went wrong, please try again later",{ 
+          position:"top-right",
+          style: {
+          borderRadius: '3px',
+          background: 'red',
+          color: '#fff',
+        },});
       }
     });
   };

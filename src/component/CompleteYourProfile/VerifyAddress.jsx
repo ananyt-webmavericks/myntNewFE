@@ -33,7 +33,14 @@ export default function VerifyAddress() {
         setValue({ ...value, [e.target.name]: e.target.value })
     }
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     useEffect(() => {
         services.getInvestorKycData(userData.id).then((response, error) => {
@@ -92,9 +99,23 @@ export default function VerifyAddress() {
                                 console.log(response.data)
                                 if (response.status === 200) {
                                     await dispatch(storeKycDetailsAction(response.data))
-                                    toast.success("Address updated successful!")
+                                    toast.success("Address updated successful!",{
+                                        position: "top-right",
+                                        style: {
+                                          borderRadius: "3px",
+                                          background: "green",
+                                          color: "#fff",
+                                        },
+                                      })
                                 } else {
-                                    toast.error("Please check entered details!")
+                                    toast.error("Please check entered details!",{
+                                        position: "top-right",
+                                        style: {
+                                          borderRadius: "3px",
+                                          background: "red",
+                                          color: "#fff",
+                                        },
+                                      })
                                 }
                             })
                         }

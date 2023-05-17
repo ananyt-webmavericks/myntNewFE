@@ -38,15 +38,26 @@ const GetRewards = ({ tabChangeFn }) => {
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
 
-          toast.success("Reward added successfully!");
+          toast.success("Reward added successfully!",{ 
+            position:"top-right",
+            style: {
+            borderRadius: '3px',
+            background: 'green',
+            color: '#fff',
+          },});
           sessionStorage.setItem("is_reward_added", true);
           setCount((pre) => pre + 1);
           formik.handleReset();
-          navigate("/dashboard-founder");
         } else {
           setIsLoading(false);
 
-          toast.error("Something went wrong, please try again later");
+          toast.error("Something went wrong, please try again later",{ 
+            position:"top-right",
+            style: {
+            borderRadius: '3px',
+            background: 'red',
+            color: '#fff',
+          },});
         }
       });
     },
@@ -73,7 +84,7 @@ const GetRewards = ({ tabChangeFn }) => {
         your campaign
       </Typography>
 
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
         <div>
           <input
             name="product_name"
@@ -151,7 +162,7 @@ const GetRewards = ({ tabChangeFn }) => {
             )}
           </Button>
           <Button
-            onClick={(e) => tabChangeFn(e, 6)}
+            onClick={(e) => {tabChangeFn(e, 6); formik.handleSubmit(); }}
             style={{ margin: "20px" }}
             variant="contained"
             className="comp-prof-button2"

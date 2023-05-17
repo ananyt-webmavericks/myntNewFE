@@ -75,11 +75,16 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
         if (res.status === 200 || 201) {
           setIsLoading(false);
 
-          toast.success("Team member added to company successfull!");
+          toast.success("Team member added to company successfull!",{ 
+            position:"top-right",
+            style: {
+            borderRadius: '3px',
+            background: 'green',
+            color: '#fff',
+          },});
           getPeopleData();
           formik.handleReset();
           setPreview(null);
-          navigate("/dashboard-founder");
 
         }
       });
@@ -93,7 +98,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
         container
         spacing={2}
       >
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
           <div>
             <Box className="formgroup">
               <div style={{ width: "100%" }}>
@@ -266,7 +271,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
                 "Save"
               )}
             </button>
-            <button onClick={(e) => tabChangeFn(e, 3)} className="NextBtn">
+            <button onClick={(e) => {tabChangeFn(e, 3); formik.handleSubmit();}} className="NextBtn">
               Next
             </button>
           </Box>

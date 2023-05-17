@@ -31,7 +31,14 @@ export default function ProgressNotifyDash({ data }) {
     // console.log((data))
 
     const notifySuccess = (data) => {
-        toast.success(data)
+        toast.success(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          })
     }
 
     const { userKycData } = useSelector(state => state.kycData)

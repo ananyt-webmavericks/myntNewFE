@@ -533,7 +533,14 @@ export default function AboutYouMain() {
     };
 
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     const handleSubmit = (e) => {
         e.preventDefault()

@@ -72,7 +72,14 @@ export default function BecomeInvestorMain() {
     }
     console.log(userData.id)
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     useEffect(() => {
         ConsentSerivce.getUserConsent(userData.id).then((response) => {

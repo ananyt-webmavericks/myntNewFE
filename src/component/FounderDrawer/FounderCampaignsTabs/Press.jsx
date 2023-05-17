@@ -41,7 +41,14 @@ const Press = ({ tabChangeFn }) => {
             if (res.status === 200 || res.status === 201) {
               setIsLoading(false);
 
-              toast.success("Press added successfully!");
+              toast.success("Press added successfully!",{
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
               sessionStorage.setItem("is_press_added", true);
               sessionStorage.setItem("press_data", JSON.stringify(res.data));
               settoggle((pre) => !pre);
@@ -51,7 +58,14 @@ const Press = ({ tabChangeFn }) => {
             } else {
               setIsLoading(false);
 
-              toast.error("Something went wrong, please try again later");
+              toast.error("Something went wrong, please try again later",{
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
             }
           })
         : CompanyServices.updatePress({
@@ -60,7 +74,13 @@ const Press = ({ tabChangeFn }) => {
           }).then((res) => {
             console.log(res);
             if (res.status === 200 || res.status === 201) {
-              toast.success("Press updated successfully!");
+              toast.success("Press updated successfully!",{ 
+                position:"top-right",
+                style: {
+                borderRadius: '3px',
+                background: 'green',
+                color: '#fff',
+              },});
               sessionStorage.setItem(
                 "press_data",
                 JSON.stringify(res.data.data)
@@ -70,7 +90,13 @@ const Press = ({ tabChangeFn }) => {
                 tabChangeFn(0, 7);
               }, 1000);
             } else {
-              toast.error("Something went wrong, please try again later");
+              toast.error("Something went wrong, please try again later", { 
+                position:"top-right",
+                style: {
+                borderRadius: '3px',
+                background: 'red',
+                color: '#fff',
+              },});
             }
           });
     },

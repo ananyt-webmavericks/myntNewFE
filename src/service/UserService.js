@@ -4,10 +4,24 @@ import { toast } from "react-hot-toast";
 import { authAxios } from "./Auth-header";
 
 const notify = (data) => {
-    toast.error(data)
+    toast.error(data,{
+        position: "top-right",
+        style: {
+          borderRadius: "3px",
+          background: "red",
+          color: "#fff",
+        },
+      })
 }
 const notifySuccess = (data) => {
-    toast.success(data)
+    toast.success(data,{
+        position: "top-right",
+        style: {
+          borderRadius: "3px",
+          background: "green",
+          color: "#fff",
+        },
+      })
 }
 
 const LoginUserByEmail = async (data) => {

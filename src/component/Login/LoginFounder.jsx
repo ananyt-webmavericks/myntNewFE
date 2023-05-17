@@ -34,7 +34,14 @@ export default function LoginFounder() {
                     })
             }
             catch {
-                toast.errors("Something went wrong! please try again later")
+                toast.error("Something went wrong! please try again later",{
+                    position: "top-right",
+                    style: {
+                      borderRadius: "3px",
+                      background: "red",
+                      color: "#fff",
+                    },
+                  })
             }
         }
     });

@@ -140,7 +140,14 @@ export default function LiveDetailsMain() {
         !userKycData?.bank_account ||
         !userKycData?.bank_name
       ? navigate("/complete-your-profile/payment-details")
-      : toast.success("Already verified! Please check profile");
+      : toast.success("Already verified! Please check profile",{
+        position: "top-right",
+        style: {
+          borderRadius: "3px",
+          background: "green",
+          color: "#fff",
+        },
+      });
   };
 
   return (

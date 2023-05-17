@@ -24,7 +24,14 @@ export default function BankDetails() {
         setValue({ ...value, [e.target.name]: e.target.value })
     }
     const notify = (data) => {
-        toast.error(data)
+        toast.error(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          })
     }
     const handleSubmit = () => {
         const val = {
@@ -49,16 +56,44 @@ export default function BankDetails() {
                         if (response.status === 201 || response.status === 200) {
                             services.getInvestorKycData(userData.id).then(async (response) => {
                                 if (response.status === 200 && response.data.bank_account_verified) {
-                                    toast.success("Bank details verify successful")
-                                    toast.success("KYC COMPLETED!")
+                                    toast.success("Bank details verify successful",{
+                                        position: "top-right",
+                                        style: {
+                                          borderRadius: "3px",
+                                          background: "green",
+                                          color: "#fff",
+                                        },
+                                      })
+                                    toast.success("KYC COMPLETED!",{
+                                        position: "top-right",
+                                        style: {
+                                          borderRadius: "3px",
+                                          background: "green",
+                                          color: "#fff",
+                                        },
+                                      })
                                     await dispatch(storeKycDetailsAction(response.data))
                                 } else {
-                                    toast.error("Invalid bank details!")
+                                    toast.error("Invalid bank details!",{
+                                        position: "top-right",
+                                        style: {
+                                          borderRadius: "3px",
+                                          background: "red",
+                                          color: "#fff",
+                                        },
+                                      })
                                 }
                             })
                         }
                         else {
-                            toast.error("Something went wrong!")
+                            toast.error("Something went wrong!",{
+                                position: "top-right",
+                                style: {
+                                  borderRadius: "3px",
+                                  background: "red",
+                                  color: "#fff",
+                                },
+                              })
                             console.log("error")
                         }
                     })

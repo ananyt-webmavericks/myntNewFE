@@ -70,7 +70,13 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
                 if (res.status === 200 || 201) {
       setIsLoading(false);
 
-                    toast.success("Investor added to company successfull!")
+                    toast.success("Investor added to company successfull!",{ 
+                        position:"top-right",
+                        style: {
+                        borderRadius: '3px',
+                        background: 'green',
+                        color: '#fff',
+                      },})
                     getPeopleData()
                     formik.handleReset()
                     setPreview(null)
@@ -82,7 +88,7 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
     return (
         <>
             <Box sx={{ marginTop: "2rem", width: "90%", marginBottom: "10rem" }} container spacing={2}>
-                <form onSubmit={formik.handleSubmit}>
+                <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
                     <div>
 
                         <Box className='formgroup'>
@@ -195,7 +201,7 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
               ) : (
                 "Save"
               )}</button>
-                        <button onClick={e => tabChangeFn(e, 3)} className="NextBtn">Next</button>
+                        <button onClick={e => {tabChangeFn(e, 3); formik.handleSubmit();}} className="NextBtn">Next</button>
                     </Box>
                     {/* <div className="hrline"></div> */}
                 </form>

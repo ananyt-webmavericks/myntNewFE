@@ -47,7 +47,14 @@ export default function MyProfileMain() {
                         // || !userKycData?.pan_card_verified
                     )
                         ? navigate('/complete-your-profile/verify-kyc')
-                        : toast.success("Your KYC is already completed!")
+                        : toast.success("Your KYC is already completed!",{
+                            position: "top-right",
+                            style: {
+                              borderRadius: "3px",
+                              background: "green",
+                              color: "#fff",
+                            },
+                          })
     }
 
     const handleMobileNavigation = () => {

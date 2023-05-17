@@ -42,14 +42,35 @@ export default function KycAadharUid() {
                 if (res.status === 200 || res.status === 201) {
                     console.log(res.data.data.aadhaar_card_verified)
                     if (res.data.data.aadhaar_card_verified) {
-                        toast.success("Aadhar verified  successfully!")
+                        toast.success("Aadhar verified  successfully!",{
+                            position: "top-right",
+                            style: {
+                              borderRadius: "3px",
+                              background: "green",
+                              color: "#fff",
+                            },
+                          })
                         await dispatch(storeKycDetailsAction(res.data.data))
                     } else {
-                        toast.error("Invalid aadhar number!")
+                        toast.error("Invalid aadhar number!",{
+                            position: "top-right",
+                            style: {
+                              borderRadius: "3px",
+                              background: "red",
+                              color: "#fff",
+                            },
+                          })
                         await dispatch(storeKycDetailsAction(res.data.data))
                     }
                 } else {
-                    toast.error("Something went wrong, please try again later")
+                    toast.error("Something went wrong, please try again later",{
+                        position: "top-right",
+                        style: {
+                          borderRadius: "3px",
+                          background: "red",
+                          color: "#fff",
+                        },
+                      })
                 }
             })
         }
