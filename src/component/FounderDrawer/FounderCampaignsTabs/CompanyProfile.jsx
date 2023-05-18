@@ -16,7 +16,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+// import Select from "@mui/material/Select";
 import "../../../css/FounderDrawer/Dashboard/GridBox.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import facebook from "./../../../images/assets/facebook.png";
@@ -31,6 +31,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import country from "./country.json";
+import Select, { components } from "react-select";
+import states from "./states.json";
+import city from "./city.json";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -43,54 +47,19 @@ const MenuProps = {
   },
 };
 
-const names = [
- "India"
-];
-
-const states = [
-  " Andhra Pradesh	",
-  "Arunachal Pradesh",
-  "Assam",
-  "Bihar",
-  "Chhattisgarh",
-  "Goa",
-  "Gujarat",
-  "Haryana",
-  "Himachal",
-  "Jharkhand",
-  "Karnataka",
-  "Kerala",
-  "Madhya Pradesh",
-  "Maharashtra",
-  "Manipur",
-  "Meghalaya",
-  "Mizoram",
-  "Nagaland",
-  "Odisha",
-  "Punjab",
-  "Rajasthan",
-  "Sikkim",
-  "Tamil Nadu",
-  "Telangana",
-  "Tripura",
-  "Uttar Pradesh",
-  "Uttarakhand",
-  "Gairsain",
-  "West Bengal"
-];
-const city =[
-  "Abu Road",
-  "Ahmedabad",
-  "pune",
-" jaipur"
-
-]
+// const city = ["Abu Road", "Ahmedabad", "pune", " jaipur"];
 
 const sectors = [
-  "sector 1",
-  "sector 2"
-]
-const employees = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  { label: "sector 1", value: 0 },
+  { label: "sector 2", value: 1 },
+];
+const employees = [
+  { label: "1", value: 0 },
+  { label: "2", value: 1 },
+  { label: "3", value: 2 },
+  { label: "4", value: 3 },
+  { label: "5", value: 4 },
+];
 
 function getStyles(name, personName, theme) {
   return {
@@ -121,6 +90,14 @@ const CompanyProfile = ({ tabChangeFn }) => {
   const [companyData, setCompanyData] = useState({});
   const { userData } = useSelector((state) => state.loginData);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveClicked, setSavedClicked] = useState(false);
+  const [isNextClicked, setNextClicked] = useState(false);
+  const [countryCode, setCountryCode] = useState("");
+  const [stateCode, setStateCode] = useState("");
+  const [cityCode, setCityCode] = useState("");
+  const [selectSector, setSelectSector] = useState("");
+  const [selectEmployees, setSelectEmployees] = useState("");
+
   const handleChange = (event) => {
     const {
       target: { value },
@@ -196,22 +173,92 @@ const CompanyProfile = ({ tabChangeFn }) => {
             color: "#fff",
           },
         });
-        // setTimeout(() => {
-        //     tabChangeFn(0, 1)
-        // }, 1000);
+        setTimeout(() => {
+          if (isSaveClicked) {
+            navigate("/dashboard-founder");
+          } else {
+            tabChangeFn(0, 1);
+          }
+        }, 1000);
       });
     },
   });
+
+  const getAllCountries = () => {
+    return country.map((i) => {
+      return { label: i.name, value: i.country_id };
+    });
+  };
+
+  const setCountryValue = (val) => {
+    setCountryCode(val);
+    formik.setFieldValue("country", val.label);
+  };
+
+  const getAllState = () => {
+    if (countryCode?.value) {
+      const filteredStates = states.filter(
+        (i) => i.country_id === countryCode?.value
+      );
+      return filteredStates.map((i) => {
+        return { label: i.name, value: i.state_code };
+      });
+    }
+  };
+
+  const setStateValue = (val) => {
+    setStateCode(val);
+    formik.setFieldValue("state", val.label);
+  };
+  const getAllCity = () => {
+    if (stateCode?.value) {
+      const filteredStates = city.filter(
+        (i) => i.state_code === stateCode?.value
+      );
+      return filteredStates.map((i) => {
+        return { label: i.name, value: i.name };
+      });
+    }
+  };
+
+  const setCityValue = (val) => {
+    setCityCode(val);
+    formik.setFieldValue("city", val.label);
+  };
+  const setSectorValue = (val) => {
+    setSelectSector(val);
+    formik.setFieldValue("sector", val.label);
+  };
+  const setEmployeesValue = (val) => {
+    setSelectEmployees(val);
+    formik.setFieldValue("number_of_employees", val.label);
+  };
+
 
   useEffect(() => {
     return CompanyServices.getCompanyDetailsByFounderId(userData?.id).then(
       (res) => {
         if (res.status === 200) {
           setCompanyData(res.data);
+
+          const c = country.filter(item => item.name === res.data.country);
+          setCountryCode({label: c?.[0]?.name, value: c?.[0]?.country_id})
+          const s = states.filter(item => item.name === res.data.state);
+          setStateCode({label: s?.[0]?.name, value: s?.[0]?.state_code})
+          const cs = city.filter(item => item.name === res.data.city);
+          setCityCode({label: cs?.[0]?.name, value: cs?.[0]?.state_code})
+          const selectsector = sectors.filter(item => item.label === res.data.sector);
+          setSelectSector({label: selectsector?.[0]?.label, value: selectsector?.[0]?.value})
+          const selectemployee = employees.filter(item => item.label === res.data.number_of_employees);
+          setSelectEmployees({label: selectemployee?.[0]?.label, value: selectemployee?.[0]?.value})
+
+
+
           localStorage.setItem("company_id", res.data.id);
         }
       }
     );
+    
   }, [userData?.id]);
 
   return (
@@ -225,12 +272,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
           </p>
         </Typography>
       </Box>
-      <form
-        onSubmit={() => {
-          formik.handleSubmit();
-          navigate("/dashboard-founder");
-        }}
-      >
+      <form onSubmit={formik.handleSubmit}>
         <Typography className="comp-info-appl-title">Application</Typography>
 
         <div className="gridParent">
@@ -249,14 +291,14 @@ const CompanyProfile = ({ tabChangeFn }) => {
               }}
             >
               <FormControl sx={{ m: 1, width: "100%" }}>
-                <InputLabel
+                {/* <InputLabel
                   color="warning"
                   id="demo-multiple-name-label"
                   sx={{ marginTop: "-6px" }}
                 >
                   Select Country*
-                </InputLabel>
-                <Select
+                </InputLabel> */}
+                {/* <Select
                   sx={selectStyle}
                   labelId="demo-multiple-name-label"
                   id="demo-multiple-name"
@@ -277,16 +319,28 @@ const CompanyProfile = ({ tabChangeFn }) => {
                       {name}
                     </MenuItem>
                   ))}
-                </Select>
+                </Select> */}
+                <Select
+                  components={{
+                    IndicatorSeparator: () => null,
+                  }}
+                  value={countryCode}
+                  options={getAllCountries() ?? []}
+                  placeholder="Select Country"
+                  name="country"
+                  onChange={(val) => setCountryValue(val)}
+                  onBlur={() => formik.setFieldTouched("country", true)}
+                  // components={{Input}}
+                />
                 {formik.touched.country && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
                     {formik.errors.country}
                   </div>
                 )}
               </FormControl>
-              {formik.values.country === "India" ? (
-                <FormControl sx={{ m: 1, width: "100%" }}>
-                  <InputLabel
+              {/* {formik.values.country === "India" ? ( */}
+              <FormControl sx={{ m: 1, width: "100%" }}>
+                {/* <InputLabel
                     color="warning"
                     sx={{ marginTop: "-6px" }}
                     id="demo-multiple-name-label"
@@ -313,27 +367,37 @@ const CompanyProfile = ({ tabChangeFn }) => {
                         {name}
                       </MenuItem>
                     ))}
-                  </Select>
-                  {formik.touched.state && (
-                    <div
-                      className="raise-err-text"
-                      style={{ marginTop: "2px" }}
-                    >
-                      {formik.errors.state}
-                    </div>
-                  )}
-                </FormControl>
-              ) : null}
-              {formik.values.state ? (
-                <FormControl sx={{ m: 1, width: "100%" }}>
-                  <InputLabel
+                  </Select> */}
+                <Select
+                  components={{
+                    IndicatorSeparator: () => null,
+                  }}
+                  value={stateCode}
+                  options={getAllState() ?? []}
+                  placeholder="Select State"
+                  name="state"
+                  onChange={(val) => setStateValue(val)}
+                  onBlur={() => formik.setFieldTouched("state", true)}
+
+                  // components={{Input}}
+                />
+                {formik.touched.state && (
+                  <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                    {formik.errors.state}
+                  </div>
+                )}
+              </FormControl>
+              {/* ) : null} */}
+              {/* {formik.values.state ? ( */}
+              <FormControl sx={{ m: 1, width: "100%" }}>
+                {/* <InputLabel
                     color="warning"
                     sx={{ marginTop: "-6px" }}
                     id="demo-multiple-name-label"
                   >
                     Select City*
-                  </InputLabel>
-                  <Select
+                  </InputLabel> */}
+                {/* <Select
                     sx={selectStyle}
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
@@ -353,17 +417,28 @@ const CompanyProfile = ({ tabChangeFn }) => {
                         {name}
                       </MenuItem>
                     ))}
-                  </Select>
-                  {formik.touched.city && (
-                    <div
-                      className="raise-err-text"
-                      style={{ marginTop: "2px" }}
-                    >
-                      {formik.errors.city}
-                    </div>
-                  )}
-                </FormControl>
-              ) : null}
+                  </Select> */}
+                <Select
+                  components={{
+                    IndicatorSeparator: () => null,
+                  }}
+                  styles={{ height: 42 }}
+                  value={cityCode}
+                  options={getAllCity() ?? []}
+                  placeholder="Select City"
+                  name="city"
+                  onChange={(val) => setCityValue(val)}
+                  onBlur={() => formik.setFieldTouched("city", true)}
+
+                  // components={{Input}}
+                />
+                {formik.touched.city && (
+                  <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                    {formik.errors.city}
+                  </div>
+                )}
+              </FormControl>
+              {/* ) : null} */}
 
               <FormControl sx={{ m: 1, width: "100%" }}>
                 <input
@@ -647,14 +722,14 @@ const CompanyProfile = ({ tabChangeFn }) => {
               }}
             >
               <FormControl sx={{ m: 1, width: "100%" }}>
-                <InputLabel
+                {/* <InputLabel
                   color="warning"
                   id="demo-multiple-name-label"
                   sx={{ marginTop: "-6px" }}
                 >
                   Select Sector*
-                </InputLabel>
-                <Select
+                </InputLabel> */}
+                {/* <Select
                   sx={selectStyle}
                   labelId="demo-multiple-name-label"
                   id="demo-multiple-name"
@@ -675,7 +750,27 @@ const CompanyProfile = ({ tabChangeFn }) => {
                       {name}
                     </MenuItem>
                   ))}
-                </Select>
+                </Select> */}
+                <Select
+                  components={{
+                    IndicatorSeparator: () => null,
+                  }}
+                  styles={{ height: 42 }}
+                  value={selectSector}
+                  options={sectors}
+                  placeholder="Select Sector"
+                  name="sector"
+                  // value={formik.values.sector}
+                  // onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  onChange={(val) => {
+                    setSectorValue(val);
+                  }}
+
+                  // onBlur={() => formik.setFieldTouched("sector", true)}
+
+                  // components={{Input}}
+                />
                 {formik.touched.sector && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
                     {formik.errors.sector}
@@ -701,7 +796,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
               </FormControl>
 
               <FormControl sx={{ m: 1, width: "100%" }}>
-                <InputLabel
+                {/* <InputLabel
                   color="warning"
                   sx={{ marginTop: "-6px" }}
                   id="demo-multiple-name-label"
@@ -728,7 +823,26 @@ const CompanyProfile = ({ tabChangeFn }) => {
                       {name}
                     </MenuItem>
                   ))}
-                </Select>
+                </Select> */}
+                <Select
+                  components={{
+                    IndicatorSeparator: () => null,
+                  }}
+                  value={selectEmployees}
+                  options={employees}
+                  placeholder="No. of Employees"
+                  name="number_of_employees"
+                  // value={formik.values.number_of_employees}
+                  // onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  onChange={(val) => {
+                    setEmployeesValue(val);
+                  }}
+
+                  // onBlur={() => formik.setFieldTouched("sector", true)}
+
+                  // components={{Input}}
+                />
                 {formik.touched.number_of_employees && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
                     {formik.errors.number_of_employees}
@@ -741,13 +855,14 @@ const CompanyProfile = ({ tabChangeFn }) => {
 
         <div className="buttonsParent">
           <Button
+            onClick={() => setSavedClicked(true)}
             disabled={isLoading === true ? true : false}
             type="submit"
             style={{ margin: "20px", color: "black" }}
             variant="contained"
             className="comp-prof-button1"
           >
-            {isLoading === true ? (
+            {isLoading && isSaveClicked ? (
               <CircularProgress
                 style={{ color: "black", fontSize: 10, width: 20, height: 20 }}
               />
@@ -756,16 +871,20 @@ const CompanyProfile = ({ tabChangeFn }) => {
             )}
           </Button>
           <Button
-            onClick={(e) => {
-              formik.handleSubmit();
-              tabChangeFn(e, 1);
-            }}
-            type="button"
+            disabled={isLoading === true ? true : false}
+            onClick={() => setNextClicked(true)}
+            type="submit"
             style={{ margin: "20px" }}
             variant="contained"
             className="comp-prof-button2"
           >
-            Next
+            {isLoading && isNextClicked ? (
+              <CircularProgress
+                style={{ color: "black", fontSize: 10, width: 20, height: 20 }}
+              />
+            ) : (
+              "Next"
+            )}
           </Button>
         </div>
       </form>

@@ -19,6 +19,8 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
 
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveClicked, setSavedClicked] = useState(false);
+  const [isNextClicked, setNextClicked] = useState(false);
 
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
@@ -75,17 +77,24 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
         if (res.status === 200 || 201) {
           setIsLoading(false);
 
-          toast.success("Advisor added to company successfull!",{ 
-            position:"top-right",
+          toast.success("Advisor added to company successfull!", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'green',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
           getPeopleData();
           formik.handleReset();
           setPreview(null);
-          
+          setTimeout(() => {
+            if (isSaveClicked) {
+              navigate("/dashboard-founder");
+            } else {
+              tabChangeFn(0, 3);
+            }
+          }, 1000);
         }
       });
     },
@@ -98,7 +107,7 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
         container
         spacing={2}
       >
-        <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
+        <form onSubmit={formik.handleSubmit}>
           <div>
             <Box className="formgroup">
               <div style={{ width: "100%" }}>
@@ -109,7 +118,7 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   type="text"
                   className="teamminput"
-                  placeholder=" Enter your Team member name"
+                  placeholder=" Enter your Advisor name"
                 />
                 {formik.touched.name && (
                   <div className="raise-err-text">{formik.errors.name}</div>
@@ -196,7 +205,7 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   className="teammtextarea"
-                  placeholder=" Type something about your team member…"
+                  placeholder=" Type something about your Advisor…"
                 ></textarea>
                 {formik.touched.description && (
                   <div
@@ -257,8 +266,13 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
           <Box className="BtnSaveAndNext">
-            <button type="submit" className="SaveBtn">
-              {isLoading === true ? (
+            <button
+              disabled={isLoading === true ? true : false}
+              onClick={() => setSavedClicked(true)}
+              type="submit"
+              className="SaveBtn"
+            >
+              {isLoading && isSaveClicked ? (
                 <CircularProgress
                   style={{
                     color: "white",
@@ -271,8 +285,24 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
                 "Save"
               )}
             </button>
-            <button onClick={(e) => {tabChangeFn(e, 3); formik.handleSubmit();}} className="NextBtn">
-              Next
+            <button
+              disabled={isLoading === true ? true : false}
+              type="submit"
+              onClick={() => setNextClicked(true)}
+              className="NextBtn"
+            >
+              {isLoading && isNextClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Next"
+              )}
             </button>
           </Box>
           {/* <div className="hrline"></div> */}

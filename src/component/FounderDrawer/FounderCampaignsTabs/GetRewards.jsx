@@ -17,6 +17,8 @@ const GetRewards = ({ tabChangeFn }) => {
   const [rewardData, setRewardData] = useState([]);
   const [isRewardAdded, setIsRewardAdded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveClicked, setSavedClicked] = useState(false);
+  const [isNextClicked, setNextClicked] = useState(false);
 
   const [count, setCount] = useState(0);
   const formik = useFormik({
@@ -38,26 +40,35 @@ const GetRewards = ({ tabChangeFn }) => {
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
 
-          toast.success("Reward added successfully!",{ 
-            position:"top-right",
+          toast.success("Reward added successfully!", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'green',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
           sessionStorage.setItem("is_reward_added", true);
           setCount((pre) => pre + 1);
           formik.handleReset();
+          setTimeout(() => {
+            if (isSaveClicked) {
+              navigate("/dashboard-founder");
+            } else {
+              tabChangeFn(0, 6);
+            }
+          }, 1000);
         } else {
           setIsLoading(false);
 
-          toast.error("Something went wrong, please try again later",{ 
-            position:"top-right",
+          toast.error("Something went wrong, please try again later", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'red',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          });
         }
       });
     },
@@ -84,7 +95,7 @@ const GetRewards = ({ tabChangeFn }) => {
         your campaign
       </Typography>
 
-      <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
+      <form onSubmit={formik.handleSubmit}>
         <div>
           <input
             name="product_name"
@@ -143,12 +154,14 @@ const GetRewards = ({ tabChangeFn }) => {
 
         <div className="faqs-button-parent">
           <Button
+            onClick={() => setSavedClicked(true)}
+            disabled={isLoading === true ? true : false}
             type="submit"
             style={{ margin: "20px", color: "black" }}
             variant="contained"
             className="comp-prof-button1"
           >
-            {isLoading === true ? (
+            {isLoading && isSaveClicked ? (
               <CircularProgress
                 style={{
                   color: "white",
@@ -162,12 +175,25 @@ const GetRewards = ({ tabChangeFn }) => {
             )}
           </Button>
           <Button
-            onClick={(e) => {tabChangeFn(e, 6); formik.handleSubmit(); }}
+            onClick={() => setNextClicked(true)}
+            disabled={isLoading === true ? true : false}
+            type="submit"
             style={{ margin: "20px" }}
             variant="contained"
             className="comp-prof-button2"
           >
-            Next
+            {isLoading && isNextClicked ? (
+              <CircularProgress
+                style={{
+                  color: "white",
+                  fontSize: 10,
+                  width: 20,
+                  height: 20,
+                }}
+              />
+            ) : (
+              "Next"
+            )}
           </Button>
         </div>
 

@@ -12,13 +12,14 @@ import { Base_Url } from "../../../../Utils/Configurable";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
-
   const navigate = useNavigate();
 
   const { userData } = useSelector((state) => state.loginData);
 
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveClicked, setSavedClicked] = useState(false);
+  const [isNextClicked, setNextClicked] = useState(false);
 
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
@@ -75,17 +76,24 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
         if (res.status === 200 || 201) {
           setIsLoading(false);
 
-          toast.success("Team member added to company successfull!",{ 
-            position:"top-right",
+          toast.success("Team member added to company successfull!", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'green',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
           getPeopleData();
           formik.handleReset();
           setPreview(null);
-
+          setTimeout(() => {
+            if (isSaveClicked) {
+              navigate("/dashboard-founder");
+            } else {
+              tabChangeFn(0, 3);
+            }
+          }, 1000);
         }
       });
     },
@@ -98,7 +106,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
         container
         spacing={2}
       >
-        <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
+        <form onSubmit={formik.handleSubmit}>
           <div>
             <Box className="formgroup">
               <div style={{ width: "100%" }}>
@@ -257,8 +265,13 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
           <Box className="BtnSaveAndNext">
-            <button type="submit" className="SaveBtn">
-              {isLoading === true ? (
+            <button
+              disabled={isLoading === true ? true : false}
+              onClick={() => setSavedClicked(true)}
+              type="submit"
+              className="SaveBtn"
+            >
+              {isLoading && isSaveClicked ? (
                 <CircularProgress
                   style={{
                     color: "white",
@@ -271,8 +284,24 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
                 "Save"
               )}
             </button>
-            <button onClick={(e) => {tabChangeFn(e, 3); formik.handleSubmit();}} className="NextBtn">
-              Next
+            <button
+              disabled={isLoading === true ? true : false}
+              type="submit"
+              onClick={() => setNextClicked(true)}
+              className="NextBtn"
+            >
+              {isLoading && isNextClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Next"
+              )}
             </button>
           </Box>
           {/* <div className="hrline"></div> */}

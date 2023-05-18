@@ -23,6 +23,8 @@ const Highlights = ({ tabChangeFn }) => {
 
   const [pitchData, setPitchData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveClicked, setSavedClicked] = useState(false);
+  const [isNextClicked, setNextClicked] = useState(false);
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -44,16 +46,23 @@ const Highlights = ({ tabChangeFn }) => {
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
 
-          toast.success("Highlights added successfully!",{ 
-            position:"top-right",
+          toast.success("Highlights added successfully!", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'green',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
           getHighLights();
           formik.handleReset();
-          
+          setTimeout(() => {
+            if (isSaveClicked) {
+              navigate("/dashboard-founder");
+            } else {
+              tabChangeFn(0, 5);
+            }
+          }, 1000);
         }
       });
     },
@@ -172,7 +181,7 @@ const Highlights = ({ tabChangeFn }) => {
 
            */}
 
-      <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
+      <form onSubmit={formik.handleSubmit}>
         {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
         <input
           name="highlight1"
@@ -248,12 +257,14 @@ const Highlights = ({ tabChangeFn }) => {
                 </div> */}
         <div className="faqs-button-parent">
           <Button
+            disabled={isLoading === true ? true : false}
+            onClick={() => setSavedClicked(true)}
             type="submit"
             style={{ margin: "20px", color: "black" }}
             variant="contained"
             className="comp-prof-button1"
           >
-            {isLoading === true ? (
+            {isLoading && isSaveClicked ? (
               <CircularProgress
                 style={{
                   color: "white",
@@ -267,12 +278,25 @@ const Highlights = ({ tabChangeFn }) => {
             )}
           </Button>
           <Button
-            onClick={(e) =>{ tabChangeFn(e, 5); formik.handleSubmit();}}
+            onClick={() => setNextClicked(true)}
+            disabled={isLoading === true ? true : false}
+            type="submit"
             style={{ margin: "20px" }}
             variant="contained"
             className="comp-prof-button2"
           >
-            Next
+            {isLoading && isNextClicked ? (
+              <CircularProgress
+                style={{
+                  color: "white",
+                  fontSize: 10,
+                  width: 20,
+                  height: 20,
+                }}
+              />
+            ) : (
+              "Next"
+            )}
           </Button>
         </div>
       </form>

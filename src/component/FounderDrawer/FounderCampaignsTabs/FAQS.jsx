@@ -26,6 +26,8 @@ const FAQS = ({ tabChangeFn }) => {
   const [addedFaqs, setAddedFaqs] = useState([]);
   const [count, setcount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveClicked, setSavedClicked] = useState(false);
+  const [isNextClicked, setNextClicked] = useState(false);
   const { userData } = useSelector((state) => state.loginData);
   const CustomWidthTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -74,26 +76,34 @@ const FAQS = ({ tabChangeFn }) => {
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
 
-          toast.success("FAQ added successfully!",{ 
-            position:"top-right",
+          toast.success("FAQ added successfully!", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'green',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
           setcount((pre) => pre + 1);
           formik.handleReset();
-          
+          setTimeout(() => {
+            if (isSaveClicked) {
+              navigate("/dashboard-founder");
+            } else {
+              tabChangeFn(0, 4);
+            }
+          }, 1000);
         } else {
           setIsLoading(false);
 
-          toast.error("Something went wrong, please try again later",{ 
-            position:"top-right",
+          toast.error("Something went wrong, please try again later", {
+            position: "top-right",
             style: {
-            borderRadius: '3px',
-            background: 'red',
-            color: '#fff',
-          },});
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          });
         }
       });
     },
@@ -113,7 +123,7 @@ const FAQS = ({ tabChangeFn }) => {
 
   return (
     <Container style={{ padding: "0px" }} maxWidth="lg">
-      <form onSubmit={()=>{formik.handleSubmit(); navigate("/dashboard-founder");}}>
+      <form onSubmit={formik.handleSubmit}>
         <Box sx={{ marginTop: 4, marginLeft: 2 }}>
           <h3 className="faqs-title">FAQs</h3>
 
@@ -172,12 +182,14 @@ const FAQS = ({ tabChangeFn }) => {
 
           <div className="faqs-button-parent">
             <Button
+              onClick={() => setSavedClicked(true)}
+              disabled={isLoading === true ? true : false}
               type="submit"
               style={{ margin: "20px", color: "black" }}
               variant="contained"
               className="comp-prof-button1"
             >
-              {isLoading === true ? (
+              {isLoading && isSaveClicked ? (
                 <CircularProgress
                   style={{
                     color: "white",
@@ -191,12 +203,25 @@ const FAQS = ({ tabChangeFn }) => {
               )}
             </Button>
             <Button
-              onClick={(e) => {tabChangeFn(e, 4); formik.handleSubmit();}}
+              onClick={() => setNextClicked(true)}
+              disabled={isLoading === true ? true : false}
+              type="submit"
               style={{ margin: "20px" }}
               variant="contained"
               className="comp-prof-button2"
             >
-              Next
+              {isLoading && isNextClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Next"
+              )}
             </Button>
           </div>
         </Box>

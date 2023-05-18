@@ -53,7 +53,7 @@ const FounderCampaingsTabs = () => {
         }
       }
     }
-    setValue(newValue !== undefined ? newValue : 0);
+    setValue(newValue !== undefined ? newValue : 1);
     // setValue(newValue);
     setThisTab(handleRenderTab(newValue));
   };
@@ -111,7 +111,7 @@ const FounderCampaingsTabs = () => {
   useEffect(() => {
     // console.log(navLocation.state?.navTab);
     // handleChange("event", navLocation.state?.navTab);
-    handleChange("event", 0);
+    handleChange("event", 1);
   }, []);
 
   return (

@@ -90,7 +90,8 @@
     padding-left: 20px;
     margin: 18px 0px 18px 0px;
 }
-.highlight:focus{
+
+.highlight:focus {
     border-style: none;
     border: 1px solid #F1C734 !important;
 }
@@ -210,8 +211,9 @@ input::placeholder {
     text-align: center;
     z-index: 999;
     right: 200px
-  }
-  .popup:after {
+}
+
+.popup:after {
     content: "";
     height: 100%;
     width: 100%;
@@ -219,48 +221,78 @@ input::placeholder {
     position: absolute;
     top: 0;
     left: 0;
-    box-shadow: 0 1px 14px rgba(0,0,0,.2);
-  }
-  .popup:before {
+    box-shadow: 0 1px 14px rgba(0, 0, 0, .2);
+}
+
+.popup:before {
     content: "";
     width: 12px;
     height: 12px;
     transform: rotate(45deg);
-    box-shadow: 0 1px 14px rgba(0,0,0,.2);
+    box-shadow: 0 1px 14px rgba(0, 0, 0, .2);
     background: #fff;
     position: absolute;
     z-index: 998;
-  }
-  
-  .popup.arrow-top:before {
+}
+
+.popup.arrow-top:before {
     left: calc(50% - 10px);
     top: -8px;
-  }
-  .popup.arrow-right:before {
+}
+
+.popup.arrow-right:before {
     top: calc(50% - 10px);
     right: -8px;
-  }
-  .popup.arrow-bottom:before {
+}
+
+.popup.arrow-bottom:before {
     left: calc(50% - 10px);
     bottom: -8px;
-  }
-  .popup.arrow-left:before {
+}
+
+.popup.arrow-left:before {
     top: calc(50% - 6px);
     left: -5px;
-  }
-  
-  .popup-wrapper {
+}
+
+.popup-wrapper {
     width: 100%;
     padding: 12px;
     border-radius: 4px;
     background: #fff;
     position: relative;
-    z-index: 998;  
-  }
-  .popup-wrapper > p {
+    z-index: 998;
+}
+
+.popup-wrapper>p {
     font-size: 10px;
     text-align: start;
-  }
+}
+
+.css-13cymwt-control {
+    height: 42px;
+    border-color: hsl(0, 0%, 80%) !important;
+    box-shadow: none !important;
+    background: #F4F4F4 !important
+}
+.css-13cymwt-control:focus{
+    /* border-style: none;
+    border: 1px solid #F1C734 !important; */
+}
+
+.css-t3ipsp-control{
+    border-color: hsl(0, 0%, 80%) !important;
+    box-shadow: none !important;
+    border-style: none;
+    border: 1px solid #F1C734 !important;
+}
+.css-t3ipsp-control:focus{
+    border-color: hsl(0, 0%, 80%) !important;
+    box-shadow: none !important;
+    border-style: none;
+    border: 1px solid #F1C734 !important;
+}
+
 
 @media screen and (min-width: 870px) {
     .founder-application-parent {
@@ -362,7 +394,8 @@ input::placeholder {
         padding-left: 20px;
         margin: 18px 0px 18px 0px;
     }
-    .highlight:focus{
+
+    .highlight:focus {
         border-style: none;
         border: 1px solid #F1C734 !important;
     }
@@ -450,5 +483,6 @@ input::placeholder {
         text-align: center;
         padding: 60px 10px;
     }
+
 
 }
