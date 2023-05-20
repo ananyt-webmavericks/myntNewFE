@@ -10,6 +10,7 @@ import OpenInvestment from "../component/Home/OpenInvestment";
 import AboutTeamCarousel from "../component/Home/AboutTeamCarousel";
 import InvestorsHome from "../component/Home/InvestorsHome";
 import HowToRaise from "../component/Home/HowToRaise";
+import Footer from "../component/Footer";
 
 const Home = () => {
     return (
@@ -26,6 +27,7 @@ const Home = () => {
                 <InvestorsHome />
                 <HowToRaise />
             </Container>
+            <Footer/>
         </React.Fragment>
     )
 }

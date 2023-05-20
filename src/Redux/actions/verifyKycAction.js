@@ -7,7 +7,10 @@ import {
   VERIFY_BANK_SUCCESS,
   STORE_KYC_REQUEST,
   STORE_KYC_SUCCESS,
-  STORE_KYC_FAIL
+  STORE_KYC_FAIL,
+  EDIT_KYC_REQUEST,
+  EDIT_KYC_SUCCESS,
+  EDIT_KYC_FAIL
 } from "../constants/verifyKycConstant"
 
 import InvestorKyc from '../../service/investor.kyc';
@@ -56,6 +59,16 @@ export const storeKycDetailsAction = (kycData) => (dispatch) => {
     return;
   } catch (error) {
     dispatch({ type: STORE_KYC_FAIL })
+    return;
+  }
+};
+export const editKycDetailsAction = (editKycData) => (dispatch) => {
+  try {
+    dispatch({ type: EDIT_KYC_REQUEST });
+    dispatch({ type: EDIT_KYC_SUCCESS, payload: editKycData });
+    return;
+  } catch (error) {
+    dispatch({ type: EDIT_KYC_FAIL })
     return;
   }
 };

@@ -109,13 +109,29 @@ const getInvestorKycData = async (id) => {
     }
 
 }
+const EditBankDetails = async (data) => {
+
+    try {
+        const response = await axios.patch(`${Base_Url}/api/investor-kyc/bank-verification/manage`,data);
+        console.log(response.data)
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log("data not found !!")
+        }
+        return error;
+    }
+
+}
 const services = {
     VerifyKycPan,
     VerifyKycBank,
     VerifyAddress,
     UpdateAddress,
     getInvestorKycData,
-    verifyAadharKyc
+    verifyAadharKyc,
+    EditBankDetails
 };
 
 export default services

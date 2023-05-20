@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import ConsentSerivce from "../../service/ConsentService";
 
+
 export default function LoginMain() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -26,6 +27,16 @@ export default function LoginMain() {
             style: {
               borderRadius: "3px",
               background: "red",
+              color: "#fff",
+            },
+          })
+    }
+    const notifySuccess = (data) => {
+        toast.success(data,{
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
               color: "#fff",
             },
           })
@@ -54,6 +65,7 @@ export default function LoginMain() {
                                     })
                                 }
                             } else {
+                                notifySuccess('OTP sent succesfully')
                                 navigate('/otp-verification')
                             }
                             dispatch(userEmailAction(email))

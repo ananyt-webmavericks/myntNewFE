@@ -73,7 +73,7 @@ const Footer = () => {
                     onClick={() => navigate("/login")}
                     className="Detail-link"
                   >
-                    Enrol
+                    Enroll
                   </span>
                   <span
                     onClick={() => navigate("/myntUniversity/faqs")}
@@ -111,7 +111,7 @@ const Footer = () => {
                     onClick={() => navigate("/terms-and-condition")}
                     className="Detail-link"
                   >
-                    Terms & Condition
+                    Terms & Conditions
                   </span>
                   <span
                     onClick={() => navigate("/risk-investment")}

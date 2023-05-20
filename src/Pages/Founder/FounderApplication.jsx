@@ -25,6 +25,7 @@ import { toast } from "react-hot-toast";
 import { authAxios } from "../../service/Auth-header";
 import { Base_Url } from "../../Utils/Configurable";
 import yellowDesign from "../../images/founder/ApplicationYellowLine.svg";
+import Footer from "../../component/Footer";
 
 const InputHelperTooltip = ({ title, isVisible }) => {
   return isVisible ? (
@@ -891,6 +892,7 @@ const FounderApplication = () => {
           </div>
         </div>
       </Container>
+      <Footer/>
     </React.Fragment>
   );
 };

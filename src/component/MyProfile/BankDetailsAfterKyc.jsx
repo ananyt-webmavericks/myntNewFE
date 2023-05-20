@@ -1,40 +1,134 @@
-import { Card, CardContent, Grid } from "@mui/material";
+import { Card, CardContent, CircularProgress, Grid } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import "../../css/MyProfile/myProfile.css";
 import KycProfile from "../../images/assets/KycProfile.png";
+import services from "../../service/investor.kyc";
+import { editKycDetailsAction, storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function BankDetailsAfterKyc({ data }) {
   const _ = require("lodash");
   const [isEdit, setIsEdit] = useState(false);
-  const [bankName, setBankName] = useState(
-    _.isEmpty(data) ? "" : data?.bank_name
-  );
-  const [ifscCode, setIfscCode] = useState(
-    _.isEmpty(data) ? "" : data.ifsc_code
-  );
-  const [bankAccount, setBankAccount] = useState(
-    _.isEmpty(data) ? "" : data?.bank_account
-  );
+  const [bankName, setBankName] = useState('');
+  const [ifscCode, setIfscCode] = useState('');
+  const [bankAccount, setBankAccount] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [newData, setNewData] = useState(null);
+
+  const { userData } = useSelector((state) => state.loginData);
+  const dispatch = useDispatch();
+
+  const EditBankFields = () => {
+    setIsEdit(true);
+    setBankName(newData ? newData.bank_name : data.bank_name);
+    setBankAccount(newData ? newData.bank_account : data.bank_account);
+    setIfscCode(newData ? newData.ifsc_code : data.ifsc_code);
+  };
+
+  
+  const handleSubmit = () => {
+    setIsLoading(true);
+    const val = {
+      user_id: data.user_id,
+      bank_name: bankName,
+      bank_account: bankAccount,
+      ifsc_code: ifscCode,
+    };
+    try {
+      services.EditBankDetails(val).then((response) => {
+        console.log("update bank Deatails", response);
+
+        if (response.status === 201 || response.status === 200) {
+          services.getInvestorKycData(userData?.id).then((response) => {
+              if (response.status === 200) {
+              // dispatch(storeKycDetailsAction(response.data));
+              toast.success("Bank Details updated successful!", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
+              setNewData(val)
+              setIsLoading(false);
+              setIsEdit(false);
+            } else {
+              toast.error("Please check entered details!", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
+              setIsLoading(false);
+            }
+            
+          });
+        } else {
+          setIsLoading(false);
+          console.log("error");
+        }
+      });
+    } catch {
+      console.log("Try after few minutes");
+    }
+  };
 
   return (
     <>
       <div style={{ marginTop: "60px" }}>
-        <span className="heading-personal-details">KYC Details</span>
-        <Card className="card-complete-kyc-notice brief">
-          <CardContent>
+        <div style={{ display: "flex", gap: 10 }}>
+          <span className="heading-personal-details">KYC Details</span>
+          {isEdit === true ? (
             <button
-              onClick={() => setIsEdit(!isEdit)}
+              onClick={() => {
+                handleSubmit();
+              }}
               style={{
-                position: "absolute",
                 right: 100,
-                position: "absolute",
                 padding: "5px 10px",
                 borderRadius: "5px",
-                border: "1px solid",
+                border: "0px solid",
+                background: "black",
+                color: "white",
               }}
             >
-              {isEdit === true ? "Save" : "Edit"}
+              {isLoading ? (
+                <CircularProgress
+                  style={{
+                    color: "White",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Save"
+              )}
             </button>
+          ) : (
+            <button
+              onClick={() => {
+                EditBankFields();
+              }}
+              style={{
+                right: 100,
+                padding: "5px 10px",
+                borderRadius: "5px",
+                border: "0px solid",
+                background: "black",
+                color: "white",
+              }}
+            >
+              Edit
+            </button>
+          )}
+        </div>
+        <Card className="card-complete-kyc-notice brief">
+          <CardContent>
             <Grid style={{ paddingTop: "20px" }} container spacing={8}>
               <Grid item xs={3}>
                 <span className="txt-bank-details">Bank Name</span>
@@ -45,12 +139,14 @@ export default function BankDetailsAfterKyc({ data }) {
               <Grid item xs={2}>
                 {isEdit === true ? (
                   <input
-                    value={bankAccount}
+                    className="kyc-edit-input"
+                    value={bankName}
                     onChange={(e) => setBankName(e.target.value)}
                   />
                 ) : (
                   <span className="txt-bank-details">
-                    {_.isEmpty(data) ? "" : data?.bank_name}
+                    {_.isEmpty(data) ? "" : newData? newData?.bank_name : data?.bank_name}
+                    {/* {bankName} */}
                   </span>
                 )}
               </Grid>
@@ -65,12 +161,13 @@ export default function BankDetailsAfterKyc({ data }) {
               <Grid item xs={2}>
                 {isEdit === true ? (
                   <input
-                    value={bankName}
-                    onChange={(e) => setBankName(e.target.value)}
+                    className="kyc-edit-input"
+                    value={bankAccount}
+                    onChange={(e) => setBankAccount(e.target.value)}
                   />
                 ) : (
                   <span className="txt-bank-details">
-                    {_.isEmpty(data) ? "" : data?.bank_account}
+                    {_.isEmpty(data) ? "" : newData? newData.bank_account : data?.bank_account}
                   </span>
                 )}
               </Grid>
@@ -83,15 +180,17 @@ export default function BankDetailsAfterKyc({ data }) {
                 <span className="txt-bank-details">:</span>
               </Grid>
               <Grid item xs={2}>
-              {isEdit === true ? (
+                {isEdit === true ? (
                   <input
+                    className="kyc-edit-input"
                     value={ifscCode}
                     onChange={(e) => setIfscCode(e.target.value)}
                   />
-                ) : 
-                (<span className="txt-bank-details">
-                  {_.isEmpty(data) ? "" : data.ifsc_code}
-                </span>)}
+                ) : (
+                  <span className="txt-bank-details">
+                    {_.isEmpty(data) ? "" : newData? newData.ifsc_code :data.ifsc_code}
+                  </span>
+                )}
               </Grid>
             </Grid>
           </CardContent>

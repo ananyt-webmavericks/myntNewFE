@@ -7,7 +7,10 @@ import {
     VERIFY_BANK_SUCCESS,
     STORE_KYC_REQUEST,
     STORE_KYC_SUCCESS,
-    STORE_KYC_FAIL
+    STORE_KYC_FAIL,
+    EDIT_KYC_REQUEST,
+    EDIT_KYC_SUCCESS,
+    EDIT_KYC_FAIL
 } from "../constants/verifyKycConstant"
 
 const initialState = {
@@ -59,6 +62,21 @@ export const storeKycDetailsReducer = (state = {}, action) => {
             return { ...state, userKycData: payload }
 
         case STORE_KYC_FAIL:
+            return { ...state, error: payload }
+
+        default: return state
+    }
+}
+export const editKycDetailsReducer = (state = {}, action) => {
+    const { type, payload } = action;
+    switch (type) {
+        case EDIT_KYC_REQUEST:
+            return { ...state }
+
+        case EDIT_KYC_SUCCESS:
+            return { ...state, userKycData: payload }
+
+        case EDIT_KYC_FAIL:
             return { ...state, error: payload }
 
         default: return state

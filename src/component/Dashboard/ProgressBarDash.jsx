@@ -29,12 +29,12 @@ export default function ProgressBarDash(props) {
 
   return (
     <>
-      <span className="completion-status">{noData ? "1" : data?.bank_account !== '' ? '2' : '1'} out of 3 completed</span>
+      {data?.bank_account_verified ? <span className="completion-status">Enroll Now To Your Favourite Startups</span>: <span className="completion-status">{noData ? "1" : data?.bank_account !== '' ? '2' : '1'} out of 3 completed</span>}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '12px' }}>
         <div className="bottom-completion-container">
-          <div style={noData ? { maxWidth: '45%' } : data?.bank_account !== '' ? { maxWidth: '90%' } : { maxWidth: '45%' }} className="top-completion-container"></div>
+          <div style={noData ? { maxWidth: '45%' } : data?.bank_account_verified ? { maxWidth: '100%' } : { maxWidth: '45%' }} className="top-completion-container"></div>
         </div>
-        <div><span className="calculated-percentage">{noData ? "45%" : data?.bank_account !== '' ? '90%' : '45%'}</span></div>
+        <div><span className="calculated-percentage">{noData ? "45%" : data?.bank_account_verified ? '100%' : '45%'}</span></div>
       </div>
     </>
   )

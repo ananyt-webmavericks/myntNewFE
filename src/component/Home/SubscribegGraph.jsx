@@ -70,7 +70,7 @@ export default function SubscribegGraph() {
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
             <img className="homeSubscribeYellowLine" src={homeSubscribeYellowLine} width={'100%'} height={'200px'}/>
             <div className="subscribe-graph-heading">
-                <Typography className="test-script-regular">Signup to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+                <Typography style={{textAlign:'center'}} className="test-script-regular">Signup to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>
             <Grid sx={{ marginTop: '40px' }} container spacing={gridxsFirst}>
                 <Grid item xs={gridxsSecond}>

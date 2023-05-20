@@ -30,7 +30,8 @@ export default function LandingHead() {
                         </span>
                         <Button
                             variant="contained"
-                            onClick={() => navigate('/get-started')} className="getStarted-landing-btn">
+                            style={{zIndex:100}}
+                            onClick={localStorage.getItem('access_token') ? ()=> navigate('/dashboard'): () => navigate('/get-started')} className="getStarted-landing-btn">
                             Get Started
                         </Button>
                         <Typography className="subhead-description" style={{ fontWeight: "bold" }}>

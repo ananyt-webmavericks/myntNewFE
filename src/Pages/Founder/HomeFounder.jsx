@@ -9,6 +9,7 @@ import HowToSubscribe from '../../component/FounderHome/HowToSubscribe';
 import BaseHighlights from '../../component/FounderHome/BaseHighlights';
 import FounderAboutTeamCarousal from '../../component/FounderHome/FounderAboutTeamCarousal';
 import { useEffect } from 'react';
+import Footer from '../../component/Footer';
 
 export default function HomeFounder() {
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function HomeFounder() {
         <BaseHighlights />
         <FounderFaqs />
       </Container>
+        <Footer/>
     </React.Fragment>
   )
 }

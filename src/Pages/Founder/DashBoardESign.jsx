@@ -67,13 +67,14 @@ const DashBoardESign = () => {
                                     // bgcolor: 'background.default',
                                     display: 'grid',
                                     gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr 1fr' },
-                                    gap: 2.5,
-                                    width: '492',
+                                    gap: '30px',
+                                    // width: '492',
+                                    width: '20rem',
                                     textAlign: 'left',
                                     fontFamily: 'poppins'
                                 }}
                             >
-                                <div style={{ marginTop: '3rem' }}>
+                                <div style={{ marginTop: '3rem',width: '20rem' }}>
                                     <Typography >Campaign</Typography>
                                     <div onClick={() => {
                                         console.log("clicked")
@@ -92,7 +93,13 @@ const DashBoardESign = () => {
                                 </div>
 
                                 {
-                                    campaigns?.map(item => <Box className="companyAddbox" style={{ display: "flex", gap: "5rem", marginBottom: "5rem", marginTop: "2.5rem" }}>
+                                    campaigns?.map(item => <Box className="companyAddbox" 
+                                    style={{ 
+                                        display: "flex", 
+                                        gap: "5rem", 
+                                        // marginBottom: "5rem", 
+                                        marginTop: "2.5rem" 
+                                        }}>
 
                                         <div onClick={() => {
                                             sessionStorage.setItem("campaign_id", item.id)

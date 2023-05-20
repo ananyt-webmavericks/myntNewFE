@@ -133,7 +133,7 @@ export default function InvestorsHome() {
                         </Grid>
                     </div>
                     <div className="get-started-btn-investor">
-                        <Button variant="contained" onClick={() => navigate('/get-started')} className="getStarted-landing-btn">Get Started</Button>
+                        <Button variant="contained" onClick={localStorage.getItem('access_token') ? ()=> navigate('/dashboard'): () => navigate('/get-started')} className="getStarted-landing-btn">Get Started</Button>
                     </div>
                 </Grid>
             </Grid >
