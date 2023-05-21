@@ -140,14 +140,14 @@ export default function LiveDetailsMain() {
         !userKycData?.bank_account ||
         !userKycData?.bank_name
       ? navigate("/complete-your-profile/payment-details")
-      : toast.success("Already verified! Please check profile",{
-        position: "top-right",
-        style: {
-          borderRadius: "3px",
-          background: "green",
-          color: "#fff",
-        },
-      });
+      : toast.success("Already verified! Please check profile", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "green",
+            color: "#fff",
+          },
+        });
   };
 
   return (
@@ -168,7 +168,7 @@ export default function LiveDetailsMain() {
                 style={{ fontSize: "16px", marginTop: "8rem" }}
               >
                 {/* No youtube link available for preview */}
-                <video width='90%' height="300" controls>
+                <video width="90%" height="300" controls>
                   <source src="" type="video/mp4" />
                 </video>
               </div>
@@ -436,10 +436,16 @@ export default function LiveDetailsMain() {
                 filter: `blur(${blurAmount}px)`,
               }}
             >
-              <img
+              <iframe
+                src={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
+                style={{width:'500px', height:'500px'}}
+                frameBorder="0"
+              ></iframe>
+              {/* <img
                 src={FirstImage}
                 height={gridxsFirst === 1 ? "193" : "592"}
                 style={
+
                   gridxsFirst === 1
                     ? { width: "90%", margin: "auto" }
                     : { width: "90%", margin: "auto" }
@@ -462,7 +468,7 @@ export default function LiveDetailsMain() {
                     ? { width: "90%", margin: "auto", paddingTop: "30px" }
                     : { width: "90%", margin: "auto", paddingTop: "30px" }
                 }
-              ></img>
+              ></img> */}
             </div>
           </div>
         )}

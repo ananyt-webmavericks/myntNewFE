@@ -78,6 +78,7 @@ export default function OtpVerificationMainFounder({ email, founderLoginData, is
                     console.log(response.data)
                     if (response.data.status !== 'false') {
                         localStorage.setItem("access_token", response.data.access_token)
+                        localStorage.setItem("company_id",response.data.data.company_id)
                         console.log(response.data)
                         dispatch(userLoginAction(founderLoginData ? founderLoginData : response.data.data))
                         isNewCreate
