@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { userDataReducer } from "./reducers/auth"
+import { updateUserDataReducer } from "./reducers/auth"
 import { userEmailReducer } from "./reducers/auth";
 import { storeKycDetailsReducer } from "./reducers/verifyKycReducer";
 import { editKycDetailsReducer } from "./reducers/verifyKycReducer";
@@ -13,6 +14,7 @@ import { storeCompanyData } from "./reducers/company";
 const rootReducer = combineReducers({
 
   loginData: userDataReducer,
+  updateUserData :updateUserDataReducer,
   userInfo: userEmailReducer,
   kycData: storeKycDetailsReducer,
   editKycData: editKycDetailsReducer,
@@ -25,7 +27,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  whitelist: ['userInfo', 'loginData', 'kycData', 'editKycData']
+  whitelist: ['userInfo', 'loginData', 'kycData', 'editKycData','updateUserData']
 }
 const pReducer = persistReducer(persistConfig, rootReducer)
 

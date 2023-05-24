@@ -107,6 +107,7 @@ export default function VerifyAddress() {
                                           color: "#fff",
                                         },
                                       })
+                                      handleNavigate();
                                 } else {
                                     toast.error("Please check entered details!",{
                                         position: "top-right",
@@ -161,7 +162,7 @@ export default function VerifyAddress() {
             setGridxsMain(1)
             setGridxsSmall(12)
         }
-        handleNavigate()
+        // handleNavigate()
     }, [data, userKycData])
     console.log(userData)
     return (

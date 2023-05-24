@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS , LOGIN_REQUEST , LOGIN_FAILED  , USER_EMAIL_SUCCESS , USER_EMAIL_FAILED , USER_EMAIL_REQUEST} from "../constants/LoginConstants"
+import {UPDATE_LOGIN_REQUEST, UPDATE_LOGIN_SUCCESS, UPDATE_LOGIN_FAILED, LOGIN_SUCCESS , LOGIN_REQUEST , LOGIN_FAILED  , USER_EMAIL_SUCCESS , USER_EMAIL_FAILED , USER_EMAIL_REQUEST} from "../constants/LoginConstants"
 
 const initialState = {
     userData: [],
@@ -15,6 +15,20 @@ export const userDataReducer = (state = initialState, { type, payload }) => {
             return { ...state, userData: payload }
 
         case LOGIN_FAILED:
+            return { ...state, error: payload }
+
+        default: return state
+    }
+  };
+export const updateUserDataReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case UPDATE_LOGIN_REQUEST:
+            return { ...state }
+
+        case UPDATE_LOGIN_SUCCESS:
+            return { ...state, userData: payload }
+
+        case UPDATE_LOGIN_FAILED:
             return { ...state, error: payload }
 
         default: return state

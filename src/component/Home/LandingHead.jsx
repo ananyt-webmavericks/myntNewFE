@@ -34,7 +34,7 @@ export default function LandingHead() {
                             onClick={localStorage.getItem('access_token') ? ()=> navigate('/dashboard'): () => navigate('/get-started')} className="getStarted-landing-btn">
                             Get Started
                         </Button>
-                        <Typography className="subhead-description" style={{ fontWeight: "bold" }}>
+                        <Typography className="subhead-description" style={{ fontWeight: "bold", zIndex: 100 }}>
                             Are you a founder?
                             <span
                                 className="test-script-bg"

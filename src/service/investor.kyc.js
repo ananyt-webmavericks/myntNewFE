@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Base_Url } from "../Utils/Configurable";
+import { authAxios } from "./Auth-header";
 
 
 const notify = (data) => {
@@ -124,6 +125,21 @@ const EditBankDetails = async (data) => {
     }
 
 }
+const UpdateInvestorKyc = async (data) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/investor-kyc/update-investor-Kyc`,data);
+        console.log(response.data)
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log("data not found !!")
+        }
+        return error;
+    }
+
+}
 const services = {
     VerifyKycPan,
     VerifyKycBank,
@@ -131,7 +147,8 @@ const services = {
     UpdateAddress,
     getInvestorKycData,
     verifyAadharKyc,
-    EditBankDetails
+    EditBankDetails,
+    UpdateInvestorKyc
 };
 
 export default services
