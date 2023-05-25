@@ -436,11 +436,24 @@ export default function LiveDetailsMain() {
                 filter: `blur(${blurAmount}px)`,
               }}
             >
-              <iframe
+              {/* <iframe
                 src={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
-                style={{width:'500px', height:'500px'}}
+                style={{ width: "500px", height: "500px" }}
                 frameBorder="0"
-              ></iframe>
+              ></iframe> */}
+              <object
+                data={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
+                type="application/pdf"
+                width="800px"
+                height="1000px"
+              >
+                <p>
+                  Alternative text - include a link{" "}
+                  <a href={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}>
+                    to the PDF!
+                  </a>
+                </p>
+              </object>
               {/* <img
                 src={FirstImage}
                 height={gridxsFirst === 1 ? "193" : "592"}
