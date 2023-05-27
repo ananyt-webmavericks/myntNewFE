@@ -15,14 +15,15 @@ export default function DealsFaqs({ faqData, companyData }) {
                 {
                     faqData.length > 0
                         ? faqData?.map((item, index) => <div key={index} style={{ marginTop: '2em' }}>
-                            <Accordion expanded={expanded === `panel${index + 1}`} onChange={handleChange(`panel${index + 1}`)} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
+                            <Accordion expanded={expanded === `panel${index + 1}`} onChange={handleChange(`panel${index + 1}`)} style={{ boxShadow: 'none', border: '1px solid #D1D1D1', padding:'0px 20px' }}>
                                 <AccordionSummary
+                                style={{padding: 0}}
                                     expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
                                     aria-controls="panel1a-content"
                                     id="panel1a-header"
                                 >
-                                    <div>
-                                        <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
+                                    <div style={{display:'flex',gap:10}}>
+                                        <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>{index + 1}.</span>
                                         <span style={{ fontWeight: 600, fontSize: '16px' }}>
                                             {item.question}
                                         </span>

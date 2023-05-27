@@ -25,6 +25,56 @@ const Highlights = ({ tabChangeFn }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
+  const [isEditLoading, setEditIsLoading] = useState(false);
+  const [isEdit, setIsEdit] = useState(null);
+  const [editHighLight, setEditHighLight] = useState('');
+
+
+  const EditBankFields = (id, index) => {
+    const newList = pitchData.filter(i=>i.id === id)
+    console.log("newList",newList[0].title);
+    setIsEdit(id);
+    setEditHighLight(newList[0].title);
+  };
+
+  const handleSubmit = (id) => {
+    setEditIsLoading(true);
+    console.log("addedFaqs", pitchData);
+    console.log("addedFaqs[0].question", pitchData[0].title);
+    setIsEdit(null);
+
+    const val = {
+      highlight_id: id,
+      title: editHighLight,
+      campaign_id: pitchData[0].campaign_id,
+    };
+    CompanyServices.updateHighlights(val).then((res) => {
+      console.log(res);
+      if (res.status === 200 || res.status === 201) {
+        getHighLights();
+        setEditIsLoading(false);
+        toast.success("FAQ updated successfully!", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "green",
+            color: "#fff",
+          },
+        });
+      } else {
+        setEditIsLoading(false);
+
+        toast.error("Something went wrong, please try again later", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "red",
+            color: "#fff",
+          },
+        });
+      }
+    });
+  };
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -58,7 +108,7 @@ const Highlights = ({ tabChangeFn }) => {
           formik.handleReset();
           setTimeout(() => {
             if (isSaveClicked) {
-              navigate("/dashboard-founder");
+              navigate("/dashboard-founder/e-signin");
             } else {
               tabChangeFn(0, 5);
             }
@@ -81,6 +131,7 @@ const Highlights = ({ tabChangeFn }) => {
   };
 
   useEffect(() => {
+    
     return getHighLights();
   }, []);
 
@@ -303,7 +354,66 @@ const Highlights = ({ tabChangeFn }) => {
 
       <div>
         {pitchData?.map((item, index) => (
-          <input value={item.title} className="inp-enter-name" />
+          
+          <div style={{display:'flex' ,gap: 15, alignItems:'center'}}>
+          {isEdit ===item.id?<input  value={editHighLight} onChange={(e)=>setEditHighLight(e.target.value)} className="inp-enter-name" />:<input  value={item.title} className="inp-enter-name" />}
+          {isEdit===item.id ? (
+                <button
+                  onClick={() => {
+                    handleSubmit(item.id);
+                  }}
+                  style={{
+                    right: 100,
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    border: "0px solid",
+                    background: "black",
+                    height: "30px",
+                    color: "white",
+                  }}
+                >
+                  {isEditLoading ? (
+                    <CircularProgress
+                      style={{
+                        color: "White",
+                        fontSize: 10,
+                        width: 20,
+                        height: 20,
+                      }}
+                    />
+                  ) : (
+                    "Save"
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    EditBankFields(item.id, index);
+                  }}
+                  style={{
+                    right: 100,
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    border: "0px solid",
+                    background: "black",
+                    height: "30px",
+                    color: "white",
+                  }}
+                >
+                  {isEditLoading ? (
+                    <CircularProgress
+                      style={{
+                        color: "White",
+                        fontSize: 10,
+                        width: 20,
+                        height: 20,
+                      }}
+                    />
+                  ) : (
+                    "Edit"
+                  )}
+                </button>)}
+          </div>
         ))}
       </div>
     </Box>

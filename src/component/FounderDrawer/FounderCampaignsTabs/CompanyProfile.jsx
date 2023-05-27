@@ -175,7 +175,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
         });
         setTimeout(() => {
           if (isSaveClicked) {
-            navigate("/dashboard-founder");
+            navigate("/dashboard-founder/e-signin");
           } else {
             tabChangeFn(0, 1);
           }

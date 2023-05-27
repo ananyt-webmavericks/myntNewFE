@@ -47,7 +47,9 @@ const Networks = () => {
                 <span> Perform </span>
             </Typography>
 
-            <Grid item xs={6} md={3}>
+            <Grid item 
+            // xs={6} md={3}
+            >
                 <Box
                     sx={{
                         p: 2,

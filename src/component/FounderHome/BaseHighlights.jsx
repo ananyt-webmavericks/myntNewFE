@@ -17,7 +17,7 @@ const BaseHighlights = () => {
             </div>
 
 
-            <Grid item xs={6} md={3}>
+            <Grid item xs={6} md={3} style={{marginTop: 20}}>
                 <Box
                     sx={{
                         p: 2,

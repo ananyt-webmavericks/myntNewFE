@@ -22,7 +22,9 @@ const FundRaising = () => {
         Secure funding on terms tailored to your company's unique requirements.
       </Typography>
 
-      <Grid item xs={6} md={3}>
+      <Grid item 
+      // xs={6} md={3}
+      >
         <Box
           sx={{
             p: 2,

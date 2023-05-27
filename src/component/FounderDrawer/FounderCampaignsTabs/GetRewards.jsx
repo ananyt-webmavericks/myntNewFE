@@ -19,8 +19,77 @@ const GetRewards = ({ tabChangeFn }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
+  const [isEditLoading, setEditIsLoading] = useState(false);
+  const [isEdit, setIsEdit] = useState(null);
+  const [editProductName, setEditProductName] = useState("");
+  const [editAmount, setEditAmount] = useState("");
+  const [editDiscount, setEditDiscount] = useState("");
 
   const [count, setCount] = useState(0);
+
+  const EditBankFields = (id, index) => {
+    const newList = rewardData.filter((i) => i.id === id);
+    console.log("newList", newList);
+    setIsEdit(id);
+    setEditProductName(newList[0].product_name);
+    setEditAmount(newList[0].amount);
+    setEditDiscount(newList[0].discounted_price);
+  };
+
+  const handleSubmit = (id) => {
+    setEditIsLoading(true);
+    setIsEdit(null);
+
+    const val = {
+      reward_id: id,
+      product_name: editProductName,
+      discounted_price: editDiscount,
+      campaign_id: rewardData[0].campaign_id,
+    };
+    CompanyServices.updateReward(val).then((res) => {
+      console.log(res);
+      if (res.status === 200 || res.status === 201) {
+        // CompanyServices.getCampaignsFaqs(
+        //   sessionStorage.getItem("campaign_id")
+        // ).then((res) => {
+        //   console.log(res);
+        //   if (res.status === 200 || res.status === 201) {
+        //     const newList = res.data.filter((i) => i.id === id);
+        //     setNewData(newList);
+        //   }
+        // });
+        CompanyServices.getRewardByCampaingID(
+          sessionStorage.getItem("campaign_id")
+        ).then((res) => {
+          console.log(res);
+          if (res.status === 200 || res.status === 201) {
+            setRewardData(res.data);
+          }
+        });
+        setEditIsLoading(false);
+        toast.success("FAQ updated successfully!", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "green",
+            color: "#fff",
+          },
+        });
+      } else {
+        setEditIsLoading(false);
+
+        toast.error("Something went wrong, please try again later", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "red",
+            color: "#fff",
+          },
+        });
+      }
+    });
+  };
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -53,7 +122,7 @@ const GetRewards = ({ tabChangeFn }) => {
           formik.handleReset();
           setTimeout(() => {
             if (isSaveClicked) {
-              navigate("/dashboard-founder");
+              navigate("/dashboard-founder/e-signin");
             } else {
               tabChangeFn(0, 6);
             }
@@ -73,7 +142,7 @@ const GetRewards = ({ tabChangeFn }) => {
       });
     },
   });
-  console.log(rewardData);
+  console.log("rewardData", rewardData);
   useEffect(() => {
     CompanyServices.getRewardByCampaingID(
       sessionStorage.getItem("campaign_id")
@@ -209,32 +278,117 @@ const GetRewards = ({ tabChangeFn }) => {
 
           {rewardData?.map((item, index) => (
             <div key={index}>
-              <div
-                style={{
-                  textAlign: "left",
-                  fontFamily: "poppins",
-                  fontSize: "16px",
-                }}
-              >
-                Reward {index + 1}
+              <div style={{ display: "flex", alignItems: "center", gap: 15 }}>
+                <div
+                  style={{
+                    textAlign: "left",
+                    fontFamily: "poppins",
+                    fontSize: "16px",
+                  }}
+                >
+                  Reward {index + 1}
+                </div>
+                {isEdit === item.id ? (
+                  <button
+                    onClick={() => {
+                      handleSubmit(item.id);
+                    }}
+                    style={{
+                      right: 100,
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                      border: "0px solid",
+                      background: "black",
+                      height: "30px",
+                      color: "white",
+                    }}
+                  >
+                    {isEditLoading ? (
+                      <CircularProgress
+                        style={{
+                          color: "White",
+                          fontSize: 10,
+                          width: 20,
+                          height: 20,
+                        }}
+                      />
+                    ) : (
+                      "Save"
+                    )}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      EditBankFields(item.id, index);
+                    }}
+                    style={{
+                      right: 100,
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                      border: "0px solid",
+                      background: "black",
+                      height: "30px",
+                      color: "white",
+                    }}
+                  >
+                    {isEditLoading ? (
+                      <CircularProgress
+                        style={{
+                          color: "White",
+                          fontSize: 10,
+                          width: 20,
+                          height: 20,
+                        }}
+                      />
+                    ) : (
+                      "Edit"
+                    )}
+                  </button>
+                )}
               </div>
-              <input
-                value={item.product_name}
-                type="text"
-                className="get-reward-inputs"
-              />
+              {isEdit === item.id ? (
+                <input
+                  value={editProductName}
+                  onChange={(e) => setEditProductName(e.target.value)}
+                  type="text"
+                  className="get-reward-inputs"
+                />
+              ) : (
+                <input
+                  value={item.product_name}
+                  type="text"
+                  className="get-reward-inputs"
+                />
+              )}
 
-              <input
-                value={item.amount}
-                type="text"
-                className="get-reward-inputs"
-              />
-
-              <input
-                value={item.discounted_price}
-                type="text"
-                className="get-reward-inputs"
-              />
+              {isEdit === item.id ? (
+                <input
+                  value={editAmount}
+                  onChange={(e) => setEditAmount(e.target.value)}
+                  type="text"
+                  className="get-reward-inputs"
+                />
+              ) : (
+                <input
+                  value={item.amount}
+                  type="text"
+                  className="get-reward-inputs"
+                />
+              )}
+              {isEdit === item.id ? (
+                <input
+                  value={editDiscount}
+                  onChange={(e) => setEditDiscount(e.target.value)}
+                  type="text"
+                  className="get-reward-inputs"
+                />
+              ) : (
+                <input
+                  value={item.discounted_price}
+                  type="text"
+                  className="get-reward-inputs"
+                />
+              )}
 
               {/* <hr /> */}
             </div>

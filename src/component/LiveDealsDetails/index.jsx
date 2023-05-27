@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, CardContent, Grid } from "@mui/material";
+import { Button, Card, CardContent, Grid, Link } from "@mui/material";
 import logo from "../../images/investments/logo1.png";
 import Share from "../../images/assets/share.png";
 import Arrow from "../../images/assets/yellowArrow.png";
@@ -35,6 +35,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useSelector } from "react-redux";
 import UserServices from "../../service/UserService";
 import CompanyServices from "../../service/Company";
@@ -42,11 +43,12 @@ import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
 import { Highlight } from "@mui/icons-material";
 const actions = [
-  { icon: <FacebookRoundedIcon />, name: "Facebook" },
-  { icon: <InstagramIcon />, name: "Instagram" },
-  { icon: <TwitterIcon />, name: "Twitter" },
-  { icon: <WhatsAppIcon />, name: "Whatsapp" },
-  { icon: <TelegramIcon />, name: "Telegram" },
+  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://www.facebook.com/sharer.php?u=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig"><FacebookRoundedIcon style={{marginTop:8}}/></Link>, name: "Facebook" },
+  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://www.instagram.com/sharer.php?u=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig"><InstagramIcon style={{marginTop:8}} /></Link>, name: "Instagram" },
+  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://twitter.com/intent/tweet?url=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig&text=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React&via=dannysasse"><TwitterIcon style={{marginTop:8}} /></Link>, name: "Twitter" },
+  { icon: <Link style={{color: 'grey'}} target="_blank" href="whatsapp://send?text=<%= request.original_url %>"><WhatsAppIcon style={{marginTop:8}} /></Link>, name: "Whatsapp" },
+  // { icon: <Link style={{color: 'grey'}} target="_blank" href=""><TelegramIcon style={{marginTop:8}} /></Link>, name: "Telegram" },
+  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://www.linkedin.com/shareArticle?url=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig&title=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React"><LinkedInIcon  style={{marginTop:8}} /></Link>, name: "Telegram" },
 ];
 
 const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
@@ -194,6 +196,7 @@ export default function LiveDetailsMain() {
                 {companyData.product_description}
               </span>
             </div>
+            {console.log("companyDatacompanyData",companyData)}
             <div className="footer-card-section live-details">
               <div className="numbers-investors live-details">
                 <span
@@ -267,6 +270,7 @@ export default function LiveDetailsMain() {
                   "& .MuiFab-primary": {
                     backgroundColor: "#E3E3E3",
                     color: "black",
+                    borderRadius: 50
                   },
                   "& .MuiFab-primary:hover": {
                     backgroundColor: "#F0C127",
@@ -280,6 +284,9 @@ export default function LiveDetailsMain() {
               >
                 {actions.map((action) => (
                   <SpeedDialAction
+                  classes={{".MuiFab-circular":{
+                    borderRadius: 50
+                  }}}
                     key={action.name}
                     icon={action.icon}
                     tooltipTitle={action.name}

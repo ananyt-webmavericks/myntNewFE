@@ -10,6 +10,7 @@ import userServices from "../../service/UserService";
 import { useNavigate } from "react-router-dom";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import { toast } from "react-hot-toast";
+import { updateUserEmailAction } from "../../Redux/actions/auth";
 
 export default function MyProfileMain() {
   const _ = require("lodash");
@@ -19,7 +20,7 @@ export default function MyProfileMain() {
   const [isEmailEdit, setEmailEdit] = useState(false);
   const [isLinkedInEdit, setLinkedInEdit] = useState(false);
   const [email, setEmail] = useState();
-  const [linkedIn, setLinkedIn] = useState();
+  const [linkedIn, setLinkedIn] = useState('');
   const [data, setData] = useState({});
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +35,7 @@ export default function MyProfileMain() {
   };
   const EditLinkedIn = () => {
     setLinkedInEdit(true);
-    setLinkedIn(newData ? newData.linkedin_profile : data.linkedin_profile);
+    setLinkedIn(newData ? newData : data.linkedin_profile);
   };
 
   useEffect(() => {
@@ -44,6 +45,7 @@ export default function MyProfileMain() {
       services.getInvestorKycData(userData?.id).then((response) => {
         dispatch(storeKycDetailsAction(response.data));
         setData(response.data);
+        setLinkedIn(response.data.linkedin_profile)
       });
     }
   }, [userData]);
@@ -53,8 +55,8 @@ export default function MyProfileMain() {
       setIsLoading(true);
       const val = {
         user_id: userData?.id,
-        profile_image: "",
-        social_login: false,
+        // profile_image: "",
+        // social_login: false,
         email: email,
         //   bank_name: bankName,
         //   bank_account: bankAccount,
@@ -63,34 +65,39 @@ export default function MyProfileMain() {
       try {
         userServices.UpdateUser(val).then((response) => {
           console.log("update user email", response);
+          console.log("update user response.data.data", response.data.data);
+          console.log("update user response.data.data.email", response.data.data.email);
 
           if (response.status === 201 || response.status === 200) {
-            userServices.getUserById(userData?.id).then((response) => {
-              if (response.status === 200) {
-                // dispatch(storeKycDetailsAction(response.data));
-                toast.success("Email updated successful!", {
-                  position: "top-right",
-                  style: {
-                    borderRadius: "3px",
-                    background: "green",
-                    color: "#fff",
-                  },
-                });
-                //   setNewData(val)
-                setIsLoading(false);
-                setEmailEdit(false);
-              } else {
-                toast.error("Please check entered email!", {
-                  position: "top-right",
-                  style: {
-                    borderRadius: "3px",
-                    background: "red",
-                    color: "#fff",
-                  },
-                });
-                setIsLoading(false);
-              }
-            });
+            dispatch(updateUserEmailAction(response.data.data.email))
+                        localStorage.setItem('loginType', 'existed')
+                        navigate('/otp-verification')
+            // userServices.getUserById(userData?.id).then((response) => {
+            //   if (response.status === 200) {
+            //     // dispatch(storeKycDetailsAction(response.data));
+            //     toast.success("Email updated successful!", {
+            //       position: "top-right",
+            //       style: {
+            //         borderRadius: "3px",
+            //         background: "green",
+            //         color: "#fff",
+            //       },
+            //     });
+            //     //   setNewData(val)
+            //     setIsLoading(false);
+            //     setEmailEdit(false);
+            //   } else {
+            //     toast.error("Please check entered email!", {
+            //       position: "top-right",
+            //       style: {
+            //         borderRadius: "3px",
+            //         background: "red",
+            //         color: "#fff",
+            //       },
+            //     });
+            //     setIsLoading(false);
+            //   }
+            // });
           } else {
             setIsLoading(false);
             console.log("error");
@@ -144,7 +151,7 @@ export default function MyProfileMain() {
                   color: "#fff",
                 },
               });
-              setNewData(val);
+              setNewData(linkedIn);
               setLinkedInLoading(false);
               setLinkedInEdit(false);
             } else {
@@ -168,9 +175,6 @@ export default function MyProfileMain() {
       console.log("Try after few minutes");
     }
   };
-
-  console.log("linkedin data", data?.user_id);
-  console.log("Email userData", userData);
 
   const handleNavigate = () => {
     localStorage.setItem(

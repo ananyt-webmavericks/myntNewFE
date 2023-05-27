@@ -38,7 +38,7 @@ const DashBoardESign = () => {
             <div style={{ display: 'flex', position: 'relative' }}>
                 {location.includes('/dashboard') && <DrawerFounder />}
                 <div className="dashboard-container">
-                    <Container  maxWidth="lg">
+                    <Container style={{marginBottom:30}}  maxWidth="lg">
                         <div>
                             {/* <Typography className="raise-with-mint">E-Sing Document</Typography> */}
                             <Typography className="raise-with-mint">Raise with Mynt</Typography>
@@ -111,7 +111,7 @@ const DashBoardESign = () => {
                                                     <Box className="setCornerIcon">
                                                         <div style={{ display: 'flex', justifyContent: 'space-between', textAlign: "center", width: "100%", padding: "10px 20px" }}>
                                                             <img src={CopanyLogo} alt="not found" />
-                                                            <div style={{ height: "30px", width: "100px", backgroundColor: "yellow", textAlign: "center", marginTop: "15px", borderRLeft: "50%", borderRight: "50%", borderRadius: "1rem", zIndex: "444499" }}>CSOP</div>
+                                                            <div style={{ display:'flex',alignItems:'center',justifyContent:'center',height: "30px", width: "100px", backgroundColor: "yellow", textAlign: "center", marginTop: "15px", borderRLeft: "50%", borderRight: "50%", borderRadius: "1rem", zIndex: "444499" }}>CSOP</div>
                                                         </div>
                                                     </Box>
                                                     <b className="settleindex" style={{ marginLeft: "3rem", zIndex: "90000000 !important" }}>Settl</b>
@@ -140,6 +140,7 @@ const DashBoardESign = () => {
                                                         <span>Min invest</span>
                                                     </div>
                                                 </Box>
+                                                <Button style={{border: '2px solid green', borderRadius: 50, background: 'trasparent',color: 'green', alignSelf:'center'}}>Under Review</Button>
                                             </div>
                                         </div>
                                     </Box>
@@ -147,12 +148,12 @@ const DashBoardESign = () => {
                                 }
                             </Box>
                         </Grid>
-                        <div style={{ fontWeight: 'bold', marginTop: '3rem', fontSize: "16px", fontFamily: 'poppins' }}>
+                        {/* <div style={{ fontWeight: 'bold', marginTop: '3rem', fontSize: "16px", fontFamily: 'poppins' }}>
                             <Typography>Analytics</Typography><br />
                             <Box className="AnalyticsBox">
                                 <Typography>Analytics</Typography>
                             </Box>
-                        </div>
+                        </div> */}
 
                     </Container>
 

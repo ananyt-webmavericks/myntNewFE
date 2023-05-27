@@ -76,6 +76,19 @@ const addPeopleToCompany = async (peopleData) => {
         return error;
     }
 }
+const updatePeople = async (peopleData) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/people/manage`, peopleData);
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log("Data not found !!")
+        }
+        return error;
+    }
+}
 
 const addFAQsForCompany = async (faqsData) => {
 
@@ -109,6 +122,17 @@ const addFAQ = async (faqData) => {
 
     try {
         const response = await authAxios.post(`${Base_Url}/api/faqs/manage`, faqData);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+const updateFAQ = async (faqData) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/faqs/manage`, faqData);
         return response;
     }
     catch (error) {
@@ -182,11 +206,33 @@ const createReward = async (rewardData) => {
         return error;
     }
 }
+const updateReward = async (rewardData) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/rewards/manage`, rewardData);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
 
 const createHighlights = async (rewardData) => {
 
     try {
         const response = await authAxios.post(`${Base_Url}/api/highlights/manage`, rewardData);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+const updateHighlights = async (rewardData) => {
+
+    try {
+        const response = await authAxios.patch(`${Base_Url}/api/highlights/manage`, rewardData);
         return response;
     }
     catch (error) {
@@ -344,19 +390,23 @@ const CompanyServices = {
     createCampaign,
     updateCampaign,
     addPeopleToCompany,
+    updatePeople,
     addPress,
     addFAQ,
+    updateFAQ,
     getCampaignsFaqs,
     getCompanyDetailsByFounderId,
     uploadCompanyDocs,
     getUploadedDocs,
     updatePress,
     createReward,
+    updateReward,
     getRewardByCampaingID,
     getPressByCompanyID,
     getAllCampaignOfCompany,
     getPeopleByCompanyId,
     createHighlights,
+    updateHighlights,
     getHighlights,
 
     getAllDealTypes,

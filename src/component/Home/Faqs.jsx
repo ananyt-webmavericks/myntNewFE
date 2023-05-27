@@ -1,117 +1,217 @@
 import React from "react";
-import { AccordionDetails, Accordion, AccordionSummary, Typography, Button } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+  AccordionDetails,
+  Accordion,
+  AccordionSummary,
+  Typography,
+  Button,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
 export default function Faqs() {
-    const [expanded, setExpanded] = React.useState(false);
-    const navigate = useNavigate()
-    const handleChange = (panel) => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
-    };
-    return (
-        <>
-            <div style={{ marginBottom: '2em' }}>
-                <div className="investor-home-heading">FAQS</div>
-                <span className="investors-subheading">Mynt University is the ultimate source for answers to the most commonly asked questions.</span>
-                <div style={{ marginTop: '2em' }}>
-                    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
-                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>01.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>How can I sign up on Mynt</span>
-                            </div>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                Startup investing is the process of investing in a business which is in its nascent stage. For your Subscription, you receive equity, a piece of ownership, and a cut of any future earnings.
-
-                                <br /> <br /> Early startup Subscription has the potential to be both profitable and unsuccessful. If the startup fails, your Subscription is lost. If it succeeds, you will get a good return on your Subscription.
-
-                                <br /> <br />Startups typically make an early effort to raise capital. When the startup is farther along and is in its growth phase, Subscriptions can also be raised.
-
-                                <br /> <br /> It can be risky to invest in startups. But many people nowadays seem willing to take this chance. When looking at the bright side, this risk may be quite valuable.
-
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                </div>
-                <div style={{ marginTop: '1.5em' }}>
-                    <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                        >
-                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
-                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>02.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What are the required documents for completing the KYC process during sign-up?</span>
-                            </div>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                - There is enormous growth potential. It is risky, but it may also be rewarding <br /> <br />
-                                - Startup investing is a wonderful idea since it encourages you to support an appealing idea that you want to see in the world and by investing you instill a sense of belief in a novel idea. <br /> <br />
-                                - It promotes the growth of deeper interpersonal bonds. You feel more like a part of the startup when you own stock in it. <br /> <br />
-                                - Seeing a concept come to reality while having a hand in it brings a sensation that a lot of people enjoy having.
-
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                </div>
-                <div style={{ marginTop: '1.5em' }}>
-                    <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
-                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>03.</span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What are the advantages of enrolling in startups?</span>
-                            </div>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                Equity Shares, Compulsorily Convertible Preference Shares, Optionally Convertible Preference Shares, and Compulsorily Convertible Debentures are the instruments that are frequently used for startup equity fundraising.
-
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                </div>
-                <div style={{ marginTop: '1.5em', marginBottom: '40px' }}>
-                    <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
-                        <AccordionSummary
-
-                            expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                        >
-                            <div style={{ marginTop: '0.7em', marginBottom: '0.7em' }}>
-                                <span style={{ color: '#EBB429', fontWeight: 600, fontSize: '16px' }}>04. </span>
-                                <span style={{ fontWeight: 600, fontSize: '16px' }}>What are the different types of instruments available for enrollment on Mynt?</span>
-                            </div>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                - Risk Inherent in Startup Subscriptions: <br />
-                                Subscriptions in startups are highly risky. Startups are subject to significant operational and financial risks. While desired returns in every Subscription situation ought to reflect the perceived level of risk, they might be insufficient to make up for the risks incurred by an investor or a fund. The loss of an investor's whole Subscription is possible and likely. The timing of the return on Subscription is also unknown.
-                                <br /><br />
-                                - Dynamic Economic Conditions:<br />
-                                The state of the economy as a whole has an impact on any Subscription project's performance to some level. A Startup or a Fund may depend on external credit markets, stock markets, and other economic systems to achieve its goals, but these systems may be inaccessible, inactive, or unavailable, which can have a negative impact on their operations and profitability.
-                                <br /><br />
-                                - Absence of Investor Control:<br />
-                                Investors in a startup will not have any say in the management, disposition, or other realization of any Subscription made by the relevant Fund, or in any other aspect of the startup's operations
-
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-
-                </div>
-                {/* <div style={{ marginTop: '2em' }}>
+  const [expanded, setExpanded] = React.useState(false);
+  const navigate = useNavigate();
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+  return (
+    <>
+      <div style={{ marginBottom: "2em" }}>
+        <div className="investor-home-heading">FAQS</div>
+        <span className="investors-subheading">
+          Mynt University is the ultimate source for answers to the most
+          commonly asked questions.
+        </span>
+        <div style={{ marginTop: "2em" }}>
+          <Accordion
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
+            style={{ boxShadow: "none", border: "1px solid #D1D1D1" }}
+          >
+            <AccordionSummary
+              style={{ display: "flex", padding: "0px 16px" }}
+              expandIcon={<ExpandMoreIcon style={{ color: "#AB7905" }} />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <div style={{ marginTop: "0.7em", marginBottom: "0.7em" }}>
+                <span
+                  style={{
+                    color: "#EBB429",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                  }}
+                >
+                  01.
+                </span>
+                <span style={{ fontWeight: 600, fontSize: "16px" }}>
+                  How can I sign up on Mynt
+                </span>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography style={{ textAlign: "start" }}>
+                Startup investing is the process of investing in a business
+                which is in its nascent stage. For your Subscription, you
+                receive equity, a piece of ownership, and a cut of any future
+                earnings.
+                <br /> <br /> Early startup Subscription has the potential to be
+                both profitable and unsuccessful. If the startup fails, your
+                Subscription is lost. If it succeeds, you will get a good return
+                on your Subscription.
+                <br /> <br />
+                Startups typically make an early effort to raise capital. When
+                the startup is farther along and is in its growth phase,
+                Subscriptions can also be raised.
+                <br /> <br /> It can be risky to invest in startups. But many
+                people nowadays seem willing to take this chance. When looking
+                at the bright side, this risk may be quite valuable.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+        <div style={{ marginTop: "1.5em" }}>
+          <Accordion
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}
+            style={{ boxShadow: "none", border: "1px solid #D1D1D1" }}
+          >
+            <AccordionSummary
+              style={{ display: "flex", padding: "0px 16px" }}
+              expandIcon={<ExpandMoreIcon style={{ color: "#AB7905" }} />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <div style={{ marginTop: "0.7em", marginBottom: "0.7em" }}>
+                <span
+                  style={{
+                    color: "#EBB429",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                  }}
+                >
+                  02.
+                </span>
+                <span style={{ fontWeight: 600, fontSize: "16px" }}>
+                  What are the required documents for completing the KYC process
+                  during sign-up?
+                </span>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography style={{ textAlign: "start" }}>
+                - There is enormous growth potential. It is risky, but it may
+                also be rewarding <br /> <br />
+                - Startup investing is a wonderful idea since it encourages you
+                to support an appealing idea that you want to see in the world
+                and by investing you instill a sense of belief in a novel idea.{" "}
+                <br /> <br />
+                - It promotes the growth of deeper interpersonal bonds. You feel
+                more like a part of the startup when you own stock in it. <br />{" "}
+                <br />- Seeing a concept come to reality while having a hand in
+                it brings a sensation that a lot of people enjoy having.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+        <div style={{ marginTop: "1.5em" }}>
+          <Accordion
+            expanded={expanded === "panel3"}
+            onChange={handleChange("panel3")}
+            style={{ boxShadow: "none", border: "1px solid #D1D1D1" }}
+          >
+            <AccordionSummary
+              style={{ display: "flex", padding: "0px 16px" }}
+              expandIcon={<ExpandMoreIcon style={{ color: "#AB7905" }} />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <div style={{ marginTop: "0.7em", marginBottom: "0.7em" }}>
+                <span
+                  style={{
+                    color: "#EBB429",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                  }}
+                >
+                  03.
+                </span>
+                <span style={{ fontWeight: 600, fontSize: "16px" }}>
+                  What are the advantages of enrolling in startups?
+                </span>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography style={{ textAlign: "start" }}>
+                Equity Shares, Compulsorily Convertible Preference Shares,
+                Optionally Convertible Preference Shares, and Compulsorily
+                Convertible Debentures are the instruments that are frequently
+                used for startup equity fundraising.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+        <div style={{ marginTop: "1.5em", marginBottom: "40px" }}>
+          <Accordion
+            expanded={expanded === "panel4"}
+            onChange={handleChange("panel4")}
+            style={{ boxShadow: "none", border: "1px solid #D1D1D1" }}
+          >
+            <AccordionSummary
+              style={{ display: "flex", padding: "0px 16px" }}
+              expandIcon={<ExpandMoreIcon style={{ color: "#AB7905" }} />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <div style={{ marginTop: "0.7em", marginBottom: "0.7em" }}>
+                <span
+                  style={{
+                    color: "#EBB429",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                  }}
+                >
+                  04.{" "}
+                </span>
+                <span style={{ fontWeight: 600, fontSize: "16px" }}>
+                  What are the different types of instruments available for
+                  enrollment on Mynt?
+                </span>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography style={{ textAlign: "start" }}>
+                - Risk Inherent in Startup Subscriptions: <br />
+                Subscriptions in startups are highly risky. Startups are subject
+                to significant operational and financial risks. While desired
+                returns in every Subscription situation ought to reflect the
+                perceived level of risk, they might be insufficient to make up
+                for the risks incurred by an investor or a fund. The loss of an
+                investor's whole Subscription is possible and likely. The timing
+                of the return on Subscription is also unknown.
+                <br />
+                <br />
+                - Dynamic Economic Conditions:
+                <br />
+                The state of the economy as a whole has an impact on any
+                Subscription project's performance to some level. A Startup or a
+                Fund may depend on external credit markets, stock markets, and
+                other economic systems to achieve its goals, but these systems
+                may be inaccessible, inactive, or unavailable, which can have a
+                negative impact on their operations and profitability.
+                <br />
+                <br />
+                - Absence of Investor Control:
+                <br />
+                Investors in a startup will not have any say in the management,
+                disposition, or other realization of any Subscription made by
+                the relevant Fund, or in any other aspect of the startup's
+                operations
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+        {/* <div style={{ marginTop: '2em' }}>
                     <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} style={{ boxShadow: 'none', border: '1px solid #D1D1D1' }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />}
@@ -142,10 +242,16 @@ export default function Faqs() {
                         </AccordionDetails>
                     </Accordion>
                 </div> */}
-                <div className="get-started-btn-investor">
-                    <Button variant="contained" onClick={() => navigate('/myntUniversity/faqs')} className="getStarted-landing-btn">Need More Help</Button>
-                </div>
-            </div>
-        </>
-    )
+        <div className="get-started-btn-investor">
+          <Button
+            variant="contained"
+            onClick={() => navigate("/myntUniversity/faqs")}
+            className="getStarted-landing-btn"
+          >
+            Need More Help
+          </Button>
+        </div>
+      </div>
+    </>
+  );
 }

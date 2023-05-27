@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@material-ui/core";
 import "../../../../css/FounderDrawer/Dashboard/PeopleTabs.css";
 import { useFormik } from "formik";
@@ -11,11 +11,10 @@ import { authAxios } from "../../../../service/Auth-header";
 import { Base_Url } from "../../../../Utils/Configurable";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
+const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, handleClose }) => {
   const navigate = useNavigate();
 
   const { userData } = useSelector((state) => state.loginData);
-
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
@@ -53,17 +52,19 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
     }
   };
 
+  
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      position: "",
-      facebook_link: "",
-      instagram_link: "",
-      linked_in_link: "",
-      description: "",
-      type: "TEAM",
-      profile_image: "",
+      name: isTeamEdit && teamData ? teamData.name : "",
+      position: isTeamEdit && teamData ? teamData.position : "",
+      facebook_link: isTeamEdit && teamData ? teamData.facebook_link : "",
+      instagram_link: isTeamEdit && teamData ? teamData.instagram_link : "",
+      linked_in_link: isTeamEdit && teamData ? teamData.linked_in_link : "",
+      description: isTeamEdit && teamData ? teamData.description : "",
+      type:isTeamEdit && teamData ?  teamData.type : "",
+      profile_image: isTeamEdit && teamData ? teamData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
     },
 
@@ -71,7 +72,25 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log(values);
+      if(isTeamEdit){
+        CompanyServices.updatePeople({...values, people_id:teamData.id}).then((res) => {
+          if (res.status === 200 || 201) {
+            getPeopleData();
+            handleClose();
+            toast.success("Team member updated to company successfull!", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
+              },
+            });
+            // window.location.reload()
+          }else{
+            console.log("something went wrong");
+          }
+        });
+      }else{
       CompanyServices.addPeopleToCompany(values).then((res) => {
         if (res.status === 200 || 201) {
           setIsLoading(false);
@@ -89,20 +108,26 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
           setPreview(null);
           setTimeout(() => {
             if (isSaveClicked) {
-              navigate("/dashboard-founder");
+              navigate("/dashboard-founder/e-signin");
             } else {
               tabChangeFn(0, 3);
             }
           }, 1000);
         }
-      });
+      });}
     },
   });
+  useEffect(() => {
+    if(teamData?.profile_image){
+      setPreview(teamData?.profile_image)
+    }
+  }, [teamData])
+  
 
   return (
     <>
       <Box
-        sx={{ marginTop: "2rem", width: "90%", marginBottom: "3rem" }}
+        sx={isTeamEdit?{ marginTop: "0px", width: "100%", marginBottom: "0px" }:{marginTop: "2rem", width: "90%", marginBottom: "3rem"}}
         container
         spacing={2}
       >
@@ -264,7 +289,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
           {/* <div className='AddmemberBtnParent'>
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
-          <Box className="BtnSaveAndNext">
+          {!isTeamEdit? <Box className="BtnSaveAndNext">
             <button
               disabled={isLoading === true ? true : false}
               onClick={() => setSavedClicked(true)}
@@ -304,6 +329,30 @@ const TeamMembers = ({ getPeopleData, tabChangeFn }) => {
               )}
             </button>
           </Box>
+          :
+          <Box className="BtnSaveAndNext">
+            <button
+              disabled={isLoading === true ? true : false}
+              // onClick={() => setSavedClicked(true)}
+              type="submit"
+              className="SaveBtn"
+            >
+              {isLoading ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "update"
+              )}
+            </button>
+            
+          </Box>}
+
           {/* <div className="hrline"></div> */}
         </form>
       </Box>

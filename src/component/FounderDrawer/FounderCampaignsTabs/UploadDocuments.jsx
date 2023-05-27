@@ -69,7 +69,7 @@ const UploadDocuments = () => {
         },});
         settoggle((pre) => !pre);
         setSelectedFile([]);
-        navigate("/dashboard-founder");
+        navigate("/dashboard-founder/e-signin");
       } else {
         setIsLoading(false);
 
@@ -166,6 +166,7 @@ const UploadDocuments = () => {
       </div>
 
       <div className="getRewards-btn-parent">
+        <Button className="hightlight-submit-button" style={{color:'White'}}>Submit For Review</Button>
         <Button
           onClick={handleUpload}
           style={{ margin: "20px", color: "white" }}

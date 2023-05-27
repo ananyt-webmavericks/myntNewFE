@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@material-ui/core";
 import "../../../../css/FounderDrawer/Dashboard/PeopleTabs.css";
 import { useSelector } from "react-redux";
@@ -11,7 +11,13 @@ import { authAxios } from "../../../../service/Auth-header";
 import { Base_Url } from "../../../../Utils/Configurable";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const Investors = ({ getPeopleData, tabChangeFn }) => {
+const Investors = ({
+  getPeopleData,
+  tabChangeFn,
+  investorData,
+  isInvestorEdit,
+  handleClose,
+}) => {
   const { userData } = useSelector((state) => state.loginData);
   const navigate = useNavigate();
 
@@ -55,14 +61,19 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      position: "",
-      facebook_link: "",
-      instagram_link: "",
-      linked_in_link: "",
-      description: "",
-      type: "INVESTOR",
-      profile_image: "",
+      name: isInvestorEdit && investorData ? investorData.name : "",
+      position: isInvestorEdit && investorData ? investorData.position : "",
+      facebook_link:
+        isInvestorEdit && investorData ? investorData.facebook_link : "",
+      instagram_link:
+        isInvestorEdit && investorData ? investorData.instagram_link : "",
+      linked_in_link:
+        isInvestorEdit && investorData ? investorData.linked_in_link : "",
+      description:
+        isInvestorEdit && investorData ? investorData.description : "",
+      type: isInvestorEdit && investorData ? investorData.type : "",
+      profile_image:
+        isInvestorEdit && investorData ? investorData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
     },
 
@@ -72,37 +83,70 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
       setIsLoading(true);
 
       console.log(values);
-      CompanyServices.addPeopleToCompany(values).then((res) => {
-        if (res.status === 200 || 201) {
-          setIsLoading(false);
+      if (isInvestorEdit) {
+        CompanyServices.updatePeople({
+          ...values,
+          people_id: investorData.id,
+        }).then((res) => {
+          if (res.status === 200 || 201) {
+            getPeopleData();
+            setIsLoading(false);
+            handleClose();
+            toast.success("Investor updated to company successfull!", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
+              },
+            });
+            // window.location.reload()
+          } else {
+            console.log("something went wrong");
+          }
+        });
+      } else {
+        CompanyServices.addPeopleToCompany(values).then((res) => {
+          if (res.status === 200 || 201) {
+            setIsLoading(false);
 
-          toast.success("Investor added to company successfull!", {
-            position: "top-right",
-            style: {
-              borderRadius: "3px",
-              background: "green",
-              color: "#fff",
-            },
-          });
-          getPeopleData();
-          formik.handleReset();
-          setPreview(null);
-          setTimeout(() => {
-            if (isSaveClicked) {
-              navigate("/dashboard-founder");
-            } else {
-              tabChangeFn(0, 3);
-            }
-          }, 1000);
-        }
-      });
+            toast.success("Investor added to company successfull!", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
+              },
+            });
+            getPeopleData();
+            formik.handleReset();
+            setPreview(null);
+            setTimeout(() => {
+              if (isSaveClicked) {
+                navigate("/dashboard-founder/e-signin");
+              } else {
+                tabChangeFn(0, 3);
+              }
+            }, 1000);
+          }
+        });
+      }
     },
   });
+  useEffect(() => {
+    if (investorData?.profile_image) {
+      setPreview(investorData?.profile_image);
+    }
+  }, [investorData]);
 
   return (
     <>
       <Box
-        sx={{ marginTop: "2rem", width: "90%", marginBottom: "10rem" }}
+        sx={
+          isInvestorEdit
+            ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
+            : { marginTop: "2rem", width: "90%", marginBottom: "10rem" }
+        }
         container
         spacing={2}
       >
@@ -264,46 +308,70 @@ const Investors = ({ getPeopleData, tabChangeFn }) => {
           {/* <div className='AddmemberBtnParent'>
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
-          <Box className="BtnSaveAndNext">
-            <button
-              disabled={isLoading === true ? true : false}
-              onClick={() => setSavedClicked(true)}
-              type="submit"
-              className="SaveBtn"
-            >
-              {isLoading && isSaveClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Save"
-              )}
-            </button>
-            <button
-              disabled={isLoading === true ? true : false}
-              type="submit"
-              onClick={() => setNextClicked(true)}
-              className="NextBtn"
-            >
-              {isLoading && isNextClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Next"
-              )}
-            </button>
-          </Box>
+          {isInvestorEdit === false ? (
+            <Box className="BtnSaveAndNext">
+              <button
+                disabled={isLoading === true ? true : false}
+                onClick={() => setSavedClicked(true)}
+                type="submit"
+                className="SaveBtn"
+              >
+                {isLoading && isSaveClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Save"
+                )}
+              </button>
+              <button
+                disabled={isLoading === true ? true : false}
+                type="submit"
+                onClick={() => setNextClicked(true)}
+                className="NextBtn"
+              >
+                {isLoading && isNextClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Next"
+                )}
+              </button>
+            </Box>
+          ) : (
+            <Box className="BtnSaveAndNext">
+              <button
+                disabled={isLoading === true ? true : false}
+                // onClick={() => setSavedClicked(true)}
+                type="submit"
+                className="SaveBtn"
+              >
+                {isLoading ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "update"
+                )}
+              </button>
+            </Box>
+          )}
           {/* <div className="hrline"></div> */}
         </form>
       </Box>

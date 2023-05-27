@@ -74,7 +74,7 @@ const UpdateUser = async (obj) => {
 const getUserById = async (id) => {
     console.log(id)
     try {
-        const response = await authAxios(`${Base_Url}/api/users/${id}`);
+        const response = await authAxios.get(`${Base_Url}/api/users/${id}`);
         return response;
     }
     catch (error) {

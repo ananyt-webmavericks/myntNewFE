@@ -26,8 +26,14 @@ const FAQS = ({ tabChangeFn }) => {
   const [addedFaqs, setAddedFaqs] = useState([]);
   const [count, setcount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isEditLoading, setEditIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
+  const [isEdit, setIsEdit] = useState(null);
+  const [editQuestion, setEditQuestion] = useState("");
+  const [editAnswer, setEditAnswer] = useState("");
+  const [newData, setNewData] = useState("");
+
   const { userData } = useSelector((state) => state.loginData);
   const CustomWidthTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -42,12 +48,68 @@ const FAQS = ({ tabChangeFn }) => {
       padding: "10px 20px",
     },
   });
+
+  const EditBankFields = (id, index) => {
+    const newList = addedFaqs.filter((i) => i.id === id);
+    console.log("newList", newList[0].answer);
+    setIsEdit(id);
+    setEditAnswer(newList[0].answer);
+    setEditQuestion(newList[0].question);
+  };
+
   const handleCount = (string) => {
     const count = string.length;
     console.log(count);
     setQ1Count(string.target.value);
   };
 
+  const handleSubmit = (id) => {
+    setEditIsLoading(true);
+    setIsEdit(null);
+
+    const val = {
+      faqs_id: id,
+      question: editQuestion,
+      answer: editAnswer,
+      campaign_id: addedFaqs[0].campaign_id,
+    };
+    CompanyServices.updateFAQ(val).then((res) => {
+      console.log(res);
+      if (res.status === 200 || res.status === 201) {
+        CompanyServices.getCampaignsFaqs(
+          sessionStorage.getItem("campaign_id")
+        ).then((res) => {
+          console.log(res);
+          if (res.status === 200 || res.status === 201) {
+            // const newList = res.data.filter((i) => i.id === id);
+            // setNewData(newList);
+            setAddedFaqs(res.data);
+          }
+        });
+        setEditIsLoading(false);
+        toast.success("FAQ updated successfully!", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "green",
+            color: "#fff",
+          },
+        });
+      } else {
+        setEditIsLoading(false);
+
+        toast.error("Something went wrong, please try again later", {
+          position: "top-right",
+          style: {
+            borderRadius: "3px",
+            background: "red",
+            color: "#fff",
+          },
+        });
+      }
+    });
+  };
+  console.log("newData faq", newData);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -88,7 +150,7 @@ const FAQS = ({ tabChangeFn }) => {
           formik.handleReset();
           setTimeout(() => {
             if (isSaveClicked) {
-              navigate("/dashboard-founder");
+              navigate("/dashboard-founder/e-signin");
             } else {
               tabChangeFn(0, 4);
             }
@@ -231,32 +293,124 @@ const FAQS = ({ tabChangeFn }) => {
         {addedFaqs.length > 0 && <h3 className="faqs-title">Added FAQs</h3>}
         {addedFaqs?.map((item, index) => (
           <div key={index}>
-            <Typography
-              style={{ marginTop: "1.4rem", marginBottom: "-0.3rem" }}
-              className="upload-ur-pitch"
-            >
-              Question {index + 1}
-            </Typography>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <Typography
+                style={{
+                  // marginTop: "1.4rem",
+                  marginBottom: "-0.3rem",
+                }}
+                className="upload-ur-pitch"
+              >
+                Question {index + 1}
+              </Typography>
+              {isEdit === item.id ? (
+                <button
+                  onClick={() => {
+                    handleSubmit(item.id);
+                  }}
+                  style={{
+                    right: 100,
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    border: "0px solid",
+                    background: "black",
+                    height: "30px",
+                    color: "white",
+                  }}
+                >
+                  {isEditLoading ? (
+                    <CircularProgress
+                      style={{
+                        color: "White",
+                        fontSize: 10,
+                        width: 20,
+                        height: 20,
+                      }}
+                    />
+                  ) : (
+                    "Save"
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    EditBankFields(item.id, index);
+                  }}
+                  style={{
+                    right: 100,
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    border: "0px solid",
+                    background: "black",
+                    height: "30px",
+                    color: "white",
+                  }}
+                >
+                  {isEditLoading ? (
+                    <CircularProgress
+                      style={{
+                        color: "White",
+                        fontSize: 10,
+                        width: 20,
+                        height: 20,
+                      }}
+                    />
+                  ) : (
+                    "Edit"
+                  )}
+                </button>
+              )}
+            </div>
 
             {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-            <input
-              value={item.question}
-              placeholder="Type your question here…"
-              type="text"
-              className="inp-enter-name"
-            />
+
+            {isEdit === item.id ? (
+              <input
+                value={editQuestion}
+                onChange={(e) => setEditQuestion(e.target.value)}
+                placeholder="Type your question here…"
+                type="text"
+                className="inp-enter-name"
+              />
+            ) : (
+              <input
+                value={
+                  item.question
+                  // newData[0].id===item.id  ? newData[0].question : item.question
+                }
+                placeholder="Type your question here…"
+                type="text"
+                className="inp-enter-name"
+              />
+            )}
             {/* </CustomWidthTooltip> */}
 
             {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
-            <textarea
-              value={item.answer}
-              style={{ marginBottom: 0 }}
-              placeholder="Describe your previous fundraising rounds*"
-              className="inp-textarea-desc"
-              name="descibe"
-              id="describe"
-              rows="7"
-            ></textarea>
+            {isEdit === item.id ? (
+              <textarea
+                value={editAnswer}
+                onChange={(e) => setEditAnswer(e.target.value)}
+                style={{ marginBottom: 0 }}
+                placeholder="Describe your previous fundraising rounds*"
+                className="inp-textarea-desc"
+                name="descibe"
+                id="describe"
+                rows="7"
+              ></textarea>
+            ) : (
+              <textarea
+                value={
+                  item.answer
+                  // isEdit===item.id ? newData[0].answer : item.answer
+                }
+                style={{ marginBottom: 0 }}
+                placeholder="Describe your previous fundraising rounds*"
+                className="inp-textarea-desc"
+                name="descibe"
+                id="describe"
+                rows="7"
+              ></textarea>
+            )}
             {/* </CustomWidthTooltip> */}
             <div className="zero-of-threehundred">{q2Count}/300</div>
 

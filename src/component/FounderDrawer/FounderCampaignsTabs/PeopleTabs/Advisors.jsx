@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@material-ui/core";
 import "../../../../css/FounderDrawer/Dashboard/PeopleTabs.css";
 import { useSelector } from "react-redux";
@@ -12,7 +12,13 @@ import { Base_Url } from "../../../../Utils/Configurable";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 
-const Advisors = ({ getPeopleData, tabChangeFn }) => {
+const Advisors = ({
+  getPeopleData,
+  tabChangeFn,
+  isAdvisorEdit,
+  advisorData,
+  handleClose,
+}) => {
   const navigate = useNavigate();
 
   const { userData } = useSelector((state) => state.loginData);
@@ -21,7 +27,7 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
-
+  console.log("advisorData", advisorData);
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -57,14 +63,18 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      name: "",
-      position: "",
-      facebook_link: "",
-      instagram_link: "",
-      linked_in_link: "",
-      description: "",
-      type: "ADVISOR",
-      profile_image: "",
+      name: isAdvisorEdit && advisorData ? advisorData.name : "",
+      position: isAdvisorEdit && advisorData ? advisorData.position : "",
+      facebook_link:
+        isAdvisorEdit && advisorData ? advisorData.facebook_link : "",
+      instagram_link:
+        isAdvisorEdit && advisorData ? advisorData.instagram_link : "",
+      linked_in_link:
+        isAdvisorEdit && advisorData ? advisorData.linked_in_link : "",
+      description: isAdvisorEdit && advisorData ? advisorData.description : "",
+      type: isAdvisorEdit && advisorData ? advisorData.type : "",
+      profile_image:
+        isAdvisorEdit && advisorData ? advisorData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
     },
 
@@ -73,37 +83,71 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
     onSubmit: (values) => {
       setIsLoading(true);
       console.log(values);
-      CompanyServices.addPeopleToCompany(values).then((res) => {
-        if (res.status === 200 || 201) {
-          setIsLoading(false);
+      if (isAdvisorEdit) {
+        CompanyServices.updatePeople({
+          ...values,
+          people_id: advisorData.id,
+        }).then((res) => {
+          if (res.status === 200 || 201) {
+            getPeopleData();
+            setIsLoading(false);
+            handleClose();
+            toast.success("Advisor updated to company successfull!", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
+              },
+            });
+            // window.location.reload()
+          } else {
+            console.log("something went wrong");
+          }
+        });
+      } else {
+        CompanyServices.addPeopleToCompany(values).then((res) => {
+          if (res.status === 200 || 201) {
+            setIsLoading(false);
 
-          toast.success("Advisor added to company successfull!", {
-            position: "top-right",
-            style: {
-              borderRadius: "3px",
-              background: "green",
-              color: "#fff",
-            },
-          });
-          getPeopleData();
-          formik.handleReset();
-          setPreview(null);
-          setTimeout(() => {
-            if (isSaveClicked) {
-              navigate("/dashboard-founder");
-            } else {
-              tabChangeFn(0, 3);
-            }
-          }, 1000);
-        }
-      });
+            toast.success("Advisor added to company successfull!", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
+              },
+            });
+            getPeopleData();
+            formik.handleReset();
+            setPreview(null);
+            setTimeout(() => {
+              if (isSaveClicked) {
+                navigate("/dashboard-founder/e-signin");
+              } else {
+                tabChangeFn(0, 3);
+              }
+            }, 1000);
+          }
+        });
+      }
     },
   });
+
+  useEffect(() => {
+    if (advisorData?.profile_image) {
+      setPreview(advisorData?.profile_image);
+    }
+  }, [advisorData]);
 
   return (
     <>
       <Box
-        sx={{ marginTop: "2rem", width: "90%", marginBottom: "10rem" }}
+        sx={
+          isAdvisorEdit
+            ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
+            : { marginTop: "2rem", width: "90%", marginBottom: "10rem" }
+        }
         container
         spacing={2}
       >
@@ -265,46 +309,70 @@ const Advisors = ({ getPeopleData, tabChangeFn }) => {
           {/* <div className='AddmemberBtnParent'>
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
-          <Box className="BtnSaveAndNext">
-            <button
-              disabled={isLoading === true ? true : false}
-              onClick={() => setSavedClicked(true)}
-              type="submit"
-              className="SaveBtn"
-            >
-              {isLoading && isSaveClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Save"
-              )}
-            </button>
-            <button
-              disabled={isLoading === true ? true : false}
-              type="submit"
-              onClick={() => setNextClicked(true)}
-              className="NextBtn"
-            >
-              {isLoading && isNextClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Next"
-              )}
-            </button>
-          </Box>
+          {isAdvisorEdit === false ? (
+            <Box className="BtnSaveAndNext">
+              <button
+                disabled={isLoading === true ? true : false}
+                onClick={() => setSavedClicked(true)}
+                type="submit"
+                className="SaveBtn"
+              >
+                {isLoading && isSaveClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Save"
+                )}
+              </button>
+              <button
+                disabled={isLoading === true ? true : false}
+                type="submit"
+                onClick={() => setNextClicked(true)}
+                className="NextBtn"
+              >
+                {isLoading && isNextClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Next"
+                )}
+              </button>
+            </Box>
+          ) : (
+            <Box className="BtnSaveAndNext">
+              <button
+                disabled={isLoading === true ? true : false}
+                // onClick={() => setSavedClicked(true)}
+                type="submit"
+                className="SaveBtn"
+              >
+                {isLoading ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Update"
+                )}
+              </button>
+            </Box>
+          )}
           {/* <div className="hrline"></div> */}
         </form>
       </Box>

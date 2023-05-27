@@ -301,6 +301,7 @@ const LiveDeals = () => {
                                                                 <div className="company-logo-section">
                                                                     <img loading="lazy" src={campaign?.campaign_id?.company_id?.company_logo} height={44} />
                                                                 </div>
+                                                {console.log("item?.deal_type",item)}
                                                                 <div className="logo-txt-script">
                                                                     {item.deal_type}
                                                                 </div>
@@ -365,10 +366,10 @@ const LiveDeals = () => {
                                                                 <span className="investment-sub-txt hover">0%</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
                                                                 <span className="investment-txt hover">Minimum Enrollment</span>
-                                                                <span className="investment-sub-txt hover">5000</span>
+                                                                <span className="investment-sub-txt hover">{campaign?.min_subscription}</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
                                                                 <span className="investment-txt hover">End Date</span>
-                                                                <span className="investment-sub-txt hover">10 days</span>
+                                                                <span className="investment-sub-txt hover">{daysRemaining(campaign?.end_date)}</span>
                                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                                             </div>
                                                         </div>
@@ -387,10 +388,10 @@ const LiveDeals = () => {
                                                                 <span className="investment-sub-txt hover">16.5%</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
                                                                 <span className="investment-txt hover">Minimum Enrollment</span>
-                                                                <span className="investment-sub-txt hover">5000</span>
+                                                                <span className="investment-sub-txt hover">{campaign?.min_subscription}</span>
                                                                 <hr style={{ marginTop: '11.5px' }} />
                                                                 <span className="investment-txt hover">End Date</span>
-                                                                <span className="investment-sub-txt hover">14 days</span>
+                                                                <span className="investment-sub-txt hover">{daysRemaining(campaign?.end_date)}</span>
                                                                 <div className="chip-status hover"><span>Personal Health</span></div>
                                                             </div>
                                                         </div>}
