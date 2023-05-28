@@ -82,7 +82,6 @@ const Investors = ({
     onSubmit: (values) => {
       setIsLoading(true);
 
-      console.log(values);
       if (isInvestorEdit) {
         CompanyServices.updatePeople({
           ...values,

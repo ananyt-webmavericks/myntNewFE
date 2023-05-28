@@ -103,6 +103,34 @@ const UploadDocuments = () => {
         Upload all due diligence documents for investors perusal
       </Typography>
 
+      <div className="doc-list-parent">
+          {uploadedDocs
+            ?.slice(0)
+            ?.reverse()
+            .map((item, index) => (
+              <div key={index} className="icon-name-upload-doc">
+                <img
+                  src={
+                    item?.document_name?.split(".").pop() === "pptx"
+                      ? pptxIcon
+                      : item?.document_name?.split(".").pop() === "pdf"
+                      ? pdfIcon
+                      : null
+                  }
+                  alt="doc-icon"
+                  width={62}
+                />
+                <Typography className="doc-name">
+                  {item?.document_name.length < 10
+                    ? item?.document_name
+                    : item?.document_name?.slice(0, 5) +
+                      "..." +
+                      item?.document_name?.split(".").pop()}
+                </Typography>
+              </div>
+            ))}
+        </div>
+
       <div className="upload-fun-parent">
         <div className="upload-doc-parent">
           <Typography className="Choose-file-text">
@@ -169,7 +197,7 @@ const UploadDocuments = () => {
         <Button className="hightlight-submit-button" style={{color:'White'}}>Submit For Review</Button>
         <Button
           onClick={handleUpload}
-          style={{ margin: "20px", color: "white" }}
+          style={{ margin: "20px 0 20px 20px ", color: "white" }}
           variant="contained"
           className="hightlight-submit-button"
         >
@@ -183,7 +211,7 @@ const UploadDocuments = () => {
         </Button>
       </div>
 
-      <div style={{ marginBottom: "3rem" }}>
+      {/* <div style={{ marginBottom: "3rem" }}>
         {uploadedDocs?.length > 0 && (
           <Typography
             className="upload-docs-title"
@@ -192,34 +220,8 @@ const UploadDocuments = () => {
             Uploaded Documents
           </Typography>
         )}
-        <div className="doc-list-parent">
-          {uploadedDocs
-            ?.slice(0)
-            ?.reverse()
-            .map((item, index) => (
-              <div key={index} className="icon-name-upload-doc">
-                <img
-                  src={
-                    item?.document_name?.split(".").pop() === "pptx"
-                      ? pptxIcon
-                      : item?.document_name?.split(".").pop() === "pdf"
-                      ? pdfIcon
-                      : null
-                  }
-                  alt="doc-icon"
-                  width={62}
-                />
-                <Typography className="doc-name">
-                  {item?.document_name.length < 10
-                    ? item?.document_name
-                    : item?.document_name?.slice(0, 5) +
-                      "..." +
-                      item?.document_name?.split(".").pop()}
-                </Typography>
-              </div>
-            ))}
-        </div>
-      </div>
+        
+      </div> */}
     </Container>
   );
 };

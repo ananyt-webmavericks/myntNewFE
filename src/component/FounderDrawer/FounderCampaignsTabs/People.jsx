@@ -83,7 +83,6 @@ const People = ({ tabChangeFn }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { peopleData } = useSelector((state) => state.companyData);
-  console.log(peopleData);
   const getPeopleData = () => {
     CompanyServices.getPeopleByCompanyId(
       localStorage.getItem("company_id")
@@ -97,7 +96,6 @@ const People = ({ tabChangeFn }) => {
   useEffect(() => {
     peopleData.length === 0 && getPeopleData();
   }, []);
-  console.log("peopleData", peopleData);
   return (
     <Box sx={{ marginTop: 4, marginLeft: 2, marginBottom: "3rem" }}>
       <h3>People</h3>
@@ -213,7 +211,6 @@ const People = ({ tabChangeFn }) => {
                         marginLeft: "10px",
                       }}
                     >
-                      {console.log("team item", item)}
 
                       <CardContent>
                         <div

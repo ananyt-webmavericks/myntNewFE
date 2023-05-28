@@ -68,7 +68,6 @@ export default function LiveDetailsMain() {
   const [faqData, setFaqData] = useState([]);
   const [peopleData, setPeopleData] = useState([]);
   const [kycData, setKycData] = useState({});
-  console.log(kycData);
   const { userData } = useSelector((state) => state.loginData);
   const handleDirectionChange = (event) => {
     setDirection(event.target.value);
@@ -196,7 +195,6 @@ export default function LiveDetailsMain() {
                 {companyData.product_description}
               </span>
             </div>
-            {console.log("companyDatacompanyData",companyData)}
             <div className="footer-card-section live-details">
               <div className="numbers-investors live-details">
                 <span

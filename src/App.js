@@ -43,6 +43,8 @@ import DashboardFounder from "./Pages/Founder/DashboardFounder";
 import DashBoardESign from "./Pages/Founder/DashBoardESign";
 import FounderCampaigns from "./Pages/Founder/FounderCampaigns";
 import FounderCampaingsTabs from "./Pages/Founder/FounderCampaingsTabs";
+import FounderCampaignsStats from "./Pages/Founder/FounderCampaignsStats";
+
 
 import MyntFaq from "./Pages/MyntUniversity/MyntFaq";
 import MyntBlogs from "./Pages/MyntUniversity/MyntBlogs";
@@ -64,7 +66,7 @@ import PaymentFailed from "./Pages/Payment/PaymentFailed";
 import WaitTime from "./Pages/Payment/WaitTime";
 import PaymentPending from "./Pages/Payment/PaymentPending";
 import { Toaster } from "react-hot-toast";
-import {ProtectedRoute} from "./protectedRoute";
+import { ProtectedRoute } from "./protectedRoute";
 function App() {
   const location = window.location.pathname;
   const ratio = parseInt(window.innerWidth);
@@ -130,14 +132,50 @@ function App() {
           element={<MyntBlogsDetail />}
         />
 
-        <Route exact path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route exact path="/dashboard/live-deals" element={<ProtectedRoute><LiveDeals /></ProtectedRoute>} />
-        <Route exact path="/dashboard/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
-        <Route exact path="/dashboard/portfolio" element={<ProtectedRoute><Portfolio /></ProtectedRoute>} />
+        <Route
+          exact
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/live-deals"
+          element={
+            <ProtectedRoute>
+              <LiveDeals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/analytics"
+          element={
+            <ProtectedRoute>
+              <Analytics />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/portfolio"
+          element={
+            <ProtectedRoute>
+              <Portfolio />
+            </ProtectedRoute>
+          }
+        />
         <Route
           exact
           path="/dashboard/chat-with-expert"
-          element={<ProtectedRoute><ChatWithExpert /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <ChatWithExpert />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
@@ -152,25 +190,49 @@ function App() {
         <Route
           exact
           path="/complete-your-profile/verify-address"
-          element={<ProtectedRoute><VerifyAddress /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <VerifyAddress />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/complete-your-profile/verify-kyc"
-          element={<ProtectedRoute><KycPanDetails /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <KycPanDetails />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/complete-your-profile/verify-kyc/aadhar-uid"
-          element={<ProtectedRoute><KycAadharUid /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <KycAadharUid />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/complete-your-profile/payment-details"
-          element={<ProtectedRoute><PaymentDetails /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <PaymentDetails />
+            </ProtectedRoute>
+          }
         />
         <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
-        <Route exact path="/my-profile" element={<ProtectedRoute><MyProfile /></ProtectedRoute>} />
+        <Route
+          exact
+          path="/my-profile"
+          element={
+            <ProtectedRoute>
+              <MyProfile />
+            </ProtectedRoute>
+          }
+        />
         <Route
           exact
           path="/live-deals-details"
@@ -221,39 +283,89 @@ function App() {
           path="/founder/application"
           element={<FounderApplication />}
         />
-        <Route exact path="/dashboard-founder" element={<ProtectedRoute><DashboardFounder /></ProtectedRoute>} />
+        <Route
+          exact
+          path="/dashboard-founder"
+          element={
+            <ProtectedRoute>
+              <DashboardFounder />
+            </ProtectedRoute>
+          }
+        />
         <Route
           exact
           path="/dashboard-founder/e-signin"
-          element={<ProtectedRoute><DashBoardESign /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <DashBoardESign />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/dashboard-founder/campaigns"
-          element={<ProtectedRoute><FounderCampaigns /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <FounderCampaigns />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/dashboard-founder/campaigns-tabs"
-          element={<ProtectedRoute><FounderCampaingsTabs /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <FounderCampaingsTabs />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/dashboard-founder/campaigns-statics"
+          element={
+            <ProtectedRoute>
+              <FounderCampaignsStats />
+            </ProtectedRoute>
+          }
         />
 
         {/* payment success */}
-        <Route exact path="/redirect" element={<ProtectedRoute><WaitTime /></ProtectedRoute>} />
+        <Route
+          exact
+          path="/redirect"
+          element={
+            <ProtectedRoute>
+              <WaitTime />
+            </ProtectedRoute>
+          }
+        />
         <Route
           exact
           path="/payment/status-successful"
-          element={<ProtectedRoute><PaymentSuccess /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <PaymentSuccess />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/payment/status-pending"
-          element={<ProtectedRoute><PaymentPending /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <PaymentPending />
+            </ProtectedRoute>
+          }
         />
         <Route
           exact
           path="/payment/status-failed"
-          element={<ProtectedRoute><PaymentFailed /></ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <PaymentFailed />
+            </ProtectedRoute>
+          }
         />
 
         {/* page not found */}

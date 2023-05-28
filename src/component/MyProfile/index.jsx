@@ -64,9 +64,6 @@ export default function MyProfileMain() {
       };
       try {
         userServices.UpdateUser(val).then((response) => {
-          console.log("update user email", response);
-          console.log("update user response.data.data", response.data.data);
-          console.log("update user response.data.data.email", response.data.data.email);
 
           if (response.status === 201 || response.status === 200) {
             dispatch(updateUserEmailAction(response.data.data.email))

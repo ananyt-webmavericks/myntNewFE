@@ -14,8 +14,10 @@
 }
 
 .getRewards-btn-parent {
-    text-align: center;
-    margin-left: 7rem;
+    text-align: end;
+    /* margin-left: 7rem; */
+    max-width: 757px !important;
+    width: 100%;
     margin-top: 1.8rem;
     margin-bottom: 2rem;
 }

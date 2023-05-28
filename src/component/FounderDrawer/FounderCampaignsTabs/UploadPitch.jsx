@@ -1,5 +1,11 @@
 import { makeStyles, styled } from "@material-ui/core";
-import { Box, CircularProgress, Tooltip, tooltipClasses, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Tooltip,
+  tooltipClasses,
+  Typography,
+} from "@mui/material";
 import "../../../css/FounderDrawer/Dashboard/UploadPitch.css";
 import React, { useState } from "react";
 import { useFormik } from "formik";
@@ -9,6 +15,7 @@ import PitchValSchema from "../../../Validations/PitchValSchema";
 import { useEffect } from "react";
 import { authAxios } from "../../../service/Auth-header";
 import { Base_Url } from "../../../Utils/Configurable";
+import { useLocation, useNavigate } from "react-router-dom";
 const useStyles = makeStyles({
   dropbox: {
     marginTop: 30,
@@ -73,6 +80,8 @@ const UploadPitch = ({ tabChangeFn }) => {
   const [pitchData, setPitchData] = useState({});
   const [isCampaignAdded, setIsCampaignAdded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [campaignData, setCampaignData] = useState();
+  const location = useLocation();
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -98,7 +107,7 @@ const UploadPitch = ({ tabChangeFn }) => {
               sessionStorage.setItem("campaign_id", res.data.id);
               sessionStorage.setItem("campaign_data", JSON.stringify(res.data));
               setIsLoading(false);
-              toast.success("Compaign added successfully!",{
+              toast.success("Compaign added successfully!", {
                 position: "top-right",
                 style: {
                   borderRadius: "3px",
@@ -111,7 +120,7 @@ const UploadPitch = ({ tabChangeFn }) => {
               }, 2000);
             } else {
               setIsLoading(false);
-              toast.error("Something went wrong, please try again later",{
+              toast.error("Something went wrong, please try again later", {
                 position: "top-right",
                 style: {
                   borderRadius: "3px",
@@ -134,33 +143,45 @@ const UploadPitch = ({ tabChangeFn }) => {
                 JSON.stringify(res.data.data)
               ); //need to remove this line
               setIsLoading(false);
-              toast.success("Compaign updated successfully!",{ 
-                position:"top-right",
+              toast.success("Compaign updated successfully!", {
+                position: "top-right",
                 style: {
-                borderRadius: '3px',
-                background: 'green',
-                color: '#fff',
-              },});
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
               setTimeout(() => {
                 tabChangeFn(0, 2);
               }, 1000);
             } else {
               setIsLoading(false);
-              toast.error("Something went wrong, please try again later",{ 
-                position:"top-right",
+              toast.error("Something went wrong, please try again later", {
+                position: "top-right",
                 style: {
-                borderRadius: '3px',
-                background: 'red',
-                color: '#fff',
-              },});
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
             }
           });
     },
   });
+  const getCampaignData = (id) => {
+    CompanyServices.getCampaignById(id).then((res) => {
+      if (res.status === 200 || res.status === 201) {
+        console.log(res.data);
+        setCampaignData(res.data);
+      }
+    });
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
     setPitchData(JSON.parse(sessionStorage.getItem("campaign_data")));
     setIsCampaignAdded(JSON.parse(sessionStorage.getItem("is_campaign_added")));
+    getCampaignData(sessionStorage.getItem("campaign_id"));
+    console.log("campaignData", campaignData);
   }, [x]);
 
   return (
@@ -183,6 +204,8 @@ const UploadPitch = ({ tabChangeFn }) => {
         >
           {pdfName?.length > 0 ? (
             <Typography className="drag-and-drop-text">{pdfName}</Typography>
+          ) : campaignData?.pitch ? (
+            campaignData?.pitch
           ) : (
             <>
               <Typography className="drag-and-drop-text">

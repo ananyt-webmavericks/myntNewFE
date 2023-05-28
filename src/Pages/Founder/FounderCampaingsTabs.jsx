@@ -20,8 +20,9 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
   },
 });
-const FounderCampaingsTabs = () => {
+const FounderCampaingsTabs = (props) => {
   const classes = useStyles();
+  const { state } = useLocation();
   const location = window.location.pathname;
   const ratio = parseInt(window.innerWidth);
   const [showDeals, setShowDeals] = useState(false);
@@ -30,7 +31,6 @@ const FounderCampaingsTabs = () => {
 
   const handleChange = (event, newValue) => {
     if (!(newValue === 0)) {
-      console.log(newValue);
       if (!localStorage.getItem("company_id")) {
         return toast.error("Please fill up company details",{
           position: "top-right",
@@ -62,7 +62,6 @@ const FounderCampaingsTabs = () => {
 
   const handleRenderTab = (x) => {
 
-    console.log("x", x);
     switch (x) {
       case 0:
         return <CompanyProfile tabChangeFn={handleChange} />;
@@ -109,10 +108,12 @@ const FounderCampaingsTabs = () => {
   };
 
   useEffect(() => {
-    // console.log(navLocation.state?.navTab);
-    // handleChange("event", navLocation.state?.navTab);
-    handleChange("event", 1);
-  }, []);
+    if(state?.navTab){
+      handleChange("event", state?.navTab);
+    }else{
+      handleChange("event", 0);
+    }
+  }, [state]);
 
   return (
     <>

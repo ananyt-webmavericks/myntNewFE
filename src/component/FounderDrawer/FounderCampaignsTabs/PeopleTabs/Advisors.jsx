@@ -27,7 +27,6 @@ const Advisors = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
-  console.log("advisorData", advisorData);
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -82,7 +81,6 @@ const Advisors = ({
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log(values);
       if (isAdvisorEdit) {
         CompanyServices.updatePeople({
           ...values,

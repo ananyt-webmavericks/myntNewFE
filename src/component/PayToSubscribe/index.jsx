@@ -103,8 +103,7 @@ export default function PayToSubscribeMain() {
             amount: vals.amount,
             total_amount: Math.floor(vals.amount + (vals.amount * 2 /100) + ((18 / 100) * vals.amount))
         }
-        const { data: { data } } = await authAxios.post(`${Base_Url}//api/payment/create-order`, values)
-        console.log(data)
+        const { data: { data } } = await authAxios.post(`${Base_Url}/api/payment/create-order`, values)
         const cf = new window.Cashfree(data.payment_session_id);
         cf.redirect();
     }

@@ -4,6 +4,13 @@
     width: -webkit-fill-available;
 }
 
+.MuiLinearProgress-barColorPrimary{
+    background-color: #ECB92B !important;
+}
+.MuiLinearProgress-colorPrimary{
+    background-color: black !important;
+}
+
 .completion-status {
     margin-top: 34px;
     font: normal normal medium 16px/48px Poppins !important;

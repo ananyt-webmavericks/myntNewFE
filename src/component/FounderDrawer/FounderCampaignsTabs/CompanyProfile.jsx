@@ -158,7 +158,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log("values", values);
       CompanyServices.updateCompany({
         ...values,
         company_id: companyData?.id,
