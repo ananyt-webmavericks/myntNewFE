@@ -121,7 +121,7 @@ const Navbar = () => {
                                         style={{padding:'6px 16px'}}
                                             onClick={() => navigate(
                                                 userData.user_type === "FOUNDER"
-                                                    ? '/dashboard-founder'
+                                                    ? '/dashboard-founder/e-signin'
                                                     : '/dashboard'
                                             )}>
                                             <ListItemIcon>

@@ -204,8 +204,6 @@ const UploadPitch = ({ tabChangeFn }) => {
         >
           {pdfName?.length > 0 ? (
             <Typography className="drag-and-drop-text">{pdfName}</Typography>
-          ) : campaignData?.pitch ? (
-            campaignData?.pitch
           ) : (
             <>
               <Typography className="drag-and-drop-text">
