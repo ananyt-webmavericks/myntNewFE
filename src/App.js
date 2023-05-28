@@ -45,7 +45,6 @@ import FounderCampaigns from "./Pages/Founder/FounderCampaigns";
 import FounderCampaingsTabs from "./Pages/Founder/FounderCampaingsTabs";
 import FounderCampaignsStats from "./Pages/Founder/FounderCampaignsStats";
 
-
 import MyntFaq from "./Pages/MyntUniversity/MyntFaq";
 import MyntBlogs from "./Pages/MyntUniversity/MyntBlogs";
 import MyntVideoClips from "./Pages/MyntUniversity/MyntVideoClips";
@@ -141,15 +140,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          exact
-          path="/dashboard/live-deals"
-          element={
-            <ProtectedRoute>
-              <LiveDeals />
-            </ProtectedRoute>
-          }
-        />
+        <Route exact path="/dashboard/live-deals" element={<LiveDeals />} />
         <Route
           exact
           path="/dashboard/analytics"
