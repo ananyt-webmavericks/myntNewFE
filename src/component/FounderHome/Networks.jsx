@@ -31,10 +31,10 @@ const Networks = () => {
     }));
 
     const Networks = [
-        { badgeName: "PRE SERIES-A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 50, width: 50},
+        { badgeName: "PRE SERIES A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 50, width: 50},
         { badgeName: "PRE IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17, width: '' },
         // { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
-        { badgeName: "POST SEED", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22, width: '' },
+        { badgeName: "PRE-SERIES A", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22, width: '' },
         { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell , height: 30, width: '' },
         // { badgeName: "POST SEED", bottomBadgeName: "Ezyschooling ", logo: Ezyschooling  , height: 22 },
     ]

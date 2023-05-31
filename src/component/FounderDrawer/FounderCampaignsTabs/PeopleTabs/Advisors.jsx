@@ -144,7 +144,7 @@ const Advisors = ({
         sx={
           isAdvisorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
-            : { marginTop: "2rem", width: "90%", marginBottom: "10rem" }
+            : { marginTop: "2rem", marginRight:"30px", marginBottom: "10rem" }
         }
         container
         spacing={2}
@@ -307,7 +307,7 @@ const Advisors = ({
           {/* <div className='AddmemberBtnParent'>
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
-          {isAdvisorEdit === false ? (
+          {!isAdvisorEdit ? (
             <Box className="BtnSaveAndNext">
               <button
                 disabled={isLoading === true ? true : false}

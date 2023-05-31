@@ -127,7 +127,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
   return (
     <>
       <Box
-        sx={isTeamEdit?{ marginTop: "0px", width: "100%", marginBottom: "0px" }:{marginTop: "2rem", width: "90%", marginBottom: "3rem"}}
+        sx={isTeamEdit?{ marginTop: "0px", width: "100%", marginBottom: "0px" }:{marginTop: "2rem", marginRight:"30px", marginBottom: "3rem"}}
         container
         spacing={2}
       >

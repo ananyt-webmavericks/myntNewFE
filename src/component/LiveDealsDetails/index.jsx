@@ -35,7 +35,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useSelector } from "react-redux";
 import UserServices from "../../service/UserService";
 import CompanyServices from "../../service/Company";
@@ -43,12 +43,67 @@ import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
 import { Highlight } from "@mui/icons-material";
 const actions = [
-  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://www.facebook.com/sharer.php?u=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig"><FacebookRoundedIcon style={{marginTop:8}}/></Link>, name: "Facebook" },
-  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://www.instagram.com/sharer.php?u=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig"><InstagramIcon style={{marginTop:8}} /></Link>, name: "Instagram" },
-  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://twitter.com/intent/tweet?url=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig&text=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React&via=dannysasse"><TwitterIcon style={{marginTop:8}} /></Link>, name: "Twitter" },
-  { icon: <Link style={{color: 'grey'}} target="_blank" href="whatsapp://send?text=<%= request.original_url %>"><WhatsAppIcon style={{marginTop:8}} /></Link>, name: "Whatsapp" },
+  {
+    icon: (
+      <Link
+        style={{ color: "grey" }}
+        target="_blank"
+        href="https://www.facebook.com/sharer.php?u=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig"
+      >
+        <FacebookRoundedIcon style={{ marginTop: 8 }} />
+      </Link>
+    ),
+    name: "Facebook",
+  },
+  {
+    icon: (
+      <Link
+        style={{ color: "grey" }}
+        target="_blank"
+        href="https://www.instagram.com/sharer.php?u=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig"
+      >
+        <InstagramIcon style={{ marginTop: 8 }} />
+      </Link>
+    ),
+    name: "Instagram",
+  },
+  {
+    icon: (
+      <Link
+        style={{ color: "grey" }}
+        target="_blank"
+        href="https://twitter.com/intent/tweet?url=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig&text=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React&via=dannysasse"
+      >
+        <TwitterIcon style={{ marginTop: 8 }} />
+      </Link>
+    ),
+    name: "Twitter",
+  },
+  {
+    icon: (
+      <Link
+        style={{ color: "grey" }}
+        target="_blank"
+        href="whatsapp://send?text=<%= request.original_url %>"
+      >
+        <WhatsAppIcon style={{ marginTop: 8 }} />
+      </Link>
+    ),
+    name: "Whatsapp",
+  },
   // { icon: <Link style={{color: 'grey'}} target="_blank" href=""><TelegramIcon style={{marginTop:8}} /></Link>, name: "Telegram" },
-  { icon: <Link style={{color: 'grey'}} target="_blank" href="https://www.linkedin.com/shareArticle?url=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig&title=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React"><LinkedInIcon  style={{marginTop:8}} /></Link>, name: "Telegram" },
+  {
+    icon: (
+      <Link
+        style={{ color: "grey" }}
+        target="_blank"
+        href="https://www.linkedin.com/shareArticle?url=https://dev.to/dsasse07/beginner-s-guide-to-jest-testing-in-react-1nig&title=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React"
+      >
+        <LinkedInIcon style={{ marginTop: 8 }} />
+      </Link>
+    ),
+    name: "Telegram",
+  },
 ];
 
 const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
@@ -230,7 +285,9 @@ export default function LiveDetailsMain() {
               <div className="inline-progress-bar-live-deals"></div>
             </div>
             <div className="header-section-deals-detail btn-section">
+              {console.log("userData", userData)}
               <Button
+                disabled={userData?.user_type === "FOUNDER" ? true : false}
                 onClick={() => {
                   userData?.id
                     ? kycData?.bank_account &&
@@ -259,7 +316,11 @@ export default function LiveDetailsMain() {
                     : navigate("/login");
                 }}
                 style={{ textTransform: "none" }}
-                className="invest-btn-section-deals"
+                className={
+                  userData?.user_type === "FOUNDER"
+                    ? "disable-enroll-btn"
+                    : "invest-btn-section-deals"
+                }
               >
                 ENROLL NOW
               </Button>
@@ -268,7 +329,7 @@ export default function LiveDetailsMain() {
                   "& .MuiFab-primary": {
                     backgroundColor: "#E3E3E3",
                     color: "black",
-                    borderRadius: 50
+                    borderRadius: 50,
                   },
                   "& .MuiFab-primary:hover": {
                     backgroundColor: "#F0C127",
@@ -282,9 +343,11 @@ export default function LiveDetailsMain() {
               >
                 {actions.map((action) => (
                   <SpeedDialAction
-                  classes={{".MuiFab-circular":{
-                    borderRadius: 50
-                  }}}
+                    classes={{
+                      ".MuiFab-circular": {
+                        borderRadius: 50,
+                      },
+                    }}
                     key={action.name}
                     icon={action.icon}
                     tooltipTitle={action.name}
@@ -454,7 +517,9 @@ export default function LiveDetailsMain() {
               >
                 <p>
                   Alternative text - include a link{" "}
-                  <a href={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}>
+                  <a
+                    href={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
+                  >
                     to the PDF!
                   </a>
                 </p>

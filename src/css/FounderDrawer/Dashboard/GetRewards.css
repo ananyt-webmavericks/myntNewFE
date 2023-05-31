@@ -1,5 +1,5 @@
 .get-reward-inputs {
-    max-width: 760px !important;
+    /* max-width: 760px !important; */
     width: 100%;
     height: 42px !important;
     background: #F4F4F4 0% 0% no-repeat padding-box !important;
@@ -16,8 +16,9 @@
 .getRewards-btn-parent {
     text-align: end;
     /* margin-left: 7rem; */
-    max-width: 757px !important;
-    width: 100%;
+    /* max-width: 757px !important; */
+    /* width: 100%; */
+    margin-right: 30px;
     margin-top: 1.8rem;
     margin-bottom: 2rem;
 }

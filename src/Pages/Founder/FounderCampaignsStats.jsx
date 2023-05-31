@@ -14,7 +14,17 @@ import DrawerFounder from "../../component/FounderDrawer/DrawerFounder";
 import CompanyServices from "../../service/Company";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
-import { getCompanyProfileProgress, getFAQProgress, getHighLightsProgress, getPeopleProgress, getPitchProgress, getPressProgress, getPromotionProgress, getUploadDocumentsProgress } from "./progressRule";
+import {
+  getCompanyProfileProgress,
+  getFAQProgress,
+  getHighLightsProgress,
+  getPeopleProgress,
+  getPitchProgress,
+  getPressProgress,
+  getPromotionProgress,
+  getUploadDocumentsProgress,
+} from "./progressRule";
+import Footer from "../../component/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,51 +77,52 @@ const FounderCampaignsStats = () => {
   const classes = useStyles();
   const [progress, setProgress] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
-  const [campaignData,setCampaignData] = useState({})
+  const [campaignData, setCampaignData] = useState({});
   const tabInfo = [
     {
       title: "Company Profile",
       description: "Tell us a little about your company",
-      progressGetter: getCompanyProfileProgress(campaignData?.company_id)
+      progressGetter: getCompanyProfileProgress(campaignData?.company_id),
     },
     {
       title: "Upload Pitch",
       description: "Upload a pdf of your pitch deck",
-      progressGetter: getPitchProgress(campaignData?.pitch)
+      progressGetter: getPitchProgress(campaignData?.pitch),
     },
     {
       title: "People",
       description: "Tell us about your team, investors and advisors",
-      progressGetter: getPeopleProgress(campaignData?.company_id?.peoples)
+      progressGetter: getPeopleProgress(campaignData?.company_id?.peoples),
     },
     {
       title: "FAQs",
       description: "Help investors understand your ideas even better",
-      progressGetter: getFAQProgress(campaignData?.faqs)
+      progressGetter: getFAQProgress(campaignData?.faqs),
     },
     {
       title: "Highlights",
       description: "Mention the top highlights that you have achieved",
-      progressGetter: getHighLightsProgress(campaignData?.higlights)
+      progressGetter: getHighLightsProgress(campaignData?.higlights),
     },
     {
       title: "Get Promotion",
       description:
         "Mention the benefits or discounts an investor can get once he enrolls to your campaign",
-        progressGetter: getPromotionProgress(campaignData?.rewards)
+      progressGetter: getPromotionProgress(campaignData?.rewards),
     },
     {
       title: "Press",
       description: "Show your reach!",
-      progressGetter: getPressProgress(campaignData?.company_id?.press)
+      progressGetter: getPressProgress(campaignData?.company_id?.press),
     },
     {
       title: "Upload Documents",
       description: "Upload all due diligence documents for investors to review",
-      progressGetter: getUploadDocumentsProgress(campaignData?.company_id?.documents)
+      progressGetter: getUploadDocumentsProgress(
+        campaignData?.company_id?.documents
+      ),
     },
   ];
-
 
   function LinearProgressWithLabel(props) {
     const classes = useStyles();
@@ -137,82 +148,102 @@ const FounderCampaignsStats = () => {
 
   const getCampaignData = (id) => {
     setIsLoading(true);
-    CompanyServices.getCompanyDetailByCampaign(id).then(
-      (res) => {
-        if (res.status === 200 || res.status === 201) {
-          setCampaignData(res.data)
-        }else{
-          setCampaignData({})
-        }
-        setIsLoading(false)
+    CompanyServices.getCompanyDetailByCampaign(id).then((res) => {
+      if (res.status === 200 || res.status === 201) {
+        setCampaignData(res.data);
+      } else {
+        setCampaignData({});
+      }
+      setIsLoading(false);
     });
-  }
+  };
 
   useEffect(() => {
-    getCampaignData(sessionStorage.getItem("campaign_id"))
+    getCampaignData(sessionStorage.getItem("campaign_id"));
   }, []);
 
   return (
-    <div style={{ display: "flex", position: "relative" }}>
-      {location.includes("/dashboard") && <DrawerFounder />}
-      <div className="dashboard-container">
-        <Container maxWidth="lg">
-          <h3
-            style={{ padding: "17px 16px" }}
-          >{`Compaign ${sessionStorage.getItem("campaign_id")}`}</h3>
-          <br />
-          {isLoading ? (
-            <CircularProgress
-              style={{
-                position:'absolute',
-                color: "black",
-                right: '550px',
-                top: '400px',
-                fontSize: 10,
-                width: 80,
-                height: 80,
-                alignSelf: 'center'
-              }}
-            />
-          ) : (
-            <Grid
-              style={{ marginBottom: "5rem" }}
-              container
-              spacing={3}
-              marginTop={3}
-            >
-              {tabInfo.map((item, i) => {
-                return (
-                  <Grid item xs={12} sm={6}>
-                    <Card
-                      onClick={() =>
-                        navigate("/dashboard-founder/campaigns-tabs", {
-                          state: { navTab: i },
-                        })
-                      }
-                      className={classes.paperconten}
-                    >
-                      <div className={classes.Card}>
-                        <b className={classes.typofont}>{item.title}</b>
-                        <Button className={item.progressGetter?.progress === 100 ? classes.btn : classes.btn2} variant={item.progressGetter?.progress !== 100 ?  "outlined"  : "contained"} color={item.progressGetter?.progress !== 100 ? "secondary": "default"}>
-                          {item.progressGetter?.status}
-                        </Button>
-                      </div>
-                      <Box className={classes.para}>
-                        <p>{item.description}</p>
-                      </Box>
-                      <div className={classes.root2}>
-                        <LinearProgressWithLabel value={item.progressGetter?.progress} />
-                      </div>
-                    </Card>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          )}
-        </Container>
+    <>
+      <div style={{ display: "flex", position: "relative" }}>
+        {location.includes("/dashboard") && <DrawerFounder />}
+        <div className="dashboard-container">
+          <Container maxWidth="lg">
+            <h3
+              style={{ padding: "17px 16px" }}
+            >{`Compaign ${sessionStorage.getItem("campaign_id")}`}</h3>
+            <br />
+            {isLoading ? (
+              <CircularProgress
+                style={{
+                  position: "absolute",
+                  color: "black",
+                  right: "550px",
+                  top: "400px",
+                  fontSize: 10,
+                  width: 80,
+                  height: 80,
+                  alignSelf: "center",
+                }}
+              />
+            ) : (
+              <Grid
+                style={{ marginBottom: "5rem" }}
+                container
+                spacing={3}
+                marginTop={3}
+              >
+                {tabInfo.map((item, i) => {
+                  return (
+                    <Grid item xs={12} sm={6}>
+                      <Card
+                        onClick={() =>
+                          navigate("/dashboard-founder/campaigns-tabs", {
+                            state: { navTab: i },
+                          })
+                        }
+                        className={classes.paperconten}
+                      >
+                        <div className={classes.Card}>
+                          <b className={classes.typofont}>{item.title}</b>
+                          <Button
+                            className={
+                              item.progressGetter?.progress === 100
+                                ? classes.btn
+                                : classes.btn2
+                            }
+                            variant={
+                              item.progressGetter?.progress !== 100
+                                ? "outlined"
+                                : "contained"
+                            }
+                            color={
+                              item.progressGetter?.progress !== 100
+                                ? "secondary"
+                                : "default"
+                            }
+                          >
+                            {item.progressGetter?.status}
+                          </Button>
+                        </div>
+                        <Box className={classes.para}>
+                          <p>{item.description}</p>
+                        </Box>
+                        <div className={classes.root2}>
+                          <LinearProgressWithLabel
+                            value={item.progressGetter?.progress}
+                          />
+                        </div>
+                      </Card>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            )}
+          </Container>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

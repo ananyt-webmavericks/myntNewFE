@@ -104,7 +104,7 @@ const DashBoardESign = () => {
                                         <div onClick={() => {
                                             sessionStorage.setItem("campaign_id", item.id)
                                             sessionStorage.setItem("is_campaign_added", true)
-                                            navigate("/dashboard-founder/campaigns-tabs")
+                                            navigate("/dashboard-founder/campaigns-statics")
                                         }}>
                                             <div className="AddCompany2">
                                                 <Box className="companylogoimg">

@@ -79,6 +79,18 @@
     margin-top: 30px;
 }
 
+.disable-enroll-btn {
+    width: 230px !important;
+    height: 54px !important;
+    /* UI Properties */
+    background: #000000 0% 0% no-repeat padding-box !important;
+    border-radius: 27px !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+   
+}
+
 .invest-btn-section-deals {
     width: 230px !important;
     height: 54px !important;

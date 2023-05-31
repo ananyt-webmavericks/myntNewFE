@@ -27,20 +27,19 @@ const Highlights = ({ tabChangeFn }) => {
   const [isNextClicked, setNextClicked] = useState(false);
   const [isEditLoading, setEditIsLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(null);
-  const [editHighLight, setEditHighLight] = useState('');
-
+  const [editHighLight, setEditHighLight] = useState("");
+  const [addmoreHighlights, setAddmoreHighlights] = useState(false);
 
   const EditBankFields = (id, index) => {
-    const newList = pitchData.filter(i=>i.id === id)
-    console.log("newList",newList[0].title);
+    const newList = pitchData.filter((i) => i.id === id);
+    console.log("newList", newList[0].title);
     setIsEdit(id);
     setEditHighLight(newList[0].title);
   };
 
+
   const handleSubmit = (id) => {
     setEditIsLoading(true);
-    console.log("addedFaqs", pitchData);
-    console.log("addedFaqs[0].question", pitchData[0].title);
     setIsEdit(null);
 
     const val = {
@@ -131,7 +130,6 @@ const Highlights = ({ tabChangeFn }) => {
   };
 
   useEffect(() => {
-    
     return getHighLights();
   }, []);
 
@@ -169,10 +167,10 @@ const Highlights = ({ tabChangeFn }) => {
   };
 
   return (
-    <Box sx={{ marginTop: 4, marginLeft: 2 }}>
-      <span className="hightlight-heading">Highlights</span>
+    <Box sx={{ marginTop: 4, marginLeft: 2, paddingRight:'10%',marginRight: '30px' }}>
+      <h3 >Highlights</h3>
 
-      <Typography className="raise-with-mint-desc highlight-desc">
+      <Typography style={{paddingTop: 10, color:'#777777'}} className="raise-with-mint-desc highlight-desc">
         Mention the top highlights about your startup that you want the
         investors to know about.
       </Typography>
@@ -232,7 +230,7 @@ const Highlights = ({ tabChangeFn }) => {
 
            */}
 
-      <form onSubmit={formik.handleSubmit}>
+      {!pitchData.length || addmoreHighlights ? <form onSubmit={formik.handleSubmit}>
         {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
         <input
           name="highlight1"
@@ -332,7 +330,7 @@ const Highlights = ({ tabChangeFn }) => {
             onClick={() => setNextClicked(true)}
             disabled={isLoading === true ? true : false}
             type="submit"
-            style={{ margin: "20px" }}
+            style={{ margin: "20px",marginRight: 0 }}
             variant="contained"
             className="comp-prof-button2"
           >
@@ -350,72 +348,105 @@ const Highlights = ({ tabChangeFn }) => {
             )}
           </Button>
         </div>
-      </form>
+      </form>:null}
 
-      <div>
+     { pitchData.length ?<div style={{marginTop:'25px'}}>
+        <div
+          style={{
+            display: "flex",
+            gap: 20,
+            alignItems: "center",
+            justifyContent: "space-between",
+            // width: '76%'
+          }}
+        >
+          <h3 className="faqs-title">Added Highlights</h3>
+          {addmoreHighlights ? null : (
+            <button
+              disabled={isLoading === true ? true : false}
+              onClick={() => setAddmoreHighlights(true)}
+              type="submit"
+              className="addMore"
+            >
+              Add More Highlights
+            </button>
+          )}
+        </div>
+        <div style={{marginTop:'20px'}}>
         {pitchData?.map((item, index) => (
-          
-          <div style={{display:'flex' ,gap: 15, alignItems:'center'}}>
-          {isEdit ===item.id?<input  value={editHighLight} onChange={(e)=>setEditHighLight(e.target.value)} className="inp-enter-name" />:<input  value={item.title} className="inp-enter-name" />}
-          {isEdit===item.id ? (
-                <button
-                  onClick={() => {
-                    handleSubmit(item.id);
-                  }}
-                  style={{
-                    right: 100,
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                    border: "0px solid",
-                    background: "black",
-                    height: "30px",
-                    color: "white",
-                  }}
-                >
-                  {isEditLoading ? (
-                    <CircularProgress
-                      style={{
-                        color: "White",
-                        fontSize: 10,
-                        width: 20,
-                        height: 20,
-                      }}
-                    />
-                  ) : (
-                    "Save"
-                  )}
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    EditBankFields(item.id, index);
-                  }}
-                  style={{
-                    right: 100,
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                    border: "0px solid",
-                    background: "black",
-                    height: "30px",
-                    color: "white",
-                  }}
-                >
-                  {isEditLoading ? (
-                    <CircularProgress
-                      style={{
-                        color: "White",
-                        fontSize: 10,
-                        width: 20,
-                        height: 20,
-                      }}
-                    />
-                  ) : (
-                    "Edit"
-                  )}
-                </button>)}
+          <div style={{ display: "flex", gap: 15, alignItems: "center" }}>
+            {isEdit === item.id ? (
+              <input
+                value={editHighLight}
+                onChange={(e) => setEditHighLight(e.target.value)}
+                className="inp-enter-name"
+              />
+            ) : (
+              <input disabled value={item.title} className="inp-enter-name" />
+            )}
+            {isEdit === item.id ? (
+              <button
+                onClick={() => {
+                  handleSubmit(item.id);
+                }}
+                style={{
+                  cursor:'pointer',
+                  right: 100,
+                  padding: "5px 10px",
+                  borderRadius: "5px",
+                  border: "0px solid",
+                  background: "black",
+                  height: "30px",
+                  color: "white",
+                }}
+              >
+                {isEditLoading ? (
+                  <CircularProgress
+                    style={{
+                      color: "White",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Save"
+                )}
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  EditBankFields(item.id, index);
+                }}
+                style={{
+                  cursor:'pointer',
+                  right: 100,
+                  padding: "5px 10px",
+                  borderRadius: "5px",
+                  border: "0px solid",
+                  background: "black",
+                  height: "30px",
+                  color: "white",
+                }}
+              >
+                {isEditLoading ? (
+                  <CircularProgress
+                    style={{
+                      color: "White",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Edit"
+                )}
+              </button>
+            )}
           </div>
         ))}
-      </div>
+        </div>
+      </div> : null}
     </Box>
   );
 };

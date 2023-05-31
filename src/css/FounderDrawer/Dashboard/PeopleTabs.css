@@ -109,9 +109,22 @@
 .BtnSaveAndNext {
     margin-top: 3rem;
     float: right;
-    margin-right: 2.5rem;
+    /* margin-right: 2.5rem; */
     display: flex;
     gap: 2rem;
+}
+.addMore{
+    width: 280px;
+    height: 40px;
+    cursor: pointer;
+    background: #FADF35;
+    border-radius: 27px;
+    opacity: 1;
+    border: none;
+    font: 16px/52px Poppins;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .SaveBtn {
@@ -437,7 +450,7 @@
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        margin-right: 0.9rem !important;
+        /* margin-right: 0.9rem !important; */
     }
 }
 

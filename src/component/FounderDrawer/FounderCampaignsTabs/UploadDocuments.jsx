@@ -14,11 +14,15 @@ import { useNavigate } from "react-router-dom";
 const UploadDocuments = () => {
   const navigate = useNavigate();
 
-  const [selectedFile, setSelectedFile] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedDocs, setUploadedDocs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [addDocuments, setAddDocuments] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
 
   const [toggle, settoggle] = useState(false);
+
+
 
   const handleFileInput = async (event) => {
     const file = event.target.files[0];
@@ -29,13 +33,14 @@ const UploadDocuments = () => {
     const formData = new FormData();
     formData.append("file", file);
     try {
+      setIsUploading(true);
       const { data } = await authAxios.post(
         `${Base_Url}/api/users/upload-files`,
         formData
       );
       console.log(data);
       setSelectedFile([
-        ...selectedFile,
+        // ...selectedFile,
         {
           document_type: "DOCUMENTS",
           document_name: event.target.files[0].name,
@@ -43,45 +48,61 @@ const UploadDocuments = () => {
           document_url: data.message,
         },
       ]);
+      setIsUploading(false);
       return data;
     } catch (error) {
       console.log("Data not found !!");
+      setIsUploading(false);
     }
   };
   const handleUpload = () => {
     setIsLoading(true);
-    const values = {
-      company_id: +localStorage.getItem("company_id"),
-      documents: selectedFile,
-    };
 
-    CompanyServices.uploadCompanyDocs(values).then((res) => {
-      console.log(res);
-      if (res.status === 200 || res.status === 201) {
-        setIsLoading(false);
+    if (isUploading) {
+      setIsLoading(false);
+      toast.error("Please wait while file is uploading!", {
+        position: "top-right",
+        style: {
+          borderRadius: "3px",
+          background: "red",
+          color: "#fff",
+        },
+      });
+    } else {
+      const values = {
+        company_id: +localStorage.getItem("company_id"),
+        documents: selectedFile,
+      };
+      CompanyServices.uploadCompanyDocs(values).then((res) => {
+        console.log(res);
+        if (res.status === 200 || res.status === 201) {
+          setIsLoading(false);
 
-        toast.success("Document uploaded successful!",{ 
-          position:"top-right",
-          style: {
-          borderRadius: '3px',
-          background: 'green',
-          color: '#fff',
-        },});
-        settoggle((pre) => !pre);
-        setSelectedFile([]);
-        navigate("/dashboard-founder/e-signin");
-      } else {
-        setIsLoading(false);
+          toast.success("Document uploaded successful!", {
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
+          settoggle((pre) => !pre);
+          setSelectedFile([]);
+          navigate("/dashboard-founder/e-signin");
+        } else {
+          setIsLoading(false);
 
-        toast.error("Something went wrong, please try again later",{ 
-          position:"top-right",
-          style: {
-          borderRadius: '3px',
-          background: 'red',
-          color: '#fff',
-        },});
-      }
-    });
+          toast.error("Something went wrong, please try again later", {
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          });
+        }
+      });
+    }
   };
 
   useEffect(() => {
@@ -94,134 +115,207 @@ const UploadDocuments = () => {
       }
     );
   }, [toggle]);
-
   return (
-    <Container style={{ padding: "16px" }} maxWidth="lg">
-      <Typography className="upload-docs-title">Upload Documents</Typography>
+    <Container style={{ padding: "0px 10% 0px 16px", paddingRight: "10%" }} maxWidth="lg">
+      <h3 >Upload Documents</h3>
 
       <Typography className="upload-docs-desc">
         Upload all due diligence documents for investors perusal
       </Typography>
 
-      <div className="doc-list-parent">
-          {uploadedDocs
-            ?.slice(0)
-            ?.reverse()
-            .map((item, index) => (
-              <div key={index} className="icon-name-upload-doc">
-                <img
-                  src={
-                    item?.document_name?.split(".").pop() === "pptx"
-                      ? pptxIcon
-                      : item?.document_name?.split(".").pop() === "pdf"
-                      ? pdfIcon
-                      : null
-                  }
-                  alt="doc-icon"
-                  width={62}
+      {addDocuments || !uploadedDocs?.length < 0 ? (
+        <>
+          <div className="upload-fun-parent">
+            <div className="upload-doc-parent">
+              <Typography className="Choose-file-text">
+                Choose file - Max file size 10 MB
+              </Typography>
+              <Button
+                onClick={() =>
+                  document.getElementById("upload-pic-inp").click()
+                }
+                style={{ width: "175px !important" }}
+                className="upload-docs-btn"
+              >
+                {isUploading ? (
+                  <CircularProgress
+                    style={{
+                      color: "black",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  " Upload a Picture"
+                )}
+              </Button>
+              <input
+                onChange={handleFileInput}
+                hidden
+                id="upload-pic-inp"
+                type="file"
+                accept=".pdf, .pptx"
+              />
+            </div>
+          </div>
+
+          <div className="getRewards-btn-parent">
+            <Button
+              className="hightlight-submit-button"
+              style={{ color: "White" }}
+            >
+              Submit For Review
+            </Button>
+            <Button
+              disabled={selectedFile ? false : true}
+              onClick={handleUpload}
+              style={{ margin: "20px 0 20px 20px ", color: "white" }}
+              variant="contained"
+              className="hightlight-submit-button"
+            >
+              {isLoading === true ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
                 />
-                <Typography className="doc-name">
-                  {item?.document_name.length < 10
-                    ? item?.document_name
-                    : item?.document_name?.slice(0, 5) +
-                      "..." +
-                      item?.document_name?.split(".").pop()}
-                </Typography>
-              </div>
-            ))}
-        </div>
+              ) : (
+                "Finish"
+              )}
+            </Button>
+          </div>
+        </>
+      ) : null}
 
-      <div className="upload-fun-parent">
-        <div className="upload-doc-parent">
-          <Typography className="Choose-file-text">
-            Choose file - Max file size 10 MB
-          </Typography>
-          <Button
-            onClick={() => document.getElementById("upload-pic-inp").click()}
-            style={{ width: "175px !important" }}
-            className="upload-docs-btn"
-          >
-            Upload a Picture
-          </Button>
-          <input
-            onChange={handleFileInput}
-            hidden
-            id="upload-pic-inp"
-            type="file"
-            accept=".pdf, .pptx"
-          />
-        </div>
-        <div className="doc-list-parent">
-          {selectedFile
-            ?.slice(0)
-            ?.reverse()
-            .map((item, index) => (
-              <div key={index} className="icon-name-upload-doc">
-                <img
-                  src={
-                    item?.document_name?.split(".").pop() === "pptx"
-                      ? pptxIcon
-                      : item?.document_name?.split(".").pop() === "pdf"
-                      ? pdfIcon
-                      : null
-                  }
-                  alt="doc-icon"
-                  width={62}
-                />
-                <Typography className="doc-name">
-                  {item?.document_name?.length < 10
-                    ? item?.document_name
-                    : item?.document_name?.slice(0, 5) +
-                      "..." +
-                      item?.document_name?.split(".").pop()}
-                </Typography>
-              </div>
-            ))}
-
-          {/* <div className='icon-name-upload-doc'>
-                        <img src={pptxIcon} alt="doc-icon" width={62} />
-                        <Typography className='doc-name'>MOA.PPTX</Typography>
+      {uploadedDocs?.length > 0 ? (
+        <>
+          <Box style={{ marginRight: "25px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <h3>Uploaded Documents</h3>
+              {!addDocuments && (
+                <button
+                  onClick={() => setAddDocuments(true)}
+                  className="addMore"
+                >
+                  Upload More Documents
+                </button>
+              )}
+            </div>
+          </Box>
+          <div className="doc-list-parent">
+            {uploadedDocs
+              ?.slice(0)
+              ?.reverse()
+              .map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    // width: "40%",
+                    border: "2px dashed grey",
+                    padding: 20,
+                    gap: 20,
+                    borderRadius: "5px",
+                  }}
+                >
+                  <div className="icon-name-upload-doc">
+                    <img
+                      src={
+                        item?.document_name?.split(".").pop() === "pptx"
+                          ? pptxIcon
+                          : item?.document_name?.split(".").pop() === "pdf"
+                          ? pdfIcon
+                          : null
+                      }
+                      alt="doc-icon"
+                      width={62}
+                    />
+                    <Typography className="doc-name">
+                      {item?.document_name.length < 10
+                        ? item?.document_name
+                        : item?.document_name?.slice(0, 5) +
+                          "..." +
+                          item?.document_name?.split(".").pop()}
+                    </Typography>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 10,
+                      }}
+                    >
+                      <img
+                      style={{cursor:'pointer'}}
+                        src="https://icons.iconarchive.com/icons/praveen/minimal-outline/128/view-icon.png"
+                        height={30}
+                      />
+                      <img
+                      style={{cursor:'pointer'}}
+                        src="https://icons.iconarchive.com/icons/github/octicons/128/download-16-icon.png"
+                        height={30}
+                      />
                     </div>
-                    <div style={{ height: '100px', width: '100px' }}>
-                        <img src={pdfIcon} alt="doc-icon" width={62} />
-                        <Typography className='doc-name'>AOA.PDF</Typography>
-                    </div>
-                    <div style={{ height: '100px', width: '100px' }}>
-                        <img src={pdfIcon} alt="doc-icon" width={62} />
-                        <Typography className='doc-name'>COI.PDF</Typography>
-                    </div> */}
-        </div>
-      </div>
+                  </div>
+                </div>
+              ))}
+            {selectedFile
+              ?.slice(0)
+              ?.reverse()
+              .map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    // width: "40%",
+                    border: "2px dashed grey",
+                    padding: 20,
+                    gap: 20,
+                    borderRadius: "5px",
+                  }}
+                >
+                  <div key={index} className="icon-name-upload-doc">
+                    <img
+                      src={
+                        item?.document_name?.split(".").pop() === "pptx"
+                          ? pptxIcon
+                          : item?.document_name?.split(".").pop() === "pdf"
+                          ? pdfIcon
+                          : null
+                      }
+                      alt="doc-icon"
+                      width={62}
+                    />
+                    <Typography className="doc-name">
+                      {item?.document_name?.length < 10
+                        ? item?.document_name
+                        : item?.document_name?.slice(0, 5) +
+                          "..." +
+                          item?.document_name?.split(".").pop()}
+                    </Typography>
+                  </div>
+                </div>
+              ))}
 
-      <div className="getRewards-btn-parent">
-        <Button className="hightlight-submit-button" style={{color:'White'}}>Submit For Review</Button>
-        <Button
-          onClick={handleUpload}
-          style={{ margin: "20px 0 20px 20px ", color: "white" }}
-          variant="contained"
-          className="hightlight-submit-button"
-        >
-          {isLoading === true ? (
-            <CircularProgress
-              style={{ color: "white", fontSize: 10, width: 20, height: 20 }}
-            />
-          ) : (
-            "Finish"
-          )}
-        </Button>
-      </div>
-
-      {/* <div style={{ marginBottom: "3rem" }}>
-        {uploadedDocs?.length > 0 && (
-          <Typography
-            className="upload-docs-title"
-            style={{ marginBottom: "1rem" }}
-          >
-            Uploaded Documents
-          </Typography>
-        )}
-        
-      </div> */}
+           
+          </div>
+        </>
+      ) : null}
+      
     </Container>
   );
 };

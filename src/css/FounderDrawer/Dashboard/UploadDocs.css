@@ -20,7 +20,7 @@
 
 .upload-doc-parent {
     margin-top: 4rem;
-    max-width: 757px;
+    /* max-width: 757px; */
     width: 100%;
     height: 62px;
     background: #F4F4F4 0% 0% no-repeat padding-box;
@@ -46,6 +46,10 @@
     justify-content: flex-start;
     align-items: center;
     gap: 3rem;
+    margin-right: 30px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    /* width: 68% */
 }
 
 .doc-name {
@@ -55,11 +59,13 @@
 }
 
 .icon-name-upload-doc {
-    height: 100px;
-    width: 100px;
+    /* height: 100px; */
+    /* width: 100px; */
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    /* flex-direction: column; */
 }
 
 .Choose-file-text {
@@ -71,8 +77,9 @@
 
 .upload-fun-parent {
     /* padding-bottom: 3rem; */
-    max-width: 757px !important;
-    width: 100%;
+    /* max-width: 757px !important; */
+    /* width: 100%; */
+    margin-right: 30px;
     border-bottom: 1px solid gray;
 }
 

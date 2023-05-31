@@ -233,31 +233,37 @@ const CompanyProfile = ({ tabChangeFn }) => {
     formik.setFieldValue("number_of_employees", val.label);
   };
 
-
   useEffect(() => {
     return CompanyServices.getCompanyDetailsByFounderId(userData?.id).then(
       (res) => {
         if (res.status === 200) {
           setCompanyData(res.data);
 
-          const c = country.filter(item => item.name === res.data.country);
-          setCountryCode({label: c?.[0]?.name, value: c?.[0]?.country_id})
-          const s = states.filter(item => item.name === res.data.state);
-          setStateCode({label: s?.[0]?.name, value: s?.[0]?.state_code})
-          const cs = city.filter(item => item.name === res.data.city);
-          setCityCode({label: cs?.[0]?.name, value: cs?.[0]?.state_code})
-          const selectsector = sectors.filter(item => item.label === res.data.sector);
-          setSelectSector({label: selectsector?.[0]?.label, value: selectsector?.[0]?.value})
-          const selectemployee = employees.filter(item => item.label === res.data.number_of_employees);
-          setSelectEmployees({label: selectemployee?.[0]?.label, value: selectemployee?.[0]?.value})
-
-
+          const c = country.filter((item) => item.name === res.data.country);
+          setCountryCode({ label: c?.[0]?.name, value: c?.[0]?.country_id });
+          const s = states.filter((item) => item.name === res.data.state);
+          setStateCode({ label: s?.[0]?.name, value: s?.[0]?.state_code });
+          const cs = city.filter((item) => item.name === res.data.city);
+          setCityCode({ label: cs?.[0]?.name, value: cs?.[0]?.state_code });
+          const selectsector = sectors.filter(
+            (item) => item.label === res.data.sector
+          );
+          setSelectSector({
+            label: selectsector?.[0]?.label,
+            value: selectsector?.[0]?.value,
+          });
+          const selectemployee = employees.filter(
+            (item) => item.label === res.data.number_of_employees
+          );
+          setSelectEmployees({
+            label: selectemployee?.[0]?.label,
+            value: selectemployee?.[0]?.value,
+          });
 
           localStorage.setItem("company_id", res.data.id);
         }
       }
     );
-    
   }, [userData?.id]);
 
   return (
@@ -290,35 +296,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
               }}
             >
               <FormControl sx={{ m: 1, width: "100%" }}>
-                {/* <InputLabel
-                  color="warning"
-                  id="demo-multiple-name-label"
-                  sx={{ marginTop: "-6px" }}
-                >
-                  Select Country*
-                </InputLabel> */}
-                {/* <Select
-                  sx={selectStyle}
-                  labelId="demo-multiple-name-label"
-                  id="demo-multiple-name"
-                  // multiple
-                  name="country"
-                  value={formik.values.country}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  input={<OutlinedInput label="Name" />}
-                  MenuProps={MenuProps}
-                >
-                  {names.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName, theme)}
-                    >
-                      {name}
-                    </MenuItem>
-                  ))}
-                </Select> */}
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -337,36 +314,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              {/* {formik.values.country === "India" ? ( */}
               <FormControl sx={{ m: 1, width: "100%" }}>
-                {/* <InputLabel
-                    color="warning"
-                    sx={{ marginTop: "-6px" }}
-                    id="demo-multiple-name-label"
-                  >
-                    Select State*
-                  </InputLabel>
-                  <Select
-                    name="state"
-                    value={formik.values.state}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    sx={selectStyle}
-                    labelId="demo-multiple-name-label"
-                    id="demo-multiple-name"
-                    input={<OutlinedInput label="Name" />}
-                    MenuProps={MenuProps}
-                  >
-                    {states.map((name) => (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                        style={getStyles(name, personName, theme)}
-                      >
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select> */}
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -377,8 +325,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   name="state"
                   onChange={(val) => setStateValue(val)}
                   onBlur={() => formik.setFieldTouched("state", true)}
-
-                  // components={{Input}}
                 />
                 {formik.touched.state && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
@@ -386,37 +332,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              {/* ) : null} */}
-              {/* {formik.values.state ? ( */}
               <FormControl sx={{ m: 1, width: "100%" }}>
-                {/* <InputLabel
-                    color="warning"
-                    sx={{ marginTop: "-6px" }}
-                    id="demo-multiple-name-label"
-                  >
-                    Select City*
-                  </InputLabel> */}
-                {/* <Select
-                    sx={selectStyle}
-                    labelId="demo-multiple-name-label"
-                    id="demo-multiple-name"
-                    name="city"
-                    value={formik.values.city}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    input={<OutlinedInput label="Name" />}
-                    MenuProps={MenuProps}
-                  >
-                    {city.map((name) => (
-                      <MenuItem
-                        key={name}
-                        value={name}
-                        style={getStyles(name, personName, theme)}
-                      >
-                        {name}
-                      </MenuItem>
-                    ))}
-                  </Select> */}
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -428,8 +344,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   name="city"
                   onChange={(val) => setCityValue(val)}
                   onBlur={() => formik.setFieldTouched("city", true)}
-
-                  // components={{Input}}
                 />
                 {formik.touched.city && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
@@ -437,7 +351,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              {/* ) : null} */}
 
               <FormControl sx={{ m: 1, width: "100%" }}>
                 <input
@@ -673,9 +586,9 @@ const CompanyProfile = ({ tabChangeFn }) => {
                     type="date"
                     className="icon-input"
                   />
-                  <IconButton sx={{ p: "10px" }} aria-label="menu">
+                  {/* <IconButton sx={{ p: "10px" }} aria-label="menu">
                     <img src={date} alt="date-logo" width={24} />
-                  </IconButton>
+                  </IconButton> */}
                 </div>
                 {formik.touched.date_of_incorporation && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
@@ -721,35 +634,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
               }}
             >
               <FormControl sx={{ m: 1, width: "100%" }}>
-                {/* <InputLabel
-                  color="warning"
-                  id="demo-multiple-name-label"
-                  sx={{ marginTop: "-6px" }}
-                >
-                  Select Sector*
-                </InputLabel> */}
-                {/* <Select
-                  sx={selectStyle}
-                  labelId="demo-multiple-name-label"
-                  id="demo-multiple-name"
-                  // multiple
-                  name="sector"
-                  value={formik.values.sector}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  input={<OutlinedInput label="Name" />}
-                  MenuProps={MenuProps}
-                >
-                  {sectors.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName, theme)}
-                    >
-                      {name}
-                    </MenuItem>
-                  ))}
-                </Select> */}
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -759,16 +643,10 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   options={sectors}
                   placeholder="Select Sector"
                   name="sector"
-                  // value={formik.values.sector}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   onChange={(val) => {
                     setSectorValue(val);
                   }}
-
-                  // onBlur={() => formik.setFieldTouched("sector", true)}
-
-                  // components={{Input}}
                 />
                 {formik.touched.sector && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
@@ -795,34 +673,6 @@ const CompanyProfile = ({ tabChangeFn }) => {
               </FormControl>
 
               <FormControl sx={{ m: 1, width: "100%" }}>
-                {/* <InputLabel
-                  color="warning"
-                  sx={{ marginTop: "-6px" }}
-                  id="demo-multiple-name-label"
-                >
-                  No. of Employees *
-                </InputLabel>
-                <Select
-                  sx={selectStyle}
-                  labelId="demo-multiple-name-label"
-                  id="demo-multiple-name"
-                  name="number_of_employees"
-                  value={formik.values.number_of_employees}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  input={<OutlinedInput label="Name" />}
-                  MenuProps={MenuProps}
-                >
-                  {employees.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName, theme)}
-                    >
-                      {name}
-                    </MenuItem>
-                  ))}
-                </Select> */}
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -831,16 +681,10 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   options={employees}
                   placeholder="No. of Employees"
                   name="number_of_employees"
-                  // value={formik.values.number_of_employees}
-                  // onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   onChange={(val) => {
                     setEmployeesValue(val);
                   }}
-
-                  // onBlur={() => formik.setFieldTouched("sector", true)}
-
-                  // components={{Input}}
                 />
                 {formik.touched.number_of_employees && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>

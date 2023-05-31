@@ -34,7 +34,7 @@ const Press = ({ tabChangeFn }) => {
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log(values);
+      console.log("press values",values);
       !isPressAdded
         ? CompanyServices.addPress(values).then((res) => {
             console.log(res);
@@ -134,11 +134,11 @@ const Press = ({ tabChangeFn }) => {
   }, [toggle]);
 
   return (
-    <Container style={{ padding: "16px" }} maxWidth="lg">
-      <form onSubmit={formik.handleSubmit}>
-        <Typography className="press-title">Press</Typography>
+    <Container style={{ padding: "0px 10% 0px 16px ", paddingRight:'10%' }} maxWidth="lg">
+      <form style={{marginRight:'30px'}} onSubmit={formik.handleSubmit}>
+        <h3 >Press</h3>
 
-        <Typography className="press-title-desc">
+        <Typography style={{paddingTop:10}} className="press-title-desc">
           Show your reach! Investors are always more inclined towards startups
           that have been covered by the media and are gaining traction.{" "}
         </Typography>
@@ -273,7 +273,7 @@ const Press = ({ tabChangeFn }) => {
         <div className="getRewards-btn-parent">
           <Button
             type="submit"
-            style={{ margin: "20px", color: "white" }}
+            style={{  color: "white" }}
             variant="contained"
             className="hightlight-submit-button"
           >

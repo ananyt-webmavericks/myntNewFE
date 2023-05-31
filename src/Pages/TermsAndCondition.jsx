@@ -2,6 +2,7 @@ import React from "react";
 import '../css/termsAndCondition.css';
 import { Container, CssBaseline } from "@mui/material";
 import { useEffect } from "react";
+import Footer from "../component/Footer";
 const TermsAndCondition = () => {
 
     useEffect(() => {
@@ -121,6 +122,7 @@ const TermsAndCondition = () => {
 
                 </div>
             </Container>
+            <Footer/>
         </React.Fragment>
     )
 }

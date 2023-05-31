@@ -219,7 +219,7 @@ const LiveDeals = () => {
                         </div>
                         <SearchBar />
 
-                        <div style={{ marginTop: '60px' }}>
+                        <div style={{ margin: '60px 0px' }}>
                             <Typography className="live-deals-heading">Live Opportunities</Typography>
                         </div>
 

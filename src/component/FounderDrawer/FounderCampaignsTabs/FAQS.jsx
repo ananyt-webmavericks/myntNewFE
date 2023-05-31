@@ -33,6 +33,7 @@ const FAQS = ({ tabChangeFn }) => {
   const [editQuestion, setEditQuestion] = useState("");
   const [editAnswer, setEditAnswer] = useState("");
   const [newData, setNewData] = useState("");
+  const [addMoreFaqs, setAddMoreFaqs] = useState();
 
   const { userData } = useSelector((state) => state.loginData);
   const CustomWidthTooltip = styled(({ className, ...props }) => (
@@ -184,247 +185,295 @@ const FAQS = ({ tabChangeFn }) => {
   }, [count]);
 
   return (
-    <Container style={{ padding: "0px" }} maxWidth="lg">
-      <form onSubmit={formik.handleSubmit}>
-        <Box sx={{ marginTop: 4, marginLeft: 2 }}>
-          <h3 className="faqs-title">FAQs</h3>
+    <Container style={{ padding: "0px", paddingRight: "10%" }} maxWidth="lg">
+      <Box sx={{ marginTop: 4, marginLeft: 2, marginRight: "30px" }}>
+        <h3 >FAQs</h3>
 
-          <Typography>
-            Investors are curious. Answer the basics about your startup here.{" "}
-          </Typography>
+        <Typography style={{paddingTop:'10px'}}>
+          Investors are curious. Answer the basics about your startup here.{" "}
+        </Typography>
 
-          <Typography
-            className="upload-ur-pitch"
-            style={{ marginTop: "1.4rem", marginBottom: "-0.3rem" }}
-          >
-            Add FAQ
-          </Typography>
+        {/* <Typography
+          className="upload-ur-pitch"
+          style={{ marginTop: "1.4rem", marginBottom: "-0.3rem" }}
+        >
+          Add FAQ
+        </Typography> */}
+      </Box>
+      {!addedFaqs.length || addMoreFaqs ? (
+        <form style={{ marginRight: "30px" }} onSubmit={formik.handleSubmit}>
+          <Box sx={{ marginTop: 4, marginLeft: 2 }}>
+            {/* <h3 className="faqs-title">FAQs</h3>
 
-          {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-          <input
-            name="question"
-            value={formik.values.question}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Type your question here…"
-            type="text"
-            className="inp-enter-name"
-          />
-          {formik.touched.question && (
-            <div className="raise-err-text">{formik.errors.question}</div>
-          )}
-          {/* </CustomWidthTooltip> */}
+            <Typography>
+              Investors are curious. Answer the basics about your startup here.{" "}
+            </Typography>
 
-          {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
-          <textarea
-            name="answer"
-            value={formik.values.answer}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            style={{ marginBottom: 0 }}
-            placeholder="Describe your previous fundraising rounds*"
-            className="inp-textarea-desc"
-            id="describe"
-            rows="7"
-          ></textarea>
-          <div className="zero-of-threehundred">{q1Count?.length}/300</div>
-          {formik.touched.answer && (
-            <div className="raise-err-text">{formik.errors.answer}</div>
-          )}
-          {/* </CustomWidthTooltip> */}
-
-          <hr
-            style={{
-              color: "#F4F4F4",
-              maxWidth: "800px",
-              width: "100%",
-              marginTop: "2rem",
-            }}
-          />
-
-          <div className="faqs-button-parent">
-            <Button
-              onClick={() => setSavedClicked(true)}
-              disabled={isLoading === true ? true : false}
-              type="submit"
-              style={{ margin: "20px", color: "black" }}
-              variant="contained"
-              className="comp-prof-button1"
-            >
-              {isLoading && isSaveClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Save"
-              )}
-            </Button>
-            <Button
-              onClick={() => setNextClicked(true)}
-              disabled={isLoading === true ? true : false}
-              type="submit"
-              style={{ margin: "20px" }}
-              variant="contained"
-              className="comp-prof-button2"
-            >
-              {isLoading && isNextClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Next"
-              )}
-            </Button>
-          </div>
-        </Box>
-      </form>
-
-      <Box sx={{ marginTop: 4, marginLeft: 2 }}>
-        {addedFaqs.length > 0 && <h3 className="faqs-title">Added FAQs</h3>}
-        {addedFaqs?.map((item, index) => (
-          <div key={index}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <Typography
-                style={{
-                  // marginTop: "1.4rem",
-                  marginBottom: "-0.3rem",
-                }}
-                className="upload-ur-pitch"
-              >
-                Question {index + 1}
-              </Typography>
-              {isEdit === item.id ? (
-                <button
-                  onClick={() => {
-                    handleSubmit(item.id);
-                  }}
-                  style={{
-                    right: 100,
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                    border: "0px solid",
-                    background: "black",
-                    height: "30px",
-                    color: "white",
-                  }}
-                >
-                  {isEditLoading ? (
-                    <CircularProgress
-                      style={{
-                        color: "White",
-                        fontSize: 10,
-                        width: 20,
-                        height: 20,
-                      }}
-                    />
-                  ) : (
-                    "Save"
-                  )}
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    EditBankFields(item.id, index);
-                  }}
-                  style={{
-                    right: 100,
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                    border: "0px solid",
-                    background: "black",
-                    height: "30px",
-                    color: "white",
-                  }}
-                >
-                  {isEditLoading ? (
-                    <CircularProgress
-                      style={{
-                        color: "White",
-                        fontSize: 10,
-                        width: 20,
-                        height: 20,
-                      }}
-                    />
-                  ) : (
-                    "Edit"
-                  )}
-                </button>
-              )}
-            </div>
+            // <Typography
+            //   className="upload-ur-pitch"
+            //   style={{ marginTop: "1.4rem", marginBottom: "-0.3rem" }}
+            // >
+            //   Add FAQ
+            // </Typography> */}
 
             {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-
-            {isEdit === item.id ? (
+            <div style={{height:'90px'}}>
               <input
-                value={editQuestion}
-                onChange={(e) => setEditQuestion(e.target.value)}
+                name="question"
+                value={formik.values.question}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 placeholder="Type your question here…"
                 type="text"
                 className="inp-enter-name"
               />
-            ) : (
-              <input
-                value={
-                  item.question
-                  // newData[0].id===item.id  ? newData[0].question : item.question
-                }
-                placeholder="Type your question here…"
-                type="text"
-                className="inp-enter-name"
-              />
-            )}
+              {formik.touched.question && (
+                <div className="raise-err-text">{formik.errors.question}</div>
+              )}
+            </div>
             {/* </CustomWidthTooltip> */}
 
             {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
-            {isEdit === item.id ? (
+            <div style={{height:'190px'}}>
               <textarea
-                value={editAnswer}
-                onChange={(e) => setEditAnswer(e.target.value)}
+                name="answer"
+                value={formik.values.answer}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 style={{ marginBottom: 0 }}
                 placeholder="Describe your previous fundraising rounds*"
                 className="inp-textarea-desc"
-                name="descibe"
                 id="describe"
                 rows="7"
               ></textarea>
-            ) : (
-              <textarea
-                value={
-                  item.answer
-                  // isEdit===item.id ? newData[0].answer : item.answer
-                }
-                style={{ marginBottom: 0 }}
-                placeholder="Describe your previous fundraising rounds*"
-                className="inp-textarea-desc"
-                name="descibe"
-                id="describe"
-                rows="7"
-              ></textarea>
-            )}
+            
+            <div className="zero-of-threehundred">{q1Count?.length}/300</div>
+            {formik.touched.answer && (
+              <div className="raise-err-text">{formik.errors.answer}</div>
+            )}</div>
             {/* </CustomWidthTooltip> */}
-            <div className="zero-of-threehundred">{q2Count}/300</div>
 
             <hr
               style={{
                 color: "#F4F4F4",
-                maxWidth: "800px",
+                // maxWidth: "800px",
                 width: "100%",
                 marginTop: "2rem",
               }}
             />
-          </div>
-        ))}
-      </Box>
+
+            <div className="faqs-button-parent">
+              <Button
+                onClick={() => setSavedClicked(true)}
+                disabled={isLoading === true ? true : false}
+                type="submit"
+                style={{ margin: "20px", color: "black" }}
+                variant="contained"
+                className="comp-prof-button1"
+              >
+                {isLoading && isSaveClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Save"
+                )}
+              </Button>
+              <Button
+                onClick={() => setNextClicked(true)}
+                disabled={isLoading === true ? true : false}
+                type="submit"
+                style={{ margin: "20px", marginRight: "0px" }}
+                variant="contained"
+                className="comp-prof-button2"
+              >
+                {isLoading && isNextClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Next"
+                )}
+              </Button>
+            </div>
+          </Box>
+        </form>
+      ) : null}
+
+      {addedFaqs.length ? (
+        <Box sx={{ marginTop: '25px', marginLeft: 2 }}>
+          {addedFaqs.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                gap: 20,
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginRight: 30,
+                // paddingRight: '10%'
+              }}
+            >
+              <h3 className="faqs-title">Added FAQs</h3>
+              {addMoreFaqs ? null : (
+                <button
+                  disabled={isLoading === true ? true : false}
+                  onClick={() => setAddMoreFaqs(true)}
+                  type="submit"
+                  className="addMore"
+                >
+                  Add More FAQs
+                </button>
+              )}
+            </div>
+          )}
+          {addedFaqs?.map((item, index) => (
+            <div style={{ marginRight: "30px" }} key={index}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Typography
+                  style={{
+                    // marginTop: "1.4rem",
+                    marginBottom: "-0.3rem",
+                  }}
+                  className="upload-ur-pitch"
+                >
+                  Question {index + 1}
+                </Typography>
+                {isEdit === item.id ? (
+                  <button
+                    onClick={() => {
+                      handleSubmit(item.id);
+                    }}
+                    style={{
+                      cursor: "pointer",
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                      border: "0px solid",
+                      background: "black",
+                      height: "30px",
+                      color: "white",
+                    }}
+                  >
+                    {isEditLoading ? (
+                      <CircularProgress
+                        style={{
+                          color: "White",
+                          fontSize: 10,
+                          width: 20,
+                          height: 20,
+                        }}
+                      />
+                    ) : (
+                      "Save"
+                    )}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      EditBankFields(item.id, index);
+                    }}
+                    style={{
+                      cursor: "pointer",
+                      right: 100,
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                      border: "0px solid",
+                      background: "black",
+                      height: "30px",
+                      color: "white",
+                    }}
+                  >
+                    {isEditLoading ? (
+                      <CircularProgress
+                        style={{
+                          color: "White",
+                          fontSize: 10,
+                          width: 20,
+                          height: 20,
+                        }}
+                      />
+                    ) : (
+                      "Edit"
+                    )}
+                  </button>
+                )}
+              </div>
+
+              {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+
+              {isEdit === item.id ? (
+                <input
+                  value={editQuestion}
+                  onChange={(e) => setEditQuestion(e.target.value)}
+                  placeholder="Type your question here…"
+                  type="text"
+                  className="inp-enter-name"
+                />
+              ) : (
+                <input
+                  disabled
+                  value={
+                    item.question
+                    // newData[0].id===item.id  ? newData[0].question : item.question
+                  }
+                  placeholder="Type your question here…"
+                  type="text"
+                  className="inp-enter-name"
+                />
+              )}
+              {/* </CustomWidthTooltip> */}
+
+              {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
+              {isEdit === item.id ? (
+                <textarea
+                  value={editAnswer}
+                  onChange={(e) => setEditAnswer(e.target.value)}
+                  style={{ marginBottom: 0 }}
+                  placeholder="Describe your previous fundraising rounds*"
+                  className="inp-textarea-desc"
+                  name="descibe"
+                  id="describe"
+                  rows="7"
+                ></textarea>
+              ) : (
+                <textarea
+                  disabled
+                  value={
+                    item.answer
+                    // isEdit===item.id ? newData[0].answer : item.answer
+                  }
+                  style={{ marginBottom: 0 }}
+                  placeholder="Describe your previous fundraising rounds*"
+                  className="inp-textarea-desc"
+                  name="descibe"
+                  id="describe"
+                  rows="7"
+                ></textarea>
+              )}
+              {/* </CustomWidthTooltip> */}
+              {/* <div className="zero-of-threehundred">{q2Count}/300</div>
+
+            <hr
+              style={{
+                color: "#F4F4F4",
+                // maxWidth: "800px",
+                width: "100%",
+                marginTop: "2rem",
+              }}
+            /> */}
+            </div>
+          ))}
+        </Box>
+      ) : null}
     </Container>
   );
 };

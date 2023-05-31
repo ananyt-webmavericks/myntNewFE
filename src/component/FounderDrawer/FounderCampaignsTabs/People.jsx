@@ -22,11 +22,12 @@ import { toast } from "react-hot-toast";
 import { authAxios } from "../../../service/Auth-header";
 import { Base_Url } from "../../../Utils/Configurable";
 import { useNavigate } from "react-router-dom";
+import closeIcon from "../../../images/founder/closeIcon.png"
 const useStyles = makeStyles({
   peoplegroupbtn: {
     gap: "2rem",
     display: "flex",
-    marginTop: "2rem",
+    marginTop: "25px",
   },
   Teambtn: {
     color: "white",
@@ -76,6 +77,9 @@ const People = ({ tabChangeFn }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [teamPosition, setTeamPosition] = useState("");
+  const [addMoreTeam, setAddMoreTeam] = useState(false);
+  const [addMoreInvestor, setAddMoreInvestor] = useState(false);
+  const [addMoreAdvisors, setAddMoreAdvisors] = useState(false);
 
   const handleClick = (tabNo) => {
     setSubTabNo(tabNo);
@@ -97,9 +101,9 @@ const People = ({ tabChangeFn }) => {
     peopleData.length === 0 && getPeopleData();
   }, []);
   return (
-    <Box sx={{ marginTop: 4, marginLeft: 2, marginBottom: "3rem" }}>
+    <Box sx={{ marginTop: 4, marginLeft: 2, marginBottom: "3rem",paddingRight:'10%' }}>
       <h3>People</h3>
-      <Typography>
+      <Typography style={{marginTop: 10}}>
         Add your founding team members, lead investors and advisors here. As we
         all know ‘Team work makes the dream work’. Investors are always keen to
         know the people that run the show behind the scenes.
@@ -143,40 +147,138 @@ const People = ({ tabChangeFn }) => {
         </Button>
       </Box>
 
-      {subTabNo === 0 && (
-        <TeamMembers getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
-      )}
-      {subTabNo === 1 && (
-        <Investors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
-      )}
-      {subTabNo === 2 && (
-        <Advisors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
-      )}
+      {subTabNo === 0 &&
+        (peopleData?.filter((item) => item.type === "TEAM").length < 0 ||
+        addMoreTeam ? (
+          <TeamMembers
+            getPeopleData={getPeopleData}
+            tabChangeFn={tabChangeFn}
+          />
+        ) : null)}
+      {subTabNo === 1 &&
+        (peopleData?.filter((item) => item.type === "INVESTOR").length < 0 ||
+        addMoreInvestor ? (
+          <Investors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
+        ) : null)}
+      {subTabNo === 2 &&
+        (peopleData?.filter((item) => item.type === "ADVISOR").length < 0 ||
+        addMoreAdvisors ? (
+          <Advisors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
+        ) : null)}
 
       {subTabNo === 0 &&
         peopleData?.filter((item) => item.type === "TEAM").length > 0 && (
           <div
-            className="investor-home-heading"
-            style={{ fontSize: "18px", marginTop: 150 }}
+            className={addMoreTeam ? "mt-200" : "mt-30"}
+            style={{
+              display: "flex",
+              gap: 20,
+              alignItems: "center",
+              height: 80,
+              justifyContent: "space-between",
+              marginRight: "30px",
+            }}
           >
-            Added Team Members
+            <div
+              className="investor-home-heading"
+              style={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              Added Team Members
+            </div>
+            {addMoreTeam ? null : (
+              <button
+                disabled={isLoading === true ? true : false}
+                onClick={() => setAddMoreTeam(true)}
+                type="submit"
+                className="addMore"
+              >
+                Add More Team Members
+              </button>
+            )}
           </div>
         )}
       {subTabNo === 1 &&
         peopleData?.filter((item) => item.type === "INVESTOR").length > 0 && (
-          <div className="investor-home-heading" style={{ fontSize: "18px" }}>
-            Added Investors
+          <div
+            className={addMoreInvestor ? "mt-200" : "mt-30"}
+            style={{
+              display: "flex",
+              gap: 20,
+              alignItems: "center",
+              height: 80,
+              justifyContent: "space-between",
+              marginRight: "30px",
+            }}
+          >
+            <div
+              className="investor-home-heading"
+              style={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              Added Investors
+            </div>
+            {addMoreInvestor ? null : (
+              <button
+                disabled={isLoading === true ? true : false}
+                onClick={() => setAddMoreInvestor(true)}
+                type="submit"
+                className="addMore"
+              >
+                Add More Investors
+              </button>
+            )}
           </div>
         )}
       {subTabNo === 2 &&
         peopleData?.filter((item) => item.type === "ADVISOR").length > 0 && (
-          <div className="investor-home-heading" style={{ fontSize: "18px" }}>
-            Added Advisors
+          <div
+            className={addMoreAdvisors ? "mt-200" : "mt-30"}
+            style={{
+              display: "flex",
+              gap: 20,
+              alignItems: "center",
+              height: 80,
+              justifyContent: "space-between",
+              marginRight: "30px",
+            }}
+          >
+            <div
+              className="investor-home-heading"
+              style={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              Added Advisors
+            </div>
+            {addMoreAdvisors ? null : (
+              <button
+                disabled={isLoading === true ? true : false}
+                onClick={() => setAddMoreAdvisors(true)}
+                type="submit"
+                className="addMore"
+              >
+                Add More Advisors
+              </button>
+            )}
           </div>
         )}
 
-      <div className="gridParent">
-        <Grid item xs={6} md={3}>
+      <div 
+      // className="gridParent"
+      >
+        <Grid 
+        item 
+        // xs={6} md={3}
+        >
           <Box
             sx={{
               p: 2,
@@ -192,72 +294,73 @@ const People = ({ tabChangeFn }) => {
           >
             {subTabNo === 0 && (
               <>
-                {peopleData
-                  ?.filter((item) => item.type === "TEAM")
-                  .slice(0)
-                  .reverse()
-                  .map((item, index) => (
-                    <Card
-                      key={index}
-                      onClick={() => handleOpen(item.id)}
-                      style={{
-                        minWidth: "280px",
-                        background: "#FFFFFF 0% 0% no-repeat padding-box",
-                        boxShadow: "0px 0px 12px #0000001F",
-                        borderRadius: "7px",
-                        marginRight: "50px",
-                        marginTop: "10px",
-                        marginBottom: "10px",
-                        marginLeft: "10px",
-                      }}
-                    >
-
-                      <CardContent>
-                        <div
+                {peopleData?.filter((item) => item.type === "TEAM").length > 0
+                  ? peopleData
+                      ?.filter((item) => item.type === "TEAM")
+                      .slice(0)
+                      .reverse()
+                      .map((item, index) => (
+                        <Card
+                          key={index}
+                          onClick={() => handleOpen(item.id)}
                           style={{
-                            display: "grid",
-                            justifyContent: "center",
-                            textAlign: "center",
+                            minWidth: "265px",
+                            background: "#FFFFFF 0% 0% no-repeat padding-box",
+                            boxShadow: "0px 0px 12px #0000001F",
+                            borderRadius: "7px",
+                            marginRight: "50px",
+                            marginTop: "10px",
+                            marginBottom: "10px",
+                            marginLeft: "10px",
                           }}
                         >
-                          <img
-                            style={{ margin: "auto" }}
-                            src={item.profile_image}
-                            width={183}
-                            height={183}
-                          ></img>
-                          <span
-                            style={{
-                              fontSize: "16px",
-                              fontWeight: "600",
-                              marginTop: "10px",
-                            }}
-                          >
-                            {item.name}
-                          </span>
-                          <span
-                            style={{
-                              fontSize: "12px",
-                              fontWeight: "600",
-                              marginTop: "10px",
-                              marginBottom: "10px",
-                            }}
-                          >
-                            {item.position}
-                          </span>
-                          <img
-                            onclick={() =>
-                              window.open(item.linked_in_link, "_blank")
-                            }
-                            src={Linkdin}
-                            width={25}
-                            height={25}
-                            style={{ margin: "auto" }}
-                          ></img>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                          <CardContent>
+                            <div
+                              style={{
+                                display: "grid",
+                                justifyContent: "center",
+                                textAlign: "center",
+                              }}
+                            >
+                              <img
+                                style={{ margin: "auto" }}
+                                src={item.profile_image}
+                                width={183}
+                                height={183}
+                              ></img>
+                              <span
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "600",
+                                  marginTop: "10px",
+                                }}
+                              >
+                                {item.name}
+                              </span>
+                              <span
+                                style={{
+                                  fontSize: "12px",
+                                  fontWeight: "600",
+                                  marginTop: "10px",
+                                  marginBottom: "10px",
+                                }}
+                              >
+                                {item.position}
+                              </span>
+                              <img
+                                onclick={() =>
+                                  window.open(item.linked_in_link, "_blank")
+                                }
+                                src={Linkdin}
+                                width={25}
+                                height={25}
+                                style={{ margin: "auto" }}
+                              ></img>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))
+                  : null}
                 {peopleData
                   ?.filter((item) => item.type === "TEAM")
                   .slice(0)
@@ -270,8 +373,9 @@ const People = ({ tabChangeFn }) => {
                       aria-describedby="modal-modal-description"
                     >
                       <Box sx={style}>
-                        <div style={{ fontSize: "20px", fontWeight: 900 }}>
+                        <div style={{ display:'flex', justifyContent:'space-between',alignItems:'center', fontSize: "20px", fontWeight: 900 }}>
                           Edit Team Member
+                          <img onClick={handleClose} height={25} src={closeIcon}/>
                         </div>
                         <TeamMembers
                           open={open}
@@ -298,7 +402,7 @@ const People = ({ tabChangeFn }) => {
                       key={index}
                       onClick={() => handleOpen(item.id)}
                       style={{
-                        minWidth: "280px",
+                        minWidth: "265px",
                         background: "#FFFFFF 0% 0% no-repeat padding-box",
                         boxShadow: "0px 0px 12px #0000001F",
                         borderRadius: "7px",
@@ -358,13 +462,14 @@ const People = ({ tabChangeFn }) => {
                     <Modal
                       open={open === item.id ? true : false}
                       onClose={handleClose}
-                      style={{overflow:'scroll'}}
+                      style={{ overflow: "scroll" }}
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
                     >
                       <Box sx={style}>
-                        <div style={{ fontSize: "20px", fontWeight: 900 }}>
+                        <div style={{display:'flex', justifyContent:'space-between',alignItems:'center', fontSize: "20px", fontWeight: 900 }}>
                           Edit Investors
+                          <img onClick={handleClose} height={25} src={closeIcon}/>
                         </div>
 
                         <Investors
@@ -392,7 +497,7 @@ const People = ({ tabChangeFn }) => {
                       key={index}
                       onClick={() => handleOpen(item.id)}
                       style={{
-                        minWidth: "280px",
+                        minWidth: "265px",
                         background: "#FFFFFF 0% 0% no-repeat padding-box",
                         boxShadow: "0px 0px 12px #0000001F",
                         borderRadius: "7px",
@@ -456,8 +561,9 @@ const People = ({ tabChangeFn }) => {
                       aria-describedby="modal-modal-description"
                     >
                       <Box sx={style}>
-                      <div style={{ fontSize: "20px", fontWeight: 900 }}>
+                        <div style={{ display:'flex', justifyContent:'space-between',alignItems:'center', fontSize: "20px", fontWeight: 900 }}>
                           Edit Advisors
+                          <img onClick={handleClose} height={25} src={closeIcon}/>
                         </div>
                         <Advisors
                           handleClose={handleClose}

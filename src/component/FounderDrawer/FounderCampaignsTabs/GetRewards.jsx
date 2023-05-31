@@ -24,6 +24,7 @@ const GetRewards = ({ tabChangeFn }) => {
   const [editProductName, setEditProductName] = useState("");
   const [editAmount, setEditAmount] = useState("");
   const [editDiscount, setEditDiscount] = useState("");
+  const [addMoreRewards, setAddmoreRewards] = useState(false);
 
   const [count, setCount] = useState(0);
 
@@ -156,58 +157,65 @@ const GetRewards = ({ tabChangeFn }) => {
   }, [count]);
 
   return (
-    <Box sx={{ marginTop: 4 }} className="promotions-parent">
-      <span className="hightlight-heading">Promotion</span>
+    <Box
+      sx={{ marginTop: 4, paddingRight: "10%", marginRight: "30px" }}
+      className="promotions-parent"
+    >
+      <h3 >Promotion</h3>
 
-      <Typography className="raise-with-mint-desc highlight-desc">
+      <Typography
+        style={{ paddingTop: 10 }}
+        className="raise-with-mint-desc highlight-desc"
+      >
         Mention the benefits or discounts an investor can get once he enrolls to
         your campaign
       </Typography>
 
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <input
-            name="product_name"
-            value={formik.values.product_name}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Product Name"
-            type="text"
-            className="get-reward-inputs"
-          />
-          {formik.touched.product_name && (
-            <div className="raise-err-text">{formik.errors.product_name}</div>
-          )}
+      {rewardData?.length < 0 || addMoreRewards ? (
+        <form onSubmit={formik.handleSubmit}>
+          <div>
+            <input
+              name="product_name"
+              value={formik.values.product_name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Product Name"
+              type="text"
+              className="get-reward-inputs"
+            />
+            {formik.touched.product_name && (
+              <div className="raise-err-text">{formik.errors.product_name}</div>
+            )}
 
-          <input
-            name="amount"
-            value={formik.values.amount}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Original Price"
-            type="text"
-            className="get-reward-inputs"
-          />
-          {formik.touched.amount && (
-            <div className="raise-err-text">{formik.errors.amount}</div>
-          )}
+            <input
+              name="amount"
+              value={formik.values.amount}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Original Price"
+              type="text"
+              className="get-reward-inputs"
+            />
+            {formik.touched.amount && (
+              <div className="raise-err-text">{formik.errors.amount}</div>
+            )}
 
-          <input
-            name="discounted_price"
-            value={formik.values.discounted_price}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Discounted Price"
-            type="text"
-            className="get-reward-inputs"
-          />
-          {formik.touched.discounted_price && (
-            <div className="raise-err-text">
-              {formik.errors.discounted_price}
-            </div>
-          )}
-        </div>
-        {/* 
+            <input
+              name="discounted_price"
+              value={formik.values.discounted_price}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Discounted Price"
+              type="text"
+              className="get-reward-inputs"
+            />
+            {formik.touched.discounted_price && (
+              <div className="raise-err-text">
+                {formik.errors.discounted_price}
+              </div>
+            )}
+          </div>
+          {/* 
                 <div className='getRewards-btn-parent'>
                     <Button
                         type="submit"
@@ -221,180 +229,208 @@ const GetRewards = ({ tabChangeFn }) => {
                     </Button>
                 </div> */}
 
-        <div className="faqs-button-parent">
-          <Button
-            onClick={() => setSavedClicked(true)}
-            disabled={isLoading === true ? true : false}
-            type="submit"
-            style={{ margin: "20px", color: "black" }}
-            variant="contained"
-            className="comp-prof-button1"
-          >
-            {isLoading && isSaveClicked ? (
-              <CircularProgress
-                style={{
-                  color: "white",
-                  fontSize: 10,
-                  width: 20,
-                  height: 20,
-                }}
-              />
-            ) : (
-              "Save"
-            )}
-          </Button>
-          <Button
-            onClick={() => setNextClicked(true)}
-            disabled={isLoading === true ? true : false}
-            type="submit"
-            style={{ margin: "20px" }}
-            variant="contained"
-            className="comp-prof-button2"
-          >
-            {isLoading && isNextClicked ? (
-              <CircularProgress
-                style={{
-                  color: "white",
-                  fontSize: 10,
-                  width: 20,
-                  height: 20,
-                }}
-              />
-            ) : (
-              "Next"
-            )}
-          </Button>
-        </div>
-
-        <div className="promotions-parent">
+          <div className="faqs-button-parent">
+            <Button
+              onClick={() => setSavedClicked(true)}
+              disabled={isLoading === true ? true : false}
+              type="submit"
+              style={{ margin: "20px", color: "black" }}
+              variant="contained"
+              className="comp-prof-button1"
+            >
+              {isLoading && isSaveClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Save"
+              )}
+            </Button>
+            <Button
+              onClick={() => setNextClicked(true)}
+              disabled={isLoading === true ? true : false}
+              type="submit"
+              style={{ margin: "20px", marginRight: 0 }}
+              variant="contained"
+              className="comp-prof-button2"
+            >
+              {isLoading && isNextClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Next"
+              )}
+            </Button>
+          </div>
+        </form>
+      ) : null}
+      {rewardData?.length > 0 ? (
+        <div
+          style={{ margin: "25px 0px 0px 0px" }}
+          className="promotions-parent"
+        >
           {rewardData?.length > 0 && (
             <div
-              className="hightlight-heading"
-              style={{ marginBottom: "1.8rem" }}
+              style={{
+                display: "flex",
+                gap: 20,
+                alignItems: "center",
+                justifyContent: "space-between",
+                // width: "76%",
+              }}
             >
-              Rewards Added
+              <h3  style={{}}>
+                Rewards Added
+              </h3>
+              {addMoreRewards ? null : (
+                <button
+                  disabled={isLoading === true ? true : false}
+                  onClick={() => setAddmoreRewards(true)}
+                  type="submit"
+                  className="addMore"
+                >
+                  Add More Highlights
+                </button>
+              )}
             </div>
           )}
-
-          {rewardData?.map((item, index) => (
-            <div key={index}>
-              <div style={{ display: "flex", alignItems: "center", gap: 15 }}>
-                <div
-                  style={{
-                    textAlign: "left",
-                    fontFamily: "poppins",
-                    fontSize: "16px",
-                  }}
-                >
-                  Reward {index + 1}
+          <div style={{ marginTop: 20 }}>
+            {rewardData?.map((item, index) => (
+              <div key={index}>
+                <div style={{ display: "flex", alignItems: "center", gap: 15 }}>
+                  <div
+                    style={{
+                      textAlign: "left",
+                      fontFamily: "poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Reward {index + 1}
+                  </div>
+                  {isEdit === item.id ? (
+                    <button
+                      onClick={() => {
+                        handleSubmit(item.id);
+                      }}
+                      style={{
+                        cursor: "pointer",
+                        right: 100,
+                        padding: "5px 10px",
+                        borderRadius: "5px",
+                        border: "0px solid",
+                        background: "black",
+                        height: "30px",
+                        color: "white",
+                      }}
+                    >
+                      {isEditLoading ? (
+                        <CircularProgress
+                          style={{
+                            color: "White",
+                            fontSize: 10,
+                            width: 20,
+                            height: 20,
+                          }}
+                        />
+                      ) : (
+                        "Save"
+                      )}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        EditBankFields(item.id, index);
+                      }}
+                      style={{
+                        cursor: "pointer",
+                        right: 100,
+                        padding: "5px 10px",
+                        borderRadius: "5px",
+                        border: "0px solid",
+                        background: "black",
+                        height: "30px",
+                        color: "white",
+                      }}
+                    >
+                      {isEditLoading ? (
+                        <CircularProgress
+                          style={{
+                            color: "White",
+                            fontSize: 10,
+                            width: 20,
+                            height: 20,
+                          }}
+                        />
+                      ) : (
+                        "Edit"
+                      )}
+                    </button>
+                  )}
                 </div>
                 {isEdit === item.id ? (
-                  <button
-                    onClick={() => {
-                      handleSubmit(item.id);
-                    }}
-                    style={{
-                      right: 100,
-                      padding: "5px 10px",
-                      borderRadius: "5px",
-                      border: "0px solid",
-                      background: "black",
-                      height: "30px",
-                      color: "white",
-                    }}
-                  >
-                    {isEditLoading ? (
-                      <CircularProgress
-                        style={{
-                          color: "White",
-                          fontSize: 10,
-                          width: 20,
-                          height: 20,
-                        }}
-                      />
-                    ) : (
-                      "Save"
-                    )}
-                  </button>
+                  <input
+                    value={editProductName}
+                    onChange={(e) => setEditProductName(e.target.value)}
+                    type="text"
+                    className="get-reward-inputs"
+                  />
                 ) : (
-                  <button
-                    onClick={() => {
-                      EditBankFields(item.id, index);
-                    }}
-                    style={{
-                      right: 100,
-                      padding: "5px 10px",
-                      borderRadius: "5px",
-                      border: "0px solid",
-                      background: "black",
-                      height: "30px",
-                      color: "white",
-                    }}
-                  >
-                    {isEditLoading ? (
-                      <CircularProgress
-                        style={{
-                          color: "White",
-                          fontSize: 10,
-                          width: 20,
-                          height: 20,
-                        }}
-                      />
-                    ) : (
-                      "Edit"
-                    )}
-                  </button>
+                  <input
+                    disabled
+                    value={item.product_name}
+                    type="text"
+                    className="get-reward-inputs"
+                  />
                 )}
+
+                {isEdit === item.id ? (
+                  <input
+                    value={editAmount}
+                    onChange={(e) => setEditAmount(e.target.value)}
+                    type="text"
+                    className="get-reward-inputs"
+                  />
+                ) : (
+                  <input
+                    disabled
+                    value={item.amount}
+                    type="text"
+                    className="get-reward-inputs"
+                  />
+                )}
+                {isEdit === item.id ? (
+                  <input
+                    value={editDiscount}
+                    onChange={(e) => setEditDiscount(e.target.value)}
+                    type="text"
+                    className="get-reward-inputs"
+                  />
+                ) : (
+                  <input
+                    disabled
+                    value={item.discounted_price}
+                    type="text"
+                    className="get-reward-inputs"
+                  />
+                )}
+
+                {/* <hr /> */}
               </div>
-              {isEdit === item.id ? (
-                <input
-                  value={editProductName}
-                  onChange={(e) => setEditProductName(e.target.value)}
-                  type="text"
-                  className="get-reward-inputs"
-                />
-              ) : (
-                <input
-                  value={item.product_name}
-                  type="text"
-                  className="get-reward-inputs"
-                />
-              )}
-
-              {isEdit === item.id ? (
-                <input
-                  value={editAmount}
-                  onChange={(e) => setEditAmount(e.target.value)}
-                  type="text"
-                  className="get-reward-inputs"
-                />
-              ) : (
-                <input
-                  value={item.amount}
-                  type="text"
-                  className="get-reward-inputs"
-                />
-              )}
-              {isEdit === item.id ? (
-                <input
-                  value={editDiscount}
-                  onChange={(e) => setEditDiscount(e.target.value)}
-                  type="text"
-                  className="get-reward-inputs"
-                />
-              ) : (
-                <input
-                  value={item.discounted_price}
-                  type="text"
-                  className="get-reward-inputs"
-                />
-              )}
-
-              {/* <hr /> */}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </form>
+      ) : null}
     </Box>
   );
 };
