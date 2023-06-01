@@ -132,7 +132,7 @@ const Press = ({ tabChangeFn }) => {
       }
     });
   }, [toggle]);
-
+console.log("pressData",pressData);
   return (
     <Container style={{ padding: "0px 10% 0px 16px ", paddingRight:'10%' }} maxWidth="lg">
       <form style={{marginRight:'30px'}} onSubmit={formik.handleSubmit}>

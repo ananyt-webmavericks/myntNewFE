@@ -117,6 +117,17 @@
     outline: none;
 }
 
+.loader {
+    color: #FFFFFF;
+    font-size: 10;
+    width: 20;
+    height: 20;
+}
+
+.loader:hover {
+    color: #000000;
+}
+
 .sign-up-btn {
     margin-top: 20px;
     width: 100%;
@@ -129,6 +140,10 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
+}
+
+.disabled {
+    cursor: no-drop !important;
 }
 
 .sign-up-btn:hover {

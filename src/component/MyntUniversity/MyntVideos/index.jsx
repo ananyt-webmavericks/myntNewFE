@@ -345,8 +345,6 @@ export default function MyntVideosMain() {
   const [embedVideo, setEmbedVideo] = React.useState(null);
 
   const handleClickOpen = (url,id) => {
-    // setEmbedVideo(video);
-    document.getElementById('embed-youtube').contentWindow.postMessage('{"event":"command","func":"' + "stopVideo" +'","args":""}',"*")
     setEmbedVideo(url);
     setOpen(true);
   };
@@ -390,6 +388,13 @@ export default function MyntVideosMain() {
                     src={item.image}
                     style={{ width: "inherit", height: "160px" }}
                   ></img> */}
+                  <div style={{
+                    width:"inherit",
+                    height:"160px",
+                    position:"absolute",
+                    top: '0px',
+                    background:'rgba(0,0,0,0.001);'
+                  }} onClick={()=>handleClickOpen(item.youtubeUrl)}></div>
                   <iframe
                     width="inherit"
                     height="160px"
@@ -451,7 +456,7 @@ export default function MyntVideosMain() {
         <iframe
           width="inherit"
           height="360px"
-          src={embedVideo}
+          src={`${embedVideo}?autoplay=1`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

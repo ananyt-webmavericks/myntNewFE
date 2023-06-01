@@ -130,7 +130,7 @@ const Navbar = () => {
                                             Dashboard
                                         </MenuItem>
                                         <Divider />
-                                        <MenuItem style={{padding:'6px 16px'}} onClick={handleLogout}>
+                                        <MenuItem style={{padding:'6px 16px',width:'100%'}} onClick={handleLogout}>
                                             <ListItemIcon>
                                                 <Logout fontSize="small" />
                                             </ListItemIcon>

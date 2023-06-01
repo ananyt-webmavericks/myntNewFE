@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import { toast } from "react-hot-toast";
 import { updateUserEmailAction } from "../../Redux/actions/auth";
+import OtpServices from "../../service/OtpService";
 
 export default function MyProfileMain() {
   const _ = require("lodash");
@@ -20,7 +21,7 @@ export default function MyProfileMain() {
   const [isEmailEdit, setEmailEdit] = useState(false);
   const [isLinkedInEdit, setLinkedInEdit] = useState(false);
   const [email, setEmail] = useState();
-  const [linkedIn, setLinkedIn] = useState('');
+  const [linkedIn, setLinkedIn] = useState("");
   const [data, setData] = useState({});
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
@@ -45,91 +46,112 @@ export default function MyProfileMain() {
       services.getInvestorKycData(userData?.id).then((response) => {
         dispatch(storeKycDetailsAction(response.data));
         setData(response.data);
-        setLinkedIn(response.data.linkedin_profile)
+        setLinkedIn(response.data.linkedin_profile);
       });
     }
   }, [userData]);
+  console.log("userData.email", userData);
 
-    const handleSubmit = () => {
-      console.log('func called');
-      setIsLoading(true);
-      const val = {
-        user_id: userData?.id,
-        // profile_image: "",
-        // social_login: false,
-        email: email,
-        //   bank_name: bankName,
-        //   bank_account: bankAccount,
-        //   ifsc_code: ifscCode,
-      };
-      try {
-        userServices.UpdateUser(val).then((response) => {
 
-          if (response.status === 201 || response.status === 200) {
-            dispatch(updateUserEmailAction(response.data.data.email))
-                        localStorage.setItem('loginType', 'existed')
-                        navigate('/otp-verification')
-            // userServices.getUserById(userData?.id).then((response) => {
-            //   if (response.status === 200) {
-            //     // dispatch(storeKycDetailsAction(response.data));
-            //     toast.success("Email updated successful!", {
-            //       position: "top-right",
-            //       style: {
-            //         borderRadius: "3px",
-            //         background: "green",
-            //         color: "#fff",
-            //       },
-            //     });
-            //     //   setNewData(val)
-            //     setIsLoading(false);
-            //     setEmailEdit(false);
-            //   } else {
-            //     toast.error("Please check entered email!", {
-            //       position: "top-right",
-            //       style: {
-            //         borderRadius: "3px",
-            //         background: "red",
-            //         color: "#fff",
-            //       },
-            //     });
-            //     setIsLoading(false);
-            //   }
-            // });
-          } else {
-            setIsLoading(false);
-            console.log("error");
-          }
-        });
-      } catch {
-        console.log("Try after few minutes");
-      }
+  const handleSubmit = () => {
+    console.log("func called");
+    setIsLoading(true);
+    const val = {
+      user_id: userData?.id,
+      // profile_image: "",
+      // social_login: false,
+      secondary_email: email,
+      //   bank_name: bankName,
+      //   bank_account: bankAccount,
+      //   ifsc_code: ifscCode,
     };
+    try {
+      userServices.UpdateUser(val).then((response) => {
+        console.log("updateuser",response);
+        if (response.status === 201 || response.status === 200) {
+          dispatch(updateUserEmailAction(response.data.data.email));
+
+          try {
+            OtpServices.SecondarySendOtpMail(email).then((response) => {
+              if (response.status === 201 || response.status === 200) {
+                console.log(response?.data.message);
+                toast.success("OTP sent Successfully!",{
+                  position: "top-right",
+                  style: {
+                    borderRadius: "3px",
+                    background: "green",
+                    color: "#fff",
+                  },
+                })
+                navigate("/otp-verification",{state: { otpEmail: email }});
+              }
+            });
+          } catch {
+            console.log("Try after few minutes");
+          }
+
+          
+          // userServices.getUserById(userData?.id).then((response) => {
+          //   if (response.status === 200) {
+          //     // dispatch(storeKycDetailsAction(response.data));
+          //     toast.success("Email updated successful!", {
+          //       position: "top-right",
+          //       style: {
+          //         borderRadius: "3px",
+          //         background: "green",
+          //         color: "#fff",
+          //       },
+          //     });
+          //     //   setNewData(val)
+          //     setIsLoading(false);
+          //     setEmailEdit(false);
+          //   } else {
+          //     toast.error("Please check entered email!", {
+          //       position: "top-right",
+          //       style: {
+          //         borderRadius: "3px",
+          //         background: "red",
+          //         color: "#fff",
+          //       },
+          //     });
+          //     setIsLoading(false);
+          //   }
+          // });
+        } else {
+          setIsLoading(false);
+          console.log("error");
+        }
+      });
+    } catch {
+      console.log("Try after few minutes");
+    }
+  };
 
   const handleLinkedInSubmit = () => {
     setLinkedInLoading(true);
     const val = {
       user_id: data?.user_id,
       linkedin_profile: linkedIn,
-    //   pan_card: "",
-    //   pan_card_verified: '',
-    //   birth_date: '',
-    //   birth_month: '',
-    //   birth_year: '',
-    //   address_line_1: "",
-    //   address_line_2: "",
-    //   city: "",
-    //   state: "",
-    //   country: "",
-    //   pincode: '',
-    //   bank_name: "",
-    //   bank_account: "",
-    //   ifsc_code: "",
-    //   bank_account_verified: '',
-    //   mobile_number: '',
-    //   mobile_number_otp: '',
-    //   mobile_number_verified: '',
-    //   aadhaar_card_number: '',
-    //   aadhaar_card_verified: '',
+      //   pan_card: "",
+      //   pan_card_verified: '',
+      //   birth_date: '',
+      //   birth_month: '',
+      //   birth_year: '',
+      //   address_line_1: "",
+      //   address_line_2: "",
+      //   city: "",
+      //   state: "",
+      //   country: "",
+      //   pincode: '',
+      //   bank_name: "",
+      //   bank_account: "",
+      //   ifsc_code: "",
+      //   bank_account_verified: '',
+      //   mobile_number: '',
+      //   mobile_number_otp: '',
+      //   mobile_number_verified: '',
+      //   aadhaar_card_number: '',
+      //   aadhaar_card_verified: '',
     };
     try {
       services.UpdateInvestorKyc(val).then((response) => {
@@ -319,7 +341,7 @@ export default function MyProfileMain() {
                 ) : (
                   <span
                     onClick={() => {
-                        handleSubmit();
+                      handleSubmit();
                     }}
                     style={{
                       cursor: "pointer",
@@ -545,3 +567,5 @@ export default function MyProfileMain() {
     </div>
   );
 }
+
+

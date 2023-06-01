@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "../../../css/FounderDrawer/Dashboard/UploadDocs.css";
 import pptxIcon from "./../../../images/founder/pptxIcon.png";
 import pdfIcon from "./../../../images/founder/pdfIcon.png";
+import fileIcon from "./../../../images/founder/fileIcon.png";
 import CompanyServices from "../../../service/Company";
 import { toast } from "react-hot-toast";
 import { useEffect } from "react";
@@ -21,8 +22,6 @@ const UploadDocuments = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   const [toggle, settoggle] = useState(false);
-
-
 
   const handleFileInput = async (event) => {
     const file = event.target.files[0];
@@ -91,15 +90,18 @@ const UploadDocuments = () => {
           navigate("/dashboard-founder/e-signin");
         } else {
           setIsLoading(false);
-
-          toast.error("Something went wrong, please try again later", {
-            position: "top-right",
-            style: {
-              borderRadius: "3px",
-              background: "red",
-              color: "#fff",
-            },
-          });
+          if (!selectedFile) {
+            navigate("/dashboard-founder/e-signin");
+          } else {
+            toast.error("Something went wrong, please try again later", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "red",
+                color: "#fff",
+              },
+            });
+          }
         }
       });
     }
@@ -116,8 +118,11 @@ const UploadDocuments = () => {
     );
   }, [toggle]);
   return (
-    <Container style={{ padding: "0px 10% 0px 16px", paddingRight: "10%" }} maxWidth="lg">
-      <h3 >Upload Documents</h3>
+    <Container
+      style={{ padding: "0px 10% 0px 16px", paddingRight: "10%" }}
+      maxWidth="lg"
+    >
+      <h3>Upload Documents</h3>
 
       <Typography className="upload-docs-desc">
         Upload all due diligence documents for investors perusal
@@ -168,7 +173,7 @@ const UploadDocuments = () => {
               Submit For Review
             </Button>
             <Button
-              disabled={selectedFile ? false : true}
+              // disabled={selectedFile ? false : true}
               onClick={handleUpload}
               style={{ margin: "20px 0 20px 20px ", color: "white" }}
               variant="contained"
@@ -237,7 +242,7 @@ const UploadDocuments = () => {
                           ? pptxIcon
                           : item?.document_name?.split(".").pop() === "pdf"
                           ? pdfIcon
-                          : null
+                          : fileIcon
                       }
                       alt="doc-icon"
                       width={62}
@@ -258,15 +263,16 @@ const UploadDocuments = () => {
                       }}
                     >
                       <img
-                      style={{cursor:'pointer'}}
+                        onClick={() => window.open(item.document_url)}
+                        style={{ cursor: "pointer" }}
                         src="https://icons.iconarchive.com/icons/praveen/minimal-outline/128/view-icon.png"
                         height={30}
                       />
-                      <img
+                      {/* <img
                       style={{cursor:'pointer'}}
                         src="https://icons.iconarchive.com/icons/github/octicons/128/download-16-icon.png"
                         height={30}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>
@@ -307,15 +313,32 @@ const UploadDocuments = () => {
                           "..." +
                           item?.document_name?.split(".").pop()}
                     </Typography>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 10,
+                      }}
+                    >
+                      <img
+                        onClick={() => window.open(item.document_url)}
+                        style={{ cursor: "pointer" }}
+                        src="https://icons.iconarchive.com/icons/praveen/minimal-outline/128/view-icon.png"
+                        height={30}
+                      />
+                      {/* <img
+                      style={{cursor:'pointer'}}
+                        src="https://icons.iconarchive.com/icons/github/octicons/128/download-16-icon.png"
+                        height={30}
+                      /> */}
+                    </div>
                   </div>
                 </div>
               ))}
-
-           
           </div>
         </>
       ) : null}
-      
     </Container>
   );
 };
