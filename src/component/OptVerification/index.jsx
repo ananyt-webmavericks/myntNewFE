@@ -68,7 +68,7 @@ export default function OtpVerificationMain() {
         email : usernames
     }
     const editValue = {
-        email: state?.otpEmail
+      secondary_email: state?.otpEmail
     }
     try {
       if (state?.otpEmail) {

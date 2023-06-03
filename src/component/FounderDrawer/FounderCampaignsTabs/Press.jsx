@@ -10,6 +10,8 @@ import "../../../css/FounderDrawer/Dashboard/Press.css";
 import CompanyServices from "../../../service/Company";
 import PressValSchema from "../../../Validations/PressValSchema";
 import { useNavigate } from "react-router-dom";
+import { authAxios } from "../../../service/Auth-header";
+import { Base_Url } from "../../../Utils/Configurable";
 
 const Press = ({ tabChangeFn }) => {
   const navigate = useNavigate();
@@ -18,6 +20,9 @@ const Press = ({ tabChangeFn }) => {
   const [isPressAdded, setIsPressAdded] = useState(false);
   const [toggle, settoggle] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -27,21 +32,24 @@ const Press = ({ tabChangeFn }) => {
       link: pressData?.link ? pressData?.link : "",
       description: pressData?.description ? pressData?.description : "",
       banner:
-        "https://c8.alamy.com/comp/R77EPB/blue-business-logo-template-for-cassette-demo-record-tape-record-facebook-timeline-banner-design-vector-web-banner-background-illustration-R77EPB.jpg",
+        image1 && image2 && image3
+          ? [`${image1}`, `${image2}`, `${image3}`]
+          : "",
+      // "https://c8.alamy.com/comp/R77EPB/blue-business-logo-template-for-cassette-demo-record-tape-record-facebook-timeline-banner-design-vector-web-banner-background-illustration-R77EPB.jpg",
     },
 
     validationSchema: PressValSchema,
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log("press values",values);
+      console.log("press values", values);
       !isPressAdded
         ? CompanyServices.addPress(values).then((res) => {
             console.log(res);
             if (res.status === 200 || res.status === 201) {
               setIsLoading(false);
 
-              toast.success("Press added successfully!",{
+              toast.success("Press added successfully!", {
                 position: "top-right",
                 style: {
                   borderRadius: "3px",
@@ -58,7 +66,7 @@ const Press = ({ tabChangeFn }) => {
             } else {
               setIsLoading(false);
 
-              toast.error("Something went wrong, please try again later",{
+              toast.error("Something went wrong, please try again later", {
                 position: "top-right",
                 style: {
                   borderRadius: "3px",
@@ -74,13 +82,14 @@ const Press = ({ tabChangeFn }) => {
           }).then((res) => {
             console.log(res);
             if (res.status === 200 || res.status === 201) {
-              toast.success("Press updated successfully!",{ 
-                position:"top-right",
+              toast.success("Press updated successfully!", {
+                position: "top-right",
                 style: {
-                borderRadius: '3px',
-                background: 'green',
-                color: '#fff',
-              },});
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
               sessionStorage.setItem(
                 "press_data",
                 JSON.stringify(res.data.data)
@@ -90,36 +99,69 @@ const Press = ({ tabChangeFn }) => {
                 tabChangeFn(0, 7);
               }, 1000);
             } else {
-              toast.error("Something went wrong, please try again later", { 
-                position:"top-right",
+              toast.error("Something went wrong, please try again later", {
+                position: "top-right",
                 style: {
-                borderRadius: '3px',
-                background: 'red',
-                color: '#fff',
-              },});
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
             }
           });
     },
   });
 
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
-  const [image3, setImage3] = useState(null);
-
-  function handleFileSelect(event) {
+  // function handleFileSelect(event) {
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     if (!image1) {
+  //       setImage1(reader.result);
+  //     } else if (!image2) {
+  //       setImage2(reader.result);
+  //     } else if (!image3) {
+  //       setImage3(reader.result);
+  //     }
+  //   };
+  // }
+  const handleFileSelect = async (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      if (!image1) {
-        setImage1(reader.result);
-      } else if (!image2) {
-        setImage2(reader.result);
-      } else if (!image3) {
-        setImage3(reader.result);
-      }
-    };
-  }
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      const { data } = await authAxios.post(
+        `${Base_Url}/api/users/upload-files`,
+        formData
+      );
+      // if (res.status === 200 || res.status === 201) {
+        if (!image1) {
+          setImage1(reader.result);
+        } else if (!image2) {
+          setImage2(reader.result);
+        } else if (!image3) {
+          setImage3(reader.result);
+        }
+      // }
+      // setSelectedFile([
+      //   // ...selectedFile,
+      //   {
+      //     document_type: "DOCUMENTS",
+      //     document_name: event.target.files[0].name,
+      //     agreement_status: "SIGNED BY FOUNDER",
+      //     document_url: data.message,
+      //   },
+      // ]);
+      return data;
+    } catch (error) {
+      console.log("Data not found !!");
+    }
+  };
 
   useEffect(() => {
     CompanyServices.getPressByCompanyID(
@@ -132,13 +174,16 @@ const Press = ({ tabChangeFn }) => {
       }
     });
   }, [toggle]);
-console.log("pressData",pressData);
+  console.log("image1", image1);
   return (
-    <Container style={{ padding: "0px 10% 0px 16px ", paddingRight:'10%' }} maxWidth="lg">
-      <form style={{marginRight:'30px'}} onSubmit={formik.handleSubmit}>
-        <h3 >Press</h3>
+    <Container
+      style={{ padding: "0px 10% 0px 16px ", paddingRight: "10%" }}
+      maxWidth="lg"
+    >
+      <form style={{ marginRight: "30px" }} onSubmit={formik.handleSubmit}>
+        <h3>Press</h3>
 
-        <Typography style={{paddingTop:10}} className="press-title-desc">
+        <Typography style={{ paddingTop: 10 }} className="press-title-desc">
           Show your reach! Investors are always more inclined towards startups
           that have been covered by the media and are gaining traction.{" "}
         </Typography>
@@ -273,7 +318,7 @@ console.log("pressData",pressData);
         <div className="getRewards-btn-parent">
           <Button
             type="submit"
-            style={{  color: "white" }}
+            style={{ color: "white" }}
             variant="contained"
             className="hightlight-submit-button"
           >

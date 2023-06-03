@@ -37,7 +37,6 @@ const UploadDocuments = () => {
         `${Base_Url}/api/users/upload-files`,
         formData
       );
-      console.log(data);
       setSelectedFile([
         // ...selectedFile,
         {

@@ -17,7 +17,7 @@ const PressValSchema = Yup.object({
         .required("Description is required!"),
     banner: Yup
         .string()
-        .required("Description is required!"),
+        .required("banner is required!"),
 });
 
 export default PressValSchema;

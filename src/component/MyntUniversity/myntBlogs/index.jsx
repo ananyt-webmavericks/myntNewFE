@@ -7,17 +7,18 @@ import { Grid } from "@mui/material";
 import Image1 from '../../../images/myntblogs/image1.png';
 import Image2 from '../../../images/myntblogs/image2.png';
 import Image3 from '../../../images/myntblogs/image3.png';
-const data = [
-    {id:1 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th jan 2023' , image:Image1},
-    {id:2 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'15th jan 2023' , image:Image2},
-    {id:3 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'20th jan 2023' , image:Image3},
-    {id:4 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'5th jan 2023' , image:Image1},
-    {id:5 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'16th feb 2023' , image:Image2},
-    {id:6 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'25th feb 2023' , image:Image3},
-    {id:7 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'3th mar 2023' , image:Image1},
-    {id:8 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'16th feb 2023' , image:Image2},
-    {id:9 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'23th mar 2023' , image:Image3},
-]
+import blogs from "./blogs.json";
+// const data = [
+//     {id:1 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th jan 2023' , image:Image1},
+//     {id:2 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'15th jan 2023' , image:Image2},
+//     {id:3 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'20th jan 2023' , image:Image3},
+//     {id:4 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'5th jan 2023' , image:Image1},
+//     {id:5 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'16th feb 2023' , image:Image2},
+//     {id:6 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'25th feb 2023' , image:Image3},
+//     {id:7 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'3th mar 2023' , image:Image1},
+//     {id:8 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'16th feb 2023' , image:Image2},
+//     {id:9 , heading:'Exploring Non-convertible Debentures (NCD Subscription): What You Need to know' , date:'23th mar 2023' , image:Image3},
+// ]
 export default function MyntBlogsMain() {
     const navigate = useNavigate()
     const [activeBtn, setActiveBtn] = useState(1)
@@ -62,15 +63,15 @@ export default function MyntBlogsMain() {
                     </div>
                     <div className="blogs-container-mynt">
                 <Grid container spacing={gridxsMainFirst}>
-                {data.map((item , index)=>{
+                {blogs.map((item , index)=>{
                     return(
                         <Grid item xs={gridxsMainSecond} key={index}>
-                            <div onClick={()=>navigate('/myntUniversity/blogs/detail')} className="blogs-des-image-container">
+                            <div onClick={()=>navigate(`/myntUniversity/blogs/detail/${item.id}`)} className="blogs-des-image-container">
                                 <div className="mynt-text-image-blogs" >Mynt</div>
-                                <img src={item.image} style={{width:'inherit' , height:'192px'}}></img>
+                                <img src={item?.image ?? ""} style={{width:'inherit' , height:'192px'}}></img>
                                 <div style={{padding:'1em'  }}>
-                                <span style={{fontSize:'15px'}}>{item.heading}</span>
-                                <span style={{fontSize:'12px' , position:'absolute' , bottom:'1em' , left:'1em'}} >{item.date}</span>
+                                <span style={{fontSize:'15px'}}>{item?.title ?? ""}</span>
+                                <span style={{fontSize:'12px' , position:'absolute' , bottom:'1em' , left:'1em'}} >{item?.date ?? ""}</span>
                                 </div>
                             </div>
                         </Grid>

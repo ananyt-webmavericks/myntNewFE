@@ -127,7 +127,7 @@ function App() {
         />
         <Route
           exact
-          path="/myntUniversity/blogs/detail"
+          path="/myntUniversity/blogs/detail/:id"
           element={<MyntBlogsDetail />}
         />
 
