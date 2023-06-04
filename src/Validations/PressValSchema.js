@@ -16,7 +16,8 @@ const PressValSchema = Yup.object({
         .string()
         .required("Description is required!"),
     banner: Yup
-        .string()
+        .array()
+        .max(3)
         .required("banner is required!"),
 });
 

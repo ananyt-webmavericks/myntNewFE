@@ -58,6 +58,7 @@ export default function GetStartedSection() {
           dispatch(userEmailAction(response.data.email));
           localStorage.setItem("loginType", "new");
           navigate("/otp-verification");
+          setIsLoading(false);
         }
         setIsLoading(false);
       });

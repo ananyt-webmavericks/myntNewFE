@@ -376,7 +376,7 @@ export default function LiveDetailsMain() {
           className="date-booked-register-section"
           style={{ filter: `blur(${blurAmount}px)` }}
         >
-          <div className="live-deals-box-date">
+          {/* <div className="live-deals-box-date">
             <span style={{ fontSize: "14px", fontWeight: "bold" }}>
               Recorded on
             </span>
@@ -387,11 +387,11 @@ export default function LiveDetailsMain() {
               07:00 PM
             </span>
             <span className="live-deals-details-decription">24 Dec 2022</span>
-          </div>
-          {/* <div className="live-deals-box-date second">
-                        <span style={{ fontSize: '14px' }}>Book A Spot</span>
+          </div> */}
+          <div className="live-deals-box-date second">
+                        <span style={{ fontSize: '14px', fontWeight: 600 }}>Book A Spot</span>
                         <div className="btn-register-live-deals"><span>Register</span><img style={{ marginLeft: '10px' }} src={Arrow} width={8} height={10}></img></div>
-                    </div> */}
+                    </div>
         </div>
         {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
                     <YoutubeEmbed width={gridxsFirst === 2 ? '486px' : '100%'} height={'271.6px'} embedId={"g_aELYEBc4Q"} />

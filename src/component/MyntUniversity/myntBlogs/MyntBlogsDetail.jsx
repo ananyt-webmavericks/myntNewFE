@@ -17,19 +17,7 @@ export default function MyntBlogsDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
   const blogPost = blogs.find((blog) => blog?.id === parseInt(id));
-  // useEffect(() => {
-    
-  //   if (id || id === 0) {
-  //     blogPost = blogs?.[id];
-  //   }
-    
-  // }, [id]);
 
-  useEffect(()=>{
-alert("hello")
-  },[])
-  console.log("blogs?.[id]",blogs?.[id]);
-  console.log("blogPost",blogPost);
   return (
     <>
       <div style={{ display: "flex", position: "relative" }}>
@@ -82,85 +70,186 @@ alert("hello")
                   className="image-section-detail-blog"
                 />
               </div>
-              <div style={{ display: "grid",marginTop: 20 }}>
+              <div style={{ display: "grid", marginTop: 20 }}>
                 <div style={{ fontSize: "16px" }}>
-                  {blogPost?.heading?<><span
+                  {blogPost?.heading ? (
+                    <>
+                      <span
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {blogPost?.heading ?? ""}
+                      </span>
+                      <br /> <br />
+                    </>
+                  ) : null}
+                  {blogPost?.para3 ? (
+                    <>
+                      {blogPost?.para3}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para4 ? (
+                    <>
+                      {blogPost?.para4}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para5 ? (
+                    <>
+                      {blogPost?.para5}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para6 ? (
+                    <>
+                      {blogPost?.para6}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para7 ? (
+                    <>
+                      {blogPost?.para7}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para8 ? (
+                    <>
+                      {blogPost?.para8}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para9 ? (
+                    <>
+                      {blogPost?.para9}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para10 ? (
+                    <>
+                      {blogPost?.para10}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para11 ? (
+                    <>
+                      {blogPost?.para11}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para12 ? (
+                    <>
+                      {blogPost?.para12}
+                      <br /> <br />
+                    </>
+                  ) : null}
+
+                  {blogPost?.para13 ? (
+                    <>
+                      {blogPost?.para13}
+                      <br /> <br />
+                    </>
+                  ) : null}
+                </div>
+              </div>
+
+              {blogPost?.section1?.heading ? (
+                <div style={{ display: "grid" }}>
+                  <span
                     style={{
                       fontSize: "20px",
                       fontWeight: "600",
                     }}
                   >
-                    {blogPost?.heading ?? ""}
+                    {blogPost?.section1?.heading ? (
+                      <>
+                        {blogPost?.section1?.heading}
+                        <br /> <br />
+                      </>
+                    ) : null}
                   </span>
-                  <br /> <br /></>:null}
-                  {blogPost?.para3 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para4 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para5 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para6 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para7 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para8 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para9 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para10 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para11 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para12 ?? ""}
-                  <br /> <br />
-                  {blogPost?.para13 ?? ""}
-                  <br /> <br />
-                </div>
-              </div>
+                  {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
+                  <div style={{ fontSize: "16px" }}>
+                    {blogPost?.section1?.content?.para1 ? (
+                      <>
+                        {blogPost?.section1?.content?.para1}
+                        <br /> <br />
+                      </>
+                    ) : null}
 
-              {blogPost?.section1?.heading !==""?<div style={{ display: "grid" }}>
-                <span
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  {blogPost?.section1?.heading ?? ""}
-                  <br /> <br />
-                </span>
-                {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
-                <div style={{ fontSize: "16px" }}>
-                  {blogPost?.section1?.content?.para1 !=="" ?<>{blogPost?.section1?.content?.para1 ?? ""}
-                  <br /> <br /></>:null}
-                  {blogPost?.section1?.content?.para2 !=="" ?<>{blogPost?.section1?.content?.para2 ?? ""}
-                  <br /> <br /></>:null}
-                  {blogPost?.section1?.content?.para3 !==""?<>{blogPost?.section1?.content?.para3 ?? ""}
-                  <br /> <br /></>:null}
-                  {blogPost?.section1?.content?.para4 !== ""?<>{blogPost?.section1?.content?.para4 ?? ""}
-                  <br /> <br /></>:null}
+                    {blogPost?.section1?.content?.para2 ? (
+                      <>
+                        {blogPost?.section1?.content?.para2}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section1?.content?.para3 ? (
+                      <>
+                        {blogPost?.section1?.content?.para3}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section1?.content?.para4 ? (
+                      <>
+                        {blogPost?.section1?.content?.para4}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-              </div>:null}
-              {blogPost?.section2?.heading !==""?<div style={{ display: "grid" }}>
-                <span
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  {blogPost?.section2?.heading ?? ""}
-                  <br /> <br />
-                </span>
-                {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
-                <div style={{ fontSize: "16px" }}>
-                  {blogPost?.section2?.content?.para1 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section2?.content?.para2 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section2?.content?.para3 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section2?.content?.para4 ?? ""}
-                  <br /> <br />
-                  {/* <div style={{ display: "flex", alignItems: "center" }}>
+              ) : null}
+              {blogPost?.section2 ? (
+                <div style={{ display: "grid" }}>
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {blogPost?.section2?.heading ?? ""}
+                    <br /> <br />
+                  </span>
+                  {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
+                  <div style={{ fontSize: "16px" }}>
+                    {blogPost?.section2?.content?.para1 ? (
+                      <>
+                        {blogPost?.section2?.content?.para1}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section2?.content?.para2 ? (
+                      <>
+                        {blogPost?.section2?.content?.para2}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section2?.content?.para3 ? (
+                      <>
+                        {blogPost?.section2?.content?.para3}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section2?.content?.para4 ? (
+                      <>
+                        {blogPost?.section2?.content?.para4}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {/* <div style={{ display: "flex", alignItems: "center" }}>
                     <img src={LeftArrow} style={{ marginRight: "1em" }} />
                     <span style={{ fontSize: "16px" }}>
                       {blogPost?.section2?.content?.list?.point1 ?? ""}
@@ -184,173 +273,195 @@ alert("hello")
                       {blogPost?.section2?.content?.list?.point4 ?? ""}
                     </span>
                   </div> */}
+                  </div>
+                  <div style={{ fontSize: "16px" }}>
+                    <ul>
+                      {blogPost?.section2?.content?.list?.point1 ? (
+                      <>
+                        <li>{blogPost?.section2?.content?.list?.point1}
+                        <br /> <br /></li>
+                        <li>{blogPost?.section2?.content?.list?.point2}
+                        <br /> <br /></li>
+                        <li>{blogPost?.section2?.content?.list?.point3}
+                        <br /> <br /></li>
+                        <li>{blogPost?.section2?.content?.list?.point4}
+                        <br /> <br /></li>
+                      </>
+                    ) : null}
+                    </ul>
+                  </div>
                 </div>
-              </div>:null}
-              {blogPost?.section3?.heading !==""?<div style={{ display: "grid" }}>
-                <span
-                  style={{
-                    marginBottom: "30px",
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  {blogPost?.section3?.heading ?? ""}
-                  <br /> <br />
-                </span>
-                {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
-                <div style={{ fontSize: "16px" }}>
-                  {blogPost?.section3?.content?.para1 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section3?.content?.para2 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section3?.content?.para3 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section3?.content?.para4 ?? ""}
-                  <br /> <br />
+              ) : null}
+              {blogPost?.section3?.heading ? (
+                <div style={{ display: "grid" }}>
+                  <span
+                    style={{
+                      // marginBottom: "30px",
+                      fontSize: "20px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {blogPost?.section3?.heading ?? ""}
+                    <br /> <br />
+                  </span>
+                  {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
+                  <div style={{ fontSize: "16px" }}>
+                    {blogPost?.section3?.content?.para1 ? (
+                      <>
+                        {blogPost?.section3?.content?.para1}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section3?.content?.para2 ? (
+                      <>
+                        {blogPost?.section3?.content?.para2}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section3?.content?.para3 ? (
+                      <>
+                        {blogPost?.section3?.content?.para3}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section3?.content?.para4 ? (
+                      <>
+                        {blogPost?.section3?.content?.para4}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-              </div>:null}
-              {blogPost?.section4?.heading !==""?<div style={{ display: "grid" }}>
-                <span
-                  style={{
-                    marginBottom: "30px",
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  {blogPost?.section4?.heading ?? ""}
-                  <br /> <br />
-                </span>
-                {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
-                <div style={{ fontSize: "16px" }}>
-                  {blogPost?.section4?.content?.para1 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section4?.content?.para2 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section4?.content?.para3 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section4?.content?.para4 ?? ""}
-                  <br /> <br />
+              ) : null}
+              {blogPost?.section4?.heading ? (
+                <div style={{ display: "grid" }}>
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {blogPost?.section4?.heading ?? ""}
+                    <br /> <br />
+                  </span>
+                  {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
+                  <div style={{ fontSize: "16px" }}>
+                    {blogPost?.section4?.content?.para1 ? (
+                      <>
+                        {blogPost?.section4?.content?.para1}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section4?.content?.para2 ? (
+                      <>
+                        {blogPost?.section4?.content?.para2}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section4?.content?.para3 ? (
+                      <>
+                        {blogPost?.section4?.content?.para3}
+                        <br /> <br />
+                      </>
+                    ) : null}
+
+                    {blogPost?.section4?.content?.para4 ? (
+                      <>
+                        {blogPost?.section4?.content?.para4}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-              </div>:null}
-              {blogPost?.section5?.heading !==""?<div style={{ display: "grid" }}>
-                <span
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  {blogPost?.section5?.heading ?? ""}
-                  <br /> <br />
-                </span>
-                {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
-                <div style={{ fontSize: "16px" }}>
-                  {blogPost?.section5?.content?.para1 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section5?.content?.para2 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section5?.content?.para3 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section5?.content?.para4 ?? ""}
-                  <br /> <br />
+              ) : null}
+              {blogPost?.section5?.heading ? (
+                <div style={{ display: "grid" }}>
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {blogPost?.section5?.heading ?? ""}
+                    <br /> <br />
+                  </span>
+                  {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
+                  <div style={{ fontSize: "16px" }}>
+                    {blogPost?.section5?.content?.para1 ? (
+                      <>
+                        {blogPost?.section5?.content?.para1}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section5?.content?.para2 ? (
+                      <>
+                        {blogPost?.section5?.content?.para2}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section5?.content?.para3 ? (
+                      <>
+                        {blogPost?.section5?.content?.para3}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section5?.content?.para4 ? (
+                      <>
+                        {blogPost?.section5?.content?.para4}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-              </div>:null}
-              {blogPost?.section6?.heading !== ""?<div style={{ display: "grid" }}>
-                <span
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  {blogPost?.section6?.heading ?? ""}
-                  <br /> <br />
-                </span>
-                {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
-                <div style={{ fontSize: "16px" }}>
-                  {blogPost?.section6?.content?.para1 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section6?.content?.para2 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section6?.content?.para3 ?? ""}
-                  <br /> <br />
-                  {blogPost?.section6?.content?.para4 ?? ""}
-                  <br /> <br />
+              ) : null}
+              {blogPost?.section6?.heading ? (
+                <div style={{ display: "grid" }}>
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {blogPost?.section6?.heading ?? ""}
+                    <br /> <br />
+                  </span>
+                  {/* <img src={ImageBlog2} style={{ width: "100%" }} /> */}
+                  <div style={{ fontSize: "16px" }}>
+                    {blogPost?.section6?.content?.para1 ? (
+                      <>
+                        {blogPost?.section6?.content?.para1}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section6?.content?.para2 ? (
+                      <>
+                        {blogPost?.section6?.content?.para2}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section6?.content?.para3 ? (
+                      <>
+                        {blogPost?.section6?.content?.para3}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                    {blogPost?.section6?.content?.para4 ? (
+                      <>
+                        {blogPost?.section6?.content?.para4}
+                        <br /> <br />
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-              </div>:null}
+              ) : null}
               <div style={{ fontSize: "16px" }}>
                 {blogPost?.conclusion ?? ""}
                 <br /> <br />
               </div>
-              {/* <div style={{ display: "grid", marginTop: "70px" }}>
-                <span
-                  style={{
-                    marginBottom: "30px",
-                    fontSize: "20px",
-                    fontWeight: "600",
-                  }}
-                >
-                  Bond Characteristics:
-                </span>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <img src={LeftArrow} style={{ marginRight: "1em" }} />
-                  <span style={{ fontSize: "16px" }}>
-                    NRIs may make bond Subscriptions via the ‘NRI window.’
-                  </span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "1em",
-                  }}
-                >
-                  <img src={LeftArrow} style={{ marginRight: "1em" }} />
-                  <span style={{ fontSize: "16px" }}>
-                    Capital bonds, public sector units, corporate bonds, NCDs,
-                    government tax-free NRI bonds, Treasury bills, municipal
-                    bonds, and other forms of bonds are accessible to NRIs.
-                  </span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "1em",
-                  }}
-                >
-                  <img src={LeftArrow} style={{ marginRight: "1em" }} />
-                  <span style={{ fontSize: "16px" }}>
-                    NRIs may use a Demat account to purchase and sell bonds.
-                  </span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "1em",
-                  }}
-                >
-                  <img src={LeftArrow} style={{ marginRight: "1em" }} />
-                  <span style={{ fontSize: "16px" }}>
-                    According to the ITA,1 961, interest derived from bond
-                    Subscriptions was taxed. There are, however, tax-free
-                    government bonds created for NRIs that provide tax
-                    exemptions.
-                  </span>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "1em",
-                  }}
-                >
-                  <img src={LeftArrow} style={{ marginRight: "1em" }} />
-                  <span style={{ fontSize: "16px" }}>
-                    Long-term capital gains and short-term capital gains are
-                    both taxed.
-                  </span>
-                </div>
-              </div> */}
             </div>
           </Container>
         </div>

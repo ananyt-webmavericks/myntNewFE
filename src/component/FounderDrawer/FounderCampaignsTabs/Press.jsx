@@ -23,6 +23,8 @@ const Press = ({ tabChangeFn }) => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -133,33 +135,25 @@ const Press = ({ tabChangeFn }) => {
       reader.readAsDataURL(file);
     }
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append("file", file);
     try {
+      setIsUploading(true);
       const { data } = await authAxios.post(
         `${Base_Url}/api/users/upload-files`,
         formData
       );
-      // if (res.status === 200 || res.status === 201) {
-        if (!image1) {
-          setImage1(reader.result);
-        } else if (!image2) {
-          setImage2(reader.result);
-        } else if (!image3) {
-          setImage3(reader.result);
-        }
-      // }
-      // setSelectedFile([
-      //   // ...selectedFile,
-      //   {
-      //     document_type: "DOCUMENTS",
-      //     document_name: event.target.files[0].name,
-      //     agreement_status: "SIGNED BY FOUNDER",
-      //     document_url: data.message,
-      //   },
-      // ]);
+      if (!image1) {
+        setImage1(data.message);
+      } else if (!image2) {
+        setImage2(data.message);
+      } else if (!image3) {
+        setImage3(data.message);
+      }
+      setIsUploading(false);
       return data;
     } catch (error) {
       console.log("Data not found !!");
+      setIsUploading(false);
     }
   };
 
@@ -239,9 +233,9 @@ const Press = ({ tabChangeFn }) => {
 
           <div className="banner-box-container">
             <div style={{ position: "relative" }} className="Banner-Box">
-              {image1 ? (
+              {image1 || pressData?.banner_images ? (
                 <img
-                  src={image1}
+                  src={image1 ? image1 : pressData?.banner_images[0]}
                   alt="Preview of first image"
                   style={{
                     position: "absolute",
@@ -258,9 +252,9 @@ const Press = ({ tabChangeFn }) => {
               )}
             </div>
             <div style={{ position: "relative" }} className="Banner-Box">
-              {image2 ? (
+              {image2 || pressData?.banner_images ? (
                 <img
-                  src={image2}
+                  src={image2 ? image2 : pressData?.banner_images[1]}
                   alt="Preview of second image"
                   style={{
                     position: "absolute",
@@ -277,9 +271,9 @@ const Press = ({ tabChangeFn }) => {
               )}
             </div>
             <div style={{ position: "relative" }} className="Banner-Box">
-              {image3 ? (
+              {image3 || pressData?.banner_images ? (
                 <img
-                  src={image3}
+                  src={image3 ? image3 : pressData?.banner_images[2]}
                   alt="Preview of third image"
                   style={{
                     position: "absolute",
@@ -306,10 +300,22 @@ const Press = ({ tabChangeFn }) => {
           />
 
           <Button
+          disabled={isUploading ?true :false}
             onClick={() => document.getElementById("pressUploadBanner").click()}
             className="press-upload-pic-btn"
           >
-            Upload a Picture
+            {isUploading ? (
+              <CircularProgress
+                style={{
+                  color: "black",
+                  fontSize: 10,
+                  width: 20,
+                  height: 20,
+                }}
+              />
+            ) : (
+              "Upload a Picture"
+            )}
           </Button>
         </div>
 

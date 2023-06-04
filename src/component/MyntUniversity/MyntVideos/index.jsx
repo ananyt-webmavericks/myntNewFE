@@ -245,7 +245,8 @@ const data = [
   {
     id: 22,
     youtubeUrl: "https://www.youtube-nocookie.com/embed/7Dk6iGjUygQ",
-    heading: '"Stock Appreciation Rights (SARs): A Powerful Incentive for Employees"',
+    heading:
+      '"Stock Appreciation Rights (SARs): A Powerful Incentive for Employees"',
     episode: "Clip 22",
     subHeading:
       "Stock Appreciation Rights (SARs) are a form of equity compensation that grants employees the right to receive a payout based on the appreciation of the company's stock value. This guide explores how SARs work, their benefits, and how companies can use them to incentivize and retain top talent.",
@@ -258,14 +259,15 @@ const data = [
     heading: '"SARS and Phantom Stocks: A Guide for Business Owners"',
     episode: "Clip 23",
     subHeading:
-    "Stock Appreciation Rights (SARs) and Phantom Stocks are alternative compensation options that offer employees a stake in the company's growth without actual ownership. This video explains how these programs work, their benefits, and how business owners can use them to attract and retain top talent.",
+      "Stock Appreciation Rights (SARs) and Phantom Stocks are alternative compensation options that offer employees a stake in the company's growth without actual ownership. This video explains how these programs work, their benefits, and how business owners can use them to attract and retain top talent.",
     buttonUrl: "",
     image: ImageBlog1,
   },
   {
     id: 24,
     youtubeUrl: "https://www.youtube-nocookie.com/embed/URYh1ivkKL8",
-    heading: '"Understanding Investor Preference for Convertible Preferred Stock (CCPS)"',
+    heading:
+      '"Understanding Investor Preference for Convertible Preferred Stock (CCPS)"',
     episode: "Clip 24",
     subHeading:
       "Convertible preferred stock (CCPS) is a popular investment vehicle that combines the benefits of debt and equity. This short video explores why investors prefer CCPS over other types of securities, its advantages, and how it can benefit startups seeking funding.",
@@ -275,10 +277,11 @@ const data = [
   {
     id: 25,
     youtubeUrl: "https://www.youtube-nocookie.com/embed/AoUPDU4b0_4",
-    heading: '"Convertible Notes: A Popular Funding Option for Early-Stage Startups"',
+    heading:
+      '"Convertible Notes: A Popular Funding Option for Early-Stage Startups"',
     episode: "Clip 25",
     subHeading:
-    "Convertible notes are a flexible and popular way for early-stage startups to raise capital. This short video explains how convertible notes work, their benefits and drawbacks, and why they are a popular funding option for startups seeking to grow their business.",
+      "Convertible notes are a flexible and popular way for early-stage startups to raise capital. This short video explains how convertible notes work, their benefits and drawbacks, and why they are a popular funding option for startups seeking to grow their business.",
     buttonUrl: "",
     image: ImageBlog1,
   },
@@ -287,8 +290,9 @@ const data = [
     youtubeUrl: "https://www.youtube-nocookie.com/embed/Kwiu95BHZkA",
     heading: '"Retail Investors Unite: How to Invest in Startups',
     episode: "Clip 26",
-    subHeading: "Investing in startups was once reserved for wealthy investors. Now, retail investors can participate through crowdfunding platforms, angel investing groups, and equity crowdfunding. This guide explores the options and risks associated with investing in startups as a retail investor.",
-      
+    subHeading:
+      "Investing in startups was once reserved for wealthy investors. Now, retail investors can participate through crowdfunding platforms, angel investing groups, and equity crowdfunding. This guide explores the options and risks associated with investing in startups as a retail investor.",
+
     buttonUrl: "",
     image: ImageBlog1,
   },
@@ -325,14 +329,14 @@ const data = [
   {
     id: 30,
     youtubeUrl: "https://www.youtube-nocookie.com/embed/IdwYMfM2QMs",
-    heading: '"Unlocking Insider Tips: Secrets Your Service Provider Doesn\'t Want You to Know"',
+    heading:
+      '"Unlocking Insider Tips: Secrets Your Service Provider Doesn\'t Want You to Know"',
     episode: "Clip 30",
     subHeading:
       "Discover the hidden secrets your service provider won't reveal! Our experts spill the beans on everything from saving money on your bills to getting better service. With these insider tips, you'll have the upper hand and be able to make the most out of your service experience. Don't miss out on this exclusive knowledge – watch now!",
     buttonUrl: "",
     image: ImageBlog1,
   },
-  
 ];
 export default function MyntVideosMain() {
   const navigate = useNavigate();
@@ -344,7 +348,7 @@ export default function MyntVideosMain() {
   const [open, setOpen] = React.useState(false);
   const [embedVideo, setEmbedVideo] = React.useState(null);
 
-  const handleClickOpen = (url,id) => {
+  const handleClickOpen = (url, id) => {
     setEmbedVideo(url);
     setOpen(true);
   };
@@ -365,7 +369,9 @@ export default function MyntVideosMain() {
   return (
     <div className="faq-university-container">
       <div style={{ display: "grid" }}>
-        <span className="get-started-heading startup">Explore video clips below to uncover the world of startups</span>
+        <span className="get-started-heading startup">
+          Explore video clips below to uncover the world of startups
+        </span>
       </div>
       <div className="blogs-container-mynt">
         <Grid container spacing={gridxsMainFirst}>
@@ -373,28 +379,16 @@ export default function MyntVideosMain() {
             return (
               <Grid item xs={gridxsMainSecond} key={index}>
                 <div className="blogs-des-image-container">
-                  {/* <img
-                    onClick={() => handleClickOpen(item.youtubeUrl)}
-                    src={Player}
+                  <div
                     style={{
-                      boxShadow: "0px 0px 40px #0000001A",
+                      width: "inherit",
+                      height: "160px",
                       position: "absolute",
-                      left: "45%",
-                      top: "13%",
+                      top: "0px",
+                      background: "rgba(0,0,0,0.001);",
                     }}
-                    alt=""
-                  /> */}
-                  {/* <img
-                    src={item.image}
-                    style={{ width: "inherit", height: "160px" }}
-                  ></img> */}
-                  <div style={{
-                    width:"inherit",
-                    height:"160px",
-                    position:"absolute",
-                    top: '0px',
-                    background:'rgba(0,0,0,0.001);'
-                  }} onClick={()=>handleClickOpen(item.youtubeUrl)}></div>
+                    onClick={() => handleClickOpen(item.youtubeUrl)}
+                  ></div>
                   <iframe
                     width="inherit"
                     height="160px"
@@ -405,22 +399,32 @@ export default function MyntVideosMain() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                  <div style={{ padding: "1em", display: "grid" }}>
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        color: "gray",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      {item.episode}
-                    </span>
-                    <span style={{ fontSize: "15px", marginBottom: "10px" }}>
-                      {item.heading}
-                    </span>
-                    <span style={{ fontSize: "12px", marginBottom: "10px" }}>
-                      {item.subHeading}
-                    </span>
+                  <div
+                    style={{
+                      padding: "1em",
+                      display: "flex",
+                      flexDirection:'column',
+                      justifyContent: "space-between",
+                      height: 360
+                    }}
+                  >
+                    <div>
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          color: "gray",
+                          marginBottom: "10px",
+                        }}
+                      >
+                        {item.episode}
+                      </span> <br/>
+                      <span style={{ fontSize: "15px", marginBottom: "10px" }}>
+                        {item.heading}
+                      </span> <br/>
+                      <span style={{ display:'block',marginTop: 10, fontSize: "12px", marginBottom: "10px" }}>
+                        {item.subHeading}
+                      </span>
+                    </div>
                     <Button
                       onClick={() => handleClickOpen(item.youtubeUrl)}
                       variant="contained"

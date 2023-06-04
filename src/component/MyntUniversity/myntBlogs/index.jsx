@@ -44,7 +44,7 @@ export default function MyntBlogsMain() {
             <div style={{ display: 'grid' }}>
                 <span className="get-started-heading startup">Browse by Topic</span>
             </div>
-                <div className="button-container-liveDeals blogs" style={{justifyContent:'flex-start'}}>
+                <div className="button-container-liveDeals blogs" style={{justifyContent:'flex-start',display:'flex'}}>
                         <div className="active-btn-container blogs" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(1)}>
                             All
                         </div>
@@ -68,7 +68,7 @@ export default function MyntBlogsMain() {
                         <Grid item xs={gridxsMainSecond} key={index}>
                             <div onClick={()=>navigate(`/myntUniversity/blogs/detail/${item.id}`)} className="blogs-des-image-container">
                                 <div className="mynt-text-image-blogs" >Mynt</div>
-                                <img src={item?.image ?? ""} style={{width:'inherit' , height:'192px'}}></img>
+                                <img src={item?.image ? item?.image : Image1} style={{width:'inherit' , height:'192px'}}></img>
                                 <div style={{padding:'1em'  }}>
                                 <span style={{fontSize:'15px'}}>{item?.title ?? ""}</span>
                                 <span style={{fontSize:'12px' , position:'absolute' , bottom:'1em' , left:'1em'}} >{item?.date ?? ""}</span>

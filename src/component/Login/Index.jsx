@@ -61,11 +61,13 @@ export default function LoginMain() {
                 dispatch(userLoginAction(response.data));
                 if (!response.data.nationality) {
                   navigate("/about-you");
+                  setIsLoading(false);
                 } else {
                   ConsentSerivce.getUserConsent(response.data.id).then(
                     ({ data }) => {
                       console.log(data);
                       navigate(data ? "/dashboard" : "/become-investor");
+                      setIsLoading(false);
                     }
                   );
                 }
@@ -81,6 +83,7 @@ export default function LoginMain() {
             }
           }
         );
+        setIsLoading(false);
       } catch {
         notify("Try after few minutes");
         setIsLoading(false);

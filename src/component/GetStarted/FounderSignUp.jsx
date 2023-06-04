@@ -73,6 +73,7 @@ const FounderSignUp = () => {
           if (response.status === 201) {
             dispatch(userLoginAction(response.data));
             localStorage.setItem("loginType", "new");
+            setIsLoading(false);
             navigate("/otp-verification-founder");
           }
           setIsLoading(false);
