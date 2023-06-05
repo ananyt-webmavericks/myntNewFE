@@ -4,6 +4,7 @@ import { Box, Grid, Button } from "@mui/material";
 import "../../css/Home/investorsHome.css";
 import Abstract from "../../images/assets/abstract1.png";
 import Investors from "../../images/assets/investors.png";
+import InvestorsBg from "../../images/assets/cardsBackground.svg";
 import card1 from "../../images/assets/card1.png";
 import card2 from "../../images/assets/card2.png";
 import card3 from "../../images/assets/card3.png";
@@ -163,6 +164,7 @@ export default function InvestorsHome() {
               alt="abstract"
             ></img>
             {/* <img className="investors-investment-main" src={Investors} alt="abstract"></img> */}
+            <img className="investors-investment-main" src={InvestorsBg} alt="abstract"></img>
             <div
               style={{
                 display: "flex",
