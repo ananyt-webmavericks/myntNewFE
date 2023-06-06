@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import Map from '../../images/assets/map.png';
 import Avatar from '../../images/assets/avatar.png';
+import simonMurthaty from '../../images/assets/SimonMurthaty.jpg';
 import Item from "../Item";
 import Avatar2 from '../../images/assets/avatar2.png';
 import { useRef } from "react";
@@ -27,7 +28,7 @@ const data = [
     },
     {
         id: 3,
-        avatar: 'https://media.licdn.com/dms/image/C4D03AQGfL3tdWCveJw/profile-displayphoto-shrink_800_800/0/1645490059111?e=2147483647&v=beta&t=ShgQUmldlj-lVEZ3cvzBJcg-p7rYgnTzFtOXouvBOEE',
+        avatar: simonMurthaty,
         name: 'Mr. Simon Murthaty , CEO at Ocean Blue Boating Pvt. Ltd.',
         position: 'CEO at Ocean Blue Boating Pvt. Ltd.',
         head: 'Diversified Startup Portfolio',
@@ -64,7 +65,7 @@ export default function AboutTeamCarousel() {
                 <img className="team-bg-img" src={Map} alt="Map" />
                 <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
                     <Carousel
-                        enableAutoPlay={true}
+                        enableAutoPlay={false}
                         showArrows={true}
                         autoPlaySpeed={1000}
                         easing="ease"

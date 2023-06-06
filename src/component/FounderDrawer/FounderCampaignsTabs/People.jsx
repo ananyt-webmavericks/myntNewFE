@@ -148,7 +148,7 @@ const People = ({ tabChangeFn }) => {
       </Box>
 
       {subTabNo === 0 &&
-        (peopleData?.filter((item) => item.type === "TEAM").length < 0 ||
+        (peopleData?.filter((item) => item.type === "TEAM").length === 0 ||
         addMoreTeam ? (
           <TeamMembers
             getPeopleData={getPeopleData}
@@ -156,12 +156,12 @@ const People = ({ tabChangeFn }) => {
           />
         ) : null)}
       {subTabNo === 1 &&
-        (peopleData?.filter((item) => item.type === "INVESTOR").length < 0 ||
+        (peopleData?.filter((item) => item.type === "INVESTOR").length === 0 ||
         addMoreInvestor ? (
           <Investors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
         ) : null)}
       {subTabNo === 2 &&
-        (peopleData?.filter((item) => item.type === "ADVISOR").length < 0 ||
+        (peopleData?.filter((item) => item.type === "ADVISOR").length === 0 ||
         addMoreAdvisors ? (
           <Advisors getPeopleData={getPeopleData} tabChangeFn={tabChangeFn} />
         ) : null)}

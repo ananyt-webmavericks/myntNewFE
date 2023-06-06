@@ -27,11 +27,11 @@ const data = [
     },
     {
         id: 3,
-        avatar: Avatar,
-        name: '- SAN NETWORK FOUNDER',
+        avatar: 'https://rb.gy/w3osc',
+        name: '- Rahul Singh, Founder of Bonatra',
         position: 'Executive Director at Princeton University ',
         head: 'New Age Fundraising',
-        description: JSON.stringify("Thanks to Mynt fundraising platform, our startup not only raised the funds we needed, but also received top-notch growth hacking and financial advisory services. Their expertise and guidance helped us scale our business faster than we ever could have on our own. We highly recommend ABC to any startup looking for a comprehensive fundraising and growth solution.")
+        description: JSON.stringify("We highly recommend Mynt and its affiliate companies to any startup looking for comprehensive fundraising and growth solutions.")
     },
 ]
 

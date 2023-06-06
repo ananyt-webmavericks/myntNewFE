@@ -109,7 +109,7 @@ export default function SearchBar() {
                         </MenuItem>
                     ))}
                 </Select>
-                <Select
+                {/* <Select
                     className={classes.select}
                     // multiple
                     variant="standard"
@@ -141,7 +141,7 @@ export default function SearchBar() {
                             {name}
                         </MenuItem>
                     ))}
-                </Select>
+                </Select> */}
 
             </div>
         </div>
