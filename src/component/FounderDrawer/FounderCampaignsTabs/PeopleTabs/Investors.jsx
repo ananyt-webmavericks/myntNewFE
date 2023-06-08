@@ -71,7 +71,7 @@ const Investors = ({
         isInvestorEdit && investorData ? investorData.linked_in_link : "",
       description:
         isInvestorEdit && investorData ? investorData.description : "",
-      type: isInvestorEdit && investorData ? investorData.type : "",
+      type: "INVESTOR",
       profile_image:
         isInvestorEdit && investorData ? investorData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
@@ -121,12 +121,17 @@ const Investors = ({
             formik.handleReset();
             setPreview(null);
             setTimeout(() => {
-              if (isSaveClicked) {
-                navigate("/dashboard-founder/e-signin");
-              } else {
+              if (isNextClicked) {
                 tabChangeFn(0, 3);
               }
             }, 1000);
+            // setTimeout(() => {
+            //   if (isSaveClicked) {
+            //     navigate("/dashboard-founder/e-signin");
+            //   } else {
+            //     tabChangeFn(0, 3);
+            //   }
+            // }, 1000);
           }
         });
       }

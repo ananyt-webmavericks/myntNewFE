@@ -172,10 +172,16 @@ const CompanyProfile = ({ tabChangeFn }) => {
             color: "#fff",
           },
         });
+
+        // setTimeout(() => {
+        //   if (isSaveClicked) {
+        //     navigate("/dashboard-founder/e-signin");
+        //   } else {
+        //     tabChangeFn(0, 2);
+        //   }
+        // }, 1000);
         setTimeout(() => {
-          if (isSaveClicked) {
-            navigate("/dashboard-founder/e-signin");
-          } else {
+          if (isNextClicked) {
             tabChangeFn(0, 2);
           }
         }, 1000);

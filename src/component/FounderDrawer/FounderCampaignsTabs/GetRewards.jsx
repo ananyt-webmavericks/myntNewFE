@@ -122,12 +122,17 @@ const GetRewards = ({ tabChangeFn }) => {
           setCount((pre) => pre + 1);
           formik.handleReset();
           setTimeout(() => {
-            if (isSaveClicked) {
-              navigate("/dashboard-founder/e-signin");
-            } else {
+            if (isNextClicked) {
               tabChangeFn(0, 6);
             }
           }, 1000);
+          // setTimeout(() => {
+          //   if (isSaveClicked) {
+          //     navigate("/dashboard-founder/e-signin");
+          //   } else {
+          //     tabChangeFn(0, 6);
+          //   }
+          // }, 1000);
         } else {
           setIsLoading(false);
 

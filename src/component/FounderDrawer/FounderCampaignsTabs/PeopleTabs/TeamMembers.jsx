@@ -63,7 +63,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
       instagram_link: isTeamEdit && teamData ? teamData.instagram_link : "",
       linked_in_link: isTeamEdit && teamData ? teamData.linked_in_link : "",
       description: isTeamEdit && teamData ? teamData.description : "",
-      type:isTeamEdit && teamData ?  teamData.type : "",
+      type:"TEAM",
       profile_image: isTeamEdit && teamData ? teamData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
     },
@@ -107,12 +107,16 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
           formik.handleReset();
           setPreview(null);
           setTimeout(() => {
-            if (isSaveClicked) {
-              navigate("/dashboard-founder/e-signin");
-            } else {
+            if (isNextClicked) {
               tabChangeFn(0, 3);
             }
           }, 1000);
+          //   if (isSaveClicked) {
+          //     navigate("/dashboard-founder/e-signin");
+          //   } else {
+          //     tabChangeFn(0, 3);
+          //   }
+          // }, 1000);
         }
       });}
     },

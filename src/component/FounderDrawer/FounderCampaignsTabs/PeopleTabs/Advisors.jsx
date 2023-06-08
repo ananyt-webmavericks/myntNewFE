@@ -71,7 +71,7 @@ const Advisors = ({
       linked_in_link:
         isAdvisorEdit && advisorData ? advisorData.linked_in_link : "",
       description: isAdvisorEdit && advisorData ? advisorData.description : "",
-      type: isAdvisorEdit && advisorData ? advisorData.type : "",
+      type: "ADVISOR",
       profile_image:
         isAdvisorEdit && advisorData ? advisorData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
@@ -120,12 +120,17 @@ const Advisors = ({
             formik.handleReset();
             setPreview(null);
             setTimeout(() => {
-              if (isSaveClicked) {
-                navigate("/dashboard-founder/e-signin");
-              } else {
+              if (isNextClicked) {
                 tabChangeFn(0, 3);
               }
             }, 1000);
+            // setTimeout(() => {
+            //   if (isSaveClicked) {
+            //     navigate("/dashboard-founder/e-signin");
+            //   } else {
+            //     tabChangeFn(0, 3);
+            //   }
+            // }, 1000);
           }
         });
       }
