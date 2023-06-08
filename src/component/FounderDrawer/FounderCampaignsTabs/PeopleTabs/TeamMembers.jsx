@@ -329,7 +329,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
                   }}
                 />
               ) : (
-                "Next"
+                "Save & Next"
               )}
             </button>
           </Box>

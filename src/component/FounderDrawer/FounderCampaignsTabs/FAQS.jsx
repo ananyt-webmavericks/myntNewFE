@@ -307,7 +307,7 @@ const FAQS = ({ tabChangeFn }) => {
                     }}
                   />
                 ) : (
-                  "Next"
+                  "Save & Next"
                 )}
               </Button>
             </div>

@@ -349,7 +349,7 @@ const Highlights = ({ tabChangeFn }) => {
                 }}
               />
             ) : (
-              "Next"
+              "Save & Next"
             )}
           </Button>
         </div>

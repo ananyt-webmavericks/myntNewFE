@@ -274,7 +274,7 @@ const GetRewards = ({ tabChangeFn }) => {
                   }}
                 />
               ) : (
-                "Next"
+                "Save & Next"
               )}
             </Button>
           </div>

@@ -732,7 +732,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 style={{ color: "black", fontSize: 10, width: 20, height: 20 }}
               />
             ) : (
-              "Next"
+              "Save & Next"
             )}
           </Button>
         </div>

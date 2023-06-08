@@ -355,7 +355,9 @@ export default function MyntVideosMain() {
 
   const handleClose = () => {
     setOpen(false);
+    document.getElementById('stop-video').contentWindow.postMessage('{"event":"command","func":"' + "stopVideo" +'","args":""}',"*")
   };
+
   useEffect(() => {
     if (ratio < 1350) {
       setGridxsMainFirst(2);
@@ -429,12 +431,12 @@ export default function MyntVideosMain() {
                       onClick={() => handleClickOpen(item.youtubeUrl)}
                       variant="contained"
                       sx={{
-                        fontSize: "12px",
-                        borderRadius: "27px",
-                        color: "black",
-                        width: "fit-content",
-                        background: "#FADF35",
-                        "&:hover": { background: "#FADF35" },
+                        fontSize: "12px !important",
+                        borderRadius: "27px !important",
+                        color: "black !important",
+                        width: "fit-content !important",
+                        background: "#FADF35 !important",
+                        "&:hover": { background: "#FADF35 !important" },
                       }}
                       startIcon={<PlayCircleOutlinedIcon />}
                     >
@@ -460,6 +462,7 @@ export default function MyntVideosMain() {
         <iframe
           width="inherit"
           height="360px"
+          id={`stop-video`}
           src={`${embedVideo}?autoplay=1`}
           title="YouTube video player"
           frameBorder="0"

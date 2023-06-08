@@ -349,7 +349,7 @@ const Investors = ({
                     }}
                   />
                 ) : (
-                  "Next"
+                  "Save & Next"
                 )}
               </button>
             </Box>
