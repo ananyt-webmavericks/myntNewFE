@@ -64,10 +64,10 @@ const FounderCampaingsTabs = (props) => {
 
     switch (x) {
       case 0:
-        return <CompanyProfile tabChangeFn={handleChange} />;
+        return <UploadPitch tabChangeFn={handleChange} />;
         break;
       case 1:
-        return <UploadPitch tabChangeFn={handleChange} />;
+        return <CompanyProfile tabChangeFn={handleChange} />;
         break;
       case 2:
         return <People tabChangeFn={handleChange} />;
@@ -148,12 +148,13 @@ const FounderCampaingsTabs = (props) => {
                 <Tab
                   style={value === 0 ? tabStyle : { padding: "12px 16px" }}
                   sx={tabSxStyle}
-                  label="Company Profile"
+                  label="Upload Pitch"
+                  
                 />
                 <Tab
                   style={value === 1 ? tabStyle : { padding: "12px 16px" }}
                   sx={tabSxStyle}
-                  label="Upload Pitch"
+                  label="Company Profile"
                 />
                 <Tab
                   style={value === 2 ? tabStyle : { padding: "12px 16px" }}

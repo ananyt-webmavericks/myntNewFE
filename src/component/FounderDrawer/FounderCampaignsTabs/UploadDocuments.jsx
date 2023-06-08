@@ -127,7 +127,7 @@ const UploadDocuments = () => {
         Upload all due diligence documents for investors perusal
       </Typography>
 
-      {addDocuments || !uploadedDocs?.length < 0 ? (
+      {addDocuments || uploadedDocs?.length === 0 ? (
         <>
           <div className="upload-fun-parent">
             <div className="upload-doc-parent">

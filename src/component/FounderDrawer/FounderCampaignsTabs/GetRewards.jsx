@@ -171,7 +171,7 @@ const GetRewards = ({ tabChangeFn }) => {
         your campaign
       </Typography>
 
-      {rewardData?.length < 0 || addMoreRewards ? (
+      {rewardData?.length === 0 || addMoreRewards ? (
         <form onSubmit={formik.handleSubmit}>
           <div>
             <input

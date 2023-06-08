@@ -176,7 +176,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
           if (isSaveClicked) {
             navigate("/dashboard-founder/e-signin");
           } else {
-            tabChangeFn(0, 1);
+            tabChangeFn(0, 2);
           }
         }, 1000);
       });

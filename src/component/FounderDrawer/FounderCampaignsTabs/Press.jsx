@@ -233,7 +233,8 @@ const Press = ({ tabChangeFn }) => {
 
           <div className="banner-box-container">
             <div style={{ position: "relative" }} className="Banner-Box">
-              {image1 || pressData?.banner_images ? (
+              {console.log("pressData?.banner_images?.length",pressData)}
+              {image1 || pressData?.banner_images?.length === 1 ? (
                 <img
                   src={image1 ? image1 : pressData?.banner_images[0]}
                   alt="Preview of first image"
@@ -252,7 +253,7 @@ const Press = ({ tabChangeFn }) => {
               )}
             </div>
             <div style={{ position: "relative" }} className="Banner-Box">
-              {image2 || pressData?.banner_images ? (
+              {image2 || pressData?.banner_images?.length === 2 ? (
                 <img
                   src={image2 ? image2 : pressData?.banner_images[1]}
                   alt="Preview of second image"
@@ -271,7 +272,8 @@ const Press = ({ tabChangeFn }) => {
               )}
             </div>
             <div style={{ position: "relative" }} className="Banner-Box">
-              {image3 || pressData?.banner_images ? (
+              {console.log("image3",image3)}
+              {image3 || pressData?.banner_images?.length ? (
                 <img
                   src={image3 ? image3 : pressData?.banner_images[2]}
                   alt="Preview of third image"

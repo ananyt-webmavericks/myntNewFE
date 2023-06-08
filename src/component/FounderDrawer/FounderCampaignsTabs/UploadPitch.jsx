@@ -137,7 +137,7 @@ const UploadPitch = ({ tabChangeFn }) => {
                   },
                 });
                 setTimeout(() => {
-                  tabChangeFn(0, 2);
+                  tabChangeFn(0, 1);
                 }, 2000);
               } else {
                 setIsLoading(false);
@@ -173,7 +173,7 @@ const UploadPitch = ({ tabChangeFn }) => {
                   },
                 });
                 setTimeout(() => {
-                  tabChangeFn(0, 2);
+                  tabChangeFn(0, 1);
                 }, 1000);
               } else {
                 setIsLoading(false);

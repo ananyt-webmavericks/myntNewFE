@@ -80,14 +80,14 @@ const FounderCampaignsStats = () => {
   const [campaignData, setCampaignData] = useState({});
   const tabInfo = [
     {
-      title: "Company Profile",
-      description: "Tell us a little about your company",
-      progressGetter: getCompanyProfileProgress(campaignData?.company_id),
-    },
-    {
       title: "Upload Pitch",
       description: "Upload a pdf of your pitch deck",
       progressGetter: getPitchProgress(campaignData?.pitch),
+    },
+    {
+      title: "Company Profile",
+      description: "Tell us a little about your company",
+      progressGetter: getCompanyProfileProgress(campaignData?.company_id),
     },
     {
       title: "People",
