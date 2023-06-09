@@ -25,6 +25,8 @@ const Advisors = ({
 
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
+  const [isUpdateLoading, setIsUpdateLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
   const handleFileSelect = async (event) => {
@@ -80,7 +82,15 @@ const Advisors = ({
     validationSchema: PeopleTabValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
+      if (isAdvisorEdit) {
+        setIsUpdateLoading(true);
+      }
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
       if (isAdvisorEdit) {
         CompanyServices.updatePeople({
           ...values,
@@ -88,7 +98,7 @@ const Advisors = ({
         }).then((res) => {
           if (res.status === 200 || 201) {
             getPeopleData();
-            setIsLoading(false);
+            setIsUpdateLoading(false);
             handleClose();
             toast.success("Advisor updated to company successfull!", {
               position: "top-right",
@@ -100,6 +110,7 @@ const Advisors = ({
             });
             // window.location.reload()
           } else {
+            setIsUpdateLoading(false);
             console.log("something went wrong");
           }
         });
@@ -107,6 +118,7 @@ const Advisors = ({
         CompanyServices.addPeopleToCompany(values).then((res) => {
           if (res.status === 200 || 201) {
             setIsLoading(false);
+            setIsSaveLoading(false);
 
             toast.success("Advisor added to company successfull!", {
               position: "top-right",
@@ -131,6 +143,10 @@ const Advisors = ({
             //     tabChangeFn(0, 3);
             //   }
             // }, 1000);
+          } else {
+            setIsLoading(false);
+            setIsSaveLoading(false);
+            console.log("something went wrong");
           }
         });
       }
@@ -149,7 +165,7 @@ const Advisors = ({
         sx={
           isAdvisorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
-            : { marginTop: "2rem", marginRight:"30px", marginBottom: "10rem" }
+            : { marginTop: "2rem", marginRight: "30px", marginBottom: "10rem" }
         }
         container
         spacing={2}
@@ -157,7 +173,7 @@ const Advisors = ({
         <form onSubmit={formik.handleSubmit}>
           <div>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="name"
                   value={formik.values.name}
@@ -171,7 +187,7 @@ const Advisors = ({
                   <div className="raise-err-text">{formik.errors.name}</div>
                 )}
               </div>
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="position"
                   value={formik.values.position}
@@ -193,7 +209,7 @@ const Advisors = ({
                         </select> */}
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="facebook_link"
                   value={formik.values.facebook_link}
@@ -209,7 +225,7 @@ const Advisors = ({
                   </div>
                 )}
               </div>
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="instagram_link"
                   value={formik.values.instagram_link}
@@ -227,7 +243,7 @@ const Advisors = ({
               </div>
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="linked_in_link"
                   value={formik.values.linked_in_link}
@@ -244,8 +260,8 @@ const Advisors = ({
                 )}
               </div>
             </Box>
-            <Box className="formgroupTextArea" style={{ marginTop: "15px" }}>
-              <div>
+            <Box style={{marginTop:'15px'}} className="formgroupTextArea">
+              <div style={{ width: "100%", height: "125px" }}>
                 <textarea
                   name="description"
                   value={formik.values.description}
@@ -256,7 +272,7 @@ const Advisors = ({
                 ></textarea>
                 {formik.touched.description && (
                   <div
-                    style={{ paddingTop: "10px" }}
+                    // style={{ paddingTop: "10px" }}
                     className="raise-err-text"
                   >
                     {formik.errors.description}
@@ -315,12 +331,15 @@ const Advisors = ({
           {!isAdvisorEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isLoading === true ? true : false}
-                onClick={() => setSavedClicked(true)}
-                type="submit"
+                disabled={isSaveLoading === true ? true : false}
+                onClick={() => {
+                  formik.submitForm();
+                  setSavedClicked(true);
+                }}
+                // type="submit"
                 className="SaveBtn"
               >
-                {isLoading && isSaveClicked ? (
+                {isSaveLoading && isSaveClicked ? (
                   <CircularProgress
                     style={{
                       color: "white",
@@ -335,8 +354,11 @@ const Advisors = ({
               </button>
               <button
                 disabled={isLoading === true ? true : false}
-                type="submit"
-                onClick={() => setNextClicked(true)}
+                // type="submit"
+                onClick={() => {
+                  formik.submitForm();
+                  setNextClicked(true);
+                }}
                 className="NextBtn"
               >
                 {isLoading && isNextClicked ? (
@@ -349,19 +371,19 @@ const Advisors = ({
                     }}
                   />
                 ) : (
-                  "Save & Next"
+                  "Next"
                 )}
               </button>
             </Box>
           ) : (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isLoading === true ? true : false}
+                disabled={isUpdateLoading === true ? true : false}
                 // onClick={() => setSavedClicked(true)}
                 type="submit"
                 className="SaveBtn"
               >
-                {isLoading ? (
+                {isUpdateLoading ? (
                   <CircularProgress
                     style={{
                       color: "white",

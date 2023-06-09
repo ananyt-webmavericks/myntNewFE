@@ -75,7 +75,7 @@
 .raise-err-text {
     color: #FF9494;
     font-size: 13px;
-    margin-top: -17px;
+    /* margin-top: -17px; */
     padding-left: 1.2rem;
 }
 
@@ -88,7 +88,7 @@
     width: 100%;
     height: 3.5em;
     padding-left: 20px;
-    margin: 18px 0px 18px 0px;
+    margin: 18px 0px 0px 0px;
 }
 
 .highlight:focus {
@@ -392,7 +392,7 @@ input::placeholder {
         /* width: 50rem; */
         height: 3.5em;
         padding-left: 20px;
-        margin: 18px 0px 18px 0px;
+        margin: 18px 0px 0px 0px;
     }
 
     .highlight:focus {

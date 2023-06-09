@@ -250,7 +250,7 @@
         margin-top: 1rem;
         flex-direction: column !important;
         width: 100% !important;
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
     }
 
     .formgroup select {
@@ -293,7 +293,7 @@
         margin-top: 1rem;
         flex-direction: column !important;
         width: 100% !important;
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
     }
 
     .formgroup select {
@@ -361,7 +361,7 @@
         margin-top: 1rem;
         flex-direction: column !important;
         width: 100% !important;
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
     }
 
     .formgroup select {

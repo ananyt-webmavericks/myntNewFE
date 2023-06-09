@@ -11,12 +11,21 @@ import { authAxios } from "../../../../service/Auth-header";
 import { Base_Url } from "../../../../Utils/Configurable";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, handleClose }) => {
+const TeamMembers = ({
+  getPeopleData,
+  tabChangeFn,
+  open,
+  teamData,
+  isTeamEdit,
+  handleClose,
+}) => {
   const navigate = useNavigate();
 
   const { userData } = useSelector((state) => state.loginData);
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
+  const [isUpdateLoading, setIsUpdateLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
 
@@ -52,8 +61,6 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
     }
   };
 
-  
-
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -63,7 +70,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
       instagram_link: isTeamEdit && teamData ? teamData.instagram_link : "",
       linked_in_link: isTeamEdit && teamData ? teamData.linked_in_link : "",
       description: isTeamEdit && teamData ? teamData.description : "",
-      type:"TEAM",
+      type: "TEAM",
       profile_image: isTeamEdit && teamData ? teamData.profile_image : "",
       company_id: localStorage.getItem("company_id"),
     },
@@ -71,11 +78,23 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
     validationSchema: PeopleTabValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
       if(isTeamEdit){
-        CompanyServices.updatePeople({...values, people_id:teamData.id}).then((res) => {
+        setIsUpdateLoading(true);
+      }
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
+      if (isTeamEdit) {
+        CompanyServices.updatePeople({
+          ...values,
+          people_id: teamData.id,
+        }).then((res) => {
           if (res.status === 200 || 201) {
             getPeopleData();
+            setIsUpdateLoading(false);
             handleClose();
             toast.success("Team member updated to company successfull!", {
               position: "top-right",
@@ -86,59 +105,65 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
               },
             });
             // window.location.reload()
-          }else{
+          } else {
+            setIsUpdateLoading(false);
             console.log("something went wrong");
           }
         });
-      }else{
-      CompanyServices.addPeopleToCompany(values).then((res) => {
-        if (res.status === 200 || 201) {
-          setIsLoading(false);
+      } else {
+        CompanyServices.addPeopleToCompany(values).then((res) => {
+          if (res.status === 200 || 201) {
+            setIsLoading(false);
+            setIsSaveLoading(false)
 
-          toast.success("Team member added to company successfull!", {
-            position: "top-right",
-            style: {
-              borderRadius: "3px",
-              background: "green",
-              color: "#fff",
-            },
-          });
-          getPeopleData();
-          formik.handleReset();
-          setPreview(null);
-          setTimeout(() => {
-            if (isNextClicked) {
-              tabChangeFn(0, 3);
-            }
-          }, 1000);
-          //   if (isSaveClicked) {
-          //     navigate("/dashboard-founder/e-signin");
-          //   } else {
-          //     tabChangeFn(0, 3);
-          //   }
-          // }, 1000);
-        }
-      });}
+            toast.success("Team member added to company successfull!", {
+              position: "top-right",
+              style: {
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
+              },
+            });
+            getPeopleData();
+            formik.handleReset();
+            setPreview(null);
+            setTimeout(() => {
+              if (isNextClicked) {
+                tabChangeFn(0, 3);
+              }
+            }, 1000);
+            //   if (isSaveClicked) {
+            //     navigate("/dashboard-founder/e-signin");
+            //   } else {
+            //     tabChangeFn(0, 3);
+            //   }
+            // }, 1000);
+          }
+        });
+      }
     },
   });
   useEffect(() => {
-    if(teamData?.profile_image){
-      setPreview(teamData?.profile_image)
+    if (teamData?.profile_image) {
+      setPreview(teamData?.profile_image);
     }
-  }, [teamData])
-  
+  }, [teamData]);
 
   return (
     <>
       <Box
-        sx={isTeamEdit?{ marginTop: "0px", width: "100%", marginBottom: "0px" }:{marginTop: "2rem", marginRight:"30px", marginBottom: "3rem"}}
+        sx={
+          isTeamEdit
+            ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
+            : { marginTop: "2rem", marginRight: "30px", marginBottom: "3rem" }
+        }
         container
         spacing={2}
       >
         <form onSubmit={formik.handleSubmit}>
           <div>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height:'80px' }}>
                 <input
                   name="name"
                   value={formik.values.name}
@@ -152,7 +177,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
                   <div className="raise-err-text">{formik.errors.name}</div>
                 )}
               </div>
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height:'80px' }}>
                 <input
                   name="position"
                   value={formik.values.position}
@@ -174,7 +199,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
                         </select> */}
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height:'80px' }}>
                 <input
                   name="facebook_link"
                   value={formik.values.facebook_link}
@@ -190,7 +215,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
                   </div>
                 )}
               </div>
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height:'80px' }}>
                 <input
                   name="instagram_link"
                   value={formik.values.instagram_link}
@@ -208,7 +233,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
               </div>
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height:'80px' }}>
                 <input
                   name="linked_in_link"
                   value={formik.values.linked_in_link}
@@ -226,7 +251,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
               </div>
             </Box>
             <Box className="formgroupTextArea" style={{ marginTop: "15px" }}>
-              <div>
+              <div style={{height:'190px'}}>
                 <textarea
                   name="description"
                   value={formik.values.description}
@@ -237,7 +262,7 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
                 ></textarea>
                 {formik.touched.description && (
                   <div
-                    style={{ paddingTop: "10px" }}
+                    // style={{ paddingTop: "10px" }}
                     className="raise-err-text"
                   >
                     {formik.errors.description}
@@ -293,69 +318,76 @@ const TeamMembers = ({ getPeopleData, tabChangeFn, open, teamData, isTeamEdit, h
           {/* <div className='AddmemberBtnParent'>
                         <button type='submit' className="AddmemberBtn">Add New Members</button>
                     </div> */}
-          {!isTeamEdit? <Box className="BtnSaveAndNext">
-            <button
-              disabled={isLoading === true ? true : false}
-              onClick={() => setSavedClicked(true)}
-              type="submit"
-              className="SaveBtn"
-            >
-              {isLoading && isSaveClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Save"
-              )}
-            </button>
-            <button
-              disabled={isLoading === true ? true : false}
-              type="submit"
-              onClick={() => setNextClicked(true)}
-              className="NextBtn"
-            >
-              {isLoading && isNextClicked ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "Save & Next"
-              )}
-            </button>
-          </Box>
-          :
-          <Box className="BtnSaveAndNext">
-            <button
-              disabled={isLoading === true ? true : false}
-              // onClick={() => setSavedClicked(true)}
-              type="submit"
-              className="SaveBtn"
-            >
-              {isLoading ? (
-                <CircularProgress
-                  style={{
-                    color: "white",
-                    fontSize: 10,
-                    width: 20,
-                    height: 20,
-                  }}
-                />
-              ) : (
-                "update"
-              )}
-            </button>
-            
-          </Box>}
+          {!isTeamEdit ? (
+            <Box className="BtnSaveAndNext">
+              <button
+                disabled={isSaveLoading === true ? true : false}
+                onClick={() => {
+                  formik.submitForm();
+                  setSavedClicked(true);
+                }}
+                // type="submit"
+                className="SaveBtn"
+              >
+                {isSaveLoading && isSaveClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Save"
+                )}
+              </button>
+              <button
+                disabled={isLoading === true ? true : false}
+                // type="submit"
+                onClick={() => {
+                  formik.submitForm();
+                  setNextClicked(true);
+                }}
+                className="NextBtn"
+              >
+                {isLoading && isNextClicked ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "Next"
+                )}
+              </button>
+            </Box>
+          ) : (
+            <Box className="BtnSaveAndNext">
+              <button
+                disabled={isUpdateLoading === true ? true : false}
+                // onClick={() => setSavedClicked(true)}
+                type="submit"
+                className="SaveBtn"
+              >
+                {isUpdateLoading ? (
+                  <CircularProgress
+                    style={{
+                      color: "white",
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                    }}
+                  />
+                ) : (
+                  "update"
+                )}
+              </button>
+            </Box>
+          )}
 
           {/* <div className="hrline"></div> */}
         </form>

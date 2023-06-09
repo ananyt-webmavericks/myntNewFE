@@ -26,6 +26,7 @@ const FAQS = ({ tabChangeFn }) => {
   const [addedFaqs, setAddedFaqs] = useState([]);
   const [count, setcount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
   const [isEditLoading, setEditIsLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
@@ -52,7 +53,6 @@ const FAQS = ({ tabChangeFn }) => {
 
   const EditBankFields = (id, index) => {
     const newList = addedFaqs.filter((i) => i.id === id);
-    console.log("newList", newList[0].answer);
     setIsEdit(id);
     setEditAnswer(newList[0].answer);
     setEditQuestion(newList[0].question);
@@ -110,7 +110,7 @@ const FAQS = ({ tabChangeFn }) => {
       }
     });
   };
-  console.log("newData faq", newData);
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -122,7 +122,12 @@ const FAQS = ({ tabChangeFn }) => {
     validationSchema: FAQsValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
 
       console.log(values);
       let obj = {
@@ -138,7 +143,7 @@ const FAQS = ({ tabChangeFn }) => {
         console.log(res);
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
-
+          setIsSaveLoading(false);
           toast.success("FAQ added successfully!", {
             position: "top-right",
             style: {
@@ -163,6 +168,7 @@ const FAQS = ({ tabChangeFn }) => {
           // }, 1000);
         } else {
           setIsLoading(false);
+          setIsSaveLoading(false);
 
           toast.error("Something went wrong, please try again later", {
             position: "top-right",
@@ -176,7 +182,7 @@ const FAQS = ({ tabChangeFn }) => {
       });
     },
   });
-  console.log(formik.values);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     CompanyServices.getCampaignsFaqs(
@@ -192,9 +198,9 @@ const FAQS = ({ tabChangeFn }) => {
   return (
     <Container style={{ padding: "0px", paddingRight: "10%" }} maxWidth="lg">
       <Box sx={{ marginTop: 4, marginLeft: 2, marginRight: "30px" }}>
-        <h3 >FAQs</h3>
+        <h3>FAQs</h3>
 
-        <Typography style={{paddingTop:'10px'}}>
+        <Typography style={{ paddingTop: "10px" }}>
           Investors are curious. Answer the basics about your startup here.{" "}
         </Typography>
 
@@ -222,7 +228,7 @@ const FAQS = ({ tabChangeFn }) => {
             // </Typography> */}
 
             {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-            <div style={{height:'90px'}}>
+            <div style={{ height: "90px" }}>
               <input
                 name="question"
                 value={formik.values.question}
@@ -239,7 +245,7 @@ const FAQS = ({ tabChangeFn }) => {
             {/* </CustomWidthTooltip> */}
 
             {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
-            <div style={{height:'190px'}}>
+            <div style={{ height: "190px" }}>
               <textarea
                 name="answer"
                 value={formik.values.answer}
@@ -251,11 +257,12 @@ const FAQS = ({ tabChangeFn }) => {
                 id="describe"
                 rows="7"
               ></textarea>
-            
-            <div className="zero-of-threehundred">{q1Count?.length}/300</div>
-            {formik.touched.answer && (
-              <div className="raise-err-text">{formik.errors.answer}</div>
-            )}</div>
+
+              {/* <div className="zero-of-threehundred">{q1Count?.length}/300</div> */}
+              {formik.touched.answer && (
+                <div className="raise-err-text">{formik.errors.answer}</div>
+              )}
+            </div>
             {/* </CustomWidthTooltip> */}
 
             <hr
@@ -269,14 +276,14 @@ const FAQS = ({ tabChangeFn }) => {
 
             <div className="faqs-button-parent">
               <Button
-                onClick={() => setSavedClicked(true)}
-                disabled={isLoading === true ? true : false}
-                type="submit"
+                onClick={() =>{formik.submitForm(); setSavedClicked(true)}}
+                disabled={isSaveLoading === true ? true : false}
+                // type="submit"
                 style={{ margin: "20px", color: "black" }}
                 variant="contained"
                 className="comp-prof-button1"
               >
-                {isLoading && isSaveClicked ? (
+                {isSaveLoading && isSaveClicked ? (
                   <CircularProgress
                     style={{
                       color: "white",
@@ -290,9 +297,9 @@ const FAQS = ({ tabChangeFn }) => {
                 )}
               </Button>
               <Button
-                onClick={() => setNextClicked(true)}
+                onClick={() =>{formik.submitForm(); setNextClicked(true)}}
                 disabled={isLoading === true ? true : false}
-                type="submit"
+                // type="submit"
                 style={{ margin: "20px", marginRight: "0px" }}
                 variant="contained"
                 className="comp-prof-button2"
@@ -307,7 +314,7 @@ const FAQS = ({ tabChangeFn }) => {
                     }}
                   />
                 ) : (
-                  "Save & Next"
+                  "Next"
                 )}
               </Button>
             </div>
@@ -316,7 +323,7 @@ const FAQS = ({ tabChangeFn }) => {
       ) : null}
 
       {addedFaqs.length ? (
-        <Box sx={{ marginTop: '25px', marginLeft: 2 }}>
+        <Box sx={{ marginTop: "25px", marginLeft: 2 }}>
           {addedFaqs.length > 0 && (
             <div
               style={{
@@ -355,6 +362,7 @@ const FAQS = ({ tabChangeFn }) => {
                 </Typography>
                 {isEdit === item.id ? (
                   <button
+                    disabled={isEditLoading ? true : false}
                     onClick={() => {
                       handleSubmit(item.id);
                     }}
@@ -397,18 +405,7 @@ const FAQS = ({ tabChangeFn }) => {
                       color: "white",
                     }}
                   >
-                    {isEditLoading ? (
-                      <CircularProgress
-                        style={{
-                          color: "White",
-                          fontSize: 10,
-                          width: 20,
-                          height: 20,
-                        }}
-                      />
-                    ) : (
-                      "Edit"
-                    )}
+                    Edit
                   </button>
                 )}
               </div>

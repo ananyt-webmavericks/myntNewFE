@@ -90,6 +90,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
   const [companyData, setCompanyData] = useState({});
   const { userData } = useSelector((state) => state.loginData);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
   const [countryCode, setCountryCode] = useState("");
@@ -157,12 +158,18 @@ const CompanyProfile = ({ tabChangeFn }) => {
     validationSchema: CompanyProfileValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
       CompanyServices.updateCompany({
         ...values,
         company_id: companyData?.id,
       }).then((res) => {
         setIsLoading(false);
+        setIsSaveLoading(false);
         console.log(res);
         toast.success("Company details added successfully!", {
           position: "top-right",
@@ -704,14 +711,17 @@ const CompanyProfile = ({ tabChangeFn }) => {
 
         <div className="buttonsParent">
           <Button
-            onClick={() => setSavedClicked(true)}
-            disabled={isLoading === true ? true : false}
-            type="submit"
+            onClick={() => {
+              formik.submitForm();
+              setSavedClicked(true);
+            }}
+            disabled={isSaveLoading === true ? true : false}
+            // type="submit"
             style={{ margin: "20px", color: "black" }}
             variant="contained"
             className="comp-prof-button1"
           >
-            {isLoading && isSaveClicked ? (
+            {isSaveLoading && isSaveClicked ? (
               <CircularProgress
                 style={{ color: "black", fontSize: 10, width: 20, height: 20 }}
               />
@@ -721,18 +731,21 @@ const CompanyProfile = ({ tabChangeFn }) => {
           </Button>
           <Button
             disabled={isLoading === true ? true : false}
-            onClick={() => setNextClicked(true)}
-            type="submit"
+            onClick={() => {
+              formik.submitForm();
+              setNextClicked(true);
+            }}
+            // type="submit"
             style={{ margin: "20px" }}
             variant="contained"
             className="comp-prof-button2"
           >
             {isLoading && isNextClicked ? (
               <CircularProgress
-                style={{ color: "black", fontSize: 10, width: 20, height: 20 }}
+                style={{ color: "white", fontSize: 10, width: 20, height: 20 }}
               />
             ) : (
-              "Save & Next"
+              "Next"
             )}
           </Button>
         </div>

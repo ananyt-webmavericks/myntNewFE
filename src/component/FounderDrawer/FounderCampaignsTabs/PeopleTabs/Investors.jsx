@@ -23,6 +23,8 @@ const Investors = ({
 
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
+  const [isUpdateLoading, setIsUpdateLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
 
@@ -80,7 +82,15 @@ const Investors = ({
     validationSchema: PeopleTabValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
+      if (isInvestorEdit) {
+        setIsUpdateLoading(true);
+      }
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
 
       if (isInvestorEdit) {
         CompanyServices.updatePeople({
@@ -89,7 +99,7 @@ const Investors = ({
         }).then((res) => {
           if (res.status === 200 || 201) {
             getPeopleData();
-            setIsLoading(false);
+            setIsUpdateLoading(false);
             handleClose();
             toast.success("Investor updated to company successfull!", {
               position: "top-right",
@@ -108,6 +118,7 @@ const Investors = ({
         CompanyServices.addPeopleToCompany(values).then((res) => {
           if (res.status === 200 || 201) {
             setIsLoading(false);
+            setIsSaveLoading(false);
 
             toast.success("Investor added to company successfull!", {
               position: "top-right",
@@ -149,7 +160,7 @@ const Investors = ({
         sx={
           isInvestorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
-            : { marginTop: "2rem", marginRight:"30px", marginBottom: "10rem" }
+            : { marginTop: "2rem", marginRight: "30px", marginBottom: "10rem" }
         }
         container
         spacing={2}
@@ -157,7 +168,7 @@ const Investors = ({
         <form onSubmit={formik.handleSubmit}>
           <div>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="name"
                   value={formik.values.name}
@@ -171,7 +182,7 @@ const Investors = ({
                   <div className="raise-err-text">{formik.errors.name}</div>
                 )}
               </div>
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="position"
                   value={formik.values.position}
@@ -193,7 +204,7 @@ const Investors = ({
                         </select> */}
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="facebook_link"
                   value={formik.values.facebook_link}
@@ -209,7 +220,7 @@ const Investors = ({
                   </div>
                 )}
               </div>
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="instagram_link"
                   value={formik.values.instagram_link}
@@ -227,7 +238,7 @@ const Investors = ({
               </div>
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%", height: "80px" }}>
                 <input
                   name="linked_in_link"
                   value={formik.values.linked_in_link}
@@ -245,7 +256,7 @@ const Investors = ({
               </div>
             </Box>
             <Box className="formgroupTextArea" style={{ marginTop: "15px" }}>
-              <div>
+              <div style={{ width: "100%", height: "190px" }}>
                 <textarea
                   name="description"
                   value={formik.values.description}
@@ -256,7 +267,7 @@ const Investors = ({
                 ></textarea>
                 {formik.touched.description && (
                   <div
-                    style={{ paddingTop: "10px" }}
+                    // style={{ paddingTop: "10px" }}
                     className="raise-err-text"
                   >
                     {formik.errors.description}
@@ -315,12 +326,15 @@ const Investors = ({
           {!isInvestorEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isLoading === true ? true : false}
-                onClick={() => setSavedClicked(true)}
-                type="submit"
+                disabled={isSaveLoading === true ? true : false}
+                onClick={() => {
+                  formik.submitForm();
+                  setSavedClicked(true);
+                }}
+                // type="submit"
                 className="SaveBtn"
               >
-                {isLoading && isSaveClicked ? (
+                {isSaveLoading && isSaveClicked ? (
                   <CircularProgress
                     style={{
                       color: "white",
@@ -335,8 +349,11 @@ const Investors = ({
               </button>
               <button
                 disabled={isLoading === true ? true : false}
-                type="submit"
-                onClick={() => setNextClicked(true)}
+                // type="submit"
+                onClick={() => {
+                  formik.submitForm();
+                  setNextClicked(true);
+                }}
                 className="NextBtn"
               >
                 {isLoading && isNextClicked ? (
@@ -349,19 +366,19 @@ const Investors = ({
                     }}
                   />
                 ) : (
-                  "Save & Next"
+                  "Next"
                 )}
               </button>
             </Box>
           ) : (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isLoading === true ? true : false}
+                disabled={isUpdateLoading === true ? true : false}
                 // onClick={() => setSavedClicked(true)}
                 type="submit"
                 className="SaveBtn"
               >
-                {isLoading ? (
+                {isUpdateLoading ? (
                   <CircularProgress
                     style={{
                       color: "white",

@@ -7,7 +7,7 @@ export const ProtectedRoute = ({ children }) => {
     // user is not authenticated
     localStorage.clear();
     sessionStorage.clear();
-    window.location.reload();
+    // window.location.reload();
     return <Navigate to="/" />;
   }
   return children;

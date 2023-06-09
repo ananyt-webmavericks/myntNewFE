@@ -17,6 +17,7 @@ const GetRewards = ({ tabChangeFn }) => {
   const [rewardData, setRewardData] = useState([]);
   const [isRewardAdded, setIsRewardAdded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
   const [isEditLoading, setEditIsLoading] = useState(false);
@@ -103,12 +104,18 @@ const GetRewards = ({ tabChangeFn }) => {
     validationSchema: RewardValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
       console.log(values);
       CompanyServices.createReward(values).then((res) => {
         console.log(res);
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
+          setIsSaveLoading(false);
 
           toast.success("Reward added successfully!", {
             position: "top-right",
@@ -135,6 +142,7 @@ const GetRewards = ({ tabChangeFn }) => {
           // }, 1000);
         } else {
           setIsLoading(false);
+          setIsSaveLoading(false);
 
           toast.error("Something went wrong, please try again later", {
             position: "top-right",
@@ -166,7 +174,7 @@ const GetRewards = ({ tabChangeFn }) => {
       sx={{ marginTop: 4, paddingRight: "10%", marginRight: "30px" }}
       className="promotions-parent"
     >
-      <h3 >Promotion</h3>
+      <h3>Promotion</h3>
 
       <Typography
         style={{ paddingTop: 10 }}
@@ -179,46 +187,52 @@ const GetRewards = ({ tabChangeFn }) => {
       {rewardData?.length === 0 || addMoreRewards ? (
         <form onSubmit={formik.handleSubmit}>
           <div>
-            <input
-              name="product_name"
-              value={formik.values.product_name}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Product Name"
-              type="text"
-              className="get-reward-inputs"
-            />
-            {formik.touched.product_name && (
-              <div className="raise-err-text">{formik.errors.product_name}</div>
-            )}
-
-            <input
-              name="amount"
-              value={formik.values.amount}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Original Price"
-              type="text"
-              className="get-reward-inputs"
-            />
-            {formik.touched.amount && (
-              <div className="raise-err-text">{formik.errors.amount}</div>
-            )}
-
-            <input
-              name="discounted_price"
-              value={formik.values.discounted_price}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Discounted Price"
-              type="text"
-              className="get-reward-inputs"
-            />
-            {formik.touched.discounted_price && (
-              <div className="raise-err-text">
-                {formik.errors.discounted_price}
-              </div>
-            )}
+            <div style={{ height: "80px" }}>
+              <input
+                name="product_name"
+                value={formik.values.product_name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Product Name"
+                type="text"
+                className="get-reward-inputs"
+              />
+              {formik.touched.product_name && (
+                <div className="raise-err-text">
+                  {formik.errors.product_name}
+                </div>
+              )}
+            </div>
+            <div style={{ height: "80px" }}>
+              <input
+                name="amount"
+                value={formik.values.amount}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Original Price"
+                type="text"
+                className="get-reward-inputs"
+              />
+              {formik.touched.amount && (
+                <div className="raise-err-text">{formik.errors.amount}</div>
+              )}
+            </div>
+            <div style={{ height: "80px" }}>
+              <input
+                name="discounted_price"
+                value={formik.values.discounted_price}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Discounted Price"
+                type="text"
+                className="get-reward-inputs"
+              />
+              {formik.touched.discounted_price && (
+                <div className="raise-err-text">
+                  {formik.errors.discounted_price}
+                </div>
+              )}
+            </div>
           </div>
           {/* 
                 <div className='getRewards-btn-parent'>
@@ -236,14 +250,17 @@ const GetRewards = ({ tabChangeFn }) => {
 
           <div className="faqs-button-parent">
             <Button
-              onClick={() => setSavedClicked(true)}
-              disabled={isLoading === true ? true : false}
+              onClick={() => {
+                formik.submitForm();
+                setSavedClicked(true);
+              }}
+              disabled={isSaveLoading === true ? true : false}
               type="submit"
               style={{ margin: "20px", color: "black" }}
               variant="contained"
               className="comp-prof-button1"
             >
-              {isLoading && isSaveClicked ? (
+              {isSaveLoading && isSaveClicked ? (
                 <CircularProgress
                   style={{
                     color: "white",
@@ -257,7 +274,10 @@ const GetRewards = ({ tabChangeFn }) => {
               )}
             </Button>
             <Button
-              onClick={() => setNextClicked(true)}
+              onClick={() => {
+                formik.submitForm();
+                setNextClicked(true);
+              }}
               disabled={isLoading === true ? true : false}
               type="submit"
               style={{ margin: "20px", marginRight: 0 }}
@@ -274,7 +294,7 @@ const GetRewards = ({ tabChangeFn }) => {
                   }}
                 />
               ) : (
-                "Save & Next"
+                "Next"
               )}
             </Button>
           </div>
@@ -295,9 +315,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 // width: "76%",
               }}
             >
-              <h3  style={{}}>
-                Rewards Added
-              </h3>
+              <h3 style={{}}>Rewards Added</h3>
               {addMoreRewards ? null : (
                 <button
                   disabled={isLoading === true ? true : false}
@@ -325,6 +343,7 @@ const GetRewards = ({ tabChangeFn }) => {
                   </div>
                   {isEdit === item.id ? (
                     <button
+                      disabled={isEditLoading ? true : false}
                       onClick={() => {
                         handleSubmit(item.id);
                       }}
@@ -368,18 +387,7 @@ const GetRewards = ({ tabChangeFn }) => {
                         color: "white",
                       }}
                     >
-                      {isEditLoading ? (
-                        <CircularProgress
-                          style={{
-                            color: "White",
-                            fontSize: 10,
-                            width: 20,
-                            height: 20,
-                          }}
-                        />
-                      ) : (
-                        "Edit"
-                      )}
+                      Edit
                     </button>
                   )}
                 </div>

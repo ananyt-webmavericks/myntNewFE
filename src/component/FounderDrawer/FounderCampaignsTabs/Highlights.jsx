@@ -23,6 +23,7 @@ const Highlights = ({ tabChangeFn }) => {
 
   const [pitchData, setPitchData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaveLoading, setIsSaveLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
   const [isEditLoading, setEditIsLoading] = useState(false);
@@ -36,7 +37,6 @@ const Highlights = ({ tabChangeFn }) => {
     setIsEdit(id);
     setEditHighLight(newList[0].title);
   };
-
 
   const handleSubmit = (id) => {
     setEditIsLoading(true);
@@ -87,13 +87,19 @@ const Highlights = ({ tabChangeFn }) => {
     validationSchema: hightLightValSchema,
 
     onSubmit: (values) => {
-      setIsLoading(true);
+      if (isNextClicked) {
+        setIsLoading(true);
+      }
+      if (isSaveClicked) {
+        setIsSaveLoading(true);
+      }
       console.log(values);
       const formattedValues = changeFormat(values);
       CompanyServices.createHighlights(formattedValues).then((res) => {
         console.log(res);
         if (res.status === 200 || res.status === 201) {
           setIsLoading(false);
+          setIsSaveLoading(false);
 
           toast.success("Highlights added successfully!", {
             position: "top-right",
@@ -172,10 +178,20 @@ const Highlights = ({ tabChangeFn }) => {
   };
 
   return (
-    <Box sx={{ marginTop: 4, marginLeft: 2, paddingRight:'10%',marginRight: '30px' }}>
-      <h3 >Highlights</h3>
+    <Box
+      sx={{
+        marginTop: 4,
+        marginLeft: 2,
+        paddingRight: "10%",
+        marginRight: "30px",
+      }}
+    >
+      <h3>Highlights</h3>
 
-      <Typography style={{paddingTop: 10, color:'#777777'}} className="raise-with-mint-desc highlight-desc">
+      <Typography
+        style={{ paddingTop: 10, color: "#777777" }}
+        className="raise-with-mint-desc highlight-desc"
+      >
         Mention the top highlights about your startup that you want the
         investors to know about.
       </Typography>
@@ -235,223 +251,234 @@ const Highlights = ({ tabChangeFn }) => {
 
            */}
 
-      {!pitchData.length || addmoreHighlights ? <form onSubmit={formik.handleSubmit}>
-        {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-        <input
-          name="highlight1"
-          value={formik.values.highlight1}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter highlight first"
-          type="text"
-          className="inp-enter-name"
-        />
-        {/* </CustomWidthTooltip> */}
-        {formik.touched.highlight1 && (
-          <div className="raise-err-text" style={{ marginTop: "2px" }}>
-            {formik.errors.highlight1}
+      {!pitchData.length || addmoreHighlights ? (
+        <form onSubmit={formik.handleSubmit}>
+          {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+          <div style={{ height: "80px" }}>
+            <input
+              name="highlight1"
+              value={formik.values.highlight1}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter highlight first"
+              type="text"
+              className="inp-enter-name"
+            />
+            {/* </CustomWidthTooltip> */}
+            {formik.touched.highlight1 && (
+              <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                {formik.errors.highlight1}
+              </div>
+            )}
           </div>
-        )}
-        {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-        <input
-          name="highlight2"
-          value={formik.values.highlight2}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter highlight second"
-          type="text"
-          className="inp-enter-name"
-        />
-        {/* </CustomWidthTooltip> */}
-        {formik.touched.highlight2 && (
-          <div className="raise-err-text" style={{ marginTop: "2px" }}>
-            {formik.errors.highlight2}
+          {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+          <div style={{ height: "80px" }}>
+            <input
+              name="highlight2"
+              value={formik.values.highlight2}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter highlight second"
+              type="text"
+              className="inp-enter-name"
+            />
+            {/* </CustomWidthTooltip> */}
+            {formik.touched.highlight2 && (
+              <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                {formik.errors.highlight2}
+              </div>
+            )}
           </div>
-        )}
-        {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-        <input
-          name="highlight3"
-          value={formik.values.highlight3}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter highlight third"
-          type="text"
-          className="inp-enter-name"
-        />
-        {/* </CustomWidthTooltip> */}
-        {formik.touched.highlight3 && (
-          <div className="raise-err-text" style={{ marginTop: "2px" }}>
-            {formik.errors.highlight3}
+          {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+          <div style={{ height: "80px" }}>
+            <input
+              name="highlight3"
+              value={formik.values.highlight3}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter highlight third"
+              type="text"
+              className="inp-enter-name"
+            />
+            {/* </CustomWidthTooltip> */}
+            {formik.touched.highlight3 && (
+              <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                {formik.errors.highlight3}
+              </div>
+            )}
           </div>
-        )}
-        {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
-        <input
-          name="highlight4"
-          value={formik.values.highlight4}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder="Enter highlight fourth"
-          type="text"
-          className="inp-enter-name"
-        />
-        {/* </CustomWidthTooltip> */}
-        {formik.touched.highlight4 && (
-          <div className="raise-err-text" style={{ marginTop: "2px" }}>
-            {formik.errors.highlight4}
+          {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+          <div style={{ height: "80px" }}>
+            <input
+              name="highlight4"
+              value={formik.values.highlight4}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter highlight fourth"
+              type="text"
+              className="inp-enter-name"
+            />
+            {/* </CustomWidthTooltip> */}
+            {formik.touched.highlight4 && (
+              <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                {formik.errors.highlight4}
+              </div>
+            )}
           </div>
-        )}
-
-        {formik.touched.pitch && (
-          <div className="raise-err-text" style={{ marginTop: "2px" }}>
-            {formik.errors.pitch}
-          </div>
-        )}
-        {/* <div className='founder-appln-submit-parent'>
+          {formik.touched.pitch && (
+            <div className="raise-err-text" style={{ marginTop: "2px" }}>
+              {formik.errors.pitch}
+            </div>
+          )}
+          {/* <div className='founder-appln-submit-parent'>
                     <button type='submit' className='founder-appln-submit-button'>Save</button>
                 </div> */}
-        <div className="faqs-button-parent">
-          <Button
-            disabled={isLoading === true ? true : false}
-            onClick={() => setSavedClicked(true)}
-            type="submit"
-            style={{ margin: "20px", color: "black" }}
-            variant="contained"
-            className="comp-prof-button1"
-          >
-            {isLoading && isSaveClicked ? (
-              <CircularProgress
-                style={{
-                  color: "white",
-                  fontSize: 10,
-                  width: 20,
-                  height: 20,
-                }}
-              />
-            ) : (
-              "Save"
-            )}
-          </Button>
-          <Button
-            onClick={() => setNextClicked(true)}
-            disabled={isLoading === true ? true : false}
-            type="submit"
-            style={{ margin: "20px",marginRight: 0 }}
-            variant="contained"
-            className="comp-prof-button2"
-          >
-            {isLoading && isNextClicked ? (
-              <CircularProgress
-                style={{
-                  color: "white",
-                  fontSize: 10,
-                  width: 20,
-                  height: 20,
-                }}
-              />
-            ) : (
-              "Save & Next"
-            )}
-          </Button>
-        </div>
-      </form>:null}
-
-     { pitchData.length ?<div style={{marginTop:'25px'}}>
-        <div
-          style={{
-            display: "flex",
-            gap: 20,
-            alignItems: "center",
-            justifyContent: "space-between",
-            // width: '76%'
-          }}
-        >
-          <h3 className="faqs-title">Added Highlights</h3>
-          {addmoreHighlights ? null : (
-            <button
-              disabled={isLoading === true ? true : false}
-              onClick={() => setAddmoreHighlights(true)}
-              type="submit"
-              className="addMore"
+          <div className="faqs-button-parent">
+            <Button
+              disabled={isSaveLoading === true ? true : false}
+              onClick={() => {
+                formik.submitForm();
+                setSavedClicked(true);
+              }}
+              // type="submit"
+              style={{ margin: "20px", color: "black" }}
+              variant="contained"
+              className="comp-prof-button1"
             >
-              Add More Highlights
-            </button>
-          )}
-        </div>
-        <div style={{marginTop:'20px'}}>
-        {pitchData?.map((item, index) => (
-          <div style={{ display: "flex", gap: 15, alignItems: "center" }}>
-            {isEdit === item.id ? (
-              <input
-                value={editHighLight}
-                onChange={(e) => setEditHighLight(e.target.value)}
-                className="inp-enter-name"
-              />
-            ) : (
-              <input disabled value={item.title} className="inp-enter-name" />
-            )}
-            {isEdit === item.id ? (
+              {isSaveLoading && isSaveClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Save"
+              )}
+            </Button>
+            <Button
+              onClick={() => {
+                formik.submitForm();
+                setNextClicked(true);
+              }}
+              disabled={isLoading === true ? true : false}
+              // type="submit"
+              style={{ margin: "20px", marginRight: 0 }}
+              variant="contained"
+              className="comp-prof-button2"
+            >
+              {isLoading && isNextClicked ? (
+                <CircularProgress
+                  style={{
+                    color: "white",
+                    fontSize: 10,
+                    width: 20,
+                    height: 20,
+                  }}
+                />
+              ) : (
+                "Next"
+              )}
+            </Button>
+          </div>
+        </form>
+      ) : null}
+
+      {pitchData.length ? (
+        <div style={{ marginTop: "25px" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 20,
+              alignItems: "center",
+              justifyContent: "space-between",
+              // width: '76%'
+            }}
+          >
+            <h3 className="faqs-title">Added Highlights</h3>
+            {addmoreHighlights ? null : (
               <button
-                onClick={() => {
-                  handleSubmit(item.id);
-                }}
-                style={{
-                  cursor:'pointer',
-                  right: 100,
-                  padding: "5px 10px",
-                  borderRadius: "5px",
-                  border: "0px solid",
-                  background: "black",
-                  height: "30px",
-                  color: "white",
-                }}
+                disabled={isLoading === true ? true : false}
+                onClick={() => setAddmoreHighlights(true)}
+                type="submit"
+                className="addMore"
               >
-                {isEditLoading ? (
-                  <CircularProgress
-                    style={{
-                      color: "White",
-                      fontSize: 10,
-                      width: 20,
-                      height: 20,
-                    }}
-                  />
-                ) : (
-                  "Save"
-                )}
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  EditBankFields(item.id, index);
-                }}
-                style={{
-                  cursor:'pointer',
-                  right: 100,
-                  padding: "5px 10px",
-                  borderRadius: "5px",
-                  border: "0px solid",
-                  background: "black",
-                  height: "30px",
-                  color: "white",
-                }}
-              >
-                {isEditLoading ? (
-                  <CircularProgress
-                    style={{
-                      color: "White",
-                      fontSize: 10,
-                      width: 20,
-                      height: 20,
-                    }}
-                  />
-                ) : (
-                  "Edit"
-                )}
+                Add More Highlights
               </button>
             )}
           </div>
-        ))}
+          <div style={{ marginTop: "20px" }}>
+            {pitchData?.map((item, index) => (
+              <div style={{ display: "flex", gap: 15, alignItems: "center" }}>
+                {isEdit === item.id ? (
+                  <input
+                    value={editHighLight}
+                    onChange={(e) => setEditHighLight(e.target.value)}
+                    className="inp-enter-name"
+                  />
+                ) : (
+                  <input
+                    disabled
+                    value={item.title}
+                    className="inp-enter-name"
+                  />
+                )}
+                {isEdit === item.id ? (
+                  <button
+                    disabled={isEditLoading ? true : false}
+                    onClick={() => {
+                      handleSubmit(item.id);
+                    }}
+                    style={{
+                      cursor: "pointer",
+                      right: 100,
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                      border: "0px solid",
+                      background: "black",
+                      height: "30px",
+                      color: "white",
+                    }}
+                  >
+                    {isEditLoading ? (
+                      <CircularProgress
+                        style={{
+                          color: "White",
+                          fontSize: 10,
+                          width: 20,
+                          height: 20,
+                        }}
+                      />
+                    ) : (
+                      "Save"
+                    )}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      EditBankFields(item.id, index);
+                    }}
+                    style={{
+                      cursor: "pointer",
+                      right: 100,
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                      border: "0px solid",
+                      background: "black",
+                      height: "30px",
+                      color: "white",
+                    }}
+                  >
+                    Edit
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div> : null}
+      ) : null}
     </Box>
   );
 };

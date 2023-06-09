@@ -25,7 +25,6 @@ const Press = ({ tabChangeFn }) => {
   const [image3, setImage3] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
 
-
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -36,7 +35,7 @@ const Press = ({ tabChangeFn }) => {
       banner:
         image1 && image2 && image3
           ? [`${image1}`, `${image2}`, `${image3}`]
-          : "",
+          : [],
       // "https://c8.alamy.com/comp/R77EPB/blue-business-logo-template-for-cassette-demo-record-tape-record-facebook-timeline-banner-design-vector-web-banner-background-illustration-R77EPB.jpg",
     },
 
@@ -44,7 +43,7 @@ const Press = ({ tabChangeFn }) => {
 
     onSubmit: (values) => {
       setIsLoading(true);
-      console.log("press values", values);
+      console.log(values);
       !isPressAdded
         ? CompanyServices.addPress(values).then((res) => {
             console.log(res);
@@ -168,7 +167,7 @@ const Press = ({ tabChangeFn }) => {
       }
     });
   }, [toggle]);
-  console.log("image1", image1);
+
   return (
     <Container
       style={{ padding: "0px 10% 0px 16px ", paddingRight: "10%" }}
@@ -181,51 +180,53 @@ const Press = ({ tabChangeFn }) => {
           Show your reach! Investors are always more inclined towards startups
           that have been covered by the media and are gaining traction.{" "}
         </Typography>
-
-        <input
-          name="title"
-          value={formik.values.title}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          type="text"
-          className="press-input"
-          placeholder="Enter your header/title here"
-        />
-        {formik.touched.title && (
-          <div className="raise-err-text">{formik.errors.title}</div>
-        )}
-
-        <input
-          name="link"
-          value={formik.values.link}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          type="text"
-          className="press-input"
-          placeholder="https://"
-        />
-        {formik.touched.link && (
-          <div className="raise-err-text">{formik.errors.link}</div>
-        )}
-
-        <textarea
-          name="description"
-          value={formik.values.description}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          className="press-textarea"
-          id="press-textarea"
-          cols="30"
-          rows="7"
-          placeholder="Type something here…"
-        ></textarea>
-        <div className="press-textarea-count">0/300</div>
-        {formik.touched.description && (
-          <div style={{ marginTop: "-38px" }} className="raise-err-text">
-            {formik.errors.description}
-          </div>
-        )}
-
+        <div style={{ height: "80px" }}>
+          <input
+            name="title"
+            value={formik.values.title}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            type="text"
+            className="press-input"
+            placeholder="Enter your header/title here"
+          />
+          {formik.touched.title && (
+            <div className="raise-err-text">{formik.errors.title}</div>
+          )}
+        </div>
+        <div style={{ height: "80px" }}>
+          <input
+            name="link"
+            value={formik.values.link}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            type="text"
+            className="press-input"
+            placeholder="https://"
+          />
+          {formik.touched.link && (
+            <div className="raise-err-text">{formik.errors.link}</div>
+          )}
+        </div>
+        <div style={{ height: "178px" }}>
+          <textarea
+            name="description"
+            value={formik.values.description}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="press-textarea"
+            id="press-textarea"
+            cols="30"
+            rows="7"
+            placeholder="Type something here…"
+          ></textarea>
+          {/* <div className="press-textarea-count">0/300</div> */}
+          {formik.touched.description && (
+            <div style={{ marginTop: "0px" }} className="raise-err-text">
+              {formik.errors.description}
+            </div>
+          )}
+        </div>
         <div className="press-photos-parent">
           <Typography className="press-banner-photo-title">
             Banner Photo*
@@ -233,7 +234,6 @@ const Press = ({ tabChangeFn }) => {
 
           <div className="banner-box-container">
             <div style={{ position: "relative" }} className="Banner-Box">
-              {console.log("pressData?.banner_images?.length",pressData)}
               {image1 || pressData?.banner_images?.length ? (
                 <img
                   src={image1 ? image1 : pressData?.banner_images[0]}
@@ -272,7 +272,6 @@ const Press = ({ tabChangeFn }) => {
               )}
             </div>
             <div style={{ position: "relative" }} className="Banner-Box">
-              {console.log("image3",image3)}
               {image3 || pressData?.banner_images?.length ? (
                 <img
                   src={image3 ? image3 : pressData?.banner_images[2]}
@@ -302,7 +301,7 @@ const Press = ({ tabChangeFn }) => {
           />
 
           <Button
-          disabled={isUploading ?true :false}
+            disabled={isUploading ? true : false}
             onClick={() => document.getElementById("pressUploadBanner").click()}
             className="press-upload-pic-btn"
           >
