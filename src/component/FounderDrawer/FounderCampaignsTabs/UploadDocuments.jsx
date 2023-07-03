@@ -118,7 +118,7 @@ const UploadDocuments = () => {
   }, [toggle]);
   return (
     <Container
-      style={{ padding: "0px 10% 0px 16px", paddingRight: "10%" }}
+    className="upload-docs-container"
       maxWidth="lg"
     >
       <h3>Upload Documents</h3>
@@ -164,7 +164,7 @@ const UploadDocuments = () => {
             </div>
           </div>
 
-          <div className="getRewards-btn-parent">
+          <div className="upload-doc-btn-wrapper getRewards-btn-parent">
             <Button
               className="hightlight-submit-button"
               style={{ color: "White" }}
@@ -174,9 +174,9 @@ const UploadDocuments = () => {
             <Button
               // disabled={selectedFile ? false : true}
               onClick={handleUpload}
-              style={{ margin: "20px 0 20px 20px ", color: "white" }}
+              style={{  color: "white" }}
               variant="contained"
-              className="hightlight-submit-button"
+              className="finish-btn hightlight-submit-button"
             >
               {isLoading === true ? (
                 <CircularProgress

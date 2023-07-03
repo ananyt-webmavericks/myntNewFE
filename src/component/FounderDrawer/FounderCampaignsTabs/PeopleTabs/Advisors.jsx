@@ -162,6 +162,7 @@ const Advisors = ({
   return (
     <>
       <Box
+      className="people-team-tab-wrapper"
         sx={
           isAdvisorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }

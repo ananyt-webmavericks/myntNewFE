@@ -275,26 +275,55 @@ input::placeholder {
     box-shadow: none !important;
     background: #F4F4F4 !important
 }
-.css-13cymwt-control:focus{
+
+.css-13cymwt-control:focus {
     /* border-style: none;
     border: 1px solid #F1C734 !important; */
 }
 
-.css-t3ipsp-control{
-    border-color: hsl(0, 0%, 80%) !important;
-    box-shadow: none !important;
-    border-style: none;
-    border: 1px solid #F1C734 !important;
-}
-.css-t3ipsp-control:focus{
+.css-t3ipsp-control {
     border-color: hsl(0, 0%, 80%) !important;
     box-shadow: none !important;
     border-style: none;
     border: 1px solid #F1C734 !important;
 }
 
+.css-t3ipsp-control:focus {
+    border-color: hsl(0, 0%, 80%) !important;
+    box-shadow: none !important;
+    border-style: none;
+    border: 1px solid #F1C734 !important;
+}
 
-@media screen and (min-width: 870px) {
+@media screen and (max-width: 425px) {
+    .upload-pitch-mb {
+        width: 100% !important;
+    }
+    .drag-and-drop-parent{
+        flex-direction: column;
+        width: 100%;
+    }
+    .founder-appln-submit-parent{
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .upload-pitch-mb {
+        width: 100% !important;
+        margin-bottom: 100px;
+    }
+    .drag-and-drop-parent{
+        flex-direction: column;
+        width: 100%;
+    }
+    .founder-appln-submit-parent{
+        width: 100%;
+        
+    }
+}
+
+/* @media screen and (min-width: 870px) { */
+@media screen and (min-width: 1024px) {
     .founder-application-parent {
         padding-top: 10em;
         height: 100%;

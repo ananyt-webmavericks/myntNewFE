@@ -22,15 +22,44 @@
     text-align: center;
     margin-bottom: 5rem;
 }
+.existing-faq{
+    margin-right: 30px;
+}
 
-@media screen and (min-width : 1024px) {
+@media screen and (max-width : 1024px) {
     .faqs-button-parent {
         /* max-width: 800px; */
         width: 100% !important;
         text-align: right;
     }
+    .faq-text-wrapper{
+        margin-right: 16px !important;
+    }
+    .faq-container-mb{
+        padding-right: 0 !important;
+    }
+    .existing-faq{
+        margin-right: 16px !important;
+    }
+    .faq-next-btn{
+        margin-right: 20px !important;
+    }
+    .faq-form{
+        margin-right: 16px !important;
+    }
 }
 
+@media screen and (max-width : 425px) {
+    .existing-faq{
+        margin-right: 16px !important;
+    }
+    .faq-text-wrapper{
+        margin-right: 16px !important;
+    }
+    .faq-container-mb{
+        padding-right: 0 !important;
+    }
+}
 @media screen and (max-width : 320px) {
     .faqs-button-parent {
         width: 100% !important;

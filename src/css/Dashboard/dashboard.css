@@ -4,10 +4,11 @@
     width: -webkit-fill-available;
 }
 
-.MuiLinearProgress-barColorPrimary{
+.MuiLinearProgress-barColorPrimary {
     background-color: #ECB92B !important;
 }
-.MuiLinearProgress-colorPrimary{
+
+.MuiLinearProgress-colorPrimary {
     background-color: black !important;
 }
 
@@ -153,6 +154,13 @@
     justify-content: space-evenly;
 }
 
+.dashboard-cards-grid-wrapper {
+    gap: 25px;
+    padding: 24px;
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+
 .card-main-dash {
     max-width: 300px !important;
     width: 100% !important;
@@ -206,9 +214,16 @@
     display: flex;
     align-items: center;
 }
+.dashboard-card-deals{
+    margin-top: 5px;
+    padding: 24px;
+    gap: 25px ;
+    width: 100% !important;
+    margin-left: 0 !important;
+}
 
 
-@media screen and (min-width: 870px) {
+@media screen and (min-width: 1024px) {
     .upload-pitch-parent {
         margin-left: 2rem;
     }
@@ -228,9 +243,24 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
+
+    /* .founder-wrapper{
+        width: 102%;
+    } */
     .dashboard-container {
         padding-left: 0;
+        padding-right: 0;
+    }
+    .dashboard-cards-grid-wrapper {
+        padding: 0px;
+        padding-top: 24px;
+    }
+    .dashboard-card-deals{
+        padding: 0px;
+        padding-top: 24px;
+        justify-content: center;
+
     }
 }
 

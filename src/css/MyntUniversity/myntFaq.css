@@ -135,6 +135,7 @@
     box-shadow: 0px 0px 40px #0000001A;
     border-radius: 7px 7px 0px 0px;
 }
+
 .video-des-image-container {
     width: 300px;
     min-height: 536px;
@@ -143,6 +144,8 @@
     box-shadow: 0px 0px 40px #0000001A;
     border-radius: 7px 7px 0px 0px;
 }
+
+
 
 /* blogs detail */
 .introduction-detail-blogs-container {
@@ -170,6 +173,26 @@
 
     .button-container-liveDeals.blogs {
         flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .main-info-provider-mynt-faq {
+        width: 100%;
+        height: auto;
+    }
+    .searchbar-mynt-faq {
+        width: 100%;
+    }
+    .video-grid-wrapper{
+        width: 100% !important;
+        margin-left: 0 !important;
+        gap: 20px !important;
+        justify-content: center !important;
+    }
+    .video-des-image-container {
+        margin: auto;
+        width: 285px;
     }
 }
 

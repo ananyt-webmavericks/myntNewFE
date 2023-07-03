@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../../css/MyntUniversity/myntFaq.css";
 import { useNavigate } from "react-router-dom";
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, Card } from "@mui/material";
 import Player from "../../../images/assets/Player.png";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import ImageBlog1 from "../../../images/myntblogs/detailblog1.png";
@@ -374,10 +374,10 @@ export default function MyntVideosMain() {
         </span>
       </div>
       <div className="blogs-container-mynt">
-        <Grid container spacing={gridxsMainFirst}>
+        <Grid className="video-grid-wrapper" container spacing={gridxsMainFirst}>
           {data.map((item, index) => {
             return (
-              <Grid item xs={gridxsMainSecond} key={index}>
+              <Card item xs={gridxsMainSecond} key={index}>
                 <div className="video-des-image-container">
                   <div
                     style={{
@@ -390,7 +390,7 @@ export default function MyntVideosMain() {
                     onClick={() => handleClickOpen(item.youtubeUrl)}
                   ></div>
                   <iframe
-                    width="inherit"
+                    width="100%"
                     height="160px"
                     id={`embed-youtube`}
                     src={`${item.youtubeUrl}?controls=0&modestbranding=1&autohide=1&playsinline=1`}
@@ -442,7 +442,7 @@ export default function MyntVideosMain() {
                     </Button>
                   </div>
                 </div>
-              </Grid>
+              </Card>
             );
           })}
         </Grid>

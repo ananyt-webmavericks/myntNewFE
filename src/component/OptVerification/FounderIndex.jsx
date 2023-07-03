@@ -140,7 +140,7 @@ export default function OtpVerificationMainFounder({ email, founderLoginData, is
                                 otpType="number"
                                 disabled={false}
                                 // secure
-                                inputStyles={{ width: '35px', outline: 'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
+                                // inputStyles={{ width: '35px', outline: 'none', height: '35px', background: '#F4F4F4 0% 0% no-repeat padding-box', border: 'none', fontWeight: '600', fontSize: '20px' }}
                             />
                             {WarnMsg &&
                                 <Typography style={{ fontSize: '14px', textAlign: 'left', color: '#FF9494', paddingTop: '10px' }}>Invalid OTP! please enter correct OTP.</Typography>}

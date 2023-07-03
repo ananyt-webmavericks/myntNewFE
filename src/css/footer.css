@@ -119,6 +119,17 @@
     width: 80%;
 }
 
+@media screen and (max-width: 1024px) {
+    .footer-main-grid{
+        flex-direction: column !important;
+    }
+    .all-link-section{
+        margin: 2rem;
+    }
+    .footer-links-section-Second{
+        gap: 20px;
+    }
+}
 @media screen and (max-width: 1203px) {
     .footer-links-section-first {
         display: grid;
@@ -182,7 +193,7 @@
     }
 
     .investor-university-section {
-        width: 50%;
+        /* width: 50%; */
         margin-top: 1em;
         margin-right: 0;
     }

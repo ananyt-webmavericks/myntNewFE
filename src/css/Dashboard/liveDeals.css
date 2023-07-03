@@ -110,8 +110,28 @@
     letter-spacing: 0px;
 }
 
+.live-opportunities-grid {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+.live-opportunities-container{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+@media screen and (max-width:1024px) {}
+
 @media screen and (max-width:450px) {
 
+    .live-opportunities-grid {
+        justify-content: center;
+    }
+    .investment-card-container{
+        width: 340px;
+    }
+    .investment-card-container .live-opportunities-card-content{
+        width: 340px;
+    }
 
     .button-container-liveDeals {
         display: grid;

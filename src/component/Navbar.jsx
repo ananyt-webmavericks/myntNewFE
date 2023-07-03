@@ -44,6 +44,8 @@ const Navbar = () => {
                 {!location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} className='ham-menu-img'></img>}
                 {location.includes('/complete-your-profile') && ratio < 768 && <img src={logo} style={{ width: '78px', height: '35px', position: 'sticky', left: '40%', top: '1em', cursor: 'pointer' }}></img>}
                 <input type="checkbox" name="" id="" />
+                {/* <img onClick={() => navigate('/')} alt="mynt_logo" className="logo-web-mb" src={logo}></img> */}
+
                 {!location.includes('/complete-your-profile') && <div class="hamburger-lines">
                     <span className="line line1"></span>
                     <span className="line line2"></span>
@@ -157,6 +159,7 @@ const Navbar = () => {
                     }
 
                 </ul>
+                
                 <img onClick={() => navigate('/')} alt="mynt_logo" className="logo-web" src={logo}></img>
             </div>
         </nav>

@@ -171,6 +171,7 @@
     .button-container-getStarted {
         display: grid;
         justify-content: center;
+        gap: 20px;
     }
 
     .google-signIn-getStarted {
@@ -186,7 +187,7 @@
     }
 
     .email-input-get-started {
-        width: 300px;
+        /* width: 300px; */
         margin: auto;
     }
 
@@ -201,6 +202,6 @@
     }
 
     .sign-up-btn {
-        width: 300px;
+        /* width: 300px; */
     }
 }

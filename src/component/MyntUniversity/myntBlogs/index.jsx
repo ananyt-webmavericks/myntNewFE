@@ -3,7 +3,7 @@ import '../../../css/MyntUniversity/myntFaq.css'
 import SearchIcon from '../../../images/assets/search.svg'
 import LeftArrow from '../../../images/assets/leftArrow.svg'
 import { useNavigate } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Grid,Card } from "@mui/material";
 import Image1 from '../../../images/myntblogs/image1.png';
 import Image2 from '../../../images/myntblogs/image2.png';
 import Image3 from '../../../images/myntblogs/image3.png';
@@ -62,10 +62,10 @@ export default function MyntBlogsMain() {
                         </div>
                     </div>
                     <div className="blogs-container-mynt">
-                <Grid container spacing={gridxsMainFirst}>
+                <Grid className="video-grid-wrapper" container spacing={gridxsMainFirst}>
                 {blogs.map((item , index)=>{
                     return(
-                        <Grid item xs={gridxsMainSecond} key={index}>
+                        <Card item xs={gridxsMainSecond} key={index}>
                             <div onClick={()=>navigate(`/myntUniversity/blogs/detail/${item.id}`)} className="blogs-des-image-container">
                                 <div className="mynt-text-image-blogs" >Mynt</div>
                                 <img src={item?.image ? item?.image : Image1} style={{width:'inherit' , height:'192px'}}></img>
@@ -74,7 +74,7 @@ export default function MyntBlogsMain() {
                                 <span style={{fontSize:'12px' , position:'absolute' , bottom:'1em' , left:'1em'}} >{item?.date ?? ""}</span>
                                 </div>
                             </div>
-                        </Grid>
+                        </Card>
                     )
                 })}
                 </Grid>

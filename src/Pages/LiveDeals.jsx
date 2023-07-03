@@ -212,7 +212,7 @@ const LiveDeals = () => {
             <div style={{ display: 'flex', position: 'relative' }}>
                 {location.includes('/dashboard') && <DrawerMain display={'none'} />}
                 <div className="dashboard-container" style={{ height: '100%', marginBottom: '5em' }}>
-                    <Container maxWidth="lg">
+                    <Container className="live-opportunities-container" maxWidth="lg">
                         <div style={{ display: 'grid' }}>
                             <span className="get-started-heading startup">Live Opportunities</span>
                             <span style={{ fontSize: '16px', color: '#777777' }}>Browse current enrollment opportunities on Mynt.</span>
@@ -282,19 +282,19 @@ const LiveDeals = () => {
                                 <div style={{ display: 'grid', marginTop: '0.5rem' }}>
                                     <span style={{ fontSize: '18px' }}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span>
                                 </div>
-                                <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
+                                <Grid className="live-opportunities-grid" sx={{  marginTop: '30px',gap: '20px', marginBottom: '5rem' }} container spacing={spaceing}>
                                     {item.campaigns?.map((campaign, index) => {
                                         return (
-                                            <Grid key={index} item xs={gridxsFirst}>
-                                                <Card onClick={() =>
+                                            // <Grid key={index} item xs={gridxsFirst} >
+                                                <Card key={index} item  onClick={() =>
                                                     navigate('/live-deals-details', {
                                                         state: {
                                                             campaignId: campaign?.campaign_id?.id,
                                                             campaignData: { ...campaign, deal_type: item.deal_type }
                                                         }
                                                     })}
-                                                    className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
-                                                    <CardContent sx={{ padding: '0' }}>
+                                                    className="investment-card-container" sx={{  padding: '0' }} >
+                                                    <CardContent className="live-opportunities-card-content" sx={{ padding: '0', width: '300px' }}>
                                                         <div style={{ position: 'relative' }}>
                                                             <img src={BG1} width='100%' height={192} />
                                                             <div className="card-header-logo">
@@ -401,7 +401,7 @@ const LiveDeals = () => {
                                                         </div>
                                                     </CardContent>
                                                 </Card>
-                                            </Grid>
+                                            // </Grid>
                                         )
                                     })}
                                 </Grid>

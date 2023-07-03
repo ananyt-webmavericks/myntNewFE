@@ -51,6 +51,7 @@ const Networks = () => {
             // xs={6} md={3}
             >
                 <Box
+                className="portfolio-company-card"
                     sx={{
                         p: 2,
                         paddingTop: 5,

@@ -282,7 +282,7 @@ const GetRewards = ({ tabChangeFn }) => {
               type="submit"
               style={{ margin: "20px", marginRight: 0 }}
               variant="contained"
-              className="comp-prof-button2"
+              className="comp-prof-button2 promotion-next-btn"
             >
               {isLoading && isNextClicked ? (
                 <CircularProgress

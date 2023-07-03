@@ -49,7 +49,7 @@ const DashBoardESign = () => {
                         <Card className="raise-with-mint-cards" elevation={2}>
                             <div>
                                 <Typography className="e-sign-title">E-sign</Typography>
-                                <Typography>E-sign your agreements to finalize Subscriptions in your campaign</Typography>
+                                <Typography className="e-sign-description">E-sign your agreements to finalize Subscriptions in your campaign</Typography>
                             </div>
                             <div className="download-btn-Active">
                                 <Button style={{ borderRadius: "50px", backgroundColor: "#fbdf35", color: "black" }} variant="contained"><b>Download</b></Button>
@@ -59,7 +59,7 @@ const DashBoardESign = () => {
 
                         {/* <Typography>Previous Campaigns</Typography> */}
 
-                        <Grid item xs={6} md={3}>
+                        <Grid className="dashboard-width-mb"  item xs={6} md={3}>
                             <Box
                                 sx={{
                                     p: 2,
@@ -69,12 +69,17 @@ const DashBoardESign = () => {
                                     gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr 1fr' },
                                     gap: '30px',
                                     // width: '492',
-                                    width: '20rem',
+                                    // width: '20rem',
                                     textAlign: 'left',
                                     fontFamily: 'poppins'
                                 }}
                             >
-                                <div style={{ marginTop: '3rem',width: '20rem' }}>
+                                <div className="campaing-mb" 
+                                style={{ 
+                                    marginTop: '3rem',
+                                    // width: '20rem' 
+                                }}
+                                >
                                     <Typography >Campaign</Typography>
                                     <div onClick={() => {
                                         console.log("clicked")
@@ -111,7 +116,7 @@ const DashBoardESign = () => {
                                                     <Box className="setCornerIcon">
                                                         <div style={{ display: 'flex', justifyContent: 'space-between', textAlign: "center", width: "100%", padding: "10px 20px" }}>
                                                             <img src={CopanyLogo} alt="not found" />
-                                                            <div style={{ display:'flex',alignItems:'center',justifyContent:'center',height: "30px", width: "100px", backgroundColor: "yellow", textAlign: "center", marginTop: "15px", borderRLeft: "50%", borderRight: "50%", borderRadius: "1rem", zIndex: "444499" }}>CSOP</div>
+                                                            <div style={{ display:'flex',alignItems:'center',justifyContent:'center',height: "30px", width: "100px", backgroundColor: "yellow", textAlign: "center", marginTop: "15px", borderRLeft: "50%", borderRight: "50%", borderRadius: "1rem", zIndex: "1" }}>CSOP</div>
                                                         </div>
                                                     </Box>
                                                     <b className="settleindex" style={{ marginLeft: "3rem", zIndex: "90000000 !important" }}>Settl</b>

@@ -22,12 +22,30 @@
     margin-top: 1.8rem;
     margin-bottom: 2rem;
 }
-
+.upload-doc-btn-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
 .promotions-parent {
     margin-left: 0.8rem;
     margin-right: 0.8rem;
 }
 
+@media screen and (max-width: 1024px) {
+    .promotions-parent{
+        padding-right: 0;
+        margin-right: 16px;
+    }
+    .getRewards-btn-parent{
+        margin-right: 0px ;
+
+    }
+    .highlight-desc {
+        padding-right: 0;
+    }
+}
 @media screen and (min-width: 870px) {
     .promotions-parent {
         /* margin-left: 2rem; */
@@ -36,6 +54,9 @@
 }
 
 @media screen and (max-width:768px) {
+    .upload-doc-btn-wrapper{
+        flex-direction: column;
+    }
     .getRewards-btn-parent {
         text-align: center;
         margin-left: 0;

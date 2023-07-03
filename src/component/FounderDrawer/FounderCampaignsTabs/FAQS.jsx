@@ -196,8 +196,8 @@ const FAQS = ({ tabChangeFn }) => {
   }, [count]);
 
   return (
-    <Container style={{ padding: "0px", paddingRight: "10%" }} maxWidth="lg">
-      <Box sx={{ marginTop: 4, marginLeft: 2, marginRight: "30px" }}>
+    <Container className="faq-container-mb" style={{ padding: "0px", paddingRight: "10%" }} maxWidth="lg">
+      <Box className="faq-text-wrapper" sx={{ marginTop: 4, marginLeft: 2, marginRight: "30px" }}>
         <h3>FAQs</h3>
 
         <Typography style={{ paddingTop: "10px" }}>
@@ -212,7 +212,7 @@ const FAQS = ({ tabChangeFn }) => {
         </Typography> */}
       </Box>
       {!addedFaqs.length || addMoreFaqs ? (
-        <form style={{ marginRight: "30px" }} onSubmit={formik.handleSubmit}>
+        <form className="faq-form" style={{ marginRight: "30px" }} onSubmit={formik.handleSubmit}>
           <Box sx={{ marginTop: 4, marginLeft: 2 }}>
             {/* <h3 className="faqs-title">FAQs</h3>
 
@@ -302,7 +302,7 @@ const FAQS = ({ tabChangeFn }) => {
                 // type="submit"
                 style={{ margin: "20px", marginRight: "0px" }}
                 variant="contained"
-                className="comp-prof-button2"
+                className="comp-prof-button2 faq-next-btn"
               >
                 {isLoading && isNextClicked ? (
                   <CircularProgress
@@ -326,6 +326,7 @@ const FAQS = ({ tabChangeFn }) => {
         <Box sx={{ marginTop: "25px", marginLeft: 2 }}>
           {addedFaqs.length > 0 && (
             <div
+            className="faq-text-wrapper"
               style={{
                 display: "flex",
                 gap: 20,
@@ -349,7 +350,7 @@ const FAQS = ({ tabChangeFn }) => {
             </div>
           )}
           {addedFaqs?.map((item, index) => (
-            <div style={{ marginRight: "30px" }} key={index}>
+            <div className="existing-faq" key={index}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <Typography
                   style={{

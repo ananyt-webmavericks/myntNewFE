@@ -170,10 +170,11 @@ const Press = ({ tabChangeFn }) => {
 
   return (
     <Container
-      style={{ padding: "0px 10% 0px 16px ", paddingRight: "10%" }}
+      className="upload-docs-container"
+      // style={{ padding: "0px 10% 0px 16px ", paddingRight: "10%" }}
       maxWidth="lg"
     >
-      <form style={{ marginRight: "30px" }} onSubmit={formik.handleSubmit}>
+      <form className="press-form" style={{}} onSubmit={formik.handleSubmit}>
         <h3>Press</h3>
 
         <Typography style={{ paddingTop: 10 }} className="press-title-desc">

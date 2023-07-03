@@ -101,7 +101,7 @@ const People = ({ tabChangeFn }) => {
     peopleData.length === 0 && getPeopleData();
   }, []);
   return (
-    <Box sx={{ marginTop: 4, marginLeft: 2, marginBottom: "3rem",paddingRight:'10%' }}>
+    <Box className="people-tabs" sx={{ marginTop: 4, marginLeft: 2, marginBottom: "3rem",paddingRight:'10%' }}>
       <h3>People</h3>
       <Typography style={{marginTop: 10}}>
         Add your founding team members, lead investors and advisors here. As we
@@ -169,7 +169,7 @@ const People = ({ tabChangeFn }) => {
       {subTabNo === 0 &&
         peopleData?.filter((item) => item.type === "TEAM").length > 0 && (
           <div
-            className={addMoreTeam ? "mt-200" : "mt-30"}
+            className={addMoreTeam ? "mt-200 team-member-mb" : "mt-30 team-member-mb"}
             style={{
               display: "flex",
               gap: 20,
@@ -204,7 +204,7 @@ const People = ({ tabChangeFn }) => {
       {subTabNo === 1 &&
         peopleData?.filter((item) => item.type === "INVESTOR").length > 0 && (
           <div
-            className={addMoreInvestor ? "mt-200" : "mt-30"}
+            className={addMoreInvestor ? "mt-200 team-member-mb" : "mt-30 team-member-mb"}
             style={{
               display: "flex",
               gap: 20,
@@ -239,7 +239,7 @@ const People = ({ tabChangeFn }) => {
       {subTabNo === 2 &&
         peopleData?.filter((item) => item.type === "ADVISOR").length > 0 && (
           <div
-            className={addMoreAdvisors ? "mt-200" : "mt-30"}
+            className={addMoreAdvisors ? "mt-200 team-member-mb" : "mt-30 team-member-mb"}
             style={{
               display: "flex",
               gap: 20,
@@ -280,6 +280,7 @@ const People = ({ tabChangeFn }) => {
         // xs={6} md={3}
         >
           <Box
+          className={"member-card-wrapper"}
             sx={{
               p: 2,
               paddingTop: 4.2,
@@ -301,6 +302,7 @@ const People = ({ tabChangeFn }) => {
                       .reverse()
                       .map((item, index) => (
                         <Card
+                        className="members-card"
                           key={index}
                           onClick={() => handleOpen(item.id)}
                           style={{
@@ -399,6 +401,7 @@ const People = ({ tabChangeFn }) => {
                   .reverse()
                   .map((item, index) => (
                     <Card
+                    className="members-card"
                       key={index}
                       onClick={() => handleOpen(item.id)}
                       style={{
@@ -494,6 +497,7 @@ const People = ({ tabChangeFn }) => {
                   .reverse()
                   .map((item, index) => (
                     <Card
+                    className="members-card"
                       key={index}
                       onClick={() => handleOpen(item.id)}
                       style={{

@@ -557,7 +557,7 @@ export default function AboutYouMain() {
                         console.log(response)
                         if (response.status === 200) {
                             dispatch(userLoginAction({ ...userData, nationality: nationality.toString(), country: country.toString() }))
-                            navigate('/become-investor')
+                            navigate('/startup-sectors')
                         }
                         else {
                             setCountry([])

@@ -281,7 +281,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
 
   return (
     <Container style={{ padding: "0px" }} maxWidth="lg">
-      <Box sx={{ marginTop: 4, marginLeft: 2 }} style={{ width: "80%" }}>
+      <Box className="company-info" sx={{ marginTop: 4, padding: "0px 16px" }} >
         <h3>Company Information</h3>
         <Typography className="companyinformation">
           <p style={{ marginTop: "10px", width: "100%" }}>
@@ -294,7 +294,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
         <Typography className="comp-info-appl-title">Application</Typography>
 
         <div className="gridParent">
-          <Grid item xs={6} md={12}>
+          <Grid className="comp-grid--input-container" item xs={6} md={12}>
             <Box
               sx={{
                 p: 2,
@@ -308,7 +308,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 fontFamily: "poppins",
               }}
             >
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -327,7 +327,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -345,7 +345,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -365,7 +365,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="pincode"
                   value={formik.values.pincode}
@@ -382,7 +382,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="company_address"
                   value={formik.values.company_address}
@@ -407,7 +407,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
         </Typography>
 
         <div className="gridParent">
-          <Grid item xs={6} md={12}>
+          <Grid className="comp-grid--input-container" item xs={6} md={12}>
             <Box
               sx={{
                 p: 2,
@@ -421,7 +421,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 fontFamily: "poppins",
               }}
             >
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="website_url"
                   value={formik.values.website_url}
@@ -438,7 +438,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <div
                   className="input-with-logo"
                   style={{
@@ -468,7 +468,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <div
                   className="input-with-logo"
                   style={{
@@ -498,7 +498,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <div
                   className="input-with-logo"
                   style={{
@@ -534,7 +534,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
         <Typography className="comp-info-appl-title">Legal</Typography>
 
         <div className="gridParent">
-          <Grid item xs={6} md={12}>
+          <Grid className="comp-grid--input-container" item xs={6} md={12}>
             <Box
               sx={{
                 p: 2,
@@ -548,7 +548,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 fontFamily: "poppins",
               }}
             >
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="legal_name"
                   value={formik.values.legal_name}
@@ -564,7 +564,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="cin"
                   value={formik.values.cin}
@@ -580,7 +580,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <div
                   className="input-with-logo"
                   style={{
@@ -609,7 +609,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   </div>
                 )}
               </FormControl>
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="incorporation_type"
                   value={formik.values.incorporation_type}
@@ -632,7 +632,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
         <Typography className="comp-info-appl-title">About Company</Typography>
 
         <div className="gridParent">
-          <Grid item xs={6} md={12}>
+          <Grid className="comp-grid--input-container" item xs={6} md={12}>
             <Box
               sx={{
                 p: 2,
@@ -646,7 +646,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 fontFamily: "poppins",
               }}
             >
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <Select
                   components={{
                     IndicatorSeparator: () => null,
@@ -668,7 +668,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl  className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="invested_so_far"
                   value={formik.values.invested_so_far}
@@ -685,7 +685,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <Select
                   components={{
                     IndicatorSeparator: () => null,

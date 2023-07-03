@@ -35,6 +35,8 @@
     opacity: 1;
 }
 
+
+
 .hightlight-submit-button:hover{
     background: #F8DA36 0% 0% no-repeat padding-box !important;
     box-shadow: 0px 0px 7px #F4DC5991;
@@ -70,6 +72,18 @@
 
 
 
+@media screen and (max-width:1024px) {
+    .highlights-wrapper{
+        padding-right: 0 !important;
+        margin-right: 16px !important;
+    }
+    .highlights-next-btn{
+        margin-right: 20px !important;
+    }
+    .existing-highlights{
+        margin-bottom: 100px !important;
+    }
+}
 @media screen and (max-width:768px) {
 
     .buttonsParent {

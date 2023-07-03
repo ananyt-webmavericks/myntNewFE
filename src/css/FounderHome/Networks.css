@@ -53,6 +53,12 @@
     font-weight: bold;
 }
 
+@media screen and (max-width: 1024px) {
+    .portfolio-company-card{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
 @media screen and (min-width: 870px) {
     .our-networks-label>span {
         display: inline;

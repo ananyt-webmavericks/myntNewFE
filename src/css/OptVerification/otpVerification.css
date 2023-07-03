@@ -16,3 +16,31 @@
     justify-content: center;
     margin-top: 2em;
 }
+.otp-verification-section>div{
+    gap: 20px;
+}
+.otp-verification-section>div>button{
+    margin-right: 0 !important;
+}
+.otp-verification-section>div>input{
+    width: 35px !important;
+    height: 35px !important;
+    text-align: center;
+    margin-right: 0px !important;
+    outline: none;
+    background: 0% 0% no-repeat padding-box padding-box rgb(244, 244, 244);
+    border: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+@media only screen and (max-width: 374px) {
+    .otp-verification-section>div{
+        gap: 10px;
+    }
+.otp-verification-section>div>input{
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 16px;
+
+}
+    }

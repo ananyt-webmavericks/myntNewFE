@@ -157,6 +157,7 @@ const Investors = ({
   return (
     <>
       <Box
+      className="people-team-tab-wrapper"
         sx={
           isInvestorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }

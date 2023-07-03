@@ -88,19 +88,19 @@ export default function DashboardDeals() {
         <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px',width: '96%' }}>
             <span style={{ fontSize: '20px', fontWeight: '600' }}>NEW LIVE OPPORTUNITIES  </span>
             <span>Get your wealth creation journey started today!</span>
-            <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
+            <Grid className="dashboard-card-deals" sx={{ }} container spacing={spaceing}>
                 {/* {data.slice(0, showItem).map((item, index) => { */}
                 {deals.slice(0, 3)?.map((campaign, index) => {
                     return (
-                        <Grid key={index} item xs={gridxsFirst}>
-                            <Card onClick={() =>
+                        // <Grid key={index} item xs={gridxsFirst}>
+                            <Card key={index} item xs={gridxsFirst} onClick={() =>
                                 navigate('/live-deals-details', {
                                     state: {
                                         campaignId: campaign?.campaign_id?.id
                                     }
                                 })}
-                                className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
-                                <CardContent sx={{ padding: '0' }}>
+                                className="investment-card-container" sx={{ padding: '0', marginTop: '1em' }} >
+                                <CardContent className="live-opportunities-card-content" sx={{ padding: '0', width: '300px' }}>
                                     <div style={{ position: 'relative' }}>
                                         <img src={BG1} width='100%' height={192} />
                                         <div className="card-header-logo">
@@ -206,7 +206,7 @@ export default function DashboardDeals() {
                                     </div>
                                 </CardContent>
                             </Card>
-                        </Grid>
+                        // </Grid>
                     )
                 })}
             </Grid>

@@ -17,7 +17,7 @@ export default function FounderMynt() {
     };
     return (
         <>
-            <div style={{ display: 'flex', position: 'relative' }}>
+            <div className="founder-wrapper" style={{ display: 'flex', position: 'relative' }}>
                 {location.includes('/myntUniversity') && <DrawerMynt height={'inherit'} />}
                 <div className="dashboard-container">
                     <Container maxWidth="lg">

@@ -125,6 +125,13 @@
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .apply-now-button-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 @media screen and (max-width: 900px) {
     .basehighlight-container-main {
         margin-top: 10em;

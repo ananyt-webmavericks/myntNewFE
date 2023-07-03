@@ -63,8 +63,9 @@
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 999999;
+    z-index: 1;
 }
+
 
 .settlimg {
     margin-top: -113px;
@@ -181,9 +182,13 @@
 }
 
 @media screen and (max-width: 425px) {
+    .dashboard-width-mb{
+        max-width: 100% !important;
+    }
     .companyAddbox {
         flex-direction: column;
-        margin-bottom: 10rem;
+        /* margin-bottom: 10rem; */
+        margin-top: 0 !important;
         width: 100%;
         height: 100%;
     }
@@ -199,11 +204,16 @@
         height: 100%;
         width: 100% !important;
         flex-direction: column;
+        margin-top: 0 !important;
+
     }
 
     .AnalyticsBox {
         height: 100%;
         width: 100% !important;
+    }
+    .campaing-mb{
+        width: auto !important;
     }
 }
 
@@ -224,4 +234,5 @@
         height: 100%;
         width: 100% !important;
     }
+
 }

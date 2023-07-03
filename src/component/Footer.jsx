@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer-wrapper" >
-        <Grid container spacing={space}>
+        <Grid className="footer-main-grid" container spacing={space}>
           <Grid item xs={gridxsFirst}>
             <div className="footer-head-section">
               <img src={logo} alt="Mynt logo" className="logo-web-footer" />

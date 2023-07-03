@@ -286,7 +286,7 @@ const UploadPitch = ({ tabChangeFn }) => {
         </form>
       ) : null}
       {campaignData?.pitch ? (
-        <div style={{ marginTop: "20px", width: "89%" }}>
+        <div className="upload-pitch-mb" style={{ marginTop: "20px", width: "89%" }}>
           {" "}
           <div
             style={{
@@ -317,7 +317,8 @@ const UploadPitch = ({ tabChangeFn }) => {
             }}
           >
             <img src={pdfIcon} height={60} />
-            <Typography>{campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1)}</Typography>
+            {/* <Typography>{campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1)}</Typography> */}
+            <Typography>{campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1).slice(0, 5) + "..." + campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1).split(".").pop()}</Typography>
             
             <div
               style={{

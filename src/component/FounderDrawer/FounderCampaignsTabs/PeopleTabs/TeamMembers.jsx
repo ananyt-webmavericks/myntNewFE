@@ -152,6 +152,7 @@ const TeamMembers = ({
   return (
     <>
       <Box
+      className="people-team-tab-wrapper"
         sx={
           isTeamEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }

@@ -15,7 +15,7 @@
 
 .teamminput {
     align-items: center;
-    width: 492px !important;
+    width: 100% !important;
     height: 42px;
     background: #F4F4F4;
     border-radius: 5px;
@@ -113,7 +113,8 @@
     display: flex;
     gap: 2rem;
 }
-.addMore{
+
+.addMore {
     width: 280px;
     height: 40px;
     cursor: pointer;
@@ -195,9 +196,9 @@
         width: auto;
     }
 
-    .formgroupTextArea {
+    /* .formgroupTextArea {
         width: 52% !important;
-    }
+    } */
 
     .formgroupTextArea textarea {
         width: 100% !important;
@@ -268,9 +269,9 @@
         width: 100% !important;
     }
 
-    .formgroupTextArea textarea {
+    /* .formgroupTextArea textarea {
         width: 100% !important;
-    }
+    } */
 
     .AddmemberBtnParent {
         width: 100% !important;
@@ -282,6 +283,19 @@
 }
 
 @media screen and (max-width: 1024px) {
+    .member-card-wrapper{
+        justify-content: center;
+    }
+    .members-card {
+        margin-right: 10px !important;
+        max-width: 265px !important;
+    }
+    .people-tabs {
+        padding-right: 16px !important;
+    }
+    .people-team-tab-wrapper{
+        margin-right: 0 !important;
+    }
     .formgroup {
         display: flex;
         justify-content: space-between;
@@ -335,7 +349,8 @@
         width: 100% !important;
         flex-direction: row;
         align-items: center;
-        margin-bottom: 8rem;
+        margin-left: 0;
+        /* margin-bottom: 8rem; */
         border: 1px solid #eee;
     }
 
@@ -343,13 +358,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 85%;
+        width: 100%;
         flex-direction: row;
         /* margin-left: 10rem !important; */
     }
 }
 
 @media screen and (max-width:768px) {
+    .members-card {
+        margin-right: 10px !important;
+    }
     .formgroup {
         display: flex;
         justify-content: space-between;
@@ -386,23 +404,48 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 85%;
+        width: 100%;
         flex-direction: row;
     }
 }
 
 @media screen and (max-width:425px) {
+    
+
+    .members-card {
+        margin-right: 10px !important;
+    }
+
+    .member-card-wrapper {
+        /* width: 250px; */
+        padding: 0px !important;
+    }
+
+    .team-member-mb {
+        margin-right: 0px !important;
+    }
+
+    .addMore {
+        width: 170px;
+        padding: 10px;
+        line-height: inherit;
+        height: auto;
+    }
+
     .formgroup {
         flex-direction: column !important;
         width: 100% !important;
+        gap: 0 !important;
+
     }
 
     .formgroup input {
-        margin-left: 0.7rem !important;
+        /* margin-left: 0.7rem !important; */
         align-items: center;
         justify-content: center !important;
         flex-direction: column !important;
         width: 100% !important;
+        
         /* margin: 0rem; */
     }
 
@@ -421,7 +464,7 @@
     }
 
     .formgroupTextArea textarea {
-        margin-left: 0.7rem !important;
+        /* margin-left: 0.7rem !important; */
         width: 100% !important;
     }
 
@@ -486,7 +529,7 @@
     }
 
     .BtnSaveAndNext {
-        width: 90%;
+        width: 100%;
         position: absolute;
         align-items: center;
         flex-direction: column;

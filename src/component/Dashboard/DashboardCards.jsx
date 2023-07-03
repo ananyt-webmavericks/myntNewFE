@@ -28,9 +28,9 @@ export default function DashboardCard() {
 
   return (
     <div className="dashboard-card-container">
-      <Grid container spacing={gridxsFirst}>
-        <Grid item xs={gridxsSecond}>
-          <Card className="card-main-dash">
+      <Grid className="dashboard-cards-grid-wrapper" container spacing={gridxsFirst}>
+        {/* <Grid item xs={gridxsSecond}> */}
+          <Card item xs={gridxsSecond} className="card-main-dash">
             <CardContent>
               <div className="dash-card-section">
                 <div className="card-image-container-dash">
@@ -52,10 +52,10 @@ export default function DashboardCard() {
               </div>
             </CardContent>
           </Card>
-        </Grid>
+        {/* </Grid> */}
 
-        <Grid item xs={gridxsSecond}>
-          <Card className="card-main-dash">
+        {/* <Grid item xs={gridxsSecond}> */}
+          <Card item xs={gridxsSecond} className="card-main-dash">
             <CardContent>
               <div className="dash-card-section">
                 <div className="card-image-container-dash">
@@ -75,9 +75,10 @@ export default function DashboardCard() {
               </div>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={gridxsSecond}>
+        {/* </Grid> */}
+        {/* <Grid item xs={gridxsSecond}> */}
           <Card
+          item xs={gridxsSecond}
             onClick={() => navigate("/dashboard/analytics")}
             className="card-main-dash"
           >
@@ -99,7 +100,7 @@ export default function DashboardCard() {
               </div>
             </CardContent>
           </Card>
-        </Grid>
+        {/* </Grid> */}
       </Grid>
     </div>
   );

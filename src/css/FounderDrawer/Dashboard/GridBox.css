@@ -91,10 +91,45 @@ textarea:focus {
     font-family: poppins !important;
 }
 
+.company-info {
+    width: 80%
+}
+
 @media screen and (max-width:1024px) {
     .comp-info-appl-title {
         margin-left: 2rem !important;
     }
+
+    .company-info {
+        width: 100%
+    }
+
+    .comp-form-control-input {
+        margin: 0px !important;
+    }
+
+    .gridParent {
+        padding-right: 0px !important;
+    }
+
+    .comp-grid--input-container {
+        max-width: 100% !important;
+    }
+
+    .buttonsParent {
+        margin-right: 0px !important;
+    }
+
+    .promotion-next-btn {
+        margin-right: 20px !important;
+    }
+
+    .promotions-parent {
+        margin-bottom: 100px !important;
+        padding-right: 0 !important;
+        margin-right: 16px !important;
+    }
+
 }
 
 @media screen and (max-width:1440px) {
@@ -114,9 +149,17 @@ textarea:focus {
 }
 
 @media screen and (max-width: 425px) {
-    .gridParent {
-        padding-right: 5%
+    .company-info {
+        width: 100%
     }
+
+    .buttonsParent {
+        margin-right: 0px;
+    }
+
+    /* .gridParent {
+        padding-right: 5%
+    } */
 
     .buttonsParent {
         margin-bottom: 8rem !important;

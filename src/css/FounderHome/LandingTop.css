@@ -11,7 +11,7 @@
 }
 
 .founderhome-test-script-bold {
-    text-align: center;
+    /* text-align: center; */
     font: normal normal bolder 30px/40px Poppins !important;
     letter-spacing: 0px !important;
     color: #000000;
@@ -88,6 +88,59 @@
 }
 
 
+@media screen and (min-width: 1024px) {
+    .founderhome-image-section-landing-raise-banner {
+        display: none !important;
+    }
+    .founderhome-test-script-bold {
+        text-align: left;
+    }
+    .founderhome-test-script-regular{
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .founderhome-image-section-landing {
+        display: none;
+    }
+
+    .founderhome-landing-head-container {
+        display: flex !important;
+        flex-direction: column-reverse;
+        padding-top: 5rem;
+        justify-content: center !important;
+    }
+
+    .founderhome-image-section-landing-raise-banner {
+        display: flex;
+        justify-content: center;
+    }
+
+    .founderhome-image-section-landing-raise-banner>img {
+        max-width: 600px;
+        margin-bottom: 30px;
+    }
+
+    .founderhome-getStarted-landing-btn-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .founderhome-landing-head-txt-section{
+        text-align: center !important;
+    }
+    .founderhome-test-script-bold {
+        text-align: center;
+    }
+    .founderhome-test-script-regular{
+        text-align: center;
+    }
+    .founderhome-head-description{
+        text-align: center;
+    }
+}
+
 @media screen and (min-width: 870px) {
 
     .founderhome-image-section-landing {
@@ -116,11 +169,11 @@
 
     .founderhome-test-script-regular {
         font-size: 36px !important;
-        text-align: left;
+        /* text-align: left; */
     }
 
     .founderhome-test-script-bold {
-        text-align: left;
+        /* text-align: left; */
         font: normal normal bold 30px/45px Poppins !important;
         letter-spacing: 0px !important;
         color: #000000;

@@ -179,6 +179,7 @@ const Highlights = ({ tabChangeFn }) => {
 
   return (
     <Box
+    className="highlights-wrapper"
       sx={{
         marginTop: 4,
         marginLeft: 2,
@@ -367,7 +368,7 @@ const Highlights = ({ tabChangeFn }) => {
               // type="submit"
               style={{ margin: "20px", marginRight: 0 }}
               variant="contained"
-              className="comp-prof-button2"
+              className="comp-prof-button2 highlights-next-btn"
             >
               {isLoading && isNextClicked ? (
                 <CircularProgress
@@ -387,7 +388,7 @@ const Highlights = ({ tabChangeFn }) => {
       ) : null}
 
       {pitchData.length ? (
-        <div style={{ marginTop: "25px" }}>
+        <div className="existing-highlights" style={{ marginTop: "25px" }}>
           <div
             style={{
               display: "flex",

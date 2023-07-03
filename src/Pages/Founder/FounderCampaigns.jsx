@@ -106,7 +106,7 @@ const FounderCampaigns = () => {
               style={{ display: "flex", flexDirection: "column", gap: 30 }}
               className={classes.root}
             >
-              <Grid item xs={6} md={3}>
+              <Grid className="dashboard-width-mb" item xs={6} md={3}>
                 <Box
                   sx={{
                     p: 2,
@@ -119,12 +119,12 @@ const FounderCampaigns = () => {
                     },
                     gap: "30px",
                     // width: '492',
-                    width: "20rem",
+                    // width: "20rem",
                     textAlign: "left",
                     fontFamily: "poppins",
                   }}
                 >
-                  <div style={{ marginTop: "3rem", width: "20rem" }}>
+                  <div style={{ marginTop: "3rem",  }}>
                     <Typography>Campaign</Typography>
                     <div
                       onClick={() => {
@@ -187,7 +187,8 @@ const FounderCampaigns = () => {
                                     borderRLeft: "50%",
                                     borderRight: "50%",
                                     borderRadius: "1rem",
-                                    zIndex: "444499",
+                                    // zIndex: "444499",
+                                    zIndex: "1",
                                   }}
                                 >
                                   CSOP

@@ -26,6 +26,10 @@
     padding-left: 15px;
 }
 
+.press-form{
+    margin-right: 30px;
+}
+
 .press-textarea {
     margin-top: 1.2rem;
     /* max-width: 760px; */
@@ -106,6 +110,19 @@
     background-color: #d6d6d6;
 }
 
+@media screen and (max-width: 1024px) {
+    .press-form{
+        margin-right: 0px;
+        margin-bottom: 100px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .banner-box-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+}
 @media screen and (min-width: 870px) {
     .press-photos-parent {
         margin-top: 3.2rem !important;
