@@ -15,7 +15,7 @@
     margin-top: 20px;
 }
 .verifyAddress-input-section{
-    width: inherit;
+    width: 100%;
     height: inherit;
     outline: none;
     background: none;

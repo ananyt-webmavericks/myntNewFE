@@ -181,7 +181,8 @@
     }
 
     .input-container {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         width: 100%;
         justify-content: center;
     }
@@ -193,7 +194,7 @@
 
     .name-input-get-started {
         margin-bottom: 1em;
-        width: 300px;
+        width: 100%;
     }
 
     .card-get-started {

@@ -381,18 +381,18 @@ export default function MyProfileMain() {
               </div>
               <div
                 className="number-verify-container"
-                style={{ width: "100%" }}
+                style={{ width: "100%",display: "flex" ,alignItems: "center" }}
               >
                 <input
                   disabled
                   value={_.isEmpty(data) ? "" : data?.mobile_number.slice(3)}
                   type="text"
                   placeholder="contact number"
-                  style={{ width: "95%" }}
+                  // style={{ width: "77%" }}
                   className="verifyAddress-input-section"
                 />
                 <span
-                  style={{ cursor: "pointer", color: "gray" }}
+                  style={{ cursor: "pointer", color: "gray", marginRight: "28px" }}
                   onClick={handleMobileNavigation}
                 >
                   Edit
@@ -523,7 +523,7 @@ export default function MyProfileMain() {
           </div>
           <div className="details-conatiner-myprofile">
             <span className="heading-personal-details">Address Details</span>
-            <div className="verifyAddress-input" style={{ width: "100%" }}>
+            <div className="verifyAddress-input" style={{ width: "100%", display: "flex", alignItems:"center" }}>
               <input
                 disabled
                 value={
@@ -543,11 +543,11 @@ export default function MyProfileMain() {
                 }
                 type="text"
                 placeholder="Full Address"
-                style={{ width: "95%" }}
+                style={{  }}
                 className="verifyAddress-input-section"
               />
               <span
-                style={{ cursor: "pointer", color: "gray" }}
+                style={{ cursor: "pointer", color: "gray",marginRight:'28px' }}
                 onClick={handleAddressNavigation}
               >
                 Edit

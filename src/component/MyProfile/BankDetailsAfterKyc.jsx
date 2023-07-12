@@ -3,16 +3,19 @@ import React, { useState, useEffect } from "react";
 import "../../css/MyProfile/myProfile.css";
 import KycProfile from "../../images/assets/KycProfile.png";
 import services from "../../service/investor.kyc";
-import { editKycDetailsAction, storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import {
+  editKycDetailsAction,
+  storeKycDetailsAction,
+} from "../../Redux/actions/verifyKycAction";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function BankDetailsAfterKyc({ data }) {
   const _ = require("lodash");
   const [isEdit, setIsEdit] = useState(false);
-  const [bankName, setBankName] = useState('');
-  const [ifscCode, setIfscCode] = useState('');
-  const [bankAccount, setBankAccount] = useState('');
+  const [bankName, setBankName] = useState("");
+  const [ifscCode, setIfscCode] = useState("");
+  const [bankAccount, setBankAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [newData, setNewData] = useState(null);
 
@@ -26,7 +29,6 @@ export default function BankDetailsAfterKyc({ data }) {
     setIfscCode(newData ? newData.ifsc_code : data.ifsc_code);
   };
 
-  
   const handleSubmit = () => {
     setIsLoading(true);
     const val = {
@@ -41,7 +43,7 @@ export default function BankDetailsAfterKyc({ data }) {
 
         if (response.status === 201 || response.status === 200) {
           services.getInvestorKycData(userData?.id).then((response) => {
-              if (response.status === 200) {
+            if (response.status === 200) {
               // dispatch(storeKycDetailsAction(response.data));
               toast.success("Bank Details updated successful!", {
                 position: "top-right",
@@ -51,7 +53,7 @@ export default function BankDetailsAfterKyc({ data }) {
                   color: "#fff",
                 },
               });
-              setNewData(val)
+              setNewData(val);
               setIsLoading(false);
               setIsEdit(false);
             } else {
@@ -65,7 +67,6 @@ export default function BankDetailsAfterKyc({ data }) {
               });
               setIsLoading(false);
             }
-            
           });
         } else {
           setIsLoading(false);
@@ -129,14 +130,15 @@ export default function BankDetailsAfterKyc({ data }) {
         </div>
         <Card className="card-complete-kyc-notice brief">
           <CardContent>
-            <Grid style={{ paddingTop: "20px" }} container spacing={8}>
-              <Grid item xs={3}>
+            {/* <Grid style={{ paddingTop: "20px" }} container spacing={8}> */}
+            <div style={{ display: "flex", justifyContent:"space-between", padding: "10px 0px" }}>
+              <div style={{width:"45%"}}>
                 <span className="txt-bank-details">Bank Name</span>
-              </Grid>
-              <Grid item xs={1}>
+              </div>
+              <div>
                 <span className="txt-bank-details">:</span>
-              </Grid>
-              <Grid item xs={2}>
+              </div>
+              <div style={{width:"45%", textAlign:"end"}}>
                 {isEdit === true ? (
                   <input
                     className="kyc-edit-input"
@@ -145,20 +147,26 @@ export default function BankDetailsAfterKyc({ data }) {
                   />
                 ) : (
                   <span className="txt-bank-details">
-                    {_.isEmpty(data) ? "" : newData? newData?.bank_name : data?.bank_name}
+                    {_.isEmpty(data)
+                      ? ""
+                      : newData
+                      ? newData?.bank_name
+                      : data?.bank_name}
                     {/* {bankName} */}
                   </span>
                 )}
-              </Grid>
-            </Grid>
-            <Grid style={{ paddingTop: "20px" }} container spacing={8}>
-              <Grid item xs={3}>
+              </div>
+            </div>
+            {/* </Grid> */}
+            {/* <Grid style={{ paddingTop: "20px" }} container spacing={8}> */}
+            <div style={{ display: "flex", justifyContent:"space-between", padding: "10px 0px" }}>
+              <div style={{width:"45%"}} item xs={3}>
                 <span className="txt-bank-details">Bank Account no.</span>
-              </Grid>
-              <Grid item xs={1}>
+              </div>
+              <div item xs={1}>
                 <span className="txt-bank-details">:</span>
-              </Grid>
-              <Grid item xs={2}>
+              </div>
+              <div style={{width:"45%",textAlign:"end"}} item xs={2}>
                 {isEdit === true ? (
                   <input
                     className="kyc-edit-input"
@@ -167,19 +175,25 @@ export default function BankDetailsAfterKyc({ data }) {
                   />
                 ) : (
                   <span className="txt-bank-details">
-                    {_.isEmpty(data) ? "" : newData? newData.bank_account : data?.bank_account}
+                    {_.isEmpty(data)
+                      ? ""
+                      : newData
+                      ? newData.bank_account
+                      : data?.bank_account}
                   </span>
                 )}
-              </Grid>
-            </Grid>
-            <Grid style={{ paddingTop: "20px" }} container spacing={8}>
-              <Grid item xs={3}>
+              </div>
+            </div>
+            {/* </Grid> */}
+            {/* <Grid style={{ paddingTop: "20px" }} container spacing={8}> */}
+            <div style={{ display: "flex", justifyContent:"space-between", padding: "10px 0px" }}>
+              <div style={{width:"45%"}} item xs={3}>
                 <span className="txt-bank-details">IFSC Code</span>
-              </Grid>
-              <Grid item xs={1}>
+              </div>
+              <div item xs={1}>
                 <span className="txt-bank-details">:</span>
-              </Grid>
-              <Grid item xs={2}>
+              </div>
+              <div style={{width:"45%",textAlign:"end"}} item xs={2}>
                 {isEdit === true ? (
                   <input
                     className="kyc-edit-input"
@@ -188,11 +202,16 @@ export default function BankDetailsAfterKyc({ data }) {
                   />
                 ) : (
                   <span className="txt-bank-details">
-                    {_.isEmpty(data) ? "" : newData? newData.ifsc_code :data.ifsc_code}
+                    {_.isEmpty(data)
+                      ? ""
+                      : newData
+                      ? newData.ifsc_code
+                      : data.ifsc_code}
                   </span>
                 )}
-              </Grid>
-            </Grid>
+              </div>
+            </div>
+            {/* </Grid> */}
           </CardContent>
         </Card>
       </div>

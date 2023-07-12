@@ -43,7 +43,7 @@ export default function FounderAboutTeamCarousal() {
         <Box sx={{ minHeight: 'fit-content', marginTop: '90px', marginBottom: '20px' }}>
             <div className="team-container">
                 <img className="team-bg-img" src={Map} alt="Map" />
-                <div style={{ position: 'absolute', top: '15%', width: '100%' }}>
+                <div className="homeCarouselWrapper" style={{ position: 'absolute', top: '15%', width: '100%' }}>
                     <Carousel
                         enableAutoPlay={false}
                         showArrows={true}

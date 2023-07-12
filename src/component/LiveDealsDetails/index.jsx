@@ -209,8 +209,8 @@ export default function LiveDetailsMain() {
   return (
     <div className="get-started-container">
       <div style={{ paddingTop: "8em" }}>
-        <Grid container spacing={gridxsFirst}>
-          <Grid item xs={gridxsSecond}>
+        <div style={{display:'flex', flexDirection:'row'}} className="deals-detail-video-section" container spacing={gridxsFirst}>
+          <Grid className="deals-detail-video-section-left" item xs={gridxsSecond}>
             {campaignData?.ama_youtube_video ? (
               <YoutubeEmbed
                 link={campaignData?.ama_youtube_video}
@@ -230,7 +230,7 @@ export default function LiveDetailsMain() {
               </div>
             )}
           </Grid>
-          <Grid item xs={gridxsSecond}>
+          <Grid className="deals-detail-video-section-right" item xs={gridxsSecond}>
             <div className="header-section-deals-detail">
               <img src={companyData.company_logo} height={90}></img>
               <span className="live-details-deals-txt-head">
@@ -357,7 +357,7 @@ export default function LiveDetailsMain() {
               {/* <div className="rounded-container-share-btn"><img src={Share} width={25} height={27}></img></div> */}
             </div>
           </Grid>
-        </Grid>
+        </div>
         <div
           className="heading-live-deals-details"
           style={{ filter: `blur(${blurAmount}px)` }}
@@ -498,7 +498,8 @@ export default function LiveDetailsMain() {
             </div>
             <div
               style={{
-                display: "grid",
+                display: "flex",
+                flexDirection:"column",
                 justifyContent: "center",
                 marginTop: "40px",
                 filter: `blur(${blurAmount}px)`,
@@ -510,9 +511,10 @@ export default function LiveDetailsMain() {
                 frameBorder="0"
               ></iframe> */}
               <object
+              className=""
                 data={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
                 type="application/pdf"
-                width="800px"
+                // width="800px"
                 height="1000px"
               >
                 <p>

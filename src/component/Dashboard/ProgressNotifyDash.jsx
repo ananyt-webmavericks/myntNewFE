@@ -96,6 +96,7 @@ export default function ProgressNotifyDash({ data }) {
                 <div className="main-container-dashboard-part">
                     <div className="sub-main-container-dashboard">
                         {showHr && <hr className="dashed-line-new" />}
+                        <hr className="dashed-line-new-site" />
                         <div className="outer-circle-dash not-completed">
                             {noData ?
                                 <div style={noData
@@ -209,6 +210,7 @@ export default function ProgressNotifyDash({ data }) {
                 <div className="main-container-dashboard-part">
                     <div className="sub-main-container-dashboard">
                         {showHr && <hr className="dashed-line-new" />}
+                        <hr className="dashed-line-new-site" />
                         <div className="outer-circle-dash not-completed">
                             <div className="inner-circle-dashed not-completed">
                                 <span className="font-inner-circle">3</span>

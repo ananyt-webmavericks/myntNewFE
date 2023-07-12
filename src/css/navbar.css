@@ -144,6 +144,11 @@
 }
 
 
+@media (min-width: 768px) {
+    .profile-mb{
+        display: none;
+    }
+}
 @media (max-width: 1024px) {
     .navbar .menu-items {
         width: 100%;
@@ -151,6 +156,7 @@
         justify-content: flex-end;
         /* padding-right: 20px; */
     }
+    
 }
 @media (max-width: 768px) {
     .navbar .menu-items {

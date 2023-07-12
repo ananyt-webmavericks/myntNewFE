@@ -72,9 +72,9 @@ export default function SubscribegGraph() {
             <div className="subscribe-graph-heading">
                 <Typography style={{textAlign:'center'}} className="test-script-regular">Signup to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
             </div>
-            <Grid sx={{ marginTop: '40px' }} container spacing={gridxsFirst}>
-                <Grid item xs={gridxsSecond}>
-                    <Card className="card-container" >
+            <Grid sx={{ marginTop: '40px',gap:"20px", marginLeft: 0, width:"100%" }} container spacing={gridxsFirst}>
+                {/* <Grid item xs={gridxsSecond}> */}
+                    <Card item xs={gridxsSecond} className="card-container" >
                         <CardContent>
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
@@ -111,9 +111,9 @@ export default function SubscribegGraph() {
                         </CardContent>
 
                     </Card>
-                </Grid>
-                <Grid item xs={gridxsSecond}>
-                    <Card className="card-container">
+                {/* </Grid> */}
+                {/* <Grid item xs={gridxsSecond}> */}
+                    <Card item xs={gridxsSecond} className="card-container">
                         <CardContent>
                             <div className="card-content-graph" >
                                 <div className="card-sub-content" >
@@ -143,7 +143,7 @@ export default function SubscribegGraph() {
                         </CardContent>
 
                     </Card>
-                </Grid>
+                {/* </Grid> */}
             </Grid>
 
         </Box >

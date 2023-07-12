@@ -128,23 +128,23 @@ export default function BankDetails() {
 
     return (
         <div className="verify-number-container">
-            <Grid container spacing={1}>
-                <Grid item xs={12}>
+            {/* <Grid container spacing={1}>
+                <Grid item xs={12}> */}
                     <div className="verifyAddress-input">
                         <input type="text" value={value.bank_name} name="bank_name" onChange={handleChange} placeholder="Bank name" className="verifyAddress-input-section" />
                     </div>
-                </Grid>
-                <Grid item xs={12}>
+                {/* </Grid>
+                <Grid item xs={12}> */}
                     <div className="verifyAddress-input">
                         <input type="text" value={value.bank_account} name="bank_account" onChange={handleChange} placeholder="account number" className="verifyAddress-input-section" />
                     </div>
-                </Grid>
-                <Grid item xs={12}>
+                {/* </Grid>
+                <Grid item xs={12}> */}
                     <div className="verifyAddress-input">
                         <input type="text" value={value.ifsc_code} name="ifsc_code" onChange={handleChange} placeholder="IFSC Code" className="verifyAddress-input-section" />
                     </div>
-                </Grid>
-            </Grid>
+                {/* </Grid>
+            </Grid> */}
             <div className="verify-button-container">
                 <Button onClick={handleSubmit} varient="contained" className="verify-button">Submit</Button>
             </div>

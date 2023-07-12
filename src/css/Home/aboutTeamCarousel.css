@@ -12,11 +12,12 @@
 }
 
 .team-bg-img {
-    width: 88%;
+    width: 100%;
     display: block;
     margin: auto;
-    height: 477;
+    /* height: 477px; */
 }
+
 
 .about-container {
     display: grid;
@@ -148,5 +149,17 @@
 @media screen and (max-width: 500px) {
     .about-container {
         text-align: center;
+    }
+    .section-profile-about {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 700px){
+    .homeCarouselWrapper{
+        position: unset !important;
+    }
+    .team-bg-img{
+        position: absolute;
     }
 }

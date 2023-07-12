@@ -158,19 +158,19 @@ export default function OpenInvestment() {
                     <Typography className="test-script-regular"><span style={{color:'black'}} className="test-script-bg">LIVE</span></Typography>
                     <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities</Typography>
                 </div>
-                <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
+                <Grid sx={{ marginTop: '5px',gap:"20px",width:"100%",marginLeft: 0 }} container spacing={spaceing}>
                     {/* {data.slice(0, showItem).map((item, index) => { */}
                     {deals.slice(0, showItem)?.map((campaign, index) => {
                         return (
-                            <Grid key={index} item xs={gridxsFirst}>
-                                <Card onClick={() =>
+                            // <Grid key={index} item xs={gridxsFirst}>
+                                <Card key={index} item xs={gridxsFirst} onClick={() =>
                                     navigate('/live-deals-details', {
                                         state: {
                                             campaignId: campaign?.campaign_id?.id
                                         }
                                     })}
-                                    className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
-                                    <CardContent sx={{ padding: '0' }}>
+                                    className="investment-card-container" sx={{ padding: '0', marginTop: '1em' }} >
+                                    <CardContent sx={{ padding: '0',width:"300px" }}>
                                         <div style={{ position: 'relative' }}>
                                             <img src={BG1} width='100%' height={192} />
                                             <div className="card-header-logo">
@@ -277,7 +277,7 @@ export default function OpenInvestment() {
                                         </div>
                                     </CardContent>
                                 </Card>
-                            </Grid>
+                            // </Grid>
                         )
                     })}
                 </Grid>

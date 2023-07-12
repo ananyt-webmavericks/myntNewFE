@@ -89,6 +89,11 @@
     width: 40%;
     height: 1px;
 }
+.dashed-line-new-site {
+    border: 1px dashed #D1D1D1;
+    width: 40%;
+    height: 1px;
+}
 
 .dashed-line-last {
     border: 1px dashed #D1D1D1;
@@ -259,12 +264,22 @@
     .dashboard-card-deals{
         padding: 0px;
         padding-top: 24px;
-        justify-content: center;
+        /* justify-content: center; */
 
     }
 }
 
+@media screen and (max-width: 512px) {
+    .dashboard-card-deals{
+        padding: 0px;
+        padding-top: 24px;
+        justify-content: center;
+
+    }
+}
 @media screen and (max-width: 775px) {
+
+   
 
     .card-main-dash {
         display: grid;
@@ -292,6 +307,13 @@
     }
 
     .dashed-line-new {
+        width: 1px;
+        height: 130px;
+        margin: auto;
+        border: 1px dashed #D1D1D1;
+    }
+    .dashed-line-new-site {
+        display: none;
         width: 1px;
         height: 130px;
         margin: auto;

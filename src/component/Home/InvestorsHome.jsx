@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Box, Grid, Button } from "@mui/material";
 import "../../css/Home/investorsHome.css";
 import Abstract from "../../images/assets/abstract1.png";
-import Investors from "../../images/assets/investors.png";
+import Investors from "../../images/investorHomeTrustedBy.png";
 import InvestorsBg from "../../images/assets/cardsBackground.svg";
 import card1 from "../../images/assets/card1.png";
 import card2 from "../../images/assets/card2.png";
@@ -119,8 +119,8 @@ export default function InvestorsHome() {
 
   return (
     <Box className="investor-home-container-main">
-      <Grid container spacing={gridxsFirst}>
-        <Grid item xs={gridxsSecond}>
+      <Grid className="trustedByWrapper" container spacing={gridxsFirst}>
+        <Grid className="trustedByImg" style={{padding:0}} item xs={gridxsSecond}>
           <div className="subscribe-graph-heading">
             <div className="investor-home-heading">
               Trusted and
@@ -163,9 +163,9 @@ export default function InvestorsHome() {
               src={Abstract}
               alt="abstract"
             ></img>
-            {/* <img className="investors-investment-main" src={Investors} alt="abstract"></img> */}
-            <img className="investors-investment-main" src={InvestorsBg} alt="abstract"></img>
-            <div
+            <img className="investors-investment-main" src={Investors} alt="abstract"></img>
+            {/* <img className="investors-investment-main" src={InvestorsBg} alt="abstract"></img> */}
+            {/* <div
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -209,13 +209,13 @@ export default function InvestorsHome() {
                   src={meteorVentureIcon}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
           {/* ))}
                         </Carousel> */}
           {/* </div> */}
         </Grid>
-        <Grid item xs={gridxsSecond}>
+        <Grid className="trustedByImg" style={{padding:0}} item xs={gridxsSecond}>
           <div className="subscribe-graph-heading">
             <div className="investor-home-heading">
               Join Thousands{" "}

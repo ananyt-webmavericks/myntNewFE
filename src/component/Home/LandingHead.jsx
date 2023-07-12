@@ -5,6 +5,7 @@ import Banner from '../../images/assets/banner.png'
 import { useNavigate } from "react-router-dom";
 import Lottie from 'react-lottie';
 import bgLine from '../../images/investors/headerBgLine.png'
+import homeMbViewImg from '../../images/home-mb-view-img.png'
 import animationData from '../../lotties/homePage';
 export default function LandingHead() {
 
@@ -30,11 +31,11 @@ export default function LandingHead() {
                         </span>
                         <Button
                             variant="contained"
-                            style={{zIndex:100}}
+                            style={{zIndex:99}}
                             onClick={localStorage.getItem('access_token') ? ()=> navigate('/dashboard'): () => navigate('/get-started')} className="getStarted-landing-btn">
                             Get Started
                         </Button>
-                        <Typography className="subhead-description" style={{ fontWeight: "bold", zIndex: 100 }}>
+                        <Typography className="subhead-description" style={{ fontWeight: "bold", zIndex: 99 }}>
                             Are you a founder?
                             <span
                                 className="test-script-bg"
@@ -54,6 +55,10 @@ export default function LandingHead() {
                         />
                     </div>
                 </div>
+                <div className=" homeMbViewImg-wrapper" style={{ display:"flex",justifyContent:'center',alignItems:"center",width:"100%"}}>
+                <img className=" homeMbViewImg" src={homeMbViewImg} />
+                </div>
+
             </div>
         </Box>
     )

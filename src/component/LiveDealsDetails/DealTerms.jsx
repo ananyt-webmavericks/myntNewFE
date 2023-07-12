@@ -274,7 +274,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                       style={{
                         width: "40px",
                         height: "40px",
-                        marginRight: "51px",
+                        marginRight: "1rem",
                       }}
                     ></img>{" "}
                   </a>
@@ -289,7 +289,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                       style={{
                         width: "40px",
                         height: "40px",
-                        marginRight: "51px",
+                        marginRight: "1rem",
                       }}
                     ></img>{" "}
                   </a>
@@ -304,7 +304,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                       style={{
                         width: "40px",
                         height: "40px",
-                        marginRight: "51px",
+                        marginRight: "1rem",
                       }}
                     ></img>{" "}
                   </a>
@@ -319,7 +319,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                       style={{
                         width: "40px",
                         height: "40px",
-                        marginRight: "51px",
+                        marginRight: "1rem",
                       }}
                     ></img>{" "}
                   </a>
