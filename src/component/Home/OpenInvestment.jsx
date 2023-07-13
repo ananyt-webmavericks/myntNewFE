@@ -158,7 +158,7 @@ export default function OpenInvestment() {
                     <Typography className="test-script-regular"><span style={{color:'black'}} className="test-script-bg">LIVE</span></Typography>
                     <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities</Typography>
                 </div>
-                <Grid sx={{ marginTop: '5px',gap:"20px",width:"100%",marginLeft: 0 }} container spacing={spaceing}>
+                <Grid className="investor-home-deal-card" sx={{ marginTop: '5px',gap:"20px",width:"100%",marginLeft: 0 }} container spacing={spaceing}>
                     {/* {data.slice(0, showItem).map((item, index) => { */}
                     {deals.slice(0, showItem)?.map((campaign, index) => {
                         return (

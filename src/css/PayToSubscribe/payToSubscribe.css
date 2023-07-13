@@ -1,7 +1,7 @@
 .pay-to-subscribe-container {
     height: 100%;
     margin-bottom: 5em;
-    padding-top: 10em;
+    padding-top: 5em;
 }
 
 .card-pay-main-section {
@@ -18,6 +18,8 @@
     align-items: center;
     margin-top: 20px;
     margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .particular-mentioned-chip-pay {
@@ -27,7 +29,7 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 2px solid #FADF35;
     border-radius: 27px;
-    margin-right: 8px;
+    /* margin-right: 8px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +69,63 @@
     margin-top: 22px;
     align-items: center;
 }
+.payment-input{
+    width: 90%;
+    height: 42px;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.payment-btn {
+    margin-top: 20px;
+    width: 100%;
+    height: 42px;
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+}
 
+@media screen and (min-width:850px) {
+    .payment-card-wrapper{
+        flex-direction: row !important;
+
+    }
+}
+@media screen and (max-width:850px) {
+    .payment-card-wrapper{
+        flex-direction: column !important;
+
+    }
+    .payment-card{
+        max-width: 100% !important;
+    }
+    .payment-input{
+        width: 100% !important;
+    }
+
+}
+@media screen and (max-width:426px) {
+    .chips-pay-to-subscribe-cointainer{
+        justify-content: center !important;
+    }
+    .payment-card-wrapper{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .payment-section-heading{
+        justify-content: center !important;
+        display: flex;
+        
+    }
+}
+@media screen and (max-width:680px) {
+    .payment-btn {
+        margin-top: 20px;
+    }
+}
 @media screen and (max-width:700px) {
     .secondary-card-pay-section {
         width: 100% !important;

@@ -55,12 +55,12 @@ export default function FundedNetworks() {
                     <div className="funded-head-txt" >
                         <Typography className="networks-head-script">Brought to you by the Networks that have <span style={{ color: '#F0C127' }}>Funded</span></Typography>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div className="network-vertical-line" style={{ display: 'flex', alignItems: 'center' }}>
                         <div className="vertical-line"></div>
                         <img src={Arrow} width={8} height={15} ></img>
                     </div>
                     <Carousel
-                        className="react-carousel-networks"
+                        className="react-carousel-networks network-vertical-line"
                         autoPlaySpeed={2000}
                         easing="ease"
                         enableAutoPlay={true}
@@ -85,7 +85,7 @@ export default function FundedNetworks() {
                     >
                         {data.map((item, index) => {
                             return (
-                                <Item key={index} className='company-image' style={{ width: '100px ', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Item key={index} className='company-image' style={{ width: '100% ', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                         <img className="comp-img" height={item.height} style={{}} src={item.image}></img>
                                         {/* <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span> */}
@@ -103,6 +103,16 @@ export default function FundedNetworks() {
 
                     </Carousel>
                 </div>
+            </Container>
+            <Container className="networks-mb-view">
+                {data.map((item,index)=>{
+                    return(
+                    <div key={index} className='' style={{  height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                            <img className="comp-img" height={item.height} style={{}} src={item.image}></img>
+                            <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                        </div>
+                    </div>)})}
             </Container>
         </Box>
     )

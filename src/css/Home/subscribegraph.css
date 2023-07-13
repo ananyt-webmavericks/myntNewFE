@@ -20,7 +20,7 @@
     position: absolute;
     width: 310px;
     right: 0;
-    height: 300px;
+    /* height: 300px; */
 }
 
 .card-bold-number-text {
@@ -206,6 +206,7 @@
 
     .regular-txt {
         height: fit-content !important;
+        width: 100% !important;
     }
 
     .bar-graph-container.one {
@@ -256,6 +257,9 @@
 }
 
 @media screen and (max-width: 500px) {
+    .investor-home-deal-card {
+        justify-content: center !important;
+    }
     .card-bold-number-text {
         margin-top: 47px !important;
     }

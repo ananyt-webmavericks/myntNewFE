@@ -125,16 +125,16 @@ export default function PayToSubscribeMain() {
 
     return (
         <div className="pay-to-subscribe-container">
-            <span className="get-started-heading">Enroll To {location.state?.companyName}</span>
+            <span className="get-started-heading payment-section-heading">Enroll To {location.state?.companyName}</span>
             <Card className="card-pay-main-section">
                 <CardContent>
-                    <Grid container spacing={gridxsFirst}>
+                    <Grid className="payment-card-wrapper" style={{width: "100%", marginLeft: 0,padding: 16}} container spacing={gridxsFirst}>
 
-                        <Grid item xs={gridxsSecond}>
+                        <Grid className="payment-card" style={{padding: 0}} item xs={gridxsSecond}>
                             <span className="pay-amount-label">Amount</span>
 
                             <form onSubmit={formik.handleSubmit}>
-                                <div className="verifyAddress-input" style={gridxsFirst === 1 ? { width: '100%' } : { width: '90%' }}>
+                                <div className="payment-input" style={gridxsFirst === 1 ? { width: '100%' } : { width: '90%' }}>
                                     <input
                                         name="amount"
                                         value={formik.values.amount}
@@ -176,7 +176,7 @@ export default function PayToSubscribeMain() {
                             }
 
                         </Grid>
-                        <Grid item xs={gridxsSecond}>
+                        <Grid className="payment-card" style={{padding: 0}} item xs={gridxsSecond}>
                             <span className="pay-amount-label">Have a Coupon Code?</span>
                             <div style={{ width: '100%', marginTop: '1.5em' }} className="dropdown-container-live-deals">
                                 <Select
@@ -270,8 +270,8 @@ export default function PayToSubscribeMain() {
                                 />
                                 <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                             </div>
-                            <button onClick={() => formik.handleSubmit()} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Online</button>
-                            <button onClick={() => {}} className="submit-btn-startup kyc" style={{ maxWidth: '100%' }}>Pay Offline</button>
+                            <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft:0 }}>Pay Online</button>
+                            <button onClick={() => {}} className="payment-btn" style={{ maxWidth: '100%', marginLeft:0 }}>Pay Offline</button>
                             {/* <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button> */}
                         </Grid>
                     </Grid>
