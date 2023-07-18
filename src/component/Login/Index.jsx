@@ -149,6 +149,7 @@ export default function LoginMain() {
                   style={{ marginLeft: "10px" }}
                 ></img>
                 <input
+                  type="email"
                   value={email}
                   onChange={handleChange}
                   className="in-input-email"
@@ -173,7 +174,14 @@ export default function LoginMain() {
               onClick={handleSubmit}
               className={isLoading ? "sign-up-btn disabled" : "sign-up-btn"}
             >
-              {isLoading ? <CircularProgress style={{color: 'white',width: 20, height:20}} className="loader" /> : "Login"}
+              {isLoading ? (
+                <CircularProgress
+                  style={{ color: "white", width: 20, height: 20 }}
+                  className="loader"
+                />
+              ) : (
+                "Login"
+              )}
             </button>
           </CardContent>
         </Card>

@@ -116,6 +116,21 @@
     display: none;
 }
 
+.nav-profile-icon-mb {
+    padding-left: 0px;
+    display: flex;
+    height: inherit;
+    left: calc(100% - 106px);
+    /* width: calc(100% - 80px); */
+    font-size: 16px;
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    justify-content: end;
+    transition: color 0.3s ease-in-out 0s;
+}
+
 .navbar span {
     color: #444;
     text-decoration: none;
@@ -145,10 +160,15 @@
 
 
 @media (min-width: 768px) {
-    .profile-mb{
+    .profile-mb {
         display: none;
     }
+    .nav-profile-icon-mb{
+        display: none;
+    }
+
 }
+
 @media (max-width: 1024px) {
     .navbar .menu-items {
         width: 100%;
@@ -156,12 +176,15 @@
         justify-content: flex-end;
         /* padding-right: 20px; */
     }
-    
+
 }
+
 @media (max-width: 768px) {
+   
     .navbar .menu-items {
         justify-content: start;
     }
+
     .ruler-navbar {
         margin: 0.8em 0;
         display: block;

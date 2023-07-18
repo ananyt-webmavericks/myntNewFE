@@ -22,6 +22,7 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import CompanyServices from "../service/Company";
 import { dealsStoreAction } from "../Redux/actions/company";
 import { useDispatch, useSelector } from "react-redux";
+import DrawerFounder from "../component/FounderDrawer/DrawerFounder";
 const values = [
     {
         id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -95,6 +96,7 @@ const LiveDeals = () => {
     const [gridxsFirst, setGridxsFirst] = useState(3)
     const [dealTypes, setDealTypes] = useState([])
     const [superArray, setSuperArray] = useState([])
+    const { userData } = useSelector((state) => state.loginData);
     const ratio = parseInt(window.innerWidth);
     const location = window.location.pathname;
     const navigate = useNavigate()
@@ -190,6 +192,9 @@ const LiveDeals = () => {
         },
     }));
 
+    console.log("deal",deals);
+    console.log("userData",userData);
+
     const popperOptions = {
         modifiers: [
             {
@@ -210,7 +215,7 @@ const LiveDeals = () => {
     return (
         <>
             <div style={{ display: 'flex', position: 'relative' }}>
-                {location.includes('/dashboard') && <DrawerMain display={'none'} />}
+                {location.includes('/dashboard') && userData.user_type==="FOUNDER"?<DrawerFounder display={'none'}/>:<DrawerMain display={'none'} />}
                 <div className="dashboard-container" style={{ height: '100%', marginBottom: '5em' }}>
                     <Container className="live-opportunities-container" maxWidth="lg">
                         <div style={{ display: 'grid' }}>

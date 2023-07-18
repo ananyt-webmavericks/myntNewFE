@@ -108,7 +108,7 @@ const People = ({ tabChangeFn }) => {
         all know ‘Team work makes the dream work’. Investors are always keen to
         know the people that run the show behind the scenes.
       </Typography>
-      <Box className={classes.peoplegroupbtn}>
+      {/* <Box className={classes.peoplegroupbtn}>
         <Button
           style={{
             transition: "0.5s",
@@ -145,7 +145,54 @@ const People = ({ tabChangeFn }) => {
         >
           Advisors
         </Button>
-      </Box>
+      </Box> */}
+
+      <div style={{marginTop:"30px"}} className="tabs-section-details-deals">
+          {/* <div className="horizontal-ruler-tabs"></div> */}
+          <div style={{margin:0}} className="btn-section-my-profile details">
+            <div
+              className="active-btn-container details"
+              style={
+                subTabNo === 0
+                  ? { background: "black", color: "white",whiteSpace:"nowrap" }
+                  : { background: "#F4F4F4", color: "black",whiteSpace:"nowrap" }
+              }
+              onClick={() => {
+                handleClick(0);
+              }}
+            >
+              Team Member
+            </div>
+            <div
+              className="active-btn-container details"
+              style={
+                subTabNo === 1
+                  ? { background: "black", color: "white",whiteSpace:"nowrap" }
+                  : { background: "#F4F4F4", color: "black",whiteSpace:"nowrap" }
+              }
+              onClick={() => {
+                handleClick(1);
+              }}
+            >
+              Investors
+            </div>
+            <div
+              className="active-btn-container details"
+              style={
+                subTabNo === 2
+                  ? { background: "black", color: "white",whiteSpace:"nowrap" }
+                  : { background: "#F4F4F4", color: "black",whiteSpace:"nowrap" }
+              }
+              onClick={() => {
+                handleClick(2);
+              }}
+            >
+             Advisors
+            </div>
+           
+          </div>
+          {/* <div className="horizontal-ruler-tabs"></div> */}
+        </div>
 
       {subTabNo === 0 &&
         (peopleData?.filter((item) => item.type === "TEAM").length === 0 ||

@@ -24,10 +24,8 @@ export default function LoginFounder() {
 
     onSubmit: (values) => {
       setIsLoading(true)
-      console.log(values);
       try {
         UserServices.LoginUserByEmail(values).then((response) => {
-          console.log(response);
           if (response.status === 200) {
             toast.success("OTP sent succesfully", {
               position: "top-right",
@@ -41,10 +39,11 @@ export default function LoginFounder() {
             navigate("/otp-verification-founder", {
               state: { email: values.email, isNewCreate: false },
             });
-            setIsLoading(false)
           }
+          setIsLoading(false)
         });
       } catch {
+        setIsLoading(false)
         toast.error("Something went wrong! please try again later", {
           position: "top-right",
           style: {
@@ -53,7 +52,7 @@ export default function LoginFounder() {
             color: "#fff",
           },
         });
-        setIsLoading(false)
+        
       }
     },
   });

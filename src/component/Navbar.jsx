@@ -47,8 +47,24 @@ const Navbar = () => {
         )}
 
         {!location.includes("/complete-your-profile") && ratio < 768 && (
-          <img src={logo} className="ham-menu-img"></img>
+          <img
+            src={logo}
+            onClick={() => navigate("/")}
+            className="ham-menu-img"
+          ></img>
         )}
+
+        {ratio < 768 && userData?.user_type ? (
+          <div
+            className="nav-profile-icon-mb"
+            onClick={userData.user_type === "INVESTOR" ? handleProfile : null}
+          >
+            <Avatar
+              alt="avatar"
+              src={userData?.profile_image ? userData.profile_image : null}
+            />{" "}
+          </div>
+        ) : null}
         {location.includes("/complete-your-profile") && ratio < 768 && (
           <img
             src={logo}
@@ -66,11 +82,13 @@ const Navbar = () => {
         {/* <img onClick={() => navigate('/')} alt="mynt_logo" className="logo-web-mb" src={logo}></img> */}
 
         {!location.includes("/complete-your-profile") && (
-          <div class="hamburger-lines">
-            <span className="line line1"></span>
-            <span className="line line2"></span>
-            <span className="line line3"></span>
-          </div>
+          <>
+            <div class="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
+            </div>
+          </>
         )}
 
         <ul className="menu-items">
@@ -99,9 +117,9 @@ const Navbar = () => {
                   {userData.name ? userData.name : userData?.first_name}
                 </span>
               </li>
-          <hr className="ruler-navbar" />
+              {userData.name ? <hr className="ruler-navbar" /> : null}
 
-              <div className="profile-mb">
+              {/* <div className="profile-mb">
                 {userData.user_type === "FOUNDER" ? null : (
                   <MenuItem style={{paddingLeft:0 ,color: "#444",
                   textDecoration: "none",
@@ -118,33 +136,35 @@ const Navbar = () => {
                     Profile
                   </MenuItem>
                 )}
-              </div>
+              </div> */}
 
-              {ratio > 768 ? (
+              {ratio > 768 && (
                 <>
                   {" "}
-                  <Tooltip title={userData.name}>
-                    <Tooltip title="Account settings">
-                      <IconButton
-                        onClick={handleClick}
-                        size="small"
-                        sx={{ ml: 2 }}
-                        aria-controls={open ? "account-menu" : null}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : null}
-                      >
-                        <Avatar
-                          alt="avatar"
-                          src={
-                            userData?.profile_image
-                              ? userData.profile_image
-                              : null
-                          }
-                          style={{ margin: "0 10px" }}
-                        />
-                      </IconButton>
+                  {
+                    <Tooltip className="profile-avatar" title={userData.name}>
+                      <Tooltip title="Account settings">
+                        <IconButton
+                          onClick={(e) => handleClick(e)}
+                          size="small"
+                          sx={{ ml: 2 }}
+                          aria-controls={open ? "account-menu" : null}
+                          aria-haspopup="true"
+                          aria-expanded={open ? "true" : null}
+                        >
+                          <Avatar
+                            alt="avatar"
+                            src={
+                              userData?.profile_image
+                                ? userData.profile_image
+                                : null
+                            }
+                            style={{ margin: "0 10px" }}
+                          />
+                        </IconButton>
+                      </Tooltip>
                     </Tooltip>
-                  </Tooltip>
+                  }
                   <Menu
                     anchorEl={anchorEl}
                     id="account-menu"
@@ -220,12 +240,14 @@ const Navbar = () => {
                     </MenuItem>
                   </Menu>
                 </>
-              ) : (
+              )}
+
+              {ratio < 768 && (
                 <div className="btn-section-navbar">
                   <li>
                     <button
                       className="get-started-btn-mobile"
-                      onClick={() => navigate("/login")}
+                      onClick={handleLogout}
                     >
                       Logout
                     </button>
