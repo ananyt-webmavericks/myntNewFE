@@ -106,7 +106,7 @@ export default function DrawerMain({ height, display }) {
             </div>
 
             <a
-            style={{textDecoration:'none'}}
+              style={{ textDecoration: "none" }}
               href="https://wa.me/+918769740854"
               target="_blank"
               className="dashboard-single-links"
@@ -225,20 +225,26 @@ export default function DrawerMain({ height, display }) {
             className="main-navbar-section"
             onClick={() => navigate("/dashboard/chat-with-expert")}
           >
-            <div style={{ margin: "auto" }}>
-              <ChatBubbleOutlineOutlinedIcon
-                style={
-                  location === "/dashboard/chat-with-expert"
-                    ? { color: "#ECB92B" }
-                    : { color: "gray" }
-                }
-                width={20}
-                height={20}
-              />
-            </div>
-            <span style={{ fontSize: "10px", color: "#777777" }}>
-              Chat with Expert
-            </span>
+            <a
+              style={{ textDecoration: "none" }}
+              href="https://wa.me/+918769740854"
+              target="_blank"
+            >
+              <div style={{ margin: "auto" }}>
+                <ChatBubbleOutlineOutlinedIcon
+                  style={
+                    location === "/dashboard/chat-with-expert"
+                      ? { color: "#ECB92B" }
+                      : { color: "gray" }
+                  }
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <span style={{ fontSize: "10px", color: "#777777" }}>
+                Chat with Expert
+              </span>
+            </a>
           </div>
           <div
             className="main-navbar-section"

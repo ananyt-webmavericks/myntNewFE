@@ -149,7 +149,7 @@ export default function LoginMain() {
                   style={{ marginLeft: "10px" }}
                 ></img>
                 <input
-                  type="email"
+                  // type="email"
                   value={email}
                   onChange={handleChange}
                   className="in-input-email"
