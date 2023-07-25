@@ -1,36 +1,30 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Box, Grid, Button } from "@mui/material";
-import "../../css/Home/investorsHome.css";
-import Abstract from "../../images/assets/abstract1.png";
-import Investors from "../../images/investorHomeTrustedBy.png";
-import InvestorsBg from "../../images/assets/cardsBackground.svg";
-import card1 from "../../images/assets/card1.png";
-import card2 from "../../images/assets/card2.png";
-import card3 from "../../images/assets/card3.png";
-import meteorVentureIcon from "../../images/assets/meteorVenture.png";
-import gattacaVentureIcon from "../../images/assets/gattacaVenture.png";
-import livewellIcon from "../../images/assets/livewell.png";
-import Asad from "../../images/investors/asad.png";
-import Oyo from "../../images/investors/oyo.png";
-import Arpit from "../../images/investors/arpit.png";
-import Leela from "../../images/investors/leela.png";
-import Rajiv from "../../images/investors/rajiv.png";
-import Samsung from "../../images/investors/samsung.png";
-import Byju from "../../images/investors/byju.png";
-import Farhat from "../../images/investors/farhat.png";
-import Owl from "../../images/investors/owl.png";
-import Kunal from "../../images/investors/kunal.png";
-import Microsoft from "../../images/investors/microsoft.png";
-import Manju from "../../images/investors/manju.png";
-import Sg from "../../images/investors/sg.png";
-import Ola from "../../images/investors/ola.svg";
-import Uber from "../../images/investors/uber.svg";
-import makemytrip from "../../images/investors/makemytrip.svg";
+import '../../css/Home/investorsHome.css';
+import Abstract from '../../images/assets/abstract1.png';
+import Investors from '../../images/assets/investors.png';
+import Asad from '../../images/investors/asad.png';
+import Oyo from '../../images/investors/oyo.png';
+import Arpit from '../../images/investors/arpit.png';
+import Leela from '../../images/investors/leela.png';
+import Rajiv from '../../images/investors/rajiv.png';
+import Samsung from '../../images/investors/samsung.png';
+import Byju from '../../images/investors/byju.png';
+import Farhat from '../../images/investors/farhat.png';
+import Owl from '../../images/investors/owl.png';
+import Kunal from '../../images/investors/kunal.png';
+import Microsoft from '../../images/investors/microsoft.png';
+import Manju from '../../images/investors/manju.png';
+import Sg from '../../images/investors/sg.png';
+import Ola from '../../images/investors/ola.svg';
+import Uber from '../../images/investors/uber.svg';
+import makemytrip from '../../images/investors/makemytrip.svg';
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-elastic-carousel";
 import styled from "styled-components";
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 
 const data = [
   {
@@ -91,19 +85,23 @@ const data = [
   },
 ];
 export default function InvestorsHome() {
-  const [gridxsFirst, setGridxsFirst] = useState(2);
-  const [gridxsSecond, setgridxsSecond] = useState(6);
+  const [gridxsFirst, setGridxsFirst] = useState(2)
+  const { userData } = useSelector((state) => state.loginData)
+
+  const [gridxsSecond, setgridxsSecond] = useState(6)
   const ratio = parseInt(window.innerWidth);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   useEffect(() => {
+
     if (ratio < 1042) {
-      setGridxsFirst(1);
-      setgridxsSecond(12);
-    } else if (ratio < 600) {
-      setGridxsFirst(1);
-      setgridxsSecond(6);
+      setGridxsFirst(1)
+      setgridxsSecond(12)
     }
-  }, []);
+    else if (ratio < 600) {
+      setGridxsFirst(1)
+      setgridxsSecond(6)
+    }
+  }, [])
 
   const [items, setItems] = useState([1]);
 
@@ -120,7 +118,7 @@ export default function InvestorsHome() {
   return (
     <Box className="investor-home-container-main">
       <Grid className="trustedByWrapper" container spacing={gridxsFirst}>
-        <Grid className="trustedByImg" style={{padding:0}} item xs={gridxsSecond}>
+        <Grid className="trustedByImg" style={{ padding: 0 }} item xs={gridxsSecond}>
           <div className="subscribe-graph-heading">
             <div className="investor-home-heading">
               Trusted and
@@ -215,17 +213,14 @@ export default function InvestorsHome() {
                         </Carousel> */}
           {/* </div> */}
         </Grid>
-        <Grid className="trustedByImg" style={{padding:0}} item xs={gridxsSecond}>
+        <Grid className="trustedByImg" style={{ padding: 0 }} item xs={gridxsSecond}>
           <div className="subscribe-graph-heading">
             <div className="investor-home-heading">
               Join Thousands{" "}
               <span className="colored-investor-home-heading"> </span>
             </div>
 
-            <span className="investors-subheading">
-              Begin today and seize the best startup opportunities that the
-              market has to offer
-            </span>
+            <span className="investors-subheading">Begin your Subscription journey and seize startup opportunities starting as low as ₹25000.</span>
           </div>
           <div className="profile-container-investors">
             <Grid container spacing={4}>
@@ -233,39 +228,23 @@ export default function InvestorsHome() {
                 return (
                   <Grid key={index} item xs={3}>
                     <div className="investor-detailed-section">
-                      <img
-                        src={item.image}
-                        className="investors-image-first"
-                      ></img>
-                      <img
-                        src={item.logo}
-                        className="investor-company-logo"
-                      ></img>
-                      <span className="name-of-investor-txt">{item.name}</span>
-                      <span className="investment-of-investor-txt">
-                        {item.amount}
-                      </span>
+                      <img src={item.image} className='investors-image-first'></img>
+                      <img src={item.logo} className="investor-company-logo"></img>
+                      <span className="name-of-investor-txt" >{item.name}</span>
+                      <span className="investment-of-investor-txt">{item.amount}</span>
                     </div>
                   </Grid>
-                );
+                )
               })}
+
             </Grid>
           </div>
           <div className="get-started-btn-investor">
-            <Button
-              variant="contained"
-              onClick={
-                localStorage.getItem("access_token")
-                  ? () => navigate("/dashboard")
-                  : () => navigate("/get-started")
-              }
-              className="getStarted-landing-btn"
-            >
-              Get Started
-            </Button>
+
+            <Button variant="contained" onClick={() => { userData?.user_type === 'INVESTOR' ? navigate('/dashboard/live-deals') : navigate('/get-started') }} className="getStarted-landing-btn">Get Started</Button>
           </div>
         </Grid>
-      </Grid>
-    </Box>
-  );
+      </Grid >
+    </Box >
+  )
 }

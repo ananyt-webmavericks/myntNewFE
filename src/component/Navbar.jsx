@@ -14,10 +14,13 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import Logout from "@mui/icons-material/Logout";
+import LoginModal from "./LoginModal";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = window.location.pathname;
   const ratio = parseInt(window.innerWidth);
+  const [showModal, setShowModal] = useState(false)
+  const handleCloseModal = () => setShowModal(false);
   const { userData } = useSelector((state) => state.loginData);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -97,7 +100,7 @@ const Navbar = () => {
           </li>
           <hr className="ruler-navbar" />
           <li>
-            <span onClick={() => navigate("/dashboard/live-deals")}>Deals</span>
+            <span onClick={() => { if (userData?.id) { navigate('/dashboard/live-deals') } else { setShowModal(true) } }}>Deals</span>
           </li>
           <hr className="ruler-navbar" />
           <li>
@@ -152,15 +155,11 @@ const Navbar = () => {
                           aria-haspopup="true"
                           aria-expanded={open ? "true" : null}
                         >
-                          <Avatar
-                            alt="avatar"
-                            src={
-                              userData?.profile_image
-                                ? userData.profile_image
-                                : null
-                            }
-                            style={{ margin: "0 10px" }}
-                          />
+                          {userData?.profile_image ?
+                            <Avatar alt="avatar" src={userData?.profile_image} style={{ margin: '0 10px' }} />
+                            :
+                            <Avatar alt="avatar">{userData?.first_name?.charAt(0)}</Avatar>
+                          }
                         </IconButton>
                       </Tooltip>
                     </Tooltip>
@@ -202,15 +201,16 @@ const Navbar = () => {
                   >
                     {userData.user_type === "FOUNDER" ? null : (
                       <MenuItem onClick={handleProfile}>
-                        <Avatar
-                          alt="avatar"
-                          src={
-                            userData?.profile_image
-                              ? userData.profile_image
-                              : null
-                          }
-                        />{" "}
-                        Profile
+                        {userData?.profile_image ?
+                          <>
+                            <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} /> Profile
+                          </>
+                          :
+                          <>
+
+                            <Avatar alt="avatar">{userData?.first_name?.charAt(0)}</Avatar>Profile
+                          </>
+                        }
                       </MenuItem>
                     )}
                     <MenuItem

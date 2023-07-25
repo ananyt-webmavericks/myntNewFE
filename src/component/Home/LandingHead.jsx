@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Lottie from 'react-lottie';
 import bgLine from '../../images/investors/headerBgLine.png'
 import homeMbViewImg from '../../images/home-mb-view-img.png'
+import { useSelector } from "react-redux";
 import animationData from '../../lotties/homePage';
 export default function LandingHead() {
 
@@ -18,6 +19,7 @@ export default function LandingHead() {
         }
     };
     const navigate = useNavigate()
+    const { userData } = useSelector((state) => state.loginData)
     return (
         <Box sx={{ minHeight: '500px', marginBottom: '1em' }}>
             <div className="landing-head-container">
@@ -29,23 +31,26 @@ export default function LandingHead() {
                         <span className="head-description">
                             Own a small stake in the next big startup and diversify your portfolio tenfolds.
                         </span>
+
                         <Button
                             variant="contained"
-                            style={{zIndex:99}}
-                            onClick={localStorage.getItem('access_token') ? ()=> navigate('/dashboard'): () => navigate('/get-started')} className="getStarted-landing-btn">
+                            style={{ zIndex: 99 }}
+                            onClick={() => { userData?.user_type === 'INVESTOR' ? navigate('/dashboard/live-deals') : navigate('/get-started') }} className="getStarted-landing-btn">
                             Get Started
                         </Button>
-                        <Typography className="subhead-description" style={{ fontWeight: "bold", zIndex: 99 }}>
-                            Are you a founder?
-                            <span
-                                className="test-script-bg"
-                                style={{ cursor: 'pointer' }}
-                                onClick={() => navigate('/founder/application')}> Raise Capital on Mynt
-                            </span>
-                        </Typography>
+                        {!userData?.user_type === 'INVESTOR' || !userData?.user_type &&
+                            <Typography className="subhead-description" style={{ fontWeight: "bold" }}>
+                                Are you a founder?
+                                <span
+                                    className="test-script-bg"
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={() => navigate('/founder/application')}> Raise Capital on Mynt
+                                </span>
+                            </Typography>
+                        }
                     </div>
                 </div>
-                <img className="homeHeaderBgline" src={bgLine} width={'100%'} height={'200px'}/>
+                <img className="homeHeaderBgline" src={bgLine} width={'100%'} height={'200px'} />
                 <div className="image-section-landing">
                     <div className="banner-home-main">
                         <Lottie
@@ -55,8 +60,8 @@ export default function LandingHead() {
                         />
                     </div>
                 </div>
-                <div className=" homeMbViewImg-wrapper" style={{ display:"flex",justifyContent:'center',alignItems:"center",width:"100%"}}>
-                <img className=" homeMbViewImg" src={homeMbViewImg} />
+                <div className=" homeMbViewImg-wrapper" style={{ display: "flex", justifyContent: 'center', alignItems: "center", width: "100%" }}>
+                    <img className=" homeMbViewImg" src={homeMbViewImg} />
                 </div>
 
             </div>

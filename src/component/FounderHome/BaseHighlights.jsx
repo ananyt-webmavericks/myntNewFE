@@ -2,6 +2,7 @@ import { Avatar, Box, Button, Card, Grid, Typography } from '@mui/material'
 import React from 'react'
 import '../../css/FounderHome/BaseHighlight.css'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux";
 const data = [
     { heading: 'Get Growth Partners', desc: 'Get industry leaders to be your mentors and growth partners.' },
     { heading: 'Simple & effective ', desc: 'Raising capital has never been more easy.' },
@@ -10,6 +11,7 @@ const data = [
 
 const BaseHighlights = () => {
     const navigate = useNavigate()
+    const { userData } = useSelector((state) => state.loginData)
     return (
         <React.Fragment>
             <div className="basehighlight-container-main">
@@ -17,7 +19,7 @@ const BaseHighlights = () => {
             </div>
 
 
-            <Grid item xs={6} md={3} style={{marginTop: 20}}>
+            <Grid item xs={6} md={3} style={{ marginTop: 20 }}>
                 <Box
                     sx={{
                         p: 2,
@@ -47,7 +49,11 @@ const BaseHighlights = () => {
                     }
                 </Box>
                 <div className="apply-now-button-container">
-                    <Button variant="contained" onClick={() => navigate('/founder/application')} className="founderhome-getStarted-landing-btn">Apply Now</Button>
+                    {userData?.user_type === 'FOUNDER' &&
+                        <Button variant="contained" onClick={() => navigate('/dashboard-founder')} className="founderhome-getStarted-landing-btn">
+                            Go To Dashboard
+                        </Button>
+                    }
                 </div>
             </Grid>
         </React.Fragment >

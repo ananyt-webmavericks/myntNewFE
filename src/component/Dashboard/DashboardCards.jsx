@@ -30,76 +30,76 @@ export default function DashboardCard() {
     <div className="dashboard-card-container">
       <Grid className="dashboard-cards-grid-wrapper" container spacing={gridxsFirst}>
         {/* <Grid item xs={gridxsSecond}> */}
-          <Card item xs={gridxsSecond} className="card-main-dash">
-            <CardContent>
-              <div className="dash-card-section">
-                <div className="card-image-container-dash">
-                  <img
-                    src={Investment}
-                    width={59}
-                    height={54}
-                    className="image-card-dashboard"
-                  ></img>
-                </div>
-                <div className="text-card-container">
-                  <span style={{ fontSize: "26px", fontWeight: "600" }}>
-                    0.0K
-                  </span>
-                  <span style={{ fontSize: "14px", color: "#777777" }}>
-                    Total enrollment Value{" "}
-                  </span>
-                </div>
+        <Card item xs={gridxsSecond} className="card-main-dash">
+          <CardContent>
+            <div className="dash-card-section">
+              <div className="card-image-container-dash">
+                <img
+                  src={Investment}
+                  width={59}
+                  height={54}
+                  className="image-card-dashboard"
+                ></img>
               </div>
-            </CardContent>
-          </Card>
+              <div className="text-card-container">
+                <span style={{ fontSize: "26px", fontWeight: "600" }}>
+                  0.0K
+                </span>
+                <span style={{ fontSize: "14px", color: "#777777" }}>
+                  Total enrollment Value{" "}
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
         {/* </Grid> */}
 
         {/* <Grid item xs={gridxsSecond}> */}
-          <Card item xs={gridxsSecond} className="card-main-dash">
-            <CardContent>
-              <div className="dash-card-section">
-                <div className="card-image-container-dash">
-                  <img
-                    src={Startup}
-                    width={50}
-                    height={48}
-                    className="image-card-dashboard"
-                  ></img>
-                </div>
-                <div className="text-card-container">
-                  <span style={{ fontSize: "26px", fontWeight: "600" }}>0</span>
-                  <span style={{ fontSize: "14px", color: "#777777" }}>
-                    Startups in my portfolio
-                  </span>
-                </div>
+        <Card item xs={gridxsSecond} className="card-main-dash">
+          <CardContent>
+            <div className="dash-card-section">
+              <div className="card-image-container-dash">
+                <img
+                  src={Startup}
+                  width={50}
+                  height={48}
+                  className="image-card-dashboard"
+                ></img>
               </div>
-            </CardContent>
-          </Card>
+              <div className="text-card-container">
+                <span style={{ fontSize: "26px", fontWeight: "600" }}>0</span>
+                <span style={{ fontSize: "14px", color: "#777777" }}>
+                  Startups in my portfolio
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
         {/* </Grid> */}
         {/* <Grid item xs={gridxsSecond}> */}
-          <Card
+        <Card
           item xs={gridxsSecond}
-            onClick={() => navigate("/dashboard/analytics")}
-            className="card-main-dash"
-          >
-            <CardContent>
-              <div className="dash-card-section">
-                <div className="card-image-container-dash">
-                  <img
-                    src={Performance}
-                    width={47}
-                    height={47}
-                    className="image-card-dashboard"
-                  ></img>
-                </div>
-                <div className="text-card-container">
-                  <span style={{ fontSize: "14px", color: "#777777" }}>
-                    Portfolio Analytics{" "}
-                  </span>
-                </div>
+          onClick={() => navigate("/dashboard/portfolio")}
+          className="card-main-dash"
+        >
+          <CardContent>
+            <div className="dash-card-section">
+              <div className="card-image-container-dash">
+                <img
+                  src={Performance}
+                  width={47}
+                  height={47}
+                  className="image-card-dashboard"
+                ></img>
               </div>
-            </CardContent>
-          </Card>
+              <div className="text-card-container">
+                <span style={{ fontSize: "14px", color: "#777777" }}>
+                  Portfolio Analytics{" "}
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
         {/* </Grid> */}
       </Grid>
     </div>

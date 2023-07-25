@@ -28,245 +28,121 @@ export default function DrawerMain({ height, display }) {
 
   return (
     <>
-      {display !== "none" && (
-        <div className="dashboard-drawer-section" style={{ height: height }}>
-          <div className="dashboard-fields-container">
-            <div
-              className="dashboard-single-links"
-              onClick={() => navigate("/dashboard")}
-            >
-              {/* <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} /> */}
-              <img
-                src={location === "/dashboard" ? dashboard_yellow : dashboard}
-                alt="analytics_icon"
-                width={20}
-                height={20}
-              />
-              <span
-                style={
-                  location === "/dashboard"
-                    ? { color: "black" }
-                    : { color: "gray" }
-                }
-                className="link-dashboard"
-              >
-                Dashboard
-              </span>
-            </div>
-            <div
-              className="dashboard-single-links"
-              onClick={() => navigate("/dashboard/live-deals")}
-            >
-              <img
-                src={
-                  location === "/dashboard/live-deals"
-                    ? livedeals_yellow
-                    : livedeals
-                }
-                alt="analytics_icon"
-                width={20}
-                height={20}
-              />
-              <span
-                style={
-                  location === "/dashboard/live-deals"
-                    ? { color: "black" }
-                    : { color: "gray" }
-                }
-                className="link-dashboard"
-              >
-                Live Deals
-              </span>
-            </div>
-
-            <div
-              className="dashboard-single-links"
-              onClick={() => navigate("/dashboard/portfolio")}
-            >
-              <img
-                src={
-                  location === "/dashboard/portfolio"
-                    ? portfolio_yellow
-                    : portfolio
-                }
-                alt="analytics_icon"
-                width={20}
-                height={20}
-              />
-              <span
-                style={
-                  location === "/dashboard/portfolio"
-                    ? { color: "black" }
-                    : { color: "gray" }
-                }
-                className="link-dashboard"
-              >
-                Portfolio
-              </span>
-            </div>
-
-            <a
-              style={{ textDecoration: "none" }}
-              href="https://wa.me/+918769740854"
-              target="_blank"
-              className="dashboard-single-links"
-              // onClick={() => navigate('/dashboard/chat-with-expert')}
-            >
-              <img
-                src={
-                  location === "/dashboard/chat-with-expert"
-                    ? chat_yellow
-                    : chat
-                }
-                alt="analytics_icon"
-                width={20}
-                height={20}
-              />
-              <span
-                style={
-                  location === "/dashboard/chat-with-expert"
-                    ? { color: "black" }
-                    : { color: "gray" }
-                }
-                className="link-dashboard"
-              >
-                Chat with Expert
-              </span>
-            </a>
-
-            <div
-              className="dashboard-single-links"
-              onClick={() => navigate("/dashboard/analytics")}
-            >
-              <img
-                src={
-                  location === "/dashboard/analytics"
-                    ? analytics_yellow
-                    : analytics
-                }
-                alt="analytics_icon"
-                width={20}
-                height={20}
-              />
-              <span
-                style={
-                  location === "/dashboard/analytics"
-                    ? { color: "black" }
-                    : { color: "gray" }
-                }
-                className="link-dashboard"
-              >
-                Analytics
-              </span>
-            </div>
+      {display !== 'none' && <div className="dashboard-drawer-section" style={{ height: height }}>
+        <div className="dashboard-fields-container">
+          <div className="dashboard-single-links" onClick={() => navigate('/dashboard')}>
+            {/* <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} /> */}
+            <img src={location === '/dashboard' ? dashboard_yellow : dashboard} alt="analytics_icon" width={20} height={20} />
+            <span style={location === '/dashboard' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Dashboard</span>
           </div>
-        </div>
-      )}
-      <div className="bottom-fixed-navbar-container">
-        <div className="bottom-navbar-section">
-          <div
-            className="main-navbar-section"
-            onClick={() => navigate("/dashboard")}
-          >
-            <div style={{ margin: "auto" }}>
-              <GridViewOutlinedIcon
-                style={
-                  location === "/dashboard"
-                    ? { color: "#ECB92B" }
-                    : { color: "gray" }
-                }
-                width={20}
-                height={20}
-              />
-            </div>
-            <span style={{ fontSize: "10px", color: "#777777" }}>
-              Dashboard
-            </span>
+          <div className="dashboard-single-links" onClick={() => navigate('/dashboard/live-deals')}>
+            <img src={location === '/dashboard/live-deals' ? livedeals_yellow : livedeals} alt="analytics_icon" width={20} height={20} />
+            <span style={location === '/dashboard/live-deals' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Live Deals</span>
           </div>
-          <div
-            className="main-navbar-section"
-            onClick={() => navigate("/dashboard/live-deals")}
-          >
-            <div style={{ margin: "auto" }}>
-              <CampaignOutlinedIcon
-                style={
-                  location === "/dashboard/live-deals"
-                    ? { color: "#ECB92B" }
-                    : { color: "gray" }
-                }
-                width={20}
-                height={20}
-              />
-            </div>
-            <span style={{ fontSize: "10px", color: "#777777" }}>
-              Live Deals
-            </span>
+
+          <div className="dashboard-single-links" onClick={() => navigate('/dashboard/portfolio')}>
+            <img src={location === '/dashboard/portfolio' ? portfolio_yellow : portfolio} alt="analytics_icon" width={20} height={20} />
+            <span style={location === '/dashboard/portfolio' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Portfolio</span>
           </div>
-          <div
-            className="main-navbar-section"
+
+          {/* <div
+            className="dashboard-single-links"
             onClick={() => navigate("/dashboard/portfolio")}
           >
-            <div style={{ margin: "auto" }}>
-              <BusinessCenterOutlinedIcon
-                style={
-                  location === "/dashboard/portfolio"
-                    ? { color: "#ECB92B" }
-                    : { color: "gray" }
-                }
-                width={20}
-                height={20}
-              />
-            </div>
-            <span style={{ fontSize: "10px", color: "#777777" }}>
+            <img
+              src={
+                location === "/dashboard/portfolio"
+                  ? portfolio_yellow
+                  : portfolio
+              }
+              alt="analytics_icon"
+              width={20}
+              height={20}
+            />
+            <span
+              style={
+                location === "/dashboard/portfolio"
+                  ? { color: "black" }
+                  : { color: "gray" }
+              }
+              className="link-dashboard"
+            >
               Portfolio
             </span>
-          </div>
-          <div
-            className="main-navbar-section"
-            onClick={() => navigate("/dashboard/chat-with-expert")}
+          </div> */}
+          <a
+            style={{ textDecoration: "none" }}
+            href="https://wa.me/+918769740854"
+            target="_blank"
+            className="dashboard-single-links"
+          // onClick={() => navigate('/dashboard/chat-with-expert')}
           >
-            <a
-              style={{ textDecoration: "none" }}
-              href="https://wa.me/+918769740854"
-              target="_blank"
+            <img
+              src={
+                location === "/dashboard/chat-with-expert"
+                  ? chat_yellow
+                  : chat
+              }
+              alt="analytics_icon"
+              width={20}
+              height={20}
+            />
+            <span
+              style={
+                location === "/dashboard/chat-with-expert"
+                  ? { color: "black" }
+                  : { color: "gray" }
+              }
+              className="link-dashboard"
             >
-              <div style={{ margin: "auto" }}>
-                <ChatBubbleOutlineOutlinedIcon
-                  style={
-                    location === "/dashboard/chat-with-expert"
-                      ? { color: "#ECB92B" }
-                      : { color: "gray" }
-                  }
-                  width={20}
-                  height={20}
-                />
-              </div>
-              <span style={{ fontSize: "10px", color: "#777777" }}>
-                Chat with Expert
-              </span>
-            </a>
-          </div>
-          <div
-            className="main-navbar-section"
-            onClick={() => navigate("/dashboard/analytics")}
-          >
-            <div style={{ margin: "auto" }}>
-              <AddchartOutlinedIcon
-                style={
-                  location === "/dashboard/analytics"
-                    ? { color: "#ECB92B" }
-                    : { color: "gray" }
-                }
-                width={20}
-                height={20}
-              />
-            </div>
-            <span style={{ fontSize: "10px", color: "#777777" }}>
-              Analytics
+              Chat with Expert
             </span>
+          </a>
+          <div className="dashboard-single-links"
+          // onClick={() => navigate('/dashboard/analytics')}
+          >
+            <img src={location === '/dashboard/analytics' ? analytics_yellow : analytics} alt="analytics_icon" width={20} height={20} />
+            <span style={location === '/dashboard/analytics' ? { color: 'black' } : { color: 'gray' }} className="link-dashboard">Analytics (Coming Soon)</span>
+          </div>
+        </div>
+
+      </div>}
+      <div className="bottom-fixed-navbar-container">
+        <div className="bottom-navbar-section">
+          <div className="main-navbar-section" onClick={() => navigate('/dashboard')}>
+            <div style={{ margin: 'auto' }}>
+              <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+            </div>
+            <span style={{ fontSize: '10px', color: '#777777' }}>Dashboard</span>
+          </div>
+          <div className="main-navbar-section" onClick={() => navigate('/dashboard/live-deals')}>
+            <div style={{ margin: 'auto' }}>
+              <CampaignOutlinedIcon style={location === '/dashboard/live-deals' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+            </div>
+            <span style={{ fontSize: '10px', color: '#777777' }}>Live Deals</span>
+          </div>
+          <div className="main-navbar-section" onClick={() => navigate('/dashboard/portfolio')}>
+            <div style={{ margin: 'auto' }}>
+              <BusinessCenterOutlinedIcon style={location === '/dashboard/portfolio' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+            </div>
+            <span style={{ fontSize: '10px', color: '#777777' }}>Portfolio</span>
+          </div>
+          <div className="main-navbar-section" onClick={() => navigate('/dashboard/chat-with-expert')}>
+            <div style={{ margin: 'auto' }}>
+              <ChatBubbleOutlineOutlinedIcon style={location === '/dashboard/chat-with-expert' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+            </div>
+            <span style={{ fontSize: '10px', color: '#777777' }}>Chat with Expert</span>
+          </div>
+          <div className="main-navbar-section"
+          // onClick={() => navigate('/dashboard/analytics')}
+          >
+            <div style={{ margin: 'auto' }}>
+              <AddchartOutlinedIcon style={location === '/dashboard/analytics' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} />
+            </div>
+            <span style={{ fontSize: '10px', color: '#777777' }}>Coming soon</span>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }
