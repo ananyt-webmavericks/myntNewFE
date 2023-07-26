@@ -27,17 +27,21 @@ export default function KycPanDetails() {
     const inputRefs = [useRef(null), useRef(null), useRef(null)];
 
     const handleChange = (e) => {
-        setValue({ ...value, [e.target.name]: e.target.value })
+        if (e.target.name === 'pan_card') {
+            setValue({ ...value, pan_card: e.target.value.toUpperCase() })
+        } else {
+            setValue({ ...value, [e.target.name]: e.target.value })
+        }
     }
     const notify = (data) => {
-        toast.error(data,{
+        toast.error(data, {
             position: "top-right",
             style: {
-              borderRadius: "3px",
-              background: "red",
-              color: "#fff",
+                borderRadius: "3px",
+                background: "red",
+                color: "#fff",
             },
-          })
+        })
     }
     const handleSubmit = async () => {
         const val = {
@@ -65,24 +69,24 @@ export default function KycPanDetails() {
                         if (response.status === 201 || response.status === 200) {
                             const kycDetails = await services.getInvestorKycData(userData.id)
                             if (kycDetails.status === 200) {
-                                toast.success("Pan card verified!",{
+                                toast.success("Pan card verified!", {
                                     position: "top-right",
                                     style: {
-                                      borderRadius: "3px",
-                                      background: "green",
-                                      color: "#fff",
+                                        borderRadius: "3px",
+                                        background: "green",
+                                        color: "#fff",
                                     },
-                                  })
+                                })
                                 await dispatch(storeKycDetailsAction(response.data.data))
                             } else {
-                                toast.error("Please enter valid details!",{
+                                toast.error("Please enter valid details!", {
                                     position: "top-right",
                                     style: {
-                                      borderRadius: "3px",
-                                      background: "red",
-                                      color: "#fff",
+                                        borderRadius: "3px",
+                                        background: "red",
+                                        color: "#fff",
                                     },
-                                  })
+                                })
                             }
                         }
                         else {

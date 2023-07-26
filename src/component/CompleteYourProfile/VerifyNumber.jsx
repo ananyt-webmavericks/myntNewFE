@@ -28,20 +28,20 @@ export default function VerifyNumber() {
     const { userKycData } = useSelector(state => state.kycData)
     console.log(userKycData)
     const notify = (data) => {
-        toast.error(data,{
+        toast.error(data, {
             position: "top-right",
             style: {
-              borderRadius: "3px",
-              background: "red",
-              color: "#fff",
+                borderRadius: "3px",
+                background: "red",
+                color: "#fff",
             },
-          })
+        })
     }
     const handleSubmit = () => {
 
         const data = {
             user_id: userData.id,
-            mobile_number: "+91" + mobile
+            mobile_number: "91" + mobile
         }
         if (mobile === '') {
             notify('Please enter your number')
@@ -136,7 +136,7 @@ export default function VerifyNumber() {
 
                         <span className="verify-number-head">Verify Mobile Number</span>
                         <div className="input-number-box-section">
-                            <div className="country-code-container"> <input placeholder="+91" type="number" className="phoneNumberInput" name="countryCode" /></div>
+                            <div className="country-code-container"> <input placeholder="91" type="number" className="phoneNumberInput" name="countryCode" /></div>
                             <div className="number-verify-container"><input name="mobile_number" value={mobile} onChange={handleChange} type="number" className="phoneNumberInput" /></div>
                         </div>
                         {/* <div className="checkbox-whatsapp-group-verify">

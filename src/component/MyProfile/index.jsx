@@ -67,7 +67,7 @@ export default function MyProfileMain() {
     };
     try {
       userServices.UpdateUser(val).then((response) => {
-        console.log("updateuser",response);
+        console.log("updateuser", response);
         if (response.status === 201 || response.status === 200) {
           dispatch(updateUserEmailAction(response.data.data.email));
 
@@ -75,7 +75,7 @@ export default function MyProfileMain() {
             OtpServices.SecondarySendOtpMail(email).then((response) => {
               if (response.status === 201 || response.status === 200) {
                 console.log(response?.data.message);
-                toast.success("OTP sent Successfully!",{
+                toast.success("OTP sent Successfully!", {
                   position: "top-right",
                   style: {
                     borderRadius: "3px",
@@ -83,14 +83,14 @@ export default function MyProfileMain() {
                     color: "#fff",
                   },
                 })
-                navigate("/otp-verification",{state: { otpEmail: email }});
+                navigate("/otp-verification", { state: { otpEmail: email } });
               }
             });
           } catch {
             console.log("Try after few minutes");
           }
 
-          
+
           // userServices.getUserById(userData?.id).then((response) => {
           //   if (response.status === 200) {
           //     // dispatch(storeKycDetailsAction(response.data));
@@ -195,36 +195,65 @@ export default function MyProfileMain() {
     }
   };
 
-  const handleNavigate = () => {
+  const handleNavigateToKyc = () => {
     localStorage.setItem(
       "kycDonePath",
       "/my-profile"
-    )(
-      !userKycData?.address_line_1 ||
-        !userKycData?.city ||
-        !userKycData?.state ||
-        !userKycData?.pincode
     )
-      ? navigate("/complete-your-profile/verify-address")
-      : !userKycData?.mobile_number
-      ? navigate("/complete-your-profile")
-      : // !userKycData?.bank_account_verified ||
-      !userKycData?.ifsc_code ||
-        !userKycData?.bank_account ||
-        !userKycData?.bank_name
-      ? navigate("/complete-your-profile/payment-details")
-      : !userKycData?.pan_card
-      ? // || !userKycData?.pan_card_verified
-        navigate("/complete-your-profile/verify-kyc")
-      : toast.success("Your KYC is already completed!", {
-          position: "top-right",
-          style: {
-            borderRadius: "3px",
-            background: "green",
-            color: "#fff",
-          },
-        });
-  };
+    if (!userKycData?.mobile_number) {
+      navigate("/complete-your-profile")
+    }
+    if (!userKycData?.address_line_1 || !userKycData?.city || !userKycData?.state || !userKycData?.pincode) {
+      navigate("/complete-your-profile/verify-address")
+    }
+    if (!userKycData?.pan_card) {
+      navigate("/complete-your-profile/verify-kyc")
+    }
+    if (!userKycData?.ifsc_code || !userKycData?.bank_account || !userKycData?.bank_name) {
+      navigate("/complete-your-profile/payment-details")
+    } else {
+      toast.success("Your KYC is already completed!", {
+        position: "top-right",
+        style: {
+          borderRadius: "3px",
+          background: "green",
+          color: "#fff",
+        },
+      });
+    }
+
+  }
+
+  // const handleNavigate = () => {
+  //   localStorage.setItem(
+  //     "kycDonePath",
+  //     "/my-profile"
+  //   )(
+  //     !userKycData?.address_line_1 ||
+  //     !userKycData?.city ||
+  //     !userKycData?.state ||
+  //     !userKycData?.pincode
+  //   )
+  //     ? navigate("/complete-your-profile/verify-address")
+  //     : !userKycData?.mobile_number
+  //       ? navigate("/complete-your-profile")
+  //       : // !userKycData?.bank_account_verified ||
+  //       !userKycData?.ifsc_code ||
+  //         !userKycData?.bank_account ||
+  //         !userKycData?.bank_name
+  //         ? navigate("/complete-your-profile/payment-details")
+  //         : !userKycData?.pan_card
+  //           ? // || !userKycData?.pan_card_verified
+  //           navigate("/complete-your-profile/verify-kyc")
+  //           : toast.success("Your KYC is already completed!", {
+  //             position: "top-right",
+  //             style: {
+  //               borderRadius: "3px",
+  //               background: "green",
+  //               color: "#fff",
+  //             },
+  //           });
+  // };
 
   const handleMobileNavigation = () => {
     localStorage.setItem("navigateToVerifyMobile", true);
@@ -281,14 +310,14 @@ export default function MyProfileMain() {
                   !_.isEmpty(data)
                     ? userData?.first_name?.length > 0
                       ? (userData?.first_name).toUpperCase() +
-                        " " +
-                        (userData?.last_name).toUpperCase()
+                      " " +
+                      (userData?.last_name).toUpperCase()
                       : ""
                     : data?.name
-                    ? (data?.first_name).toUpperCase() +
+                      ? (data?.first_name).toUpperCase() +
                       " " +
                       (data?.last_name).toUpperCase()
-                    : ""
+                      : ""
                 }
                 placeholder="Full Name"
                 className="verifyAddress-input-section"
@@ -312,8 +341,8 @@ export default function MyProfileMain() {
                           ? userData?.email
                           : ""
                         : data?.email
-                        ? data?.email
-                        : ""
+                          ? data?.email
+                          : ""
                     }
                     placeholder="Email Address"
                     className="verifyAddress-input-section"
@@ -371,9 +400,9 @@ export default function MyProfileMain() {
             >
               <div className="country-code-container">
                 <input
-                  value={_.isEmpty(data) ? "" : data?.mobile_number}
+                  value={_.isEmpty(data) ? "" : data?.mobile_number.slice(0, 2)}
                   disabled
-                  placeholder="+91"
+                  placeholder="91"
                   type="number"
                   className="phoneNumberInput"
                   name="countryCode"
@@ -381,11 +410,11 @@ export default function MyProfileMain() {
               </div>
               <div
                 className="number-verify-container"
-                style={{ width: "100%",display: "flex" ,alignItems: "center" }}
+                style={{ width: "100%", display: "flex", alignItems: "center" }}
               >
                 <input
                   disabled
-                  value={_.isEmpty(data) ? "" : data?.mobile_number.slice(3)}
+                  value={_.isEmpty(data) ? "" : data?.mobile_number.slice(2)}
                   type="text"
                   placeholder="contact number"
                   // style={{ width: "77%" }}
@@ -417,15 +446,15 @@ export default function MyProfileMain() {
                   >
                     KYC Pending
                   </Button>
-                  <a
-                    href="#"
-                    onClick={handleNavigate}
+                  <div
+                    // href="#"
+                    onClick={handleNavigateToKyc}
                     style={{ cursor: "pointer" }}
                     className="link-for-complete-kyc"
                   >
                     Complete KYC{" "}
                     <img src={BrownArrow} width={10} height={10}></img>
-                  </a>
+                  </div>
                 </>
               ) : !userKycData?.bank_account ||
                 !userKycData?.pan_card ||
@@ -447,15 +476,15 @@ export default function MyProfileMain() {
                   >
                     KYC Pending
                   </Button>
-                  <a
-                    href="#"
-                    onClick={handleNavigate}
+                  <div
+                    // href="#"
+                    onClick={handleNavigateToKyc}
                     style={{ cursor: "pointer" }}
                     className="link-for-complete-kyc"
                   >
                     Complete KYC{" "}
                     <img src={BrownArrow} width={10} height={10}></img>
-                  </a>
+                  </div>
                 </>
               ) : (
                 <>
@@ -523,31 +552,31 @@ export default function MyProfileMain() {
           </div>
           <div className="details-conatiner-myprofile">
             <span className="heading-personal-details">Address Details</span>
-            <div className="verifyAddress-input" style={{ width: "100%", display: "flex", alignItems:"center" }}>
+            <div className="verifyAddress-input" style={{ width: "100%", display: "flex", alignItems: "center" }}>
               <input
                 disabled
                 value={
                   _.isEmpty(data)
                     ? ""
                     : data.address_line_1 +
-                      "," +
-                      data.address_line_2 +
-                      "," +
-                      data.city +
-                      "," +
-                      data.state +
-                      "," +
-                      data.country +
-                      "," +
-                      data.pincode
+                    "," +
+                    data.address_line_2 +
+                    "," +
+                    data.city +
+                    "," +
+                    data.state +
+                    "," +
+                    data.country +
+                    "," +
+                    data.pincode
                 }
                 type="text"
                 placeholder="Full Address"
-                style={{  }}
+                style={{}}
                 className="verifyAddress-input-section"
               />
               <span
-                style={{ cursor: "pointer", color: "gray",marginRight:'28px' }}
+                style={{ cursor: "pointer", color: "gray", marginRight: '28px' }}
                 onClick={handleAddressNavigation}
               >
                 Edit

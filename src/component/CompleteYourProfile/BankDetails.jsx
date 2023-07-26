@@ -21,17 +21,22 @@ export default function BankDetails() {
     const dispatch = useDispatch()
     console.log(userKycData)
     const handleChange = (e) => {
-        setValue({ ...value, [e.target.name]: e.target.value })
+        if (e.target.name === 'ifsc_code') {
+            setValue({ ...value, [e.target.name]: e.target.value.toUpperCase() })
+        } else {
+            setValue({ ...value, [e.target.name]: e.target.value })
+        }
+
     }
     const notify = (data) => {
-        toast.error(data,{
+        toast.error(data, {
             position: "top-right",
             style: {
-              borderRadius: "3px",
-              background: "red",
-              color: "#fff",
+                borderRadius: "3px",
+                background: "red",
+                color: "#fff",
             },
-          })
+        })
     }
     const handleSubmit = () => {
         const val = {
@@ -55,45 +60,46 @@ export default function BankDetails() {
                         console.log(response)
                         if (response.status === 201 || response.status === 200) {
                             services.getInvestorKycData(userData.id).then(async (response) => {
-                                if (response.status === 200 && response.data.bank_account_verified) {
-                                    toast.success("Bank details verify successful",{
+
+                                if (response.status === 200 || response.data.bank_account_verified) {
+                                    toast.success("Bank details verify successful", {
                                         position: "top-right",
                                         style: {
-                                          borderRadius: "3px",
-                                          background: "green",
-                                          color: "#fff",
+                                            borderRadius: "3px",
+                                            background: "green",
+                                            color: "#fff",
                                         },
-                                      })
-                                    toast.success("KYC COMPLETED!",{
+                                    })
+                                    toast.success("KYC COMPLETED!", {
                                         position: "top-right",
                                         style: {
-                                          borderRadius: "3px",
-                                          background: "green",
-                                          color: "#fff",
+                                            borderRadius: "3px",
+                                            background: "green",
+                                            color: "#fff",
                                         },
-                                      })
+                                    })
                                     await dispatch(storeKycDetailsAction(response.data))
                                 } else {
-                                    toast.error("Invalid bank details!",{
+                                    toast.error("Invalid bank details!", {
                                         position: "top-right",
                                         style: {
-                                          borderRadius: "3px",
-                                          background: "red",
-                                          color: "#fff",
+                                            borderRadius: "3px",
+                                            background: "red",
+                                            color: "#fff",
                                         },
-                                      })
+                                    })
                                 }
                             })
                         }
                         else {
-                            toast.error("Something went wrong!",{
+                            toast.error("Something went wrong!", {
                                 position: "top-right",
                                 style: {
-                                  borderRadius: "3px",
-                                  background: "red",
-                                  color: "#fff",
+                                    borderRadius: "3px",
+                                    background: "red",
+                                    color: "#fff",
                                 },
-                              })
+                            })
                             console.log("error")
                         }
                     })
@@ -105,6 +111,7 @@ export default function BankDetails() {
     }
 
     const handleNavigate = () => {
+
         (!userKycData?.mobile_number_verified)
             ? navigate('/complete-your-profile')
             : (
@@ -130,20 +137,20 @@ export default function BankDetails() {
         <div className="verify-number-container">
             {/* <Grid container spacing={1}>
                 <Grid item xs={12}> */}
-                    <div className="verifyAddress-input">
-                        <input type="text" value={value.bank_name} name="bank_name" onChange={handleChange} placeholder="Bank name" className="verifyAddress-input-section" />
-                    </div>
-                {/* </Grid>
+            <div className="verifyAddress-input">
+                <input type="text" value={value.bank_name} name="bank_name" onChange={handleChange} placeholder="Bank name" className="verifyAddress-input-section" />
+            </div>
+            {/* </Grid>
                 <Grid item xs={12}> */}
-                    <div className="verifyAddress-input">
-                        <input type="text" value={value.bank_account} name="bank_account" onChange={handleChange} placeholder="account number" className="verifyAddress-input-section" />
-                    </div>
-                {/* </Grid>
+            <div className="verifyAddress-input">
+                <input type="text" value={value.bank_account} name="bank_account" onChange={handleChange} placeholder="account number" className="verifyAddress-input-section" />
+            </div>
+            {/* </Grid>
                 <Grid item xs={12}> */}
-                    <div className="verifyAddress-input">
-                        <input type="text" value={value.ifsc_code} name="ifsc_code" onChange={handleChange} placeholder="IFSC Code" className="verifyAddress-input-section" />
-                    </div>
-                {/* </Grid>
+            <div className="verifyAddress-input">
+                <input type="text" value={value.ifsc_code} name="ifsc_code" onChange={handleChange} placeholder="IFSC Code" className="verifyAddress-input-section" />
+            </div>
+            {/* </Grid>
             </Grid> */}
             <div className="verify-button-container">
                 <Button onClick={handleSubmit} varient="contained" className="verify-button">Submit</Button>
