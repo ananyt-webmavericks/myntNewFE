@@ -35,11 +35,14 @@ const AutomatedStreamlined = () => {
             </Typography>
             <div className="founderhome-landing-head-section">
               <span className="founderhome-head-description">Use the power of community and raise funds while growing your brand & <br /> increasing sales. </span>
-              {userData?.user_type === 'FOUNDER' &&
-                <Button variant="contained" onClick={() => navigate('/dashboard-founder')} className="founderhome-getStarted-landing-btn">
-                  Go To Dashboard
+              {userData?.user_type === 'INVESTOR' ?
+                null :
+
+                < Button variant="contained" onClick={() => { userData?.user_type === 'FOUNDER' ? navigate('/dashboard-founder') : navigate('/founder/application') }} className="founderhome-getStarted-landing-btn">
+                  {userData?.user_type === 'FOUNDER' ? 'Go To Dashboard' : 'Apply Now'}
                 </Button>
               }
+
             </div>
           </div>
           <div className="founderhome-image-section-landing">
@@ -48,7 +51,7 @@ const AutomatedStreamlined = () => {
             />
           </div>
         </div>
-      </Box>
+      </Box >
     </>
   )
 }

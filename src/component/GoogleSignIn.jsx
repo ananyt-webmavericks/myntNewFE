@@ -17,21 +17,21 @@ export default function GoogleSignIn() {
     const { userData } = useSelector((state) => state.loginData)
     const location = window.location.pathname;
 
-    const notify = (data) => toast.warn(data,{
+    const notify = (data) => toast.warn(data, {
         position: "top-right",
         style: {
-          borderRadius: "3px",
-          background: "red",
-          color: "#fff",
+            borderRadius: "3px",
+            background: "red",
+            color: "#fff",
         },
-      });
+    });
 
     const handleCallBackResponse = (response) => {
         var userObject = jwt_decode(response.credential)
         // console.log(userObject)
         if (location.includes('/login')) {
             try {
-                UserServices.LoginUserByEmail({ email: userObject.email, login_type: 'INVESTOR' }).then(
+                UserServices.LoginUserByEmail({ email: userObject.email, login_type: 'INVESTOR', social_login: true }).then(
                     (response) => {
                         console.log(response)
                         if (response.status === 200) {

@@ -49,9 +49,11 @@ const BaseHighlights = () => {
                     }
                 </Box>
                 <div className="apply-now-button-container">
-                    {userData?.user_type === 'FOUNDER' &&
-                        <Button variant="contained" onClick={() => navigate('/dashboard-founder')} className="founderhome-getStarted-landing-btn">
-                            Go To Dashboard
+                    {userData?.user_type === 'INVESTOR' ?
+                        null :
+
+                        < Button variant="contained" onClick={() => { userData?.user_type === 'FOUNDER' ? navigate('/dashboard-founder') : navigate('/founder/application') }} className="founderhome-getStarted-landing-btn">
+                            {userData?.user_type === 'FOUNDER' ? 'Go To Dashboard' : 'Apply Now'}
                         </Button>
                     }
                 </div>

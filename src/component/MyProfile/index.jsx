@@ -264,7 +264,7 @@ export default function MyProfileMain() {
     localStorage.setItem("navigateToVerifyAddress", true);
     navigate("/complete-your-profile/verify-address");
   };
-  console.log(userKycData);
+  console.log(userKycData?.address_line_1 || '1' + ',' + userKycData?.address_line_2 || '2' + ',' + userKycData?.city || '3' + ',' + userKycData?.state || '4' + ',' + userKycData?.country || '5' + ',' + userKycData?.pincode || '6');
   return (
     <div className="my-profile-container">
       <span className="get-started-heading">My Profile</span>
@@ -553,28 +553,13 @@ export default function MyProfileMain() {
           <div className="details-conatiner-myprofile">
             <span className="heading-personal-details">Address Details</span>
             <div className="verifyAddress-input" style={{ width: "100%", display: "flex", alignItems: "center" }}>
-              <input
-                disabled
-                value={
-                  _.isEmpty(data)
-                    ? ""
-                    : data.address_line_1 +
-                    "," +
-                    data.address_line_2 +
-                    "," +
-                    data.city +
-                    "," +
-                    data.state +
-                    "," +
-                    data.country +
-                    "," +
-                    data.pincode
-                }
-                type="text"
-                placeholder="Full Address"
-                style={{}}
+              <div
                 className="verifyAddress-input-section"
-              />
+                style={{ fontSize: '13.5px', marginTop: '20px' }}
+              >
+                {`${userKycData?.address_line_1}, ` + `${userKycData?.address_line_2}, ` + `${userKycData?.city}, ` + `${userKycData?.state}, ` + `${userKycData?.pincode}, ` + `${userKycData?.country}`
+                }
+              </div>
               <span
                 style={{ cursor: "pointer", color: "gray", marginRight: '28px' }}
                 onClick={handleAddressNavigation}

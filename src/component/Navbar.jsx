@@ -203,7 +203,7 @@ const Navbar = () => {
                       <MenuItem onClick={handleProfile}>
                         {userData?.profile_image ?
                           <>
-                            <Avatar alt="avatar" src={userData?.profile_image ? userData.profile_image : null} /> Profile
+                            <Avatar alt="avatar" src={userData?.profile_image ? userData?.profile_image : null} /> Profile
                           </>
                           :
                           <>

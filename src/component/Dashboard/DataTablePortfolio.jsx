@@ -53,18 +53,20 @@ function createData(img, name, amount, date, doc, actions) {
     return { img, name, amount, date, doc, actions };
 }
 
-const actions = ['Offer Letter', 'Download Agreement', 'Download Instruments']
-const emptyAction = []
-const rows = [
-    createData(Mask1, 'SustVest', '₹ 5,000', '22 Dec, 2022', '#', actions),
-    createData(Mask2, 'Deciwood', '₹ 10,000', '22 Dec, 2022', '#', actions),
-    createData(Mask2, 'SustVest', '₹ 25,000', '22 Dec, 2022', '#', emptyAction),
-    createData(Mask3, 'Deciwood', '₹ 15,000', '22 Dec, 2022', '#', actions),
-    createData(Mask1, 'SustVest', '₹ 5,000', '22 Dec, 2022', '#', actions),
-];
 
-export default function DataTablePortfolio() {
+
+export default function DataTablePortfolio(props) {
     const classes = useStyles();
+
+    const actions = ['Offer Letter', 'Download Agreement', 'Download Instruments']
+    const emptyAction = []
+    const rows = [
+        createData(Mask1, 'SustVest', '₹ 5,000', '22 Dec, 2022', '#', actions),
+        createData(Mask2, 'Deciwood', '₹ 10,000', '22 Dec, 2022', '#', actions),
+        createData(Mask2, 'SustVest', '₹ 25,000', '22 Dec, 2022', '#', emptyAction),
+        createData(Mask3, 'Deciwood', '₹ 15,000', '22 Dec, 2022', '#', actions),
+        createData(Mask1, 'SustVest', '₹ 5,000', '22 Dec, 2022', '#', actions),
+    ];
     return (
         <>
             <TableContainer component={Paper}>
@@ -80,23 +82,23 @@ export default function DataTablePortfolio() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
+                        {props?.portData?.map((row, index) => (
+                            <StyledTableRow key={index}>
                                 <StyledTableCell component="th" scope="row" >
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src={row.img} width={41} height={41} style={{ marginRight: '17px' }}></img>{row.name}
+                                        <img src={row.company_logo} width={41} height={41} style={{ marginRight: '17px' }}></img>{row.company_name}
                                     </div>
                                 </StyledTableCell>
                                 <StyledTableCell align='center'>{row.amount}</StyledTableCell>
-                                <StyledTableCell align='center'>{row.date}</StyledTableCell>
-                                <StyledTableCell align='center'><a href={row.doc} ><img src={Doc} width={22} height={22}></img></a></StyledTableCell>
+                                <StyledTableCell align='center'>{row.enrollment_date}</StyledTableCell>
+                                <StyledTableCell align='center'><a href='#' ><img src={Doc} width={22} height={22}></img></a></StyledTableCell>
                                 <StyledTableCell align='center'>
-                                    {row.actions.length !== 0 ?
+                                    {row.documents.length !== 0 ?
                                         <div>
-                                            {row.actions.map((item, index) => {
+                                            {row.documents.map((item, index) => {
                                                 return (
                                                     <div key={index}>
-                                                        <a href='#'>{item}</a>
+                                                        <a href={item.document_name}>{item.document_name}</a>
                                                     </div>
                                                 )
                                             })}

@@ -61,7 +61,8 @@ export default function BankDetails() {
                         if (response.status === 201 || response.status === 200) {
                             services.getInvestorKycData(userData.id).then(async (response) => {
 
-                                if (response.status === 200 || response.data.bank_account_verified) {
+                                if (response.status === 200 && response.data.bank_account_verified) {
+                                    navigate('/dashboard')
                                     toast.success("Bank details verify successful", {
                                         position: "top-right",
                                         style: {
