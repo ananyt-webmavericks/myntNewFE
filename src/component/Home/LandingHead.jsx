@@ -31,13 +31,17 @@ export default function LandingHead() {
                         <span className="head-description">
                             Own a small stake in the next big startup and diversify your portfolio tenfolds.
                         </span>
+                        {
+                            userData?.user_type === 'FOUNDER' ?
+                                null :
+                                <Button
+                                    variant="contained"
+                                    style={{ zIndex: 99 }}
+                                    onClick={() => { userData?.user_type === 'INVESTOR' ? navigate('/dashboard/live-deals') : navigate('/get-started') }} className="getStarted-landing-btn">
+                                    Get Started
+                                </Button>
+                        }
 
-                        <Button
-                            variant="contained"
-                            style={{ zIndex: 99 }}
-                            onClick={() => { userData?.user_type === 'INVESTOR' ? navigate('/dashboard/live-deals') : navigate('/get-started') }} className="getStarted-landing-btn">
-                            Get Started
-                        </Button>
                         {!userData?.user_type === 'INVESTOR' || !userData?.user_type &&
                             <Typography className="subhead-description" style={{ fontWeight: "bold" }}>
                                 Are you a founder?

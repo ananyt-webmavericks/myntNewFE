@@ -240,8 +240,11 @@ export default function InvestorsHome() {
             </Grid>
           </div>
           <div className="get-started-btn-investor">
-
-            <Button variant="contained" onClick={() => { userData?.user_type === 'INVESTOR' ? navigate('/dashboard/live-deals') : navigate('/get-started') }} className="getStarted-landing-btn">Get Started</Button>
+            {
+              userData?.user_type === 'FOUNDER' ?
+                null :
+                <Button variant="contained" onClick={() => { userData?.user_type === 'INVESTOR' ? navigate('/dashboard/live-deals') : navigate('/get-started') }} className="getStarted-landing-btn">Get Started</Button>
+            }
           </div>
         </Grid>
       </Grid >
