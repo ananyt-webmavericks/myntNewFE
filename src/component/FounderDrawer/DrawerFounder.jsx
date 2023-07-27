@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/Dashboard/drawer.css";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
@@ -13,10 +13,15 @@ import analyticsIcon from "./../../images/founder/analyticsIcon.png";
 import { useNavigate } from "react-router-dom";
 import chat from "./../../images/dashboard/icons/chat.png";
 import chat_yellow from "./../../images/dashboard/icons/chat_yellow.png";
-
+import { useSelector } from "react-redux";
+import FounderModal from "../FounderModal";
 export default function DrawerFounder({ height, display }) {
   const navigate = useNavigate();
   const location = window.location.pathname;
+  const { founderEsign } = useSelector(state => state.founderEsignStatus)
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleClose = () => { setOpenModal(false) }
 
   return (
     <>
@@ -53,7 +58,7 @@ export default function DrawerFounder({ height, display }) {
 
             <div
               className="dashboard-single-links"
-              onClick={() => navigate("/dashboard-founder/campaigns")}
+              onClick={() => { founderEsign?.agreement_status !== 'SIGNED BY FOUNDER' ? setOpenModal(true) : navigate("/dashboard-founder/campaigns") }}
             >
               {/* <CampaignOutlinedIcon
                             style={location === '/dashboard-founder/campaigns' || location === '/dashboard-founder/campaigns-tabs'
@@ -62,7 +67,7 @@ export default function DrawerFounder({ height, display }) {
               <img
                 src={
                   location === "/dashboard-founder/campaigns" ||
-                  location === "/dashboard-founder/campaigns-tabs"
+                    location === "/dashboard-founder/campaigns-tabs"
                     ? campaignsIcon
                     : campaignsIconBlack
                 }
@@ -73,7 +78,7 @@ export default function DrawerFounder({ height, display }) {
               <span
                 style={
                   location === "/dashboard-founder/campaigns" ||
-                  location === "/dashboard-founder/campaigns-tabs"
+                    location === "/dashboard-founder/campaigns-tabs"
                     ? { color: "black" }
                     : { color: "gray" }
                 }
@@ -85,7 +90,7 @@ export default function DrawerFounder({ height, display }) {
 
             <div
               className="dashboard-single-links"
-              // onClick={() => navigate('/dashboard/analytics')}
+            // onClick={() => navigate('/dashboard/analytics')}
             >
               {/* <AddchartOutlinedIcon style={location === '/dashboard/analytics' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} /> */}
 
@@ -96,7 +101,7 @@ export default function DrawerFounder({ height, display }) {
                 href="https://wa.me/+918769740854"
                 target="_blank"
                 className="dashboard-single-links"
-                // onClick={() => navigate('/dashboard/chat-with-expert')}
+              // onClick={() => navigate('/dashboard/chat-with-expert')}
               >
                 <img
                   src={
@@ -148,7 +153,7 @@ export default function DrawerFounder({ height, display }) {
           </div>
           <div
             className="main-navbar-section"
-            onClick={() => navigate("/dashboard-founder/campaigns")}
+            onClick={() => { founderEsign?.agreement_status !== 'SIGNED BY FOUNDER' ? setOpenModal(true) : navigate("/dashboard-founder/campaigns") }}
           >
             <div style={{ margin: "auto" }}>
               <img
@@ -167,7 +172,7 @@ export default function DrawerFounder({ height, display }) {
 
           <div
             className="main-navbar-section"
-            // onClick={() => navigate('/dashboard/analytics')}
+          // onClick={() => navigate('/dashboard/analytics')}
           >
             <div style={{ margin: "auto" }}>
               <img
@@ -187,6 +192,7 @@ export default function DrawerFounder({ height, display }) {
           </div>
         </div>
       </div>
+      <FounderModal show={openModal} handleClose={handleClose} />
     </>
   );
 }

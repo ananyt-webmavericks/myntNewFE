@@ -11,15 +11,27 @@ import CopanyLogo from "../../images/founder/companylogo.png";
 import { useEffect } from "react";
 import CompanyServices from "../../service/Company";
 import session from "redux-persist/lib/storage/session";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import FounderServices from "../../service/FounderServices";
+import _ from "lodash";
+import { FounderEsignAction } from "../../Redux/actions/FounderEsign";
+import FounderModal from "../../component/FounderModal";
 const DashBoardESign = () => {
+  const dispatch = useDispatch()
   const location = window.location.pathname;
+  const { userData } = useSelector((state) => state.loginData)
   const ratio = parseInt(window.innerWidth);
   const [campaigns, setCampaigns] = useState([]);
+  const [pdfData, setPdfData] = useState('')
   const [showDeals, setShowDeals] = useState(false);
+  const [disable, setDisable] = useState(true)
   const navigate = useNavigate();
+  const [signPdf, setSignPdf] = useState({})
+  const { founderEsign } = useSelector(state => state.founderEsignStatus)
+  const [openModal, setOpenModal] = useState(false)
 
+  const handleClose = () => { setOpenModal(false) }
   const fetchValue = (value) => {
     setShowDeals(value);
   };
@@ -34,6 +46,52 @@ const DashBoardESign = () => {
       }
     });
   }, []);
+
+  const getEsignPdf = () => {
+    try {
+
+      FounderServices.getEsignPdf(userData?.id).then(res => {
+        if (res.status === 200 || res.status === 201) {
+          setSignPdf(res?.data?.result)
+          dispatch(FounderEsignAction(res?.data?.result))
+        } else {
+          console.log("can't get the portfolio data")
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (userData?.id) {
+      getEsignPdf()
+    }
+  }, [])
+
+  const fetchStatusOfESign = () => {
+
+    if (_.isEmpty(signPdf)) {
+      setPdfData('Pending from Mynt Admin')
+    }
+    if (signPdf?.agreement_status == 'NO AGREEMENT FOUND') {
+      setPdfData('Pending from Mynt Admin')
+    }
+    if (signPdf?.agreement_status == 'UPLOADED BY ADMIN') {
+      setPdfData('Pending E-Sign From Mynt Admin')
+    }
+    if (signPdf?.agreement_status === 'SIGNED BY ADMIN') {
+      setPdfData('Pending from Your End to E-Sign')
+    }
+    if (signPdf?.agreement_status === 'SIGNED BY FOUNDER') {
+      setPdfData('Download Agreement')
+      setDisable(false)
+    }
+
+  }
+  useEffect(() => {
+    fetchStatusOfESign()
+  }, [signPdf])
 
   return (
     <>
@@ -57,21 +115,24 @@ const DashBoardESign = () => {
               <div>
                 <Typography className="e-sign-title">E-sign</Typography>
                 <Typography className="e-sign-description">
-                  E-sign your agreements to finalize Subscriptions in your
-                  campaign
+                  {pdfData}
                 </Typography>
               </div>
               <div className="download-btn-Active">
+
                 <Button
                   style={{
                     borderRadius: "50px",
-                    backgroundColor: "#fbdf35",
-                    color: "black",
+                    backgroundColor: `${disable ? 'gray' : '#fbdf35'}`,
+                    color: `${disable ? 'white' : 'black'}`,
+                    cursor: 'pointer'
                   }}
+                  disabled={disable}
                   variant="contained"
                 >
-                  <b>Download</b>
+                  <a style={{ color: 'black', textDecoration: 'none' }} target="_blank" href={signPdf?.document_url}> <b>Download</b></a>
                 </Button>
+
               </div>
             </Card>
 
@@ -117,7 +178,11 @@ const DashBoardESign = () => {
                     sessionStorage.removeItem("campaign_id");
                     sessionStorage.setItem("is_campaign_added", false);
                     sessionStorage.removeItem("campaign_data");
-                    navigate("/dashboard-founder/campaigns-tabs");
+                    if (founderEsign?.agreement_status !== 'SIGNED BY FOUNDER') {
+                      setOpenModal(true)
+                    } else {
+                      navigate("/dashboard-founder/campaigns-tabs")
+                    }
                   }}
                   className="AddCompany"
                 >
@@ -251,6 +316,7 @@ const DashBoardESign = () => {
         </div>
       </div>
       {ratio < 1000 ? null : <Footer />}
+      <FounderModal show={openModal} handleClose={handleClose} />
     </>
   );
 };

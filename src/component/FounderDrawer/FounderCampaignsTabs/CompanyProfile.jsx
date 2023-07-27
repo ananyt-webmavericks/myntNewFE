@@ -50,8 +50,22 @@ const MenuProps = {
 // const city = ["Abu Road", "Ahmedabad", "pune", " jaipur"];
 
 const sectors = [
-  { label: "sector 1", value: 0 },
-  { label: "sector 2", value: 1 },
+  { label: "HealthTech", value: 0 },
+  { label: "Artificial Intelligence", value: 1 },
+  { label: "Blockchain", value: 2 },
+  { label: "Electric Vehicles", value: 3 },
+  { label: "AgriTech", value: 4 },
+  { label: "EdTech", value: 5 },
+  { label: "Augmented Reality", value: 6 },
+  { label: "E-commerce", value: 7 },
+  { label: "Foods & Beverages", value: 8 },
+  { label: "SaaS", value: 9 },
+  { label: "FinTech", value: 10 },
+  { label: "Virtual Reality", value: 11 },
+  { label: "InsurTech", value: 11 },
+  { label: "Cryptocurrency", value: 12 },
+  { label: "Entertainment", value: 13 },
+  { label: "Other", value: 14 },
 ];
 const employees = [
   { label: "1", value: 0 },
@@ -93,7 +107,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
   const [isSaveLoading, setIsSaveLoading] = useState(false);
   const [isSaveClicked, setSavedClicked] = useState(false);
   const [isNextClicked, setNextClicked] = useState(false);
-  const [countryCode, setCountryCode] = useState("");
+  const [countryCode, setCountryCode] = useState(null);
   const [stateCode, setStateCode] = useState("");
   const [cityCode, setCityCode] = useState("");
   const [selectSector, setSelectSector] = useState("");
@@ -253,22 +267,23 @@ const CompanyProfile = ({ tabChangeFn }) => {
           setCompanyData(res.data);
 
           const c = country.filter((item) => item.name === res.data.country);
-          setCountryCode({ label: c?.[0]?.name, value: c?.[0]?.country_id });
+
+          setCountryCode(c.length === 0 ? null : { label: c?.[0]?.name, value: c?.[0]?.country_id });
           const s = states.filter((item) => item.name === res.data.state);
-          setStateCode({ label: s?.[0]?.name, value: s?.[0]?.state_code });
+          setStateCode(s.length === 0 ? null : { label: s?.[0]?.name, value: s?.[0]?.state_code });
           const cs = city.filter((item) => item.name === res.data.city);
-          setCityCode({ label: cs?.[0]?.name, value: cs?.[0]?.state_code });
+          setCityCode(cs.length === 0 ? null : { label: cs?.[0]?.name, value: cs?.[0]?.state_code });
           const selectsector = sectors.filter(
             (item) => item.label === res.data.sector
           );
-          setSelectSector({
+          setSelectSector(selectsector.length === 0 ? null : {
             label: selectsector?.[0]?.label,
             value: selectsector?.[0]?.value,
           });
           const selectemployee = employees.filter(
             (item) => item.label === res.data.number_of_employees
           );
-          setSelectEmployees({
+          setSelectEmployees(selectemployee.length === 0 ? null : {
             label: selectemployee?.[0]?.label,
             value: selectemployee?.[0]?.value,
           });
@@ -315,11 +330,11 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   }}
                   value={countryCode}
                   options={getAllCountries() ?? []}
-                  placeholder="Select Country"
+                  placeholder="---Select Country---"
                   name="country"
                   onChange={(val) => setCountryValue(val)}
                   onBlur={() => formik.setFieldTouched("country", true)}
-                  // components={{Input}}
+                // components={{Input}}
                 />
                 {formik.touched.country && (
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
@@ -668,7 +683,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 )}
               </FormControl>
 
-              <FormControl  className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
+              <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
                 <input
                   name="invested_so_far"
                   value={formik.values.invested_so_far}
