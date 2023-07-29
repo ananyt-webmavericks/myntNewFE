@@ -16,6 +16,7 @@ import { Base_Url } from "../../../Utils/Configurable";
 const Press = ({ tabChangeFn }) => {
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.loginData);
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const [pressData, setPressData] = useState([]);
   const [isPressAdded, setIsPressAdded] = useState(false);
   const [toggle, settoggle] = useState(true);
@@ -251,6 +252,7 @@ const Press = ({ tabChangeFn }) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             type="text"
+            disabled={campaignDetail?.status !== 'CREATED'}
             className="press-input"
             placeholder="Enter your header/title here"
           />
@@ -265,6 +267,7 @@ const Press = ({ tabChangeFn }) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             type="text"
+            disabled={campaignDetail?.status !== 'CREATED'}
             className="press-input"
             placeholder="https://"
           />
@@ -282,6 +285,7 @@ const Press = ({ tabChangeFn }) => {
             id="press-textarea"
             cols="30"
             rows="7"
+            disabled={campaignDetail?.status !== 'CREATED'}
             placeholder="Type something here…"
           ></textarea>
           {/* <div className="press-textarea-count">0/300</div> */}
@@ -365,7 +369,7 @@ const Press = ({ tabChangeFn }) => {
           />
 
           <Button
-            disabled={isUploading ? true : false}
+            disabled={campaignDetail?.status !== 'CREATED'}
             onClick={() => document.getElementById("pressUploadBanner").click()}
             className="press-upload-pic-btn"
           >
@@ -422,7 +426,7 @@ const Press = ({ tabChangeFn }) => {
                 <h3 className="faqs-title">Added Press</h3>
                 {pressData.length > 0 ? (
                   <button
-                    disabled={isLoading === true ? true : false}
+                    disabled={campaignDetail?.status !== 'CREATED'}
                     onClick={() => setAddMorePress(true)}
                     type="submit"
                     className="addMore"
@@ -475,23 +479,28 @@ const Press = ({ tabChangeFn }) => {
                       )}
                     </button>
                   ) : (
-                    <button
-                      onClick={() => {
-                        EditBankFields(item.id, index);
-                      }}
-                      style={{
-                        cursor: "pointer",
-                        right: 100,
-                        padding: "5px 10px",
-                        borderRadius: "5px",
-                        border: "0px solid",
-                        background: "black",
-                        height: "30px",
-                        color: "white",
-                      }}
-                    >
-                      Edit
-                    </button>
+                    <>
+                      {campaignDetail?.status === 'CREATED' &&
+                        <button
+                          onClick={() => {
+                            EditBankFields(item.id, index);
+                          }}
+                          style={{
+                            cursor: "pointer",
+                            right: 100,
+                            padding: "5px 10px",
+                            borderRadius: "5px",
+                            border: "0px solid",
+                            background: "black",
+                            height: "30px",
+                            color: "white",
+                          }}
+                        >
+                          Edit
+                        </button>
+                      }
+                    </>
+
                   )}
                 </div>
 

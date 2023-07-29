@@ -20,7 +20,7 @@ const Investors = ({
 }) => {
   const { userData } = useSelector((state) => state.loginData);
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveLoading, setIsSaveLoading] = useState(false);
@@ -157,7 +157,7 @@ const Investors = ({
   return (
     <>
       <Box
-      className="people-team-tab-wrapper"
+        className="people-team-tab-wrapper"
         sx={
           isInvestorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
@@ -178,6 +178,7 @@ const Investors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Enter your Investor name"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.name && (
                   <div className="raise-err-text">{formik.errors.name}</div>
@@ -192,6 +193,7 @@ const Investors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Position in the Company*"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.position && (
                   <div className="raise-err-text">{formik.errors.position}</div>
@@ -214,6 +216,7 @@ const Investors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Facebook Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.facebook_link && (
                   <div className="raise-err-text">
@@ -230,6 +233,7 @@ const Investors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Instagram Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.instagram_link && (
                   <div className="raise-err-text">
@@ -248,6 +252,7 @@ const Investors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Linked In Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.linked_in_link && (
                   <div className="raise-err-text">
@@ -265,6 +270,7 @@ const Investors = ({
                   onBlur={formik.handleBlur}
                   className="teammtextarea"
                   placeholder=" Type something about your Investor…"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 ></textarea>
                 {formik.touched.description && (
                   <div
@@ -303,6 +309,7 @@ const Investors = ({
             </div>
             <button
               type="button"
+              disabled={campaignDetail?.status !== "CREATED"}
               onClick={() =>
                 document.getElementById("teamMemberProfile").click()
               }
@@ -327,7 +334,7 @@ const Investors = ({
           {!isInvestorEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isSaveLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 onClick={() => {
                   formik.submitForm();
                   setSavedClicked(true);
@@ -345,11 +352,11 @@ const Investors = ({
                     }}
                   />
                 ) : (
-                  "Save"
+                  <span style={{ color: "black" }}>Save</span>
                 )}
               </button>
               <button
-                disabled={isLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 // type="submit"
                 onClick={() => {
                   formik.submitForm();
@@ -367,14 +374,14 @@ const Investors = ({
                     }}
                   />
                 ) : (
-                  "Next"
+                  <span style={{ color: "white" }}>Next</span>
                 )}
               </button>
             </Box>
           ) : (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isUpdateLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 // onClick={() => setSavedClicked(true)}
                 type="submit"
                 className="SaveBtn"
@@ -389,7 +396,7 @@ const Investors = ({
                     }}
                   />
                 ) : (
-                  "update"
+                  <span style={{ color: "white" }}>Update</span>
                 )}
               </button>
             </Box>

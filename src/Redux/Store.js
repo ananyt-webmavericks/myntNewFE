@@ -10,7 +10,7 @@ import { storeKycDetailsReducer } from "./reducers/verifyKycReducer";
 import { editKycDetailsReducer } from "./reducers/verifyKycReducer";
 import { storeFounderSignUpData } from "./reducers/FounderSignUp";
 import { storeCompanyData } from "./reducers/company";
-import { FounderEsignReducer } from "./reducers/FounderEsign";
+import { FounderCampaignReducer, FounderEsignReducer } from "./reducers/FounderEsign";
 
 const rootReducer = combineReducers({
 
@@ -21,6 +21,7 @@ const rootReducer = combineReducers({
   editKycData: editKycDetailsReducer,
   founderSignUpData: storeFounderSignUpData,
   founderEsignStatus: FounderEsignReducer,
+  campaignDetail: FounderCampaignReducer,
   companyData: storeCompanyData
 
 })
@@ -29,7 +30,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  whitelist: ['userInfo', 'loginData', 'kycData', 'editKycData', 'updateUserData']
+  whitelist: ['userInfo', 'loginData', 'kycData', 'editKycData', 'updateUserData', "founderEsignStatus", "campaignDetail", "founderSignUpData"]
 }
 const pReducer = persistReducer(persistConfig, rootReducer)
 

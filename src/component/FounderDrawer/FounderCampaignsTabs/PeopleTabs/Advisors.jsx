@@ -22,7 +22,7 @@ const Advisors = ({
   const navigate = useNavigate();
 
   const { userData } = useSelector((state) => state.loginData);
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveLoading, setIsSaveLoading] = useState(false);
@@ -162,7 +162,7 @@ const Advisors = ({
   return (
     <>
       <Box
-      className="people-team-tab-wrapper"
+        className="people-team-tab-wrapper"
         sx={
           isAdvisorEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
@@ -183,6 +183,7 @@ const Advisors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Enter your Advisor name"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.name && (
                   <div className="raise-err-text">{formik.errors.name}</div>
@@ -197,6 +198,7 @@ const Advisors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Position in the Company*"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.position && (
                   <div className="raise-err-text">{formik.errors.position}</div>
@@ -219,6 +221,7 @@ const Advisors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Facebook Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.facebook_link && (
                   <div className="raise-err-text">
@@ -235,6 +238,7 @@ const Advisors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Instagram Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.instagram_link && (
                   <div className="raise-err-text">
@@ -253,6 +257,7 @@ const Advisors = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Linked In Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.linked_in_link && (
                   <div className="raise-err-text">
@@ -261,7 +266,7 @@ const Advisors = ({
                 )}
               </div>
             </Box>
-            <Box style={{marginTop:'15px'}} className="formgroupTextArea">
+            <Box style={{ marginTop: '15px' }} className="formgroupTextArea">
               <div style={{ width: "100%", height: "125px" }}>
                 <textarea
                   name="description"
@@ -270,6 +275,7 @@ const Advisors = ({
                   onBlur={formik.handleBlur}
                   className="teammtextarea"
                   placeholder=" Type something about your Advisor…"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 ></textarea>
                 {formik.touched.description && (
                   <div
@@ -308,6 +314,7 @@ const Advisors = ({
             </div>
             <button
               type="button"
+              disabled={campaignDetail?.status !== "CREATED"}
               onClick={() =>
                 document.getElementById("teamMemberProfile").click()
               }
@@ -332,7 +339,7 @@ const Advisors = ({
           {!isAdvisorEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isSaveLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 onClick={() => {
                   formik.submitForm();
                   setSavedClicked(true);
@@ -350,11 +357,11 @@ const Advisors = ({
                     }}
                   />
                 ) : (
-                  "Save"
+                  <span style={{ color: "black" }}>Save</span>
                 )}
               </button>
               <button
-                disabled={isLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 // type="submit"
                 onClick={() => {
                   formik.submitForm();
@@ -372,14 +379,14 @@ const Advisors = ({
                     }}
                   />
                 ) : (
-                  "Next"
+                  <span style={{ color: "white" }}>Next</span>
                 )}
               </button>
             </Box>
           ) : (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isUpdateLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 // onClick={() => setSavedClicked(true)}
                 type="submit"
                 className="SaveBtn"
@@ -394,7 +401,7 @@ const Advisors = ({
                     }}
                   />
                 ) : (
-                  "Update"
+                  <span style={{ color: "white" }}>Update</span>
                 )}
               </button>
             </Box>

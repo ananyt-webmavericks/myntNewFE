@@ -42,6 +42,7 @@ import CompanyServices from "../../service/Company";
 import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
 import { Highlight } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
 const actions = [
   {
     icon: (
@@ -115,6 +116,7 @@ export default function LiveDetailsMain() {
   const [gridxsSecond, setgridxsSecond] = useState(6);
   const ratio = parseInt(window.innerWidth);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [direction, setDirection] = React.useState("right");
   const [hidden, setHidden] = React.useState(false);
   const [campaignData, setCampaignData] = useState({});
@@ -165,6 +167,7 @@ export default function LiveDetailsMain() {
           setCampaignData(res.data);
           setHightLightData(res.data.higlights);
         }
+
       }
     );
 
@@ -183,33 +186,33 @@ export default function LiveDetailsMain() {
     !userKycData?.mobile_number_verified
       ? navigate("/complete-your-profile")
       : !userKycData?.pan_card_verified || !userKycData?.pan_card
-      ? navigate("/complete-your-profile/verify-kyc")
-      : !userKycData?.address_line_1 ||
-        !userKycData?.city ||
-        !userKycData?.state ||
-        !userKycData?.pincode
-      ? navigate("/complete-your-profile/verify-address")
-      : !userKycData?.aadhaar_card_verified || !userKycData?.aadhaar_card_number
-      ? navigate("/complete-your-profile/verify-kyc/aadhar-uid")
-      : !userKycData?.bank_account_verified ||
-        !userKycData?.ifsc_code ||
-        !userKycData?.bank_account ||
-        !userKycData?.bank_name
-      ? navigate("/complete-your-profile/payment-details")
-      : toast.success("Already verified! Please check profile", {
-          position: "top-right",
-          style: {
-            borderRadius: "3px",
-            background: "green",
-            color: "#fff",
-          },
-        });
+        ? navigate("/complete-your-profile/verify-kyc")
+        : !userKycData?.address_line_1 ||
+          !userKycData?.city ||
+          !userKycData?.state ||
+          !userKycData?.pincode
+          ? navigate("/complete-your-profile/verify-address")
+          : !userKycData?.aadhaar_card_verified || !userKycData?.aadhaar_card_number
+            ? navigate("/complete-your-profile/verify-kyc/aadhar-uid")
+            : !userKycData?.bank_account_verified ||
+              !userKycData?.ifsc_code ||
+              !userKycData?.bank_account ||
+              !userKycData?.bank_name
+              ? navigate("/complete-your-profile/payment-details")
+              : toast.success("Already verified! Please check profile", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
   };
 
   return (
     <div className="get-started-container">
       <div style={{ paddingTop: "8em" }}>
-        <div style={{display:'flex', flexDirection:'row'}} className="deals-detail-video-section" container spacing={gridxsFirst}>
+        <div style={{ display: 'flex', flexDirection: 'row' }} className="deals-detail-video-section" container spacing={gridxsFirst}>
           <Grid className="deals-detail-video-section-left" item xs={gridxsSecond}>
             {campaignData?.ama_youtube_video ? (
               <YoutubeEmbed
@@ -307,11 +310,11 @@ export default function LiveDetailsMain() {
                       kycData?.aadhaar_card_verified &&
                       kycData?.aadhaar_card_number
                       ? navigate("/pay-to-subscribe", {
-                          state: {
-                            campaignId: campaignData.id,
-                            companyName: companyData.company_name,
-                          },
-                        })
+                        state: {
+                          campaignId: campaignData.id,
+                          companyName: companyData.company_name,
+                        },
+                      })
                       : handleNavigate()
                     : navigate("/login");
                 }}
@@ -389,9 +392,9 @@ export default function LiveDetailsMain() {
             <span className="live-deals-details-decription">24 Dec 2022</span>
           </div> */}
           <div className="live-deals-box-date second">
-                        <span style={{ fontSize: '14px', fontWeight: 600 }}>Book A Spot</span>
-                        <div className="btn-register-live-deals"><span>Register</span><img style={{ marginLeft: '10px' }} src={Arrow} width={8} height={10}></img></div>
-                    </div>
+            <span style={{ fontSize: '14px', fontWeight: 600 }}>Book A Spot</span>
+            <div className="btn-register-live-deals"><span>Register</span><img style={{ marginLeft: '10px' }} src={Arrow} width={8} height={10}></img></div>
+          </div>
         </div>
         {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
                     <YoutubeEmbed width={gridxsFirst === 2 ? '486px' : '100%'} height={'271.6px'} embedId={"g_aELYEBc4Q"} />
@@ -499,7 +502,7 @@ export default function LiveDetailsMain() {
             <div
               style={{
                 display: "flex",
-                flexDirection:"column",
+                flexDirection: "column",
                 justifyContent: "center",
                 marginTop: "40px",
                 filter: `blur(${blurAmount}px)`,
@@ -511,7 +514,7 @@ export default function LiveDetailsMain() {
                 frameBorder="0"
               ></iframe> */}
               <object
-              className=""
+                className=""
                 data={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
                 type="application/pdf"
                 // width="800px"

@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import DrawerFounder from "../../component/FounderDrawer/DrawerFounder";
 import CompanyServices from "../../service/Company";
 import { CircularProgress } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCompanyProfileProgress,
   getFAQProgress,
@@ -25,6 +25,7 @@ import {
   getUploadDocumentsProgress,
 } from "./progressRule";
 import Footer from "../../component/Footer";
+import { FounderCampaignAction } from "../../Redux/actions/FounderEsign";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,6 +76,7 @@ const FounderCampaignsStats = () => {
   const navigate = useNavigate();
   const location = window.location.pathname;
   const classes = useStyles();
+  const dispatch = useDispatch()
   const [progress, setProgress] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
   const [campaignData, setCampaignData] = useState({});
@@ -151,6 +153,7 @@ const FounderCampaignsStats = () => {
     CompanyServices.getCompanyDetailByCampaign(id).then((res) => {
       if (res.status === 200 || res.status === 201) {
         setCampaignData(res.data);
+        dispatch(FounderCampaignAction(res?.data))
       } else {
         setCampaignData({});
       }

@@ -20,7 +20,7 @@ const TeamMembers = ({
   handleClose,
 }) => {
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const { userData } = useSelector((state) => state.loginData);
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -78,7 +78,7 @@ const TeamMembers = ({
     validationSchema: PeopleTabValSchema,
 
     onSubmit: (values) => {
-      if(isTeamEdit){
+      if (isTeamEdit) {
         setIsUpdateLoading(true);
       }
       if (isNextClicked) {
@@ -152,7 +152,7 @@ const TeamMembers = ({
   return (
     <>
       <Box
-      className="people-team-tab-wrapper"
+        className="people-team-tab-wrapper"
         sx={
           isTeamEdit
             ? { marginTop: "0px", width: "100%", marginBottom: "0px" }
@@ -164,7 +164,7 @@ const TeamMembers = ({
         <form onSubmit={formik.handleSubmit}>
           <div>
             <Box className="formgroup">
-              <div style={{ width: "100%", height:'80px' }}>
+              <div style={{ width: "100%", height: '80px' }}>
                 <input
                   name="name"
                   value={formik.values.name}
@@ -173,12 +173,13 @@ const TeamMembers = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Enter your Team member name"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.name && (
                   <div className="raise-err-text">{formik.errors.name}</div>
                 )}
               </div>
-              <div style={{ width: "100%", height:'80px' }}>
+              <div style={{ width: "100%", height: '80px' }}>
                 <input
                   name="position"
                   value={formik.values.position}
@@ -187,6 +188,7 @@ const TeamMembers = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Position in the Company*"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.position && (
                   <div className="raise-err-text">{formik.errors.position}</div>
@@ -200,7 +202,7 @@ const TeamMembers = ({
                         </select> */}
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%", height:'80px' }}>
+              <div style={{ width: "100%", height: '80px' }}>
                 <input
                   name="facebook_link"
                   value={formik.values.facebook_link}
@@ -209,6 +211,7 @@ const TeamMembers = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Facebook Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.facebook_link && (
                   <div className="raise-err-text">
@@ -216,7 +219,7 @@ const TeamMembers = ({
                   </div>
                 )}
               </div>
-              <div style={{ width: "100%", height:'80px' }}>
+              <div style={{ width: "100%", height: '80px' }}>
                 <input
                   name="instagram_link"
                   value={formik.values.instagram_link}
@@ -225,6 +228,7 @@ const TeamMembers = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Instagram Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.instagram_link && (
                   <div className="raise-err-text">
@@ -234,7 +238,7 @@ const TeamMembers = ({
               </div>
             </Box>
             <Box className="formgroup">
-              <div style={{ width: "100%", height:'80px' }}>
+              <div style={{ width: "100%", height: '80px' }}>
                 <input
                   name="linked_in_link"
                   value={formik.values.linked_in_link}
@@ -243,6 +247,7 @@ const TeamMembers = ({
                   type="text"
                   className="teamminput"
                   placeholder=" Linked In Link"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 />
                 {formik.touched.linked_in_link && (
                   <div className="raise-err-text">
@@ -252,7 +257,7 @@ const TeamMembers = ({
               </div>
             </Box>
             <Box className="formgroupTextArea" style={{ marginTop: "15px" }}>
-              <div style={{height:'190px'}}>
+              <div style={{ height: '190px' }}>
                 <textarea
                   name="description"
                   value={formik.values.description}
@@ -260,6 +265,7 @@ const TeamMembers = ({
                   onBlur={formik.handleBlur}
                   className="teammtextarea"
                   placeholder=" Type something about your team member…"
+                  disabled={campaignDetail?.status !== "CREATED"}
                 ></textarea>
                 {formik.touched.description && (
                   <div
@@ -298,6 +304,7 @@ const TeamMembers = ({
             </div>
             <button
               type="button"
+              disabled={campaignDetail?.status !== "CREATED"}
               onClick={() =>
                 document.getElementById("teamMemberProfile").click()
               }
@@ -322,7 +329,7 @@ const TeamMembers = ({
           {!isTeamEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isSaveLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 onClick={() => {
                   formik.submitForm();
                   setSavedClicked(true);
@@ -340,11 +347,11 @@ const TeamMembers = ({
                     }}
                   />
                 ) : (
-                  "Save"
+                  <span style={{ color: "black" }}>Save</span>
                 )}
               </button>
               <button
-                disabled={isLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 // type="submit"
                 onClick={() => {
                   formik.submitForm();
@@ -362,14 +369,14 @@ const TeamMembers = ({
                     }}
                   />
                 ) : (
-                  "Next"
+                  <span style={{ color: "white" }}>Next</span>
                 )}
               </button>
             </Box>
           ) : (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={isUpdateLoading === true ? true : false}
+                disabled={campaignDetail?.status !== "CREATED"}
                 // onClick={() => setSavedClicked(true)}
                 type="submit"
                 className="SaveBtn"
@@ -384,7 +391,7 @@ const TeamMembers = ({
                     }}
                   />
                 ) : (
-                  "update"
+                  <span style={{ color: "white" }}>Update</span>
                 )}
               </button>
             </Box>

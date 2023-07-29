@@ -11,10 +11,10 @@ import { useEffect } from "react";
 import { Base_Url } from "../../../Utils/Configurable";
 import { authAxios } from "../../../service/Auth-header";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const UploadDocuments = () => {
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedDocs, setUploadedDocs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -106,6 +106,36 @@ const UploadDocuments = () => {
     }
   };
 
+  const handleUpdateDocStatus = () => {
+    try {
+      CompanyServices.updateCampaign({ company_id: campaignDetail?.id, status: 'UNDER REVIEW' }).then(res => {
+        if (res.status === 200 || res.status === 201) {
+          toast.success("Thanks for submitting Campaign to us we are going under review", {
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "green",
+              color: "#fff",
+            },
+          });
+          navigate('/dashboard-founder')
+        } else {
+          toast.error("Something went wrong, please try again later", {
+            position: "top-right",
+            style: {
+              borderRadius: "3px",
+              background: "red",
+              color: "#fff",
+            },
+          });
+        }
+
+      })
+    } catch (error) {
+
+    }
+  }
+
   useEffect(() => {
     CompanyServices.getUploadedDocs(localStorage.getItem("company_id")).then(
       (res) => {
@@ -118,7 +148,7 @@ const UploadDocuments = () => {
   }, [toggle]);
   return (
     <Container
-    className="upload-docs-container"
+      className="upload-docs-container"
       maxWidth="lg"
     >
       <h3>Upload Documents</h3>
@@ -165,16 +195,11 @@ const UploadDocuments = () => {
           </div>
 
           <div className="upload-doc-btn-wrapper getRewards-btn-parent">
-            <Button
-              className="hightlight-submit-button"
-              style={{ color: "White" }}
-            >
-              Submit For Review
-            </Button>
+
             <Button
               // disabled={selectedFile ? false : true}
               onClick={handleUpload}
-              style={{  color: "white" }}
+              style={{ color: "white" }}
               variant="contained"
               className="finish-btn hightlight-submit-button"
             >
@@ -208,6 +233,7 @@ const UploadDocuments = () => {
               <h3>Uploaded Documents</h3>
               {!addDocuments && (
                 <button
+                  disabled={campaignDetail?.status !== 'CREATED'}
                   onClick={() => setAddDocuments(true)}
                   className="addMore"
                 >
@@ -228,6 +254,7 @@ const UploadDocuments = () => {
                     alignItems: "center",
                     justifyContent: "flex-start",
                     // width: "40%",
+                    marginBottom: '1em',
                     border: "2px dashed grey",
                     padding: 20,
                     gap: 20,
@@ -240,8 +267,8 @@ const UploadDocuments = () => {
                         item?.document_name?.split(".").pop() === "pptx"
                           ? pptxIcon
                           : item?.document_name?.split(".").pop() === "pdf"
-                          ? pdfIcon
-                          : fileIcon
+                            ? pdfIcon
+                            : fileIcon
                       }
                       alt="doc-icon"
                       width={62}
@@ -250,8 +277,8 @@ const UploadDocuments = () => {
                       {item?.document_name.length < 10
                         ? item?.document_name
                         : item?.document_name?.slice(0, 5) +
-                          "..." +
-                          item?.document_name?.split(".").pop()}
+                        "..." +
+                        item?.document_name?.split(".").pop()}
                     </Typography>
                     <div
                       style={{
@@ -274,68 +301,82 @@ const UploadDocuments = () => {
                       /> */}
                     </div>
                   </div>
+
                 </div>
               ))}
             {selectedFile
               ?.slice(0)
               ?.reverse()
               .map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    // width: "40%",
-                    border: "2px dashed grey",
-                    padding: 20,
-                    gap: 20,
-                    borderRadius: "5px",
-                  }}
-                >
-                  <div key={index} className="icon-name-upload-doc">
-                    <img
-                      src={
-                        item?.document_name?.split(".").pop() === "pptx"
-                          ? pptxIcon
-                          : item?.document_name?.split(".").pop() === "pdf"
-                          ? pdfIcon
-                          : null
-                      }
-                      alt="doc-icon"
-                      width={62}
-                    />
-                    <Typography className="doc-name">
-                      {item?.document_name?.length < 10
-                        ? item?.document_name
-                        : item?.document_name?.slice(0, 5) +
+                <>
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "flex-start",
+                      // width: "40%",
+                      border: "2px dashed grey",
+                      padding: 20,
+                      gap: 20,
+                      borderRadius: "5px",
+                    }}
+                  >
+                    <div key={index} className="icon-name-upload-doc">
+                      <img
+                        src={
+                          item?.document_name?.split(".").pop() === "pptx"
+                            ? pptxIcon
+                            : item?.document_name?.split(".").pop() === "pdf"
+                              ? pdfIcon
+                              : null
+                        }
+                        alt="doc-icon"
+                        width={62}
+                      />
+                      <Typography className="doc-name">
+                        {item?.document_name?.length < 10
+                          ? item?.document_name
+                          : item?.document_name?.slice(0, 5) +
                           "..." +
                           item?.document_name?.split(".").pop()}
-                    </Typography>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 10,
-                      }}
-                    >
-                      <img
-                        onClick={() => window.open(item.document_url)}
-                        style={{ cursor: "pointer" }}
-                        src="https://icons.iconarchive.com/icons/praveen/minimal-outline/128/view-icon.png"
-                        height={30}
-                      />
-                      {/* <img
+                      </Typography>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: 10,
+                        }}
+                      >
+                        <img
+                          onClick={() => window.open(item.document_url)}
+                          style={{ cursor: "pointer" }}
+                          src="https://icons.iconarchive.com/icons/praveen/minimal-outline/128/view-icon.png"
+                          height={30}
+                        />
+                        {/* <img
                       style={{cursor:'pointer'}}
                         src="https://icons.iconarchive.com/icons/github/octicons/128/download-16-icon.png"
                         height={30}
                       /> */}
+                      </div>
                     </div>
+
                   </div>
-                </div>
+
+                </>
               ))}
           </div>
+          {campaignDetail?.status === 'CREATED' &&
+            <Button
+              className="hightlight-submit-button"
+              style={{ color: "White" }}
+              onClick={handleUpdateDocStatus}
+            >
+              Submit For Review
+            </Button>
+          }
         </>
       ) : null}
     </Container>

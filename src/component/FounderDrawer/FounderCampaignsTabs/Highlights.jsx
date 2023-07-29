@@ -17,10 +17,10 @@ import { toast } from "react-hot-toast";
 import hightLightValSchema from "../../../Validations/hightLightValSchema";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const Highlights = ({ tabChangeFn }) => {
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const [pitchData, setPitchData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSaveLoading, setIsSaveLoading] = useState(false);
@@ -179,7 +179,7 @@ const Highlights = ({ tabChangeFn }) => {
 
   return (
     <Box
-    className="highlights-wrapper"
+      className="highlights-wrapper"
       sx={{
         marginTop: 4,
         marginLeft: 2,
@@ -264,6 +264,7 @@ const Highlights = ({ tabChangeFn }) => {
               placeholder="Enter highlight first"
               type="text"
               className="inp-enter-name"
+              disabled={campaignDetail?.status !== 'CREATED'}
             />
             {/* </CustomWidthTooltip> */}
             {formik.touched.highlight1 && (
@@ -282,6 +283,7 @@ const Highlights = ({ tabChangeFn }) => {
               placeholder="Enter highlight second"
               type="text"
               className="inp-enter-name"
+              disabled={campaignDetail?.status !== 'CREATED'}
             />
             {/* </CustomWidthTooltip> */}
             {formik.touched.highlight2 && (
@@ -300,6 +302,7 @@ const Highlights = ({ tabChangeFn }) => {
               placeholder="Enter highlight third"
               type="text"
               className="inp-enter-name"
+              disabled={campaignDetail?.status !== 'CREATED'}
             />
             {/* </CustomWidthTooltip> */}
             {formik.touched.highlight3 && (
@@ -318,6 +321,7 @@ const Highlights = ({ tabChangeFn }) => {
               placeholder="Enter highlight fourth"
               type="text"
               className="inp-enter-name"
+              disabled={campaignDetail?.status !== 'CREATED'}
             />
             {/* </CustomWidthTooltip> */}
             {formik.touched.highlight4 && (
@@ -336,7 +340,7 @@ const Highlights = ({ tabChangeFn }) => {
                 </div> */}
           <div className="faqs-button-parent">
             <Button
-              disabled={isSaveLoading === true ? true : false}
+              disabled={campaignDetail?.status !== 'CREATED'}
               onClick={() => {
                 formik.submitForm();
                 setSavedClicked(true);
@@ -356,7 +360,7 @@ const Highlights = ({ tabChangeFn }) => {
                   }}
                 />
               ) : (
-                "Save"
+                <span style={{ color: 'black' }}>Save</span>
               )}
             </Button>
             <Button
@@ -364,7 +368,7 @@ const Highlights = ({ tabChangeFn }) => {
                 formik.submitForm();
                 setNextClicked(true);
               }}
-              disabled={isLoading === true ? true : false}
+              disabled={campaignDetail?.status !== 'CREATED'}
               // type="submit"
               style={{ margin: "20px", marginRight: 0 }}
               variant="contained"
@@ -380,7 +384,7 @@ const Highlights = ({ tabChangeFn }) => {
                   }}
                 />
               ) : (
-                "Next"
+                <span style={{ color: 'white' }}>Next</span>
               )}
             </Button>
           </div>
@@ -401,7 +405,7 @@ const Highlights = ({ tabChangeFn }) => {
             <h3 className="faqs-title">Added Highlights</h3>
             {addmoreHighlights ? null : (
               <button
-                disabled={isLoading === true ? true : false}
+                disabled={campaignDetail?.status !== 'CREATED'}
                 onClick={() => setAddmoreHighlights(true)}
                 type="submit"
                 className="addMore"
@@ -457,23 +461,27 @@ const Highlights = ({ tabChangeFn }) => {
                     )}
                   </button>
                 ) : (
-                  <button
-                    onClick={() => {
-                      EditBankFields(item.id, index);
-                    }}
-                    style={{
-                      cursor: "pointer",
-                      right: 100,
-                      padding: "5px 10px",
-                      borderRadius: "5px",
-                      border: "0px solid",
-                      background: "black",
-                      height: "30px",
-                      color: "white",
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <>
+                    {campaignDetail?.status === 'CREATED' &&
+                      <button
+                        onClick={() => {
+                          EditBankFields(item.id, index);
+                        }}
+                        style={{
+                          cursor: "pointer",
+                          right: 100,
+                          padding: "5px 10px",
+                          borderRadius: "5px",
+                          border: "0px solid",
+                          background: "black",
+                          height: "30px",
+                          color: "white",
+                        }}
+                      >
+                        Edit
+                      </button>
+                    }
+                  </>
                 )}
               </div>
             ))}

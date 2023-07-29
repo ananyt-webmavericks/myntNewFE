@@ -16,8 +16,10 @@ import { useEffect } from "react";
 import { authAxios } from "../../../service/Auth-header";
 import { Base_Url } from "../../../Utils/Configurable";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import pptxIcon from "./../../../images/founder/pptxIcon.png";
 import pdfIcon from "./../../../images/founder/pdfIcon.png";
+import { FounderCampaignAction } from "../../../Redux/actions/FounderEsign";
 const useStyles = makeStyles({
   dropbox: {
     marginTop: 30,
@@ -50,13 +52,14 @@ const UploadPitch = ({ tabChangeFn }) => {
   });
   const [pdfName, setPdfName] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
 
   const handlePitchFileSelect = async (event) => {
     const file = event.target.files[0];
     setPdfName(event.target.files[0].name);
     const reader = new FileReader();
 
-    reader.addEventListener("load", function () {}, false);
+    reader.addEventListener("load", function () { }, false);
 
     if (file) {
       reader.readAsDataURL(file);
@@ -89,7 +92,7 @@ const UploadPitch = ({ tabChangeFn }) => {
   const [addPitch, setAddPitch] = useState(false);
   const [campaignData, setCampaignData] = useState();
   const location = useLocation();
-
+  const dispatch = useDispatch()
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -116,77 +119,82 @@ const UploadPitch = ({ tabChangeFn }) => {
         console.log(JSON.parse(sessionStorage.getItem("is_campaign_added")));
         !JSON.parse(sessionStorage.getItem("is_campaign_added"))
           ? CompanyServices.createCampaign({
-              ...values,
-              company_id: localStorage.getItem("company_id"),
-            }).then((res) => {
-              console.log(res);
-              if (res.status === 200 || res.status === 201) {
-                sessionStorage.setItem("is_campaign_added", true);
-                sessionStorage.setItem("campaign_id", res.data.id);
-                sessionStorage.setItem(
-                  "campaign_data",
-                  JSON.stringify(res.data)
-                );
-                setIsLoading(false);
-                toast.success("Compaign added successfully!", {
-                  position: "top-right",
-                  style: {
-                    borderRadius: "3px",
-                    background: "green",
-                    color: "#fff",
-                  },
-                });
-                setTimeout(() => {
-                  tabChangeFn(0, 1);
-                }, 2000);
-              } else {
-                setIsLoading(false);
-                toast.error("Something went wrong, please try again later", {
-                  position: "top-right",
-                  style: {
-                    borderRadius: "3px",
-                    background: "red",
-                    color: "#fff",
-                  },
-                });
-              }
-            })
+            ...values,
+            company_id: localStorage.getItem("company_id"),
+          }).then((res) => {
+
+            if (res.status === 200 || res.status === 201) {
+              sessionStorage.setItem("is_campaign_added", true);
+              sessionStorage.setItem("campaign_id", res.data.id);
+              sessionStorage.setItem(
+                "campaign_data",
+                JSON.stringify(res.data)
+              );
+              CompanyServices.getCompanyDetailByCampaign(res.data.id).then((res) => {
+                if (res.status === 200 || res.status === 201) {
+                  dispatch(FounderCampaignAction(res?.data))
+                }
+              });
+              setIsLoading(false);
+              toast.success("Compaign added successfully!", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
+              setTimeout(() => {
+                tabChangeFn(0, 1);
+              }, 2000);
+            } else {
+              setIsLoading(false);
+              toast.error("Something went wrong, please try again later", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
+            }
+          })
           : CompanyServices.updateCampaign({
-              ...values,
-              company_id: localStorage.getItem("company_id"),
-              campaign_id: sessionStorage.getItem("campaign_id"),
-            }).then((res) => {
-              console.log(res);
-              console.log(res.status === 200 || res.status === 201);
-              if (res.status === 200 || res.status === 201) {
-                sessionStorage.setItem(
-                  "campaign_data",
-                  JSON.stringify(res.data.data)
-                ); //need to remove this line
-                setIsLoading(false);
-                toast.success("Compaign updated successfully!", {
-                  position: "top-right",
-                  style: {
-                    borderRadius: "3px",
-                    background: "green",
-                    color: "#fff",
-                  },
-                });
-                setTimeout(() => {
-                  tabChangeFn(0, 1);
-                }, 1000);
-              } else {
-                setIsLoading(false);
-                toast.error("Something went wrong, please try again later", {
-                  position: "top-right",
-                  style: {
-                    borderRadius: "3px",
-                    background: "red",
-                    color: "#fff",
-                  },
-                });
-              }
-            });
+            ...values,
+            company_id: localStorage.getItem("company_id"),
+            campaign_id: sessionStorage.getItem("campaign_id"),
+          }).then((res) => {
+            console.log(res);
+            console.log(res.status === 200 || res.status === 201);
+            if (res.status === 200 || res.status === 201) {
+              sessionStorage.setItem(
+                "campaign_data",
+                JSON.stringify(res.data.data)
+              ); //need to remove this line
+              setIsLoading(false);
+              toast.success("Compaign updated successfully!", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
+              setTimeout(() => {
+                tabChangeFn(0, 1);
+              }, 1000);
+            } else {
+              setIsLoading(false);
+              toast.error("Something went wrong, please try again later", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
+            }
+          });
       }
     },
   });
@@ -297,11 +305,16 @@ const UploadPitch = ({ tabChangeFn }) => {
             }}
           >
             <h3>Uploaded Pitch</h3>
-            {!addPitch && (
-              <button onClick={() => setAddPitch(true)} className="addMore">
-                Update Pitch
-              </button>
-            )}
+            {campaignDetail?.status === "CREATED" &&
+              <>
+                {!addPitch && (
+                  <button onClick={() => setAddPitch(true)} className="addMore">
+                    Update Pitch
+                  </button>
+                )}
+              </>
+            }
+
           </div>
           <div
             style={{
@@ -318,23 +331,23 @@ const UploadPitch = ({ tabChangeFn }) => {
           >
             <img src={pdfIcon} height={60} />
             {/* <Typography>{campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1)}</Typography> */}
-            <Typography>{campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1).slice(0, 5) + "..." + campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/')+1).split(".").pop()}</Typography>
-            
+            <Typography>{campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/') + 1).slice(0, 5) + "..." + campaignData?.pitch.substring(campaignData?.pitch.lastIndexOf('/') + 1).split(".").pop()}</Typography>
+
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap:10
+                gap: 10
               }}
             >
               <img
-              style={{cursor:'pointer'}}
+                style={{ cursor: 'pointer' }}
                 src="https://icons.iconarchive.com/icons/praveen/minimal-outline/128/view-icon.png"
                 height={30}
               />
               <img
-              style={{cursor:'pointer'}}
+                style={{ cursor: 'pointer' }}
                 src="https://icons.iconarchive.com/icons/github/octicons/128/download-16-icon.png"
                 height={30}
               />

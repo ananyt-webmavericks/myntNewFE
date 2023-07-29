@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const GetRewards = ({ tabChangeFn }) => {
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const { userData } = useSelector((state) => state.loginData);
   const [rewardData, setRewardData] = useState([]);
   const [isRewardAdded, setIsRewardAdded] = useState(false);
@@ -195,6 +195,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 onBlur={formik.handleBlur}
                 placeholder="Product Name"
                 type="text"
+                disabled={campaignDetail?.status !== 'CREATED'}
                 className="get-reward-inputs"
               />
               {formik.touched.product_name && (
@@ -211,6 +212,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 onBlur={formik.handleBlur}
                 placeholder="Original Price"
                 type="text"
+                disabled={campaignDetail?.status !== 'CREATED'}
                 className="get-reward-inputs"
               />
               {formik.touched.amount && (
@@ -225,6 +227,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 onBlur={formik.handleBlur}
                 placeholder="Discounted Price"
                 type="text"
+                disabled={campaignDetail?.status !== 'CREATED'}
                 className="get-reward-inputs"
               />
               {formik.touched.discounted_price && (
@@ -254,7 +257,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 formik.submitForm();
                 setSavedClicked(true);
               }}
-              disabled={isSaveLoading === true ? true : false}
+              disabled={campaignDetail?.status !== 'CREATED'}
               type="submit"
               style={{ margin: "20px", color: "black" }}
               variant="contained"
@@ -270,7 +273,7 @@ const GetRewards = ({ tabChangeFn }) => {
                   }}
                 />
               ) : (
-                "Save"
+                <span style={{ color: 'black' }}>Save</span>
               )}
             </Button>
             <Button
@@ -278,7 +281,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 formik.submitForm();
                 setNextClicked(true);
               }}
-              disabled={isLoading === true ? true : false}
+              disabled={campaignDetail?.status !== 'CREATED'}
               type="submit"
               style={{ margin: "20px", marginRight: 0 }}
               variant="contained"
@@ -294,7 +297,7 @@ const GetRewards = ({ tabChangeFn }) => {
                   }}
                 />
               ) : (
-                "Next"
+                <span style={{ color: 'white' }}>NEXT</span>
               )}
             </Button>
           </div>
@@ -318,7 +321,7 @@ const GetRewards = ({ tabChangeFn }) => {
               <h3 style={{}}>Rewards Added</h3>
               {addMoreRewards ? null : (
                 <button
-                  disabled={isLoading === true ? true : false}
+                  disabled={campaignDetail?.status !== 'CREATED'}
                   onClick={() => setAddmoreRewards(true)}
                   type="submit"
                   className="addMore"
@@ -372,23 +375,27 @@ const GetRewards = ({ tabChangeFn }) => {
                       )}
                     </button>
                   ) : (
-                    <button
-                      onClick={() => {
-                        EditBankFields(item.id, index);
-                      }}
-                      style={{
-                        cursor: "pointer",
-                        right: 100,
-                        padding: "5px 10px",
-                        borderRadius: "5px",
-                        border: "0px solid",
-                        background: "black",
-                        height: "30px",
-                        color: "white",
-                      }}
-                    >
-                      Edit
-                    </button>
+                    <>
+                      {campaignDetail?.status === 'CREATED' &&
+                        <button
+                          onClick={() => {
+                            EditBankFields(item.id, index);
+                          }}
+                          style={{
+                            cursor: "pointer",
+                            right: 100,
+                            padding: "5px 10px",
+                            borderRadius: "5px",
+                            border: "0px solid",
+                            background: "black",
+                            height: "30px",
+                            color: "white",
+                          }}
+                        >
+                          Edit
+                        </button>
+                      }
+                    </>
                   )}
                 </div>
                 {isEdit === item.id ? (

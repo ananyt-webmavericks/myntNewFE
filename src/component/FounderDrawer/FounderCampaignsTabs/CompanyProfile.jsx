@@ -97,7 +97,7 @@ const useStyles = makeStyles({
 });
 const CompanyProfile = ({ tabChangeFn }) => {
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const classes = useStyles();
   const theme = useTheme();
   const [personName, setPersonName] = useState([]);
@@ -328,6 +328,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   components={{
                     IndicatorSeparator: () => null,
                   }}
+                  isDisabled={campaignDetail?.status !== "CREATED"}
                   value={countryCode}
                   options={getAllCountries() ?? []}
                   placeholder="---Select Country---"
@@ -351,6 +352,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   options={getAllState() ?? []}
                   placeholder="Select State"
                   name="state"
+                  isDisabled={campaignDetail?.status !== "CREATED"}
                   onChange={(val) => setStateValue(val)}
                   onBlur={() => formik.setFieldTouched("state", true)}
                 />
@@ -365,6 +367,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   components={{
                     IndicatorSeparator: () => null,
                   }}
+                  isDisabled={campaignDetail?.status !== "CREATED"}
                   styles={{ height: 42 }}
                   value={cityCode}
                   options={getAllCity() ?? []}
@@ -388,6 +391,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="Enter Pin Code*"
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.pincode && (
@@ -405,6 +409,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="Enter your Company Address*"
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.company_address && (
@@ -444,6 +449,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="Enter your company website*"
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.website_url && (
@@ -473,6 +479,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                     style={{ border: "none", height: "40px" }}
                     placeholder="Facebook Link"
                     type="text"
+                    disabled={campaignDetail?.status !== "CREATED"}
                     className="icon-input"
                   />
                 </div>
@@ -503,6 +510,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                     style={{ border: "none", height: "40px" }}
                     placeholder="Instagram Link"
                     type="text"
+                    disabled={campaignDetail?.status !== "CREATED"}
                     className="icon-input"
                   />
                 </div>
@@ -533,6 +541,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                     style={{ border: "none", height: "40px" }}
                     placeholder="Linked In Link"
                     type="text"
+                    disabled={campaignDetail?.status !== "CREATED"}
                     className="icon-input"
                   />
                 </div>
@@ -571,6 +580,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="Enter your legal name*"
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.legal_name && (
@@ -587,6 +597,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="Enter CIN Number*"
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.cin && (
@@ -612,6 +623,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                     style={{ border: "none", height: "40px", paddingLeft: 0 }}
                     placeholder="Date of Incorporation"
                     type="date"
+                    disabled={campaignDetail?.status !== "CREATED"}
                     className="icon-input"
                   />
                   {/* <IconButton sx={{ p: "10px" }} aria-label="menu">
@@ -632,6 +644,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="incorporation Type e.g. Private, public etc."
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.incorporation_type && (
@@ -671,6 +684,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   options={sectors}
                   placeholder="Select Sector"
                   name="sector"
+                  isDisabled={campaignDetail?.status !== "CREATED"}
                   onBlur={formik.handleBlur}
                   onChange={(val) => {
                     setSectorValue(val);
@@ -691,6 +705,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   onBlur={formik.handleBlur}
                   placeholder="Amount Invested in the business till date *"
                   type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
                   className="amount-invested-till-date"
                 />
                 {formik.touched.invested_so_far && (
@@ -710,6 +725,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   placeholder="No. of Employees"
                   name="number_of_employees"
                   onBlur={formik.handleBlur}
+                  isDisabled={campaignDetail?.status !== "CREATED"}
                   onChange={(val) => {
                     setEmployeesValue(val);
                   }}
@@ -730,7 +746,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
               formik.submitForm();
               setSavedClicked(true);
             }}
-            disabled={isSaveLoading === true ? true : false}
+            disabled={campaignDetail?.status !== "CREATED"}
             // type="submit"
             style={{ margin: "20px", color: "black" }}
             variant="contained"
@@ -741,11 +757,11 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 style={{ color: "black", fontSize: 10, width: 20, height: 20 }}
               />
             ) : (
-              "Save"
+              <span style={{ color: "black" }}>Save</span>
             )}
           </Button>
           <Button
-            disabled={isLoading === true ? true : false}
+            disabled={campaignDetail?.status !== "CREATED"}
             onClick={() => {
               formik.submitForm();
               setNextClicked(true);
@@ -760,7 +776,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                 style={{ color: "white", fontSize: 10, width: 20, height: 20 }}
               />
             ) : (
-              "Next"
+              <span style={{ color: "white" }}>Next</span>
             )}
           </Button>
         </div>

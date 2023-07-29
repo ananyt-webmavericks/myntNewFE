@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 
 const FAQS = ({ tabChangeFn }) => {
   const navigate = useNavigate();
-
+  const { campaignDetail } = useSelector(state => state.campaignDetail)
   const [q1Count, setQ1Count] = useState(0);
   const [q2Count, setQ2Count] = useState(0);
   const [addedFaqs, setAddedFaqs] = useState([]);
@@ -276,7 +276,7 @@ const FAQS = ({ tabChangeFn }) => {
 
             <div className="faqs-button-parent">
               <Button
-                onClick={() =>{formik.submitForm(); setSavedClicked(true)}}
+                onClick={() => { formik.submitForm(); setSavedClicked(true) }}
                 disabled={isSaveLoading === true ? true : false}
                 // type="submit"
                 style={{ margin: "20px", color: "black" }}
@@ -297,8 +297,8 @@ const FAQS = ({ tabChangeFn }) => {
                 )}
               </Button>
               <Button
-                onClick={() =>{formik.submitForm(); setNextClicked(true)}}
-                disabled={isLoading === true ? true : false}
+                onClick={() => { formik.submitForm(); setNextClicked(true) }}
+                disabled={campaignDetail?.status !== 'CREATED'}
                 // type="submit"
                 style={{ margin: "20px", marginRight: "0px" }}
                 variant="contained"
@@ -314,7 +314,7 @@ const FAQS = ({ tabChangeFn }) => {
                     }}
                   />
                 ) : (
-                  "Next"
+                  <span style={{ color: 'white' }}>Next</span>
                 )}
               </Button>
             </div>
@@ -326,7 +326,7 @@ const FAQS = ({ tabChangeFn }) => {
         <Box sx={{ marginTop: "25px", marginLeft: 2 }}>
           {addedFaqs.length > 0 && (
             <div
-            className="faq-text-wrapper"
+              className="faq-text-wrapper"
               style={{
                 display: "flex",
                 gap: 20,
@@ -337,16 +337,21 @@ const FAQS = ({ tabChangeFn }) => {
               }}
             >
               <h3 className="faqs-title">Added FAQs</h3>
-              {addMoreFaqs ? null : (
-                <button
-                  disabled={isLoading === true ? true : false}
-                  onClick={() => setAddMoreFaqs(true)}
-                  type="submit"
-                  className="addMore"
-                >
-                  Add More FAQs
-                </button>
-              )}
+              {campaignDetail?.status === "CREATED" &&
+                <>
+                  {addMoreFaqs ? null : (
+                    <button
+                      disabled={isLoading === true ? true : false}
+                      onClick={() => setAddMoreFaqs(true)}
+                      type="submit"
+                      className="addMore"
+                    >
+                      Add More FAQs
+                    </button>
+                  )}
+                </>
+              }
+
             </div>
           )}
           {addedFaqs?.map((item, index) => (
@@ -363,7 +368,7 @@ const FAQS = ({ tabChangeFn }) => {
                 </Typography>
                 {isEdit === item.id ? (
                   <button
-                    disabled={isEditLoading ? true : false}
+                    disabled={campaignDetail?.status !== 'CREATED'}
                     onClick={() => {
                       handleSubmit(item.id);
                     }}
@@ -387,27 +392,32 @@ const FAQS = ({ tabChangeFn }) => {
                         }}
                       />
                     ) : (
-                      "Save"
+                      <span style={{ color: 'black' }}>Save</span>
                     )}
                   </button>
                 ) : (
-                  <button
-                    onClick={() => {
-                      EditBankFields(item.id, index);
-                    }}
-                    style={{
-                      cursor: "pointer",
-                      right: 100,
-                      padding: "5px 10px",
-                      borderRadius: "5px",
-                      border: "0px solid",
-                      background: "black",
-                      height: "30px",
-                      color: "white",
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <>
+                    {campaignDetail?.status === "CREATED" &&
+                      <button
+                        onClick={() => {
+                          EditBankFields(item.id, index);
+                        }}
+                        disabled={campaignDetail?.status !== 'CREATED'}
+                        style={{
+                          cursor: "pointer",
+                          right: 100,
+                          padding: "5px 10px",
+                          borderRadius: "5px",
+                          border: "0px solid",
+                          background: "black",
+                          height: "30px",
+                          color: "white",
+                        }}
+                      >
+                        Edit
+                      </button>
+                    }
+                  </>
                 )}
               </div>
 
@@ -416,6 +426,7 @@ const FAQS = ({ tabChangeFn }) => {
               {isEdit === item.id ? (
                 <input
                   value={editQuestion}
+                  disabled={campaignDetail?.status !== 'CREATED'}
                   onChange={(e) => setEditQuestion(e.target.value)}
                   placeholder="Type your question here…"
                   type="text"
@@ -423,7 +434,7 @@ const FAQS = ({ tabChangeFn }) => {
                 />
               ) : (
                 <input
-                  disabled
+                  disabled={campaignDetail?.status !== 'CREATED'}
                   value={
                     item.question
                     // newData[0].id===item.id  ? newData[0].question : item.question
@@ -439,6 +450,7 @@ const FAQS = ({ tabChangeFn }) => {
               {isEdit === item.id ? (
                 <textarea
                   value={editAnswer}
+                  disabled={campaignDetail?.status !== 'CREATED'}
                   onChange={(e) => setEditAnswer(e.target.value)}
                   style={{ marginBottom: 0 }}
                   placeholder="Describe your previous fundraising rounds*"
@@ -454,6 +466,7 @@ const FAQS = ({ tabChangeFn }) => {
                     item.answer
                     // isEdit===item.id ? newData[0].answer : item.answer
                   }
+
                   style={{ marginBottom: 0 }}
                   placeholder="Describe your previous fundraising rounds*"
                   className="inp-textarea-desc"
