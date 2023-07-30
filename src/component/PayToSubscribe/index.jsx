@@ -101,7 +101,7 @@ export default function PayToSubscribeMain() {
             user_id: userData.id,
             campaign_id: location.state?.campaignId,
             amount: vals.amount,
-            total_amount: Math.floor(vals.amount + (vals.amount * 2 /100) + ((18 / 100) * vals.amount))
+            total_amount: Math.floor(vals.amount + (vals.amount * 2 / 100) + ((18 / 100) * vals.amount))
         }
         const { data: { data } } = await authAxios.post(`${Base_Url}/api/payment/create-order`, values)
         const cf = new window.Cashfree(data.payment_session_id);
@@ -128,9 +128,9 @@ export default function PayToSubscribeMain() {
             <span className="get-started-heading payment-section-heading">Enroll To {location.state?.companyName}</span>
             <Card className="card-pay-main-section">
                 <CardContent>
-                    <Grid className="payment-card-wrapper" style={{width: "100%", marginLeft: 0,padding: 16}} container spacing={gridxsFirst}>
+                    <Grid className="payment-card-wrapper" style={{ width: "100%", marginLeft: 0, padding: 16 }} container spacing={gridxsFirst}>
 
-                        <Grid className="payment-card" style={{padding: 0}} item xs={gridxsSecond}>
+                        <Grid className="payment-card" style={{ padding: 0 }} item xs={gridxsSecond}>
                             <span className="pay-amount-label">Amount</span>
 
                             <form onSubmit={formik.handleSubmit}>
@@ -176,7 +176,7 @@ export default function PayToSubscribeMain() {
                             }
 
                         </Grid>
-                        <Grid className="payment-card" style={{padding: 0}} item xs={gridxsSecond}>
+                        <Grid className="payment-card" style={{ padding: 0 }} item xs={gridxsSecond}>
                             <span className="pay-amount-label">Have a Coupon Code?</span>
                             <div style={{ width: '100%', marginTop: '1.5em' }} className="dropdown-container-live-deals">
                                 <Select
@@ -226,7 +226,7 @@ export default function PayToSubscribeMain() {
                                             <Tooltip title="A convenience fee of 2% is charged by Mynt for sourcing deals and maintaining the platform"><img src={Enquiry} width={20} height={20} alt="" /></Tooltip>
                                         </div>
 
-                                        <span style={{ fontSize: '16px', fontWeight: '600' }}>{formik.values.amount?formik.values.amount * 2 /100:0}</span>
+                                        <span style={{ fontSize: '16px', fontWeight: '600' }}>{formik.values.amount ? formik.values.amount * 2 / 100 : 0}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em', marginBottom: '1em' }}>
                                         <div style={{ alignItems: 'center', display: 'flex' }}>
@@ -238,7 +238,7 @@ export default function PayToSubscribeMain() {
                                     <hr />
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                         <span style={{ fontSize: '18px', fontWeight: '600' }}>Total</span>
-                                        <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{formik.values.amount * 2 /100 + ((18 / 100) * formik.values.amount) + formik.values.amount}</span>
+                                        <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{formik.values.amount * 2 / 100 + ((18 / 100) * formik.values.amount) + formik.values.amount}</span>
                                     </div>
                                 </CardContent>
 
@@ -270,8 +270,8 @@ export default function PayToSubscribeMain() {
                                 />
                                 <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                             </div>
-                            <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft:0 }}>Pay Online</button>
-                            <button onClick={() => {}} className="payment-btn" style={{ maxWidth: '100%', marginLeft:0 }}>Pay Offline</button>
+                            <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Online</button>
+                            <button onClick={() => { }} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Offline</button>
                             {/* <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button> */}
                         </Grid>
                     </Grid>

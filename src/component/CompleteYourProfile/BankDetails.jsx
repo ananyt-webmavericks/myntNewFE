@@ -5,6 +5,7 @@ import services from "../../service/investor.kyc";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const data = {
     bank_name: "",
@@ -14,6 +15,7 @@ const data = {
 
 export default function BankDetails() {
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const [value, setValue] = useState(data)
     const { userData } = useSelector((state) => state.loginData)
     const { userKycData } = useSelector(state => state.kycData)
@@ -54,6 +56,7 @@ export default function BankDetails() {
         } else if (value.ifsc_code === '') {
             notify('Please enter ifsc code')
         } else {
+            setLoading(true)
             try {
                 services.VerifyKycBank(val).then(
                     (response) => {
@@ -63,6 +66,7 @@ export default function BankDetails() {
 
                                 if (response.status === 200 && response.data.bank_account_verified) {
                                     navigate('/dashboard')
+                                    setLoading(false)
                                     toast.success("Bank details verify successful", {
                                         position: "top-right",
                                         style: {
@@ -81,6 +85,7 @@ export default function BankDetails() {
                                     })
                                     await dispatch(storeKycDetailsAction(response.data))
                                 } else {
+                                    setLoading(false)
                                     toast.error("Invalid bank details!", {
                                         position: "top-right",
                                         style: {
@@ -93,6 +98,7 @@ export default function BankDetails() {
                             })
                         }
                         else {
+                            setLoading(false)
                             toast.error("Something went wrong!", {
                                 position: "top-right",
                                 style: {
@@ -106,6 +112,7 @@ export default function BankDetails() {
                     })
             }
             catch {
+                setLoading(false)
                 notify("Try after few minutes")
             }
         }
@@ -154,7 +161,13 @@ export default function BankDetails() {
             {/* </Grid>
             </Grid> */}
             <div className="verify-button-container">
-                <Button onClick={handleSubmit} varient="contained" className="verify-button">Submit</Button>
+                <Button onClick={handleSubmit} varient="contained" className="verify-button">
+                    {loading ?
+                        <CircularProgress color="inherit" />
+                        :
+                        'Submit'
+                    }
+                </Button>
             </div>
         </div>
     )

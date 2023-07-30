@@ -10,7 +10,7 @@ import OtpServices from "../../service/OtpService";
 import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import services from "../../service/investor.kyc";
-
+import CircularProgress from '@mui/material/CircularProgress';
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         marginTop: '11px',
@@ -22,6 +22,7 @@ export default function VerifyNumberOtp() {
     const ratio = parseInt(window.innerWidth);
     const navigate = useNavigate();
     const [OTP, setOTP] = useState("");
+    const [loading, setLoading] = useState(false)
     const { userData } = useSelector((state) => state.loginData)
     const { userMail } = useSelector((state) => state.userInfo)
     const { userKycData } = useSelector(state => state.kycData)
@@ -31,14 +32,14 @@ export default function VerifyNumberOtp() {
     const kycDonePath = localStorage.getItem('kycDonePath')
     // const navigateToProfile = localStorage.getItem('navigateToVerifyMobile')
     const notify = (data) => {
-        toast.error(data,{
+        toast.error(data, {
             position: "top-right",
             style: {
-              borderRadius: "3px",
-              background: "red",
-              color: "#fff",
+                borderRadius: "3px",
+                background: "red",
+                color: "#fff",
             },
-          })
+        })
     }
     console.log(userKycData)
     const handleResendOtp = () => {
@@ -66,6 +67,7 @@ export default function VerifyNumberOtp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let data = { user_id: userData.id, otp: OTP }
+        setLoading(true)
         try {
             OtpServices.MobileOtp(data).then(
                 async (response) => {
@@ -74,36 +76,40 @@ export default function VerifyNumberOtp() {
                         if (kycDetail.status === 200) {
                             setCallFn(true)
                             await dispatch(storeKycDetailsAction(response.data.data))
-                            toast.success("Mobile number verified!",{
+                            toast.success("Mobile number verified!", {
                                 position: "top-right",
                                 style: {
-                                  borderRadius: "3px",
-                                  background: "green",
-                                  color: "#fff",
+                                    borderRadius: "3px",
+                                    background: "green",
+                                    color: "#fff",
                                 },
-                              })
+                            })
+                            setLoading(false)
                             console.log(kycDetail.data)
                         } else {
+                            setLoading(false)
                             toast.error("Invalid OTP!", {
                                 position: "top-right",
                                 style: {
-                                  borderRadius: "3px",
-                                  background: "red",
-                                  color: "#fff",
+                                    borderRadius: "3px",
+                                    background: "red",
+                                    color: "#fff",
                                 },
-                              })
+                            })
                         }
                         // navigateToProfile ? navigate('/my-profile') : navigate('/complete-your-profile/verify-kyc')
                         localStorage.removeItem('navigateToVerifyMobile')
                     }
                     else {
                         setOTP('')
+                        setLoading(false)
                     }
 
                 })
         }
         catch {
             notify("Try after few minutes")
+            setLoading(false)
         }
 
     }
@@ -133,7 +139,7 @@ export default function VerifyNumberOtp() {
         return <button style={{ background: 'none', border: 'none', float: 'right', marginRight: '20px' }} {...buttonProps}>Resend</button>;
     };
     const renderTime = remainingTime => {
-        return <span style={{ color: '#777777',fontSize: '14px' }}>resend after {remainingTime} s</span>;
+        return <span style={{ color: '#777777', fontSize: '14px' }}>resend after {remainingTime} s</span>;
     };
     return (
         <>
@@ -177,7 +183,13 @@ export default function VerifyNumberOtp() {
                             <ResendOTP maxTime={90} className={classes.menuItem} style={{ width: '330px', display: 'flex-root' }} renderTime={renderTime} renderButton={renderButton} disable={false} onResendClick={() => handleResendOtp()} />
                         </div>
                         <div className="verify-button-container">
-                            <Button varient="contained" onClick={handleSubmit} className="verify-button">Verify</Button>
+                            <Button varient="contained" onClick={handleSubmit} className="verify-button">
+                                {loading ?
+                                    <CircularProgress color="inherit" />
+                                    :
+                                    'Verify'
+                                }
+                            </Button>
                         </div>
 
                     </CardContent>

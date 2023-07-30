@@ -11,7 +11,7 @@ import { userEmailAction } from "../../Redux/actions/auth";
 import { useEffect } from "react";
 import services from "../../service/investor.kyc";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
-
+import CircularProgress from '@mui/material/CircularProgress';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function VerifyNumber() {
@@ -21,6 +21,7 @@ export default function VerifyNumber() {
     const { userInfo } = useSelector((state) => state.loginData)
     const [kycData, setkycData] = useState(false)
     const [mobile, setMobile] = useState('')
+    const [loading, setLoading] = useState(false)
     const handleChange = (e) => {
         setMobile(e.target.value)
     }
@@ -48,6 +49,7 @@ export default function VerifyNumber() {
         } else if (mobile.length !== 10) {
             notify('Please enter valid number')
         } else {
+            setLoading(true)
             try {
                 !kycData
                     ? OtpServices.VerifyMobileOtp(data).then(
@@ -57,9 +59,11 @@ export default function VerifyNumber() {
                                 await dispatch(storeKycDetailsAction(response.data.data))
                                 await dispatch(userEmailAction(data.mobile_number))
                                 navigate('/complete-your-profile/verify-otp')
+                                setLoading(false)
                             }
                             else {
                                 console.log("error")
+                                setLoading(false)
                             }
                         })
                     : OtpServices.VerifyMobileOtpPatch(data).then(
@@ -69,13 +73,16 @@ export default function VerifyNumber() {
                                 await dispatch(storeKycDetailsAction(response.data.data))
                                 await dispatch(userEmailAction(data.mobile_number))
                                 navigate('/complete-your-profile/verify-otp')
+                                setLoading(false)
                             }
                             else {
                                 console.log("error")
+                                setLoading(false)
                             }
                         })
             }
             catch {
+                setLoading(false)
                 notify("Try after few minutes")
             }
         }
@@ -158,7 +165,14 @@ export default function VerifyNumber() {
 
                     </div>
                     <div className="verify-button-container">
-                        <Button varient="contained" onClick={handleSubmit} className="verify-button">Verify</Button>
+                        <Button varient="contained" onClick={handleSubmit} className="verify-button">
+                            {loading ?
+                                <CircularProgress color="inherit" />
+                                :
+                                'Verify'
+                            }
+                        </Button>
+
                     </div>
 
                 </CardContent>

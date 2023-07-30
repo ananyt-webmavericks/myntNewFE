@@ -108,7 +108,7 @@ const UploadDocuments = () => {
 
   const handleUpdateDocStatus = () => {
     try {
-      CompanyServices.updateCampaign({ company_id: campaignDetail?.id, status: 'UNDER REVIEW' }).then(res => {
+      CompanyServices.updateCampaign({ campaign_id: campaignDetail?.id, status: 'UNDER REVIEW' }).then(res => {
         if (res.status === 200 || res.status === 201) {
           toast.success("Thanks for submitting Campaign to us we are going under review", {
             position: "top-right",

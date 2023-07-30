@@ -7,6 +7,8 @@ import services from "../../service/investor.kyc";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
+import CircularProgress from '@mui/material/CircularProgress';
+
 const dataa = {
     address_line_1: "",
     address_line_2: "",
@@ -28,19 +30,20 @@ export default function VerifyAddress() {
     const [gridxsSmall, setGridxsSmall] = useState(6)
     const ratio = parseInt(window.innerWidth);
     const kycDonePath = localStorage.getItem('kycDonePath')
+    const [loading, setLoading] = useState(false)
     const navigateToProfile = localStorage.getItem('navigateToVerifyAddress')
     const handleChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value })
     }
     const notify = (data) => {
-        toast.error(data,{
+        toast.error(data, {
             position: "top-right",
             style: {
-              borderRadius: "3px",
-              background: "red",
-              color: "#fff",
+                borderRadius: "3px",
+                background: "red",
+                color: "#fff",
             },
-          })
+        })
     }
     useEffect(() => {
         services.getInvestorKycData(userData.id).then((response, error) => {
@@ -69,6 +72,7 @@ export default function VerifyAddress() {
         } else if (value.pincode === '') {
             notify('Please enter  pincode')
         } else if (_.isEmpty(data)) {
+            setLoading(true)
             try {
                 services.VerifyAddress(val).then(
                     (response) => {
@@ -76,20 +80,24 @@ export default function VerifyAddress() {
                         if (response.status === 201 || response.status === 200) {
                             services.getInvestorKycData(userData.id).then((response) => {
                                 if (response.status === 200) {
+                                    setLoading(false)
                                     dispatch(storeKycDetailsAction(response.data))
-                                    handleNavigate()
+                                    // handleNavigate()
                                 }
                             })
                         }
                         else {
+                            setLoading(false)
                             console.log("error")
                         }
                     })
             }
             catch {
+                setLoading(false)
                 notify("Try after few minutes")
             }
         } else {
+            setLoading(true)
             try {
                 services.UpdateAddress(val).then(
                     (response) => {
@@ -99,33 +107,37 @@ export default function VerifyAddress() {
                                 console.log(response.data)
                                 if (response.status === 200) {
                                     await dispatch(storeKycDetailsAction(response.data))
-                                    toast.success("Address updated successful!",{
+                                    toast.success("Address updated successful!", {
                                         position: "top-right",
                                         style: {
-                                          borderRadius: "3px",
-                                          background: "green",
-                                          color: "#fff",
+                                            borderRadius: "3px",
+                                            background: "green",
+                                            color: "#fff",
                                         },
-                                      })
-                                      handleNavigate();
+                                    })
+                                    setLoading(false)
+                                    // handleNavigate();
                                 } else {
-                                    toast.error("Please check entered details!",{
+                                    setLoading(false)
+                                    toast.error("Please check entered details!", {
                                         position: "top-right",
                                         style: {
-                                          borderRadius: "3px",
-                                          background: "red",
-                                          color: "#fff",
+                                            borderRadius: "3px",
+                                            background: "red",
+                                            color: "#fff",
                                         },
-                                      })
+                                    })
                                 }
                             })
                         }
                         else {
+                            setLoading(false)
                             console.log("error")
                         }
                     })
             }
             catch {
+                setLoading(false)
                 notify("Try after few minutes")
             }
         }
@@ -162,7 +174,7 @@ export default function VerifyAddress() {
             setGridxsMain(1)
             setGridxsSmall(12)
         }
-        // handleNavigate()
+        handleNavigate()
     }, [data, userKycData])
     console.log(userData)
     return (
@@ -240,7 +252,14 @@ export default function VerifyAddress() {
                             </Grid> */}
                             </Grid>
                             <div className="verify-button-container">
-                                <Button varient="contained" className="verify-button" onClick={handleSubmit}>Next</Button>
+                                <Button varient="contained" className="verify-button" onClick={handleSubmit}
+                                >
+                                    {loading ?
+                                        <CircularProgress color="inherit" />
+                                        :
+                                        'Next'
+                                    }
+                                </Button>
                             </div>
                         </div>
 

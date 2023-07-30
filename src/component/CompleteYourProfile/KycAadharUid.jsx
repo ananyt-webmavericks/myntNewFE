@@ -9,6 +9,8 @@ import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import { useFormik } from "formik";
 import AadharValSchema from "../../Validations/AadharValSchema";
+import CircularProgress from '@mui/material/CircularProgress';
+
 const data = {
     pan_card: '',
     birth_date: '',
@@ -21,7 +23,7 @@ export default function KycAadharUid() {
     const { userData } = useSelector((state) => state.loginData)
     const { userKycData } = useSelector(state => state.kycData)
     const ratio = parseInt(window.innerWidth);
-    console.log(userKycData)
+    const [loading, setLoading] = useState(false)
     const kycDonePath = localStorage.getItem('kycDonePath')
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -37,40 +39,43 @@ export default function KycAadharUid() {
 
         onSubmit: (values) => {
             console.log(values)
+            setLoading(true)
             services.verifyAadharKyc(values).then(async res => {
                 console.log(res)
                 if (res.status === 200 || res.status === 201) {
-                    console.log(res.data.data.aadhaar_card_verified)
                     if (res.data.data.aadhaar_card_verified) {
-                        toast.success("Aadhar verified  successfully!",{
+                        setLoading(false)
+                        toast.success("Aadhar verified  successfully!", {
                             position: "top-right",
                             style: {
-                              borderRadius: "3px",
-                              background: "green",
-                              color: "#fff",
+                                borderRadius: "3px",
+                                background: "green",
+                                color: "#fff",
                             },
-                          })
+                        })
                         await dispatch(storeKycDetailsAction(res.data.data))
                     } else {
-                        toast.error("Invalid aadhar number!",{
+                        setLoading(false)
+                        toast.error("Invalid aadhar number!", {
                             position: "top-right",
                             style: {
-                              borderRadius: "3px",
-                              background: "red",
-                              color: "#fff",
+                                borderRadius: "3px",
+                                background: "red",
+                                color: "#fff",
                             },
-                          })
+                        })
                         await dispatch(storeKycDetailsAction(res.data.data))
                     }
                 } else {
-                    toast.error("Something went wrong, please try again later",{
+                    setLoading(false)
+                    toast.error("Something went wrong, please try again later", {
                         position: "top-right",
                         style: {
-                          borderRadius: "3px",
-                          background: "red",
-                          color: "#fff",
+                            borderRadius: "3px",
+                            background: "red",
+                            color: "#fff",
                         },
-                      })
+                    })
                 }
             })
         }
@@ -139,7 +144,13 @@ export default function KycAadharUid() {
 
                             </div>
                             <div className="verify-button-container" style={{ paddingTop: '28px' }}>
-                                <Button type="submit" varient="contained" className="verify-button">Submit</Button>
+                                <Button type="submit" varient="contained" className="verify-button">
+                                    {loading ?
+                                        <CircularProgress color="inherit" />
+                                        :
+                                        'Submit'
+                                    }
+                                </Button>
                             </div>
                         </form>
                     </CardContent>

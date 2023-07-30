@@ -8,6 +8,7 @@ import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
 import { storeKycDetailsAction } from "../../Redux/actions/verifyKycAction";
 import { useRef } from "react";
+import CircularProgress from '@mui/material/CircularProgress';
 const data = {
     pan_card: '',
     birth_date: '',
@@ -25,7 +26,7 @@ export default function KycPanDetails() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const inputRefs = [useRef(null), useRef(null), useRef(null)];
-
+    const [loading, setLoading] = useState(false)
     const handleChange = (e) => {
         if (e.target.name === 'pan_card') {
             setValue({ ...value, pan_card: e.target.value.toUpperCase() })
@@ -62,6 +63,7 @@ export default function KycPanDetails() {
         } else if (value.birth_year === '') {
             notify('Please enter  year')
         } else {
+            setLoading(true)
             try {
                 services.VerifyKycPan(val).then(
                     async (response) => {
@@ -69,6 +71,7 @@ export default function KycPanDetails() {
                         if (response.status === 201 || response.status === 200) {
                             const kycDetails = await services.getInvestorKycData(userData.id)
                             if (kycDetails.status === 200) {
+                                setLoading(false)
                                 toast.success("Pan card verified!", {
                                     position: "top-right",
                                     style: {
@@ -79,6 +82,7 @@ export default function KycPanDetails() {
                                 })
                                 await dispatch(storeKycDetailsAction(response.data.data))
                             } else {
+                                setLoading(false)
                                 toast.error("Please enter valid details!", {
                                     position: "top-right",
                                     style: {
@@ -90,11 +94,13 @@ export default function KycPanDetails() {
                             }
                         }
                         else {
+                            setLoading(false)
                             console.log("error")
                         }
                     })
             }
             catch {
+                setLoading(false)
                 notify("Try after few minutes")
             }
         }
@@ -183,7 +189,13 @@ export default function KycPanDetails() {
                             </div>
                         </div>
                         <div className="verify-button-container" style={{ paddingTop: '28px' }}>
-                            <Button varient="contained" className="verify-button" onClick={handleSubmit}>Submit</Button>
+                            <Button varient="contained" className="verify-button" onClick={handleSubmit}>
+                                {loading ?
+                                    <CircularProgress color="inherit" />
+                                    :
+                                    'Submit'
+                                }
+                            </Button>
                         </div>
 
                     </CardContent>

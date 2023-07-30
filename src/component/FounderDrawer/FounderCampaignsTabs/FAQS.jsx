@@ -236,6 +236,7 @@ const FAQS = ({ tabChangeFn }) => {
                 onBlur={formik.handleBlur}
                 placeholder="Type your question here…"
                 type="text"
+                disabled={campaignDetail?.status !== 'CREATED'}
                 className="inp-enter-name"
               />
               {formik.touched.question && (
@@ -255,6 +256,7 @@ const FAQS = ({ tabChangeFn }) => {
                 placeholder="Describe your previous fundraising rounds*"
                 className="inp-textarea-desc"
                 id="describe"
+                disabled={campaignDetail?.status !== 'CREATED'}
                 rows="7"
               ></textarea>
 
@@ -277,7 +279,7 @@ const FAQS = ({ tabChangeFn }) => {
             <div className="faqs-button-parent">
               <Button
                 onClick={() => { formik.submitForm(); setSavedClicked(true) }}
-                disabled={isSaveLoading === true ? true : false}
+                disabled={campaignDetail?.status !== 'CREATED'}
                 // type="submit"
                 style={{ margin: "20px", color: "black" }}
                 variant="contained"
@@ -293,7 +295,7 @@ const FAQS = ({ tabChangeFn }) => {
                     }}
                   />
                 ) : (
-                  "Save"
+                  <span style={{ color: 'black' }}>Save</span>
                 )}
               </Button>
               <Button
