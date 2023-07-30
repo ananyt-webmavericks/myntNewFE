@@ -26,19 +26,36 @@ export default function LoginFounder() {
       setIsLoading(true)
       try {
         UserServices.LoginUserByEmail(values).then((response) => {
-          if (response.status === 200) {
-            toast.success("OTP sent succesfully", {
-              position: "top-right",
-              style: {
-                borderRadius: "3px",
-                background: "green",
-                color: "#fff",
-              },
-            });
 
-            navigate("/otp-verification-founder", {
-              state: { email: values.email, isNewCreate: false },
-            });
+          if (response.status === 200) {
+
+            if (response?.data?.status === 'false') {
+              setIsLoading(false)
+
+              toast.error(response?.data?.message, {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "red",
+                  color: "#fff",
+                },
+              });
+            } else {
+              setIsLoading(false)
+              toast.success("OTP sent succesfully", {
+                position: "top-right",
+                style: {
+                  borderRadius: "3px",
+                  background: "green",
+                  color: "#fff",
+                },
+              });
+
+              navigate("/otp-verification-founder", {
+                state: { email: values.email, isNewCreate: false },
+              });
+            }
+
           }
           setIsLoading(false)
         });
@@ -52,7 +69,7 @@ export default function LoginFounder() {
             color: "#fff",
           },
         });
-        
+
       }
     },
   });

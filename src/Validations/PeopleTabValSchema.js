@@ -19,12 +19,24 @@ const PeopleTabValSchema = Yup.object({
         .required("Position in company is required!"),
     facebook_link: Yup
         .string()
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid Facebook link format!"
+        )
         .required("Facebook link is required!"),
     instagram_link: Yup
-        .string("Instagram link is required!")
-        .required("Pincode is required!"),
+        .string()
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid Instagram link format!"
+        )
+        .required("Instagram link is required!"),
     linked_in_link: Yup
         .string()
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid link format!"
+        )
         .required("Linked in link is required!"),
     description: Yup
         .string()

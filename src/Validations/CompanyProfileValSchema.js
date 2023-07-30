@@ -36,21 +36,38 @@ const CompanyProfileValSchema = Yup.object({
         .required("Address is required!"),
     website_url: Yup
         .string()
-        .required("Website is required!"),
+        .required("Website is required!")
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid website URL format!"
+        ),
     facebook_link: Yup
         .string()
-        .required("Facebook link is required!"),
+        .required("Facebook link is required!")
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid Facebook link format!"
+        ),
     instagram_link: Yup
         .string()
-        .required("Instagram link is required!"),
+        .required("Instagram link is required!")
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid Instagram link format!"
+        ),
     company_linked_in_profile: Yup
         .string()
-        .required("Linked in link is required!"),
+        .required("LinkedIn link is required!")
+        .matches(
+            /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+            "Invalid LinkedIn link format!"
+        ),
     legal_name: Yup
         .string()
         .required("Legal name is required!"),
     cin: Yup
-        .string()
+        .number()
+        .typeError("cin must be a number!")
         .required("CIN number is required!"),
     date_of_incorporation: Yup
         .string()
@@ -59,13 +76,15 @@ const CompanyProfileValSchema = Yup.object({
         .string()
         .required("Incorporation type is required!"),
     invested_so_far: Yup
-        .string()
+        .number()
+        .typeError("investment must be a number!")
         .required("This field is required!"),
     sector: Yup
         .string()
         .required("Sector is required!"),
     number_of_employees: Yup
-        .string()
+        .number()
+        .typeError("employee count must be a number!")
         .required("No. of Employees is required!"),
 
 });

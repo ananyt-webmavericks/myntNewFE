@@ -339,7 +339,7 @@ const Advisors = ({
           {!isAdvisorEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={campaignDetail?.status !== "CREATED"}
+                disabled={campaignDetail?.status !== "CREATED" || isSaveClicked}
                 onClick={() => {
                   formik.submitForm();
                   setSavedClicked(true);
@@ -361,7 +361,7 @@ const Advisors = ({
                 )}
               </button>
               <button
-                disabled={campaignDetail?.status !== "CREATED"}
+                disabled={campaignDetail?.status !== "CREATED" || isNextClicked}
                 // type="submit"
                 onClick={() => {
                   formik.submitForm();

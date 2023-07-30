@@ -557,7 +557,13 @@ export default function MyProfileMain() {
                 className="verifyAddress-input-section"
                 style={{ fontSize: '13.5px', marginTop: '20px' }}
               >
-                {`${userKycData?.address_line_1}, ` + `${userKycData?.address_line_2}, ` + `${userKycData?.city}, ` + `${userKycData?.state}, ` + `${userKycData?.pincode}, ` + `${userKycData?.country}`
+                {
+                  userKycData?.address_line_1 ? `${userKycData?.address_line_1} , ` : '' +
+                    userKycData?.address_line_2 ? `${userKycData?.address_line_2} , ` : '' +
+                      userKycData?.city ? `${userKycData?.city} , ` : '' +
+                        userKycData?.state ? `${userKycData?.state} , ` : '' +
+                          userKycData?.country ? `${userKycData?.country} , ` : '' +
+                            userKycData?.pincode ? `${userKycData?.pincode} , ` : ''
                 }
               </div>
               <span

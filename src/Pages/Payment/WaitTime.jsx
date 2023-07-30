@@ -13,8 +13,7 @@ export default function WaitTime() {
     const [storeOrderId, setStoreOrderId] = useState()
     const paramKey = searchParams.get("order_id")
     const navigate = useNavigate()
-    console.log(paramKey)
-    console.log(paramKey)
+
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -36,7 +35,6 @@ export default function WaitTime() {
         }
     }
 
-    console.log(paymentStatus)
     useEffect(() => {
         if (time === 0) {
             handleNavigate(paymentStatus)

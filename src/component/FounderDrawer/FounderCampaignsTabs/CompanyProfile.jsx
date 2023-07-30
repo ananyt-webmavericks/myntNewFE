@@ -280,13 +280,13 @@ const CompanyProfile = ({ tabChangeFn }) => {
             label: selectsector?.[0]?.label,
             value: selectsector?.[0]?.value,
           });
-          const selectemployee = employees.filter(
-            (item) => item.label === res.data.number_of_employees
-          );
-          setSelectEmployees(selectemployee.length === 0 ? null : {
-            label: selectemployee?.[0]?.label,
-            value: selectemployee?.[0]?.value,
-          });
+          // const selectemployee = employees.filter(
+          //   (item) => item.label === res.data.number_of_employees
+          // );
+          // setSelectEmployees(selectemployee.length === 0 ? null : {
+          //   label: selectemployee?.[0]?.label,
+          //   value: selectemployee?.[0]?.value,
+          // });
 
           localStorage.setItem("company_id", res.data.id);
         }
@@ -716,7 +716,23 @@ const CompanyProfile = ({ tabChangeFn }) => {
               </FormControl>
 
               <FormControl className="comp-form-control-input" sx={{ m: 1, width: "100%" }}>
-                <Select
+
+                <input
+                  name="number_of_employees"
+                  value={formik.values.number_of_employees}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="No. of Employees"
+                  type="text"
+                  disabled={campaignDetail?.status !== "CREATED"}
+                  className="amount-invested-till-date"
+                />
+                {formik.touched.number_of_employees && (
+                  <div className="raise-err-text" style={{ marginTop: "2px" }}>
+                    {formik.errors.number_of_employees}
+                  </div>
+                )}
+                {/* <Select
                   components={{
                     IndicatorSeparator: () => null,
                   }}
@@ -734,7 +750,7 @@ const CompanyProfile = ({ tabChangeFn }) => {
                   <div className="raise-err-text" style={{ marginTop: "2px" }}>
                     {formik.errors.number_of_employees}
                   </div>
-                )}
+                )} */}
               </FormControl>
             </Box>
           </Grid>

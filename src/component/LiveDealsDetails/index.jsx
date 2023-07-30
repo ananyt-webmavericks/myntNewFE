@@ -209,6 +209,8 @@ export default function LiveDetailsMain() {
               });
   };
 
+  console.log("location", location?.state?.campaignData)
+
   return (
     <div className="get-started-container">
       <div style={{ paddingTop: "8em" }}>
@@ -571,7 +573,7 @@ export default function LiveDetailsMain() {
             <DealTerm
               companyData={companyData}
               blurAmount={blurAmount}
-              dealTermData={location.state?.campaignData}
+              dealTermData={location?.state?.campaignData?.deal_terms}
             />
           </div>
         )}

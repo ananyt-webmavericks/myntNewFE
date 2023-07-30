@@ -41,7 +41,9 @@ export default function DashboardCard() {
           const totalAmount = res?.data?.data.reduce((accumulator, current) => {
             const isFloat = current.amount.includes(".");
             let result;
-
+            if (!current.amount) {
+              result = 0
+            }
             if (isFloat) {
               result = parseFloat(current.amount);
             } else {
@@ -51,8 +53,8 @@ export default function DashboardCard() {
             return accumulator;
           }, 0);
 
-          console.log(totalAmount)
-          setInvestments(totalAmount)
+          let value = totalAmount > 1000 ? totalAmount / 1000 + 'k' : totalAmount
+          setInvestments(value)
         } else {
           console.log("can't get the portfolio data")
         }

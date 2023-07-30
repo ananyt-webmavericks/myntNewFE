@@ -34,7 +34,7 @@ const Press = ({ tabChangeFn }) => {
   const [editImage1, setEditImage1] = useState('');
   const [editImage2, setEditImage2] = useState('');
   const [editImage3, setEditImage3] = useState('');
-  const [addMorePress, setAddMorePress] = useState(null)
+  const [addMorePress, setAddMorePress] = useState(false)
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -45,7 +45,7 @@ const Press = ({ tabChangeFn }) => {
       link: pressData?.link ? pressData?.link : "",
       description: pressData?.description ? pressData?.description : "",
       banner:
-        image1 && image2 && image3
+        image1 || image2 || image3
           ? [`${image1}`, `${image2}`, `${image3}`]
           : [],
       // "https://c8.alamy.com/comp/R77EPB/blue-business-logo-template-for-cassette-demo-record-tape-record-facebook-timeline-banner-design-vector-web-banner-background-illustration-R77EPB.jpg",
@@ -238,7 +238,7 @@ const Press = ({ tabChangeFn }) => {
       // style={{ padding: "0px 10% 0px 16px ", paddingRight: "10%" }}
       maxWidth="lg"
     >
-      {!pressData.length > 0 || addMorePress && < form className="press-form" style={{}} onSubmit={formik.handleSubmit}>
+      {pressData?.length === 0 || addMorePress ? < form className="press-form" style={{}} onSubmit={formik.handleSubmit}>
         <h3>Press</h3>
 
         <Typography style={{ paddingTop: 10 }} className="press-title-desc">
@@ -405,7 +405,10 @@ const Press = ({ tabChangeFn }) => {
             ) : 'Submit'}
           </Button>
         </div>
-      </form>}
+      </form>
+        :
+        null
+      }
 
 
       {

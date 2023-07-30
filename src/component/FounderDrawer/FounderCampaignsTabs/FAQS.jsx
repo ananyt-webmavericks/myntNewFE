@@ -394,7 +394,7 @@ const FAQS = ({ tabChangeFn }) => {
                         }}
                       />
                     ) : (
-                      <span style={{ color: 'black' }}>Save</span>
+                      <span style={{ color: 'white' }}>Save</span>
                     )}
                   </button>
                 ) : (

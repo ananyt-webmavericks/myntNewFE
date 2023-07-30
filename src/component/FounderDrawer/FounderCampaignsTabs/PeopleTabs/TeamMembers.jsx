@@ -329,7 +329,8 @@ const TeamMembers = ({
           {!isTeamEdit ? (
             <Box className="BtnSaveAndNext">
               <button
-                disabled={campaignDetail?.status !== "CREATED"}
+                disabled={campaignDetail?.status !== "CREATED" || isSaveClicked}
+                // type="submit"
                 onClick={() => {
                   formik.submitForm();
                   setSavedClicked(true);
@@ -351,7 +352,7 @@ const TeamMembers = ({
                 )}
               </button>
               <button
-                disabled={campaignDetail?.status !== "CREATED"}
+                disabled={campaignDetail?.status !== "CREATED" || isNextClicked}
                 // type="submit"
                 onClick={() => {
                   formik.submitForm();

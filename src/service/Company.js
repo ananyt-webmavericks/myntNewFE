@@ -362,7 +362,7 @@ const getAllDealTypes = async () => {
 
 const getAllDealTerms = async () => {
     try {
-        const response = await authAxios.get(`${Base_Url}/api/deal_terms/manage`);
+        const response = await authAxios.get(`${Base_Url}/api/campaign/manage`);
         return response;
     }
     catch (error) {

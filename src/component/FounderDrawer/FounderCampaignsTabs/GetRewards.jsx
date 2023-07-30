@@ -257,7 +257,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 formik.submitForm();
                 setSavedClicked(true);
               }}
-              disabled={campaignDetail?.status !== 'CREATED'}
+              disabled={campaignDetail?.status !== 'CREATED' || isSaveClicked}
               type="submit"
               style={{ margin: "20px", color: "black" }}
               variant="contained"
@@ -281,7 +281,7 @@ const GetRewards = ({ tabChangeFn }) => {
                 formik.submitForm();
                 setNextClicked(true);
               }}
-              disabled={campaignDetail?.status !== 'CREATED'}
+              disabled={campaignDetail?.status !== 'CREATED' || isNextClicked}
               type="submit"
               style={{ margin: "20px", marginRight: 0 }}
               variant="contained"

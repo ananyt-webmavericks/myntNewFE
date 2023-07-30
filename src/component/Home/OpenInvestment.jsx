@@ -98,8 +98,9 @@ export default function OpenInvestment() {
         const getAllDealTerms = () => {
             if (userData?.id) {
                 CompanyServices.getAllDealTerms().then(res => {
-                    if (res.status === 200 || res.status === 201) {
-                        dispatch(dealsStoreAction(res.data))
+                    if (res?.status === 200 || res?.status === 201) {
+
+                        dispatch(dealsStoreAction(res?.data?.data))
                         setTimeout(() => {
                             setLoader(false)
                         }, 1500);
@@ -161,14 +162,15 @@ export default function OpenInvestment() {
                     :
                     <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
                         {/* {data.slice(0, showItem).map((item, index) => { */}
-                        {deals.slice(0, showItem)?.map((campaign, index) => {
+                        {deals?.slice(0, showItem)?.map((campaign, index) => {
                             return (
                                 <Grid key={index} item xs={gridxsFirst}>
                                     <Card onClick={() => {
                                         if (userData?.id) {
                                             navigate('/live-deals-details', {
                                                 state: {
-                                                    campaignId: campaign?.campaign_id?.id
+                                                    campaignId: campaign?.campaign?.id,
+                                                    campaignData: { ...campaign, deal_type: campaign?.deal_type }
                                                 }
                                             })
                                         } else {
@@ -181,10 +183,10 @@ export default function OpenInvestment() {
                                                 <img src={BG1} width='100%' height={192} />
                                                 <div className="card-header-logo">
                                                     <div className="company-logo-section">
-                                                        <img loading="lazy" src={campaign?.campaign_id?.company_id?.company_logo} height={44} />
+                                                        <img loading="lazy" src={campaign?.company?.company_logo || ''} height={44} />
                                                     </div>
                                                     <div className="logo-txt-script">
-                                                        {campaign?.deal_type}
+                                                        {campaign?.deal_type?.deal_name || ''}
                                                     </div>
                                                 </div>
                                                 <div className="info-card-txt">
@@ -193,25 +195,25 @@ export default function OpenInvestment() {
                                                 </div>
                                                 <div className="centered-txt-card">
                                                     <span className="company-name">
-                                                        {campaign?.campaign_id?.company_id?.company_name}
+                                                        {campaign?.company?.company_name || ''}
                                                     </span>
                                                 </div>
                                                 <div className="bottom-txt-card">
                                                     <span>
-                                                        {campaign?.campaign_id?.company_id?.product_description.slice(0, 80)}
+                                                        {campaign?.company?.product_description.slice(0, 80)}
                                                     </span>
                                                 </div>
                                             </div>
                                             <div className="body-card-section">
                                                 <span className="card-description">
-                                                    {`${campaign?.campaign_id?.company_id?.traction_description.slice(0, 100)}...`}
+                                                    {`${campaign?.company?.traction_description.slice(0, 100)}...`}
                                                 </span>
                                                 <div style={{ display: 'flex' }}>
-                                                    <div key={index} className="chip-status"><span>health</span></div>
+                                                    <div key={index} className="chip-status"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                                 </div>
                                                 <div className="footer-card-section">
                                                     <div className="numbers-investors">
-                                                        <span className="percentage-investment">0%</span>
+                                                        <span className="percentage-investment">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                                         <span className="investment-status">
                                                             Raised
                                                         </span>
@@ -219,14 +221,14 @@ export default function OpenInvestment() {
                                                     <div className="vertical-line-invest"></div>
                                                     <div className="numbers-investors">
                                                         <span className="percentage-investment">
-                                                            {daysRemaining(campaign?.end_date)} days
+                                                            {daysRemaining(campaign?.deal_terms?.end_date)} days
                                                         </span>
                                                         <span className="investment-status">Closes in</span>
                                                     </div>
                                                     <div className="vertical-line-invest"></div>
                                                     <div className="numbers-investors">
                                                         <span className="percentage-investment">
-                                                            {campaign?.min_subscription}
+                                                            {campaign?.deal_terms?.min_subscription || 'N/A'}
                                                         </span>
                                                         <span className="investment-status">Min Invest</span>
                                                     </div>
@@ -235,45 +237,45 @@ export default function OpenInvestment() {
                                             <div className="overlay">
                                                 <div className="card-header-logo hover">
                                                     <div className="company-logo-section">
-                                                        <img src={Eveez} width={54} height={54} />
+                                                        <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
                                                     </div>
-                                                    <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                                    <span className="company-name hover" style={{ marginLeft: '10px' }}>  {campaign?.company?.company_name || ''}</span>
                                                 </div>
                                                 <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
                                                     <span className="investment-txt hover">Investors</span>
-                                                    <span className="investment-sub-txt hover">0</span>
+                                                    <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Raised</span>
-                                                    <span className="investment-sub-txt hover">0%</span>
+                                                    <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Minimum Subscription</span>
-                                                    <span className="investment-sub-txt hover">5000</span>
+                                                    <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Closes in</span>
-                                                    <span className="investment-sub-txt hover">10 days</span>
-                                                    <div className="chip-status hover"><span>Personal Health</span></div>
+                                                    <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)} days</span>
+                                                    <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                                 </div>
                                             </div>
                                             {true && <div className="overlay responsive">
                                                 <div className="card-header-logo hover">
                                                     <div className="company-logo-section">
-                                                        <img src={Eveez} width={54} height={54} />
+                                                        <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
                                                     </div>
                                                     <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                                 </div>
                                                 <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
                                                     <span className="investment-txt hover">Investors</span>
-                                                    <span className="investment-sub-txt hover">18</span>
+                                                    <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Raised</span>
-                                                    <span className="investment-sub-txt hover">16.5%</span>
+                                                    <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Minimum Subscription</span>
-                                                    <span className="investment-sub-txt hover">5000</span>
+                                                    <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Closes in</span>
-                                                    <span className="investment-sub-txt hover">14 days</span>
-                                                    <div className="chip-status hover"><span>Personal Health</span></div>
+                                                    <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)} days</span>
+                                                    <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                                 </div>
                                             </div>}
                                             <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">

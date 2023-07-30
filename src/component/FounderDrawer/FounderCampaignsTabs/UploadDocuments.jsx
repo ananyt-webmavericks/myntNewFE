@@ -368,17 +368,18 @@ const UploadDocuments = () => {
                 </>
               ))}
           </div>
-          {campaignDetail?.status === 'CREATED' &&
-            <Button
-              className="hightlight-submit-button"
-              style={{ color: "White" }}
-              onClick={handleUpdateDocStatus}
-            >
-              Submit For Review
-            </Button>
-          }
+
         </>
       ) : null}
+      {campaignDetail?.status === 'CREATED' &&
+        <Button
+          className="hightlight-submit-button"
+          style={{ color: "White" }}
+          onClick={handleUpdateDocStatus}
+        >
+          Submit For Review
+        </Button>
+      }
     </Container>
   );
 };
