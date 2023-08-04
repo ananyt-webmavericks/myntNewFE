@@ -1,16 +1,16 @@
 import React from 'react'
 import '../../css/FounderHome/HowToSub.css'
-import Screen1 from '../../images/assets/screen1.png';
-import Screen2 from '../../images/assets/screen2.png';
-import Screen3 from '../../images/assets/screen3.png';
-import Screen4 from '../../images/assets/screen4.png';
+import Screen1 from '../../images/assets/raiseCampaign.png';
+import Screen2 from '../../images/assets/campaignList.png';
+import Screen3 from '../../images/assets/uploadPitch.png';
+import Screen4 from '../../images/assets/frame4.png';
 
 const HowToSubscribe = () => {
     return (
         <div className="how-to-raise-container">
-            <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div>
+            {/* <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div> */}
             <div className="how-to-sub-subheading">Experience the advantages of a fully digital and hassle-free process.</div>
-            <div className='hide-scroll' style={{ height: 950,justifyContent:'space-between', overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
+            <div className='hide-scroll' style={{ height: 950, justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">1</div>
@@ -62,7 +62,7 @@ const HowToSubscribe = () => {
                             <span className="card-sub-header-txt">Gain a new set of clients for your product or service while you raise funds from the platform. Digitally sign all relevant documents and receive your capital.</span>
                         </div>
                     </div>
-                    <div className="raise-card-image-container-last">
+                    <div className="raise-card-image-container">
                         <img src={Screen4} className="raise-card-image" ></img>
                     </div>
                 </div>

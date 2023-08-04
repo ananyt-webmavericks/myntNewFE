@@ -6,6 +6,8 @@ import Pinterest from "../../images/highlights/pinterest.png";
 import Twitter from "../../images/highlights/twitter.png";
 import Facebook from "../../images/highlights/facebook.png";
 import Linkdin from "../../images/highlights/linkdin.png";
+import Globe from "../../images/highlights/globe.png";
+import Instagram from "../../images/highlights/instagram.png";
 export default function DealTerm({ blurAmount, dealTermData, companyData }) {
   const [gridxsMainFirst, setGridxsMainFirst] = useState(3);
   const [gridxsMainSecond, setGridxsMainSecond] = useState(4);
@@ -48,7 +50,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
           <div className="deal-terms-conatiner">
             <span className="header-main-deal-terms">Type</span>
             <span className="mainHead-main-deal-terms">
-              {dealTermData?.deal_type}
+              {dealTermData?.deal_type?.deal_name}
             </span>
             <span className="subHead-main-deal-terms">
               CSOP is a contractual agreement executed between a subscriber and
@@ -61,7 +63,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
           <div className="deal-terms-conatiner">
             <span className="header-main-deal-terms">Discount %</span>
             <span className="mainHead-main-deal-terms">
-              {dealTermData?.discount}
+              {dealTermData?.deal_terms?.discount}
             </span>
           </div>
         </Grid>
@@ -69,7 +71,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
           <div className="deal-terms-conatiner">
             <span className="header-main-deal-terms">Valuation Cap</span>
             <span className="mainHead-main-deal-terms">
-              {dealTermData?.valuation_cap}
+              {dealTermData?.deal_terms?.valuation_cap}
             </span>
             <span className="subHead-main-deal-terms">
               A valuation cap is a maximum value that a company is willing to
@@ -79,9 +81,9 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
             </span>
           </div>
         </Grid>
-        <Grid item xs={gridxsFirst}>
+        {/* <Grid item xs={gridxsFirst}>
           <div className="deal-terms-conatiner">
-            <span className="header-main-deal-terms">Pre Money Valuation</span>
+            <span className="header-main-deal-terms">P</span>
             <span className="mainHead-main-deal-terms">{"-"}</span>
             <span className="subHead-main-deal-terms">
               "Pre-money valuation" refers to the value of a company before it
@@ -93,12 +95,12 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
               investment) would be $12 million.
             </span>
           </div>
-        </Grid>
+        </Grid> */}
         <Grid item xs={gridxsFirst}>
           <div className="deal-terms-conatiner">
             <span className="header-main-deal-terms">Minimum Enrollment </span>
             <span className="mainHead-main-deal-terms">
-              {dealTermData?.min_subscription}
+              {dealTermData?.deal_terms?.min_subscription}
             </span>
             <span className="subHead-main-deal-terms">
               Only amounts equal to or greater than the minimum will be
@@ -110,7 +112,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
           <div className="deal-terms-conatiner">
             <span className="header-main-deal-terms">Target</span>
             <span className="mainHead-main-deal-terms">
-              {dealTermData?.target}
+              {dealTermData?.deal_terms?.target}
             </span>
             <span className="subHead-main-deal-terms">
               This is the amount the startup is looking to raise
@@ -121,7 +123,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
           <div className="deal-terms-conatiner">
             <span className="header-main-deal-terms">End Date</span>
             <span className="mainHead-main-deal-terms">
-              {dealTermData?.end_date}
+              {dealTermData?.deal_terms?.end_date}
             </span>
           </div>
         </Grid>
@@ -132,58 +134,28 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
         </span>
         {/* <span style={{ fontSize: '16px', marginTop: '21px', marginBottom: '43px' }}>A due diligence report is a document prepped by an independent third party due diligence team which includes information related to financials compliance, key risks and a lot more.</span> */}
         <Grid container spacing={gridxsMainSecond}>
-          <Grid item xs={gridxsSecond}>
-            <div className="box-documents-download-pdf">
-              <span
-                className="live-deals-details-decription"
-                style={{ marginRight: "10px", color: "black" }}
-              >
-                Company Certificates
-              </span>
-              <DownloadForOfflineIcon
-                style={{ color: "#EBB429", width: "35px", height: "35px" }}
-              />
-            </div>
-          </Grid>
-          <Grid item xs={gridxsSecond}>
-            <div className="box-documents-download-pdf">
-              <span
-                className="live-deals-details-decription"
-                style={{ marginRight: "10px", color: "black" }}
-              >
-                Company Certificates
-              </span>
-              <DownloadForOfflineIcon
-                style={{ color: "#EBB429", width: "35px", height: "35px" }}
-              />
-            </div>
-          </Grid>
-          <Grid item xs={gridxsSecond}>
-            <div className="box-documents-download-pdf">
-              <span
-                className="live-deals-details-decription"
-                style={{ marginRight: "10px", color: "black" }}
-              >
-                Company Certificates
-              </span>
-              <DownloadForOfflineIcon
-                style={{ color: "#EBB429", width: "35px", height: "35px" }}
-              />
-            </div>
-          </Grid>
-          <Grid item xs={gridxsSecond}>
-            <div className="box-documents-download-pdf">
-              <span
-                className="live-deals-details-decription"
-                style={{ marginRight: "10px", color: "black" }}
-              >
-                Company Certificates
-              </span>
-              <DownloadForOfflineIcon
-                style={{ color: "#EBB429", width: "35px", height: "35px" }}
-              />
-            </div>
-          </Grid>
+          {
+            companyData?.documents?.filter(val => val.document_type === "DOCUMENTS").map((item, index) => {
+              return (
+                <Grid item key={index} xs={gridxsSecond}>
+                  <div className="box-documents-download-pdf">
+                    <span
+                      className="live-deals-details-decription"
+                      style={{ marginRight: "10px", color: "black" }}
+                    >
+                      {item?.document_name}
+                    </span>
+                    <a href={item?.document_url} target="_blank">
+                      <DownloadForOfflineIcon
+                        style={{ color: "#EBB429", width: "35px", height: "35px" }}
+                      />
+                    </a>
+
+                  </div>
+                </Grid>
+              )
+            })
+          }
         </Grid>
       </div>
       <div className="documents-deal-terms-section">
@@ -280,7 +252,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                   </a>
 
                   <a
-                    href={companyData?.company_linked_in_profile}
+                    href={companyData?.facebook_link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -295,12 +267,12 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                   </a>
 
                   <a
-                    href={companyData?.company_linked_in_profile}
+                    href={companyData?.instagram_link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src={Pinterest}
+                      src={Instagram}
                       style={{
                         width: "40px",
                         height: "40px",
@@ -310,12 +282,12 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
                   </a>
 
                   <a
-                    href={companyData?.company_linked_in_profile}
+                    href={companyData?.website_url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src={Twitter}
+                      src={Globe}
                       style={{
                         width: "40px",
                         height: "40px",

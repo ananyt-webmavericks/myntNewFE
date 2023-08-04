@@ -100,13 +100,16 @@ const LiveDeals = () => {
   const [dealTypes, setDealTypes] = useState([])
   const { userData } = useSelector((state) => state.loginData)
   const [superArray, setSuperArray] = useState([])
+  const [dealTerms, setDealTerms] = useState([])
   const ratio = parseInt(window.innerWidth);
   const location = window.location.pathname;
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const { deals } = useSelector(state => state.companyData)
-  console.log(deals)
+
+
+
   const handleOrderTabs = (tabNo) => {
     setActiveBtn(tabNo)
     const content = document.getElementById(`tab-${tabNo}`);
@@ -164,6 +167,8 @@ const LiveDeals = () => {
         if (res.status === 200 || res.status === 201) {
           if (res?.data?.data?.length > 0) {
             dispatch(dealsStoreAction(res.data?.data))
+            console.log("deals", deals)
+            setDealTerms(res?.data?.data)
             setTimeout(() => {
               setLoader(false)
             }, 1500);
@@ -216,8 +221,8 @@ const LiveDeals = () => {
     },
   }));
 
-  console.log("deal", deals);
-  console.log("userData", userData);
+  // console.log("deal", deals);
+  // console.log("userData", userData);
 
   const popperOptions = {
     modifiers: [
@@ -231,10 +236,18 @@ const LiveDeals = () => {
   };
 
   const daysRemaining = (dateString) => {
-    const now = new Date();
-    const targetDate = new Date(dateString);
-    const timeDiff = targetDate.getTime() - now.getTime();
-    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    let currentDate = new Date().setDate(1)
+    let resDate = new Date(dateString).setDate(1)
+
+    if (currentDate > resDate) {
+      return 'Expired'
+    } else {
+      const now = new Date();
+      const targetDate = new Date(dateString);
+      const timeDiff = targetDate.getTime() - now.getTime();
+      return `${Math.ceil(timeDiff / (1000 * 60 * 60 * 24))} days`
+    }
+
   };
   return (
     <>
@@ -257,7 +270,7 @@ const LiveDeals = () => {
                 Browse current enrollment opportunities on Mynt.
               </span>
             </div>
-            <SearchBar />
+            <SearchBar filteredData={dealTerms} />
 
             <div style={{ margin: "60px 0px" }}>
               <Typography className="live-deals-heading">
@@ -355,7 +368,7 @@ const LiveDeals = () => {
                                   navigate('/live-deals-details', {
                                     state: {
                                       campaignId: campaign?.campaign?.id,
-                                      campaignData: { ...campaign, deal_type: campaign?.deal_type }
+                                      campaignData: { ...campaign, deal_terms: campaign?.deal_terms }
                                     }
                                   })}
                                   className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
@@ -402,7 +415,7 @@ const LiveDeals = () => {
                                         <div className="vertical-line-invest"></div>
                                         <div className="numbers-investors">
                                           <span className="percentage-investment">
-                                            {daysRemaining(campaign?.deal_terms?.end_date)} days
+                                            {daysRemaining(location?.state?.campaignData?.deal_terms?.end_date)}
                                           </span>
                                           <span className="investment-status">Closes in</span>
                                         </div>

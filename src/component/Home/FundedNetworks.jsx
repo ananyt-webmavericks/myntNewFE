@@ -105,14 +105,15 @@ export default function FundedNetworks() {
                 </div>
             </Container>
             <Container className="networks-mb-view">
-                {data.map((item,index)=>{
-                    return(
-                    <div key={index} className='' style={{  height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <img className="comp-img" height={item.height} style={{}} src={item.image}></img>
-                            <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
-                        </div>
-                    </div>)})}
+                {data.map((item, index) => {
+                    return (
+                        <div key={index} className='' style={{ margin: '0px 10px', width: '150px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                <img className="comp-img" height={item.height} style={{}} src={item.image}></img>
+                                <span style={{ marginTop: item.marginTop, fontSize: '15px', color: 'black', fontWeight: '600' }}>{item.name}</span>
+                            </div>
+                        </div>)
+                })}
             </Container>
         </Box>
     )

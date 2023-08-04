@@ -30,7 +30,7 @@ export default function HomeFounder() {
         <BaseHighlights />
         <FounderFaqs />
       </Container>
-        <Footer/>
+      <Footer />
     </React.Fragment>
   )
 }

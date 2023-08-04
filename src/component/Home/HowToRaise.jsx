@@ -29,10 +29,10 @@ export default function HowToRaise() {
     //     }
     // }, [])
     return (
-        <div style={{textAlign:'center'}} className="how-to-raise-container">
+        <div style={{ textAlign: 'center' }} className="how-to-raise-container">
             <div className="investor-home-heading">How to <span className="colored-investor-home-heading"> register? </span></div>
             <span className="investors-subheading">Experience the advantages of a fully digital and hassle-free process.</span>
-            <div className="hide-scroll" style={{ height: 950,justifyContent:'space-between',textAlign:'start',overflow: 'hidden', overflowX: 'scroll', display: 'flex', alignItems: 'center' }}>
+            <div className="hide-scroll" style={{ height: 950, justifyContent: 'space-between', textAlign: 'start', display: 'flex', alignItems: 'center' }}>
 
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
                     <div className="head-container-raise">
@@ -82,7 +82,7 @@ export default function HowToRaise() {
                         </div>
                     </div>
                     <div className="raise-card-image-container-last">
-                        <img style={{width:'100%'}} src={Screen4} className="raise-card-image" ></img>
+                        <img style={{ width: '100%' }} src={Screen4} className="raise-card-image" ></img>
                     </div>
                 </div>
             </div>

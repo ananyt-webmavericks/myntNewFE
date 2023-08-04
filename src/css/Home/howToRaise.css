@@ -16,8 +16,18 @@
     width: 260px !important;
     transition: all .5s ease;
 }
+
 .hide-scroll::-webkit-scrollbar {
     display: none;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .hide-scroll {
+        overflow: hidden;
+        overflow-x: scroll;
+    }
 }
 
 /* .first-raise-card:hover {
@@ -58,6 +68,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 /* .head-container-raise:hover {
     top: 20px;
 } */

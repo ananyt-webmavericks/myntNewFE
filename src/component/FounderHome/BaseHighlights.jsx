@@ -52,7 +52,7 @@ const BaseHighlights = () => {
                     {userData?.user_type === 'INVESTOR' ?
                         null :
 
-                        < Button variant="contained" onClick={() => { userData?.user_type === 'FOUNDER' ? navigate('/dashboard-founder') : navigate('/founder/application') }} className="founderhome-getStarted-landing-btn">
+                        < Button variant="contained" onClick={() => { userData?.user_type === 'FOUNDER' ? navigate('/dashboard-founder/e-signin') : navigate('/founder/application') }} className="founderhome-getStarted-landing-btn">
                             {userData?.user_type === 'FOUNDER' ? 'Go To Dashboard' : 'Apply Now'}
                         </Button>
                     }

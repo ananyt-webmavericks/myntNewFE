@@ -77,9 +77,8 @@ const FounderCampaigns = () => {
     CompanyServices.getAllCampaignOfCompany(
       localStorage.getItem("company_id")
     ).then((res) => {
-      console.log(res);
       if (res.status === 200 || res.status === 201) {
-        setCampaigns(res.data);
+        setCampaigns(res?.data?.data);
       }
     });
     const timer = setInterval(() => {
@@ -94,6 +93,21 @@ const FounderCampaigns = () => {
 
   const fetchValue = (value) => {
     setShowDeals(value);
+  };
+
+  const daysRemaining = (dateString) => {
+    let currentDate = new Date().setDate(1)
+    let resDate = new Date(dateString).setDate(1)
+
+    if (currentDate > resDate) {
+      return 'Expired'
+    } else {
+      const now = new Date();
+      const targetDate = new Date(dateString);
+      const timeDiff = targetDate.getTime() - now.getTime();
+      return `${Math.ceil(timeDiff / (1000 * 60 * 60 * 24))} days`
+    }
+
   };
 
   return (
@@ -124,7 +138,7 @@ const FounderCampaigns = () => {
                     fontFamily: "poppins",
                   }}
                 >
-                  <div style={{ marginTop: "3rem",  }}>
+                  <div style={{ marginTop: "3rem", }}>
                     <Typography>Campaign</Typography>
                     <div
                       onClick={() => {
@@ -173,7 +187,7 @@ const FounderCampaigns = () => {
                                   padding: "10px 20px",
                                 }}
                               >
-                                <img src={CopanyLogo} alt="not found" />
+                                <img src={item?.company?.company_logo || ''} alt="not found" />
                                 <div
                                   style={{
                                     display: "flex",
@@ -187,11 +201,10 @@ const FounderCampaigns = () => {
                                     borderRLeft: "50%",
                                     borderRight: "50%",
                                     borderRadius: "1rem",
-                                    // zIndex: "444499",
                                     zIndex: "1",
                                   }}
                                 >
-                                  CSOP
+                                  {item?.deal_type?.deal_name || 'N/A'}
                                 </div>
                               </div>
                             </Box>
@@ -216,37 +229,46 @@ const FounderCampaigns = () => {
                                 className="settlpara"
                                 style={{ fontSize: "12px" }}
                               >
-                                Settl. is a technology-driven accommodation
-                                platform focused on providing a convenient and
-                                high-quality living expe…
+                                {item?.company?.product_description.slice(0, 80)}
                               </Typography>
-                              <button className="colivingBtn">Coliving</button>
+                              <button style={{ width: 'fit-content', padding: '0 5px' }} className="colivingBtn">{item?.company?.sector || 'N/A'}</button>
                             </div>
                           </div>
                           <Box className="raisedflex">
                             <div>
-                              <b>206.01%</b>
+                              <b>{Number(item?.total_raised).toFixed(2) || '0'}%</b>
                               <br />
                               <span>Raised</span>
                             </div>
                             <div>
-                              <b>3 days</b>
+                              <b>{daysRemaining(item?.deal_terms?.end_date)}</b>
                               <br />
                               <span>End Date</span>
                             </div>
                             <div>
-                              <b>₹10,000</b>
+                              <b> {item?.deal_terms?.min_subscription || 'N/A'}</b>
                               <br />
                               <span>Min invest</span>
                             </div>
                           </Box>
+                          <Button
+                            style={{
+                              border: "2px solid green",
+                              borderRadius: 50,
+                              background: "trasparent",
+                              color: "green",
+                              alignSelf: "center",
+                            }}
+                          >
+                            {item?.campaign?.status}
+                          </Button>
                         </div>
                       </div>
                     </Box>
                   ))}
                 </Box>
               </Grid>
-              
+
             </div>
           </Container>
         </div>

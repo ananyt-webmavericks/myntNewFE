@@ -67,7 +67,7 @@
 }
 
 .inline-progress-bar-live-deals {
-    width: 70%;
+    /* width: 70%; */
 
     height: 6px;
     /* UI Properties */
@@ -89,7 +89,7 @@
     color: white !important;
     font-size: 20px !important;
     font-weight: 600 !important;
-   
+
 }
 
 .invest-btn-section-deals {
@@ -259,50 +259,60 @@
     align-items: center;
     /* margin-top: 24px; */
 }
-.deals-detail-video-section{
+
+.deals-detail-video-section {
     width: 100% !important;
     margin-left: 0 !important;
 }
-.deals-detail-video-section-left{
+
+.deals-detail-video-section-left {
     padding-left: 0 !important;
 }
 
 @media screen and (max-width:1100px) {
-    .header-section-deals-detail.btn-section{
+    .header-section-deals-detail.btn-section {
         flex-direction: column !important;
         align-items: flex-start !important;
         gap: 20px;
     }
 }
+
 @media screen and (min-width:850px) {
-    
-    .deals-detail-video-section-left{
+
+    .deals-detail-video-section-left {
         width: 50% !important;
         max-width: 50% !important;
     }
-    .deals-detail-video-section-right{
+
+    .deals-detail-video-section-right {
         width: 50% !important;
         max-width: 50% !important;
     }
 }
+
 @media screen and (max-width:850px) {
-    .header-section-deals-detail.btn-section{
+    .header-section-deals-detail.btn-section {
         flex-direction: row !important;
     }
-    .investor-home-heading > video{
+
+    .investor-home-heading>video {
         width: 100% !important;
     }
-    .deals-detail-video-section-left{
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .deals-detail-video-section-right{
+
+    .deals-detail-video-section-left {
         width: 100% !important;
         max-width: 100% !important;
     }
-    .deals-detail-video-section{
+
+    .deals-detail-video-section-right {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .deals-detail-video-section {
         flex-direction: column !important;
     }
+
     .header-section-deals-detail {
         justify-content: center;
         margin-top: 30px;
@@ -338,10 +348,11 @@
 }
 
 @media screen and (max-width:600px) {
-    .header-section-deals-detail.btn-section{
+    .header-section-deals-detail.btn-section {
         flex-direction: column !important;
         align-items: center !important;
     }
+
     .horizontal-ruler-tabs {
         display: none;
     }
