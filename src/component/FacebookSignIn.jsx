@@ -43,7 +43,7 @@ export default function FacebookSignIn() {
         notify("Try after few minutes")
       }
     } else {
-      var [first_namee , last_namee] = response.name.split(' ')
+      var [first_namee, last_namee] = response.name.split(' ')
       const value = {
 
         first_name: first_namee,
@@ -77,6 +77,7 @@ export default function FacebookSignIn() {
       autoLoad={false}
       fields="name,email,picture"
       // onClick={componentClicked}
+      textButton="Continue with Facebook"
       callback={responseFacebook}
       cssClass="my-facebook-button-class"
       // icon="fa-facebook"

@@ -79,11 +79,19 @@ export default function DashboardDeals() {
     }
 
     const daysRemaining = (dateString) => {
-        const now = new Date();
-        const targetDate = new Date(dateString);
-        const timeDiff = targetDate.getTime() - now.getTime();
-        return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-    }
+        let currentDate = new Date().setDate(1)
+        let resDate = new Date(dateString).setDate(1)
+
+        if (currentDate > resDate) {
+            return 'Expired'
+        } else {
+            const now = new Date();
+            const targetDate = new Date(dateString);
+            const timeDiff = targetDate.getTime() - now.getTime();
+            return `${Math.ceil(timeDiff / (1000 * 60 * 60 * 24))} days`
+        }
+
+    };
     return (
         <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px', width: '96%' }}>
             <span style={{ fontSize: '20px', fontWeight: '600' }}>NEW LIVE OPPORTUNITIES  </span>
@@ -144,7 +152,7 @@ export default function DashboardDeals() {
                                         <div className="vertical-line-invest"></div>
                                         <div className="numbers-investors">
                                             <span className="percentage-investment">
-                                                {daysRemaining(campaign?.deal_terms?.end_date)} days
+                                                {daysRemaining(campaign?.deal_terms?.end_date)}
                                             </span>
                                             <span className="investment-status">End Date</span>
                                         </div>
@@ -175,7 +183,7 @@ export default function DashboardDeals() {
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
-                                        <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)} days</span>
+                                        <span className="investment-sub-txt hover">   {daysRemaining(campaign?.deal_terms?.end_date)}</span>
                                         <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                     </div>
                                 </div>
@@ -197,7 +205,7 @@ export default function DashboardDeals() {
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
-                                        <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)} days</span>
+                                        <span className="investment-sub-txt hover">   {daysRemaining(campaign?.deal_terms?.end_date)}</span>
                                         <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                     </div>
                                 </div>}

@@ -89,6 +89,7 @@
     width: 40%;
     height: 1px;
 }
+
 .dashed-line-new-site {
     border: 1px dashed #D1D1D1;
     width: 40%;
@@ -219,12 +220,22 @@
     display: flex;
     align-items: center;
 }
-.dashboard-card-deals{
+
+.dashboard-card-deals {
     margin-top: 5px;
     padding: 24px;
-    gap: 25px ;
+    gap: 25px;
     width: 100% !important;
     margin-left: 0 !important;
+}
+
+.portfolio-btn:hover {
+    color: #ECB92B;
+    /* text-decoration: underline; */
+}
+
+.portfolio-btn {
+    color: "#777777"
 }
 
 
@@ -257,11 +268,13 @@
         padding-left: 0;
         padding-right: 0;
     }
+
     .dashboard-cards-grid-wrapper {
         padding: 0px;
         padding-top: 24px;
     }
-    .dashboard-card-deals{
+
+    .dashboard-card-deals {
         padding: 0px;
         padding-top: 24px;
         /* justify-content: center; */
@@ -270,16 +283,17 @@
 }
 
 @media screen and (max-width: 512px) {
-    .dashboard-card-deals{
+    .dashboard-card-deals {
         padding: 0px;
         padding-top: 24px;
         justify-content: center;
 
     }
 }
+
 @media screen and (max-width: 775px) {
 
-   
+
 
     .card-main-dash {
         display: grid;
@@ -312,6 +326,7 @@
         margin: auto;
         border: 1px dashed #D1D1D1;
     }
+
     .dashed-line-new-site {
         display: none;
         width: 1px;

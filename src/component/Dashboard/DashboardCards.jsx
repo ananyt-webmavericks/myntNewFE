@@ -138,7 +138,7 @@ export default function DashboardCard() {
                 ></img>
               </div>
               <div className="text-card-container">
-                <span style={{ fontSize: "14px", color: "#777777" }}>
+                <span style={{ fontSize: "14px", cursor: 'pointer' }} className="portfolio-btn">
                   Portfolio Analytics{" "}
                 </span>
               </div>

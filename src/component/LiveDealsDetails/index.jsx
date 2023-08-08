@@ -318,9 +318,9 @@ export default function LiveDetailsMain() {
                 <div className="inline-progress-bar-live-deals" style={{ width: `${calculatePercentage()}%` }}></div>
               </div>
               <div className="header-section-deals-detail btn-section">
-                {console.log("userData", userData)}
+
                 <Button
-                  disabled={userData?.user_type === "FOUNDER" && daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' ? true : false}
+                  disabled={daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' ? true : false && userData?.user_type !== "FOUNDER"}
                   onClick={() => {
                     userData?.id
                       ? kycData?.bank_account &&
@@ -350,9 +350,10 @@ export default function LiveDetailsMain() {
                         : handleNavigate()
                       : navigate("/login");
                   }}
-                  style={{ textTransform: "none" }}
+                  // style={{ textTransform: "none" }}
                   className={
-                    userData?.user_type === "FOUNDER"
+                    userData?.user_type !== "FOUNDER" && (daysRemaining(location?.state?.campaignData?.deal_terms?.end_date)) === 'Expired' ||
+                      userData?.user_type === "FOUNDER"
                       ? "disable-enroll-btn"
                       : "invest-btn-section-deals"
                   }

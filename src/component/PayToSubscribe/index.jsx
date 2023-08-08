@@ -126,7 +126,7 @@ export default function PayToSubscribeMain() {
         }
     }, [])
 
-
+    console.log("location?.state?.compayData?.deal_terms", location?.state?.campaignData)
 
     return (
         <>
@@ -277,15 +277,17 @@ export default function PayToSubscribeMain() {
                                     <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                                 </div>
                                 <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Online</button>
-                                {location?.state?.compayData?.deal_terms?.enable_offline && <button onClick={() => { setOpenOfflineModal(true) }} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Offline</button>}
-                                {/* <button className="submit-btn-startup kyc" style={{ maxWidth: '100%', marginTop: "12px" }}>Pay Offline</button> */}
+                                {location?.state?.compayData?.deal_terms?.enable_offline &&
+                                    <button onClick={() => { setOpenOfflineModal(true) }} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Offline</button>
+                                }
+
                             </Grid>
                         </Grid>
 
                     </CardContent>
                 </Card>
             </div>
-            <PayOfflineModal show={openOfflineModal} handleClose={handleClose} />
+            <PayOfflineModal campaignData={location?.state?.campaignData} show={openOfflineModal} handleClose={handleClose} />
         </>
     )
 }

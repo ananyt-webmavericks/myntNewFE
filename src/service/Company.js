@@ -384,6 +384,18 @@ const getApprovedCampaigns = async () => {
     }
 }
 
+const makeOfflinePayment = async (data) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/payment/make-offline-payment`, data);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
 const CompanyServices = {
     createCompany,
     updateCompany,
@@ -413,7 +425,9 @@ const CompanyServices = {
     getAllDealTerms,
     getApprovedCampaigns,
     getCampaignById,
-    getCompanyDetailByCampaign
+    getCompanyDetailByCampaign,
+    makeOfflinePayment
+
 };
 
 export default CompanyServices

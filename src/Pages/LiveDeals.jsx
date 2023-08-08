@@ -415,7 +415,7 @@ const LiveDeals = () => {
                                         <div className="vertical-line-invest"></div>
                                         <div className="numbers-investors">
                                           <span className="percentage-investment">
-                                            {daysRemaining(location?.state?.campaignData?.deal_terms?.end_date)}
+                                            {daysRemaining(campaign?.deal_terms?.end_date)}
                                           </span>
                                           <span className="investment-status">Closes in</span>
                                         </div>
@@ -446,7 +446,7 @@ const LiveDeals = () => {
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
-                                        <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)} days</span>
+                                        <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)}</span>
                                         <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                       </div>
                                     </div>
@@ -468,7 +468,7 @@ const LiveDeals = () => {
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
-                                        <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)} days</span>
+                                        <span className="investment-sub-txt hover">{daysRemaining(campaign?.deal_terms?.end_date)}</span>
                                         <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
                                       </div>
                                     </div>}
