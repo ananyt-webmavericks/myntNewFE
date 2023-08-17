@@ -259,7 +259,7 @@ export default function ReturnTaxMynt() {
                                     >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                How are CSOPs taxed?
+                                                How are SARs taxed?
 
 
                                             </span>
@@ -267,7 +267,7 @@ export default function ReturnTaxMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            The enrollment amount paid towards CSOP will be classified as an expense. When repayments are made, the income earned from exiting CSOP will be subject to taxation under the category of "Income from Other Sources". The entirety of the received amount will be taxed based on the enrollers applicable income tax slab.
+                                            The enrollment amount paid towards SAR will be classified as an expense. When repayments are made, the income earned from exiting SAR will be subject to taxation under the category of "Income from Other Sources". The entirety of the received amount will be taxed based on the enrollers applicable income tax slab.
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

@@ -73,7 +73,7 @@ export default function GeneralMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            You can invest in any number of startups you wish for. By diversifying your portfolio, you maximize your chances of success. Secondly, you can invest more than once in the same startup before the campaign closes. However, each transaction must meet the minimum Subscription amount requirement.
+                                            You can invest in any number of startups you wish for. By diversifying your portfolio, you maximize your chances of success. Secondly, you can invest more than once in the same startup before the campaign closes. However, each transaction must meet the minimum Enrollment amount requirement.
 
                                         </Typography>
                                     </AccordionDetails>

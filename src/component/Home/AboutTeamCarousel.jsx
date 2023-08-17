@@ -33,7 +33,7 @@ const data = [
         position: 'CEO at Ocean Blue Boating Pvt. Ltd.',
         head: 'Diversified Startup Portfolio',
         description: JSON.stringify("The platform provided me with a diversified portfolio, giving me access to a range of startup opportunities I wouldn't have otherwise found."
-)
+        )
     },
     {
         id: 4,
@@ -44,7 +44,7 @@ const data = [
         description: JSON.stringify("After examining the portfolio companies of the networks that have supported Mynt, I am confident that the startups they will bring in will be of unparalleled quality."
         )
     },
-    
+
     // {
     //     id: 5,
     //     avatar: Avatar,
@@ -89,7 +89,7 @@ export default function AboutTeamCarousel() {
                     >
                         {data.map((item, index) => {
                             return (
-                                <Item key={index} className='company-image'>
+                                <Item style={{ position: 'relative' }} key={index} className='company-image'>
                                     <div className="about-container">
                                         <span className="section-head-about">{item.head}</span>
                                         <span className="section-description-about">{item.description}</span>
@@ -101,13 +101,14 @@ export default function AboutTeamCarousel() {
                                             </div>
                                         </div>
                                     </div>
+                                    <img className="new-avatar-static" src={Avatar2} witdth={100} height={100} alt="avatar"></img>
                                 </Item>
                             )
                         })}
 
 
                     </Carousel>
-                    <img className="new-avatar-static" src={Avatar2} witdth={100} height={100} alt="avatar"></img>
+
                 </div>
             </div>
         </Box>

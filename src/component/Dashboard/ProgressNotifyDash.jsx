@@ -31,14 +31,14 @@ export default function ProgressNotifyDash({ data }) {
     // console.log((data))
 
     const notifySuccess = (data) => {
-        toast.success(data,{
+        toast.success(data, {
             position: "top-right",
             style: {
-              borderRadius: "3px",
-              background: "green",
-              color: "#fff",
+                borderRadius: "3px",
+                background: "green",
+                color: "#fff",
             },
-          })
+        })
     }
 
     const { userKycData } = useSelector(state => state.kycData)
@@ -70,6 +70,7 @@ export default function ProgressNotifyDash({ data }) {
 
     return (
         <>
+
             <div className="completion-status-round-dashed">
                 <div className="main-container-dashboard-part">
                     <div className="sub-main-container-dashboard">
@@ -83,7 +84,7 @@ export default function ProgressNotifyDash({ data }) {
                     <div className="specific-info-section first">
                         <span className="header-info-section-dash">Create Profile</span>
                         <span className="sub-header-info-section-dash">
-                        Provide your general information to create a Mynt user account.
+                            Provide your general information to create a Mynt user account.
                         </span>
                         <Button sx={{
                             borderRadius: '20px', background: '#01965D',
@@ -209,7 +210,7 @@ export default function ProgressNotifyDash({ data }) {
 
                 <div className="main-container-dashboard-part">
                     <div className="sub-main-container-dashboard">
-                        {showHr && <hr className="dashed-line-new" />}
+                        {showHr && <hr className="dashed-line-new mansi_dashed" />}
                         <hr className="dashed-line-new-site" />
                         <div className="outer-circle-dash not-completed">
                             <div className="inner-circle-dashed not-completed">

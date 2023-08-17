@@ -166,6 +166,14 @@
 
 }
 
+@media screen and (max-width:1025px) {
+    .margin-fix-text {
+        /* margin-left: 0em !important; */
+        margin: auto !important;
+        justify-content: center;
+    }
+}
+
 @media screen and (max-width:1350px) {
     .blogs-des-image-container {
         margin: auto;
@@ -176,20 +184,30 @@
     }
 }
 
+@media screen and (max-width:1025px) {
+    .button-container-liveDeals.blogs {
+        justify-content: center !important;
+        margin: auto !important;
+    }
+}
+
 @media screen and (max-width:1024px) {
     .main-info-provider-mynt-faq {
         width: 100%;
         height: auto;
     }
+
     .searchbar-mynt-faq {
         width: 100%;
     }
-    .video-grid-wrapper{
+
+    .video-grid-wrapper {
         width: 100% !important;
         margin-left: 0 !important;
         gap: 20px !important;
         justify-content: center !important;
     }
+
     .video-des-image-container {
         margin: auto;
         width: 285px;
@@ -220,6 +238,7 @@
     }
 
 }
+
 @media screen and (max-width:425px) {
     .faq-dasboard-mb {
         width: 100% !important;

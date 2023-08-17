@@ -73,7 +73,7 @@
     width: 25%;
     height: fit-content;
     top: 0;
-    right: 7em;
+    right: 0;
     display: block;
 }
 
@@ -127,11 +127,12 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .dwpWlq{
+    .dwpWlq {
         width: 100% !important;
         margin: 0 !important;
     }
 }
+
 @media screen and (max-width: 700px) {
     .new-avatar-static {
         display: none;
@@ -150,16 +151,19 @@
     .about-container {
         text-align: center;
     }
+
     .section-profile-about {
         flex-direction: column;
         align-items: center;
     }
 }
-@media screen and (max-width: 700px){
-    .homeCarouselWrapper{
+
+@media screen and (max-width: 700px) {
+    .homeCarouselWrapper {
         position: unset !important;
     }
-    .team-bg-img{
+
+    .team-bg-img {
         position: absolute;
     }
 }

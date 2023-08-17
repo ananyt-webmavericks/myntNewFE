@@ -53,7 +53,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
               {dealTermData?.deal_type?.deal_name}
             </span>
             <span className="subHead-main-deal-terms">
-              CSOP is a contractual agreement executed between a subscriber and
+              SAR is a contractual agreement executed between a subscriber and
               the startup that entitles the subscriber to community benefits and
               grant of SAR in exchange
             </span>

@@ -164,159 +164,159 @@ const DashBoardESign = () => {
               xs={6}
               md={3}
             >
-              {/* <Box
-                                sx={{
-                                    p: 2,
-                                    padding: '4.2px 0px 0px 0px',
-                                    // bgcolor: 'background.default',
-                                    display: 'grid',
-                                    gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr 1fr' },
-                                    gap: '30px',
-                                    // width: '492',
-                                    // width: '20rem',
-                                    textAlign: 'left',
-                                    fontFamily: 'poppins'
-                                }}
-                            > */}
-              <div
-                className="campaing-mb"
-                style={{
-                  marginTop: "3rem",
-                  // width: '20rem'
+              <Box
+                sx={{
+                  p: 2,
+                  padding: '4.2px 0px 0px 0px',
+                  // bgcolor: 'background.default',
+                  display: 'grid',
+                  gridTemplateColumns: { md: '1fr 1fr 1fr', sm: '1fr 1fr 1fr' },
+                  gap: '30px',
+                  // width: '492',
+                  // width: '20rem',
+                  textAlign: 'left',
+                  fontFamily: 'poppins'
                 }}
               >
-                <Typography>Campaign</Typography>
-                <Card
-                  onClick={() => {
-                    console.log("clicked");
-                    sessionStorage.removeItem("campaign_id");
-                    sessionStorage.setItem("is_campaign_added", false);
-                    sessionStorage.removeItem("campaign_data");
-                    if (founderEsign?.agreement_status !== 'SIGNED BY FOUNDER') {
-                      setOpenModal(true)
-                    } else {
-                      navigate("/dashboard-founder/campaigns-tabs")
-                    }
-                  }}
-                  className="AddCompany"
-                >
-                  <div className="Add-new-campaign">
-                    <div className="campaign-Icon-Box">
-                      <Typography className="plus-icon">+</Typography>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              {campaigns.length > 0 && campaigns?.map((item) => (
-                <Box
-                  className="companyAddbox"
+                <div
+                  className="campaing-mb"
                   style={{
-                    display: "flex",
-                    gap: "5rem",
-                    // marginBottom: "5rem",
-                    marginTop: "2.5rem",
+                    marginTop: "3rem",
+                    // width: '20rem'
                   }}
                 >
-                  <div
+                  <Typography>Campaign</Typography>
+                  <Card
                     onClick={() => {
-                      sessionStorage.setItem("campaign_id", item.id);
-                      sessionStorage.setItem("is_campaign_added", true);
-                      navigate("/dashboard-founder/campaigns-statics");
+                      console.log("clicked");
+                      sessionStorage.removeItem("campaign_id");
+                      sessionStorage.setItem("is_campaign_added", false);
+                      sessionStorage.removeItem("campaign_data");
+                      if (founderEsign?.agreement_status !== 'SIGNED BY FOUNDER') {
+                        setOpenModal(true)
+                      } else {
+                        navigate("/dashboard-founder/campaigns-tabs")
+                      }
+                    }}
+                    className="AddCompany"
+                  >
+                    <div className="Add-new-campaign">
+                      <div className="campaign-Icon-Box">
+                        <Typography className="plus-icon">+</Typography>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+
+                {campaigns.length > 0 && campaigns?.map((item) => (
+                  <Box
+                    className="companyAddbox"
+                    style={{
+                      display: "flex",
+                      gap: "5rem",
+                      // marginBottom: "5rem",
+                      marginTop: "2.5rem",
                     }}
                   >
-                    <div className="AddCompany2">
-                      <Box className="companylogoimg">
-                        <Box className="setCornerIcon">
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              textAlign: "center",
-                              width: "100%",
-                              padding: "10px 20px",
-                            }}
-                          >
-                            <img src={item?.company?.company_logo || ''} alt="not found" />
+                    <div
+                      onClick={() => {
+                        sessionStorage.setItem("campaign_id", item.id);
+                        sessionStorage.setItem("is_campaign_added", true);
+                        navigate("/dashboard-founder/campaigns-statics");
+                      }}
+                    >
+                      <div className="AddCompany2">
+                        <Box className="companylogoimg">
+                          <Box className="setCornerIcon">
                             <div
                               style={{
                                 display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                height: "30px",
-                                width: "100px",
-                                backgroundColor: "yellow",
+                                justifyContent: "space-between",
                                 textAlign: "center",
-                                marginTop: "15px",
-                                borderRLeft: "50%",
-                                borderRight: "50%",
-                                borderRadius: "1rem",
-                                zIndex: "1",
+                                width: "100%",
+                                padding: "10px 20px",
                               }}
                             >
-                              {item?.deal_type?.deal_name || 'N/A'}
+                              <img src={item?.company?.company_logo || ''} alt="not found" />
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  height: "30px",
+                                  width: "100px",
+                                  backgroundColor: "yellow",
+                                  textAlign: "center",
+                                  marginTop: "15px",
+                                  borderRLeft: "50%",
+                                  borderRight: "50%",
+                                  borderRadius: "1rem",
+                                  zIndex: "1",
+                                }}
+                              >
+                                {item?.deal_type?.deal_name || 'N/A'}
+                              </div>
                             </div>
+                          </Box>
+                          <b
+                            className="settleindex"
+                            style={{
+                              marginLeft: "3rem",
+                              zIndex: "90000000 !important",
+                            }}
+                          >
+                            Settl
+                          </b>
+                        </Box>
+                        <div>
+                          <img
+                            src={E_Singbg}
+                            alt="not found"
+                            className="settlimg"
+                          />
+                          <div>
+                            <Typography
+                              className="settlpara"
+                              style={{ fontSize: "12px" }}
+                            >
+                              {item?.company?.product_description.slice(0, 80)}
+                            </Typography>
+                            <button style={{ width: 'fit-content', padding: '0 5px' }} className="colivingBtn">{item?.company?.sector || 'N/A'}</button>
+                          </div>
+                        </div>
+                        <Box className="raisedflex">
+                          <div>
+                            <b>{Number(item?.total_raised).toFixed(2) || '0'}%</b>
+                            <br />
+                            <span>Raised</span>
+                          </div>
+                          <div>
+                            <b>{daysRemaining(item?.deal_terms?.end_date)}</b>
+                            <br />
+                            <span>End Date</span>
+                          </div>
+                          <div>
+                            <b> {item?.deal_terms?.min_subscription || 'N/A'}</b>
+                            <br />
+                            <span>Min invest</span>
                           </div>
                         </Box>
-                        <b
-                          className="settleindex"
+                        <Button
                           style={{
-                            marginLeft: "3rem",
-                            zIndex: "90000000 !important",
+                            border: "2px solid green",
+                            borderRadius: 50,
+                            background: "trasparent",
+                            color: "green",
+                            alignSelf: "center",
                           }}
                         >
-                          Settl
-                        </b>
-                      </Box>
-                      <div>
-                        <img
-                          src={E_Singbg}
-                          alt="not found"
-                          className="settlimg"
-                        />
-                        <div>
-                          <Typography
-                            className="settlpara"
-                            style={{ fontSize: "12px" }}
-                          >
-                            {item?.company?.product_description.slice(0, 80)}
-                          </Typography>
-                          <button style={{ width: 'fit-content', padding: '0 5px' }} className="colivingBtn">{item?.company?.sector || 'N/A'}</button>
-                        </div>
+                          {item?.campaign?.status}
+                        </Button>
                       </div>
-                      <Box className="raisedflex">
-                        <div>
-                          <b>{Number(item?.total_raised).toFixed(2) || '0'}%</b>
-                          <br />
-                          <span>Raised</span>
-                        </div>
-                        <div>
-                          <b>{daysRemaining(item?.deal_terms?.end_date)}</b>
-                          <br />
-                          <span>End Date</span>
-                        </div>
-                        <div>
-                          <b> {item?.deal_terms?.min_subscription || 'N/A'}</b>
-                          <br />
-                          <span>Min invest</span>
-                        </div>
-                      </Box>
-                      <Button
-                        style={{
-                          border: "2px solid green",
-                          borderRadius: 50,
-                          background: "trasparent",
-                          color: "green",
-                          alignSelf: "center",
-                        }}
-                      >
-                        {item?.campaign?.status}
-                      </Button>
                     </div>
-                  </div>
-                </Box>
-              ))}
-              {/* </Box> */}
+                  </Box>
+                ))}
+              </Box>
             </Grid>
             {/* <div style={{ fontWeight: 'bold', marginTop: '3rem', fontSize: "16px", fontFamily: 'poppins' }}>
                             <Typography>Analytics</Typography><br />

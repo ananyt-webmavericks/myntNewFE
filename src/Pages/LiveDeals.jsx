@@ -33,7 +33,7 @@ const values = [
     checked: false
   },
   {
-    id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
+    id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'SAR', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
     chip: [{ id: 1, name: 'Coliving' }],
     raised: '206.01%',
     closesIn: '3 days',
@@ -65,7 +65,7 @@ const values = [
     checked: false
   },
   {
-    id: 6, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
+    id: 6, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'SAR', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
     chip: [{ id: 1, name: 'Coliving' }],
     raised: '206.01%',
     closesIn: '3 days',
@@ -120,7 +120,8 @@ const LiveDeals = () => {
 
   const handleArrange = (dealTypes, campaigns) => {
     const result = campaigns.reduce((acc, campaign) => {
-      const dealTypeId = campaign?.security_type?.id;
+      console.log("campaign", campaign)
+      const dealTypeId = campaign?.deal_terms?.security_type;
       const dealType = dealTypes.find((dt) => dt?.id === dealTypeId);
       const campaignObj = { ...campaign };
 
@@ -139,7 +140,8 @@ const LiveDeals = () => {
 
     const groupedCampaigns = Object.values(result);
 
-    console.log(groupedCampaigns);
+    console.log("groupedCampaigns", groupedCampaigns);
+
     setSuperArray(groupedCampaigns);
   };
 
@@ -173,14 +175,14 @@ const LiveDeals = () => {
               setLoader(false)
             }, 1500);
           } else {
-            setErrorTerms('No opportunities at the moment')
+            setErrorTerms('new deals coming soon')
             setTimeout(() => {
               setLoader(false)
             }, 1500);
           }
 
         } else {
-          setErrorTerms('Something went wrong')
+          setErrorTerms('new deals coming soon')
           console.log("Get Deal Terms Failed!")
         }
       })
@@ -291,7 +293,7 @@ const LiveDeals = () => {
                     :
                     <>
                       {
-                        dealTypes?.map((item, index) => <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
+                        dealTypes?.slice(0, 4).map((item, index) => <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
                           onClick={() => handleOrderTabs(index + 1)}>
                           <div >
                             <span >{item.deal_name}</span>
@@ -340,7 +342,7 @@ const LiveDeals = () => {
                             }
                         </div> */}
 
-            {/* CSOP */}
+            {/* SAR */}
             {loader ?
               null
               :

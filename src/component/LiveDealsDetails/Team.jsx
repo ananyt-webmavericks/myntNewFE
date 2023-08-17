@@ -9,6 +9,7 @@ import Kunal from '../../images/highlights/Kunal.png';
 import Blue from '../../images/highlights/Blue.png';
 import Lead from '../../images/highlights/Lead.png';
 export default function Team({ blurAmount, peopleData }) {
+    console.log('peopleData', peopleData)
     return (
         <>
             <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Meet the Team</div>
@@ -18,16 +19,16 @@ export default function Team({ blurAmount, peopleData }) {
                         ? peopleData?.filter(item => item.type === "TEAM").slice(0).reverse().map((item, index) => <Card key={index} style={{ minWidth: '280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px', marginRight: '50px', marginTop: '10px', marginBottom: '10px', marginLeft: '10px' }}>
                             <CardContent>
                                 <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
-                                    <img src={item.profile_image} width={183} height={183}></img>
+                                    <img style={{ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' }} src={item.profile_image} width={183} height={183}></img>
                                     <span style={{ fontSize: '16px', fontWeight: '600', marginTop: '10px' }}>{item.name}</span>
                                     <span style={{ fontSize: '12px', fontWeight: '600', marginTop: '10px', marginBottom: '10px' }}>{item.position}</span>
-                                    <img src={Linkdin} width={25} height={25} style={{ margin: 'auto' }}></img>
+                                    <a href={item?.linked_in_link} target="_blank" ><img src={Linkdin} width={25} height={25} style={{ margin: 'auto' }}></img></a>
                                 </div>
                             </CardContent>
                         </Card>)
                         : <div className="investor-home-heading" style={{ fontSize: '14px', marginTop: '10px' }}>No team members to show</div>
                 }
-            </div>
+            </div >
 
             <div className="investor-home-heading" style={{ fontSize: '24px', marginTop: '60px' }}>Investors & Advisors</div>
 
@@ -37,10 +38,10 @@ export default function Team({ blurAmount, peopleData }) {
                         ? peopleData?.filter(item => item.type === "INVESTOR" || item.type === "ADVISOR").slice(0).reverse().map((item, index) => <Card key={index} style={{ minWidth: '280px', background: '#FFFFFF 0% 0% no-repeat padding-box', boxShadow: '0px 0px 12px #0000001F', borderRadius: '7px', marginRight: '50px', marginTop: '10px', marginBottom: '10px', marginLeft: '10px' }}>
                             <CardContent>
                                 <div style={{ display: 'grid', justifyContent: 'center', textAlign: 'center' }}>
-                                    <img src={item.profile_image} width={183} height={183}></img>
+                                    <img style={{ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' }} src={item.profile_image} width={183} height={183}></img>
                                     <span style={{ fontSize: '16px', fontWeight: '600', marginTop: '10px' }}>{item.name}</span>
                                     <span style={{ fontSize: '12px', fontWeight: '600', marginTop: '10px', marginBottom: '10px' }}>{item.position}</span>
-                                    <img src={Linkdin} width={25} height={25} style={{ margin: 'auto' }}></img>
+                                    <a href={item?.linked_in_link} target="_blank" ><img src={Linkdin} width={25} height={25} style={{ margin: 'auto' }}></img></a>
                                 </div>
                             </CardContent>
                         </Card>)

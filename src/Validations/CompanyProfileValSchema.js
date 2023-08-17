@@ -66,8 +66,8 @@ const CompanyProfileValSchema = Yup.object({
         .string()
         .required("Legal name is required!"),
     cin: Yup
-        .number()
-        .typeError("cin must be a number!")
+        .string()
+        // .typeError("cin must be a number!")
         .required("CIN number is required!"),
     date_of_incorporation: Yup
         .string()

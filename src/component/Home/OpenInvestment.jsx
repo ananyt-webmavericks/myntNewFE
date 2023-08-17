@@ -31,7 +31,7 @@ const values = [
         checked: false
     },
     {
-        id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
+        id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'SAR', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
         raised: '206.01%',
         closesIn: '3 days',
@@ -255,7 +255,7 @@ export default function OpenInvestment() {
                                                     <span className="investment-txt hover">Raised</span>
                                                     <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Minimum Subscription</span>
+                                                    <span className="investment-txt hover">Minimum Enrollment</span>
                                                     <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Closes in</span>
@@ -277,7 +277,7 @@ export default function OpenInvestment() {
                                                     <span className="investment-txt hover">Raised</span>
                                                     <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Minimum Subscription</span>
+                                                    <span className="investment-txt hover">Minimum Enrollment</span>
                                                     <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                                     <hr style={{ marginTop: '11.5px' }} />
                                                     <span className="investment-txt hover">Closes in</span>

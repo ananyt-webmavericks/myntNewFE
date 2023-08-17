@@ -20,6 +20,7 @@ const Navbar = () => {
   const location = window.location.pathname;
   const ratio = parseInt(window.innerWidth);
   const [showModal, setShowModal] = useState(false)
+  let pathname = window.location.pathname;
   const handleCloseModal = () => setShowModal(false);
   const { userData } = useSelector((state) => state.loginData);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -97,19 +98,19 @@ const Navbar = () => {
 
           <ul className="menu-items">
             <li>
-              <span onClick={() => navigate("/")}>Home</span>
+              <span style={pathname === '/' ? { color: '#fbdf35' } : null} onClick={() => navigate("/")}>Home</span>
             </li>
             <hr className="ruler-navbar" />
             <li>
-              <span onClick={() => { if (userData?.id) { navigate('/dashboard/live-deals') } else { setShowModal(true) } }}>Deals</span>
+              <span style={pathname === '/dashboard/live-deals' ? { color: '#fbdf35' } : null} onClick={() => { if (userData?.id) { navigate('/dashboard/live-deals') } else { setShowModal(true) } }}>Deals</span>
             </li>
             <hr className="ruler-navbar" />
             <li>
-              <span onClick={() => navigate("/founder")}>Raise</span>
+              <span style={pathname === '/founder' ? { color: '#fbdf35' } : null} onClick={() => navigate("/founder")}>Raise</span>
             </li>
             <hr className="ruler-navbar" />
             <li>
-              <span onClick={() => navigate("/myntUniversity/faqs")}>
+              <span style={pathname === '/myntUniversity/faqs' ? { color: '#fbdf35' } : null} onClick={() => navigate("/myntUniversity/faqs")}>
                 MyntUniversity
               </span>
             </li>

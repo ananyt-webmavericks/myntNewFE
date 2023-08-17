@@ -299,10 +299,10 @@ const data = [
   {
     id: 27,
     youtubeUrl: "https://www.youtube-nocookie.com/embed/vtybtcAJtSw",
-    heading: '"CSOP Community Stock Options: Empowering Employees with Equity"',
+    heading: '"SAR Community Stock Options: Empowering Employees with Equity"',
     episode: "Clip 27",
     subHeading:
-      "CSOP Community Stock Options is a program that enables companies to offer equity to all employees, regardless of rank or position. This initiative promotes employee ownership and aligns incentives between employees and the company, fostering a culture of innovation and long-term growth.",
+      "SAR Community Stock Options is a program that enables companies to offer equity to all employees, regardless of rank or position. This initiative promotes employee ownership and aligns incentives between employees and the company, fostering a culture of innovation and long-term growth.",
     buttonUrl: "",
     image: ImageBlog1,
   },
@@ -368,7 +368,7 @@ export default function MyntVideosMain() {
   }, []);
   return (
     <div className="faq-university-container">
-      <div style={{ display: "grid" }}>
+      <div className="margin-fix-text" style={{ marginLeft: '-1.5em', display: "grid" }}>
         <span className="get-started-heading startup">
           Explore video clips below to uncover the world of startups
         </span>
@@ -377,7 +377,7 @@ export default function MyntVideosMain() {
         <Grid className="video-grid-wrapper" container spacing={gridxsMainFirst}>
           {data.map((item, index) => {
             return (
-              <Card item xs={gridxsMainSecond} key={index}>
+              <Card style={{ marginRight: '1em', marginBottom: '1em' }} item xs={gridxsMainSecond} key={index}>
                 <div className="video-des-image-container">
                   <div
                     style={{
@@ -403,7 +403,7 @@ export default function MyntVideosMain() {
                     style={{
                       padding: "1em",
                       display: "flex",
-                      flexDirection:'column',
+                      flexDirection: 'column',
                       justifyContent: "space-between",
                       height: 360
                     }}
@@ -417,11 +417,11 @@ export default function MyntVideosMain() {
                         }}
                       >
                         {item.episode}
-                      </span> <br/>
+                      </span> <br />
                       <span style={{ fontSize: "15px", marginBottom: "10px" }}>
                         {item.heading}
-                      </span> <br/>
-                      <span style={{ display:'block',marginTop: 10, fontSize: "12px", marginBottom: "10px" }}>
+                      </span> <br />
+                      <span style={{ display: 'block', marginTop: 10, fontSize: "12px", marginBottom: "10px" }}>
                         {item.subHeading}
                       </span>
                     </div>

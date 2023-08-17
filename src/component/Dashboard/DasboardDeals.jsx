@@ -22,7 +22,7 @@ const values = [
         checked: false
     },
     {
-        id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'CSOP', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
+        id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'SAR', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
         chip: [{ id: 1, name: 'Coliving' }],
         Completed: '206.01%',
         closesIn: '3 days',
@@ -44,6 +44,7 @@ export default function DashboardDeals() {
     const [spaceing, setSpaceing] = useState(3)
     const [gridxsFirst, setGridxsFirst] = useState(4)
     const ratio = parseInt(window.innerWidth);
+    const [errorType, setErrorType] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { deals } = useSelector(state => state.companyData)
@@ -53,10 +54,12 @@ export default function DashboardDeals() {
         const getAllDealTerms = () => {
             CompanyServices.getAllDealTerms().then(res => {
                 if (res?.status === 200 || res?.status === 201) {
-
                     dispatch(dealsStoreAction(res?.data?.data))
-                } else {
+                } else if (res?.data?.data?.length === 0) {
+                    setErrorType('new deals coming soon')
                     console.log("Get Deal Terms Failed!")
+                } else {
+                    setErrorType('new deals coming soon')
                 }
             })
         }
@@ -96,6 +99,7 @@ export default function DashboardDeals() {
         <div className="dashboard-container-deals" style={{ display: 'grid', marginTop: '30px', width: '96%' }}>
             <span style={{ fontSize: '20px', fontWeight: '600' }}>NEW LIVE OPPORTUNITIES  </span>
             <span>Get your wealth creation journey started today!</span>
+            {errorType && <span>{errorType}</span>}
             <Grid className="dashboard-card-deals" sx={{}} container spacing={spaceing}>
                 {/* {data.slice(0, showItem).map((item, index) => { */}
                 {deals?.slice(0, 3)?.map((campaign, index) => {
@@ -179,7 +183,7 @@ export default function DashboardDeals() {
                                         <span className="investment-txt hover">Raised</span>
                                         <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                         <hr style={{ marginTop: '11.5px' }} />
-                                        <span className="investment-txt hover">Minimum Subscription</span>
+                                        <span className="investment-txt hover">Minimum Enrollment</span>
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
@@ -201,7 +205,7 @@ export default function DashboardDeals() {
                                         <span className="investment-txt hover">Raised</span>
                                         <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
                                         <hr style={{ marginTop: '11.5px' }} />
-                                        <span className="investment-txt hover">Minimum Subscription</span>
+                                        <span className="investment-txt hover">Minimum Enrollment</span>
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>

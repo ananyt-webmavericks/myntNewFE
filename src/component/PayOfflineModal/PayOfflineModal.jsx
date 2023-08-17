@@ -90,7 +90,7 @@ const PayOfflineModal = (props) => {
             });
         }
         else if (totalAmount() < parseInt(bankInfo?.min_subscription)) {
-            toast.error("amount should be greater than minimum subscription", {
+            toast.error("amount should be greater than minimum Enrollment", {
                 position: "top-right",
                 style: {
                     borderRadius: "3px",
@@ -220,7 +220,7 @@ const PayOfflineModal = (props) => {
                     </Typography>
                     <Typography id="transition-modal-description" sx={{ mt: 0.5, textAlign: 'left', fontSize: '13px' }}>
 
-                        amount calculation :  minimum subscription is {bankInfo?.min_subscription}  so 2% convenience fee will be {bankInfo?.min_subscription * 2 / 100} and 18% GST will be {(18 / 100) * bankInfo?.min_subscription}
+                        amount calculation :  minimum Enrollment is {bankInfo?.min_subscription}  so 2% convenience fee will be {bankInfo?.min_subscription * 2 / 100} and 18% GST will be {(18 / 100) * bankInfo?.min_subscription}
                         and the total amount will be {totalAmountMin()}
                     </Typography>
                     <Typography id="transition-modal-description" sx={{ mt: 2, textAlign: 'center', color: '' }}>

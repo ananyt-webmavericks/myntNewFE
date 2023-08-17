@@ -53,7 +53,7 @@ export default function SubscriptionMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            Upon completion of the campaign, our team will work with the startup to prepare the M-SAFE / CSOP agreement for signing. This agreement governs the legal aspect of your Subscription in the startup. You'll be able to find the M-SAFE / CSOP agreement on your dashboard. If you have a T-SAFE, we'll start the process of filing the necessary documents with the MCA. You'll be able to view the offer letter in the portfolio section of your dashboard.
+                                            Upon completion of the campaign, our team will work with the startup to prepare the M-SAFE / SAR agreement for signing. This agreement governs the legal aspect of your Subscription in the startup. You'll be able to find the M-SAFE / SAR agreement on your dashboard. If you have a T-SAFE, we'll start the process of filing the necessary documents with the MCA. You'll be able to view the offer letter in the portfolio section of your dashboard.
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -104,7 +104,7 @@ export default function SubscriptionMynt() {
                                         <Typography>
                                             Documents you will receive will vary on the type of instrument used: <br /> <br />
                                             CCD/CCPS/NCD: Agreement and Offer Letter <br />
-                                            CSOP: Agreement and SAR Letter <br />
+                                            SAR: Agreement and SAR Letter <br />
                                             For Discounting: An acknowledgment email
                                         </Typography>
                                     </AccordionDetails>
@@ -168,13 +168,13 @@ export default function SubscriptionMynt() {
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                How to move forward upon allocating funds to CSOP campaign?
+                                                How to move forward upon allocating funds to SAR campaign?
                                             </span>
                                         </div>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            Upon transfer of funds, you will receive an acknowledgement email with the invoice. Afterward, you can sign the CSOP agreement with the startup's founder, which will be displayed in the portfolio section along with a SAR letter signed by the founder.
+                                            Upon transfer of funds, you will receive an acknowledgement email with the invoice. Afterward, you can sign the SAR agreement with the startup's founder, which will be displayed in the portfolio section along with a SAR letter signed by the founder.
 
                                         </Typography>
                                     </AccordionDetails>

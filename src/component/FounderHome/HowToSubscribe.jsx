@@ -1,14 +1,14 @@
 import React from 'react'
 import '../../css/FounderHome/HowToSub.css'
-import Screen1 from '../../images/assets/raiseCampaign.png';
-import Screen2 from '../../images/assets/campaignList.png';
-import Screen3 from '../../images/assets/uploadPitch.png';
-import Screen4 from '../../images/assets/frame4.png';
+import Screen1 from '../../images/assets/image101.png';
+import Screen2 from '../../images/assets/image102.png';
+import Screen3 from '../../images/assets/image103.png';
+import Screen4 from '../../images/assets/image104.png';
 
 const HowToSubscribe = () => {
     return (
         <div className="how-to-raise-container">
-            {/* <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div> */}
+            <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div>
             <div className="how-to-sub-subheading">Experience the advantages of a fully digital and hassle-free process.</div>
             <div className='hide-scroll' style={{ height: 950, justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
                 <div className="first-raise-card" style={{ marginLeft: '5px' }}>
