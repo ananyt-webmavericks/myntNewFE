@@ -13,7 +13,7 @@ const data = [
     {
         id: 1,
         avatar: 'https://rb.gy/if7kl',
-        name: ' Harshit Vyas, CBO Pepper Content',
+        name: ' Harshit Vyas',
         position: 'CBO Pepper Content',
         head: 'Transparency And Communication',
         description: JSON.stringify("Mynt provides us with a platform that meets our investment needs by offering high levels of transparency and by carefully selecting and onboarding only verified startups")
@@ -21,7 +21,7 @@ const data = [
     {
         id: 2,
         avatar: 'https://rb.gy/g7xzt',
-        name: "Shishir Pratap Singh, Professor at Rutgers University",
+        name: "Shishir Pratap Singh",
         position: 'Professor at Rutgers University',
         head: 'Game-Changing Startups Now Accessible',
         description: JSON.stringify("Mynt has simplified the process of investing in promising startups that have undergone rigorous vetting and have the potential to revolutionize their industries. It's now both accessible and effortless.")
@@ -29,7 +29,7 @@ const data = [
     {
         id: 3,
         avatar: simonMurthaty,
-        name: 'Mr. Simon Murthaty , CEO at Ocean Blue Boating Pvt. Ltd.',
+        name: 'Mr. Simon Murthaty ',
         position: 'CEO at Ocean Blue Boating Pvt. Ltd.',
         head: 'Diversified Startup Portfolio',
         description: JSON.stringify("The platform provided me with a diversified portfolio, giving me access to a range of startup opportunities I wouldn't have otherwise found."
@@ -38,7 +38,7 @@ const data = [
     {
         id: 4,
         avatar: 'https://rb.gy/1vr4f',
-        name: 'Tithi Chattopadhyay, Executive Director at Princeton University  ',
+        name: 'Tithi Chattopadhyay',
         position: 'Executive Director at Princeton University ',
         head: 'Impeccable Due Diligence Measures',
         description: JSON.stringify("After examining the portfolio companies of the networks that have supported Mynt, I am confident that the startups they will bring in will be of unparalleled quality."

@@ -37,10 +37,7 @@ const Footer = () => {
             <div className="footer-head-section">
               <img src={logo} alt="Mynt logo" className="logo-web-footer" />
               <span className="footer-text-header">
-                Mynt is a transparency and technology-focused alternate
-                enrollment platform that adds value to your wealth creation
-                goals by making the best Startup opportunities accessible across
-                the entire risk-reward spectrum.
+                Mynt is a transparency and technology-focused alternate enrollment platform that adds value to your wealth creation goals by making the best Startup opportunities accessible across the entire risk-reward spectrum.
               </span>
               <div className="button-container-footer">
                 <div className="logo-footer">
@@ -187,25 +184,7 @@ const Footer = () => {
             Disclaimer:
           </span>
           <span className="footer-text-header">
-            MXi Technologies Pvt Ltd (Mynt) is neither a stock exchange nor does
-            it intend to get recognized as a stock exchange under the Securities
-            Contracts Regulation Act, 1956. MXi Technologies Pvt Ltd is not
-            authorized by the capital markets regulator to solicit investments.
-            The securities traded on these platforms are not traded on any
-            regulated exchange. All trademarks and logos or registered
-            trademarks and logos found on this site or mentioned herein belong
-            to their respective owners, and are being used solely for
-            informational purposes. The information contained herein has been
-            collected from public sources, MXi Technologies Pvt Ltd disclaims
-            any and all responsibility in connection with veracity of this data.
-            The information on this website is intended solely for educational
-            purposes and should not be considered as legal, financial, or any
-            other type of advice. MXi Technologies Pvt Ltd holds no liability
-            for any financial or other losses suffered by the user or any
-            affiliated party based on the information provided here. In
-            addition, MXi Technologies Pvt Ltd does not facilitate any buying,
-            selling, or trading of securities either online or offline. This
-            Site will be updated periodically.
+            MXi Technologies Pvt Ltd (Mynt) is neither a stock exchange nor does it intend to get recognized as a stock exchange under the Securities Contracts Regulation Act, 1956. MXi Technologies Pvt Ltd is not authorized by the capital markets regulator to solicit investments. The securities traded on these platforms are not traded on any regulated exchange. All trademarks and logos or registered trademarks and logos found on this site or mentioned herein belong to their respective owners, and are being used solely for informational purposes. The information contained herein has been collected from public sources, MXi Technologies Pvt Ltd disclaims any and all responsibility in connection with veracity of this data. The information on this website is intended solely for educational purposes and should not be considered as legal, financial, or any other type of advice. MXi Technologies Pvt Ltd holds no liability for any financial or other losses suffered by the user or any affiliated party based on the information provided here. In addition, MXi Technologies Pvt Ltd does not facilitate any buying, selling, or trading of securities either online or offline. This Site will be updated periodically.
           </span>
         </div>
       </div>

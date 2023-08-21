@@ -261,7 +261,7 @@ const Highlights = ({ tabChangeFn }) => {
               value={formik.values.highlight1}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              placeholder="Enter highlight first"
+              placeholder="Tell us about your Achievements and Highlights"
               type="text"
               className="inp-enter-name"
               disabled={campaignDetail?.status !== 'CREATED'}
@@ -280,7 +280,7 @@ const Highlights = ({ tabChangeFn }) => {
               value={formik.values.highlight2}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              placeholder="Enter highlight second"
+              placeholder="Tell us about your Sales and Revenue"
               type="text"
               className="inp-enter-name"
               disabled={campaignDetail?.status !== 'CREATED'}
@@ -299,7 +299,7 @@ const Highlights = ({ tabChangeFn }) => {
               value={formik.values.highlight3}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              placeholder="Enter highlight third"
+              placeholder="Tell us about your Customer Feedback"
               type="text"
               className="inp-enter-name"
               disabled={campaignDetail?.status !== 'CREATED'}
@@ -318,7 +318,7 @@ const Highlights = ({ tabChangeFn }) => {
               value={formik.values.highlight4}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              placeholder="Enter highlight fourth"
+              placeholder="Tell us about your USP"
               type="text"
               className="inp-enter-name"
               disabled={campaignDetail?.status !== 'CREATED'}

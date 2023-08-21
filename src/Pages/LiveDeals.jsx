@@ -23,6 +23,8 @@ import CompanyServices from "../service/Company";
 import { dealsStoreAction } from "../Redux/actions/company";
 import { useDispatch, useSelector } from "react-redux";
 import DrawerFounder from "../component/FounderDrawer/DrawerFounder";
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 const values = [
   {
     id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
@@ -293,13 +295,32 @@ const LiveDeals = () => {
                     :
                     <>
                       {
-                        dealTypes?.slice(0, 4).map((item, index) => <div className="active-btn-container details" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
-                          onClick={() => handleOrderTabs(index + 1)}>
-                          <div >
-                            <span >{item.deal_name}</span>
-                            {/* <div className="mini-active-btn-highliter">Live</div> */}
-                          </div>
-                        </div>)
+                        dealTypes?.slice(0, 4).map((item, index) => {
+                          // let message;
+                          // switch (index) {
+                          //   case 0:
+                          //     message = 
+                          //     break;
+
+                          //   default:
+                          //     break;
+                          // }
+                          return (
+                            <div className="active-btn-container details" style={index + 1 === activeBtn ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
+                              onClick={() => handleOrderTabs(index + 1)}>
+                              <div >
+                                <span >{item.deal_name}</span>
+                                {/* <Tooltip title="Delete">
+                                  <IconButton>
+                                    <InfoIcon className="hover-info-btn" style={index + 1 === activeBtn ? { color: 'white' } : { color: 'black' }} />
+                                  </IconButton>
+                                </Tooltip> */}
+
+                                {/* <div className="mini-active-btn-highliter">Live</div> */}
+                              </div>
+                            </div>
+                          )
+                        })
                       }
                     </>
                   }

@@ -68,81 +68,81 @@ export default function SubscribegGraph() {
     }, []);
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
-            <img className="homeSubscribeYellowLine" src={homeSubscribeYellowLine} width={'100%'} height={'200px'}/>
+            <img className="homeSubscribeYellowLine" src={homeSubscribeYellowLine} width={'100%'} height={'200px'} />
             <div className="subscribe-graph-heading">
-                <Typography style={{textAlign:'center'}} className="test-script-regular">Signup to<span className="test-script-bg"> opportunities curated</span> for you</Typography>
+                <Typography style={{ textAlign: 'center' }} className="test-script-regular">Signup for<span className="test-script-bg"> opportunities selected</span> for you</Typography>
             </div>
-            <Grid sx={{ marginTop: '40px',gap:"20px", marginLeft: 0, width:"100%" }} container spacing={gridxsFirst}>
+            <Grid sx={{ marginTop: '40px', gap: "20px", marginLeft: 0, width: "100%" }} container spacing={gridxsFirst}>
                 {/* <Grid item xs={gridxsSecond}> */}
-                    <Card item xs={gridxsSecond} className="card-container" >
-                        <CardContent>
-                            <div className="card-content-graph" >
-                                <div className="card-sub-content" >
-                                    <Typography className="card-bold-txt" >Startup Opportunities</Typography>
-                                    <Typography style={{ width: '90%' }} className="regular-txt">Acquire access to exclusive high-yield opportunities in emerging businesses.</Typography>
-                                </div>
-                                <div className="container-for-text-and-graph">
-                                    <div className="text-section-subscribe">
-                                        <div >
-                                            <img src={Equity} alt="equity_logo" className="graphs-logo" />
-                                        </div>
-                                        <Button
-                                            ref={contentRef}
-                                            style={{ textTransform: 'none' }}
-                                            className="learn-more-btn"
-                                            onClick={() => navigate('/myntUniversity/faqs')} varient='outlined'>
-                                            Learn More
-                                            <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img>
-                                        </Button>
+                <Card item xs={gridxsSecond} className="card-container" >
+                    <CardContent>
+                        <div className="card-content-graph" >
+                            <div className="card-sub-content" >
+                                <Typography className="card-bold-txt" >Startup Opportunities</Typography>
+                                <Typography style={{ width: '90%' }} className="regular-txt">Acquire access to exclusive high-yield opportunities in emerging businesses.</Typography>
+                            </div>
+                            <div className="container-for-text-and-graph">
+                                <div className="text-section-subscribe">
+                                    <div >
+                                        <img src={Equity} alt="equity_logo" className="graphs-logo" />
                                     </div>
-                                    <div className="aditya-ahda" style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
-                                        <p className="risk-factor">Risk</p>
-                                        <div className="bar-graph-container one" style={firstGStyle}>
-                                        </div>
-                                        <p className="risk-factor two">Liquidity</p>
-                                        <div className="bar-graph-container two" style={secondGStyle}>
-                                        </div>
-                                        <p className="risk-factor three">Expected Gain</p>
-                                        <div className="bar-graph-container three" style={thirdGStyle}>
-                                        </div>
+                                    <Button
+                                        ref={contentRef}
+                                        style={{ textTransform: 'none' }}
+                                        className="learn-more-btn"
+                                        onClick={() => navigate('/myntUniversity/faqs')} varient='outlined'>
+                                        Learn More
+                                        <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img>
+                                    </Button>
+                                </div>
+                                <div className="aditya-ahda" style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
+                                    <p className="risk-factor">Risk</p>
+                                    <div className="bar-graph-container one" style={firstGStyle}>
+                                    </div>
+                                    <p className="risk-factor two">Liquidity</p>
+                                    <div className="bar-graph-container two" style={secondGStyle}>
+                                    </div>
+                                    <p className="risk-factor three">Expected Gain</p>
+                                    <div className="bar-graph-container three" style={thirdGStyle}>
                                     </div>
                                 </div>
                             </div>
-                        </CardContent>
+                        </div>
+                    </CardContent>
 
-                    </Card>
+                </Card>
                 {/* </Grid> */}
                 {/* <Grid item xs={gridxsSecond}> */}
-                    <Card item xs={gridxsSecond} className="card-container">
-                        <CardContent>
-                            <div className="card-content-graph" >
-                                <div className="card-sub-content" >
-                                    <Typography className="card-bold-txt" >Fixed-return Opportunities</Typography>
-                                    <Typography className="regular-txt">Profit from lucrative opportunities with regular payouts and high returns. </Typography>
-                                </div>
-                                <div className="container-for-text-and-graph">
-                                    <div className="text-section-subscribe">
-                                        <div>
-                                            <img src={Debt} alt="equity_logo" className="graphs-logo" />
-                                        </div>
-                                        <Button style={{ textTransform: 'none' }} className="learn-more-btn" onClick={() => navigate('/myntUniversity/faqs')} varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
+                <Card item xs={gridxsSecond} className="card-container">
+                    <CardContent>
+                        <div className="card-content-graph" >
+                            <div className="card-sub-content" >
+                                <Typography className="card-bold-txt" >Fixed-return Opportunities</Typography>
+                                <Typography className="regular-txt">Profit from lucrative opportunities with regular payouts and high returns. </Typography>
+                            </div>
+                            <div className="container-for-text-and-graph">
+                                <div className="text-section-subscribe">
+                                    <div>
+                                        <img src={Debt} alt="equity_logo" className="graphs-logo" />
                                     </div>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
-                                        <p className="risk-factor fixed">Risk</p>
-                                        <div className="bar-graph-container one" style={fourthGStyle}>
-                                        </div>
-                                        <p className="risk-factor fixed-two">Liquidity</p>
-                                        <div className="bar-graph-container two" style={fifthGStyle}>
-                                        </div>
-                                        <p className="risk-factor fixed-three ">Expected Gain</p>
-                                        <div className="bar-graph-container three" style={sixthGStyle}>
-                                        </div>
+                                    <Button style={{ textTransform: 'none' }} className="learn-more-btn" onClick={() => navigate('/myntUniversity/faqs')} varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
+                                    <p className="risk-factor fixed">Risk</p>
+                                    <div className="bar-graph-container one" style={fourthGStyle}>
+                                    </div>
+                                    <p className="risk-factor fixed-two">Liquidity</p>
+                                    <div className="bar-graph-container two" style={fifthGStyle}>
+                                    </div>
+                                    <p className="risk-factor fixed-three ">Expected Gain</p>
+                                    <div className="bar-graph-container three" style={sixthGStyle}>
                                     </div>
                                 </div>
                             </div>
-                        </CardContent>
+                        </div>
+                    </CardContent>
 
-                    </Card>
+                </Card>
                 {/* </Grid> */}
             </Grid>
 

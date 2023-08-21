@@ -10,6 +10,14 @@
     padding: 24px 30px;
 }
 
+.active-btn-container:hover .hover-info-btn {
+    color: white !important;
+}
+
+.active-btn-container.details {
+    justify-content: space-between !important;
+}
+
 .search-bar-keyword-container {
     width: 48%;
     height: 42px;
@@ -114,7 +122,8 @@
     width: 100% !important;
     margin-left: 0 !important;
 }
-.live-opportunities-container{
+
+.live-opportunities-container {
     padding-left: 16px !important;
     padding-right: 16px !important;
 }
@@ -126,10 +135,12 @@
     .live-opportunities-grid {
         justify-content: center;
     }
-    .investment-card-container{
+
+    .investment-card-container {
         width: 290px;
     }
-    .investment-card-container .live-opportunities-card-content{
+
+    .investment-card-container .live-opportunities-card-content {
         width: 290px;
     }
 

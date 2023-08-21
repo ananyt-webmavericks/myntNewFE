@@ -159,7 +159,7 @@ export default function OpenInvestment() {
         <>
             <Box sx={{ minHeight: '80vh', marginTop: '60px', marginBottom: '2em' }}>
                 <div className="subscribe-graph-heading">
-                    <Typography className="test-script-regular">Open<span className="test-script-bg"> Investments</span></Typography>
+                    <Typography className="test-script-regular">Live<span className="test-script-bg"> Opportunities</span></Typography>
                     <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities - </Typography>
                 </div>
                 {loader ?

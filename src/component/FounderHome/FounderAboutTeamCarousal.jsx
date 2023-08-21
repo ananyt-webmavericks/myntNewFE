@@ -12,7 +12,7 @@ const data = [
     {
         id: 1,
         avatar: 'https://rb.gy/8byyv',
-        name: "- Dhumil Javeri, Founder at Klassroom",
+        name: "- Dhumil Javeri",
         position: 'VP at Goldman Sachs',
         head: 'The Community Effect',
         description: JSON.stringify("We have previously raised funds from the networks leading the Mynt platform. And our experience has been nothing short of amazing. The community that Mynt can bring will be of great value to any entrepreneur looking to raise capital and grow their customer base.")
@@ -20,7 +20,7 @@ const data = [
     {
         id: 2,
         avatar: 'https://rb.gy/qt2z9',
-        name: '- Mayank, Founder of Ezyschooling ',
+        name: '- Mayank',
         position: 'Director at Magnetic Fields',
         head: 'Gain New Customers',
         description: JSON.stringify("For any business that is looking to gain new customers and raise funds simultaneously. I highly recommend the Mynt platform.")
@@ -28,7 +28,7 @@ const data = [
     {
         id: 3,
         avatar: 'https://rb.gy/w3osc',
-        name: '- Rahul Singh, Founder of Bonatra',
+        name: '- Rahul Singh',
         position: 'Executive Director at Princeton University ',
         head: 'New Age Fundraising',
         description: JSON.stringify("We highly recommend Mynt and its affiliate companies to any startup looking for comprehensive fundraising and growth solutions.")

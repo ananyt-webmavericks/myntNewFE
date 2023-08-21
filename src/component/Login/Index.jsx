@@ -192,9 +192,9 @@ export default function LoginMain() {
               onClick={() => navigate("/login-founder")}
               style={{ cursor: "pointer" }}
             >
-              Log in{" "}
+              Login{" "}
             </span>
-            as founder
+            as a founder
           </div>
           <div className="footer-get-started-txt-head">
             Don’t have an account?{" "}
