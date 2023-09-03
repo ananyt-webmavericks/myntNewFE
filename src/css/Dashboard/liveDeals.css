@@ -15,7 +15,7 @@
 }
 
 .active-btn-container.details {
-    justify-content: space-between !important;
+    /* justify-content: space-between !important; */
 }
 
 .search-bar-keyword-container {
@@ -80,9 +80,9 @@
 
     padding: 1em;
     height: 54px;
-    width: 130px;
+    width: 100%;
     max-width: fit-content;
-    min-width: 100px !important;
+    min-width: 130px !important;
     /* UI Properties */
     border-radius: 27px;
     display: flex;

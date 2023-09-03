@@ -118,7 +118,7 @@ const UploadDocuments = () => {
               color: "#fff",
             },
           });
-          navigate('/dashboard-founder')
+          navigate('/dashboard-founder/e-signin')
         } else {
           toast.error("Something went wrong, please try again later", {
             position: "top-right",

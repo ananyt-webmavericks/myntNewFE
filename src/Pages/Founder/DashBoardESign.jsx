@@ -23,6 +23,7 @@ const DashBoardESign = () => {
   const { userData } = useSelector((state) => state.loginData)
   const ratio = parseInt(window.innerWidth);
   const [campaigns, setCampaigns] = useState([]);
+  console.log("campaigns", campaigns)
   const [pdfData, setPdfData] = useState('')
   const [showDeals, setShowDeals] = useState(false);
   const [disable, setDisable] = useState(true)
@@ -220,7 +221,7 @@ const DashBoardESign = () => {
                   >
                     <div
                       onClick={() => {
-                        sessionStorage.setItem("campaign_id", item.id);
+                        sessionStorage.setItem("campaign_id", item.campaign.id);
                         sessionStorage.setItem("is_campaign_added", true);
                         navigate("/dashboard-founder/campaigns-statics");
                       }}
@@ -237,7 +238,7 @@ const DashBoardESign = () => {
                                 padding: "10px 20px",
                               }}
                             >
-                              <img src={item?.company?.company_logo || ''} alt="not found" />
+                              <img src={item?.company?.company_logo || ''} height={60} alt="not found" />
                               <div
                                 style={{
                                   display: "flex",

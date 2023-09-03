@@ -23,10 +23,10 @@ const MenuProps = {
 const names = [
     'Minimum',
     'All',
-    '5000',
+    '< 5000',
     '5001 - 10000',
     '10001 - 20000',
-    '>20000'
+    '> 20000'
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -89,10 +89,10 @@ export default function SearchBar(props) {
             filteredAndSortedData.sort((a, b) => a?.deal_terms?.min_subscription - b?.deal_terms?.min_subscription);
         } else if (value === 'Minimum') {
             filteredAndSortedData.sort((a, b) => b?.deal_terms?.min_subscription - a?.deal_terms?.min_subscription);
-        } else if (value === '5000') {
+        } else if (value === '< 5000') {
             filteredAndSortedData = filteredAndSortedData
                 .sort((a, b) => b?.deal_terms?.min_subscription - a?.deal_terms?.min_subscription)
-                .filter((item) => item?.deal_terms?.min_subscription === 5000);
+                .filter((item) => item?.deal_terms?.min_subscription <= 5000);
         } else if (value === '5001 - 10000') {
             filteredAndSortedData = filteredAndSortedData
                 .sort((a, b) => b?.deal_terms?.min_subscription - a?.deal_terms?.min_subscription)
@@ -103,7 +103,7 @@ export default function SearchBar(props) {
                 .sort((a, b) => b?.deal_terms?.min_subscription - a?.deal_terms?.min_subscription)
                 .filter((item) => item?.deal_terms?.min_subscription >= 10001 && item?.deal_terms?.min_subscription <= 20000);
         }
-        else if (value === '>20000') {
+        else if (value === '> 20000') {
             filteredAndSortedData = filteredAndSortedData
                 .sort((a, b) => b?.deal_terms?.min_subscription - a?.deal_terms?.min_subscription)
                 .filter((item) => item?.deal_terms?.min_subscription > 20000);

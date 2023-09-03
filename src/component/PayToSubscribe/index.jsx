@@ -126,7 +126,7 @@ export default function PayToSubscribeMain() {
         }
     }, [])
 
-    console.log("location?.state?.compayData?.deal_terms", location?.state?.campaignData)
+    console.log("dealmin subs", Number(location?.state?.campaignData?.deal_terms?.min_subscription))
 
     return (
         <>
@@ -155,14 +155,14 @@ export default function PayToSubscribeMain() {
 
                                 <div className="chips-pay-to-subscribe-cointainer">
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", 5000)}
-                                        className="particular-mentioned-chip-pay">+ ₹5,000</div>
+                                        onClick={e => formik.setFieldValue("amount", Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", 10000)}
-                                        className="particular-mentioned-chip-pay">+ ₹10,000</div>
+                                        onClick={e => formik.setFieldValue("amount", Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 5000)}
+                                        className="particular-mentioned-chip-pay">+ ₹{Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 5000}</div>
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", 15000)}
-                                        className="particular-mentioned-chip-pay">+ ₹15,000</div>
+                                        onClick={e => formik.setFieldValue("amount", Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 10000)}
+                                        className="particular-mentioned-chip-pay">+ ₹{Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 10000}</div>
                                 </div>
                                 {rewards.length > 0 && <span className="pay-amount-heading">Enrollment Benefits</span>}
                                 {
@@ -239,12 +239,12 @@ export default function PayToSubscribeMain() {
                                                 <span style={{ fontSize: '14px', fontWeight: '600', marginRight: '5px' }}>GST</span>
                                                 <Tooltip title="GST is applicable at 18% of the convenience Fee."><img src={Enquiry} width={20} height={20} alt="" /></Tooltip>
                                             </div>
-                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{(18 / 100) * formik.values.amount}</span>
+                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{(18 / 100) * formik.values.amount * 2 / 100}</span>
                                         </div>
                                         <hr />
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                             <span style={{ fontSize: '18px', fontWeight: '600' }}>Total</span>
-                                            <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{formik.values.amount * 2 / 100 + ((18 / 100) * formik.values.amount) + formik.values.amount}</span>
+                                            <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{formik.values.amount * 2 / 100 + ((18 / 100) * formik.values.amount * 2 / 100) + formik.values.amount}</span>
                                         </div>
                                     </CardContent>
 

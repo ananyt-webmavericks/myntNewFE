@@ -7,13 +7,13 @@ import Avatar3 from '../../images/assets/avatar3.png';
 import { useRef } from "react";
 import Carousel from 'react-elastic-carousel'
 import styles from '../../css/Home/aboutTeamCarousel.css'
-
+import Avatar2 from '../../images/assets/avatar2.png';
 const data = [
     {
         id: 1,
         avatar: 'https://rb.gy/8byyv',
         name: "- Dhumil Javeri",
-        position: 'VP at Goldman Sachs',
+        position: 'Founder at Klassroom',
         head: 'The Community Effect',
         description: JSON.stringify("We have previously raised funds from the networks leading the Mynt platform. And our experience has been nothing short of amazing. The community that Mynt can bring will be of great value to any entrepreneur looking to raise capital and grow their customer base.")
     },
@@ -21,7 +21,7 @@ const data = [
         id: 2,
         avatar: 'https://rb.gy/qt2z9',
         name: '- Mayank',
-        position: 'Director at Magnetic Fields',
+        position: 'Founder of Ezyschooling',
         head: 'Gain New Customers',
         description: JSON.stringify("For any business that is looking to gain new customers and raise funds simultaneously. I highly recommend the Mynt platform.")
     },
@@ -29,7 +29,7 @@ const data = [
         id: 3,
         avatar: 'https://rb.gy/w3osc',
         name: '- Rahul Singh',
-        position: 'Executive Director at Princeton University ',
+        position: 'Founder of Bonatra',
         head: 'New Age Fundraising',
         description: JSON.stringify("We highly recommend Mynt and its affiliate companies to any startup looking for comprehensive fundraising and growth solutions.")
     },
@@ -40,16 +40,16 @@ export default function FounderAboutTeamCarousal() {
     let resetTimeout;
 
     return (
-        <Box sx={{ minHeight: 'fit-content', marginTop: '90px', marginBottom: '20px' }}>
+        <Box sx={{ minHeight: 'fit-content', marginTop: '90px', marginBottom: '10px' }}>
             <div className="team-container">
                 <img className="team-bg-img" src={Map} alt="Map" />
                 <div className="homeCarouselWrapper" style={{ position: 'absolute', top: '15%', width: '100%' }}>
                     <Carousel
                         enableAutoPlay={false}
                         showArrows={true}
-                        autoPlaySpeed={3000}
+                        autoPlaySpeed={1000}
                         easing="ease"
-                        transitionMs={1000}
+                        transitionMs={1300}
                         enableMouseSwipe={true}
                         pagination={true}
                         itemsToShow={1}
@@ -62,14 +62,14 @@ export default function FounderAboutTeamCarousal() {
                                         if (carouselRef?.current?.goTo) {
                                             carouselRef.current.goTo(0)
                                         }
-                                    }, 3000)
+                                    }, 1000)
                                 }
                             }
                         }}
                     >
                         {data.map((item, index) => {
                             return (
-                                <Item key={index} className='company-image'>
+                                <Item style={{ position: 'relative' }} key={index} className='company-image'>
                                     <div className="about-container">
                                         <span className="section-head-about">{item.head}</span>
                                         <span className="section-description-about">{item.description}</span>
@@ -81,13 +81,14 @@ export default function FounderAboutTeamCarousal() {
                                             </div>
                                         </div>
                                     </div>
+                                    <img className="new-avatar-static" src={Avatar3} witdth={100} height={100} alt="avatar"></img>
                                 </Item>
                             )
                         })}
 
 
                     </Carousel>
-                    <img className="new-avatar-static" src={Avatar3} witdth={100} height={100} alt="avatar"></img>
+
                 </div>
             </div>
         </Box>

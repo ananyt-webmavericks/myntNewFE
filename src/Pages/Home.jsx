@@ -27,7 +27,7 @@ const Home = () => {
                 <InvestorsHome />
                 <HowToRaise />
             </Container>
-            <Footer/>
+            <Footer />
         </React.Fragment>
     )
 }

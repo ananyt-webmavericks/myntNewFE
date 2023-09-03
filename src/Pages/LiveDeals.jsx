@@ -11,6 +11,7 @@ import Logo1 from "../images/investments/logo1.png";
 import BG2 from "../images/investments/image2.png";
 import Logo2 from "../images/investments/logo2.png";
 import BG3 from "../images/investments/image3.png";
+import BG4 from "../images/investments/image4.jpg";
 import Logo3 from "../images/investments/logo3.png";
 import infoIcon from "../images/assets/info-icon.png";
 import Skeleton from "@mui/material/Skeleton";
@@ -25,74 +26,9 @@ import { useDispatch, useSelector } from "react-redux";
 import DrawerFounder from "../component/FounderDrawer/DrawerFounder";
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-const values = [
-  {
-    id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-    chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-    raised: '14.16%',
-    closesIn: '10 days',
-    invest: '₹5,000',
-    checked: false
-  },
-  {
-    id: 2, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'SAR', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
-    chip: [{ id: 1, name: 'Coliving' }],
-    raised: '206.01%',
-    closesIn: '3 days',
-    invest: '₹10,000',
-    checked: false
-  },
-  {
-    id: 3, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
-    chip: [{ id: 1, name: 'Managed Farmland' }],
-    raised: '206.01%',
-    closesIn: '3 days',
-    invest: '₹10,000',
-    checked: false
-  },
-  {
-    id: 1, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-    chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-    raised: '14.16%',
-    closesIn: '10 days',
-    invest: '₹5,000',
-    checked: false
-  },
-  {
-    id: 5, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-    chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-    raised: '14.16%',
-    closesIn: '10 days',
-    invest: '₹5,000',
-    checked: false
-  },
-  {
-    id: 6, backgroundImage: BG2, logo: Logo2, logoName: 'Settl', logoText: 'SAR', heading: '', subHeading: 'This is not the actual text for this section', description: 'Settl. is a technology-driven accommodation platform focused on providing a convenient and high-quality living expe…',
-    chip: [{ id: 1, name: 'Coliving' }],
-    raised: '206.01%',
-    closesIn: '3 days',
-    invest: '₹10,000',
-    checked: false
-  },
-  {
-    id: 7, backgroundImage: BG3, logo: Logo3, logoName: 'Harvest 20%', logoText: 'NCD', heading: '', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'Diversify your portfolio with Agri-Subscriptions & Earn Tax-free fixed income Diversify your portfolio',
-    chip: [{ id: 1, name: 'Managed Farmland' }],
-    raised: '206.01%',
-    closesIn: '3 days',
-    invest: '₹10,000',
-    checked: false
-  },
-  {
-    id: 8, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
-    chip: [{ id: 1, name: 'health' }, { id: 2, name: 'Personal Health' }],
-    raised: '14.16%',
-    closesIn: '10 days',
-    invest: '₹5,000',
-    checked: false
-  },
-]
+
 const LiveDeals = () => {
-  const [data, setData] = useState(values)
+  const [data, setData] = useState(null)
   const [activeBtn, setActiveBtn] = useState(1)
   const [loader, setLoader] = useState(true)
   const [errorTerms, setErrorTerms] = useState('')
@@ -107,10 +43,9 @@ const LiveDeals = () => {
   const location = window.location.pathname;
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   const { deals } = useSelector(state => state.companyData)
 
-
+  const backgroundImageUrls = [BG1, BG2, BG3, BG4];
 
   const handleOrderTabs = (tabNo) => {
     setActiveBtn(tabNo)
@@ -155,6 +90,9 @@ const LiveDeals = () => {
     CompanyServices.getAllDealTypes().then(res => {
       if (res.status === 200 || res.status === 201) {
         setDealTypes(res.data)
+        if (res?.data?.length > 0) {
+          getAllDealTerms()
+        }
         setTimeout(() => {
           setLoader(false)
         }, 1500);
@@ -170,8 +108,15 @@ const LiveDeals = () => {
       CompanyServices.getAllDealTerms().then(res => {
         if (res.status === 200 || res.status === 201) {
           if (res?.data?.data?.length > 0) {
-            dispatch(dealsStoreAction(res.data?.data))
-            console.log("deals", deals)
+            const dataWithRandomBackgrounds = res?.data?.data.map((item) => {
+              const randomIndex = Math.floor(Math.random() * backgroundImageUrls.length);
+              const randomBackgroundImage = backgroundImageUrls[randomIndex];
+              return {
+                ...item,
+                backgroundImage: randomBackgroundImage,
+              };
+            });
+            dispatch(dealsStoreAction(dataWithRandomBackgrounds))
             setDealTerms(res?.data?.data)
             setTimeout(() => {
               setLoader(false)
@@ -189,7 +134,8 @@ const LiveDeals = () => {
         }
       })
     }
-    deals.length === 0 && getAllDealTerms()
+
+    // getAllDealTerms()
 
     window.scrollTo(0, 0);
 
@@ -295,20 +241,22 @@ const LiveDeals = () => {
                     :
                     <>
                       {
-                        dealTypes?.slice(0, 4).map((item, index) => {
-                          // let message;
-                          // switch (index) {
-                          //   case 0:
-                          //     message = 
-                          //     break;
+                        dealTypes?.slice(0, 4)
+                          ?.filter((item) => dealTerms.some((term) => term.deal_type.deal_name === item.deal_name))
+                          ?.map((item, index) => {
+                            // let message;
+                            // switch (index) {
+                            //   case 0:
+                            //     message = 
+                            //     break;
 
-                          //   default:
-                          //     break;
-                          // }
-                          return (
-                            <div className="active-btn-container details" style={index + 1 === activeBtn ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
-                              onClick={() => handleOrderTabs(index + 1)}>
-                              <div >
+                            //   default:
+                            //     break;
+                            // }
+                            return (
+                              <div className="active-btn-container details" style={index + 1 === activeBtn ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }}
+                                onClick={() => handleOrderTabs(index + 1)}>
+                                {/* <div > */}
                                 <span >{item.deal_name}</span>
                                 {/* <Tooltip title="Delete">
                                   <IconButton>
@@ -317,10 +265,10 @@ const LiveDeals = () => {
                                 </Tooltip> */}
 
                                 {/* <div className="mini-active-btn-highliter">Live</div> */}
+                                {/* </div> */}
                               </div>
-                            </div>
-                          )
-                        })
+                            )
+                          })
                       }
                     </>
                   }
@@ -397,10 +345,10 @@ const LiveDeals = () => {
                                   className="investment-card-container" sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
                                   <CardContent sx={{ padding: '0' }}>
                                     <div style={{ position: 'relative' }}>
-                                      <img src={BG1} width='100%' height={192} />
+                                      <img src={campaign?.backgroundImage} width='100%' height={192} />
                                       <div className="card-header-logo">
                                         <div className="company-logo-section">
-                                          <img loading="lazy" src={campaign?.company?.company_logo || ''} height={44} />
+                                          <img loading="lazy" src={campaign?.company?.company_logo || ''} height={60} />
                                         </div>
                                         <div className="logo-txt-script">
                                           {campaign?.deal_type?.deal_name || ''}
@@ -454,7 +402,7 @@ const LiveDeals = () => {
                                     <div className="overlay">
                                       <div className="card-header-logo hover">
                                         <div className="company-logo-section">
-                                          <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
+                                          <img src={campaign?.company?.company_logo || ''} height={60} />
                                         </div>
                                         <span className="company-name hover" style={{ marginLeft: '10px' }}>  {campaign?.company?.company_name || ''}</span>
                                       </div>
@@ -476,7 +424,7 @@ const LiveDeals = () => {
                                     {item.checked && <div className="overlay responsive">
                                       <div className="card-header-logo hover">
                                         <div className="company-logo-section">
-                                          <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
+                                          <img src={campaign?.company?.company_logo || ''} height={60} />
                                         </div>
                                         <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
                                       </div>

@@ -8,6 +8,7 @@ import Image1 from '../../../images/myntblogs/image1.png';
 import Image2 from '../../../images/myntblogs/image2.png';
 import Image3 from '../../../images/myntblogs/image3.png';
 import blogs from "./blogs.json";
+import ScrollContainer from 'react-indiana-drag-scroll'
 // const data = [
 //     {id:1 , heading:'The Impact of the 2023 Budget on the Indian Startup Ecosystem' , date:'8th jan 2023' , image:Image1},
 //     {id:2 , heading:'Fixed Income Instruments: Help You Reach Your Financial Goals' , date:'15th jan 2023' , image:Image2},
@@ -44,23 +45,34 @@ export default function MyntBlogsMain() {
             <div className="margin-fix-text" style={{ marginLeft: '-1.5em', display: 'grid' }}>
                 <span className="get-started-heading startup">Browse by Topic</span>
             </div>
-            <div className="button-container-liveDeals blogs" style={{ marginLeft: '-1.7em', justifyContent: 'flex-start', display: 'flex' }}>
-                <div className="active-btn-container blogs" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(1)}>
-                    All
-                </div>
-                <div className="active-btn-container blogs" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(2)}>
-                    Invest
-                </div>
-                <div className="active-btn-container blogs" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(3)}>
-                    Product
-                </div>
-                <div className="active-btn-container blogs" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(4)}>
-                    Startup
-                </div>
-                <div className="active-btn-container blogs" style={activeBtn === 5 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(5)}>
-                    Finance
-                </div>
+
+            <div className="button-container-liveDeals blogs" style={{ marginLeft: '-1.7em' }}>
+                <ScrollContainer className="scroll-bar-blogs" style={{ overflow: 'scroll', width: '100%', justifyContent: 'flex-start', display: 'flex' }}>
+                    <div className="active-btn-container blogs" style={activeBtn === 1 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(1)}>
+                        All
+                    </div>
+                    <div className="active-btn-container blogs" style={activeBtn === 2 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(2)}>
+                        Startups
+                    </div>
+                    <div className="active-btn-container blogs" style={activeBtn === 3 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(3)}>
+                        Investment
+                    </div>
+                    <div className="active-btn-container blogs" style={activeBtn === 4 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(4)}>
+                        Personal Finance
+                    </div>
+                    <div className="active-btn-container blogs" style={activeBtn === 5 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(5)}>
+                        Economy and Markets
+                    </div>
+                    <div className="active-btn-container blogs" style={activeBtn === 6 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(6)}>
+                        Mynt Insights
+                    </div>
+                    <div className="active-btn-container blogs" style={activeBtn === 7 ? { background: 'black', color: 'white' } : { background: '#F4F4F4', color: 'black' }} onClick={() => setActiveBtn(7)}>
+                        Industry insights
+                    </div>
+
+                </ScrollContainer>
             </div>
+
             <div className="blogs-container-mynt">
                 <Grid className="video-grid-wrapper" container spacing={gridxsMainFirst}>
                     {blogs.map((item, index) => {

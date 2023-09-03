@@ -12,14 +12,6 @@ import styles from '../../css/Home/aboutTeamCarousel.css'
 const data = [
     {
         id: 1,
-        avatar: 'https://rb.gy/if7kl',
-        name: ' Harshit Vyas',
-        position: 'CBO Pepper Content',
-        head: 'Transparency And Communication',
-        description: JSON.stringify("Mynt provides us with a platform that meets our investment needs by offering high levels of transparency and by carefully selecting and onboarding only verified startups")
-    },
-    {
-        id: 2,
         avatar: 'https://rb.gy/g7xzt',
         name: "Shishir Pratap Singh",
         position: 'Professor at Rutgers University',
@@ -27,7 +19,7 @@ const data = [
         description: JSON.stringify("Mynt has simplified the process of investing in promising startups that have undergone rigorous vetting and have the potential to revolutionize their industries. It's now both accessible and effortless.")
     },
     {
-        id: 3,
+        id: 2,
         avatar: simonMurthaty,
         name: 'Mr. Simon Murthaty ',
         position: 'CEO at Ocean Blue Boating Pvt. Ltd.',
@@ -36,7 +28,7 @@ const data = [
         )
     },
     {
-        id: 4,
+        id: 3,
         avatar: 'https://rb.gy/1vr4f',
         name: 'Tithi Chattopadhyay',
         position: 'Executive Director at Princeton University ',
@@ -44,6 +36,17 @@ const data = [
         description: JSON.stringify("After examining the portfolio companies of the networks that have supported Mynt, I am confident that the startups they will bring in will be of unparalleled quality."
         )
     },
+    {
+        id: 4,
+        avatar: 'https://rb.gy/if7kl',
+        name: ' Harshit Vyas',
+        position: 'CBO Pepper Content',
+        head: 'Transparency And Communication',
+        description: JSON.stringify("Mynt provides us with a platform that meets our investment needs by offering high levels of transparency and by carefully selecting and onboarding only verified startups")
+    },
+
+
+
 
     // {
     //     id: 5,

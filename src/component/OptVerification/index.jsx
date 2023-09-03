@@ -65,7 +65,7 @@ export default function OtpVerificationMain() {
   const handleResendOtp = () => {
     const usernames = userMail ? userMail : userData.email;
     const loginValue = {
-        email : usernames
+      email: usernames
     }
     const editValue = {
       secondary_email: state?.otpEmail
@@ -137,7 +137,7 @@ export default function OtpVerificationMain() {
                   } else {
                     ConsentSerivce.getUserConsent(response.data.data.id).then(
                       ({ data }) => {
-                        navigate(data ? "/dashboard" : "/become-investor");
+                        navigate("/dashboard");
                       }
                     );
                   }
@@ -249,7 +249,7 @@ export default function OtpVerificationMain() {
             >
               {" "}
               {isLoading ? (
-                <CircularProgress style={{color: 'white',width: 20, height:20}} className="loader" />
+                <CircularProgress style={{ color: 'white', width: 20, height: 20 }} className="loader" />
               ) : loginType === "new" ? (
                 "Sign Up"
               ) : (

@@ -19,7 +19,7 @@
     /* padding-top: 1em; */
     width: 173px;
     height: 43px;
-    margin-left: 25px;
+    margin-left: 72px;
     object-fit: cover;
     cursor: pointer;
 }
@@ -116,6 +116,7 @@
     display: none;
 }
 
+
 .nav-profile-icon-mb {
     padding-left: 0px;
     display: flex;
@@ -163,7 +164,8 @@
     .profile-mb {
         display: none;
     }
-    .nav-profile-icon-mb{
+
+    .nav-profile-icon-mb {
         display: none;
     }
 
@@ -180,7 +182,7 @@
 }
 
 @media (max-width: 768px) {
-   
+
     .navbar .menu-items {
         justify-content: start;
     }

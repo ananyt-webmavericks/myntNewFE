@@ -170,7 +170,7 @@ const FounderCampaigns = () => {
                     >
                       <div
                         onClick={() => {
-                          sessionStorage.setItem("campaign_id", item.id);
+                          sessionStorage.setItem("campaign_id", item.campaign.id);
                           sessionStorage.setItem("is_campaign_added", true);
                           navigate("/dashboard-founder/campaigns-statics");
                         }}

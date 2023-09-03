@@ -66,7 +66,7 @@ export default function LoginMain() {
                   ConsentSerivce.getUserConsent(response.data.id).then(
                     ({ data }) => {
                       console.log(data);
-                      navigate(data ? "/dashboard" : "/become-investor");
+                      navigate("/dashboard");
                       setIsLoading(false);
                     }
                   );

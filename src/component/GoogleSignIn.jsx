@@ -105,7 +105,7 @@ export default function GoogleSignIn() {
                                     navigate('/about-you')
                                 } else {
                                     ConsentSerivce.getUserConsent(response.data?.data?.id).then(({ data }) => {
-                                        navigate(data ? '/dashboard' : '/become-investor')
+                                        navigate('/dashboard')
                                     })
                                 }
                             }
@@ -134,7 +134,7 @@ export default function GoogleSignIn() {
                                     navigate('/about-you')
                                 } else {
                                     ConsentSerivce.getUserConsent(response.data.id).then(({ data }) => {
-                                        navigate(data ? '/dashboard' : '/become-investor')
+                                        navigate('/dashboard')
                                     })
                                 }
                             }

@@ -108,6 +108,56 @@ const actions = [
   },
 ];
 
+
+const PDFViewer = ({ pdfUrl }) => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js';
+    script.async = true;
+
+    script.onload = () => {
+      // PDF.js loaded, you can now use it
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+      // Load and render the PDF
+      const loadingTask = pdfjsLib.getDocument(pdfUrl);
+      loadingTask.promise.then((pdf) => {
+        // Fetch the first page
+        pdf.getPage(1).then((page) => {
+          const canvas = document.getElementById('pdf-canvas');
+          const context = canvas.getContext('2d');
+
+          const viewport = page.getViewport({ scale: 1 });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          // Render the PDF page into the canvas
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
+          page.render(renderContext);
+        });
+      });
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup: remove the script
+      document.body.removeChild(script);
+    };
+  }, [pdfUrl]);
+
+  return (
+    <div>
+      <canvas id="pdf-canvas"></canvas>
+    </div>
+  );
+};
+
+
 const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
   marginLeft: "1em",
 }));
@@ -234,15 +284,50 @@ export default function LiveDetailsMain() {
     }
     return percentage
   }
+
+  const handleEnrollBtn = () => {
+    let isvalidate = (daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' || userData?.user_type !== "FOUNDER")
+    if (isvalidate) {
+      if (kycData?.bank_account &&
+        kycData?.pan_card &&
+        kycData?.pan_card_verified &&
+        kycData?.address_line_1 &&
+        kycData?.city &&
+        kycData?.state &&
+        kycData?.country &&
+        kycData?.pincode &&
+        kycData?.bank_name &&
+        kycData?.bank_account &&
+        kycData?.ifsc_code &&
+        kycData?.bank_account_verified &&
+        kycData?.mobile_number &&
+        kycData?.mobile_number_verified &&
+        kycData?.aadhaar_card_verified &&
+        kycData?.aadhaar_card_number) {
+        navigate("/pay-to-subscribe", {
+          state: {
+            campaignId: campaignData.id,
+            companyName: companyData.company_name,
+            campaignData: location?.state?.campaignData
+          },
+        })
+      } else {
+        handleNavigate()
+      }
+    } else {
+      return
+    }
+
+  }
   return (
     <>
       <div className="get-started-container">
         <div style={{ paddingTop: "8em" }}>
           <div style={{ display: 'flex', flexDirection: 'row' }} className="deals-detail-video-section" container spacing={gridxsFirst}>
             <Grid className="deals-detail-video-section-left" item xs={gridxsSecond}>
-              {campaignData?.ama_youtube_video ? (
+              {campaignData?.youtube_link ? (
                 <YoutubeEmbed
-                  link={campaignData?.ama_youtube_video}
+                  link={campaignData?.youtube_link}
                   width={gridxsFirst === 2 ? "90%" : "100%"}
                   height={"357px"}
                   embedId={"g_aELYEBc4Q"}
@@ -320,40 +405,11 @@ export default function LiveDetailsMain() {
               <div className="header-section-deals-detail btn-section">
 
                 <Button
-                  disabled={daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' ? true : false && userData?.user_type !== "FOUNDER"}
-                  onClick={() => {
-                    userData?.id
-                      ? kycData?.bank_account &&
-                        kycData?.pan_card &&
-                        kycData?.pan_card_verified &&
-                        kycData?.address_line_1 &&
-                        kycData?.city &&
-                        kycData?.state &&
-                        kycData?.country &&
-                        kycData?.pincode &&
-                        kycData?.bank_name &&
-                        kycData?.bank_account &&
-                        kycData?.ifsc_code &&
-                        kycData?.bank_account_verified &&
-                        kycData?.mobile_number &&
-                        kycData?.mobile_number_verified &&
-                        kycData?.aadhaar_card_verified &&
-                        kycData?.aadhaar_card_number
-                        ?
-                        navigate("/pay-to-subscribe", {
-                          state: {
-                            campaignId: campaignData.id,
-                            companyName: companyData.company_name,
-                            campaignData: location?.state?.campaignData
-                          },
-                        })
-                        : handleNavigate()
-                      : navigate("/login");
-                  }}
+                  // disabled={(daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' || userData?.user_type !== "FOUNDER")}
+                  onClick={handleEnrollBtn}
                   // style={{ textTransform: "none" }}
                   className={
-                    userData?.user_type !== "FOUNDER" && (daysRemaining(location?.state?.campaignData?.deal_terms?.end_date)) === 'Expired' ||
-                      userData?.user_type === "FOUNDER"
+                    (daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' || userData?.user_type === "FOUNDER")
                       ? "disable-enroll-btn"
                       : "invest-btn-section-deals"
                   }
@@ -449,7 +505,7 @@ export default function LiveDetailsMain() {
                       <Card className="card-content-live-details">
                         <CardContent>
                           <div style={{ display: "flex", alignItems: "center" }}>
-                            <img src={Group1} height={47} width={53}></img>
+                            <img src={item?.highlight_image} height={47} style={{ objectFit: 'cover' }} width={53}></img>
                             <span
                               style={{
                                 fontSize: "18px",
@@ -542,10 +598,11 @@ export default function LiveDetailsMain() {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-                  marginTop: "40px",
+                  // marginTop: "40px",
                   filter: `blur(${blurAmount}px)`,
                 }}
               >
+                <PDFViewer pdfUrl={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`} />
                 {/* <iframe
                 src={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
                 style={{ width: "500px", height: "500px" }}

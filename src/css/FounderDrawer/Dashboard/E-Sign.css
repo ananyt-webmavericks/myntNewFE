@@ -98,7 +98,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 60px;
-    padding: 16px 0px 0px 16px;
+    /* padding: 16px 0px 0px 16px; */
 }
 
 .raisedflex {
@@ -182,9 +182,10 @@
 }
 
 @media screen and (max-width: 425px) {
-    .dashboard-width-mb{
+    .dashboard-width-mb {
         max-width: 100% !important;
     }
+
     .companyAddbox {
         flex-direction: column;
         /* margin-bottom: 10rem; */
@@ -212,7 +213,8 @@
         height: 100%;
         width: 100% !important;
     }
-    .campaing-mb{
+
+    .campaing-mb {
         width: 100% !important;
     }
 }

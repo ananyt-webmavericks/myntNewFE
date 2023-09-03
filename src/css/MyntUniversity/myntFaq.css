@@ -97,7 +97,13 @@
 .active-btn-container.blogs {
     margin-right: 1em;
     margin-top: 10px;
+    padding: 1rem 2rem;
+    white-space: nowrap;
+    min-width: fit-content !important;
+}
 
+.scroll-bar-blogs::-webkit-scrollbar {
+    display: none !important;
 }
 
 .active-btn-container:hover {
@@ -167,6 +173,11 @@
 
 }
 
+.button-container-liveDeals.blogs {
+
+    width: 100%;
+}
+
 @media screen and (max-width:1025px) {
     .margin-fix-text {
         /* margin-left: 0em !important; */
@@ -182,6 +193,7 @@
 
     .button-container-liveDeals.blogs {
         flex-wrap: wrap;
+        width: 100%;
     }
 }
 

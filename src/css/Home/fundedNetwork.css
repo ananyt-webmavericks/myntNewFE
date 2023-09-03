@@ -46,6 +46,7 @@
 .networks-mb-view {
     display: none !important;
     gap: 20px;
+
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
@@ -73,7 +74,8 @@
 
 @media screen and (max-width:460px) {
     .networks-mb-view {
-        display: flex;
+        display: grid;
+        justify-content: center !important;
     }
 }
 

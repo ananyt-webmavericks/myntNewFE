@@ -6,6 +6,7 @@ import Logo1 from '../../images/investments/logo1.png';
 import BG2 from '../../images/investments/image2.png';
 import Logo2 from '../../images/investments/logo2.png';
 import BG3 from '../../images/investments/image3.png';
+import BG4 from '../../images/investments/image4.jpg';
 import Logo3 from '../../images/investments/logo3.png';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import CompanyServices from "../../service/Company";
@@ -48,13 +49,25 @@ export default function DashboardDeals() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { deals } = useSelector(state => state.companyData)
-
+    const backgroundImageUrls = [BG1, BG2, BG3, BG4];
     useEffect(() => {
 
         const getAllDealTerms = () => {
             CompanyServices.getAllDealTerms().then(res => {
                 if (res?.status === 200 || res?.status === 201) {
-                    dispatch(dealsStoreAction(res?.data?.data))
+                    if (data.length > 0) {
+                        const dataWithRandomBackgrounds = res?.data?.data.map((item) => {
+                            const randomIndex = Math.floor(Math.random() * backgroundImageUrls.length);
+                            const randomBackgroundImage = backgroundImageUrls[randomIndex];
+                            return {
+                                ...item,
+                                backgroundImage: randomBackgroundImage,
+                            };
+                        });
+                        dispatch(dealsStoreAction(dataWithRandomBackgrounds))
+                    } else {
+                        dispatch(dealsStoreAction([]))
+                    }
                 } else if (res?.data?.data?.length === 0) {
                     setErrorType('new deals coming soon')
                     console.log("Get Deal Terms Failed!")
@@ -115,10 +128,10 @@ export default function DashboardDeals() {
                             className="investment-card-container" sx={{ padding: '0', marginTop: '1em' }} >
                             <CardContent className="live-opportunities-card-content" sx={{ padding: '0', width: '300px' }}>
                                 <div style={{ position: 'relative' }}>
-                                    <img src={BG1} width='100%' height={192} />
+                                    <img src={campaign?.backgroundImage} width='100%' height={192} />
                                     <div className="card-header-logo">
                                         <div className="company-logo-section">
-                                            <img loading="lazy" src={campaign?.company?.company_logo || ''} height={44} />
+                                            <img loading="lazy" src={campaign?.company?.company_logo || ''} height={60} />
                                         </div>
                                         <div className="logo-txt-script">
                                             {campaign?.deal_type?.deal_name || ''}
@@ -172,7 +185,7 @@ export default function DashboardDeals() {
                                 <div className="overlay">
                                     <div className="card-header-logo hover">
                                         <div className="company-logo-section">
-                                            <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
+                                            <img src={campaign?.company?.company_logo || ''} width={54} height={60} />
                                         </div>
                                         <span className="company-name hover" style={{ marginLeft: '10px' }}>{campaign?.company?.company_name || ''}</span>
                                     </div>
@@ -194,9 +207,9 @@ export default function DashboardDeals() {
                                 {true && <div className="overlay responsive">
                                     <div className="card-header-logo hover">
                                         <div className="company-logo-section">
-                                            <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
+                                            <img src={campaign?.company?.company_logo || ''} width={54} height={60} />
                                         </div>
-                                        <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
+                                        <span className="company-name hover" style={{ marginLeft: '10px' }}>  {campaign?.company?.company_name || ''}</span>
                                     </div>
                                     <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
                                         <span className="investment-txt hover">Investors</span>

@@ -25,14 +25,21 @@ const Navbar = () => {
   const { userData } = useSelector((state) => state.loginData);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+
     setAnchorEl(null);
   };
   const handleProfile = () => {
-    navigate("/my-profile");
+    if (userData.user_type === "INVESTOR") {
+      navigate("/my-profile");
+    }
+    else {
+      navigate("/dashboard-founder/e-signin");
+    }
   };
   const handleLogout = () => {
     navigate("/login");
@@ -96,9 +103,10 @@ const Navbar = () => {
             </>
           )}
 
-          <ul className="menu-items">
+          <ul className='menu-items'>
             <li>
-              <span style={pathname === '/' ? { color: '#fbdf35' } : null} onClick={() => navigate("/")}>Home</span>
+
+              <span style={pathname === '/' ? { color: '#fbdf35' } : null} onClick={() => { navigate("/") }}>Home</span>
             </li>
             <hr className="ruler-navbar" />
             <li>
@@ -118,7 +126,7 @@ const Navbar = () => {
             {Object.keys(userData).length !== 0 ? (
               <>
                 <li>
-                  <span onClick={() => navigate("/")}>
+                  <span onClick={handleProfile}>
                     {userData.name ? userData.name : userData?.first_name}
                   </span>
                 </li>

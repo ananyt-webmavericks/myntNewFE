@@ -14,6 +14,10 @@ import Byju from '../../images/investors/byju.png';
 import Farhat from '../../images/investors/farhat.png';
 import Owl from '../../images/investors/owl.png';
 import Kunal from '../../images/investors/kunal.png';
+import image1 from '../../images/investors/image1.png';
+import image2 from '../../images/investors/image2.png';
+import image3 from '../../images/investors/image3.png';
+import image4 from '../../images/investors/image4.png';
 import Microsoft from '../../images/investors/microsoft.png';
 import Manju from '../../images/investors/manju.png';
 import Sg from '../../images/investors/sg.png';
@@ -50,35 +54,35 @@ const data = [
   },
   {
     id: 4,
-    image: Rajiv,
+    image: Manju,
     logo: Byju,
     name: "Rajeev",
     amount: "Enrolled INR 20,000",
   },
   {
     id: 5,
-    image: Rajiv,
+    image: image1,
     logo: Owl,
     name: "Gaurav",
     amount: "Enrolled INR 18,000",
   },
   {
     id: 6,
-    image: Kunal,
+    image: image2,
     logo: makemytrip,
     name: "Kunal",
     amount: "Enrolled INR 9,000",
   },
   {
     id: 7,
-    image: Manju,
+    image: image3,
     logo: Uber,
     name: "Manju",
     amount: "Enrolled INR 15,000",
   },
   {
     id: 8,
-    image: Kunal,
+    image: image4,
     logo: Ola,
     name: "Sanjay",
     amount: "Enrolled INR 19,000",

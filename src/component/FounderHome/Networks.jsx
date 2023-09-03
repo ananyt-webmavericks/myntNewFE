@@ -31,11 +31,11 @@ const Networks = () => {
     }));
 
     const Networks = [
-        { badgeName: "PRE SERIES A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 50, width: 50},
+        { badgeName: "PRE SERIES A", bottomBadgeName: "Klass Room", logo: klassroom_logo, height: 50, width: 50 },
         { badgeName: "PRE IPO", bottomBadgeName: "Formlabs", logo: formlabs_logo, height: 17, width: '' },
         // { badgeName: "POST SEED", bottomBadgeName: "Auto Shield", logo: autoshield_logo, height: 19 },
         { badgeName: "PRE-SERIES A", bottomBadgeName: "Deciwood", logo: deciwood_logo, height: 22, width: '' },
-        { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell , height: 30, width: '' },
+        { badgeName: "PRE-SERIES A", bottomBadgeName: "Livewell ", logo: Livewell, height: 30, width: '' },
         // { badgeName: "POST SEED", bottomBadgeName: "Ezyschooling ", logo: Ezyschooling  , height: 22 },
     ]
 
@@ -47,11 +47,11 @@ const Networks = () => {
                 <span> Perform </span>
             </Typography>
 
-            <Grid item 
+            <Grid item
             // xs={6} md={3}
             >
                 <Box
-                className="portfolio-company-card"
+                    className="portfolio-company-card"
                     sx={{
                         p: 2,
                         paddingTop: 5,
@@ -65,7 +65,7 @@ const Networks = () => {
                         <div key={index} className="networks-box">
                             <FlexDiv>
                                 <div><img height={item.height} width={item.width} src={item.logo} alt="network-logo" /></div>
-                                <div className='network-badge'><span className='network-badge-text'>{item.badgeName}</span></div>
+                                <div style={{ alignSelf: 'flex-start' }} className='network-badge'><span className='network-badge-text'>{item.badgeName}</span></div>
                             </FlexDiv>
                             <FlexDiv style={{ paddingLeft: '14px' }}>
                                 <span className='network-badge-bottom-text'>{item.bottomBadgeName}</span>

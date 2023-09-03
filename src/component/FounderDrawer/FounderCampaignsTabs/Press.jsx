@@ -312,7 +312,7 @@ const Press = ({ tabChangeFn }) => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     borderRadius: "4px",
                   }}
                 />
@@ -331,7 +331,7 @@ const Press = ({ tabChangeFn }) => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     borderRadius: "4px",
                   }}
                 />
@@ -350,7 +350,7 @@ const Press = ({ tabChangeFn }) => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     borderRadius: "4px",
                   }}
                 />
@@ -595,7 +595,7 @@ const Press = ({ tabChangeFn }) => {
                               left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: "contain",
                               borderRadius: "4px",
                             }}
                           />
@@ -614,7 +614,7 @@ const Press = ({ tabChangeFn }) => {
                               left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: "contain",
                               borderRadius: "4px",
                             }}
                           />
@@ -633,7 +633,7 @@ const Press = ({ tabChangeFn }) => {
                               left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: "contain",
                               borderRadius: "4px",
                             }}
                           />
@@ -679,17 +679,18 @@ const Press = ({ tabChangeFn }) => {
 
                     <div className="banner-box-container">
                       <div style={{ position: "relative" }} className="Banner-Box">
-                        {item?.banner_images?.length ? (
+                        {item?.banner_images[0] !== 'null' ? (
                           <img
                             src={item?.banner_images[0]}
                             alt="Preview of first image"
                             style={{
                               position: "absolute",
                               top: 0,
+
                               left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: "contain",
                               borderRadius: "4px",
                             }}
                           />
@@ -698,7 +699,7 @@ const Press = ({ tabChangeFn }) => {
                         )}
                       </div>
                       <div style={{ position: "relative" }} className="Banner-Box">
-                        {item?.banner_images?.length ? (
+                        {item?.banner_images[1] !== 'null' ? (
                           <img
                             src={item?.banner_images[1]}
                             alt="Preview of second image"
@@ -708,7 +709,7 @@ const Press = ({ tabChangeFn }) => {
                               left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: "contain",
                               borderRadius: "4px",
                             }}
                           />
@@ -717,9 +718,9 @@ const Press = ({ tabChangeFn }) => {
                         )}
                       </div>
                       <div style={{ position: "relative" }} className="Banner-Box">
-                        {item?.banner_images?.length ? (
+                        {item?.banner_images[2] !== 'null' ? (
                           <img
-                            src={item?.banner_images[2]}
+                            src={item?.banner_images[2] || null}
                             alt="Preview of third image"
                             style={{
                               position: "absolute",
@@ -727,7 +728,7 @@ const Press = ({ tabChangeFn }) => {
                               left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: "contain",
                               borderRadius: "4px",
                             }}
                           />

@@ -12,6 +12,7 @@ import Logo1 from "../../images/investments/logo1.png";
 import BG2 from "../../images/investments/image2.png";
 import Logo2 from "../../images/investments/logo2.png";
 import BG3 from "../../images/investments/image3.png";
+import BG4 from "../../images/investments/image4.jpg";
 import Logo3 from "../../images/investments/logo3.png";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
@@ -47,7 +48,7 @@ const values = [
         checked: false
     },
     {
-        id: 4, backgroundImage: BG1, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
+        id: 4, backgroundImage: BG4, logo: Logo1, logoName: '', logoText: 'CCD', heading: 'MildCares - GynoCup', subHeading: 'This is not the actual text for this section of this card, something else will come here', description: 'We at Mildcares strive to empower womanhood! By building high-quality hygiene and personal care products our…',
         chip: [{ id: 1, name: 'Health' }, { id: 2, name: 'Personal Health' }],
         raised: '14.16%',
         closesIn: '10 days',
@@ -64,6 +65,7 @@ export default function OpenInvestment() {
     const [showModal, setShowModal] = useState(false)
     const [loader, setLoader] = useState(true)
     const [spaceing, setSpaceing] = useState(4)
+    const [message, setMessage] = useState('')
     const [gridxsFirst, setGridxsFirst] = useState(3)
     const ratio = parseInt(window.innerWidth);
     const [showItem, setShowItem] = useState(4)
@@ -74,6 +76,7 @@ export default function OpenInvestment() {
     const { deals } = useSelector(state => state.companyData)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const backgroundImageUrls = [BG1, BG2, BG3, BG4];
 
     const handleClose = () => setShowModal(false);
 
@@ -99,8 +102,22 @@ export default function OpenInvestment() {
             if (userData?.id) {
                 CompanyServices.getAllDealTerms().then(res => {
                     if (res?.status === 200 || res?.status === 201) {
+                        const data = res?.data?.data
+                        if (data.length > 0) {
+                            const dataWithRandomBackgrounds = res?.data?.data.map((item) => {
+                                const randomIndex = Math.floor(Math.random() * backgroundImageUrls.length);
+                                const randomBackgroundImage = backgroundImageUrls[randomIndex];
+                                return {
+                                    ...item,
+                                    backgroundImage: randomBackgroundImage,
+                                };
+                            });
+                            dispatch(dealsStoreAction(dataWithRandomBackgrounds))
+                        } else {
+                            setMessage('No Data Found')
+                            dispatch(dealsStoreAction([]))
+                        }
 
-                        dispatch(dealsStoreAction(res?.data?.data))
                         setTimeout(() => {
                             setLoader(false)
                         }, 1500);
@@ -157,144 +174,157 @@ export default function OpenInvestment() {
     };
     return (
         <>
-            <Box sx={{ minHeight: '80vh', marginTop: '60px', marginBottom: '2em' }}>
+            <Box sx={{ minHeight: '100%', marginTop: '60px', marginBottom: '2em' }}>
                 <div className="subscribe-graph-heading">
                     <Typography className="test-script-regular">Live<span className="test-script-bg"> Opportunities</span></Typography>
-                    <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted opportunities - </Typography>
+                    <Typography style={{ fontSize: '18px', color: 'gray' }}>Get access to highly vetted startups -</Typography>
                 </div>
                 {loader ?
                     <div style={{ justifyContent: 'center', display: 'flex', marginTop: '5em', marginBottom: '5em' }}>
                         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                     </div>
                     :
-                    <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
-                        {/* {data.slice(0, showItem).map((item, index) => { */}
-                        {deals?.slice(0, showItem)?.map((campaign, index) => {
-                            return (
-                                <Grid key={index} item xs={gridxsFirst}>
-                                    <Card onClick={() => {
-                                        if (userData?.id) {
-                                            navigate('/live-deals-details', {
-                                                state: {
-                                                    campaignId: campaign?.campaign?.id,
-                                                    campaignData: { ...campaign, deal_type: campaign?.deal_type }
-                                                }
-                                            })
-                                        } else {
-                                            setShowModal(true)
-                                        }
-                                    }}
-                                        className={!userData?.id ? `investment-card-container-blur` : `investment-card-container`} sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
-                                        <CardContent sx={{ padding: '0' }}>
-                                            <div style={{ position: 'relative' }}>
-                                                <img src={BG1} width='100%' height={192} />
-                                                <div className="card-header-logo">
-                                                    <div className="company-logo-section">
-                                                        <img loading="lazy" src={campaign?.company?.company_logo || ''} height={44} />
-                                                    </div>
-                                                    <div className="logo-txt-script">
-                                                        {campaign?.deal_type?.deal_name || ''}
-                                                    </div>
-                                                </div>
-                                                <div className="info-card-txt">
-                                                    {/* <span className="company-name">{item.deal_type}
-                                                                </span> */}
-                                                </div>
-                                                <div className="centered-txt-card">
-                                                    <span className="company-name">
-                                                        {campaign?.company?.company_name || ''}
-                                                    </span>
-                                                </div>
-                                                <div className="bottom-txt-card">
-                                                    <span>
-                                                        {campaign?.company?.product_description.slice(0, 80)}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="body-card-section">
-                                                <span className="card-description">
-                                                    {`${campaign?.company?.traction_description.slice(0, 100)}...`}
-                                                </span>
-                                                <div style={{ display: 'flex' }}>
-                                                    <div key={index} className="chip-status"><span>{campaign?.company?.sector || 'N/A'}</span></div>
-                                                </div>
-                                                <div className="footer-card-section">
-                                                    <div className="numbers-investors">
-                                                        <span className="percentage-investment">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
-                                                        <span className="investment-status">
-                                                            Raised
-                                                        </span>
-                                                    </div>
-                                                    <div className="vertical-line-invest"></div>
-                                                    <div className="numbers-investors">
-                                                        <span className="percentage-investment">
-                                                            {daysRemaining(campaign?.deal_terms?.end_date)}
-                                                        </span>
-                                                        <span className="investment-status">Closes in</span>
-                                                    </div>
-                                                    <div className="vertical-line-invest"></div>
-                                                    <div className="numbers-investors">
-                                                        <span className="percentage-investment">
-                                                            {campaign?.deal_terms?.min_subscription || 'N/A'}
-                                                        </span>
-                                                        <span className="investment-status">Min Invest</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="overlay">
-                                                <div className="card-header-logo hover">
-                                                    <div className="company-logo-section">
-                                                        <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
-                                                    </div>
-                                                    <span className="company-name hover" style={{ marginLeft: '10px' }}>  {campaign?.company?.company_name || ''}</span>
-                                                </div>
-                                                <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                    <span className="investment-txt hover">Investors</span>
-                                                    <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
-                                                    <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Raised</span>
-                                                    <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
-                                                    <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Minimum Enrollment</span>
-                                                    <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
-                                                    <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Closes in</span>
-                                                    <span className="investment-sub-txt hover"> {daysRemaining(campaign?.deal_terms?.end_date)}</span>
-                                                    <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
-                                                </div>
-                                            </div>
-                                            {true && <div className="overlay responsive">
-                                                <div className="card-header-logo hover">
-                                                    <div className="company-logo-section">
-                                                        <img src={campaign?.company?.company_logo || ''} width={54} height={54} />
-                                                    </div>
-                                                    <span className="company-name hover" style={{ marginLeft: '10px' }}>Eveez</span>
-                                                </div>
-                                                <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
-                                                    <span className="investment-txt hover">Investors</span>
-                                                    <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
-                                                    <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Raised</span>
-                                                    <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
-                                                    <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Minimum Enrollment</span>
-                                                    <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
-                                                    <hr style={{ marginTop: '11.5px' }} />
-                                                    <span className="investment-txt hover">Closes in</span>
-                                                    <span className="investment-sub-txt hover"> {daysRemaining(campaign?.deal_terms?.end_date)}</span>
-                                                    <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
-                                                </div>
-                                            </div>}
-                                            <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
-                                                <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={true ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
+                    <>
+                        {deals?.length > 0 ?
 
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
+                            <Grid sx={{ marginTop: '5px' }} container spacing={spaceing}>
+                                {/* {data.slice(0, showItem).map((item, index) => { */}
+
+                                {deals?.slice(0, showItem)?.map((campaign, index) => {
+                                    return (
+                                        <Grid key={index} item xs={gridxsFirst}>
+                                            <Card onClick={() => {
+                                                if (userData?.id) {
+                                                    navigate('/live-deals-details', {
+                                                        state: {
+                                                            campaignId: campaign?.campaign?.id,
+                                                            campaignData: { ...campaign, deal_type: campaign?.deal_type }
+                                                        }
+                                                    })
+                                                } else {
+                                                    setShowModal(true)
+                                                }
+                                            }}
+                                                className={!userData?.id ? `investment-card-container-blur` : `investment-card-container`} sx={{ minWidth: '100%', padding: '0', marginTop: '1em' }} >
+                                                <CardContent sx={{ padding: '0' }}>
+                                                    <div style={{ position: 'relative' }}>
+                                                        <img src={campaign?.backgroundImage} width='100%' height={192} />
+                                                        <div className="card-header-logo">
+                                                            <div className="company-logo-section">
+                                                                <img loading="lazy" src={campaign?.company?.company_logo || ''} height={70} />
+                                                            </div>
+                                                            <div className="logo-txt-script">
+                                                                {campaign?.deal_type?.deal_name || ''}
+                                                            </div>
+                                                        </div>
+                                                        <div className="info-card-txt">
+                                                            {/* <span className="company-name">{item.deal_type}
+                                                                </span> */}
+                                                        </div>
+                                                        <div className="centered-txt-card">
+                                                            <span className="company-name">
+                                                                {campaign?.company?.company_name || ''}
+                                                            </span>
+                                                        </div>
+                                                        <div className="bottom-txt-card">
+                                                            <span>
+                                                                {campaign?.company?.product_description.slice(0, 80)}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="body-card-section">
+                                                        <span className="card-description">
+                                                            {`${campaign?.company?.traction_description.slice(0, 100)}...`}
+                                                        </span>
+                                                        <div style={{ display: 'flex' }}>
+                                                            <div key={index} className="chip-status"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                                        </div>
+                                                        <div className="footer-card-section">
+                                                            <div className="numbers-investors">
+                                                                <span className="percentage-investment">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
+                                                                <span className="investment-status">
+                                                                    Raised
+                                                                </span>
+                                                            </div>
+                                                            <div className="vertical-line-invest"></div>
+                                                            <div className="numbers-investors">
+                                                                <span className="percentage-investment">
+                                                                    {daysRemaining(campaign?.deal_terms?.end_date)}
+                                                                </span>
+                                                                <span className="investment-status">Closes in</span>
+                                                            </div>
+                                                            <div className="vertical-line-invest"></div>
+                                                            <div className="numbers-investors">
+                                                                <span className="percentage-investment">
+                                                                    {campaign?.deal_terms?.min_subscription || 'N/A'}
+                                                                </span>
+                                                                <span className="investment-status">Min Invest</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="overlay">
+                                                        <div className="card-header-logo hover">
+                                                            <div className="company-logo-section">
+                                                                <img src={campaign?.company?.company_logo || ''} height={60} />
+                                                            </div>
+                                                            <span className="company-name hover" style={{ marginLeft: '10px' }}>  {campaign?.company?.company_name || ''}</span>
+                                                        </div>
+                                                        <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                                            <span className="investment-txt hover">Investors</span>
+                                                            <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
+                                                            <hr style={{ marginTop: '11.5px' }} />
+                                                            <span className="investment-txt hover">Raised</span>
+                                                            <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
+                                                            <hr style={{ marginTop: '11.5px' }} />
+                                                            <span className="investment-txt hover">Minimum Enrollment</span>
+                                                            <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
+                                                            <hr style={{ marginTop: '11.5px' }} />
+                                                            <span className="investment-txt hover">Closes in</span>
+                                                            <span className="investment-sub-txt hover"> {daysRemaining(campaign?.deal_terms?.end_date)}</span>
+                                                            <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                                        </div>
+                                                    </div>
+                                                    {true && <div className="overlay responsive">
+                                                        <div className="card-header-logo hover">
+                                                            <div className="company-logo-section">
+                                                                <img src={campaign?.company?.company_logo || ''} height={70} />
+                                                            </div>
+                                                            <span className="company-name hover" style={{ marginLeft: '10px' }}>    {campaign?.company?.company_name || ''}</span>
+                                                        </div>
+                                                        <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
+                                                            <span className="investment-txt hover">Investors</span>
+                                                            <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
+                                                            <hr style={{ marginTop: '11.5px' }} />
+                                                            <span className="investment-txt hover">Raised</span>
+                                                            <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
+                                                            <hr style={{ marginTop: '11.5px' }} />
+                                                            <span className="investment-txt hover">Minimum Enrollment</span>
+                                                            <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
+                                                            <hr style={{ marginTop: '11.5px' }} />
+                                                            <span className="investment-txt hover">Closes in</span>
+                                                            <span className="investment-sub-txt hover"> {daysRemaining(campaign?.deal_terms?.end_date)}</span>
+                                                            <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                                        </div>
+                                                    </div>}
+                                                    <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
+                                                        <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={true ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />
+
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
+                                    )
+                                })}
+
+
+
+                            </Grid>
+                            :
+                            <div style={{ textAlign: 'center', margin: '5em 0em' }}>
+                                <span>New Deals Coming Soon</span>
+                            </div>
+                        }
+                    </>
                 }
 
 
