@@ -126,7 +126,7 @@ export default function PayToSubscribeMain() {
         }
     }, [])
 
-    console.log("dealmin subs", Number(location?.state?.campaignData?.deal_terms?.min_subscription))
+    console.log("enable_offline", location?.state?.campaignData)
 
     return (
         <>
@@ -277,7 +277,7 @@ export default function PayToSubscribeMain() {
                                     <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                                 </div>
                                 <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Online</button>
-                                {location?.state?.compayData?.deal_terms?.enable_offline &&
+                                {location?.state?.campaignData?.deal_terms?.enable_offline &&
                                     <button onClick={() => { setOpenOfflineModal(true) }} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Offline</button>
                                 }
 
