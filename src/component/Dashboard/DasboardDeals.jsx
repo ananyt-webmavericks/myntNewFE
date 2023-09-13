@@ -156,12 +156,18 @@ export default function DashboardDeals() {
                                     <span className="card-description">
                                         {`${campaign?.company?.traction_description.slice(0, 100)}...`}
                                     </span>
-                                    <div style={{ display: 'flex' }}>
-                                        <div key={index} className="chip-status"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                    <div style={campaign?.company?.sector.includes(',') ? { display: 'flex', flexWrap: 'wrap', marginBottom: '3em' } : { display: 'flex' }}>
+                                        {campaign?.company?.sector.includes(',') ? (
+                                            campaign?.company?.sector.split(",").map((item, index) => (
+                                                <div key={index} className="chip-status"><span>{item.trim()}</span></div>
+                                            ))
+                                        ) : (
+                                            <div key={index} className="chip-status"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                        )}
                                     </div>
                                     <div className="footer-card-section">
                                         <div className="numbers-investors">
-                                            <span className="percentage-investment">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
+                                            <span className="percentage-investment">{Number(campaign?.campaign?.total_raised).toFixed(2) || '0'}%</span>
                                             <span className="investment-status">
                                                 Completed
                                             </span>
@@ -191,18 +197,25 @@ export default function DashboardDeals() {
                                     </div>
                                     <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
                                         <span className="investment-txt hover">Investors</span>
-                                        <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
+                                        <span className="investment-sub-txt hover">{campaign?.campaign?.total_investors || 0}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Raised</span>
-                                        <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
+                                        <span className="investment-sub-txt hover">{Number(campaign?.campaign?.total_raised).toFixed(2) || '0'}%</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Minimum Enrollment</span>
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
                                         <span className="investment-sub-txt hover">   {daysRemaining(campaign?.deal_terms?.end_date)}</span>
-                                        <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
-                                    </div>
+                                        <div style={campaign?.company?.sector.includes(',') ? { display: 'flex', flexWrap: 'wrap', marginBottom: '3em' } : { display: 'flex' }}>
+                                            {campaign?.company?.sector.includes(',') ? (
+                                                campaign?.company?.sector.split(",").map((item, index) => (
+                                                    <div key={index} className="chip-status hover"><span>{item.trim()}</span></div>
+                                                ))
+                                            ) : (
+                                                <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                            )}
+                                        </div>                                    </div>
                                 </div>
                                 {true && <div className="overlay responsive">
                                     <div className="card-header-logo hover">
@@ -213,18 +226,25 @@ export default function DashboardDeals() {
                                     </div>
                                     <div style={{ display: 'grid', marginTop: '4em', marginLeft: '10px' }}>
                                         <span className="investment-txt hover">Investors</span>
-                                        <span className="investment-sub-txt hover">{campaign?.total_investors}</span>
+                                        <span className="investment-sub-txt hover">{campaign?.campaign?.total_investors || 0}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Raised</span>
-                                        <span className="investment-sub-txt hover">{Number(campaign?.total_raised).toFixed(2) || '0'}%</span>
+                                        <span className="investment-sub-txt hover">{Number(campaign?.campaign?.total_raised).toFixed(2) || '0'}%</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Minimum Enrollment</span>
                                         <span className="investment-sub-txt hover">{campaign?.deal_terms?.min_subscription || 'N/A'}</span>
                                         <hr style={{ marginTop: '11.5px' }} />
                                         <span className="investment-txt hover">Closes in</span>
                                         <span className="investment-sub-txt hover">   {daysRemaining(campaign?.deal_terms?.end_date)}</span>
-                                        <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
-                                    </div>
+                                        <div style={campaign?.company?.sector.includes(',') ? { display: 'flex', flexWrap: 'wrap', marginBottom: '3em' } : { display: 'flex' }}>
+                                            {campaign?.company?.sector.includes(',') ? (
+                                                campaign?.company?.sector.split(",").map((item, index) => (
+                                                    <div key={index} className="chip-status hover"><span>{item.trim()}</span></div>
+                                                ))
+                                            ) : (
+                                                <div className="chip-status hover"><span>{campaign?.company?.sector || 'N/A'}</span></div>
+                                            )}
+                                        </div>                                    </div>
                                 </div>}
                                 <div onClick={() => handleRotate(index)} className="mobile-view-arrow-responsive">
                                     <KeyboardArrowDownRoundedIcon className="move-arrow-upside-down" style={true ? { transform: 'rotate(180deg)' } : { transform: 'rotate(0deg)' }} />

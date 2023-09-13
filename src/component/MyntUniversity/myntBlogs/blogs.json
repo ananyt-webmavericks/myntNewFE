@@ -1,10 +1,11 @@
 [
   {
     "id": 1,
-    "type": "Invest",
+    "type": "Investment ,Personal Finance,All",
     "title": "Maximizing Your Tax Savings: The Art of Legally Reducing Your Tax Liability",
     "date": "8th feb 2023",
-    "image": "",
+    "image": "../../../images/blogs/11.png",
+    "image2": "",
     "para1": "When it comes to taxes, nobody likes to pay more than they have to. And that's where tax planning comes into play. Tax planning is a perfectly legal and ethical practice of arranging your finances to minimize your tax liability. By taking advantage of tax deductions, credits, and exemptions, you can legally reduce the amount of tax you owe and keep more of your hard-earned money.",
     "para2": "One of the most common tax planning strategies is deducting your home office expenses if you work from home. If you have a dedicated workspace that you use exclusively for work, you can deduct a portion of your home expenses, such as rent or mortgage interest, property taxes, utilities, and insurance, as a business expense. This is a great way to lower your taxable income and reduce your tax liability.",
     "para3": "Another tax planning strategy is contributing to a retirement plan. By contributing to a retirement plan, you can reduce your taxable income, lower your tax liability, and save for your future at the same time. Plus, there are tax benefits associated with most retirement plans, which means you get a double benefit!",
@@ -15,7 +16,7 @@
   },
   {
     "id": 2,
-    "type": "Invest",
+    "type": "Industry insights,Investment,All",
     "title": "Financial Instruments vs Equity-Based Financial Instruments: Which is the Better Choice?",
     "date": "3th march 2023",
     "image": "",
@@ -53,7 +54,7 @@
   },
   {
     "id": 3,
-    "type": "Invest",
+    "type": "Personal Finance,Economy and Markets,All",
     "title": "Loan Syndication vs Consortium Finance: Understanding the Differences and Benefits",
     "date": "10th march 2023",
     "image": "",
@@ -66,7 +67,7 @@
   },
   {
     "id": 4,
-    "type": "Invest",
+    "type": "Personal Finance,Investment,All",
     "title": "Why Portfolio Diversification is Crucial for Long-Term Investment Growth",
     "date": "10th march 2023",
     "image": "",
@@ -86,7 +87,7 @@
   },
   {
     "id": 5,
-    "type": "Product",
+    "type": "Startups,Investment,Personal Finance,All",
     "title": "Investing in Startup Investment Platforms: A Path to Achieving Your Wealth Creation Goals",
     "date": "8th feb 2023",
     "image": "",
@@ -127,7 +128,7 @@
   },
   {
     "id": 6,
-    "type": "Product",
+    "type": "Startups,Investment,Personal Finance,All",
     "title": "Dividends in Startups: Benefits, Challenges, and Considerations",
     "date": "8th feb 2023",
     "image": "",
@@ -143,7 +144,7 @@
   },
   {
     "id": 7,
-    "type": "Product",
+    "type": "Industry insights,Personal Finance,All",
     "title": "Invest in Emerging Markets like a Financial Genius.",
     "date": "8th feb 2023",
     "image": "",
@@ -187,7 +188,7 @@
   },
   {
     "id": 8,
-    "type": "Product",
+    "type": "Startup,Investment,Personal Finance,All",
     "title": "Angel Investors vs Venture Capitalists: Understanding the Key Differences for Startup Funding",
     "date": "8th feb 2023",
     "image": "",
@@ -201,7 +202,7 @@
   },
   {
     "id": 9,
-    "type": "Product",
+    "type": "Personal Finance,Investment,Industry insights,All",
     "title": "Private equity - a forward-looking approach",
     "date": "8th feb 2023",
     "image": "",
@@ -244,7 +245,7 @@
   },
   {
     "id": 10,
-    "type": "Startup",
+    "type": "Startups,Personal Finance,Economy and Markets,All",
     "title": "How to Ride the Startup Wave and Make Money: An Investor's Guide to IPOs and Stock Market",
     "date": "8th feb 2023",
     "image": "",
@@ -295,7 +296,7 @@
   },
   {
     "id": 11,
-    "type": "Startup",
+    "type": "Personal Finance,Investment,All",
     "title": "From Rags to Riches: The Success Stories of Startups and Their Investors",
     "date": "8th feb 2023",
     "image": "",
@@ -345,7 +346,7 @@
   },
   {
     "id": 12,
-    "type": "Startup",
+    "type": "Startups,Investment,Personal Finance,All",
     "title": "Angel Investing: How These Investors Made a Fortune By Backing Promising Startups",
     "date": "8th feb 2023",
     "image": "",
@@ -395,7 +396,7 @@
   },
   {
     "id": 13,
-    "type": "Startup",
+    "type": "Economy and Markets,Industry insights,All",
     "title": "Investing in Fintech Industry: Why it's Worth Considering",
     "date": "8th feb 2023",
     "image": "",
@@ -445,7 +446,7 @@
   },
   {
     "id": 14,
-    "type": "Startup",
+    "type": "Economy and Markets,Industry insights,All",
     "title": "Deep Insights into the Startup Ecosystem of India",
     "date": "8th feb 2023",
     "image": "",
@@ -494,7 +495,7 @@
   },
   {
     "id": 15,
-    "type": "Finance",
+    "type": "Investment,Personal Finance,All",
     "title": "Investing in Real Estate Investment Trusts (REITs): A Comprehensive Guide for Investors",
     "date": "8th feb 2023",
     "image": "",
@@ -551,7 +552,7 @@
   },
   {
     "id": 16,
-    "type": "Finance",
+    "type": "Startups,Investment,Personal Finance,All",
     "title": "Understanding the Right of First Refusal in Startup Investments",
     "date": "8th feb 2023",
     "image": "",
@@ -594,7 +595,7 @@
   },
   {
     "id": 17,
-    "type": "Finance",
+    "type": "Investment,Personal Finance,All",
     "title": "Growing Your Business with Startup Incubators: A Guide to Resources, Support, and Success",
     "date": "8th feb 2023",
     "image": "",
@@ -637,7 +638,7 @@
   },
   {
     "id": 18,
-    "type": "Finance",
+    "type": "Investment,Economy and Markets,All",
     "title": "The Accredited Investor Framework: Unlocking New Opportunities in the Equity Market",
     "date": "8th feb 2023",
     "image": "",
@@ -680,7 +681,7 @@
   },
   {
     "id": 19,
-    "type": "Finance",
+    "type": "Startups,Investment,Industry insights,All",
     "title": "The Impact of the Walt Disney and 21st Century Fox Merger: A Case Study on Mergers and Acquisitions",
     "date": "8th feb 2023",
     "image": "",
@@ -723,7 +724,7 @@
   },
   {
     "id": 20,
-    "type": "Finance",
+    "type": "Economy and Markets,Industry insights,All",
     "title": "Indian Startup Success Stories: Why Investors Should Keep an Eye on the Booming Indian Startup Ecosystem",
     "date": "8th feb 2023",
     "image": "",
@@ -766,6 +767,7 @@
   },
   {
     "id": 21,
+    "type": "Economy and Markets,Industry insights,All",
     "title": "Emerging trends and government initiatives for startups in India: An Investor's Guide",
     "date": "8th feb 2023",
     "image": "",

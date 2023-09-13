@@ -352,13 +352,17 @@ export default function LiveDetailsMain() {
                 </span>
               </div>
               <div className="header-section-deals-detail">
-                {typeof campaignData?.company_id?.sector === 'string' ?
-                  <div className="chipset-details-live">{campaignData?.company_id?.sector}</div>
-                  :
-                  campaignData?.company_id?.sector?.map((item, index) => {
-                    <div key={index} className="chipset-details-live">{item}</div>
-                  })
-                }
+                {campaignData?.company_id?.sector.includes(',') ? (
+                  campaignData?.company_id?.sector.split(",").map((item, index) => (
+                    <div key={index} className="chipset-details-live">
+                      {item.trim()} {/* Trim to remove extra whitespace */}
+                    </div>
+                  ))
+                ) : (
+                  <div className="chipset-details-live">
+                    {campaignData?.company_id?.sector}
+                  </div>
+                )}
               </div>
               <div
                 style={{ filter: `blur(${blurAmount}px)` }}

@@ -211,7 +211,7 @@
 .chip-status.hover {
   border-radius: 7px;
   width: fit-content;
-  margin-top: 24px;
+  /* margin-top: 24px; */
   padding: 7px 12px;
 }
 

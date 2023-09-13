@@ -15,7 +15,7 @@ import { authAxios } from "../../service/Auth-header";
 import { Base_Url } from "../../Utils/Configurable";
 import { useSelector } from "react-redux";
 import PayOfflineModal from "../PayOfflineModal/PayOfflineModal";
-
+import CircularProgress from '@mui/material/CircularProgress';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -71,11 +71,13 @@ export default function PayToSubscribeMain() {
     const [gridxsSecond, setgridxsSecond] = useState(6)
     const [rewards, setRewards] = useState([])
     const ratio = parseInt(window.innerWidth);
+    const [loading, setLoading] = useState(false)
     const classes = useStyles();
     const theme = useTheme();
     const location = useLocation()
     const [paymentSessionId, setPaymentSessionId] = useState(null)
     const { userData } = useSelector(state => state.loginData)
+    const { userKycData } = useSelector(state => state.kycData)
     console.log("location", location.state)
     const handleChange = (event) => {
         const {
@@ -126,7 +128,55 @@ export default function PayToSubscribeMain() {
         }
     }, [])
 
-    console.log("enable_offline", location?.state?.campaignData)
+    const handleSubmitInterested = () => {
+
+        try {
+            let object = {
+                user_id: userData.id,
+                campaign_id: location.state?.campaignId,
+                company_name: location.state?.campaignData?.company?.company_name,
+                investor_first_name: userData?.first_name,
+                investor_last_name: userData?.last_name,
+                investor_mobile_number: userKycData?.mobile_number,
+                investor_email: userData?.email
+            }
+            CompanyServices.createInterest(object).then((res) => {
+                if (res.status === 201 || res.status === 200) {
+                    handleGetInterested()
+                } else if (res?.response?.data?.message === "Interest already exists!") {
+                    handleGetInterested()
+                } else {
+                    setLoading(false)
+                }
+            })
+        } catch (error) {
+            console.log("error")
+        }
+
+    }
+
+    const handleGetInterested = () => {
+        try {
+            let user_id = userData.id;
+            let campaign_id = location.state?.campaignId;
+
+            CompanyServices.getCampaignInterest(user_id, campaign_id).then((res) => {
+                if (res.status === 201 || res.status === 200) {
+                    setLoading(true)
+                } else {
+                    setLoading(false)
+                }
+
+
+            })
+        } catch (error) {
+            console.log("error")
+        }
+    }
+
+    useEffect(() => {
+        handleGetInterested()
+    }, [])
 
     return (
         <>
@@ -276,10 +326,20 @@ export default function PayToSubscribeMain() {
                                     />
                                     <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                                 </div>
-                                <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Online</button>
-                                {location?.state?.campaignData?.deal_terms?.enable_offline &&
-                                    <button onClick={() => { setOpenOfflineModal(true) }} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Offline</button>
-                                }
+                                {/* <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Online</button> */}
+                                {/* {location?.state?.campaignData?.deal_terms?.enable_offline && */}
+                                <div style={{ textAlign: 'center' }}>
+                                    <button onClick={() => { !loading && handleSubmitInterested() }} className="payment-btn" style={loading ? { background: 'gray', maxWidth: '100%', marginLeft: 0, marginBottom: '1em' } : { background: 'black', maxWidth: '100%', marginLeft: 0, marginBottom: '1em' }}>
+                                        {loading ?
+                                            'CHEERS!!'
+                                            :
+                                            'INTERESTED ? CLICK NOW !!'
+                                        }
+                                    </button>
+                                    {loading && <span >Thanks for showing Interest in this Campaign!</span>}
+
+                                </div>
+
 
                             </Grid>
                         </Grid>

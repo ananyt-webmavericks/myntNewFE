@@ -396,6 +396,33 @@ const makeOfflinePayment = async (data) => {
     }
 }
 
+const createInterest = async (data) => {
+
+    try {
+        const response = await authAxios.post(`${Base_Url}/api/interest/create-interest`, data);
+        console.log(response)
+        return response;
+    }
+    catch (error) {
+        if (error) {
+            console.log(error)
+        }
+        return error;
+    }
+}
+
+const getCampaignInterest = async (user_id, campaign_id) => {
+
+    try {
+        const response = await authAxios.get(`${Base_Url}/api/interest/check-interest/${user_id}/${campaign_id}`);
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return error;
+    }
+}
+
 const CompanyServices = {
     createCompany,
     updateCompany,
@@ -426,7 +453,10 @@ const CompanyServices = {
     getApprovedCampaigns,
     getCampaignById,
     getCompanyDetailByCampaign,
-    makeOfflinePayment
+    makeOfflinePayment,
+
+    createInterest,
+    getCampaignInterest
 
 };
 
