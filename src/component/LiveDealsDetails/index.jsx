@@ -606,7 +606,7 @@ export default function LiveDetailsMain() {
                   filter: `blur(${blurAmount}px)`,
                 }}
               >
-                <PDFViewer pdfUrl={`https://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`} />
+                <PDFViewer pdfUrl={`https://docs.google.com/gview?url=${campaignData?.pitch}&embedded=true`} />
                 {/* <iframe
                 src={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
                 style={{ width: "500px", height: "500px" }}
@@ -614,7 +614,7 @@ export default function LiveDetailsMain() {
               ></iframe> */}
                 <object
                   className=""
-                  data={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
+                  data={`https://docs.google.com/gview?url=${campaignData?.pitch}&embedded=true`}
                   type="application/pdf"
                   // width="800px"
                   height="1000px"
@@ -622,7 +622,7 @@ export default function LiveDetailsMain() {
                   <p>
                     Alternative text - include a link{" "}
                     <a
-                      href={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
+                      href={`https://docs.google.com/gview?url=${campaignData?.pitch}&embedded=true`}
                     >
                       to the PDF!
                     </a>
