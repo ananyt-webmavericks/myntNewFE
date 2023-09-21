@@ -278,7 +278,7 @@ export default function LiveDetailsMain() {
   };
 
   const calculatePercentage = () => {
-    let percentage = location?.state?.campaignData?.total_raised
+    let percentage = location?.state?.campaignData?.campaign?.total_raised
     if (percentage > 99) {
       percentage = 100
     }
@@ -378,7 +378,7 @@ export default function LiveDetailsMain() {
                     className="percentage-investment"
                     style={{ fontSize: "20px" }}
                   >
-                    {Number(location?.state?.campaignData?.total_raised).toFixed(2) || '0'}%
+                    {Number(location?.state?.campaignData?.campaign?.total_raised).toFixed(2) || '0'}%
                   </span>
                   <span className="investment-status">Completed</span>
                 </div>
@@ -606,7 +606,7 @@ export default function LiveDetailsMain() {
                   filter: `blur(${blurAmount}px)`,
                 }}
               >
-                <PDFViewer pdfUrl={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`} />
+                <PDFViewer pdfUrl={`https://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`} />
                 {/* <iframe
                 src={`http://docs.google.com/gview?url=${companyData?.company_pitch}&embedded=true`}
                 style={{ width: "500px", height: "500px" }}

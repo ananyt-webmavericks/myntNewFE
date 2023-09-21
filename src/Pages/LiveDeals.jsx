@@ -44,7 +44,7 @@ const LiveDeals = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { deals } = useSelector(state => state.companyData)
-
+  console.log("superarr", superArray)
   const backgroundImageUrls = [BG1, BG2, BG3, BG4];
 
   const handleOrderTabs = (tabNo) => {
@@ -68,6 +68,8 @@ const LiveDeals = () => {
         acc[dealTypeId] = {
           id: dealTypeId,
           deal_type: dealType?.deal_name,
+          deal_tagline: dealType?.deal_tagline,
+          deal_description: dealType?.deal_description,
           campaigns: [campaignObj],
         };
       }
@@ -324,12 +326,12 @@ const LiveDeals = () => {
                       superArray?.map((item, index) => <div id={`tab-${item.id}`} key={index}>
                         <span style={{ fontSize: '20px', fontWeight: '600', }}>
                           {item.deal_type}
-                          <LightTooltip placement="top" popperOptions={{ popperOptions }} title="Community Subscription Offer Plan is a contractual agreement executed between a subscriber and the startup that entitles the subscriber to community benefits and grant of SAR in exchange">
+                          <LightTooltip placement="top" popperOptions={{ popperOptions }} title={item?.deal_description}>
                             <img style={{ marginBottom: "-2.5px", marginLeft: '0.3rem', cursor: 'pointer' }} height={20} width={20} src={infoIcon} alt="info" />
                           </LightTooltip>
                         </span>
                         <div style={{ display: 'grid', marginTop: '0.5rem' }}>
-                          <span style={{ fontSize: '18px' }}>Subscribe to rapidly growing companies with a low minimum Subscription requirement.</span>
+                          <span style={{ fontSize: '18px' }}>{item?.deal_tagline}</span>
                         </div>
                         <Grid sx={{ marginTop: '5px', marginBottom: '5rem' }} container spacing={spaceing}>
                           {item.campaigns?.map((campaign, index) => {

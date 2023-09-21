@@ -138,7 +138,8 @@ export default function PayToSubscribeMain() {
                 investor_first_name: userData?.first_name,
                 investor_last_name: userData?.last_name,
                 investor_mobile_number: userKycData?.mobile_number,
-                investor_email: userData?.email
+                investor_email: userData?.email,
+                amount: formik.values.amount
             }
             CompanyServices.createInterest(object).then((res) => {
                 if (res.status === 201 || res.status === 200) {
@@ -177,6 +178,8 @@ export default function PayToSubscribeMain() {
     useEffect(() => {
         handleGetInterested()
     }, [])
+
+    console.log("formik", formik.values.amount)
 
     return (
         <>

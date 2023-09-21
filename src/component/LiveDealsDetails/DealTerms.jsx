@@ -39,6 +39,8 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
       setGridxsFirst(12);
     }
   }, []);
+
+  console.log("deal_term", dealTermData)
   return (
     <>
       <Grid
@@ -53,9 +55,7 @@ export default function DealTerm({ blurAmount, dealTermData, companyData }) {
               {dealTermData?.deal_type?.deal_name}
             </span>
             <span className="subHead-main-deal-terms">
-              SAR is a contractual agreement executed between a subscriber and
-              the startup that entitles the subscriber to community benefits and
-              grant of SAR in exchange
+              {dealTermData?.deal_type?.deal_description}
             </span>
           </div>
         </Grid>
