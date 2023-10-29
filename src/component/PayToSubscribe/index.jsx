@@ -16,6 +16,7 @@ import { Base_Url } from "../../Utils/Configurable";
 import { useSelector } from "react-redux";
 import PayOfflineModal from "../PayOfflineModal/PayOfflineModal";
 import CircularProgress from '@mui/material/CircularProgress';
+import { toast } from "react-hot-toast";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -75,10 +76,8 @@ export default function PayToSubscribeMain() {
     const classes = useStyles();
     const theme = useTheme();
     const location = useLocation()
-    const [paymentSessionId, setPaymentSessionId] = useState(null)
     const { userData } = useSelector(state => state.loginData)
     const { userKycData } = useSelector(state => state.kycData)
-    console.log("location", location.state)
     const handleChange = (event) => {
         const {
             target: { value },
@@ -92,7 +91,7 @@ export default function PayToSubscribeMain() {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            amount: '',
+            amount: Number(location?.state?.campaignData?.deal_terms?.min_subscription),
         },
 
         validationSchema: PayToSubscribeValSchema,
@@ -101,16 +100,31 @@ export default function PayToSubscribeMain() {
     });
 
     const handleSubmit = async (vals) => {
-        console.log(vals)
+
+        let convenience = (vals.amount * 2 / 100);
+        let gst = (convenience * (18 / 100))
         const values = {
             user_id: userData.id,
             campaign_id: location.state?.campaignId,
             amount: vals.amount,
-            total_amount: Math.floor(vals.amount + (vals.amount * 2 / 100) + ((18 / 100) * vals.amount))
+            total_amount: Math.ceil(vals.amount + convenience + gst)
         }
-        const { data: { data } } = await authAxios.post(`${Base_Url}/api/payment/create-order`, values)
-        const cf = new window.Cashfree(data.payment_session_id);
-        cf.redirect();
+        try {
+            const { data: { data } } = await authAxios.post(`${Base_Url}/api/payment/create-order`, values)
+            const cf = new window.Cashfree(data.payment_session_id);
+            cf.redirect();
+        } catch (error) {
+            toast.error(error?.response?.data?.message, {
+                position: "top-right",
+                style: {
+                    borderRadius: "3px",
+                    background: "red",
+                    color: "#fff",
+                },
+            })
+            console.log("error", error);
+        }
+
     }
 
     useEffect(() => {
@@ -179,7 +193,7 @@ export default function PayToSubscribeMain() {
         handleGetInterested()
     }, [])
 
-    console.log("formik", formik.values.amount)
+
 
     return (
         <>
@@ -195,11 +209,15 @@ export default function PayToSubscribeMain() {
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="payment-input" style={gridxsFirst === 1 ? { width: '100%' } : { width: '90%' }}>
                                         <input
+                                            step="1"
                                             name="amount"
                                             value={formik.values.amount}
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
                                             type="number"
+                                            onInput={(e) => {
+                                                e.target.value = Math.floor(e.target.value); // Round down to the nearest integer
+                                            }}
                                             placeholder="Eg. ₹25,000"
                                             style={{ WebkitAppearance: "none" }} className="verifyAddress-input-section" />
                                         {formik.touched.amount && <div className="raise-err-text" style={{ marginTop: "2px" }}>{formik.errors.amount}</div>}
@@ -208,14 +226,14 @@ export default function PayToSubscribeMain() {
 
                                 <div className="chips-pay-to-subscribe-cointainer">
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
-                                        className="particular-mentioned-chip-pay">+ ₹{Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
+                                        onClick={e => formik.setFieldValue("amount", (10 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{(10 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 5000)}
-                                        className="particular-mentioned-chip-pay">+ ₹{Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 5000}</div>
+                                        onClick={e => formik.setFieldValue("amount", (20 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{(20 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 10000)}
-                                        className="particular-mentioned-chip-pay">+ ₹{Number(location?.state?.campaignData?.deal_terms?.min_subscription) + 10000}</div>
+                                        onClick={e => formik.setFieldValue("amount", (30 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{(30 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                 </div>
                                 {rewards.length > 0 && <span className="pay-amount-heading">Enrollment Benefits</span>}
                                 {
@@ -285,19 +303,19 @@ export default function PayToSubscribeMain() {
                                                 <Tooltip title="A convenience fee of 2% is charged by Mynt for sourcing deals and maintaining the platform"><img src={Enquiry} width={20} height={20} alt="" /></Tooltip>
                                             </div>
 
-                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>{formik.values.amount ? formik.values.amount * 2 / 100 : 0}</span>
+                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>{Math.ceil(formik.values.amount ? formik.values.amount * 2 / 100 : 0)}</span>
                                         </div>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em', marginBottom: '1em' }}>
                                             <div style={{ alignItems: 'center', display: 'flex' }}>
                                                 <span style={{ fontSize: '14px', fontWeight: '600', marginRight: '5px' }}>GST</span>
                                                 <Tooltip title="GST is applicable at 18% of the convenience Fee."><img src={Enquiry} width={20} height={20} alt="" /></Tooltip>
                                             </div>
-                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{(18 / 100) * formik.values.amount * 2 / 100}</span>
+                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>₹{Math.ceil((18 / 100) * formik.values.amount * 2 / 100)}</span>
                                         </div>
                                         <hr />
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
                                             <span style={{ fontSize: '18px', fontWeight: '600' }}>Total</span>
-                                            <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{formik.values.amount * 2 / 100 + ((18 / 100) * formik.values.amount * 2 / 100) + formik.values.amount}</span>
+                                            <span style={{ fontSize: '18px', fontWeight: '600' }}>₹{Math.ceil(formik.values.amount * 2 / 100 + ((18 / 100) * formik.values.amount * 2 / 100) + formik.values.amount)}</span>
                                         </div>
                                     </CardContent>
 
@@ -329,9 +347,10 @@ export default function PayToSubscribeMain() {
                                     />
                                     <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                                 </div>
-                                {/* <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>Pay Online</button> */}
-                                {/* {location?.state?.campaignData?.deal_terms?.enable_offline && */}
-                                <div style={{ textAlign: 'center' }}>
+                                <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>PAY ONLINE</button>
+
+                                {location?.state?.campaignData?.deal_terms?.enable_offline && <button onClick={() => setOpenOfflineModal(true)} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>PAY OFFLINE</button>}
+                                {/* <div style={{ textAlign: 'center' }}>
                                     <button onClick={() => { !loading && handleSubmitInterested() }} className="payment-btn" style={loading ? { background: 'gray', maxWidth: '100%', marginLeft: 0, marginBottom: '1em' } : { background: 'black', maxWidth: '100%', marginLeft: 0, marginBottom: '1em' }}>
                                         {loading ?
                                             'CHEERS!!'
@@ -341,7 +360,7 @@ export default function PayToSubscribeMain() {
                                     </button>
                                     {loading && <span >Thanks for showing Interest in this Campaign!</span>}
 
-                                </div>
+                                </div> */}
 
 
                             </Grid>

@@ -69,10 +69,10 @@ export default function DashboardDeals() {
                         dispatch(dealsStoreAction([]))
                     }
                 } else if (res?.data?.data?.length === 0) {
-                    setErrorType('new deals coming soon')
+                    setErrorType('New Deals Coming Soon')
                     console.log("Get Deal Terms Failed!")
                 } else {
-                    setErrorType('new deals coming soon')
+                    setErrorType('New Deals Coming Soon')
                 }
             })
         }

@@ -124,14 +124,14 @@ const LiveDeals = () => {
               setLoader(false)
             }, 1500);
           } else {
-            setErrorTerms('new deals coming soon')
+            setErrorTerms('New Deals Coming Soon')
             setTimeout(() => {
               setLoader(false)
             }, 1500);
           }
 
         } else {
-          setErrorTerms('new deals coming soon')
+          setErrorTerms('New Deals Coming Soon')
           console.log("Get Deal Terms Failed!")
         }
       })

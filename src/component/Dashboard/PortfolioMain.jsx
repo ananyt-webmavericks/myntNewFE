@@ -18,6 +18,7 @@ export default function PortfolioMain() {
             PortfolioServices.getPortfolioData(userData?.id).then(res => {
                 if (res.status === 200 || res.status === 201) {
                     setPortData(res?.data?.data)
+                    console.log(res?.data?.data)
                 } else {
                     console.log("can't get the portfolio data")
                 }

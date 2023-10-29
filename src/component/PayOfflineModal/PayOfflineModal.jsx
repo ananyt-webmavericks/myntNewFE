@@ -43,19 +43,19 @@ const PayOfflineModal = (props) => {
         setValue({ ...value, [e.target.name]: e.target.value })
     }
 
-    const totalAmount = useCallback(() => {
-        if (value?.amount) {
-            let values = parseInt(value.amount)
-            const fee = (2 / 100) * values;
-            const tax = (18 / 100) * values;
-            const total = values + fee + tax;
+    // const totalAmount = useCallback(() => {
+    //     if (value?.amount) {
+    //         let values = parseInt(value.amount)
+    //         const fee = (2 / 100) * values;
+    //         const tax = (18 / 100) * values;
+    //         const total = values + fee + tax;
 
-            return total;
-        } else {
-            return 0
-        }
+    //         return total;
+    //     } else {
+    //         return 0
+    //     }
 
-    }, [value?.amount]);
+    // }, [value?.amount]);
 
     const totalAmountMin = () => {
         let values = parseInt(bankInfo?.min_subscription)
@@ -67,8 +67,8 @@ const PayOfflineModal = (props) => {
 
 
     const handleSubmit = () => {
-        console.log(parseInt(bankInfo?.min_subscription))
-        let isVerified = value.amount && value.transaction_id && totalAmount() > parseInt(bankInfo?.min_subscription)
+
+        let isVerified = value.amount && value.transaction_id && Number(value.amount) > parseInt(bankInfo?.min_subscription)
         if (!value.amount) {
             toast.error("Please enter amount", {
                 position: "top-right",
@@ -89,7 +89,7 @@ const PayOfflineModal = (props) => {
                 },
             });
         }
-        else if (totalAmount() < parseInt(bankInfo?.min_subscription)) {
+        else if (Number(value.amount) < parseInt(bankInfo?.min_subscription)) {
             toast.error("amount should be greater than minimum Enrollment", {
                 position: "top-right",
                 style: {
@@ -104,7 +104,7 @@ const PayOfflineModal = (props) => {
                 user_id: userData.id,
                 campaign_id: props?.campaignData?.campaign?.id,
                 transaction_id: value.transaction_id,
-                amount: totalAmount()
+                amount: Number(value.amount)
             }
             try {
                 CompanyServices.makeOfflinePayment(object).then(res => {
@@ -122,11 +122,11 @@ const PayOfflineModal = (props) => {
                     } else {
                         setValue(initialData)
                         props?.handleClose()
-                        toast.error(res?.response?.data?.message, {
+                        toast.success(res?.response?.data?.message, {
                             position: "top-right",
                             style: {
                                 borderRadius: "3px",
-                                background: "red",
+                                background: "green",
                                 color: "#fff",
                             },
                         });
@@ -227,10 +227,10 @@ const PayOfflineModal = (props) => {
                         Already paid?
                     </Typography>
                     <div className="verifyAddress-input">
-                        <input type="text" name="transaction_id" value={value.transaction_id} onChange={handleChange} placeholder="transaction id" className="verifyAddress-input-section" />
+                        <input type="text" name="transaction_id" value={value.transaction_id} onChange={handleChange} placeholder="Transaction Id" className="verifyAddress-input-section" />
                     </div>
                     <div className="verifyAddress-input">
-                        <input type="text" name="amount" value={value.amount} onChange={handleChange} placeholder={`minimum amount :- ${bankInfo?.min_subscription || 0} `} className="verifyAddress-input-section" />
+                        <input type="number" style={{ MozAppearance: 'textfield', Appearance: 'textfield' }} name="amount" value={value.amount} onChange={handleChange} placeholder={`Minimum Amount :- ${bankInfo?.min_subscription || 0} `} className="verifyAddress-input-section" />
                     </div>
 
                     <button onClick={handleSubmit} className="sign-up-btn">Pay offline</button>

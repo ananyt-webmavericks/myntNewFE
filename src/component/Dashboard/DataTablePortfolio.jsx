@@ -67,6 +67,8 @@ export default function DataTablePortfolio(props) {
         createData(Mask3, 'Deciwood', '₹ 15,000', '22 Dec, 2022', '#', actions),
         createData(Mask1, 'SustVest', '₹ 5,000', '22 Dec, 2022', '#', actions),
     ];
+
+
     return (
         <>
             <TableContainer component={Paper}>
@@ -95,12 +97,25 @@ export default function DataTablePortfolio(props) {
                                 <StyledTableCell align='center'>
                                     {row.documents.length !== 0 ?
                                         <div>
-                                            {row.documents.map((item, index) => {
+
+
+                                            {row.documents.map((newItem, index) => {
+                                                const itemsArray = JSON.parse(newItem);
                                                 return (
-                                                    <div key={index}>
-                                                        <a href={item.document_name}>{item.document_name}</a>
+                                                    <div style={{ cursor: 'pointer' }} key={index}>
+                                                        {itemsArray
+                                                            .filter(val => val.model === "campaign_documents.campaigndocument")
+                                                            .map((items, innerIndex) => {
+                                                                console.log("Rendering item:", items);
+                                                                return (
+                                                                    <a style={{ display: 'block', textDecoration: 'none', fontWeight: '600', color: 'black' }} key={innerIndex} href={items?.fields?.agreement_url}>
+                                                                        {items?.fields?.agreement_name}
+                                                                    </a>
+                                                                );
+                                                            })
+                                                        }
                                                     </div>
-                                                )
+                                                );
                                             })}
                                         </div>
                                         :
@@ -108,13 +123,12 @@ export default function DataTablePortfolio(props) {
                                             Pending from Startup
                                         </div>
                                     }
-
                                 </StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
+            </TableContainer >
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '26px' }}>
                 <Pagination count={10} classes={{ ul: classes.ul }} />
             </div>

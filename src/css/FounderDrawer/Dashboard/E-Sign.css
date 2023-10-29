@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 2rem !important;
-    height: 29rem !important;
+    height: 30rem !important;
     width: 20rem !important;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 20px #00000014;
@@ -49,7 +49,8 @@
 
 .AddCompany2 {
     margin-top: 4rem !important;
-    height: 29rem !important;
+    height: 30rem !important;
+    padding-bottom: 1em;
     width: 20rem !important;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 20px #00000014;
@@ -237,4 +238,29 @@
         width: 100% !important;
     }
 
+}
+
+.button-upload {
+    /* Reset OS-specfic / browser-specific default style (see https://ishadeed.com/article/styling-the-good-old-button/#the-default-styles) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255);
+    /* to be replaced with your custom design */
+    border: 1px solid currentColor;
+    /* to be replaced with your custom design */
+    /* Signify interactivity */
+    border-radius: 4px;
+    /* no physical button has a sharp corner; exact value to be replaced for your custom design */
+    cursor: pointer;
+    /* Match font style with the parent element */
+    font: inherit;
+    /* Make the button easy for touchscreen users to tap */
+    /* min-height: 48px; */
+    /* min-width: 48px; */
+}
+
+.button-upload:focus {
+    outline-offset: 4px;
+    /* make Chrome show a focus ring around the button */
 }
