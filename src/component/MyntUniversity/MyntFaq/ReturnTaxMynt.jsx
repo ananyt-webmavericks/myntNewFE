@@ -32,13 +32,13 @@ export default function ReturnTaxMynt() {
                                     >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                How are my equity Subscriptions taxed?
+                                                How are my equity enrollments taxed?
                                             </span>
                                         </div>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            According to the Income Tax Act, equity Subscriptions are subject to tax liability on capital gains and dividend income and various tax slabs exist basis on the listed or unlisted company and the holding period.
+                                            According to the Income Tax Act, equity enrollments are subject to tax liability on capital gains and dividend income and various tax slabs exist basis on the listed or unlisted company and the holding period.
 
                                         </Typography>
                                     </AccordionDetails>
@@ -86,7 +86,7 @@ export default function ReturnTaxMynt() {
                                     >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                Why should I invest in a startup?
+                                                Why should I enroll in a startup?
                                             </span>
                                         </div>
                                     </AccordionSummary>
@@ -243,7 +243,7 @@ export default function ReturnTaxMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            The interest on the Subscription will begin to accrue from the date of issuance of the allotment certificate, which includes stamp duty, by the start-up. After the campaign concludes on the platform, the following series of events occur:<br /><br />
+                                            The interest on the enrollment will begin to accrue from the date of issuance of the allotment certificate, which includes stamp duty, by the start-up. After the campaign concludes on the platform, the following series of events occur:<br /><br />
                                             a. The start-up and trustee execute the Debenture Trust Deed and Hypothecation/Mortgage agreement. <br />
                                             b. Form PAS-4, which is the offer letter, is filed with the MCA. <br />
                                             c. The start-up passes a board resolution and files a letter of allotment with the MCA.<br />
@@ -253,7 +253,7 @@ export default function ReturnTaxMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '30px' }}>
+                            {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel13'} onChange={handleChange('panel13')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"
                                     >
@@ -271,7 +271,7 @@ export default function ReturnTaxMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
                             <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel14'} onChange={handleChange('panel14')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"

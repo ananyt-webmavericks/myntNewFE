@@ -9,3 +9,9 @@
         margin: 16px;
     }
 }
+
+@media screen and (max-width: 370px) {
+    .upload-pitch-parent {
+        height: 100vh !important;
+    }
+}

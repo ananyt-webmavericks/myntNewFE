@@ -53,7 +53,7 @@ export default function SubscriptionMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            Upon completion of the campaign, our team will work with the startup to prepare the M-SAFE / SAR agreement for signing. This agreement governs the legal aspect of your Subscription in the startup. You'll be able to find the M-SAFE / SAR agreement on your dashboard. If you have a T-SAFE, we'll start the process of filing the necessary documents with the MCA. You'll be able to view the offer letter in the portfolio section of your dashboard.
+                                            Upon completion of the campaign, our team will work with the startup to prepare the M-SAFE / SAR agreement for signing. This agreement governs the legal aspect of your Enrollment in the startup. You'll be able to find the M-SAFE / SAR agreement on your dashboard. If you have a T-SAFE, we'll start the process of filing the necessary documents with the MCA. You'll be able to view the offer letter in the portfolio section of your dashboard.
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -75,7 +75,7 @@ export default function SubscriptionMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '30px' }}>
+                            {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >
                                         <div>
@@ -90,13 +90,13 @@ export default function SubscriptionMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
                             <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                How will I receive a confirmation for my Subscription?
+                                                How will I receive a confirmation for my Enrollment?
                                             </span>
                                         </div>
                                     </AccordionSummary>
@@ -163,12 +163,12 @@ export default function SubscriptionMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '30px' }}>
+                            {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                How to move forward upon allocating funds to SAR campaign?
+                                                How to move forward upon allocating funds to campaign?
                                             </span>
                                         </div>
                                     </AccordionSummary>
@@ -179,7 +179,7 @@ export default function SubscriptionMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
                             <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel10'} onChange={handleChange('panel10')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >

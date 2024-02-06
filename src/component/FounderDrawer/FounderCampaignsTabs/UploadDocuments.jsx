@@ -229,6 +229,7 @@ const UploadDocuments = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
               }}
+              className="existed-highlight-tabs"
             >
               <h3>Uploaded Documents</h3>
               {!addDocuments && (

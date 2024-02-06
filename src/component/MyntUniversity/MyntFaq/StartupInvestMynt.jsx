@@ -79,7 +79,7 @@ export default function StartupInvestMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '2em' }}>
+                            {/* <div style={{ marginTop: '2em' }}>
                                 <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header">
                                         <div>
@@ -93,8 +93,8 @@ export default function StartupInvestMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
-                            <div style={{ marginTop: '2em' }}>
+                            </div> */}
+                            {/* <div style={{ marginTop: '2em' }}>
                                 <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header">
                                         <div>
@@ -114,8 +114,8 @@ export default function StartupInvestMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
-                            <div style={{ marginTop: '2em' }}>
+                            </div> */}
+                            {/* <div style={{ marginTop: '2em' }}>
                                 <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header">
                                         <div>
@@ -130,7 +130,7 @@ export default function StartupInvestMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
                             <div style={{ marginTop: '2em' }}>
                                 <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header">
@@ -148,7 +148,7 @@ export default function StartupInvestMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '2em' }}>
+                            {/* <div style={{ marginTop: '2em' }}>
                                 <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header">
                                         <div>
@@ -164,8 +164,8 @@ export default function StartupInvestMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
-                            <div style={{ marginTop: '2em' }}>
+                            </div> */}
+                            {/* <div style={{ marginTop: '2em' }}>
                                 <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header">
                                         <div>
@@ -181,7 +181,7 @@ export default function StartupInvestMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
 
                         </div>
                     </Container>

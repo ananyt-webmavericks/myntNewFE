@@ -137,11 +137,11 @@
     }
 
     .investment-card-container {
-        width: 290px;
+        width: 100%;
     }
 
     .investment-card-container .live-opportunities-card-content {
-        width: 290px;
+        width: 100%;
     }
 
     .button-container-liveDeals {

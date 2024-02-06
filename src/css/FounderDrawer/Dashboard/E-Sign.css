@@ -218,6 +218,10 @@
     .campaing-mb {
         width: 100% !important;
     }
+
+    .dashboard-width-mb {
+        display: block !important;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -238,6 +242,9 @@
         width: 100% !important;
     }
 
+    .dashboard-width-mb {
+        display: block !important;
+    }
 }
 
 .button-upload {

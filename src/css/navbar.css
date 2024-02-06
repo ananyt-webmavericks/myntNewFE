@@ -371,4 +371,26 @@
     .navbar-container input[type="checkbox"]:checked~.logo {
         display: none;
     }
+
+    .navbar-container .hamburger-lines {
+        height: 17px;
+        width: 22px;
+        opacity: 0.8;
+        right: 13px;
+    }
+
+    .ham-menu-img {
+        width: 145px !important;
+        height: 35px !important;
+        margin-left: 0px !important;
+    }
+
+    .nav-profile-icon-mb .MuiAvatar-circular {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .nav-profile-icon-mb svg {
+        width: 21px !important;
+    }
 }

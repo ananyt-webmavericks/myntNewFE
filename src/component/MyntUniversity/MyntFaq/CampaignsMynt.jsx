@@ -119,7 +119,7 @@ export default function CampaignsMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '30px' }}>
+                            {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"
                                     >
@@ -136,8 +136,8 @@ export default function CampaignsMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
-                            <div style={{ marginTop: '30px' }}>
+                            </div> */}
+                            {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"
                                     >
@@ -149,14 +149,14 @@ export default function CampaignsMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            In addition to receiving SARs, your subscription entitles you to community service benefits. Any of the following can be used to provide community services: <br /> <br />
+                                            In addition to receiving SARs, your enrollment entitles you to community service benefits. Any of the following can be used to provide community services: <br /> <br />
                                             Special discounts or other deals on goods and services <br />
                                             The chance to take part in beta launch testing or give feedback on prototypes  <br />
                                             Entry to special events hosted by the startup
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
                             {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"
@@ -221,7 +221,7 @@ export default function CampaignsMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            It's possible that early-stage startups don't yet have a formal valuation assigned to them. Thus, the issuance may have a discount cap to safeguard the interests of early-stage backers. Your subscription will be priced at a discounted valuation for the startup's next priced round. For instance, let's assume that you have invested INR 1,00,000 in a startup that has a discount cap of 20%. Consequently, when the startup undergoes a priced round of funding in the future, the value of your enrollment will be calculated based on a discounted valuation. For example, if the startup receives a valuation of INR 1,00,00,000 in its next round of funding, your subscription will be valued at 20% less (i.e. 0.80 * 1,00,00,000 = 80,00,000). This means that your enrollment will represent 1.25% (1,00,000/80,00,000) of the company's valuation instead of the usual 1% (1,00,000/1,00,00,000).
+                                            It's possible that early-stage startups don't yet have a formal valuation assigned to them. Thus, the issuance may have a discount cap to safeguard the interests of early-stage backers. Your enrollment will be priced at a discounted valuation for the startup's next priced round. For instance, let's assume that you have invested INR 1,00,000 in a startup that has a discount cap of 20%. Consequently, when the startup undergoes a priced round of funding in the future, the value of your enrollment will be calculated based on a discounted valuation. For example, if the startup receives a valuation of INR 1,00,00,000 in its next round of funding, your enrollment will be valued at 20% less (i.e. 0.80 * 1,00,00,000 = 80,00,000). This means that your enrollment will represent 1.25% (1,00,000/80,00,000) of the company's valuation instead of the usual 1% (1,00,000/1,00,00,000).
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -262,7 +262,7 @@ export default function CampaignsMynt() {
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
-                            <div style={{ marginTop: '30px' }}>
+                            {/* <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel14'} onChange={handleChange('panel14')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"
                                     >
@@ -279,7 +279,7 @@ export default function CampaignsMynt() {
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
-                            </div>
+                            </div> */}
                             <div style={{ marginTop: '30px' }}>
                                 <Accordion expanded={expanded === 'panel15'} onChange={handleChange('panel15')} style={{ boxShadow: ' 0px 0px 10px #0000000D', border: '1px solid #D1D1D1' }}>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header"
@@ -292,7 +292,7 @@ export default function CampaignsMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            The Indian government has introduced the concept of Convertible Notes to encourage Subscription in startups. A convertible note is an instrument issued by a startup company that acknowledges receipt of money initially as debt, which can be repaid at the option of the holder, or it can be converted into a specified number of equity shares of the company within a period not exceeding five years from the date of issue, upon the occurrence of specified events as per other terms and conditions agreed and indicated in the instrument. However, to be eligible to purchase Convertible Notes, enrollers must invest at least INR 25 lakhs. The definition of a startup has been provided by the Department of Industrial Promotion and Policy (DIPP), Ministry of Commerce and Industry.
+                                            The Indian government has introduced the concept of Convertible Notes to encourage enrollment in startups. A convertible note is an instrument issued by a startup company that acknowledges receipt of money initially as debt, which can be repaid at the option of the holder, or it can be converted into a specified number of equity shares of the company within a period not exceeding five years from the date of issue, upon the occurrence of specified events as per other terms and conditions agreed and indicated in the instrument. However, to be eligible to purchase Convertible Notes, enrollers must invest at least INR 25 lakhs. The definition of a startup has been provided by the Department of Industrial Promotion and Policy (DIPP), Ministry of Commerce and Industry.
 
                                         </Typography>
                                     </AccordionDetails>
@@ -304,7 +304,7 @@ export default function CampaignsMynt() {
                                     >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                Does Mynt enable Subscription through Convertible Notes on its platform?
+                                                Does Mynt enable enrollment through Convertible Notes on its platform?
                                             </span>
                                         </div>
                                     </AccordionSummary>
@@ -345,7 +345,7 @@ export default function CampaignsMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            Debt instruments are a safer form of Subscription instrument as it generates and fixed returns and the buyer has to pay back the principal fully. Some of the debt instruments include bonds and debentures.
+                                            Debt instruments are a safer form of enrollment instrument as it generates and fixed returns and the buyer has to pay back the principal fully. Some of the debt instruments include bonds and debentures.
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

@@ -283,19 +283,23 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .member-card-wrapper{
+    .member-card-wrapper {
         justify-content: center;
     }
+
     .members-card {
         margin-right: 10px !important;
         max-width: 265px !important;
     }
+
     .people-tabs {
         padding-right: 16px !important;
     }
-    .people-team-tab-wrapper{
+
+    .people-team-tab-wrapper {
         margin-right: 0 !important;
     }
+
     .formgroup {
         display: flex;
         justify-content: space-between;
@@ -368,6 +372,7 @@
     .members-card {
         margin-right: 10px !important;
     }
+
     .formgroup {
         display: flex;
         justify-content: space-between;
@@ -410,7 +415,7 @@
 }
 
 @media screen and (max-width:425px) {
-    
+
 
     .members-card {
         margin-right: 10px !important;
@@ -430,6 +435,7 @@
         padding: 10px;
         line-height: inherit;
         height: auto;
+        font-size: 13px;
     }
 
     .formgroup {
@@ -445,7 +451,7 @@
         justify-content: center !important;
         flex-direction: column !important;
         width: 100% !important;
-        
+
         /* margin: 0rem; */
     }
 

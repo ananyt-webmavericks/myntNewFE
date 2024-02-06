@@ -377,7 +377,7 @@ export default function MyntVideosMain() {
         <Grid className="video-grid-wrapper" container spacing={gridxsMainFirst}>
           {data.map((item, index) => {
             return (
-              <Card style={{ marginRight: '1em', marginBottom: '1em' }} item xs={gridxsMainSecond} key={index}>
+              <Card className="browse_topic" style={{ marginBottom: '1em' }} item xs={gridxsMainSecond} key={index}>
                 <div className="video-des-image-container">
                   <div
                     style={{

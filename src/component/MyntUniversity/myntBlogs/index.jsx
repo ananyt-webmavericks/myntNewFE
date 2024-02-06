@@ -205,7 +205,7 @@ export default function MyntBlogsMain() {
                     {blogs.filter((val => val.type.includes(btnType))).map((item, index) => {
 
                         return (
-                            <Card style={{ marginRight: '1em', marginBottom: '1em' }} item xs={gridxsMainSecond} key={index}>
+                            <Card className="browse_topic" style={{ marginBottom: '1em' }} item xs={gridxsMainSecond} key={index}>
                                 <div onClick={() => navigate(`/myntUniversity/blogs/detail/${item.id}`)} className="blogs-des-image-container">
                                     <div className="mynt-text-image-blogs" >Mynt</div>
                                     <img src={getImageList(item?.id)} style={{ width: 'inherit', height: '192px' }}></img>

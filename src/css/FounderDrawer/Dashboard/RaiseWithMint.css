@@ -112,9 +112,10 @@
 }
 
 @media screen and (max-width: 425px) {
-    .e-sign-description{
+    .e-sign-description {
         text-align: start;
     }
+
     .raise-with-mint-card {
         flex-wrap: wrap;
         padding: 24px 10px 10px 24px !important;
@@ -144,6 +145,14 @@
 
     }
 
+    .raise-with-mint-desc {
+        font-size: 12px !important;
+    }
+
+    .raise-with-mint {
+        font-size: 22px !important;
+    }
+
 }
 
 @media screen and (max-width: 320px) {
@@ -157,5 +166,13 @@
 
     .download_btntext_center {
         margin-left: 2rem !important;
+    }
+
+    .raise-with-mint-desc {
+        font-size: 12px !important;
+    }
+
+    .raise-with-mint {
+        font-size: 22px !important;
     }
 }

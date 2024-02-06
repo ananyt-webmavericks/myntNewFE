@@ -401,6 +401,7 @@ const Highlights = ({ tabChangeFn }) => {
               justifyContent: "space-between",
               // width: '76%'
             }}
+            className="existed-highlight-tabs"
           >
             <h3 className="faqs-title">Added Highlights</h3>
             {addmoreHighlights ? null : (

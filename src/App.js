@@ -107,7 +107,7 @@ function App() {
         />
         <Route
           exact
-          path="/myntUniversity/faq/subscriptions"
+          path="/myntUniversity/faq/enrollment"
           element={<SubscriptionMynt />}
         />
         <Route

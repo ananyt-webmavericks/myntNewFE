@@ -11,7 +11,7 @@ const HowToSubscribe = () => {
             <div className="how-to-sub-heading">How to&nbsp;<span className="colored-investor-home-heading"> raise? </span></div>
             <div className="how-to-sub-subheading">Experience the advantages of a fully digital and hassle-free process.</div>
             <div className='hide-scroll' style={{ height: 950, justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
-                <div className="first-raise-card" style={{ marginLeft: '5px' }}>
+                <div className="first-raise-card" style={{ marginLeft: '15px', marginRight: '20px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">1</div>
                         <div className="head-section-second">
@@ -25,7 +25,7 @@ const HowToSubscribe = () => {
                     </div>
                 </div>
 
-                <div className="first-raise-card">
+                <div className="first-raise-card" style={{ marginRight: '20px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">2</div>
                         <div className="head-section-second">
@@ -39,7 +39,7 @@ const HowToSubscribe = () => {
                     </div>
                 </div>
 
-                <div className="first-raise-card">
+                <div className="first-raise-card" style={{ marginRight: '20px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">3</div>
                         <div className="head-section-second">
@@ -53,7 +53,7 @@ const HowToSubscribe = () => {
                     </div>
                 </div>
 
-                <div className="first-raise-card" style={{ marginRight: '5px' }}>
+                <div className="first-raise-card" style={{ marginRight: '20px' }}>
                     <div className="head-container-raise">
                         <div className="head-section-non-active">4</div>
                         <div className="head-section-second">

@@ -37,7 +37,7 @@
 
 
 
-.hightlight-submit-button:hover{
+.hightlight-submit-button:hover {
     background: #F8DA36 0% 0% no-repeat padding-box !important;
     box-shadow: 0px 0px 7px #F4DC5991;
     border: 1px solid #F8DA36;
@@ -46,11 +46,13 @@
     transition: 0.3s;
     cursor: pointer;
 }
+
 .hightlight-btn-parent {
     text-align: right;
     margin-right: 0rem;
     margin-top: 1.8rem;
 }
+
 .founder-appln-submit-button {
     width: 280px;
     height: 54px;
@@ -73,17 +75,20 @@
 
 
 @media screen and (max-width:1024px) {
-    .highlights-wrapper{
+    .highlights-wrapper {
         padding-right: 0 !important;
         margin-right: 16px !important;
     }
-    .highlights-next-btn{
+
+    .highlights-next-btn {
         margin-right: 20px !important;
     }
-    .existing-highlights{
+
+    .existing-highlights {
         margin-bottom: 100px !important;
     }
 }
+
 @media screen and (max-width:768px) {
 
     .buttonsParent {
@@ -132,6 +137,11 @@
         margin-top: 2rem;
         font-family: poppins !important;
     }
+
+    .existed-highlight-tabs {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -152,6 +162,10 @@
         margin-bottom: 6rem;
     }
 
+    .existed-highlight-tabs {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
 
     .highlight-desc {
         padding-right: 2%;

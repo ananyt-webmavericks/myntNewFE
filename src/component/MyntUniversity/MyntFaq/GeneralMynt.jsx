@@ -57,7 +57,7 @@ export default function GeneralMynt() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            You have the choice between two payment methods: online or offline. If you opt for the online option, you will be taken to the checkout page on our website where you can complete your subscription through our payment gateway using UPI, credit/debit cards, or net banking. On the other hand, if you prefer to make your payment through the offline mode, simply click on the "pay offline" button to access the escrow account details.
+                                            You have the choice between two payment methods: online or offline. If you opt for the online option, you will be taken to the checkout page on our website where you can complete your enrollment through our payment gateway using UPI, credit/debit cards, or net banking. On the other hand, if you prefer to make your payment through the offline mode, simply click on the "pay offline" button to access the escrow account details.
 
                                         </Typography>
                                     </AccordionDetails>
@@ -130,7 +130,7 @@ export default function GeneralMynt() {
                                     <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#AB7905' }} />} aria-controls="panel1a-content" id="panel1a-header" >
                                         <div>
                                             <span style={{ fontWeight: 600, fontSize: '16px' }}>
-                                                Where can I find all the campaigns currently open for Subscription?
+                                                Where can I find all the campaigns currently open for Enrollment?
                                             </span>
                                         </div>
                                     </AccordionSummary>

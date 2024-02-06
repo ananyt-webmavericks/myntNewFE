@@ -247,14 +247,11 @@
         width: 100%;
         margin-top: 1em;
     }
-}
 
-@media screen and (max-width:800px) {
     .info-provider-faq-mynt {
         display: grid;
         margin-top: 20px;
     }
-
 }
 
 @media screen and (max-width:425px) {
@@ -262,4 +259,24 @@
         width: 100% !important;
     }
 
+}
+
+/* mansi */
+
+.browse_topic {
+    margin-right: 1em;
+}
+
+@media screen and (max-width: 991px) {
+    .video-des-image-container {
+        width: 100%;
+    }
+
+    .browse_topic {
+        margin-right: 0 !important;
+    }
+
+    .blogs-des-image-container {
+        width: 100%;
+    }
 }
