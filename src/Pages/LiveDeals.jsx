@@ -44,7 +44,6 @@ const LiveDeals = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { deals } = useSelector(state => state.companyData)
-  console.log("superarr", superArray)
   const backgroundImageUrls = [BG1, BG2, BG3, BG4];
 
   const handleOrderTabs = (tabNo) => {

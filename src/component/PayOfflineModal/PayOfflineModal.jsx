@@ -58,9 +58,10 @@ const PayOfflineModal = (props) => {
     // }, [value?.amount]);
 
     const totalAmountMin = () => {
+
         let values = parseInt(bankInfo?.min_subscription)
         const fee = (2 / 100) * values;
-        const tax = (18 / 100) * values;
+        const tax = (18 / 100) * values * 2 / 100;
         const total = values + fee + tax;
         return total;
     }
@@ -68,7 +69,7 @@ const PayOfflineModal = (props) => {
 
     const handleSubmit = () => {
 
-        let isVerified = value.amount && value.transaction_id && Number(value.amount) > parseInt(bankInfo?.min_subscription)
+        let isVerified = value.amount && value.transaction_id && Number(value.amount) >= parseInt(bankInfo?.min_subscription)
         if (!value.amount) {
             toast.error("Please enter amount", {
                 position: "top-right",
@@ -107,31 +108,31 @@ const PayOfflineModal = (props) => {
                 amount: Number(value.amount)
             }
             try {
-                CompanyServices.makeOfflinePayment(object).then(res => {
-                    if (res.status === 200 || res.status === 201) {
-                        setValue(initialData)
-                        props?.handleClose()
-                        toast.success(res?.data?.message, {
-                            position: "top-right",
-                            style: {
-                                borderRadius: "3px",
-                                background: "green",
-                                color: "#fff",
-                            },
-                        })
-                    } else {
-                        setValue(initialData)
-                        props?.handleClose()
-                        toast.success(res?.response?.data?.message, {
-                            position: "top-right",
-                            style: {
-                                borderRadius: "3px",
-                                background: "green",
-                                color: "#fff",
-                            },
-                        });
-                    }
-                })
+                const response = CompanyServices.makeOfflinePayment(object)
+                console.log('res', response)
+                if (response.status === 200 || response.status === 201) {
+                    setValue(initialData)
+                    // props?.handleClose()
+                    toast.success(response?.data?.message, {
+                        position: "top-right",
+                        style: {
+                            borderRadius: "3px",
+                            background: "green",
+                            color: "#fff",
+                        },
+                    })
+                } else {
+                    setValue(initialData)
+                    // props?.handleClose()
+                    toast.success(response?.response?.data?.message, {
+                        position: "top-right",
+                        style: {
+                            borderRadius: "3px",
+                            background: "green",
+                            color: "#fff",
+                        },
+                    });
+                }
             } catch (error) {
                 setValue(initialData)
                 props?.handleClose()
@@ -216,18 +217,17 @@ const PayOfflineModal = (props) => {
                     </div>
 
                     <Typography id="transition-modal-description" sx={{ mt: 2, textAlign: 'left', color: '' }}>
-                        note
+                        Note
                     </Typography>
                     <Typography id="transition-modal-description" sx={{ mt: 0.5, textAlign: 'left', fontSize: '13px' }}>
 
-                        amount calculation :  minimum Enrollment is {bankInfo?.min_subscription}  so 2% convenience fee will be {bankInfo?.min_subscription * 2 / 100} and 18% GST will be {(18 / 100) * bankInfo?.min_subscription}
-                        and the total amount will be {totalAmountMin()}
+                        Amount Calculation :  Minimum Enrollment is {bankInfo?.min_subscription}  so 2% convenience fee will be {bankInfo?.min_subscription * 2 / 100} and 18% GST will be {(18 / 100) * bankInfo?.min_subscription * 2 / 100} so the total amount will be {totalAmountMin()}
                     </Typography>
                     <Typography id="transition-modal-description" sx={{ mt: 2, textAlign: 'center', color: '' }}>
                         Already paid?
                     </Typography>
                     <div className="verifyAddress-input">
-                        <input type="text" name="transaction_id" value={value.transaction_id} onChange={handleChange} placeholder="Transaction Id" className="verifyAddress-input-section" />
+                        <input type="text" name="transaction_id" value={value.transaction_id} onChange={handleChange} placeholder="Please pay your UTR number" className="verifyAddress-input-section" />
                     </div>
                     <div className="verifyAddress-input">
                         <input type="number" style={{ MozAppearance: 'textfield', Appearance: 'textfield' }} name="amount" value={value.amount} onChange={handleChange} placeholder={`Minimum Amount :- ${bankInfo?.min_subscription || 0} `} className="verifyAddress-input-section" />

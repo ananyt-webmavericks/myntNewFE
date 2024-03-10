@@ -10,7 +10,7 @@ import Enquiry from '../../images/assets/enquiry.png'
 import { useLocation, useSearchParams } from "react-router-dom";
 import CompanyServices from "../../service/Company";
 import { useFormik } from "formik";
-import PayToSubscribeValSchema from "../../Validations/PayToSubscribeValSchema";
+import createPayToSubscribeValSchema from "../../Validations/PayToSubscribeValSchema";
 import { authAxios } from "../../service/Auth-header";
 import { Base_Url } from "../../Utils/Configurable";
 import { useSelector } from "react-redux";
@@ -87,6 +87,8 @@ export default function PayToSubscribeMain() {
             typeof value === 'string' ? value.split(',') : value,
         );
     };
+    const minAmount = Number(location?.state?.campaignData?.deal_terms?.min_subscription);
+    const PayToSubscribeValSchema = createPayToSubscribeValSchema(minAmount);
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -226,14 +228,14 @@ export default function PayToSubscribeMain() {
 
                                 <div className="chips-pay-to-subscribe-cointainer">
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", (10 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
-                                        className="particular-mentioned-chip-pay">+ ₹{(10 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
+                                        onClick={e => formik.setFieldValue("amount", (50 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{(50 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", (20 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
-                                        className="particular-mentioned-chip-pay">+ ₹{(20 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
+                                        onClick={e => formik.setFieldValue("amount", (100 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{(100 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                     <div
-                                        onClick={e => formik.setFieldValue("amount", (30 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
-                                        className="particular-mentioned-chip-pay">+ ₹{(30 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
+                                        onClick={e => formik.setFieldValue("amount", (150 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
+                                        className="particular-mentioned-chip-pay">+ ₹{(150 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                 </div>
                                 {rewards.length > 0 && <span className="pay-amount-heading">Enrollment Benefits</span>}
                                 {
@@ -254,8 +256,8 @@ export default function PayToSubscribeMain() {
 
                             </Grid>
                             <Grid className="payment-card" style={{ padding: 0 }} item xs={gridxsSecond}>
-                                <span className="pay-amount-label">Have a Coupon Code?</span>
-                                <div style={{ width: '100%', marginTop: '1.5em' }} className="dropdown-container-live-deals">
+                                {/* <span className="pay-amount-label">Have a Coupon Code?</span> */}
+                                {/* <div style={{ width: '100%', marginTop: '1.5em' }} className="dropdown-container-live-deals">
                                     <Select
                                         className={classes.select}
                                         // multiple
@@ -290,7 +292,7 @@ export default function PayToSubscribeMain() {
                                         ))}
                                     </Select>
 
-                                </div>
+                                </div> */}
                                 <Card className="secondary-card-pay-section second">
                                     <CardContent>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1em' }}>
@@ -347,7 +349,9 @@ export default function PayToSubscribeMain() {
                                     />
                                     <div>I bear to undertake the<span style={{ color: '#EBB429' }}> Risk </span>In Invesment</div>
                                 </div>
-                                <button onClick={() => formik.handleSubmit()} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>PAY ONLINE</button>
+                                <button
+                                    // onClick={() => formik.handleSubmit()}
+                                    className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0, background: '#838383' }}>PAY ONLINE</button>
 
                                 {location?.state?.campaignData?.deal_terms?.enable_offline && <button onClick={() => setOpenOfflineModal(true)} className="payment-btn" style={{ maxWidth: '100%', marginLeft: 0 }}>PAY OFFLINE</button>}
                                 {/* <div style={{ textAlign: 'center' }}>

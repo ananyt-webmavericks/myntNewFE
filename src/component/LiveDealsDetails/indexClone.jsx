@@ -1,50 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, CardContent, Grid, Link } from "@mui/material";
-import logo from "../../images/investments/logo1.png";
-import Share from "../../images/assets/share.png";
 import Arrow from "../../images/assets/yellowArrow.png";
-import Group1 from "../../images/highlights/group1.png";
 import { styled } from "@mui/material/styles";
-import Group2 from "../../images/highlights/group2.png";
-import Group3 from "../../images/highlights/group3.png";
-import Group4 from "../../images/highlights/group4.png";
-import FirstImage from "../../images/highlights/firstGroup.png";
-import SecondImage from "../../images/highlights/secondGroup.png";
-import ThirdImage from "../../images/highlights/thirdGroup.png";
 import "../../css/LiveDealsDetails/liveDetails.css";
 import DealsFaqs from "./DealsFaqs";
 import YoutubeEmbed from "./YouTubeEmbed";
 import DealTerm from "./DealTerms";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Team from "./Team";
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import Switch from "@mui/material/Switch";
-import SpeedDial, { SpeedDialProps } from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import TelegramIcon from "@mui/icons-material/Telegram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useSelector } from "react-redux";
-import UserServices from "../../service/UserService";
 import CompanyServices from "../../service/Company";
 import services from "../../service/investor.kyc";
 import { toast } from "react-hot-toast";
-import { Highlight } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import CopyLinkModal from "../CopyLinkModal/CopyLinkModal";
-
+import { useParams } from "react-router-dom";
 
 
 const PDFViewer = ({ pdfUrl }) => {
@@ -99,13 +77,14 @@ const PDFViewer = ({ pdfUrl }) => {
 const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
   marginLeft: "1em",
 }));
-export default function LiveDetailsMain() {
+export default function LiveDetailsMainClone() {
   const [activeTab, setActiveTab] = useState(1);
   const [gridxsFirst, setGridxsFirst] = useState(2);
   const [gridxsSecond, setgridxsSecond] = useState(6);
   const ratio = parseInt(window.innerWidth);
   const navigate = useNavigate();
   const dispatch = useDispatch()
+  const { id } = useParams();
   const [direction, setDirection] = React.useState("right");
   const [hidden, setHidden] = React.useState(false);
   const [campaignData, setCampaignData] = useState({});
@@ -117,17 +96,17 @@ export default function LiveDetailsMain() {
   const { userData } = useSelector((state) => state.loginData);
   const [open, setOpen] = useState(false)
   const handleCloseModal = () => { setOpen(false) }
-  const handleDirectionChange = (event) => {
-    setDirection(event.target.value);
-  };
-  const location = useLocation();
+  const [dealTypes, setDealTypes] = useState([])
+  const [dealTerms, setDealTerms] = useState([])
+  const [superObj, setSuperObj] = useState([])
+
   const actions = [
     {
       icon: (
         <Link
           style={{ color: "grey" }}
           target="_blank"
-          href={`https://www.facebook.com/sharer.php?https://mynt-ui.webmavericks.org/live-deals-details/${location.state?.campaignId}`}
+          href={`https://www.facebook.com/sharer.php?u=https://mynt-ui.webmavericks.org/live-deals-details/${superObj?.campaignId}`}
         >
           <FacebookRoundedIcon style={{ marginTop: 8 }} />
         </Link>
@@ -139,7 +118,7 @@ export default function LiveDetailsMain() {
         <Link
           style={{ color: "grey" }}
           target="_blank"
-          href={`https://www.instagram.com/sharer.php?u=https://mynt-ui.webmavericks.org/live-deals-details/${location.state?.campaignId}`}
+          href={`https://www.instagram.com/sharer.php?u=https://mynt-ui.webmavericks.org/live-deals-details/${superObj?.campaignId}`}
         >
           <InstagramIcon style={{ marginTop: 8 }} />
         </Link>
@@ -151,7 +130,7 @@ export default function LiveDetailsMain() {
         <Link
           style={{ color: "grey" }}
           target="_blank"
-          href={`https://twitter.com/intent/tweet?url=https://mynt-ui.webmavericks.org/live-deals-details/${location.state?.campaignId}&text=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React&via=dannysasse`}
+          href={`https://twitter.com/intent/tweet?url=https://mynt-ui.webmavericks.org/live-deals-details/${superObj?.campaignId}&text=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React&via=dannysasse`}
         >
           <TwitterIcon style={{ marginTop: 8 }} />
         </Link>
@@ -163,7 +142,7 @@ export default function LiveDetailsMain() {
         <Link
           style={{ color: "grey" }}
           target="_blank"
-          href={`whatsapp://send?text=https://mynt-ui.webmavericks.org/live-deals-details/${location.state?.campaignId}`}
+          href={`whatsapp://send?text=https://mynt-ui.webmavericks.org/live-deals-details/${superObj?.campaignId}`}
         >
           <WhatsAppIcon style={{ marginTop: 8 }} />
         </Link>
@@ -176,7 +155,7 @@ export default function LiveDetailsMain() {
         <Link
           style={{ color: "grey" }}
           target="_blank"
-          href={`https://www.linkedin.com/shareArticle?url=https://mynt-ui.webmavericks.org/live-deals-details/${location.state?.campaignId}&title=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React`}
+          href={`https://www.linkedin.com/shareArticle?url=https://mynt-ui.webmavericks.org/live-deals-details/${superObj?.campaignId}&title=Beginner's%20Guide%20to%20Jest%20Testing%20in%20React`}
         >
           <LinkedInIcon style={{ marginTop: 8 }} />
         </Link>
@@ -184,34 +163,15 @@ export default function LiveDetailsMain() {
       name: "Telegram",
     },
   ];
-  const handleHiddenChange = (event) => {
-    setHidden(event.target.checked);
-  };
+
   useEffect(() => {
     services.getInvestorKycData(userData.id).then((response, error) => {
       if (response.status === 200) {
         setKycData(response?.data);
       }
     });
-    // CompanyServices.getCampaignById(location.state?.campaignId).then(res => {
-    //     if (res.status === 200 || res.status === 201) {
-    //         console.log(res.data)
-    //         setCampaignData(res.data)
-    //     }
-    // })
-    // CompanyServices.getHighlights(location.state?.campaignId).then(res => {
-    //     if (res.status === 200 || res.status === 201) {
-    //         console.log(res.data)
-    //         setHightLightData(res.data)
-    //     }
-    // })
-    // CompanyServices.getCampaignsFaqs(location.state?.campaignId).then(res => {
-    //     if (res.status === 200 || res.status === 201) {
-    //         console.log(res.data)
-    //         setFaqData(res.data)
-    //     }
-    // })
-    CompanyServices.getCompanyDetailByCampaign(location.state?.campaignId).then(
+
+    CompanyServices.getCompanyDetailByCampaign(id).then(
       (res) => {
         if (res.status === 200 || res.status === 201) {
           console.log("companyData = ", res.data);
@@ -232,7 +192,6 @@ export default function LiveDetailsMain() {
     }
     setBlurAmount(userData?.id ? 0 : 4.5);
   }, []);
-  console.log(location.state);
   const [blurAmount, setBlurAmount] = useState(0);
   const { userKycData } = useSelector((state) => state.kycData);
 
@@ -279,7 +238,8 @@ export default function LiveDetailsMain() {
   };
 
   const calculatePercentage = () => {
-    let percentage = location?.state?.campaignData?.campaign?.total_raised
+    console.log("sjasjasjas", superObj?.campaigns)
+    let percentage = superObj?.campaigns?.campaign?.total_raised
     if (percentage > 99) {
       percentage = 100
     }
@@ -287,7 +247,7 @@ export default function LiveDetailsMain() {
   }
 
   const handleEnrollBtn = () => {
-    let isvalidate = (daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' || userData?.user_type !== "FOUNDER")
+    let isvalidate = (daysRemaining(superObj?.campaigns?.deal_terms?.end_date) === 'Expired' || userData?.user_type !== "FOUNDER")
     if (isvalidate) {
       if (kycData?.bank_account &&
         kycData?.pan_card &&
@@ -309,7 +269,7 @@ export default function LiveDetailsMain() {
           state: {
             campaignId: campaignData.id,
             companyName: companyData.company_name,
-            campaignData: location?.state?.campaignData
+            campaignData: superObj?.campaigns
           },
         })
       } else {
@@ -320,6 +280,72 @@ export default function LiveDetailsMain() {
     }
 
   }
+  useEffect(() => {
+    CompanyServices.getAllDealTypes().then(res => {
+      if (res.status === 200 || res.status === 201) {
+        setDealTypes(res.data)
+        if (res?.data?.length > 0) {
+          getAllDealTerms()
+        }
+      } else {
+        console.log("Get Deal Type Failed!")
+      }
+    })
+    const getAllDealTerms = () => {
+      CompanyServices.getAllDealTerms().then(res => {
+        if (res.status === 200 || res.status === 201) {
+          if (res?.data?.data?.length > 0) {
+            setDealTerms(res?.data?.data)
+          }
+        } else {
+          console.log("Get Deal Terms Failed!")
+        }
+      })
+    }
+  }, [])
+  const handleArrange = (dealTypes, campaigns) => {
+    const result = campaigns.reduce((acc, campaign) => {
+      const dealTypeId = campaign?.deal_terms?.security_type;
+      const dealType = dealTypes.find((dt) => dt?.id === dealTypeId);
+      const campaignObj = { ...campaign };
+      const campaignId = campaign?.campaign?.id
+      if (acc[dealTypeId]) {
+        acc[dealTypeId].campaigns.push(campaignObj);
+      } else {
+        acc[dealTypeId] = {
+          campaignId: campaignId,
+          id: dealTypeId,
+          deal_type: dealType?.deal_name,
+          deal_tagline: dealType?.deal_tagline,
+          deal_description: dealType?.deal_description,
+          campaigns: [campaignObj],
+        };
+      }
+
+      return acc;
+    }, {});
+
+    const groupedCampaigns = Object.values(result);
+
+
+    const obj = groupedCampaigns?.find((item) => item?.campaignId == id)
+    const superobjj = {
+      ...obj,
+      campaigns: obj?.campaigns?.find((item) => item?.campaign?.id == id)
+    }
+    console.log("suu", superobjj)
+    setSuperObj(superobjj);
+  };
+
+  useEffect(() => {
+    return handleArrange(dealTypes, dealTerms);
+  }, [dealTypes, dealTerms]);
+
+  useEffect(() => {
+    if (!localStorage?.getItem('access_token')) {
+      navigate('/login')
+    }
+  }, [])
   return (
     <>
       <div className="get-started-container">
@@ -379,7 +405,7 @@ export default function LiveDetailsMain() {
                     className="percentage-investment"
                     style={{ fontSize: "20px" }}
                   >
-                    {Number(location?.state?.campaignData?.campaign?.total_raised).toFixed(2) || '0'}%
+                    {Number(superObj?.campaigns?.campaign?.total_raised).toFixed(2) || '0'}%
                   </span>
                   <span className="investment-status">Completed</span>
                 </div>
@@ -389,7 +415,7 @@ export default function LiveDetailsMain() {
                     className="percentage-investment live"
                     style={{ fontSize: "20px" }}
                   >
-                    {daysRemaining(location?.state?.campaignData?.deal_terms?.end_date)}
+                    {daysRemaining(superObj?.campaigns?.deal_terms?.end_date)}
                   </span>
                   <span className="investment-status live">End Date </span>
                 </div>
@@ -399,7 +425,7 @@ export default function LiveDetailsMain() {
                     className="percentage-investment live"
                     style={{ fontSize: "20px" }}
                   >
-                    {location?.state?.campaignData?.deal_terms?.min_subscription || 'N/A'}
+                    {superObj?.campaigns?.deal_terms?.min_subscription || 'N/A'}
                   </span>
                   <span className="investment-status live">Min Enrollment</span>
                 </div>
@@ -410,11 +436,9 @@ export default function LiveDetailsMain() {
               <div className="header-section-deals-detail btn-section">
 
                 <Button
-                  // disabled={(daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' || userData?.user_type !== "FOUNDER")}
                   onClick={handleEnrollBtn}
-                  // style={{ textTransform: "none" }}
                   className={
-                    (daysRemaining(location?.state?.campaignData?.deal_terms?.end_date) === 'Expired' || userData?.user_type === "FOUNDER")
+                    (daysRemaining(superObj?.campaigns?.deal_terms?.end_date) === 'Expired' || userData?.user_type === "FOUNDER")
                       ? "disable-enroll-btn"
                       : "invest-btn-section-deals"
                   }
@@ -675,7 +699,7 @@ export default function LiveDetailsMain() {
               <DealTerm
                 companyData={companyData}
                 blurAmount={blurAmount}
-                dealTermData={location?.state?.campaignData}
+                dealTermData={superObj?.campaigns}
               />
             </div>
           )}

@@ -66,6 +66,8 @@ import WaitTime from "./Pages/Payment/WaitTime";
 import PaymentPending from "./Pages/Payment/PaymentPending";
 import { Toaster } from "react-hot-toast";
 import { ProtectedRoute } from "./protectedRoute";
+import LiveDetailsMainClone from "./component/LiveDealsDetails/indexClone";
+import LiveDealsDetailsClone from "./Pages/LiveDealsDetailsClone";
 function App() {
   const location = window.location.pathname;
   const ratio = parseInt(window.innerWidth);
@@ -214,7 +216,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route exact path="/pay-to-subscribe" element={<PayToSubscribe />} />
+        <Route exact path="/pay-to-enroll" element={<PayToSubscribe />} />
         <Route
           exact
           path="/my-profile"
@@ -227,7 +229,12 @@ function App() {
         <Route
           exact
           path="/live-deals-details"
-          element={<LiveDealsDetails />}
+          element={<ProtectedRoute><LiveDealsDetails /></ProtectedRoute>}
+        />
+        <Route
+          exact
+          path="/live-deals-detailed/:id"
+          element={<LiveDealsDetailsClone />}
         />
         <Route
           exact
