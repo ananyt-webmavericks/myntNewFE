@@ -25,7 +25,7 @@ const Navbar = () => {
   const { userData } = useSelector((state) => state.loginData);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const [target, setTarget] = useState(null)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -47,6 +47,34 @@ const Navbar = () => {
     sessionStorage.clear();
     window.location.reload();
   };
+
+  useEffect(() => {
+    const menuItemsNot = document.querySelector('.navbar-container input[type="checkbox"]');
+
+    function openDrawer() {
+      if (menuItemsNot.checked) {
+        menuItemsNot.checked = false;
+      } else {
+        menuItemsNot.checked = true;
+      }
+    }
+
+    document.querySelectorAll('.menu-items li').forEach(item => {
+      item.addEventListener('click', openDrawer);
+    });
+    document.querySelectorAll('.hamburger-lines').forEach(item => {
+      item.addEventListener('click', openDrawer);
+    });
+    return () => {
+      document.querySelectorAll('.navbar .menu-items li').forEach(item => {
+        item.removeEventListener('click', openDrawer);
+      });
+      document.querySelectorAll('.hamburger-lines').forEach(item => {
+        item.removeEventListener('click', openDrawer);
+      });
+    };
+  }, []);
+
   return (
     <>
       <nav className="navbar">
@@ -102,15 +130,14 @@ const Navbar = () => {
               </div>
             </>
           )}
-
           <ul className='menu-items'>
+            {/* <div style={{ padding: '100px 20px' }}> */}
             <li>
-
-              <span style={pathname === '/' ? { color: '#fbdf35' } : null} onClick={() => { navigate("/") }}>Home</span>
+              <span style={pathname === '/' ? { color: '#fbdf35' } : null} onClick={() => { navigate("/"); setTarget('none') }}>Home</span>
             </li>
             <hr className="ruler-navbar" />
             <li>
-              <span style={pathname === '/dashboard/live-deals' ? { color: '#fbdf35' } : null} onClick={() => { if (userData?.id) { navigate('/dashboard/live-deals') } else { setShowModal(true) } }}>Deals</span>
+              <span style={pathname === '/dashboard/live-deals' ? { color: '#fbdf35' } : null} onClick={() => { userData?.id ? navigate('/dashboard/live-deals') : setShowModal(true) }}>Deals</span>
             </li>
             <hr className="ruler-navbar" />
             <li>
@@ -123,6 +150,10 @@ const Navbar = () => {
               </span>
             </li>
             <hr className="ruler-navbar" />
+            {/* </div> */}
+
+
+
             {Object.keys(userData).length !== 0 ? (
               <>
                 <li>

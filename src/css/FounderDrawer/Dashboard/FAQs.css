@@ -22,8 +22,13 @@
     text-align: center;
     margin-bottom: 5rem;
 }
-.existing-faq{
+
+.existing-faq {
     margin-right: 30px;
+}
+
+.faqs-container-mob {
+    margin-bottom: 5em;
 }
 
 @media screen and (max-width : 1024px) {
@@ -32,34 +37,42 @@
         width: 100% !important;
         text-align: right;
     }
-    .faq-text-wrapper{
+
+    .faq-text-wrapper {
         margin-right: 16px !important;
     }
-    .faq-container-mb{
+
+    .faq-container-mb {
         padding-right: 0 !important;
     }
-    .existing-faq{
+
+    .existing-faq {
         margin-right: 16px !important;
     }
-    .faq-next-btn{
+
+    .faq-next-btn {
         margin-right: 20px !important;
     }
-    .faq-form{
+
+    .faq-form {
         margin-right: 16px !important;
     }
 }
 
 @media screen and (max-width : 425px) {
-    .existing-faq{
+    .existing-faq {
         margin-right: 16px !important;
     }
-    .faq-text-wrapper{
+
+    .faq-text-wrapper {
         margin-right: 16px !important;
     }
-    .faq-container-mb{
+
+    .faq-container-mb {
         padding-right: 0 !important;
     }
 }
+
 @media screen and (max-width : 320px) {
     .faqs-button-parent {
         width: 100% !important;

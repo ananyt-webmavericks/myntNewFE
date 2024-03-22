@@ -65,7 +65,11 @@ export default function LandingHead() {
                     </div>
                 </div>
                 <div className=" homeMbViewImg-wrapper" style={{ display: "flex", justifyContent: 'center', alignItems: "center", width: "100%" }}>
-                    <img className=" homeMbViewImg" src={homeMbViewImg} />
+                    <Lottie
+
+                        options={defaultOptions}
+
+                    />
                 </div>
 
             </div>

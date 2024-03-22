@@ -41,6 +41,7 @@
 
 .comp-img {
     margin-top: 1rem;
+
 }
 
 .networks-mb-view {
@@ -50,6 +51,22 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.main-comp-funced {
+    margin: 0px 20px;
+}
+
+@media screen and (max-width:450px) {
+    .comp-img {
+        width: 130px;
+        object-fit: contain;
+
+    }
+
+    .main-comp-funced {
+        margin: 0;
+    }
 }
 
 @media screen and (max-width:870px) {

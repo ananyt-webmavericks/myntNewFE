@@ -48,11 +48,13 @@ const AutomatedStreamlined = () => {
           </div>
           <div className="founderhome-image-section-landing">
             <img
-              style={{ position: "absolute", height: 470 }}
+              className='founder-image-section-landing-img-graph'
+              style={{ position: "absolute" }}
               src={graphline}
             />
             <Lottie style={{ marginLeft: 20 }} options={defaultOptions} />
           </div>
+
         </div>
       </Box >
     </>

@@ -356,129 +356,131 @@ const FAQS = ({ tabChangeFn }) => {
 
             </div>
           )}
-          {addedFaqs?.map((item, index) => (
-            <div className="existing-faq" key={index}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <Typography
-                  style={{
-                    // marginTop: "1.4rem",
-                    marginBottom: "-0.3rem",
-                  }}
-                  className="upload-ur-pitch"
-                >
-                  Question {index + 1}
-                </Typography>
-                {isEdit === item.id ? (
-                  <button
-                    disabled={campaignDetail?.status !== 'CREATED'}
-                    onClick={() => {
-                      handleSubmit(item.id);
-                    }}
+          <div className="faqs-container-mob">
+            {addedFaqs?.map((item, index) => (
+              <div className="existing-faq" key={index}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <Typography
                     style={{
-                      cursor: "pointer",
-                      padding: "5px 10px",
-                      borderRadius: "5px",
-                      border: "0px solid",
-                      background: "black",
-                      height: "30px",
-                      color: "white",
+                      // marginTop: "1.4rem",
+                      marginBottom: "-0.3rem",
                     }}
+                    className="upload-ur-pitch"
                   >
-                    {isEditLoading ? (
-                      <CircularProgress
-                        style={{
-                          color: "White",
-                          fontSize: 10,
-                          width: 20,
-                          height: 20,
-                        }}
-                      />
-                    ) : (
-                      <span style={{ color: 'white' }}>Save</span>
-                    )}
-                  </button>
+                    Question {index + 1}
+                  </Typography>
+                  {isEdit === item.id ? (
+                    <button
+                      disabled={campaignDetail?.status !== 'CREATED'}
+                      onClick={() => {
+                        handleSubmit(item.id);
+                      }}
+                      style={{
+                        cursor: "pointer",
+                        padding: "5px 10px",
+                        borderRadius: "5px",
+                        border: "0px solid",
+                        background: "black",
+                        height: "30px",
+                        color: "white",
+                      }}
+                    >
+                      {isEditLoading ? (
+                        <CircularProgress
+                          style={{
+                            color: "White",
+                            fontSize: 10,
+                            width: 20,
+                            height: 20,
+                          }}
+                        />
+                      ) : (
+                        <span style={{ color: 'white' }}>Save</span>
+                      )}
+                    </button>
+                  ) : (
+                    <>
+                      {campaignDetail?.status === "CREATED" &&
+                        <button
+                          onClick={() => {
+                            EditBankFields(item.id, index);
+                          }}
+                          disabled={campaignDetail?.status !== 'CREATED'}
+                          style={{
+                            cursor: "pointer",
+                            right: 100,
+                            padding: "5px 10px",
+                            borderRadius: "5px",
+                            border: "0px solid",
+                            background: "black",
+                            height: "30px",
+                            color: "white",
+                          }}
+                        >
+                          Edit
+                        </button>
+                      }
+                    </>
+                  )}
+                </div>
+
+                {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+
+                {isEdit === item.id ? (
+                  <input
+                    value={editQuestion}
+                    disabled={campaignDetail?.status !== 'CREATED'}
+                    onChange={(e) => setEditQuestion(e.target.value)}
+                    placeholder="Type your question here…"
+                    type="text"
+                    className="inp-enter-name"
+                  />
                 ) : (
-                  <>
-                    {campaignDetail?.status === "CREATED" &&
-                      <button
-                        onClick={() => {
-                          EditBankFields(item.id, index);
-                        }}
-                        disabled={campaignDetail?.status !== 'CREATED'}
-                        style={{
-                          cursor: "pointer",
-                          right: 100,
-                          padding: "5px 10px",
-                          borderRadius: "5px",
-                          border: "0px solid",
-                          background: "black",
-                          height: "30px",
-                          color: "white",
-                        }}
-                      >
-                        Edit
-                      </button>
+                  <input
+                    disabled={campaignDetail?.status !== 'CREATED'}
+                    value={
+                      item.question
+                      // newData[0].id===item.id  ? newData[0].question : item.question
                     }
-                  </>
+                    placeholder="Type your question here…"
+                    type="text"
+                    className="inp-enter-name"
+                  />
                 )}
-              </div>
+                {/* </CustomWidthTooltip> */}
 
-              {/* <CustomWidthTooltip title="Type your question here…" arrow placement='right'> */}
+                {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
+                {isEdit === item.id ? (
+                  <textarea
 
-              {isEdit === item.id ? (
-                <input
-                  value={editQuestion}
-                  disabled={campaignDetail?.status !== 'CREATED'}
-                  onChange={(e) => setEditQuestion(e.target.value)}
-                  placeholder="Type your question here…"
-                  type="text"
-                  className="inp-enter-name"
-                />
-              ) : (
-                <input
-                  disabled={campaignDetail?.status !== 'CREATED'}
-                  value={
-                    item.question
-                    // newData[0].id===item.id  ? newData[0].question : item.question
-                  }
-                  placeholder="Type your question here…"
-                  type="text"
-                  className="inp-enter-name"
-                />
-              )}
-              {/* </CustomWidthTooltip> */}
+                    value={editAnswer}
+                    disabled={campaignDetail?.status !== 'CREATED'}
+                    onChange={(e) => setEditAnswer(e.target.value)}
+                    style={{ marginBottom: 0 }}
+                    placeholder="Describe your previous fundraising rounds*"
+                    className="inp-textarea-desc"
+                    name="descibe"
+                    id="describe"
+                    rows="7"
+                  ></textarea>
+                ) : (
+                  <textarea
+                    disabled
+                    value={
+                      item.answer
+                      // isEdit===item.id ? newData[0].answer : item.answer
+                    }
 
-              {/* <CustomWidthTooltip title="Describe your previous fundraising rounds*" arrow placement='right'> */}
-              {isEdit === item.id ? (
-                <textarea
-                  value={editAnswer}
-                  disabled={campaignDetail?.status !== 'CREATED'}
-                  onChange={(e) => setEditAnswer(e.target.value)}
-                  style={{ marginBottom: 0 }}
-                  placeholder="Describe your previous fundraising rounds*"
-                  className="inp-textarea-desc"
-                  name="descibe"
-                  id="describe"
-                  rows="7"
-                ></textarea>
-              ) : (
-                <textarea
-                  disabled
-                  value={
-                    item.answer
-                    // isEdit===item.id ? newData[0].answer : item.answer
-                  }
-
-                  style={{ marginBottom: 0 }}
-                  placeholder="Describe your previous fundraising rounds*"
-                  className="inp-textarea-desc"
-                  name="descibe"
-                  id="describe"
-                  rows="7"
-                ></textarea>
-              )}
-              {/* </CustomWidthTooltip> */}
-              {/* <div className="zero-of-threehundred">{q2Count}/300</div>
+                    style={{ marginBottom: 0 }}
+                    placeholder="Describe your previous fundraising rounds*"
+                    className="inp-textarea-desc"
+                    name="descibe"
+                    id="describe"
+                    rows="7"
+                  ></textarea>
+                )}
+                {/* </CustomWidthTooltip> */}
+                {/* <div className="zero-of-threehundred">{q2Count}/300</div>
 
             <hr
               style={{
@@ -488,8 +490,9 @@ const FAQS = ({ tabChangeFn }) => {
                 marginTop: "2rem",
               }}
             /> */}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </Box>
       ) : null}
     </Container>

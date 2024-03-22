@@ -107,7 +107,7 @@
 @media screen and (max-width: 870px) {
     .homeMbViewImg-wrapper {
         display: block;
-        padding-top: 10rem;
+        padding-top: 1rem;
 
     }
 
@@ -125,7 +125,7 @@
     .homeMbViewImg-wrapper {
         display: none !important;
     }
-    
+
 
     .homeHeaderBgline {
         display: flex;

@@ -20,7 +20,7 @@ authAxios.interceptors.response.use(
     },
     error => {
         if (error.response) {
-            if (error.response.status === 500) {
+            if (error.response.status === 403) {
                 localStorage.clear();
                 window.location.href = '/login';
             }

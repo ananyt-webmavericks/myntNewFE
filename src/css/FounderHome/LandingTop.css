@@ -61,15 +61,20 @@
 }
 
 .founderhome-image-section-landing {
-    order: 1;
+    order: 2;
     width: 15rem;
     margin: auto;
+    padding-top: 1rem;
+}
+
+.founder-image-section-landing-img-graph {
+    height: 260px;
 }
 
 .founderhome-landing-head-txt-section {
     order: 2;
     text-align: center !important;
-    padding-top: 2rem;
+    padding-top: 4rem;
 }
 
 .founderhome-banner-home-main {
@@ -92,17 +97,23 @@
     .founderhome-image-section-landing-raise-banner {
         display: none !important;
     }
+
+    .founder-image-section-landing-img-graph {
+        height: 470px;
+    }
+
     .founderhome-test-script-bold {
         text-align: left;
     }
-    .founderhome-test-script-regular{
+
+    .founderhome-test-script-regular {
         text-align: left;
     }
 }
 
 @media screen and (max-width: 1024px) {
     .founderhome-image-section-landing {
-        display: none;
+        /* display: none; */
     }
 
     .founderhome-landing-head-container {
@@ -127,16 +138,20 @@
         width: 100%;
         justify-content: center;
     }
-    .founderhome-landing-head-txt-section{
+
+    .founderhome-landing-head-txt-section {
         text-align: center !important;
     }
+
     .founderhome-test-script-bold {
         text-align: center;
     }
-    .founderhome-test-script-regular{
+
+    .founderhome-test-script-regular {
         text-align: center;
     }
-    .founderhome-head-description{
+
+    .founderhome-head-description {
         text-align: center;
     }
 }
