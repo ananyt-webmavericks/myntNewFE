@@ -22,7 +22,8 @@ export default function SubscribegGraph() {
     const [fourthGStyle, setfourthGStyle] = useState({ height: '0px', right: '11.8em' })
     const [fifthGStyle, setfifthGStyle] = useState({ height: '0px', right: '6.5em' })
     const [sixthGStyle, setsixthGStyle] = useState({ height: '0px', right: '1em' })
-
+    const contentRef = useRef(null);
+    const content2ref = useRef(null)
     useEffect(() => {
 
         if (ratio < 920) {
@@ -37,26 +38,16 @@ export default function SubscribegGraph() {
 
 
 
-
-
-    const contentRef = useRef(null);
-
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setfirstGStyle({ height: '176px', right: '11.9em', transition: '1.2s' })
                 setsecondGStyle({ height: '122px', right: '6.5em', transition: '1.2s' })
                 setthirdGStyle({ height: '282px', right: '1em', transition: '1.2s' })
-                setfourthGStyle({ height: '100px', right: '11.8em', transition: '1.2s' })
-                setfifthGStyle({ height: '282px', right: '6.5em', transition: '1.2s' })
-                setsixthGStyle({ height: '150px', right: '1em', transition: '1.2s' })
             } else {
                 setfirstGStyle({ height: '0px', right: '11.9em', transition: '0.5s' })
                 setsecondGStyle({ height: '0px', right: '6.5em', transition: '0.5s' })
                 setthirdGStyle({ height: '0px', right: '1em', transition: '0.5s' })
-                setfourthGStyle({ height: '0px', right: '11.8em', transition: '0.5s' })
-                setfifthGStyle({ height: '0px', right: '6.5em', transition: '0.5s' })
-                setsixthGStyle({ height: '0px', right: '1em', transition: '0.5s' })
             }
         });
 
@@ -66,6 +57,26 @@ export default function SubscribegGraph() {
             observer.unobserve(contentRef.current);
         };
     }, []);
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setfourthGStyle({ height: '100px', right: '11.8em', transition: '1.2s' })
+                setfifthGStyle({ height: '282px', right: '6.5em', transition: '1.2s' })
+                setsixthGStyle({ height: '150px', right: '1em', transition: '1.2s' })
+            } else {
+                setfourthGStyle({ height: '0px', right: '11.8em', transition: '0.5s' })
+                setfifthGStyle({ height: '0px', right: '6.5em', transition: '0.5s' })
+                setsixthGStyle({ height: '0px', right: '1em', transition: '0.5s' })
+            }
+        });
+
+        observer.observe(content2ref.current);
+
+        return () => {
+            observer.unobserve(content2ref.current);
+        };
+    }, []);
+
     return (
         <Box sx={{ minHeight: '60vh', marginTop: '90px' }}>
             <img className="homeSubscribeYellowLine" src={homeSubscribeYellowLine} width={'100%'} height={'200px'} />
@@ -95,16 +106,23 @@ export default function SubscribegGraph() {
                                         <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img>
                                     </Button>
                                 </div>
-                                <div className="aditya-ahda" style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
-                                    <p className="risk-factor">Risk</p>
-                                    <div className="bar-graph-container one" style={firstGStyle}>
+                                <div className="aditya-ahda" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <div className="grapItem">
+                                        <p className="risk-factor">Risk</p>
+                                        <div className="bar-graph-container one" style={firstGStyle}></div>
                                     </div>
-                                    <p className="risk-factor two">Liquidity</p>
-                                    <div className="bar-graph-container two" style={secondGStyle}>
+                                    {/* ./grapItem */}
+                                    <div className="grapItem">
+                                        <p className="risk-factor two">Liquidity</p>
+                                        <div className="bar-graph-container two" style={secondGStyle}></div>
                                     </div>
-                                    <p className="risk-factor three">Expected Gain</p>
-                                    <div className="bar-graph-container three" style={thirdGStyle}>
+                                    {/* ./grapItem */}
+                                    <div className="grapItem">
+                                        <p className="risk-factor three">Expected Gain</p>
+                                        <div className="bar-graph-container three" style={thirdGStyle}></div>
                                     </div>
+                                    {/* ./grapItem */}
+
                                 </div>
                             </div>
                         </div>
@@ -125,18 +143,24 @@ export default function SubscribegGraph() {
                                     <div>
                                         <img src={Debt} alt="equity_logo" className="graphs-logo" />
                                     </div>
-                                    <Button style={{ textTransform: 'none' }} className="learn-more-btn" onClick={() => navigate('/myntUniversity/faqs')} varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
+                                    <Button ref={content2ref} style={{ textTransform: 'none' }} className="learn-more-btn" onClick={() => navigate('/myntUniversity/faqs')} varient='outlined'>Learn More  <img style={{ marginLeft: '5px' }} width={5} height={10} src={YellowArrow}></img> </Button>
                                 </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
-                                    <p className="risk-factor fixed">Risk</p>
-                                    <div className="bar-graph-container one" style={fourthGStyle}>
+                                <div className="aditya-ahda" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <div className="grapItem">
+                                        <p className="risk-factor fixed">Risk</p>
+                                        <div className="bar-graph-container one" style={fourthGStyle}></div>
                                     </div>
-                                    <p className="risk-factor fixed-two">Liquidity</p>
-                                    <div className="bar-graph-container two" style={fifthGStyle}>
+                                    {/* ./grapItem */}
+                                    <div className="grapItem">
+                                        <p className="risk-factor fixed-two">Liquidity</p>
+                                        <div className="bar-graph-container two" style={fifthGStyle}></div>
                                     </div>
-                                    <p className="risk-factor fixed-three ">Expected Gain</p>
-                                    <div className="bar-graph-container three" style={sixthGStyle}>
+                                    {/* ./grapItem */}
+                                    <div className="grapItem">
+                                        <p className="risk-factor fixed-three ">Expected Gain</p>
+                                        <div className="bar-graph-container three" style={sixthGStyle}></div>
                                     </div>
+                                    {/* ./grapItem */}
                                 </div>
                             </div>
                         </div>

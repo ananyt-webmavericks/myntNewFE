@@ -106,7 +106,7 @@ export default function LiveDetailsMain() {
   const ratio = parseInt(window.innerWidth);
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const [direction, setDirection] = React.useState("right");
+  const [direction, setDirection] = React.useState( ratio ? "right" : "up" );
   const [hidden, setHidden] = React.useState(false);
   const [campaignData, setCampaignData] = useState({});
   const [hightLightData, setHightLightData] = useState([]);
@@ -436,7 +436,7 @@ export default function LiveDetailsMain() {
                   ariaLabel="SpeedDial playground example"
                   hidden={hidden}
                   icon={<ShareIcon />}
-                  direction={direction}
+                  direction={ratio < 850 ? "up" : "right"}
                 >
                   {actions.map((action) => (
                     <SpeedDialAction
@@ -513,8 +513,8 @@ export default function LiveDetailsMain() {
                     <Grid key={index} item xs={gridxsSecond}>
                       <Card className="card-content-live-details">
                         <CardContent>
-                          <div style={{ display: "flex", alignItems: "center" }}>
-                            <img src={item?.highlight_image} height={47} style={{ objectFit: 'cover' }} width={53}></img>
+                          <div className="card-content-container-highlights">
+                            <img src={item?.highlight_image} height={47} style={{ objectFit: 'contain' }} width={53}></img>
                             <span
                               style={{
                                 fontSize: "18px",

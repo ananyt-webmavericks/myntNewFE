@@ -15,6 +15,7 @@ import OtpServices from "../../service/OtpService";
 
 export default function MyProfileMain() {
   const _ = require("lodash");
+
   const [activeBtn, setActiveBtn] = useState(1);
   const navigate = useNavigate();
   const [hideDivShow, setHideDivShow] = useState(true);
@@ -27,7 +28,6 @@ export default function MyProfileMain() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLinkedInLoading, setLinkedInLoading] = useState(false);
   const [newData, setNewData] = useState(null);
-
   const { userData } = useSelector((state) => state.loginData);
   const { userKycData } = useSelector((state) => state.kycData);
   const EditEmail = () => {
@@ -266,6 +266,7 @@ export default function MyProfileMain() {
   };
   console.log(userKycData?.address_line_1 || '1' + ',' + userKycData?.address_line_2 || '2' + ',' + userKycData?.city || '3' + ',' + userKycData?.state || '4' + ',' + userKycData?.country || '5' + ',' + userKycData?.pincode || '6');
   return (
+
     <div className="my-profile-container">
       <span className="get-started-heading">My Profile</span>
       <div className="btn-section-my-profile">
@@ -585,6 +586,7 @@ export default function MyProfileMain() {
         </>
       )}
     </div>
+
   );
 }
 

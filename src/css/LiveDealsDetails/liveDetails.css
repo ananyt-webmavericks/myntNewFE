@@ -269,6 +269,11 @@
     padding-left: 0 !important;
 }
 
+.card-content-container-highlights {
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width:1100px) {
     .header-section-deals-detail.btn-section {
         flex-direction: column !important;
@@ -293,6 +298,22 @@
 @media screen and (max-width:850px) {
     .header-section-deals-detail.btn-section {
         flex-direction: row !important;
+    }
+
+    .card-content-container-highlights {
+        margin: auto;
+        justify-content: center;
+        display: grid;
+        align-items: center;
+    }
+
+    .card-content-container-highlights img {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .card-content-container-highlights span {
+        text-align: center;
     }
 
     .investor-home-heading>video {
@@ -349,8 +370,25 @@
 
 @media screen and (max-width:600px) {
     .header-section-deals-detail.btn-section {
-        flex-direction: column !important;
+        /* flex-direction: column !important; */
         align-items: center !important;
+        background: #f4f4f4;
+        padding-block: 18px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+    }
+
+    .MuiSpeedDial-root {
+        position: relative;
+        z-index: 99 !important;
+    }
+
+    .MuiSpeedDial-actions {
+        position: absolute;
+        bottom: 60px;
     }
 
     .horizontal-ruler-tabs {

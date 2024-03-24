@@ -1,16 +1,22 @@
 import React from "react";
-import { CssBaseline , Container } from "@mui/material";
+import { CssBaseline, Container } from "@mui/material";
 import MyProfileMain from "../component/MyProfile";
 import Footer from "../component/Footer";
-const MyProfile = ()=>{
-    return(
+import DrawerMain from "../component/Dashboard/Drawer";
+
+const MyProfile = () => {
+    const ratio = parseInt(window.innerWidth);
+    const location = window.location.pathname;
+
+    return (
         <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="lg">
-           <MyProfileMain />
-        </Container>
-        <Footer/>
-    </React.Fragment>
+            <CssBaseline />
+            {location.includes('/my-profile') && <DrawerMain height={'inherit'} hideWeb={true} />}
+            <Container maxWidth="lg">
+                <MyProfileMain />
+            </Container>
+            {ratio < 1000 ? null : <Footer />}
+        </React.Fragment>
     )
 }
 export default MyProfile

@@ -94,10 +94,10 @@ const Navbar = () => {
             ></img>
           )}
 
-          {ratio < 768 && userData?.user_type ? (
+          {ratio < 768 && userData?.user_type && !userData?.company_id ? (
             <div
               className="nav-profile-icon-mb"
-              onClick={userData.user_type === "INVESTOR" ? handleProfile : null}
+            // onClick={userData.user_type === "INVESTOR" ? handleProfile : null}
             >
               <Avatar
                 alt="avatar"
@@ -149,6 +149,16 @@ const Navbar = () => {
                 MyntUniversity
               </span>
             </li>
+            {ratio < 768 && userData?.user_type ? (
+              <>
+                <hr className="ruler-navbar" />
+                <li>
+                  <span style={pathname === '/dashboard' ? { color: '#fbdf35' } : null} onClick={() => navigate("/dashboard")}>
+                    Dashboard
+                  </span>
+                </li>
+              </>
+            ) : null}
             <hr className="ruler-navbar" />
             {/* </div> */}
 
@@ -157,9 +167,15 @@ const Navbar = () => {
             {Object.keys(userData).length !== 0 ? (
               <>
                 <li>
-                  <span onClick={handleProfile}>
-                    {userData.name ? userData.name : userData?.first_name}
-                  </span>
+                  {ratio < 768 ?
+                    <span onClick={handleProfile}>
+                      Profile
+                    </span> :
+                    <span onClick={handleProfile}>
+                      {userData.name ? userData.name : userData?.first_name}
+                    </span>
+                  }
+
                 </li>
                 {userData.name ? <hr className="ruler-navbar" /> : null}
 

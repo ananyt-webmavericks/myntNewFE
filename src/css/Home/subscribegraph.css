@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-.homeSubscribeYellowLine{
+.homeSubscribeYellowLine {
     position: absolute;
     width: 310px;
     right: 0;
@@ -85,10 +85,23 @@
     /* width: 70%; */
 }
 
+.aditya-ahda {
+    align-items: flex-end;
+    position: absolute !important;
+    right: 25px;
+    bottom: 25px;
+    gap: 25px;
+}
+
+.aditya-ahda .grapItem {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
 
 .risk-factor {
     /* left: calc(50% - 0.5rem); */
-    line-height: 1;
+    /* line-height: 1; */
     /* padding-top: 0.5rem; */
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -96,9 +109,9 @@
     -webkit-writing-mode: vertical-rl;
     writing-mode: vertical-rl;
     height: 22px;
-    position: absolute;
+    /* position: absolute;
     right: 14em;
-    bottom: 0;
+    bottom: 0; */
     transition: all 0.5s ease-in;
     font-weight: bold;
 }
@@ -163,8 +176,8 @@
 .bar-graph-container {
     background: #efc127;
     width: 25px;
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
     border-radius: 20px 20px 0 0;
 }
 
@@ -209,44 +222,9 @@
         width: 100% !important;
     }
 
-    .bar-graph-container.one {
-        margin-left: -80px;
-        left: 50%;
-    }
-
-    .bar-graph-container.two {
-        margin-left: -10px;
-        left: 50%;
-    }
-
-    .bar-graph-container.three {
-        margin-left: 60px;
-        left: 50%;
-    }
-
-    .risk-factor {
-        margin-left: -105px;
-        left: 50%;
-    }
-
-    .risk-factor.fixed-two {
-        margin-left: -35px;
-        left: 50%;
-    }
-
-    .risk-factor.fixed-three {
-        margin-left: 35px;
-        left: 50%;
-    }
-
-    .risk-factor.two {
-        margin-left: -35px;
-        left: 50%;
-    }
-
-    .risk-factor.three {
-        margin-left: 35px;
-        left: 50%;
+    .aditya-ahda {
+        right: 50%;
+        transform: translateX(50%);
     }
 
     .card-content-graph:hover .card-bold-number-text {
@@ -260,6 +238,7 @@
     .investor-home-deal-card {
         justify-content: center !important;
     }
+
     .card-bold-number-text {
         margin-top: 47px !important;
     }

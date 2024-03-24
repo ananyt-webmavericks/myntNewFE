@@ -22,13 +22,14 @@ import portfolio from "./../../images/dashboard/icons/portfolio.png";
 import portfolio_yellow from "./../../images/dashboard/icons/portfolio_yellow.png";
 
 import { useNavigate } from "react-router-dom";
-export default function DrawerMain({ height, display }) {
+export default function DrawerMain(props) {
+  const { hideWeb, height, display } = props
   const navigate = useNavigate();
   const location = window.location.pathname;
 
   return (
     <>
-      {display !== 'none' && <div className="dashboard-drawer-section" style={{ height: height }}>
+      {(display !== 'none' && hideWeb !== true) && <div className="dashboard-drawer-section" style={{ height: height }}>
         <div className="dashboard-fields-container">
           <div className="dashboard-single-links" onClick={() => navigate('/dashboard')}>
             {/* <GridViewOutlinedIcon style={location === '/dashboard' ? { color: '#ECB92B' } : { color: 'gray' }} width={20} height={20} /> */}

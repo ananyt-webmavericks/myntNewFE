@@ -91,6 +91,20 @@
     font-weight: 600;
 }
 
+@media screen and (max-width:767px) {
+    .scroll_flex{
+        overflow: auto;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .chips-pay-to-subscribe-cointainer {
+        width: 150%;
+        margin-bottom: 0px;
+        flex-wrap: nowrap;
+    }
+}
+
 @media screen and (min-width:850px) {
     .payment-card-wrapper {
         flex-direction: row !important;

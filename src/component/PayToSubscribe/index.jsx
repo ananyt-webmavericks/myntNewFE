@@ -226,7 +226,8 @@ export default function PayToSubscribeMain() {
                                     </div>
                                 </form>
 
-                                <div className="chips-pay-to-subscribe-cointainer">
+                               <div className="scroll_flex">
+                               <div className="chips-pay-to-subscribe-cointainer">
                                     <div
                                         onClick={e => formik.setFieldValue("amount", (50 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
                                         className="particular-mentioned-chip-pay">+ ₹{(50 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
@@ -237,6 +238,7 @@ export default function PayToSubscribeMain() {
                                         onClick={e => formik.setFieldValue("amount", (150 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription))}
                                         className="particular-mentioned-chip-pay">+ ₹{(150 / 100) * Number(location?.state?.campaignData?.deal_terms?.min_subscription) + Number(location?.state?.campaignData?.deal_terms?.min_subscription)}</div>
                                 </div>
+                               </div>
                                 {rewards.length > 0 && <span className="pay-amount-heading">Enrollment Benefits</span>}
                                 {
                                     rewards?.map((item, index) => <Card key={index} className="secondary-card-pay-section">
